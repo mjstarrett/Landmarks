@@ -44,6 +44,7 @@ public class InstructionsTask : ExperimentTask {
 	
 	public override void startTask () {
 		TASK_START();
+		Debug.Log ("Starting an Instructions Task");
 	}	
 
 	public override void TASK_START()
@@ -107,28 +108,31 @@ public class InstructionsTask : ExperimentTask {
 	
 	public override void endTask() {
 		TASK_END();
+		Debug.Log ("Ending an instructions task");
 	}
 	
 	public override void TASK_END() {
-		base.endTask();
-		hud.setMessage("");
+		base.endTask ();
+		hud.setMessage ("");
 		
 		if (canIncrementLists) {
 
 			if (objects) {
-				objects.incrementCurrent();
-				currentObject = objects.currentObject();
+				objects.incrementCurrent ();
+				currentObject = objects.currentObject ();
 			}
 			if (texts) {
-				texts.incrementCurrent();		
-				currentText = texts.currentString();
+				texts.incrementCurrent ();		
+				currentText = texts.currentString ();
 			}
 
 		}
-		GameObject avatar = GameObject.Find("Canvas");
-		Text canvan = avatar.GetComponent("Canvas").GetComponent<Text>();
-		string nullstring = null;
-			canvan.text = nullstring;
+
+		// MJS 05/02/2018 - commented out. No apparent function (throws error); see HUD line 222
+//		GameObject avatar = GameObject.Find("Canvas");
+//		Text canvan = avatar	.GetComponent("Canvas").GetComponent<Text>();
+//		string nullstring = null;
+//			canvan.text = nullstring;
 			//StartCoroutine(storesInactive());
 		//hud.showEverything();
 	}
