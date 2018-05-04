@@ -31,6 +31,7 @@ public class TaskList : ExperimentTask {
 	private int currentTaskIndex = 0;
 	[HideInInspector] public ExperimentTask currentTask;
 
+
 	public override void startTask() {
 		// Debug.Log(this.GetType().Name);
 		base.startTask();
@@ -50,10 +51,10 @@ public class TaskList : ExperimentTask {
 	}	
 	
 	public void startNextTask() {
-		print(tasks[currentTaskIndex]);
-		 currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
-		 currentTask.parentTask = this;
-		 currentTask.startTask();		
+		Debug.Log("Starting " + tasks[currentTaskIndex].name);
+		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
+		currentTask.parentTask = this;
+		currentTask.startTask();		
 	}
 	
 	public override bool updateTask () {
