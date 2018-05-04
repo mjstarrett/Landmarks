@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetClass : ExperimentTask
+public class InitializeTargets : ExperimentTask
 {
+
+	public GameObject targetLocationsParent; // MJS - added 4/30/2018
+	public GameObject targetOptionsParent; 	// MJS - added 4/30/2018
+
+
 	void Start()
 	{
 		GameObject optionsParent = GameObject.Find ("TargetOptions");
@@ -16,4 +21,42 @@ public class TargetClass : ExperimentTask
 		}
 		print (targetOptions);
 	}
+//
+//	// Landmarks-specific functions
+//	public override void startTask () 
+//	{
+//
+//		TASK_START();
+//	}
+//
+//	public override bool updateTask () 
+//	{
+//		
+//		return true;	
+//	}
+//		
+//	public override void endTask() {
+//
+//		TASK_END();
+//	}
+//
+//	public override void TASK_END() {
+//		base.endTask();
+//	}
+//
+//	public GameObject currentObject() {
+//		if (current >= objects.Count) {
+//			return null;
+//			current = 0;
+//		} else {
+//			return objects[current];
+//		}
+//	}
+//
+//	public  void incrementCurrent() {
+//		current++;
+//		if (current >= objects.Count && EndListBehavior == EndListMode.Loop) {
+//			current = 0;
+//		}
+//	}
 }

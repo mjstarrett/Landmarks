@@ -35,8 +35,7 @@ public class Experiment : MonoBehaviour {
 	private string logfile;
 	private string configfile = "";
 	public GameObject player;
-	public GameObject targetLocationsParent; // MJS - added 4/30/2018
-	public GameObject targetOptionsParent; 	// MJS - added 4/30/2018
+
 
 	[HideInInspector] public dbLog dblog;
 	

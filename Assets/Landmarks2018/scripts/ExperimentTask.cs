@@ -50,6 +50,7 @@ public class ExperimentTask : MonoBehaviour{
 	    experiment = GameObject.FindWithTag ("Experiment");
 	    manager = experiment.GetComponent("Experiment") as Experiment;
 	    log = manager.dblog;
+
 	}
 	
 	public virtual void startTask() {	
