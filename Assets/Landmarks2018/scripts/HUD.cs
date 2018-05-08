@@ -37,7 +37,7 @@ public class HUD : MonoBehaviour {
 	public bool showScore;
 	private float intensity =  0.0f;
 	
-	private string message = "";
+	private string message = "Hello World!";
 	private string compassmessage = "";
 	
 	private string status = "";
@@ -171,7 +171,7 @@ public class HUD : MonoBehaviour {
 		updateStatus();
 		updateScore();
 		
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetButtonDown("showHUD"))
 			ForceShowMessage();
 		
 		if (!timeGui)
