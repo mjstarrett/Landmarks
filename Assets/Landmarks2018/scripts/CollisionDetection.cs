@@ -23,7 +23,7 @@ public class CollisionDetection : MonoBehaviour {
 	private dbLog log;
 	
 	void OnControllerColliderHit(ControllerColliderHit hit)  {
-		if(hit.gameObject.tag != "Untagged") {
+		if(hit.gameObject.tag == "Target") {
 			manager.OnControllerColliderHit(hit.gameObject);
 		}   
     }
