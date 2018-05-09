@@ -19,12 +19,14 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class HUD : MonoBehaviour {
+public class HUD : MonoBehaviour 
+{
 	
 	private GameObject experiment;
 	private dbLog log;
 	private Experiment manager;
-	
+
+	public GameObject hudRig;
 	public GameObject Canvas;
 	private string canvasName;
 	public Camera[] cam;
@@ -37,7 +39,7 @@ public class HUD : MonoBehaviour {
 	public bool showScore;
 	private float intensity =  0.0f;
 	
-	private string message = "Hello World!";
+	private string message = "";
 	private string compassmessage = "";
 	
 	private string status = "";
@@ -52,7 +54,7 @@ public class HUD : MonoBehaviour {
 	private GUIText scoreGui;
 	private GUIText scoreGuiBack;
 	public float fadeSpeed = 0.05f;
-	private Text canvas;
+	private Text canvan;
 	private float updateInterval = 1.0f;
 	private float lastInterval; // Last interval end time
 	private int frames = 0; // Frames over current interval
@@ -68,6 +70,7 @@ public class HUD : MonoBehaviour {
 	{
 		print ("HUD_AWAKE!!!!!!!!!!!!!!!!!!");
 		canvasName = Canvas.name;
+		Debug.Log( GameObject.FindWithTag("HUDtext").GetComponent<Text>());
 		print ("Canvas Name: " + canvasName);
 	}
 	public void setMessage(string newMessage)
@@ -218,8 +221,9 @@ public class HUD : MonoBehaviour {
 	    }
 	    
 	    var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
-	    
-		//canvas.text = hidemessage ? string.Empty : message; // MJS 05/02/2018 - commented out. Function unclear (throws error)
+	    GameObject avatar = GameObject.FindWithTag("HUDtext");
+		Text canvas = avatar.GetComponent<Text>();
+		canvas.text = hidemessage ? string.Empty : message; // MJS 05/02/2018 - commented out. Function unclear (throws error)
 
 		messageGuiBack.text = hidemessage ? string.Empty : message;
 

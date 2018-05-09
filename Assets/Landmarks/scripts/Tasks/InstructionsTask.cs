@@ -62,8 +62,8 @@ public class InstructionsTask : ExperimentTask {
        			
     		GameObject sgo = new GameObject("Instruction Display");
     		
-		GameObject avatar = GameObject.Find("Canvas");
-		Text canvan = avatar.GetComponent("Canvas").GetComponent<Text>();
+		GameObject avatar = GameObject.FindWithTag("HUDtext");
+		Text canvas = avatar.GetComponent<Text>();
     		
 		sgo.AddComponent<GUIText>();
 		sgo.hideFlags = HideFlags.HideAndDontSave;
@@ -77,7 +77,7 @@ public class InstructionsTask : ExperimentTask {
 
 	    if (texts) currentText = texts.currentString().Trim();
 	    if (objects) currentObject = objects.currentObject();
-		if (instruction) canvan.text = instruction.text;
+		if (instruction) canvas.text = instruction.text;
 	    if (blackout) hud.showOnlyHUD();
 		if (message) {
 			string msg = message.text;
@@ -107,8 +107,8 @@ public class InstructionsTask : ExperimentTask {
 	}
 	
 	public override void endTask() {
-		TASK_END();
 		Debug.Log ("Ending an instructions task");
+		TASK_END();
 	}
 	
 	public override void TASK_END() {
@@ -129,12 +129,12 @@ public class InstructionsTask : ExperimentTask {
 		}
 
 		// MJS 05/02/2018 - commented out. No apparent function (throws error); see HUD line 222
-//		GameObject avatar = GameObject.Find("Canvas");
-//		Text canvan = avatar	.GetComponent("Canvas").GetComponent<Text>();
-//		string nullstring = null;
-//			canvan.text = nullstring;
-			//StartCoroutine(storesInactive());
-		//hud.showEverything();
+		GameObject avatar = GameObject.FindWithTag("HUDtext");
+		Text canvas = avatar.GetComponent<Text>();
+		string nullstring = null;
+			canvas.text = nullstring;
+//			StartCoroutine(storesInactive());
+		hud.showEverything();
 	}
 
 }
