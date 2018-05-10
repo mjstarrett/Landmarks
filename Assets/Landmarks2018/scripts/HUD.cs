@@ -26,9 +26,14 @@ public class HUD : MonoBehaviour
 	private dbLog log;
 	private Experiment manager;
 
-	public GameObject hudRig;
-	public GameObject Canvas;
+	// MJS - Identify components of the HUD 
+	public GameObject hudRig; // canvas over screen space for clean text presentation (parent)
+	public GameObject Canvas; // canvas containing the text element for hud messages (child of hudRig)
+	public GameObject hudPanel; // panel used to proved contrasting/anchoring background for hud text (child of hudRig)
+	public float hudPanelON = 0.95f; // set the opacity when on
+	public float hudPanelOFF = 0f; // set the opacity when off
 	private string canvasName;
+
 	public Camera[] cam;
 	public int hudLayer = 30;
 	public Color statusColor;
@@ -68,10 +73,9 @@ public class HUD : MonoBehaviour
 	
 	public void Awake()
 	{
-		print ("HUD_AWAKE!!!!!!!!!!!!!!!!!!");
+		Debug.Log ("Starting HUD.cs");
 		canvasName = Canvas.name;
-		Debug.Log( GameObject.FindWithTag("HUDtext").GetComponent<Text>());
-		print ("Canvas Name: " + canvasName);
+		Debug.Log ("Canvas Name: " + canvasName);
 	}
 	public void setMessage(string newMessage)
 	{
@@ -220,10 +224,24 @@ public class HUD : MonoBehaviour
    			messageGuiBack.material.color = Color.black;
 	    }
 	    
+		// if time is up, temporarily make the message an empty string
 	    var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
 	    GameObject avatar = GameObject.FindWithTag("HUDtext");
 		Text canvas = avatar.GetComponent<Text>();
-		canvas.text = hidemessage ? string.Empty : message; // MJS 05/02/2018 - commented out. Function unclear (throws error)
+		canvas.text = hidemessage ? string.Empty : message; 
+		// if this happens, dim the background panel too
+		if (hidemessage) 
+		{
+			Color panelTemp = hudPanel.GetComponent<Image> ().color; 
+			panelTemp.a = hudPanelOFF;
+			hudPanel.GetComponent<Image> ().color = panelTemp;		}
+		else
+		{
+			Color panelTemp = hudPanel.GetComponent<Image>().color; 
+			panelTemp.a = hudPanelON;
+			hudPanel.GetComponent<Image> ().color = panelTemp;
+		}
+
 
 		messageGuiBack.text = hidemessage ? string.Empty : message;
 

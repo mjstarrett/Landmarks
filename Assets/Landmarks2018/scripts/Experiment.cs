@@ -65,7 +65,9 @@ public class Experiment : MonoBehaviour {
 	}
 	
 	void Awake() {
-		
+
+		Debug.Log ("Starting Experiment.cs");
+
 		Cursor.visible = false;
 		//since config is a singleton it will be the one created in scene 0 or this scene
 		config = Config.instance;

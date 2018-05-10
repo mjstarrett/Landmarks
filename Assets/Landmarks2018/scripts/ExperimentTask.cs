@@ -42,7 +42,12 @@ public class ExperimentTask : MonoBehaviour{
 	[HideInInspector] public ExperimentTask pausedTasks;
 	[HideInInspector] public TaskList parentTask;
 
-	
+
+	public void Awake () 
+	{
+		Debug.Log ("Starting Experiment Task");
+	}
+
 	public void Start () {
 		avatar = GameObject.FindWithTag ("Player");
 		avatarLog = avatar.GetComponent("avatarLog") as avatarLog; //jdstokes 2015
