@@ -21,7 +21,8 @@ public class CollisionDetection : MonoBehaviour {
 
 	private Experiment manager;
 	private dbLog log;
-	
+
+
 	void OnControllerColliderHit(ControllerColliderHit hit)  {
 		if(hit.gameObject.tag == "Target") {
 			manager.OnControllerColliderHit(hit.gameObject);
