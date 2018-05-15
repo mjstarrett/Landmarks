@@ -126,6 +126,7 @@ public class Experiment : MonoBehaviour {
 		
 		//start experiment
 		if (config.runMode != ConfigRunMode.PLAYBACK) {
+			Debug.Log ("Trying to start a task");
 			tasks.startTask();	
 		} else {
 			hud.flashStatus( "Playback Paused" );
