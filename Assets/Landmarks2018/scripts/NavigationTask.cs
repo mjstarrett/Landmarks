@@ -5,7 +5,7 @@ using UnityEngine;
 public class NavigationTask : ExperimentTask 
 {
 
-	public ObjectList destinations;
+	public StoreList destinations;
 	private GameObject current;
 
 	private int score = 0;

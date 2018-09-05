@@ -83,7 +83,7 @@ public class ObjectList : ExperimentTask {
 	{
 		base.startTask();		
 		if (!manager) Start();
-		
+
 		objects = new List<GameObject>();
 	}
 	
