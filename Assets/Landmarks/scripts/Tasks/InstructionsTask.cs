@@ -60,20 +60,22 @@ public class InstructionsTask : ExperimentTask {
 			return;
 		}
        			
-    		GameObject sgo = new GameObject("Instruction Display");
+    	GameObject sgo = new GameObject("Instruction Display");
     		
 		GameObject avatar = GameObject.FindWithTag("HUDtext");
-		Text canvas = avatar.GetComponent<Text>();
+		Text canvas = avatar.GetComponent<Text> ();
+		hud.SecondsToShow = hud.InstructionDuration;
+
     		
 		sgo.AddComponent<GUIText>();
 		sgo.hideFlags = HideFlags.HideAndDontSave;
 		sgo.transform.position = new Vector3(0,0,0);
 		gui = sgo.GetComponent<GUIText>();
 		gui.pixelOffset = new Vector2( 20, Screen.height - 20);
-		//gui.font = instructionFont;
+		gui.font = instructionFont;
 		gui.fontSize = instructionSize;
 		gui.material.color = text_color;
-		//gui.text = message.text;	   			
+		gui.text = message.text;	   			
 
 	    if (texts) currentText = texts.currentString().Trim();
 	    if (objects) currentObject = objects.currentObject();
@@ -96,7 +98,7 @@ public class InstructionsTask : ExperimentTask {
 			return true;
 		}
 		if ( interval > 0 && Experiment.Now() - task_start >= interval)  {
-	        return true;
+			return true;
 	    }
 	    
 		if (Input.GetButtonDown("Return")) {
@@ -114,6 +116,7 @@ public class InstructionsTask : ExperimentTask {
 	public override void TASK_END() {
 		base.endTask ();
 		hud.setMessage ("");
+		hud.SecondsToShow = hud.GeneralDuration; 
 		
 		if (canIncrementLists) {
 
@@ -132,7 +135,7 @@ public class InstructionsTask : ExperimentTask {
 		GameObject avatar = GameObject.FindWithTag("HUDtext");
 		Text canvas = avatar.GetComponent<Text>();
 		string nullstring = null;
-			canvas.text = nullstring;
+		canvas.text = nullstring;
 //			StartCoroutine(storesInactive());
 		hud.showEverything();
 	}

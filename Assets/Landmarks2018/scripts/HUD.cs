@@ -67,12 +67,15 @@ public class HUD : MonoBehaviour
 	private float fullScreenFOV;
 	
 	DateTime LastShown = DateTime.Now;
-	public int SecondsToShow = 10;
+	public int SecondsToShow = 0;
+	public int GeneralDuration = 10;
+	public int InstructionDuration = 99999; // MJS - allow different duration for instructions tasks
 	
 	[HideInInspector] public long playback_time = 0;
 	
 	public void Awake()
 	{
+		SecondsToShow = GeneralDuration;
 		Debug.Log ("Starting HUD.cs");
 		canvasName = Canvas.name;
 		Debug.Log ("Canvas Name: " + canvasName);
