@@ -23,7 +23,7 @@ public class InstructionsTask : ExperimentTask {
 	public TextAsset instruction;
 	public TextAsset message;
 	
-	public ObjectList objects;
+	public StoreList objects;
 	private GameObject currentObject;
 	
 	public TextList texts;
