@@ -19,11 +19,11 @@ using System.Collections;
 
 public class MoveObjects : ExperimentTask {
 
-	public StoreList sources;
+	public ObjectList sources;
 	private GameObject source;
 
 	private GameObject destination;
-	public TransformList destinations;
+	public ObjectList destinations;
 	
 	public bool swap;
 	private static Vector3 position;
@@ -57,6 +57,8 @@ public class MoveObjects : ExperimentTask {
 		while (source != null && destination != null ) {	
 			position = source.transform.position;
 	        rotation = source.transform.rotation;
+			Debug.Log (destination.name.ToString());
+			Debug.Log (source.name);
 	
 			
 			source.transform.position = destination.transform.position;

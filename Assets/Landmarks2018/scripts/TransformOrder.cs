@@ -6,11 +6,14 @@ public class TransformOrder : MonoBehaviour
 {
 
 	// Landmarks script 'ObjectOrder.cs' modified by Michael J. Starrett - 2018
-	public List<GameObject> order = new List<GameObject> ();
+	public GameObject transformParent; // parent gameobject holding our target building prefabs
+
+	[HideInInspector]
+	public List<GameObject> order = new List<GameObject> (); // accessed later (transformList and subjsequent), but not visible
 
 	void awake()
 	{
-		foreach (Transform child in transform) 
+		foreach (Transform child in transformParent.transform) 
 		{
 			order.Add (new GameObject (child.name));
 			string tmp = child.name;
