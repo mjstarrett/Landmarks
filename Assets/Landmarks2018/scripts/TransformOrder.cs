@@ -9,9 +9,9 @@ public class TransformOrder : MonoBehaviour
 	public GameObject transformParent; // parent gameobject holding our target building prefabs
 
 	[HideInInspector]
-	public List<GameObject> order = new List<GameObject> (); // accessed later (transformList and subjsequent), but not visible
+	public List<GameObject> order; // accessed later (transformList and subjsequent), but not visible
 
-	void awake()
+	void OrderTransforms()
 	{
 		foreach (Transform child in transformParent.transform) 
 		{

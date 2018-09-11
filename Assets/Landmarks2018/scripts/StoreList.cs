@@ -47,7 +47,7 @@ public class StoreList : ExperimentTask {
 
 		if (order ) {
 			// Deal with specific ordering
-			StoreOrder ordered = order.GetComponent("StoreOrder") as StoreOrder;
+			ObjectOrder ordered = order.GetComponent("ObjectOrder") as ObjectOrder;
 
 			if (ordered) {
 				Debug.Log("ordered");

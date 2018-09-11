@@ -19,7 +19,7 @@ using System.Collections;
 
 public class MoveObjects : ExperimentTask {
 
-	public ObjectList sources;
+	public StoreList sources;
 	private GameObject source;
 
 	private GameObject destination;
@@ -50,9 +50,6 @@ public class MoveObjects : ExperimentTask {
 		
 		destination = destinations.currentObject();		
 		source = sources.currentObject();	
-
-		Debug.Log (sources.currentObject());
-		Debug.Log (destinations.currentObject ());
 		
 		while (source != null && destination != null ) {	
 			position = source.transform.position;

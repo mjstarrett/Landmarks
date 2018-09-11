@@ -6,5 +6,4 @@ public class ObjectOrder : MonoBehaviour {
 
 	public List<GameObject> order;
 
-
 }
