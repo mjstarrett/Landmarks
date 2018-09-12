@@ -19,7 +19,7 @@ using System.Collections;
 
 public class MoveObjects : ExperimentTask {
 
-	public StoreList sources;
+	public ObjectList sources;
 	private GameObject source;
 
 	private GameObject destination;

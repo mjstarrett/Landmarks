@@ -47,14 +47,14 @@ public class StoreList : ExperimentTask {
 
 		if (order ) {
 			// Deal with specific ordering
-			ObjectOrder ordered = order.GetComponent("ObjectOrder") as ObjectOrder;
+			StoreOrder ordered = order.GetComponent("StoreOrder") as StoreOrder;
 
 			if (ordered) {
 				Debug.Log("ordered");
-				Debug.Log(ordered.order.Count);
+				Debug.Log(ordered.storeOrder.Count);
 
-				if (ordered.order.Count > 0) {
-					objs = ordered.order.ToArray();
+				if (ordered.storeOrder.Count > 0) {
+					objs = ordered.storeOrder.ToArray();
 				}
 			}
 		}
