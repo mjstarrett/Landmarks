@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapStudyTask : ExperimentTask {
 
+	private GameObject tmp;
 
 	public override void startTask () 
 	{
@@ -17,10 +18,13 @@ public class MapStudyTask : ExperimentTask {
 
 		hud.showEverything();
 		hud.setMessage ("This is the framework for a map-learning task.");
+
+		// make the cursor functional and visible
+		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 
 		// Turn off Player movement
-
+		avatar.GetComponent<CharacterController>().enabled = false;
 
 		// Swap from 1st-person camera to overhead view
 		firstPersonCamera.enabled = false;
@@ -51,7 +55,11 @@ public class MapStudyTask : ExperimentTask {
 	{
 		base.endTask();
 
+		// switch the cameras back
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
+
+		// Let the player move again.
+		avatar.GetComponent<CharacterController>().enabled = true;
 	}
 }
