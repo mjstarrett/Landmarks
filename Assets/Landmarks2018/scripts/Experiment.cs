@@ -35,6 +35,8 @@ public class Experiment : MonoBehaviour {
 	private string logfile;
 	private string configfile = "";
 	public GameObject player;
+	public Camera playerCamera;
+	public Camera overheadCamera;
 
 
 	[HideInInspector] public dbLog dblog;
@@ -68,6 +70,8 @@ public class Experiment : MonoBehaviour {
 
 		Debug.Log ("Starting Experiment.cs");
 
+		playerCamera.enabled = true;
+		overheadCamera.enabled = false;
 		Cursor.visible = false;
 		//since config is a singleton it will be the one created in scene 0 or this scene
 		config = Config.instance;

@@ -42,6 +42,8 @@ public class ExperimentTask : MonoBehaviour{
 	[HideInInspector] public ExperimentTask pausedTasks;
 	[HideInInspector] public TaskList parentTask;
 
+	[HideInInspector] public Camera firstPersonCamera;
+	[HideInInspector] public Camera overheadCamera;
 
 	public void Awake () 
 	{
@@ -54,6 +56,8 @@ public class ExperimentTask : MonoBehaviour{
 		hud = avatar.GetComponent("HUD") as HUD;
 	    experiment = GameObject.FindWithTag ("Experiment");
 	    manager = experiment.GetComponent("Experiment") as Experiment;
+		firstPersonCamera = manager.playerCamera;
+		overheadCamera = manager.overheadCamera;
 	    log = manager.dblog;
 
 	}
