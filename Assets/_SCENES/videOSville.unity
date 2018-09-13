@@ -1289,7 +1289,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 657538208}
   m_Father: {fileID: 59604395}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1313,7 +1314,8 @@ MonoBehaviour:
   currentInterrupt: 0
   pausedTasks: {fileID: 0}
   parentTask: {fileID: 0}
-  tasks: []
+  tasks:
+  - {fileID: 657538207}
   objectsList: []
   repeat: 1
   overideRepeat: {fileID: 0}
@@ -8036,6 +8038,34 @@ MeshCollider:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 97229e82747352a43b48688ec573f8e4, type: 2}
   m_PrefabInternal: {fileID: 2025546464}
+--- !u!1 &657538207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 657538208}
+  m_Layer: 0
+  m_Name: MapTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657538208
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 657538207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 112255693}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &659803269
 Prefab:
   m_ObjectHideFlags: 0
@@ -14690,6 +14720,26 @@ Prefab:
         type: 2}
       propertyPath: m_RunSpeed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114620715842727754, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 2}
+      propertyPath: m_FootstepSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114620715842727754, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 2}
+      propertyPath: m_FootstepSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114620715842727754, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 2}
+      propertyPath: m_JumpSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114620715842727754, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 2}
+      propertyPath: m_LandSound
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5623b1ead47744e9bac163c907a2b9ba, type: 2}
