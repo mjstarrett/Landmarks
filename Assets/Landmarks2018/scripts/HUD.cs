@@ -30,6 +30,7 @@ public class HUD : MonoBehaviour
 	public GameObject hudRig; // canvas over screen space for clean text presentation (parent)
 	public GameObject Canvas; // canvas containing the text element for hud messages (child of hudRig)
 	public GameObject hudPanel; // panel used to proved contrasting/anchoring background for hud text (child of hudRig)
+	public GameObject debugButton; // button that can be used to force continue in debug mode;
 	public float hudPanelON = 0.95f; // set the opacity when on
 	public float hudPanelOFF = 0f; // set the opacity when off
 	private string canvasName;
