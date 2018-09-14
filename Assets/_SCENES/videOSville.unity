@@ -12650,9 +12650,9 @@ RectTransform:
   m_Father: {fileID: 716282988}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 581, y: -307}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -90, y: 30}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022380251
@@ -15379,6 +15379,11 @@ Prefab:
       propertyPath: m_WalkSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 2}
+      propertyPath: debugButton
+      value: 
+      objectReference: {fileID: 2056500866}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5623b1ead47744e9bac163c907a2b9ba, type: 2}
   m_IsPrefabParent: 0
@@ -15953,6 +15958,7 @@ MonoBehaviour:
   player: {fileID: 555404485}
   playerCamera: {fileID: 1003167480}
   overheadCamera: {fileID: 47544524}
+  debug: 1
   playback_time: 0
 --- !u!4 &1299171359
 Transform:
@@ -25242,7 +25248,7 @@ GameObject:
   - component: {fileID: 2056500869}
   - component: {fileID: 2056500868}
   m_Layer: 13
-  m_Name: DebugNextTask
+  m_Name: DebugButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25262,9 +25268,9 @@ RectTransform:
   m_Father: {fileID: 716282988}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -604, y: 296}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90, y: -30}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056500868
@@ -25305,7 +25311,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2056500869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 576421587}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2056500869
