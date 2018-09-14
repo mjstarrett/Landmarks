@@ -70,6 +70,7 @@ public class HUD : MonoBehaviour
 	public int SecondsToShow = 0;
 	public int GeneralDuration = 10;
 	public int InstructionDuration = 99999; // MJS - allow different duration for instructions tasks
+	public int QuickDuration = 2;
 	
 	[HideInInspector] public long playback_time = 0;
 	
@@ -89,7 +90,7 @@ public class HUD : MonoBehaviour
 	{
 	print ("setMessageCompass called!!!!");
 		if (newMessage==""){
-			Canvas.SetActive (true);
+			Canvas.SetActive (false);
 		}else{
 			Canvas.SetActive (false);
 		}
