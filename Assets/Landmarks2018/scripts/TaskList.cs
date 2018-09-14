@@ -144,7 +144,15 @@ public class TaskList : ExperimentTask {
 		return string.Format(str, names);
 	}
 
+	//MJS 09/14/2018
+	// Function for Debug Button (can be activated by going to GameObject containing Experiment.cs and setting 'debug' bool to true)
+//	public override void DebugNextTask ()
+//	{
+//		this.endChild ();
+//	}
 }
+
+
 
 
 /*
