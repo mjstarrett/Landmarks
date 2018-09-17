@@ -60,6 +60,7 @@ public class MapStudyTask : ExperimentTask {
 			}
 		}
 
+
 		if (Input.GetKeyDown (KeyCode.N)) 
 		{
 			Debug.Log ("DEBUG FORCE NEXT TASK");
