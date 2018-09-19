@@ -494,6 +494,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 2026262414}
   - {fileID: 949058664}
@@ -935,6 +936,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 1950721886}
   - {fileID: 112255692}
@@ -1562,6 +1564,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 657538207}
   objectsList: []
@@ -7509,6 +7512,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 955671306}
   - {fileID: 875080038}
@@ -8043,6 +8047,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks: []
   objectsList: []
   repeat: 1
@@ -8484,6 +8489,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 53122762}
   objectsList: []
@@ -11626,6 +11632,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 474364669}
   - {fileID: 1601199513}
@@ -11753,6 +11760,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 1157084248}
   objectsList: []
@@ -12020,6 +12028,68 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37c6ecf7bec964f1c88c2de554717d4d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &992327030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 992327031}
+  - component: {fileID: 992327033}
+  - component: {fileID: 992327032}
+  m_Layer: 13
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &992327031
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992327030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 716282988}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &992327032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992327030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &992327033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992327030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 2056500866}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!1 &993963996 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 2}
@@ -14324,6 +14394,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks:
   - {fileID: 1102623956}
   - {fileID: 2106088470}
@@ -23817,7 +23888,8 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 225
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114676872201105064, guid: a819b54c5573b47bc81cc80b3f006ef9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a819b54c5573b47bc81cc80b3f006ef9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1929746942
@@ -24057,6 +24129,7 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugSkip: 0
   tasks: []
   objectsList: []
   repeat: 1
@@ -25364,12 +25437,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.6102941, g: 0.06282438, b: 0.06282438, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.42647058, g: 0.42647058, b: 0.42647058, a: 1}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25385,18 +25458,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2056500869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 576421587}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2056500869
@@ -25411,7 +25473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.625, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

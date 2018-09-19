@@ -56,7 +56,7 @@ public class MapStudyTask : ExperimentTask {
 				hud.hudPanel.SetActive (false);
 			}
 		}
-
+			
 		if (Input.GetKeyDown (KeyCode.N)) 
 		{
 			Debug.Log ("DEBUG FORCE NEXT TASK");
@@ -64,7 +64,7 @@ public class MapStudyTask : ExperimentTask {
 		} 
 		return false;
 	}
-
+		
 
 	public override void endTask() 
 	{

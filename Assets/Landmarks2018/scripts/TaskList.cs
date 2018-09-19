@@ -21,6 +21,8 @@ using System;
 
 public class TaskList : ExperimentTask {
 	
+	[HideInInspector] public bool debugSkip;
+
 	public GameObject[] tasks;
 	public GameObject[] objectsList;
 
@@ -76,17 +78,24 @@ public class TaskList : ExperimentTask {
 			} else {
 				return endChild();
 			}
-			//
 		}
-		return false;	
+		return false;
+
+		hud.debugButton.onClick.AddListener (delegate {OnClickDebugButton();} );
 	}
-	
+
+	// Program the function to call w/ the debug button to skip to next segment
+	public void OnClickDebugButton ()
+	{
+		Debug.Log ("DEBUG SKIP: If this is working, then you're looking at the next task right about now.");
+	}
+
 	public bool endChild() {
 		
 				currentTask.endTask();
 
 				currentTaskIndex = currentTaskIndex + 1;
-				if (currentTaskIndex >= tasks.Length && repeatCount >= repeat) {
+		if (currentTaskIndex >= tasks.Length && repeatCount >= repeat) {
 					currentTaskIndex = 0;
 					repeatCount = 1;
 					return true;
@@ -97,6 +106,7 @@ public class TaskList : ExperimentTask {
 					}
 			 		startNextTask();	
 				}
+			
 		return false;
 	}
 	
