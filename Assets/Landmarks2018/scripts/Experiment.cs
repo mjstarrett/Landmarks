@@ -37,8 +37,6 @@ public class Experiment : MonoBehaviour {
 	public GameObject player;
 	public Camera playerCamera;
 	public Camera overheadCamera;
-	public bool debug = false;
-
 
 	[HideInInspector] public dbLog dblog;
 	
@@ -109,12 +107,7 @@ public class Experiment : MonoBehaviour {
 		} else if (config.runMode == ConfigRunMode.NEW) {
 			//dblog = new dbMockLog(logfile);
 		}
-
-		if (debug == true) {
-			hud.debugButton.SetActive(true);
-		} else {
-			hud.debugButton.SetActive(false);
-		}
+			
 		//start session
 
 

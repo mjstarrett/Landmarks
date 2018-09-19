@@ -59,7 +59,6 @@ public class ExperimentTask : MonoBehaviour{
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
 	    log = manager.dblog;
-
 	}
 	
 	public virtual void startTask() {	

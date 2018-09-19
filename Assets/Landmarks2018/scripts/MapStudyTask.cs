@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MapStudyTask : ExperimentTask {
 
-	private GameObject tmp;
-
 	public override void startTask () 
 	{
 		TASK_START();	
@@ -17,8 +15,7 @@ public class MapStudyTask : ExperimentTask {
 		base.startTask();
 
 		// Set up hud for task
-		//hud.hudPanel.transform.seta
-		hud.SecondsToShow = hud.QuickDuration;
+		hud.hudPanel.SetActive(false); //hide the text background on HUD
 
 		// make the cursor functional and visible
 		Cursor.lockState = CursorLockMode.None;
@@ -48,23 +45,22 @@ public class MapStudyTask : ExperimentTask {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 
-		if (Physics.Raycast (ray, out hit) & Input.GetMouseButtonDown(0)) 
-		{
-			if (hit.transform.CompareTag ("Target")) 
-			{
+		if (Physics.Raycast (ray, out hit)) {// & Input.GetMouseButtonDown(0)) 
+			if (hit.transform.CompareTag ("Target")) {
 				//Debug.Log (objectHit.tag);
-				Debug.Log (hit.transform.parent.name);
 				hud.setMessage (hit.transform.parent.name);
+				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
-
+			} else {
+				hud.setMessage ("");
+				hud.hudPanel.SetActive (false);
 			}
 		}
-
 
 		if (Input.GetKeyDown (KeyCode.N)) 
 		{
 			Debug.Log ("DEBUG FORCE NEXT TASK");
-			return parentTask.endChild ();
+			return true;
 		} 
 		return false;
 	}
@@ -83,6 +79,9 @@ public class MapStudyTask : ExperimentTask {
 		// switch the cameras back
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
+
+		// Put the hud panel back on
+		hud.hudPanel.SetActive(true);
 
 		// Let the player move again.
 		avatar.GetComponent<CharacterController>().enabled = true;
