@@ -17,6 +17,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Reflection;
+using UnityEngine.UI;
 
 public class ExperimentTask : MonoBehaviour{
 
@@ -32,7 +33,7 @@ public class ExperimentTask : MonoBehaviour{
 	
 	public bool skip = false;
 	public bool canIncrementLists = true;
-	
+
 	public int interval = 0;
 
 	public TaskList interruptTasks;
@@ -44,6 +45,12 @@ public class ExperimentTask : MonoBehaviour{
 
 	[HideInInspector] public Camera firstPersonCamera;
 	[HideInInspector] public Camera overheadCamera;
+
+	[HideInInspector] public Button debugButton;
+	[HideInInspector] public Button actionButton;
+
+	public static bool killCurrent = false;
+
 
 	public void Awake () 
 	{
@@ -59,6 +66,13 @@ public class ExperimentTask : MonoBehaviour{
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
 	    log = manager.dblog;
+
+		debugButton = manager.debugButton.GetComponent<Button> ();
+		actionButton = manager.actionButton.GetComponent<Button> ();
+
+		// Start listening for debug skips
+		Debug.Log ("added listener to debug button for " + this.name);
+		debugButton.onClick.AddListener (onDebugClick);
 	}
 	
 	public virtual void startTask() {	
@@ -73,7 +87,7 @@ public class ExperimentTask : MonoBehaviour{
 	}	
 	
 	public virtual bool updateTask () {
-		
+
 		bool attemptInterupt = false;
 		
 		if ( interruptInterval > 0 && Experiment.Now() - task_start >= interruptInterval)  {
@@ -84,15 +98,15 @@ public class ExperimentTask : MonoBehaviour{
 			attemptInterupt = true;	
 		}    
 	    
-
-
-	    
-		if(attemptInterupt && interruptTasks && currentInterrupt < repeatInterrupts && !interruptTasks.skip) {	
+		if(attemptInterupt && interruptTasks && currentInterrupt < repeatInterrupts && !interruptTasks.skip) 
+		{	
 			if (interruptTasks.skip) {
 				log.log("INFO	skip interrupt	" + interruptTasks.name,1 );
-			} else {
-					    Debug.Log(currentInterrupt);
-	    Debug.Log(repeatInterrupts);
+			} 
+			else 
+			{
+				Debug.Log(currentInterrupt);
+	    		Debug.Log(repeatInterrupts);
 	    
 				log.log("INPUT_EVENT	interrupt	" + name,1 );
 				//interruptTasks.pausedTasks = this;
@@ -149,4 +163,15 @@ public class ExperimentTask : MonoBehaviour{
 	    containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
 	}
 
+	public void onDebugClick ()
+	{
+		killCurrent = true;
+	}
+
+	public bool KillCurrent () 
+	{
+		killCurrent = false;
+		Debug.Log ("ForceKilling " + this.name);
+		return true;
+	}
 }

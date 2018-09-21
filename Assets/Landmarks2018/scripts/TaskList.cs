@@ -17,12 +17,11 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 
 public class TaskList : ExperimentTask {
 	
-	[HideInInspector] public bool debugSkip;
-
 	public GameObject[] tasks;
 	public GameObject[] objectsList;
 
@@ -37,14 +36,13 @@ public class TaskList : ExperimentTask {
 	public override void startTask() {
 		// Debug.Log(this.GetType().Name);
 		base.startTask();
-		
+
 		if (overideRepeat) {
 			repeatCount = 1;
 			repeat = Int32.Parse( overideRepeat.currentString().Trim() );
 		}
 		//Debug.Log("repeat: ");
 		//Debug.Log( repeat);
-		
 		
 		if (!skip) startNextTask();		
 	}	
@@ -54,9 +52,10 @@ public class TaskList : ExperimentTask {
 	
 	public void startNextTask() {
 		Debug.Log("Starting " + tasks[currentTaskIndex].name);
+
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 		currentTask.parentTask = this;
-		currentTask.startTask();		
+		currentTask.startTask();	
 	}
 	
 	public override bool updateTask () {
@@ -79,34 +78,30 @@ public class TaskList : ExperimentTask {
 				return endChild();
 			}
 		}
+
 		return false;
-
-		hud.debugButton.onClick.AddListener (delegate {OnClickDebugButton();} );
 	}
 
-	// Program the function to call w/ the debug button to skip to next segment
-	public void OnClickDebugButton ()
+	public bool endChild() 
 	{
-		Debug.Log ("DEBUG SKIP: If this is working, then you're looking at the next task right about now.");
-	}
+		currentTask.endTask();
+		currentTaskIndex = currentTaskIndex + 1;
 
-	public bool endChild() {
-		
-				currentTask.endTask();
+		if (currentTaskIndex >= tasks.Length && repeatCount >= repeat) 
+		{
+			currentTaskIndex = 0;
+			repeatCount = 1;
+			return true;
+		} 
+		else 
+		{
+			if (currentTaskIndex >= tasks.Length) {
+				repeatCount++;
+				currentTaskIndex = 0;
+			}
+	 		startNextTask();	
+		}
 
-				currentTaskIndex = currentTaskIndex + 1;
-		if (currentTaskIndex >= tasks.Length && repeatCount >= repeat) {
-					currentTaskIndex = 0;
-					repeatCount = 1;
-					return true;
-				} else {
-					if (currentTaskIndex >= tasks.Length) {
-						repeatCount++;
-						currentTaskIndex = 0;
-					}
-			 		startNextTask();	
-				}
-			
 		return false;
 	}
 	
@@ -153,17 +148,7 @@ public class TaskList : ExperimentTask {
 		}
 		return string.Format(str, names);
 	}
-
-	//MJS 09/14/2018
-	// Function for Debug Button (can be activated by going to GameObject containing Experiment.cs and setting 'debug' bool to true)
-//	public override void DebugNextTask ()
-//	{
-//		this.endChild ();
-//	}
 }
-
-
-
 
 /*
 

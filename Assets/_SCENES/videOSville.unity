@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 844628118}
-  m_IndirectSpecularColor: {r: 0.33268338, g: 0.3506578, b: 0.30189377, a: 1}
+  m_IndirectSpecularColor: {r: 0.33268258, g: 0.3506573, b: 0.30189365, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -494,7 +494,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 2026262414}
   - {fileID: 949058664}
@@ -735,6 +736,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
 --- !u!1 &53994681
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +939,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 1950721886}
   - {fileID: 112255692}
@@ -1564,7 +1568,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 657538207}
   objectsList: []
@@ -6148,6 +6153,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   destinations: {fileID: 2026262415}
   scoreIncrement: 50
   penaltyRate: 2000
@@ -7512,7 +7519,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 955671306}
   - {fileID: 875080038}
@@ -8047,7 +8055,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks: []
   objectsList: []
   repeat: 1
@@ -8489,7 +8498,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 53122762}
   objectsList: []
@@ -10731,6 +10741,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 5bef12bc9987e49099ad5c139241cee3, type: 3}
   objects: {fileID: 0}
@@ -11509,6 +11521,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 73b72787df7654070b4410e2c55ec8e3, type: 3}
   objects: {fileID: 0}
@@ -11568,6 +11582,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   instruction: {fileID: 4900000, guid: 34890b77024ca4968b1e1ea08b6fe267, type: 3}
   message: {fileID: 4900000, guid: 34890b77024ca4968b1e1ea08b6fe267, type: 3}
   objects: {fileID: 0}
@@ -11632,7 +11648,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 474364669}
   - {fileID: 1601199513}
@@ -11760,7 +11777,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 1157084248}
   objectsList: []
@@ -12073,7 +12091,7 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
+  m_InputActionsPerSecond: 1
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 --- !u!114 &992327033
@@ -12088,7 +12106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 2056500866}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 5
 --- !u!1 &993963996 stripped
 GameObject:
@@ -12705,7 +12723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1022380250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13507,6 +13525,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   parentObject: {fileID: 1022351920}
   current: 0
   EndListBehavior: 1
@@ -14394,7 +14414,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks:
   - {fileID: 1102623956}
   - {fileID: 2106088470}
@@ -15454,7 +15475,12 @@ Prefab:
         type: 2}
       propertyPath: debugButton
       value: 
-      objectReference: {fileID: 2056500866}
+      objectReference: {fileID: 2056500868}
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 2}
+      propertyPath: actionButton
+      value: 
+      objectReference: {fileID: 1022380251}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5623b1ead47744e9bac163c907a2b9ba, type: 2}
   m_IsPrefabParent: 0
@@ -16029,6 +16055,8 @@ MonoBehaviour:
   player: {fileID: 555404485}
   playerCamera: {fileID: 1003167480}
   overheadCamera: {fileID: 47544524}
+  actionButton: {fileID: 1022380249}
+  debugButton: {fileID: 2056500866}
   playback_time: 0
 --- !u!4 &1299171359
 Transform:
@@ -19507,6 +19535,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 205a6b26dec3f41f5aae12ed747e893e, type: 3}
   objects: {fileID: 2026262415}
@@ -24129,7 +24159,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
-  debugSkip: 0
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   tasks: []
   objectsList: []
   repeat: 1
@@ -24968,6 +24999,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   parentObject: {fileID: 1022351920}
   current: 0
   EndListBehavior: 0
@@ -25439,8 +25472,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.6102941, g: 0.06282438, b: 0.06282438, a: 1}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.58431375, g: 0.13333334, b: 0.1254902, a: 1}
+    m_HighlightedColor: {r: 0.56078434, g: 0.13333334, b: 0.10588236, a: 1}
     m_PressedColor: {r: 0.42647058, g: 0.42647058, b: 0.42647058, a: 1}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -26093,6 +26126,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   parentObject: {fileID: 173263505}
   current: 0
   EndListBehavior: 1
@@ -26236,6 +26271,8 @@ MonoBehaviour:
   parentTask: {fileID: 0}
   firstPersonCamera: {fileID: 0}
   overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
   sources: {fileID: 1102623957}
   destinations: {fileID: 2106088471}
   swap: 1

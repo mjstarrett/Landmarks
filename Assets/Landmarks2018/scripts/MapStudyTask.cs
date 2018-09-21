@@ -14,6 +14,9 @@ public class MapStudyTask : ExperimentTask {
 		if (!manager) Start();
 		base.startTask();
 
+		// MAke sure if debug was clicked before, we don't accidentally kill this task
+		killCurrent = false;
+
 		// Set up hud for task
 		hud.hudPanel.SetActive(false); //hide the text background on HUD
 
@@ -32,6 +35,9 @@ public class MapStudyTask : ExperimentTask {
 		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.1F, 1);
 
 
+
+		// turn on the map action button
+		manager.actionButton.SetActive(true);
 	}	
 
 
@@ -57,11 +63,11 @@ public class MapStudyTask : ExperimentTask {
 			}
 		}
 			
-		if (Input.GetKeyDown (KeyCode.N)) 
+		if (killCurrent == true) 
 		{
-			Debug.Log ("DEBUG FORCE NEXT TASK");
-			return true;
-		} 
+			return KillCurrent ();
+		}
+
 		return false;
 	}
 		
@@ -76,19 +82,26 @@ public class MapStudyTask : ExperimentTask {
 	{
 		base.endTask();
 
-		// switch the cameras back
+		// Set up hud for other tasks
+		hud.hudPanel.SetActive(true); //hide the text background on HUD
+
+		// make the cursor invisible
+		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = false;
+
+		// Turn on Player movement
+		avatar.GetComponent<CharacterController>().enabled = true;
+
+		// Swap from overhead camera to first-person view
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
 
-		// Put the hud panel back on
-		hud.hudPanel.SetActive(true);
-
-		// Let the player move again.
-		avatar.GetComponent<CharacterController>().enabled = true;
-
-		// Scale the city back up
+		// un-Flatten out environment buildings so stores are clearly visible
 		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
 
-		hud.SecondsToShow = hud.GeneralDuration;
+		// turn off the map action button
+		manager.actionButton.SetActive(false);
 	}
 }
+
+
