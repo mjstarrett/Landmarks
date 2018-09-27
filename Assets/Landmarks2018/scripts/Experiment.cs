@@ -271,7 +271,8 @@ public class Experiment : MonoBehaviour {
 //		log.log("TASK_ROTATE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localRotation.ToString("f3"),1);
 //		log.log("TASK_SCALE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localScale.ToString("f3"),1);
 				
-	void OnApplicationQuit() {
+	void OnApplicationQuit() 
+	{
 		if (config.runMode != ConfigRunMode.PLAYBACK) {
 			tasks.endTask();
 		}
@@ -279,7 +280,8 @@ public class Experiment : MonoBehaviour {
 		Cursor.visible = true;
 	}
 	
-		void OnGUI () {
+	void OnGUI () 
+	{
 		
 		//GUILayout.Label(config.home);
 		//if (config.bootstrapped)

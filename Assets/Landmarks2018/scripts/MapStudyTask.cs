@@ -7,6 +7,9 @@ public class MapStudyTask : ExperimentTask {
 	public override void startTask () 
 	{
 		TASK_START();	
+		avatarLog.navLog = false;	
+
+
 	}	
 
 	public override void TASK_START() 
@@ -14,12 +17,16 @@ public class MapStudyTask : ExperimentTask {
 		if (!manager) Start();
 		base.startTask();
 
-		// MAke sure if debug was clicked before, we don't accidentally kill this task
-		killCurrent = false;
-
-		// Set up hud for task
-		hud.hudPanel.SetActive(false); //hide the text background on HUD
-
+		// Modify the HUD display for the map task
+		hud.setMessage("");
+		hud.hudPanel.SetActive (true); // temporarily turn off the hud panel at task start (no empty message window)
+		hud.ForceShowMessage();
+		// Change the anchor points to put the message in the botton left
+		hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+		hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+		hud.hudPanel.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+		hud.hudPanel.GetComponent<RectTransform>().anchoredPosition3D = new Vector3 (0, 0, 0);
+	
 		// make the cursor functional and visible
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
@@ -59,8 +66,13 @@ public class MapStudyTask : ExperimentTask {
 				hud.ForceShowMessage ();
 			} else {
 				hud.setMessage ("");
-				hud.hudPanel.SetActive (false);
+				hud.hudPanel.SetActive (true);
+				hud.ForceShowMessage ();
 			}
+		} else {
+			hud.setMessage ("");
+			hud.hudPanel.SetActive (true);
+			hud.ForceShowMessage ();
 		}
 			
 		if (killCurrent == true) 
@@ -84,6 +96,14 @@ public class MapStudyTask : ExperimentTask {
 
 		// Set up hud for other tasks
 		hud.hudPanel.SetActive(true); //hide the text background on HUD
+		// Change the anchor points to put the message back in center
+		RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
+		hudposition.anchorMin = new Vector2 (0, 0);
+		hudposition.anchorMax = new Vector2 (1, 1);
+		hudposition.pivot = new Vector2 (0.5f, 0.5f);
+		hudposition.anchoredPosition3D= new Vector3 (0, 0, 0);
+		//hud.hudPanel.GetComponent<RectTransform> = hudposition;
+
 
 		// make the cursor invisible
 		Cursor.lockState = CursorLockMode.Confined;

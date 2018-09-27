@@ -64,6 +64,12 @@ public class NavigationTask : ExperimentTask
 				hud.setScore(score);
 			}
 		}
+
+		if (killCurrent == true) 
+		{
+			return KillCurrent ();
+		}
+
 		return false;	
 	}
 
