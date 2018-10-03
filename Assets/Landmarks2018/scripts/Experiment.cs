@@ -34,8 +34,13 @@ public class Experiment : MonoBehaviour {
 	private long microseconds = 1;
 	private string logfile;
 	private string configfile = ""; 
-	public GameObject player;
-	public Camera playerCamera;
+	public GameObject desktopController;
+	public Camera desktopCamera;
+	public GameObject vrController;
+	public Camera vrCamera;
+	[HideInInspector]	public GameObject player;
+	[HideInInspector]	public Camera playerCamera;
+	public bool enableVirtualReality = false;
 	public Camera overheadCamera;
 
 	public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
@@ -71,6 +76,18 @@ public class Experiment : MonoBehaviour {
 	void Awake() {
 
 		Debug.Log ("Starting Experiment.cs");
+
+		if (enableVirtualReality == true) {
+			player = vrController;
+			playerCamera = vrCamera;
+			desktopController.SetActive(false);
+		} 
+		else
+		{
+			player = desktopController;
+			playerCamera = desktopCamera;
+			vrController.SetActive (false);
+		}
 
 		playerCamera.enabled = true;
 		overheadCamera.enabled = false;
