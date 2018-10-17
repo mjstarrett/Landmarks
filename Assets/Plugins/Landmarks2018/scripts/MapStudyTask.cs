@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MapStudyTask : ExperimentTask {
 
+	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
+	public Vector3 hudTextOffset;
+
 	public override void startTask () 
 	{
 		TASK_START();	
@@ -21,11 +24,8 @@ public class MapStudyTask : ExperimentTask {
 		hud.setMessage("");
 		hud.hudPanel.SetActive (true); // temporarily turn off the hud panel at task start (no empty message window)
 		hud.ForceShowMessage();
-		// Change the anchor points to put the message in the botton left
-		hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-		hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-		hud.hudPanel.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-		hud.hudPanel.GetComponent<RectTransform>().anchoredPosition3D = new Vector3 (0, 0, 0);
+		// move hud off screen if we aren't hitting a target shop
+		hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
 	
 		// make the cursor functional and visible
 		Cursor.lockState = CursorLockMode.None;
@@ -39,7 +39,7 @@ public class MapStudyTask : ExperimentTask {
 		overheadCamera.enabled = true;
 
 		// Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.1F, 1);
+		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
 
 
 
@@ -59,20 +59,29 @@ public class MapStudyTask : ExperimentTask {
 
 
 		if (Physics.Raycast (ray, out hit)) {// & Input.GetMouseButtonDown(0)) 
-			if (hit.transform.CompareTag ("Target")) {
+			if (hit.transform.CompareTag ("store")) {
 				//Debug.Log (objectHit.tag);
 				hud.setMessage (hit.transform.parent.name);
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
+
+				// move hud text to the store being highlighted
+				hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint (hit.transform.position + hudTextOffset);
 			} else {
 				hud.setMessage ("");
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
+
+				// move hud off screen if we aren't hitting a target shop
+				hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
 			}
 		} else {
 			hud.setMessage ("");
 			hud.hudPanel.SetActive (true);
 			hud.ForceShowMessage ();
+
+			// move hud off screen if we aren't hitting a target shop
+			hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
 		}
 			
 		if (killCurrent == true) 
