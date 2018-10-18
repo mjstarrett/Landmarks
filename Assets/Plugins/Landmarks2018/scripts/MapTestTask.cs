@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapTestTask : ExperimentTask {
 
-	public GameObject mapTestTargets;
+	public GameObject mapTestLocations;
 
 	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
 	[Range(0,100)] public int CriterionPercentage = 100;
@@ -45,11 +45,11 @@ public class MapTestTask : ExperimentTask {
 
 		// Flatten out environment buildings so stores are clearly visible
 		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
+		//Flatten out the copied target stores
+		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 0.01f, 1);
 
 		// turn on the map action button
 		manager.actionButton.SetActive(true);
-
-		//Turn on the target placeholders
 
 	}	
 
@@ -133,6 +133,8 @@ public class MapTestTask : ExperimentTask {
 
 		// un-Flatten out environment buildings so stores are clearly visible
 		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
+		// un-Flatten out the copied target stores
+		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 1, 1);
 
 		// turn off the map action button
 		manager.actionButton.SetActive(false);
