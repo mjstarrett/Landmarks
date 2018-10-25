@@ -5,6 +5,9 @@ using UnityEngine;
 public class MapTestTask : ExperimentTask {
 
 	public GameObject mapTestLocations;
+	public bool highlightAssist = false;
+	public GameObject mapTestHighlights;
+	public bool snapToTargetAssist = false;
 
 	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
 	[Range(0,100)] public int CriterionPercentage = 100;
@@ -50,6 +53,13 @@ public class MapTestTask : ExperimentTask {
 
 		// turn on the map action button
 		manager.actionButton.SetActive(true);
+
+
+		// Turn on the maptarget highlights (to show where stores should be located
+		if (highlightAssist == true) 
+		{
+			mapTestHighlights.SetActive (true);
+		}
 
 	}	
 
@@ -138,6 +148,12 @@ public class MapTestTask : ExperimentTask {
 
 		// turn off the map action button
 		manager.actionButton.SetActive(false);
+
+		// Turn off the maptarget highlights (to show where stores should be located
+		if (highlightAssist == true) 
+		{
+			mapTestHighlights.SetActive (false);
+		}
 	}
 }
 

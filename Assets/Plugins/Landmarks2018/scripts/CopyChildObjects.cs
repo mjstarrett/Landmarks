@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CopyChildObjects : ExperimentTask {
 
-	public GameObject parentObject;
+	public GameObject sourcesParent;
+	public GameObject destinationsParent;
+
 	public bool setOriginalInactive = true;
 
 	private string copiedParent;
@@ -13,18 +15,26 @@ public class CopyChildObjects : ExperimentTask {
 	{
 		TASK_START();
 
-		//move the copy destination parent to the same place as the parentObject to be copied
-		this.transform.position = parentObject.transform.position;
-		this.transform.rotation = parentObject.transform.rotation;
+		//move the copy destination parent to the same place as the sourcesParent to be copied
+		this.transform.position = destinationsParent.transform.position;
+		this.transform.rotation = destinationsParent.transform.rotation;
+
+		if (sourcesParent.transform.childCount != destinationsParent.transform.childCount) {
+			Debug.Log ("NUMBER OF MapTestPlaceholders AND TARGETS DO NOT MATCH! CHECK YOUR ENVIRONMENT!!!!");
+		}
 
 		// instantiate a copy of each target store into the game object this script is attached to
-		foreach (Transform child in parentObject.transform) {
-			GameObject copy = Instantiate<GameObject> (child.gameObject, child.transform.position, child.transform.rotation, this.transform);
-			copy.name = child.gameObject.name;
+		for (int i = 0; i < sourcesParent.transform.childCount; i++)
+		{
+			GameObject sourceChild = sourcesParent.transform.GetChild(i).gameObject;
+			GameObject destinationChild = destinationsParent.transform.GetChild (i).gameObject;
+
+			GameObject copy = Instantiate<GameObject> (sourceChild, destinationChild.transform.position, destinationChild.transform.rotation, this.transform);
+			copy.name = sourceChild.name;
 		}
 
 		if (setOriginalInactive = true) {
-			parentObject.SetActive (false);
+			sourcesParent.SetActive (false);
 		}
 	}
 

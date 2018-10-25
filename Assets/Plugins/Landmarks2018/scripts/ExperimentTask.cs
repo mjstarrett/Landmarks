@@ -71,7 +71,6 @@ public class ExperimentTask : MonoBehaviour{
 		actionButton = manager.actionButton.GetComponent<Button> ();
 
 		// Start listening for debug skips
-		Debug.Log ("added listener to debug button for " + this.name);
 		debugButton.onClick.AddListener (onDebugClick);
 	}
 	
