@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapTestTask : ExperimentTask {
 
@@ -51,8 +52,10 @@ public class MapTestTask : ExperimentTask {
 		//Flatten out the copied target stores
 		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 0.01f, 1);
 
-		// turn on the map action button
+		// Change text and turn on the map action button
+		actionButton.GetComponentInChildren<Text> ().text = "Get Score";
 		manager.actionButton.SetActive(true);
+		actionButton.onClick.AddListener (OnActionClick);
 
 
 		// Turn on the maptarget highlights (to show where stores should be located
@@ -105,6 +108,12 @@ public class MapTestTask : ExperimentTask {
 			return KillCurrent ();
 		}
 
+		if (actionButtonClicked == true) 
+		{
+			actionButtonClicked = false;
+			return true;
+		}
+
 		return false;
 	}
 		
@@ -147,6 +156,7 @@ public class MapTestTask : ExperimentTask {
 		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 1, 1);
 
 		// turn off the map action button
+		actionButton.onClick.RemoveListener (OnActionClick);
 		manager.actionButton.SetActive(false);
 
 		// Turn off the maptarget highlights (to show where stores should be located

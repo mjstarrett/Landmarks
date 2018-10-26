@@ -48,6 +48,7 @@ public class ExperimentTask : MonoBehaviour{
 
 	[HideInInspector] public Button debugButton;
 	[HideInInspector] public Button actionButton;
+	[HideInInspector] public bool actionButtonClicked = false;
 
 	public static bool killCurrent = false;
 
@@ -169,10 +170,17 @@ public class ExperimentTask : MonoBehaviour{
 		killCurrent = true;
 	}
 
+	public void OnActionClick()
+	{
+		actionButtonClicked = true;
+	}
+
 	public bool KillCurrent () 
 	{
 		killCurrent = false;
 		Debug.Log ("ForceKilling " + this.name);
 		return true;
 	}
+
+
 }

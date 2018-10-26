@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapStudyTask : ExperimentTask {
 
@@ -43,8 +44,10 @@ public class MapStudyTask : ExperimentTask {
 
 
 
-		// turn on the map action button
+		// Change text and turn on the map action button
+		actionButton.GetComponentInChildren<Text> ().text = "Continue to Test";
 		manager.actionButton.SetActive(true);
+		actionButton.onClick.AddListener (OnActionClick);
 	}	
 
 
@@ -89,6 +92,12 @@ public class MapStudyTask : ExperimentTask {
 			return KillCurrent ();
 		}
 
+		if (actionButtonClicked == true) 
+		{
+			actionButtonClicked = false;
+			return true;
+		}
+
 		return false;
 	}
 		
@@ -129,6 +138,7 @@ public class MapStudyTask : ExperimentTask {
 		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
 
 		// turn off the map action button
+		actionButton.onClick.RemoveListener (OnActionClick);
 		manager.actionButton.SetActive(false);
 	}
 }
