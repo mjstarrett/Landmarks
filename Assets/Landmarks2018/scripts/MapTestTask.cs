@@ -9,6 +9,9 @@ public class MapTestTask : ExperimentTask {
 	public bool highlightAssist = false;
 	public GameObject mapTestHighlights;
 	public bool snapToTargetAssist = false;
+	private GameObject activeTarget;
+	private bool targetActive = false;
+	private Vector3 previousTargetPos;
 
 	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
 	[Range(0,100)] public int CriterionPercentage = 100;
@@ -71,38 +74,69 @@ public class MapTestTask : ExperimentTask {
 	{
 		base.updateTask ();
 
+		// create a plane for our raycaster to hit
+		Plane plane=new Plane(Vector3.up,new Vector3(0, 0, 0));
+
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
 		//ray shooting out of the camera from where the mouse is
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-
-		if (Physics.Raycast (ray, out hit)) {// & Input.GetMouseButtonDown(0)) 
-			if (hit.transform.CompareTag ("store")) {
+		// Register when our raycaster is hitting a gameobject...
+		if (Physics.Raycast (ray, out hit)) 
+		{
+			// ... but only if that game object is one of our target stores ...
+			if (hit.transform.CompareTag ("store")) 
+			{
 				//Debug.Log (objectHit.tag);
 				hud.setMessage (hit.transform.parent.name);
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
-
 				// move hud text to the store being highlighted
 				hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint (hit.transform.position + hudTextOffset);
-			} else {
-				hud.setMessage ("");
-				hud.hudPanel.SetActive (true);
-				hud.ForceShowMessage ();
 
-				// move hud off screen if we aren't hitting a target shop
-				hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
+				// BEHAVIOR Click Store to make it follow mouse
+				if (Input.GetMouseButtonDown (0)) {
+					// Container for active store
+					targetActive = true;
+					activeTarget = hit.transform.parent.gameObject;
+					previousTargetPos = activeTarget.transform.position;
+				}
+			} 
+			// ... Otherwise, clear the message and hide the gui 
+			else 
+			{
+				HideStoreName ();
 			}
-		} else {
-			hud.setMessage ("");
-			hud.hudPanel.SetActive (true);
-			hud.ForceShowMessage ();
+		} 
+		else 
+		{
+			HideStoreName ();
+		}
 
-			// move hud off screen if we aren't hitting a target shop
-			hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
+		// Handle behaviors when a store is selected and being moved
+		if (targetActive) {
+
+			// General behavior (e.g. follow mouse, hide store name)
+			float distance;
+			if (plane.Raycast (ray, out distance)) {
+				activeTarget.transform.position = ray.GetPoint (distance);
+			}
+			HideStoreName ();
+
+			// RELEASE LEFT CLICK BEHAVIOR (e.g., drop the store where it is)
+			if (Input.GetMouseButtonUp (0)) {
+				targetActive = false;
+				activeTarget = null;
+			}
+			// LEFT CLICK BEHAVIOR WHEN ACTIVE (e.g., undo current move)
+			else if (Input.GetKeyDown(KeyCode.Escape)) {
+				activeTarget.transform.position = previousTargetPos;
+				targetActive = false;
+				activeTarget = null;
+			}
 		}
 			
+		// Check if the debug button has been pressed
 		if (killCurrent == true) 
 		{
 			return KillCurrent ();
@@ -164,6 +198,15 @@ public class MapTestTask : ExperimentTask {
 		{
 			mapTestHighlights.SetActive (false);
 		}
+	}
+
+	void HideStoreName()
+	{
+		hud.setMessage ("");
+		hud.hudPanel.SetActive (true);
+		hud.ForceShowMessage ();
+		// move hud off screen if we aren't hitting a target shop
+		hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
 	}
 }
 
