@@ -12,12 +12,11 @@ public class MapTestTask : ExperimentTask {
 	private GameObject activeTarget;
 	private bool targetActive = false;
 	private Vector3 previousTargetPos;
-
 	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
 	[Range(0,100)] public int CriterionPercentage = 100;
-
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
 	public Vector3 hudTextOffset;
+
 
 	public override void startTask () 
 	{
@@ -26,6 +25,7 @@ public class MapTestTask : ExperimentTask {
 
 
 	}	
+
 
 	public override void TASK_START() 
 	{
@@ -74,20 +74,25 @@ public class MapTestTask : ExperimentTask {
 	{
 		base.updateTask ();
 
+		// -----------------------------------------
+		// Handle mouse input for dragging targets
+		// -----------------------------------------
+
 		// create a plane for our raycaster to hit
 		Plane plane=new Plane(Vector3.up,new Vector3(0, 0, 0));
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
+
 		//ray shooting out of the camera from where the mouse is
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+
 		// Register when our raycaster is hitting a gameobject...
 		if (Physics.Raycast (ray, out hit)) 
 		{
 			// ... but only if that game object is one of our target stores ...
 			if (hit.transform.CompareTag ("store")) 
 			{
-				//Debug.Log (objectHit.tag);
 				hud.setMessage (hit.transform.parent.name);
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
@@ -113,41 +118,54 @@ public class MapTestTask : ExperimentTask {
 			HideStoreName ();
 		}
 
-		// Handle behaviors when a store is selected and being moved
+		// -----------------------------------------
+		// Manipulate the currently active store
+		// -----------------------------------------
+
 		if (targetActive) {
 
-			// General behavior (e.g. follow mouse, hide store name)
+			// BEHAVIOR: active target (e.g. follow mouse, hide store name)
 			float distance;
 			if (plane.Raycast (ray, out distance)) {
 				activeTarget.transform.position = ray.GetPoint (distance);
 			}
 			HideStoreName ();
 
-			// RELEASE LEFT CLICK BEHAVIOR (e.g., drop the store where it is)
+			// BEHAVIOR: left click released (e.g., drop the store where it is)
 			if (Input.GetMouseButtonUp (0)) {
 				targetActive = false;
 				activeTarget = null;
+
+				// Get position/rotation of nearest target location (if snapping assist is turned on)
+				if (snapToTargetAssist) {
+
+				}
 			}
-			// LEFT CLICK BEHAVIOR WHEN ACTIVE (e.g., undo current move)
-			else if (Input.GetKeyDown(KeyCode.Escape)) {
+			// BEHAVIOR: Escape key pressed (e.g., undo current move)
+			else if (Input.GetKeyDown (KeyCode.Escape)) {
 				activeTarget.transform.position = previousTargetPos;
 				targetActive = false;
 				activeTarget = null;
 			}
 		}
-			
-		// Check if the debug button has been pressed
+
+		// -----------------------------------------
+		// Handle debug button behavior (kill task)
+		// -----------------------------------------
 		if (killCurrent == true) 
 		{
 			return KillCurrent ();
 		}
 
+		// -----------------------------------------
+		// Handle action button behavior
+		// -----------------------------------------
 		if (actionButtonClicked == true) 
 		{
 			actionButtonClicked = false;
 			return true;
 		}
-
+			
 		return false;
 	}
 		
