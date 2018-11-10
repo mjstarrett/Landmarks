@@ -26,21 +26,22 @@ public enum EndListMode
 	End
 }
 
+public enum UserInterface
+{
+	DesktopDefault,
+	ViveAndVirtualizer
+}
 
 public class Experiment : MonoBehaviour {
 
+	public UserInterface userInterface = UserInterface.DesktopDefault;
 	public TaskList tasks;
 	private Config config;
 	private long microseconds = 1;
 	private string logfile;
 	private string configfile = ""; 
-	public GameObject desktopController;
-	public Camera desktopCamera;
-	public GameObject vrController;
-	public Camera vrCamera;
-	[HideInInspector]	public GameObject player;
-	[HideInInspector]	public Camera playerCamera;
-	public bool enableVirtualReality = false;
+	public GameObject player;
+	public Camera playerCamera;
 	public Camera overheadCamera;
 
 	public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
@@ -77,17 +78,31 @@ public class Experiment : MonoBehaviour {
 
 		Debug.Log ("Starting Experiment.cs");
 
-		if (enableVirtualReality == true) {
-			player = vrController;
-			playerCamera = vrCamera;
-			desktopController.SetActive(false);
-		} 
-		else
-		{
-			player = desktopController;
-			playerCamera = desktopCamera;
-			vrController.SetActive (false);
+		// ------------------------------------------
+		// Assign Player and Camera based on UI enum
+		// ------------------------------------------
+
+		if (userInterface == UserInterface.DesktopDefault) {
+			// Standard Desktop with Keyboard/mouse controller
+			player = GameObject.Find ("DesktopDefaultController");
+			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
+		} else if (userInterface == UserInterface.ViveAndVirtualizer) {
+			// HTC Vive and Cyberith Virtualizer
+			player = GameObject.Find ("ViveVirtualizerController");
+			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
+		} else {
+			// If nothing else, load the default player from the first if() section
+			Debug.Log ("The selected interface is not yet configured. Using DefaultDesktopPlayerController.");
+			player = GameObject.Find ("DesktopDefaultController");
+			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
 		}
+
+		// Set up Overhead Camera (for map task or any other top-down viewed tasks)
+		overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera> ();
+
+		// ------------------------------------------
+		// Configure Player properties
+		// ------------------------------------------
 
 		playerCamera.enabled = true;
 		overheadCamera.enabled = false;
@@ -95,15 +110,8 @@ public class Experiment : MonoBehaviour {
 		//since config is a singleton it will be the one created in scene 0 or this scene
 		config = Config.instance;
 
-		// MJS - 7/8/2016 - added if loop to check for COVR then use regular if missing or off
+		// Set the avatar and hud
 		avatar = player;
-//		if (VR == true){
-//			avatar = GameObject.Find("COVRPlayerController"); // MJS - this is the original line of code
-//		} else {
-//			avatar = GameObject.Find ("First Person Controller");
-//		}
-		////////////////////////////////////////////////
-		
 		hud = avatar.GetComponent("HUD") as HUD;
 
 		logfile = config.subjectPath + "/test.log";
