@@ -59,25 +59,29 @@ public class ExperimentTask : MonoBehaviour{
 	}
 
 	public void Start () {
+		
+
+
+	}
+	
+	public virtual void startTask() {	
 		avatar = GameObject.FindWithTag ("Player");
 		avatarLog = avatar.GetComponent("avatarLog") as avatarLog; //jdstokes 2015
 		hud = avatar.GetComponent("HUD") as HUD;
-	    experiment = GameObject.FindWithTag ("Experiment");
-	    manager = experiment.GetComponent("Experiment") as Experiment;
+		experiment = GameObject.FindWithTag ("Experiment");
+		manager = experiment.GetComponent("Experiment") as Experiment;
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
-	    log = manager.dblog;
+		log = manager.dblog;
 
 		debugButton = manager.debugButton.GetComponent<Button> ();
 		actionButton = manager.actionButton.GetComponent<Button> ();
 
 		// Start listening for debug skips
 		debugButton.onClick.AddListener (onDebugClick);
-	}
-	
-	public virtual void startTask() {	
+
 		task_start = Experiment.Now();
-		hud.ForceShowMessage();
+		hud.ForceShowMessage ();
 		//currentInterrupt = 0;        Not here since after an interuupt we will restart
 		
 		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );		

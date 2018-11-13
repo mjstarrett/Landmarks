@@ -79,6 +79,12 @@ public class Experiment : MonoBehaviour {
 		Debug.Log ("Starting Experiment.cs");
 
 		// ------------------------------------------
+		// Grab the Landmarks Tasks GameObject (Timeline)
+		// ------------------------------------------
+		tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
+
+
+		// ------------------------------------------
 		// Assign Player and Camera based on UI enum
 		// ------------------------------------------
 
@@ -95,6 +101,14 @@ public class Experiment : MonoBehaviour {
 			Debug.Log ("The selected interface is not yet configured. Using DefaultDesktopPlayerController.");
 			player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
+		}
+		// Tag the selected playerController
+		player.tag = "Player";
+		// Deactivate all other controllers
+		foreach (Transform child in GameObject.Find("PlayerControllers").transform) {
+			if (child.name != player.name) {
+				child.gameObject.SetActive (false);
+			}
 		}
 
 		// Set up Overhead Camera (for map task or any other top-down viewed tasks)
