@@ -11,9 +11,14 @@ public class CopyChildObjects : ExperimentTask {
 
 	private string copiedParent;
 
-	public override void startTask () 
+	public override void startTask ()
 	{
-		TASK_START();
+		TASK_START ();
+	}
+
+	public override void TASK_START () 
+	{
+		base.startTask ();
 
 		//move the copy destination parent to the same place as the sourcesParent to be copied
 		this.transform.position = destinationsParent.transform.position;
