@@ -102,6 +102,7 @@ public class Experiment : MonoBehaviour {
 			player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
 		}
+		Debug.Log (player.name);
 		// Tag the selected playerController
 		player.tag = "Player";
 		// Deactivate all other controllers
