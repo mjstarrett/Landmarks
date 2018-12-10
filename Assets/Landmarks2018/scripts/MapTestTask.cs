@@ -91,7 +91,7 @@ public class MapTestTask : ExperimentTask {
 		if (Physics.Raycast (ray, out hit)) 
 		{
 			// ... but only if that game object is one of our target stores ...
-			if (hit.transform.CompareTag ("store")) 
+			if (hit.transform.CompareTag ("TargetObject")) 
 			{
 				hud.setMessage (hit.transform.parent.name);
 				hud.hudPanel.SetActive (true);

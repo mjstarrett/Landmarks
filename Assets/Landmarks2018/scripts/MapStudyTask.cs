@@ -62,7 +62,7 @@ public class MapStudyTask : ExperimentTask {
 
 
 		if (Physics.Raycast (ray, out hit)) {// & Input.GetMouseButtonDown(0)) 
-			if (hit.transform.CompareTag ("store")) {
+			if (hit.transform.CompareTag ("TargetObject")) {
 				//Debug.Log (objectHit.tag);
 				hud.setMessage (hit.transform.parent.name);
 				hud.hudPanel.SetActive (true);
