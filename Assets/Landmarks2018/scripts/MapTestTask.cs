@@ -93,7 +93,7 @@ public class MapTestTask : ExperimentTask {
 			// ... but only if that game object is one of our target stores ...
 			if (hit.transform.CompareTag ("store")) 
 			{
-				hud.setMessage (hit.transform.parent.name);
+				hud.setMessage (hit.transform.name);
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
 				// move hud text to the store being highlighted
@@ -103,7 +103,7 @@ public class MapTestTask : ExperimentTask {
 				if (Input.GetMouseButtonDown (0)) {
 					// Container for active store
 					targetActive = true;
-					activeTarget = hit.transform.parent.gameObject;
+					activeTarget = hit.transform.gameObject;
 					previousTargetPos = activeTarget.transform.position;
 				}
 			} 
