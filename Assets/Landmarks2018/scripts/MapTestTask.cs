@@ -79,7 +79,7 @@ public class MapTestTask : ExperimentTask {
 		// -----------------------------------------
 
 		// create a plane for our raycaster to hit
-		Plane plane=new Plane(Vector3.up,new Vector3(0, 0, 0));
+		Plane plane=new Plane(Vector3.up,new Vector3(0, 1, 0));
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
@@ -91,7 +91,7 @@ public class MapTestTask : ExperimentTask {
 		if (Physics.Raycast (ray, out hit)) 
 		{
 			// ... but only if that game object is one of our target stores ...
-			if (hit.transform.CompareTag ("store")) 
+			if (hit.transform.CompareTag ("Target")) 
 			{
 				hud.setMessage (hit.transform.name);
 				hud.hudPanel.SetActive (true);
