@@ -79,7 +79,8 @@ public class MapTestTask : ExperimentTask {
 		// -----------------------------------------
 
 		// create a plane for our raycaster to hit
-		Plane plane=new Plane(Vector3.up,new Vector3(0, 0, 0));
+		// Note: make y high enough that store is visible over other envir. buildings
+		Plane plane=new Plane(Vector3.up,new Vector3(0, 0.1f, 0));
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
@@ -91,9 +92,9 @@ public class MapTestTask : ExperimentTask {
 		if (Physics.Raycast (ray, out hit)) 
 		{
 			// ... but only if that game object is one of our target stores ...
-			if (hit.transform.CompareTag ("TargetObject")) 
+			if (hit.transform.CompareTag ("Target")) 
 			{
-				hud.setMessage (hit.transform.parent.name);
+				hud.setMessage (hit.transform.name);
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
 				// move hud text to the store being highlighted
@@ -103,7 +104,7 @@ public class MapTestTask : ExperimentTask {
 				if (Input.GetMouseButtonDown (0)) {
 					// Container for active store
 					targetActive = true;
-					activeTarget = hit.transform.parent.gameObject;
+					activeTarget = hit.transform.gameObject;
 					previousTargetPos = activeTarget.transform.position;
 				}
 			} 
