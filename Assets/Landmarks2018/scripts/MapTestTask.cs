@@ -79,7 +79,8 @@ public class MapTestTask : ExperimentTask {
 		// -----------------------------------------
 
 		// create a plane for our raycaster to hit
-		Plane plane=new Plane(Vector3.up,new Vector3(0, 1, 0));
+		// Note: make y high enough that store is visible over other envir. buildings
+		Plane plane=new Plane(Vector3.up,new Vector3(0, 0.1f, 0));
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
