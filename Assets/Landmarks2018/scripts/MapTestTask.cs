@@ -13,6 +13,7 @@ public class MapTestTask : ExperimentTask {
 	private GameObject activeTarget;
 	private bool targetActive = false;
 	private Vector3 previousTargetPos;
+	private Vector3 previousTargetRot;
 	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
 	[Range(0,100)] public int CriterionPercentage = 100;
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
@@ -86,9 +87,9 @@ public class MapTestTask : ExperimentTask {
 	{
 		base.updateTask ();
 
-		// -----------------------------------------
-		// Handle mouse input for dragging targets
-		// -----------------------------------------
+		// ------------------------------------------------------------
+		// Handle mouse input for hovering over and selecting objects
+		// ------------------------------------------------------------
 
 		// create a plane for our raycaster to hit
 		// Note: make y high enough that store is visible over other envir. buildings
@@ -117,7 +118,9 @@ public class MapTestTask : ExperimentTask {
 					// Container for active store
 					targetActive = true;
 					activeTarget = hit.transform.gameObject;
+					// Record previos position so the current move can be cancelled
 					previousTargetPos = activeTarget.transform.position;
+					previousTargetRot = activeTarget.transform.eulerAngles;
 				}
 			} 
 			// ... Otherwise, clear the message and hide the gui 
@@ -154,15 +157,26 @@ public class MapTestTask : ExperimentTask {
 
 				}
 			}
-			// BEHAVIOR: Escape key pressed (e.g., undo current move)
-			else if (Input.GetKeyDown (KeyCode.Escape)) {
+			// BEHAVIOR: Undo current move
+			// INPUT NAME: Cancel
+			else if (Input.GetButtonDown("Cancel")) {
 				activeTarget.transform.position = previousTargetPos;
+				activeTarget.transform.eulerAngles = previousTargetRot;
 				targetActive = false;
 				activeTarget = null;
 			}
 
-			// BEHAVIOR: TAB key pressed (e.g., rotate dragged object by 90 degrees)
-			if (Input.GetKeyDown (KeyCode.Tab)) {
+			// BEHAVIOR: Rotate active drag object 90 degrees CCW
+			// INPUT NAME: MapTest_RotateCCW
+			if (Input.GetButtonDown("MapTest_RotateCCW")) {
+				Vector3 tempRotation = activeTarget.transform.eulerAngles;
+				tempRotation.z = activeTarget.transform.eulerAngles.z - 90;
+				activeTarget.transform.eulerAngles = tempRotation;
+			}
+
+			// BEHAVIOR: Rotate active drag object 90 degrees CW
+			// INPUT NAME: MapTest_RotateCW
+			if (Input.GetButtonDown("MapTest_RotateCW")) {
 				Vector3 tempRotation = activeTarget.transform.eulerAngles;
 				tempRotation.z = activeTarget.transform.eulerAngles.z + 90;
 				activeTarget.transform.eulerAngles = tempRotation;
