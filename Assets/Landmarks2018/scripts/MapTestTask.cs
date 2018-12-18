@@ -14,8 +14,6 @@ public class MapTestTask : ExperimentTask {
 	private bool targetActive = false;
 	private Vector3 previousTargetPos;
 	private Vector3 previousTargetRot;
-	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
-	[Range(0,100)] public int CriterionPercentage = 100;
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
 	public Vector3 hudTextOffset;
 
@@ -70,7 +68,7 @@ public class MapTestTask : ExperimentTask {
 			// Flatten out environment buildings so stores are clearly visible
 			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
 			//Flatten out the copied target stores
-			GameObject.Find ("CopyStores").transform.localScale = new Vector3 (1, 0.01f, 1);
+			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 0.01f, 1);
 
 			// Make sure we can still see the highlights by elveating them
 			if (highlightAssist) {
@@ -241,7 +239,7 @@ public class MapTestTask : ExperimentTask {
 			// un-Flatten out environment buildings so stores are clearly visible
 			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 1, 1);
 			// un-Flatten out the copied target stores
-			GameObject.Find ("CopyStores").transform.localScale = new Vector3 (1, 1, 1);
+			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 1, 1);
 
 			// Return the highlights to their unflattened position
 			if (highlightAssist) {
