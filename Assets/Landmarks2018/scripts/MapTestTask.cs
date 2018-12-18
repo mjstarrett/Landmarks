@@ -160,6 +160,13 @@ public class MapTestTask : ExperimentTask {
 				targetActive = false;
 				activeTarget = null;
 			}
+
+			// BEHAVIOR: TAB key pressed (e.g., rotate dragged object by 90 degrees)
+			if (Input.GetKeyDown (KeyCode.Tab)) {
+				Vector3 tempRotation = activeTarget.transform.eulerAngles;
+				tempRotation.z = activeTarget.transform.eulerAngles.z + 90;
+				activeTarget.transform.eulerAngles = tempRotation;
+			}
 		}
 
 		// -----------------------------------------
