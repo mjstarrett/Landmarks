@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MapTestTask : ExperimentTask {
 
 	public GameObject mapTestLocations;
+	public bool flattenMap = true;
 	public bool highlightAssist = false;
 	public GameObject mapTestHighlights;
 	public bool snapToTargetAssist = false;
@@ -50,11 +51,6 @@ public class MapTestTask : ExperimentTask {
 		firstPersonCamera.enabled = false;
 		overheadCamera.enabled = true;
 
-		// Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
-		//Flatten out the copied target stores
-		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 0.01f, 1);
-
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<Text> ().text = "Get Score";
 		manager.actionButton.SetActive(true);
@@ -65,6 +61,22 @@ public class MapTestTask : ExperimentTask {
 		if (highlightAssist == true) 
 		{
 			mapTestHighlights.SetActive (true);
+		}
+
+		// Remove environment topography so tall things don't get in the way of dragging objects
+		if (flattenMap) 
+		{
+			// Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
+			//Flatten out the copied target stores
+			GameObject.Find ("CopyStores").transform.localScale = new Vector3 (1, 0.01f, 1);
+
+			// Make sure we can still see the highlights by elveating them
+			if (highlightAssist) {
+				Vector3 tmp = mapTestHighlights.transform.localPosition;
+				tmp.y = mapTestHighlights.transform.localPosition.y + 10;
+				mapTestHighlights.transform.localPosition = tmp;
+			}
 		}
 
 	}	
@@ -80,7 +92,7 @@ public class MapTestTask : ExperimentTask {
 
 		// create a plane for our raycaster to hit
 		// Note: make y high enough that store is visible over other envir. buildings
-		Plane plane=new Plane(Vector3.up,new Vector3(0, 0.1f, 0));
+		Plane plane=new Plane(Vector3.up,new Vector3(0, 0.2f, 0));
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
@@ -203,10 +215,20 @@ public class MapTestTask : ExperimentTask {
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
 
-		// un-Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
-		// un-Flatten out the copied target stores
-		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 1, 1);
+		if (flattenMap) 
+		{
+			// un-Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 1, 1);
+			// un-Flatten out the copied target stores
+			GameObject.Find ("CopyStores").transform.localScale = new Vector3 (1, 1, 1);
+
+			// Return the highlights to their unflattened position
+			if (highlightAssist) {
+				Vector3 tmp = mapTestHighlights.transform.localPosition;
+				tmp.y = mapTestHighlights.transform.localPosition.y - 10;
+				mapTestHighlights.transform.localPosition = tmp;
+			}
+		}
 
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);
