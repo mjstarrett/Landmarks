@@ -9,7 +9,7 @@ public class ScoreMapTest : ExperimentTask {
 	private List<GameObject> copies = new List<GameObject>();	
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object
 	private List<GameObject> targets = new List<GameObject>(); // Allow adjustment for how close a store must be to be considered 'correct'
-	public float distanceErrorTolerance = 10; // world units (suggest meters)
+	public float distanceErrorTolerance = 30; // world units (suggest meters)
 	[Range(0,100)] public int percentCorrectCriterion = 100; // Allow adjustment of the score required to continue advance the experiment (0%-100%)
 	private int numberCorrect = 0;
 	private int numberTargets;
@@ -37,9 +37,9 @@ public class ScoreMapTest : ExperimentTask {
 			return;
 		}
 
-		// -----------------
-		// Compute Score
-		// -----------------
+		// --------------------------------------------------------------------
+		// Set up Lists of the copies and originals to compare and score
+		// --------------------------------------------------------------------
 
 		// Automatically select the answers and targets based on LandMarks structure (can be changed)
 		copyObjects = GameObject.Find("CopyObjects"); // should be the game object called copyObjects in the MapTask game object
@@ -60,8 +60,38 @@ public class ScoreMapTest : ExperimentTask {
 			targets.Add (target.gameObject);
 		} 
 
-		// compare the position and rotation of each item in the two lists
-		percentCorrect = numberCorrect/numberTargets;
+		// Compare responses to answer key
+		for (int itarget = 0; itarget < (numberTargets); itarget++) {
+			Debug.Log ("Checking score for the " + targets [itarget].name);
+
+			// check if the store is rotated correctly. If not, we don't even need to check distance error... it's wrong
+			float tempErrorAngleX = copies [itarget].transform.eulerAngles.x - targets [itarget].transform.eulerAngles.x; 
+			float tempErrorAngleZ = copies [itarget].transform.eulerAngles.z - targets [itarget].transform.eulerAngles.z;
+
+			// If the absolute value of this is larger than 1 degree (in case of unity rounding errors it is not set to 0) it's wrong
+			if (Mathf.Abs (tempErrorAngleX) > 0) {
+				Debug.Log ("The store was oriented incorrectly on the x-axis");
+			} 
+
+			else if (Mathf.Abs (tempErrorAngleZ) > 0) {
+				Debug.Log ("The store was oriented incorrectly on the z-axis");
+			}
+
+			// If the angle isn't wrong, let's go ahead and check the straight line distance from placement to actual position
+			else {
+				float tempErrorDistance = Vector3.Distance (copies [itarget].transform.position, targets [itarget].transform.position);
+				Debug.Log (tempErrorDistance + " meters from the correct position.");
+
+				// if the error is within our public tolerance variable level, mark it correct
+				if (tempErrorDistance <= distanceErrorTolerance) {
+					numberCorrect++;
+				} 
+			}
+
+		}
+			
+		// calculatre a percentage to report
+		percentCorrect = ((float)numberCorrect/numberTargets)*100; // when dividing two integers, must cast one as float to avoid unity rounding unneccesarily
 		Debug.Log ("Map Score = " + percentCorrect + "%");
 
 
@@ -109,17 +139,6 @@ public class ScoreMapTest : ExperimentTask {
 		actionButton.GetComponentInChildren<Text> ().text = progressionText;
 		manager.actionButton.SetActive(true);
 		actionButton.onClick.AddListener (OnActionClick);
-
-		// -------------------------------
-		// Prep the Target Object States
-		// -------------------------------
-
-		// Destroy the copies we created when initializing the map test task
-		foreach (Transform child in copyObjects.transform) 
-		{
-			Destroy (child.gameObject);
-		}
-
 	}
 
 
@@ -194,6 +213,16 @@ public class ScoreMapTest : ExperimentTask {
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);
 		manager.actionButton.SetActive(false);
+
+		// -------------------------------
+		// Prep the Target Object States
+		// -------------------------------
+
+		// Destroy the copies we created when initializing the map test task
+		foreach (Transform child in copyObjects.transform) 
+		{
+			Destroy (child.gameObject);
+		}
 	}
 
 }
