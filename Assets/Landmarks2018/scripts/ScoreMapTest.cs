@@ -9,7 +9,6 @@ public class ScoreMapTest : ExperimentTask {
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object
 	public float distanceErrorTolerance = 30; // world units (suggest meters)
 	[Range(0,100)] public int percentCorrectCriterion = 100; // Allow adjustment of the score required to continue advance the experiment (0%-100%)
-	private int numberCorrect = 0;
 	private int numberTargets;
 	private float percentCorrect;
 	private string progressionText;	// Modifier for our message telling them whether they can continue or must try again
@@ -60,8 +59,9 @@ public class ScoreMapTest : ExperimentTask {
 		foreach (Transform target in targetObjects.transform) {
 			targets.Add (target.gameObject);
 		} 
-
+			
 		// Compare responses to answer key
+		int numberCorrect = 0;
 		for (int itarget = 0; itarget < (numberTargets); itarget++) {
 			Debug.Log ("Checking score for the " + targets [itarget].name);
 
