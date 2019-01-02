@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class ScoreMapTest : ExperimentTask {
 
 	private GameObject copyObjects; // should be the game object called copyObjects in the MapTask game object
-	private List<GameObject> copies = new List<GameObject>();	
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object
-	private List<GameObject> targets = new List<GameObject>(); // Allow adjustment for how close a store must be to be considered 'correct'
 	public float distanceErrorTolerance = 30; // world units (suggest meters)
 	[Range(0,100)] public int percentCorrectCriterion = 100; // Allow adjustment of the score required to continue advance the experiment (0%-100%)
 	private int numberCorrect = 0;
@@ -47,15 +45,18 @@ public class ScoreMapTest : ExperimentTask {
 
 		// Get the total possible
 		numberTargets = copyObjects.transform.childCount;
+		Debug.Log (numberTargets);
 
 		// reactivate the original objects
 		targetObjects.SetActive (true);
 
 		// Populate our list of copies (participant answers) to score
+		List<GameObject> copies = new List<GameObject>();
 		foreach (Transform copy in copyObjects.transform) {
 			copies.Add (copy.gameObject);
-		} 
+		}
 		// Populate our list of targets (answer key) to compare
+		List<GameObject> targets = new List<GameObject>();
 		foreach (Transform target in targetObjects.transform) {
 			targets.Add (target.gameObject);
 		} 
@@ -65,8 +66,13 @@ public class ScoreMapTest : ExperimentTask {
 			Debug.Log ("Checking score for the " + targets [itarget].name);
 
 			// check if the store is rotated correctly. If not, we don't even need to check distance error... it's wrong
+
+			Debug.Log (copies);
+			Debug.Log (targets [itarget].transform.eulerAngles.z);
+
 			float tempErrorAngleX = copies [itarget].transform.eulerAngles.x - targets [itarget].transform.eulerAngles.x; 
 			float tempErrorAngleZ = copies [itarget].transform.eulerAngles.z - targets [itarget].transform.eulerAngles.z;
+			float tempErrorDistance = Vector3.Distance (copies [itarget].transform.position, targets [itarget].transform.position);
 
 			// If the absolute value of this is larger than 1 degree (in case of unity rounding errors it is not set to 0) it's wrong
 			if (Mathf.Abs (tempErrorAngleX) > 0) {
@@ -79,18 +85,15 @@ public class ScoreMapTest : ExperimentTask {
 
 			// If the angle isn't wrong, let's go ahead and check the straight line distance from placement to actual position
 			else {
-				float tempErrorDistance = Vector3.Distance (copies [itarget].transform.position, targets [itarget].transform.position);
 				Debug.Log (tempErrorDistance + " meters from the correct position.");
-
 				// if the error is within our public tolerance variable level, mark it correct
 				if (tempErrorDistance <= distanceErrorTolerance) {
 					numberCorrect++;
 				} 
 			}
-
 		}
 			
-		// calculatre a percentage to report
+		// calculate a percentage to report
 		percentCorrect = ((float)numberCorrect/numberTargets)*100; // when dividing two integers, must cast one as float to avoid unity rounding unneccesarily
 		Debug.Log ("Map Score = " + percentCorrect + "%");
 
@@ -223,6 +226,7 @@ public class ScoreMapTest : ExperimentTask {
 		{
 			Destroy (child.gameObject);
 		}
+
 	}
 
 }
