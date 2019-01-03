@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class MapTestTask : ExperimentTask {
 
 	public GameObject mapTestLocations;
+	public bool flattenMap = true;
 	public bool highlightAssist = false;
 	public GameObject mapTestHighlights;
 	public bool snapToTargetAssist = false;
 	private GameObject activeTarget;
 	private bool targetActive = false;
 	private Vector3 previousTargetPos;
-	// Allow adjsutment of the score required to continue advance the experiment (0%-100%)
-	[Range(0,100)] public int CriterionPercentage = 100;
+	private Vector3 previousTargetRot;
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
 	public Vector3 hudTextOffset;
 
@@ -50,11 +50,6 @@ public class MapTestTask : ExperimentTask {
 		firstPersonCamera.enabled = false;
 		overheadCamera.enabled = true;
 
-		// Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
-		//Flatten out the copied target stores
-		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 0.01f, 1);
-
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<Text> ().text = "Get Score";
 		manager.actionButton.SetActive(true);
@@ -67,6 +62,22 @@ public class MapTestTask : ExperimentTask {
 			mapTestHighlights.SetActive (true);
 		}
 
+		// Remove environment topography so tall things don't get in the way of dragging objects
+		if (flattenMap) 
+		{
+			// Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
+			//Flatten out the copied target stores
+			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 0.01f, 1);
+
+			// Make sure we can still see the highlights by elveating them
+			if (highlightAssist) {
+				Vector3 tmp = mapTestHighlights.transform.localPosition;
+				tmp.y = mapTestHighlights.transform.localPosition.y + 10;
+				mapTestHighlights.transform.localPosition = tmp;
+			}
+		}
+
 	}	
 
 
@@ -74,13 +85,13 @@ public class MapTestTask : ExperimentTask {
 	{
 		base.updateTask ();
 
-		// -----------------------------------------
-		// Handle mouse input for dragging targets
-		// -----------------------------------------
+		// ------------------------------------------------------------
+		// Handle mouse input for hovering over and selecting objects
+		// ------------------------------------------------------------
 
 		// create a plane for our raycaster to hit
 		// Note: make y high enough that store is visible over other envir. buildings
-		Plane plane=new Plane(Vector3.up,new Vector3(0, 0.1f, 0));
+		Plane plane=new Plane(Vector3.up,new Vector3(0, 0.2f, 0));
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;
@@ -105,7 +116,9 @@ public class MapTestTask : ExperimentTask {
 					// Container for active store
 					targetActive = true;
 					activeTarget = hit.transform.gameObject;
+					// Record previos position so the current move can be cancelled
 					previousTargetPos = activeTarget.transform.position;
+					previousTargetRot = activeTarget.transform.eulerAngles;
 				}
 			} 
 			// ... Otherwise, clear the message and hide the gui 
@@ -142,11 +155,29 @@ public class MapTestTask : ExperimentTask {
 
 				}
 			}
-			// BEHAVIOR: Escape key pressed (e.g., undo current move)
-			else if (Input.GetKeyDown (KeyCode.Escape)) {
+			// BEHAVIOR: Undo current move
+			// INPUT NAME: Cancel
+			else if (Input.GetButtonDown("Cancel")) {
 				activeTarget.transform.position = previousTargetPos;
+				activeTarget.transform.eulerAngles = previousTargetRot;
 				targetActive = false;
 				activeTarget = null;
+			}
+
+			// BEHAVIOR: Rotate active drag object 90 degrees CCW
+			// INPUT NAME: MapTest_RotateCCW
+			if (Input.GetButtonDown("MapTest_RotateCCW")) {
+				Vector3 tempRotation = activeTarget.transform.eulerAngles;
+				tempRotation.z = activeTarget.transform.eulerAngles.z - 90;
+				activeTarget.transform.eulerAngles = tempRotation;
+			}
+
+			// BEHAVIOR: Rotate active drag object 90 degrees CW
+			// INPUT NAME: MapTest_RotateCW
+			if (Input.GetButtonDown("MapTest_RotateCW")) {
+				Vector3 tempRotation = activeTarget.transform.eulerAngles;
+				tempRotation.z = activeTarget.transform.eulerAngles.z + 90;
+				activeTarget.transform.eulerAngles = tempRotation;
 			}
 		}
 
@@ -203,10 +234,20 @@ public class MapTestTask : ExperimentTask {
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
 
-		// un-Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
-		// un-Flatten out the copied target stores
-		GameObject.Find("CopyStores").transform.localScale = new Vector3 (1, 1, 1);
+		if (flattenMap) 
+		{
+			// un-Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 1, 1);
+			// un-Flatten out the copied target stores
+			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 1, 1);
+
+			// Return the highlights to their unflattened position
+			if (highlightAssist) {
+				Vector3 tmp = mapTestHighlights.transform.localPosition;
+				tmp.y = mapTestHighlights.transform.localPosition.y - 10;
+				mapTestHighlights.transform.localPosition = tmp;
+			}
+		}
 
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);

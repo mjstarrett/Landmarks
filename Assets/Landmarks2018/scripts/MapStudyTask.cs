@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MapStudyTask : ExperimentTask {
 
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
+	public bool flattenMap = true;
 	public Vector3 hudTextOffset;
 
 	public override void startTask () 
@@ -39,8 +40,10 @@ public class MapStudyTask : ExperimentTask {
 		firstPersonCamera.enabled = false;
 		overheadCamera.enabled = true;
 
-		// Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
+		if (flattenMap) {
+			// Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
+		}
 
 
 
@@ -134,8 +137,10 @@ public class MapStudyTask : ExperimentTask {
 		firstPersonCamera.enabled = true;
 		overheadCamera.enabled = false;
 
-		// un-Flatten out environment buildings so stores are clearly visible
-		GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
+		if (flattenMap){
+			// un-Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
+		}
 
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);
