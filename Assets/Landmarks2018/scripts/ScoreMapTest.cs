@@ -66,27 +66,23 @@ public class ScoreMapTest : ExperimentTask {
 			Debug.Log ("Checking score for the " + targets [itarget].name);
 
 			// check if the store is rotated correctly. If not, we don't even need to check distance error... it's wrong
-			float tempErrorAngleX = copies [itarget].transform.eulerAngles.x - targets [itarget].transform.eulerAngles.x; 
-			float tempErrorAngleZ = copies [itarget].transform.eulerAngles.z - targets [itarget].transform.eulerAngles.z;
+			float tempErrorAngleX = copies [itarget].transform.localRotation.eulerAngles.x - targets [itarget].transform.localRotation.eulerAngles.x; 
+			float tempErrorAngleY = copies [itarget].transform.localRotation.eulerAngles.y - targets [itarget].transform.localRotation.eulerAngles.y; // note this seems to correspond to z rotation axis in inspector
+			float tempErrorAngleZ = copies [itarget].transform.localRotation.eulerAngles.z - targets [itarget].transform.localRotation.eulerAngles.z;
+			float tempErrorDistance =  vector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
 
-			// If the absolute value of this is larger than 1 degree (in case of unity rounding errors it is not set to 0) it's wrong
-			if (Mathf.Abs (tempErrorAngleX) > 0) {
+			// Check if rotation or distance are wrong, otherwise mark it correct and move on
+			if (tempErrorAngleX != 0) {
 				Debug.Log ("The store was oriented incorrectly on the x-axis");
-			} 
-
-			else if (Mathf.Abs (tempErrorAngleZ) > 0) {
+			} else if (tempErrorAngleY != 0) {
+				Debug.Log ("The store was oriented incorrectly on the y-axis");
+			} else if (tempErrorAngleZ != 0) {
 				Debug.Log ("The store was oriented incorrectly on the z-axis");
-			}
-
-			// If the angle isn't wrong, let's go ahead and check the straight line distance from placement to actual position
-			else {
-				float tempErrorDistance =  vector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
-
+			} else if (tempErrorDistance > distanceErrorTolerance) {
 				Debug.Log (tempErrorDistance + " meters from the correct position.");
-				// if the error is within our public tolerance variable level, mark it correct
-				if (tempErrorDistance <= distanceErrorTolerance) {
-					numberCorrect++;
-				} 
+			} else {
+				numberCorrect++;
+				Debug.Log ("Correct! " + tempErrorDistance + " meters from the correct position.");
 			}
 		}
 			
