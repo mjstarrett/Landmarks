@@ -1,17 +1,31 @@
-﻿using System.Collections;
+﻿/*
+    Copyright (C) 2019 Michael J. Starrett
+
+    Navigate by StarrLite (Powered by LandMarks2019)
+    Human Spatial Cognition Laboratory
+    Department of Psychology - University of Arizona   
+*/
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEditor;
+using System;
 
-public class InitializeScaledNavTask : ExperimentTask
+
+public class ScalePlayerToEnvironment : ExperimentTask
 {
 
     public GameObject scaledEnvironment;
     public GameObject startLocationsParent; // must have at least 1 child
     public bool randomStartLocation = false;
+    public bool autoscale = true;
     public float scaleRatio = 1;
-
+    public bool reverseScale = false;
+    
     public override void startTask()
     {
         TASK_START();
@@ -23,8 +37,9 @@ public class InitializeScaledNavTask : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
+
         //---------------------------------------------
-        // Adjust basic parameters for task
+        // Set up basic parameters
         //---------------------------------------------
 
         // make the cursor functional and visible
@@ -32,13 +47,24 @@ public class InitializeScaledNavTask : ExperimentTask
         Cursor.visible = true;
 
         // Player Movement?
-        avatar.GetComponent<CharacterController>().enabled = true;
+        //avatar.GetComponent<CharacterController>().enabled = true;
 
-        // Make the scaled environment visible
-        scaledEnvironment.SetActive(true);
+        if (autoscale)
+        {
+            scaleRatio = scaledEnvironment.transform.localScale.x;
+        }
 
+        // Are we reversing the scale?
+        if (reverseScale == true)
+        {
+            scaledEnvironment.SetActive(false);
+            scaleRatio = 1 / scaleRatio;
+        } 
+        else
         // Grab the scale of the scaled environment from it's gameobject
-        scaleRatio = scaledEnvironment.transform.localScale.x;
+        {
+            scaledEnvironment.SetActive(true);
+        }
 
 
         //---------------------------------------------
@@ -92,5 +118,37 @@ public class InitializeScaledNavTask : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
+    }
+}
+
+
+// Custom Inspector to handle sufficient conditions
+[CustomEditor(typeof(ScalePlayerToEnvironment))]
+public class ScalePlayerCustomEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        // set our custom inspector up to communicate with the main script and alias that script for brevity
+        ScalePlayerToEnvironment spte = (ScalePlayerToEnvironment)target;
+
+        // Gameobject field for Scaled environment
+        spte.scaledEnvironment = (GameObject)EditorGUILayout.ObjectField("Scaled Enviornment", spte.scaledEnvironment, typeof(GameObject), true);
+
+        // Gameobject field for StartLocationsParent
+        spte.startLocationsParent = (GameObject)EditorGUILayout.ObjectField("Start Locations Parent", spte.startLocationsParent, typeof(GameObject), true);
+
+        // bool for randomizing start location
+        spte.randomStartLocation = EditorGUILayout.Toggle("Random Start Location", spte.randomStartLocation);
+
+        // publish our autoscale option
+        spte.autoscale = EditorGUILayout.Toggle("AutoScale", spte.autoscale);
+        // tell inspector to hide the scale ratio option if they are autoscaling
+        using (new EditorGUI.DisabledScope(spte.autoscale)) 
+        {
+            spte.scaleRatio = EditorGUILayout.FloatField("Scale Ratio", spte.scaleRatio);
+        }
+
+        // bool to reverse scaling
+        spte.reverseScale = EditorGUILayout.Toggle("Reverse Ratio", spte.reverseScale);
     }
 }
