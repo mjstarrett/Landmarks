@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class InitializeScaledNavTask : ExperimentTask
 {
@@ -9,7 +10,7 @@ public class InitializeScaledNavTask : ExperimentTask
     public GameObject scaledEnvironment;
     public GameObject startLocationsParent; // must have at least 1 child
     public bool randomStartLocation = false;
-    public float scaledPlayerSpeed;
+    public float scaleRatio = 1;
 
     public override void startTask()
     {
@@ -29,10 +30,15 @@ public class InitializeScaledNavTask : ExperimentTask
         // make the cursor functional and visible
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        // Turn off Player movement
-        avatar.GetComponent<CharacterController>().enabled = false;
+
+        // Player Movement?
+        avatar.GetComponent<CharacterController>().enabled = true;
+
         // Make the scaled environment visible
         scaledEnvironment.SetActive(true);
+
+        // Grab the scale of the scaled environment from it's gameobject
+        scaleRatio = scaledEnvironment.transform.localScale.x;
 
 
         //---------------------------------------------
@@ -52,20 +58,20 @@ public class InitializeScaledNavTask : ExperimentTask
 
 
         //---------------------------------------------
-        // Instantiate the scaled 1st-person controller
+        // Scale the player controller
         //---------------------------------------------
 
-        // Copy the player from Experiment so it functions the same way
-        GameObject scaledPlayer = Instantiate<GameObject>(avatar, startLocationsParent.transform.position, startLocationsParent.transform.rotation, scaledEnvironment.transform);
-        scaledPlayer.name = "ScaledPlayer";
-        scaledPlayer.GetComponent<CharacterController>().enabled = true;
-        //FIXME Figure out how to make the scaled up player move faster
-        //scaledPlayer.GetComponent<CapsuleCollider>().attachedRigidbody.mass = scaledPlayer.GetComponent<CapsuleCollider>().attachedRigidbody.mass * scaledPlayerSpeed;
+        // Make the player big
+        manager.player.transform.localScale = new Vector3(scaleRatio, scaleRatio, scaleRatio);
        
+        //Move the player to the starting position and appropriate rotation;
+        manager.player.transform.localPosition = startLocationsParent.transform.localPosition;
+       
+        // Rotate the player
+        manager.player.transform.localEulerAngles = startLocationsParent.transform.localEulerAngles;
 
-        //    // Swap from 1st-person camera to overhead view
-        //    firstPersonCamera.enabled = false;
-        //    overheadCamera.enabled = true;
+        // Scale up the movement speed as well
+        manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
 
         //    // Change text and turn on the map action button
         //    actionButton.GetComponentInChildren<Text>().text = "Continue to Test";
