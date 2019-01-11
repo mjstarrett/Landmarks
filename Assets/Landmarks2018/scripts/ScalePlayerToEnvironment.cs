@@ -46,9 +46,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        //// Player Movement?
-        //avatar.GetComponent<CharacterController>().enabled = true;
-
         if (autoscale)
         {
             scaleRatio = scaledEnvironment.transform.localScale.x;
@@ -87,8 +84,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
         // Scale the player controller
         //---------------------------------------------
 
-        // Make the player big
-        manager.player.transform.localScale = new Vector3(scaleRatio, scaleRatio, scaleRatio);
+        // Make the player bigger/smaller
+        manager.player.transform.localScale = scaleRatio * manager.player.transform.localScale;
        
         //Move the player to the starting position and appropriate rotation;
         manager.player.transform.localPosition = startLocationsParent.transform.localPosition;
@@ -98,11 +95,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
 
         // Scale up the movement speed as well
         manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
-
-        //    // Change text and turn on the map action button
-        //    actionButton.GetComponentInChildren<Text>().text = "Continue to Test";
-        //    manager.actionButton.SetActive(true);
-        //    actionButton.onClick.AddListener(OnActionClick);
     }
 
     public override bool updateTask()
