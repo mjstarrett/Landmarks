@@ -228,7 +228,7 @@ public class MapTestTask : ExperimentTask {
 		Cursor.visible = false;
 
 		// Turn on Player movement
-		//avatar.GetComponent<CharacterController>().enabled = true;
+		avatar.GetComponent<CharacterController>().enabled = true;
 
 		// Swap from overhead camera to first-person view
 		firstPersonCamera.enabled = true;
