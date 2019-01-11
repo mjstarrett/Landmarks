@@ -46,7 +46,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // Player Movement?
+        //// Player Movement?
         //avatar.GetComponent<CharacterController>().enabled = true;
 
         if (autoscale)
@@ -124,13 +124,14 @@ public class ScalePlayerToEnvironment : ExperimentTask
 
 // Custom Inspector to handle sufficient conditions
 [CustomEditor(typeof(ScalePlayerToEnvironment))]
+[CanEditMultipleObjects]
 public class ScalePlayerCustomEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         // set our custom inspector up to communicate with the main script and alias that script for brevity
         ScalePlayerToEnvironment spte = (ScalePlayerToEnvironment)target;
-
+    
         // Gameobject field for Scaled environment
         spte.scaledEnvironment = (GameObject)EditorGUILayout.ObjectField("Scaled Enviornment", spte.scaledEnvironment, typeof(GameObject), true);
 

@@ -35,6 +35,8 @@ public class InstructionsTask : ExperimentTask {
 	public int instructionSize = 12;
 		
 	private GUIText gui;
+
+    public bool restrictMovement = false; // MJS do we want to keep them still during this?
 	
 	void OnDisable ()
 	{
@@ -87,9 +89,14 @@ public class InstructionsTask : ExperimentTask {
 			if (currentObject != null) msg = string.Format(msg, currentObject.name);
 			hud.setMessage(msg);
 		}
-		hud.flashStatus("");		
-		
-	}
+		hud.flashStatus("");
+
+        if (restrictMovement)
+        {
+            manager.player.GetComponent<CharacterController>().enabled = false;
+        }
+
+    }
 	// Update is called once per frame
 	public override bool updateTask () {
 		
@@ -144,6 +151,12 @@ public class InstructionsTask : ExperimentTask {
 		canvas.text = nullstring;
 //			StartCoroutine(storesInactive());
 		hud.showEverything();
-	}
+
+        // If we turned movement off; turn it back on
+        if (restrictMovement)
+        {
+            manager.player.GetComponent<CharacterController>().enabled = true;
+        }
+    }
 
 }
