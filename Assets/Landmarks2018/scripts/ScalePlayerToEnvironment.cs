@@ -1,7 +1,7 @@
 ﻿/*
     Copyright (C) 2019 Michael J. Starrett
 
-    Navigate by StarrLite (Powered by LandMarks2019)
+    Navigate by StarrLite (Powered by LandMarks2018)
     Human Spatial Cognition Laboratory
     Department of Psychology - University of Arizona   
 */
@@ -86,7 +86,9 @@ public class ScalePlayerToEnvironment : ExperimentTask
 
         // Make the player bigger/smaller
         manager.player.transform.localScale = scaleRatio * manager.player.transform.localScale;
-       
+        // Adjust the radius
+        manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
+
         //Move the player to the starting position and appropriate rotation;
         manager.player.transform.localPosition = startLocationsParent.transform.localPosition;
        
