@@ -1,7 +1,12 @@
 ﻿/*
+    ScalePlayerToEnvironment
+       
+    Takes a Player controller and scale it manually or automatically to an 
+    environment or reverse a previous scaling.   
+
     Copyright (C) 2019 Michael J. Starrett
 
-    Navigate by StarrLite (Powered by LandMarks2018)
+    Navigate by StarrLite (Powered by LandMarks)
     Human Spatial Cognition Laboratory
     Department of Psychology - University of Arizona   
 */
