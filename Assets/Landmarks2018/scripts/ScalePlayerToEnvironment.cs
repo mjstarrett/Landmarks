@@ -92,6 +92,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
         manager.player.transform.localScale = scaleRatio * manager.player.transform.localScale;
         // Adjust the radius
         manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
+        // Do this for capsule collider as well
+        manager.player.GetComponent<CapsuleCollider>().radius = manager.player.GetComponent<CapsuleCollider>().radius / scaleRatio;
 
         //Move the player to the starting position and appropriate rotation;
         manager.player.transform.position = startLocationsParent.transform.position;
