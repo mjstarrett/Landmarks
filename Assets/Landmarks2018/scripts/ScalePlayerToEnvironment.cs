@@ -79,7 +79,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
         //    }
         //}
 
-
         //---------------------------------------------
         // Scale the player controller
         //---------------------------------------------
