@@ -89,7 +89,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
         manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
 
         //Move the player to the starting position and appropriate rotation;
-        manager.player.transform.localPosition = startLocationsParent.transform.localPosition;
+        manager.player.transform.position = startLocationsParent.transform.position;
        
         // Rotate the player
         manager.player.transform.localEulerAngles = startLocationsParent.transform.localEulerAngles;
