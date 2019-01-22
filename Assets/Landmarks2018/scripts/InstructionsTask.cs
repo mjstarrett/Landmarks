@@ -17,6 +17,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class InstructionsTask : ExperimentTask {
 	
@@ -94,6 +95,7 @@ public class InstructionsTask : ExperimentTask {
         if (restrictMovement)
         {
             manager.player.GetComponent<CharacterController>().enabled = false;
+            manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
         }
 
     }
@@ -156,6 +158,7 @@ public class InstructionsTask : ExperimentTask {
         if (restrictMovement)
         {
             manager.player.GetComponent<CharacterController>().enabled = true;
+            manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = false;
         }
     }
 
