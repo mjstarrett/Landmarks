@@ -29,8 +29,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+        // Added by MJS to allow freezing thirdPerson character and animator
+        public bool immobilized = false;
 
-		void Start()
+
+        void Start()
 		{
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
@@ -53,8 +56,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-			m_TurnAmount = Mathf.Atan2(move.x, move.z);
-			m_ForwardAmount = move.z;
+
+            // if loop added by MJS
+            if (immobilized)
+            {
+                m_TurnAmount = 0;
+                m_ForwardAmount = 0;
+            }
+            else
+            {
+                m_TurnAmount = Mathf.Atan2(move.x, move.z);
+                m_ForwardAmount = move.z;
+            }
 
 			ApplyExtraTurnRotation();
 
