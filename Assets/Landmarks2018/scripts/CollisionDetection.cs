@@ -28,7 +28,15 @@ public class CollisionDetection : MonoBehaviour {
 			manager.OnControllerColliderHit(hit.gameObject);
 		}   
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Target")
+        {
+            manager.OnControllerColliderHit(collision.gameObject);
+        }
+    }
+
     void OnTriggerEnter(Collider other) {
         manager.OnControllerColliderHit(other.gameObject);
     }

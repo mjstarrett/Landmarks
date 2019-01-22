@@ -22,7 +22,7 @@ using UnityEngine.UI;
 
 public class TaskList : ExperimentTask {
 	
-	public GameObject[] tasks;
+	public GameObject[] tasks; // no longer need to preset, shown for debugging - MJS
 	public GameObject[] objectsList;
 
 	public int repeat = 1;
@@ -41,10 +41,27 @@ public class TaskList : ExperimentTask {
 			repeatCount = 1;
 			repeat = Int32.Parse( overideRepeat.currentString().Trim() );
 		}
-		//Debug.Log("repeat: ");
-		//Debug.Log( repeat);
-		
-		if (!skip) startNextTask();		
+        //Debug.Log("repeat: ");
+        //Debug.Log( repeat);
+
+
+        //----------------------------------------------------------------------
+        // Automatically determine number of tasks based on children
+        //----------------------------------------------------------------------
+        tasks = new GameObject[transform.childCount];
+
+        if (tasks.Length == 0) skip = true;
+        else
+        {
+            for (int iTask = 0; iTask < tasks.Length; iTask++)
+            {
+                tasks[iTask] = transform.GetChild(iTask).gameObject;
+            }
+
+        }
+
+
+        if (!skip) startNextTask();		
 	}	
 	public override void TASK_START () {
 		repeatCount = 1;
