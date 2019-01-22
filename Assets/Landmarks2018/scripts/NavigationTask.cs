@@ -27,7 +27,7 @@ public class NavigationTask : ExperimentTask
 	public override void TASK_START() 
 	{
 		if (!manager) Start();
-		base.startTask();
+        base.startTask();
 
 		hud.showEverything();
 		hud.showScore = showScoring;
@@ -76,7 +76,7 @@ public class NavigationTask : ExperimentTask
 	public override void endTask() 
 	{
 		TASK_END();
-		//avatarController.handleInput = false;	
+		//avatarController.handleInput = false;
 	}
 
 	public override void TASK_PAUSE() 
