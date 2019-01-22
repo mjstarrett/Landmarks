@@ -68,17 +68,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 // calculate camera relative direction to move:
                 m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = v*m_CamForward + h*m_Cam.right;
+                m_Move = 0.5f * (v*m_CamForward + h*m_Cam.right); // edited to make walking 
             }
             else
             {
                 // we use world-relative directions in the case of no main camera
-                m_Move = v * Vector3.forward + h * Vector3.right;
+                m_Move = 0.5f * (v * Vector3.forward + h * Vector3.right);
             }
 
 #if !MOBILE_INPUT
 			// walk speed multiplier
-	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
+	        if (Input.GetKey(KeyCode.RightShift)) m_Move *= 8.0f;
 #endif
 
             // pass all parameters to the character control script
