@@ -59,13 +59,18 @@ public class PopulateTargets : ExperimentTask {
 
 
 			source.transform.position = destination.transform.position;
-			log.log("TASK_ROTATE\t" + source.name + "\t" + this.GetType().Name + "\t" + source.transform.localEulerAngles.ToString("f1"),1);
-
+			//log.log("TASK_ROTATE\t" + source.name + "\t" + this.GetType().Name + "\t" + source.transform.localEulerAngles.ToString("f1"),1);
 			source.transform.localRotation = destination.transform.localRotation;
-			log.log("TASK_POSITION\t" + source.name + "\t" + this.GetType().Name + "\t" + source.transform.position.ToString("f1"),1);
+			//log.log("TASK_POSITION\t" + source.name + "\t" + this.GetType().Name + "\t" + source.transform.position.ToString("f1"),1);
+
+            log.log("Object: \t" + source.name +
+                    "\tPosition (xyz): \t" + source.transform.position.x + "\t" + source.transform.position.y + "\t" + source.transform.position.z +
+                    "\tRotation (xyz): \t" + source.transform.eulerAngles.x + "\t" + source.transform.eulerAngles.y + "\t" + source.transform.eulerAngles.z
+                    , 1);
 
 
-			if (swap) {
+
+            if (swap) {
 				destination.transform.position = position;
 				destination.transform.localRotation = rotation;
 
