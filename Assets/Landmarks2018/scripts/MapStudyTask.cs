@@ -73,6 +73,8 @@ public class MapStudyTask : ExperimentTask {
 
 				// move hud text to the store being highlighted
 				hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint (hit.transform.position + hudTextOffset);
+
+                log.log("Mouseover \t" + hit.transform.name, 1);
 			} else {
 				hud.setMessage ("");
 				hud.hudPanel.SetActive (true);

@@ -119,7 +119,7 @@ public class MapTestTask : ExperimentTask {
 					// Record previos position so the current move can be cancelled
 					previousTargetPos = activeTarget.transform.position;
 					previousTargetRot = activeTarget.transform.eulerAngles;
-				}
+                }
 			} 
 			// ... Otherwise, clear the message and hide the gui 
 			else 
@@ -145,8 +145,13 @@ public class MapTestTask : ExperimentTask {
 			}
 			HideStoreName ();
 
-			// BEHAVIOR: left click released (e.g., drop the store where it is)
-			if (Input.GetMouseButtonUp (0)) {
+            log.log("Moving :\t" + activeTarget.name +
+                    "\tPosition (xyz): \t" + activeTarget.transform.position.x + "\t" + activeTarget.transform.position.y + "\t" + activeTarget.transform.position.z +
+                    "\tRotation (xyz): \t" + activeTarget.transform.eulerAngles.x + "\t" + activeTarget.transform.eulerAngles.y + "\t" + activeTarget.transform.eulerAngles.z
+                    , 1);
+
+            // BEHAVIOR: left click released (e.g., drop the store where it is)
+            if (Input.GetMouseButtonUp (0)) {
 				targetActive = false;
 				activeTarget = null;
 
