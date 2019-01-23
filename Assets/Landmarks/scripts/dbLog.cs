@@ -55,6 +55,6 @@ public class dbLog {
         //Debug.Log(milliseconds);
         //Debug.Log(Time.frameCount + ": " + Event.current);
         
-		logfile.WriteLine( milliseconds + "\t0\t" + msg );
+		logfile.WriteLine( milliseconds + "\t" + msg );
 	}
 }

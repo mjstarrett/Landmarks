@@ -66,17 +66,19 @@ public class ScoreMapTest : ExperimentTask {
 			Debug.Log ("Checking score for the " + targets [itarget].name);
 
 			// check if the store is rotated correctly. If not, we don't even need to check distance error... it's wrong
-			float tempErrorAngleX = copies [itarget].transform.localRotation.eulerAngles.x - targets [itarget].transform.localRotation.eulerAngles.x; 
-			float tempErrorAngleY = copies [itarget].transform.localRotation.eulerAngles.y - targets [itarget].transform.localRotation.eulerAngles.y; // note this seems to correspond to z rotation axis in inspector
-			float tempErrorAngleZ = copies [itarget].transform.localRotation.eulerAngles.z - targets [itarget].transform.localRotation.eulerAngles.z;
+			float tempErrorAngleX = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.x, targets [itarget].transform.localRotation.eulerAngles.x); 
+			float tempErrorAngleY = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.y, targets [itarget].transform.localRotation.eulerAngles.y); // note this seems to correspond to z rotation axis in inspector
+			float tempErrorAngleZ = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.z, targets [itarget].transform.localRotation.eulerAngles.z);
 			float tempErrorDistance =  vector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
 
+            log.log("Store: \t" + targets[itarget].name + "\tError Distance: \t" + tempErrorDistance + "\tError Rotation (xyz): \t" + tempErrorAngleX + "\t" + tempErrorAngleY + "\t" + tempErrorAngleZ, 2);
+
 			// Check if rotation or distance are wrong, otherwise mark it correct and move on
-			if (tempErrorAngleX != 0) {
+			if (Mathf.Abs(tempErrorAngleX) > Mathf.Epsilon) {
 				Debug.Log ("The store was oriented incorrectly on the x-axis");
-			} else if (tempErrorAngleY != 0) {
+			} else if (Mathf.Abs(tempErrorAngleY) > Mathf.Epsilon) {
 				Debug.Log ("The store was oriented incorrectly on the y-axis");
-			} else if (tempErrorAngleZ != 0) {
+			} else if (Mathf.Abs(tempErrorAngleZ) > Mathf.Epsilon) {
 				Debug.Log ("The store was oriented incorrectly on the z-axis");
 			} else if (tempErrorDistance > distanceErrorTolerance) {
 				Debug.Log (tempErrorDistance + " meters from the correct position.");
@@ -89,6 +91,7 @@ public class ScoreMapTest : ExperimentTask {
 		// calculate a percentage to report
 		percentCorrect = ((float)numberCorrect/numberTargets)*100; // when dividing two integers, must cast one as float to avoid unity rounding unneccesarily
 		Debug.Log ("Map Score = " + percentCorrect + "%");
+        log.log("Score: \t" + numberCorrect + "\t/\t" + numberTargets + "\tPercentage: \t" + percentCorrect, 0);
 
 
 		// ----------------------------------------------------
