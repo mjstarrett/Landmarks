@@ -29,12 +29,13 @@ public class ScalePlayerToEnvironment : ExperimentTask
     public bool randomStartLocation = false;
     public bool autoscale = true;
     public float scaleRatio = 1;
-    public bool reverseScale = false;
+    // public bool isScaled = false;
     
     public override void startTask()
     {
         TASK_START();
         avatarLog.navLog = true;
+        scaledAvatarLog.navLog = true;
     }
 
     public override void TASK_START()
@@ -56,8 +57,10 @@ public class ScalePlayerToEnvironment : ExperimentTask
             scaleRatio = scaledEnvironment.transform.localScale.x;
         }
 
+
+        Debug.Log("The environment is currently scaled" + isScaled);
         // Are we reversing the scale?
-        if (reverseScale == true)
+        if (isScaled == true)
         {
             scaledEnvironment.SetActive(false);
             scaleRatio = 1 / scaleRatio;
@@ -118,6 +121,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
+        isScaled = !isScaled;
     }
 }
 
@@ -148,8 +152,5 @@ public class ScalePlayerCustomEditor : Editor
         {
             spte.scaleRatio = EditorGUILayout.FloatField("Scale Ratio", spte.scaleRatio);
         }
-
-        // bool to reverse scaling
-        spte.reverseScale = EditorGUILayout.Toggle("Reverse Ratio", spte.reverseScale);
     }
 }

@@ -29,6 +29,9 @@ public class ExperimentTask : MonoBehaviour{
 	protected Experiment manager;
 	protected avatarLog avatarLog;
 
+    protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
+    protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
+    
 	protected long task_start;
 	
 	public bool skip = false;
@@ -52,6 +55,8 @@ public class ExperimentTask : MonoBehaviour{
 
 	public static bool killCurrent = false;
 
+    protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
+
 
 	public void Awake () 
 	{
@@ -74,7 +79,14 @@ public class ExperimentTask : MonoBehaviour{
 		overheadCamera = manager.overheadCamera;
 		log = manager.dblog;
 
-		debugButton = manager.debugButton.GetComponent<Button> ();
+        // if we have a scaled nav task/player grab the object and log it - MJS 2019
+        if (manager.scaledPlayer != null)
+        {
+            scaledAvatar = manager.scaledPlayer;
+            scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
+        }
+
+        debugButton = manager.debugButton.GetComponent<Button> ();
 		actionButton = manager.actionButton.GetComponent<Button> ();
 
 		// Start listening for debug skips

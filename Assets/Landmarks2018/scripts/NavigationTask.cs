@@ -22,8 +22,9 @@ public class NavigationTask : ExperimentTask
 	public override void startTask () 
 	{
 		TASK_START();
-		avatarLog.navLog = true;		
-	}	
+		avatarLog.navLog = true;
+        if (isScaled) scaledAvatarLog.navLog = true;
+    }	
 	public override void TASK_START() 
 	{
 		if (!manager) Start();
@@ -81,7 +82,8 @@ public class NavigationTask : ExperimentTask
 
 	public override void TASK_PAUSE() 
 	{
-		avatarLog.navLog = false;	
+		avatarLog.navLog = false;
+        if (isScaled) scaledAvatarLog.navLog = false;
 		//base.endTask();
 		log.log("TASK_PAUSE\t" + name + "\t" + this.GetType().Name + "\t" ,1 );
 		//avatarController.stop();
@@ -95,10 +97,10 @@ public class NavigationTask : ExperimentTask
 	{
 		base.endTask();
 		//avatarController.stop();
-		avatarLog.navLog = false;	
+		avatarLog.navLog = false;
+        if (isScaled) scaledAvatarLog.navLog = false;
 
-
-		if (canIncrementLists) 
+        if (canIncrementLists) 
 		{
 			destinations.incrementCurrent();
 		}
