@@ -76,9 +76,9 @@ public class HUD : MonoBehaviour
 	public void Awake()
 	{
 		SecondsToShow = GeneralDuration;
-		Debug.Log ("Starting HUD.cs");
-		canvasName = Canvas.name;
-		Debug.Log ("Canvas Name: " + canvasName);
+		//Debug.Log ("Starting HUD.cs");
+		//canvasName = Canvas.name;
+		//Debug.Log ("Canvas Name: " + canvasName);
 	}
 	public void setMessage(string newMessage)
 	{
@@ -229,8 +229,10 @@ public class HUD : MonoBehaviour
 	    
 		// if time is up, temporarily make the message an empty string
 	    var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
-	    GameObject avatar = GameObject.FindWithTag("HUDtext");
+        GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
+	    //GameObject avatar = GameObject.FindWithTag("HUDtext");
 		Text canvas = avatar.GetComponent<Text> ();
+        Debug.Log(canvas.text);
 		canvas.text = hidemessage ? string.Empty : message; 
 		// if this happens, dim the background panel too
 		if (hidemessage) 

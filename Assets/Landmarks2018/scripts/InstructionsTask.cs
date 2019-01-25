@@ -64,9 +64,9 @@ public class InstructionsTask : ExperimentTask {
 		}
        			
     	GameObject sgo = new GameObject("Instruction Display");
-    		
-		GameObject avatar = GameObject.FindWithTag("HUDtext");
-		Text canvas = avatar.GetComponent<Text> ();
+
+        GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
+        Text canvas = avatar.GetComponent<Text> ();
 		hud.SecondsToShow = hud.InstructionDuration;
 
     		
@@ -146,9 +146,9 @@ public class InstructionsTask : ExperimentTask {
 
 		}
 
-		// MJS 05/02/2018 - commented out. No apparent function (throws error); see HUD line 222
-		GameObject avatar = GameObject.FindWithTag("HUDtext");
-		Text canvas = avatar.GetComponent<Text>();
+        // MJS 05/02/2018 - commented out. No apparent function (throws error); see HUD line 222
+        GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
+        Text canvas = avatar.GetComponent<Text>();
 		string nullstring = null;
 		canvas.text = nullstring;
 //			StartCoroutine(storesInactive());
