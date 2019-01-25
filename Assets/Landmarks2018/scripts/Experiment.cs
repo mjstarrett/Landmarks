@@ -45,9 +45,6 @@ public class Experiment : MonoBehaviour {
 	public Camera overheadCamera;
     public GameObject scaledPlayer;
 
-	public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
-	public GameObject debugButton; // button that can be used to force continue in debug mode;
-
 	[HideInInspector] public dbLog dblog;
 	
 	

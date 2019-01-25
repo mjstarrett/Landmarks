@@ -18,6 +18,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class HUD : MonoBehaviour 
 {
@@ -33,8 +34,10 @@ public class HUD : MonoBehaviour
 	public float hudPanelON = 0.95f; // set the opacity when on
 	public float hudPanelOFF = 0f; // set the opacity when off
 	private string canvasName;
+    public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
+    public GameObject debugButton; // button that can be used to force continue in debug mode;
 
-	public Camera[] cam;
+    public Camera[] cam;
 	public int hudLayer = 30;
 	public Color statusColor;
 	public Font hudFont;
@@ -231,9 +234,10 @@ public class HUD : MonoBehaviour
 	    var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
 	    //GameObject avatar = GameObject.FindWithTag("HUDtext");
-		Text canvas = avatar.GetComponent<Text> ();
+		TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI> ();
         Debug.Log(canvas.text);
-		canvas.text = hidemessage ? string.Empty : message; 
+        canvas.text = hidemessage ? string.Empty : message;
+
 		// if this happens, dim the background panel too
 		if (hidemessage) 
 		{

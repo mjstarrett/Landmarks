@@ -18,6 +18,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
+using TMPro;
 
 public class InstructionsTask : ExperimentTask {
 	
@@ -66,8 +67,8 @@ public class InstructionsTask : ExperimentTask {
     	GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-        Text canvas = avatar.GetComponent<Text> ();
-		hud.SecondsToShow = hud.InstructionDuration;
+        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        hud.SecondsToShow = hud.InstructionDuration;
 
     		
 		sgo.AddComponent<GUIText>();
@@ -148,7 +149,7 @@ public class InstructionsTask : ExperimentTask {
 
         // MJS 05/02/2018 - commented out. No apparent function (throws error); see HUD line 222
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-        Text canvas = avatar.GetComponent<Text>();
+        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
 		string nullstring = null;
 		canvas.text = nullstring;
 //			StartCoroutine(storesInactive());

@@ -136,7 +136,7 @@ public class ScoreMapTest : ExperimentTask {
 
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<Text> ().text = progressionText;
-		manager.actionButton.SetActive(true);
+		hud.actionButton.SetActive(true);
 		actionButton.onClick.AddListener (OnActionClick);
 	}
 
@@ -211,7 +211,7 @@ public class ScoreMapTest : ExperimentTask {
 
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);
-		manager.actionButton.SetActive(false);
+		hud.actionButton.SetActive(false);
 
 		// -------------------------------
 		// Prep the Target Object States

@@ -86,8 +86,8 @@ public class ExperimentTask : MonoBehaviour{
             scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
         }
 
-        debugButton = manager.debugButton.GetComponent<Button> ();
-		actionButton = manager.actionButton.GetComponent<Button> ();
+        debugButton = hud.debugButton.GetComponent<Button>();
+        actionButton = hud.actionButton.GetComponent<Button>();
 
 		// Start listening for debug skips
 		debugButton.onClick.AddListener (onDebugClick);
