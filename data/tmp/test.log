@@ -1,833 +1,611 @@
-63683854881203	TASK_START	LM_Timeline	TaskList
-63683854881204	TASK_START	InitializeExperiment	TaskList
-63683854881204	TASK_START	PlaceTargets	TaskList
-63683854881205	TASK_START	ListHighlightObjects	StoreList
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight01	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight02	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight03	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight04	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight05	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight06	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight07	null
-63683854881206	TASK_ADD	ListHighlightObjects	StoreList	Highlight08	null
-63683854881218	TASK_END	ListHighlightObjects	StoreList	13
-63683854881219	TASK_START	ListTargetPlaceholders	TransformList
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target01	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target02	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target03	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target04	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target05	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target06	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target07	null
-63683854881219	TASK_ADD	ListTargetPlaceholders	TransformList	Target08	null
-63683854881246	TASK_END	ListTargetPlaceholders	TransformList	27
-63683854881246	TASK_START	PopulateHighlightObjects	PopulateTargets
-63683854881248	Object: 	Highlight01	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
-63683854881249	Object: 	Highlight02	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
-63683854881250	Object: 	Highlight03	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
-63683854881251	Object: 	Highlight04	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
-63683854881252	Object: 	Highlight05	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
-63683854881253	Object: 	Highlight06	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
-63683854881254	Object: 	Highlight07	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
-63683854881255	Object: 	Highlight08	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
-63683854881598	TASK_END	PopulateHighlightObjects	PopulateTargets	352
-63683854881599	TASK_START	ListTargets	StoreList
-63683854881599	TASK_ADD	ListTargets	StoreList	Computer Shop	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Green Grocer	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Hair Dresser	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Ice Cream Shop	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Pet Shop	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Pharmacy	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Repair Shop	null
-63683854881599	TASK_ADD	ListTargets	StoreList	Toy Shop	null
-63683854881625	TASK_END	ListTargets	StoreList	26
-63683854881626	TASK_START	ListTargetLocations	TransformList
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target01	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target02	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target03	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target04	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target05	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target06	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target07	null
-63683854881626	TASK_ADD	ListTargetLocations	TransformList	Target08	null
-63683854881631	TASK_END	ListTargetLocations	TransformList	5
-63683854881631	TASK_START	PopulateTargets	PopulateTargets
-63683854881632	Object: 	Computer Shop	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
-63683854881633	Object: 	Green Grocer	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
-63683854881634	Object: 	Hair Dresser	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
-63683854881636	Object: 	Ice Cream Shop	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
-63683854881637	Object: 	Pet Shop	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
-63683854881637	Object: 	Pharmacy	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
-63683854881638	Object: 	Repair Shop	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
-63683854881639	Object: 	Toy Shop	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
-63683854881644	TASK_END	PopulateTargets	PopulateTargets	13
-63683854881644	TASK_END	PlaceTargets	TaskList	440
-63683854881644	TASK_END	InitializeExperiment	TaskList	440
-63683854881644	TASK_START	BeginMessage	InstructionsTask
-63683854887573	INPUT_EVENT	clear text	1
-63683854887573	TASK_END	BeginMessage	InstructionsTask	5929
-63683854887574	TASK_START	Tasks	TaskList
-63683854887574	TASK_START	PracticeTaskLoop	TaskList
-63683854887579	TASK_END	PracticeTaskLoop	TaskList	5
-63683854887580	TASK_START	PreTasksLoop	TaskList
-63683854887580	TASK_START	MapTask	TaskList
-63683854887581	TASK_START	MapStudyInstructions	InstructionsTask
-63683854888703	INPUT_EVENT	clear text	1
-63683854888704	TASK_END	MapStudyInstructions	InstructionsTask	1123
-63683854888704	TASK_START	MapStudy	MapStudyTask
-63683854890519	Mouseover 	Repair Shop
-63683854890527	Mouseover 	Repair Shop
-63683854890535	Mouseover 	Repair Shop
-63683854890539	Mouseover 	Repair Shop
-63683854890556	Mouseover 	Repair Shop
-63683854890564	Mouseover 	Repair Shop
-63683854890571	Mouseover 	Repair Shop
-63683854890575	Mouseover 	Repair Shop
-63683854890588	Mouseover 	Repair Shop
-63683854890591	Mouseover 	Repair Shop
-63683854890603	Mouseover 	Repair Shop
-63683854890607	Mouseover 	Repair Shop
-63683854890619	Mouseover 	Repair Shop
-63683854890623	Mouseover 	Repair Shop
-63683854890635	Mouseover 	Repair Shop
-63683854890639	Mouseover 	Repair Shop
-63683854890656	Mouseover 	Repair Shop
-63683854890659	Mouseover 	Repair Shop
-63683854890672	Mouseover 	Repair Shop
-63683854890675	Mouseover 	Repair Shop
-63683854890688	Mouseover 	Repair Shop
-63683854890691	Mouseover 	Repair Shop
-63683854890704	Mouseover 	Repair Shop
-63683854890707	Mouseover 	Repair Shop
-63683854890719	Mouseover 	Repair Shop
-63683854890723	Mouseover 	Repair Shop
-63683854890735	Mouseover 	Repair Shop
-63683854890739	Mouseover 	Repair Shop
-63683854890755	Mouseover 	Repair Shop
-63683854890759	Mouseover 	Repair Shop
-63683854890951	Mouseover 	Ice Cream Shop
-63683854890955	Mouseover 	Ice Cream Shop
-63683854890972	Mouseover 	Ice Cream Shop
-63683854890975	Mouseover 	Ice Cream Shop
-63683854890987	Mouseover 	Ice Cream Shop
-63683854890991	Mouseover 	Ice Cream Shop
-63683854891004	Mouseover 	Ice Cream Shop
-63683854891007	Mouseover 	Ice Cream Shop
-63683854891019	Mouseover 	Ice Cream Shop
-63683854891024	Mouseover 	Ice Cream Shop
-63683854891035	Mouseover 	Ice Cream Shop
-63683854891039	Mouseover 	Ice Cream Shop
-63683854891056	Mouseover 	Ice Cream Shop
-63683854891059	Mouseover 	Ice Cream Shop
-63683854891072	Mouseover 	Ice Cream Shop
-63683854891075	Mouseover 	Ice Cream Shop
-63683854891088	Mouseover 	Ice Cream Shop
-63683854891091	Mouseover 	Ice Cream Shop
-63683854891104	Mouseover 	Ice Cream Shop
-63683854891107	Mouseover 	Ice Cream Shop
-63683854891119	Mouseover 	Ice Cream Shop
-63683854891124	Mouseover 	Ice Cream Shop
-63683854891139	Mouseover 	Ice Cream Shop
-63683854891143	Mouseover 	Ice Cream Shop
-63683854891155	Mouseover 	Ice Cream Shop
-63683854891159	Mouseover 	Ice Cream Shop
-63683854891171	Mouseover 	Ice Cream Shop
-63683854891175	Mouseover 	Ice Cream Shop
-63683854891187	Mouseover 	Ice Cream Shop
-63683854891191	Mouseover 	Ice Cream Shop
-63683854891203	Mouseover 	Ice Cream Shop
-63683854891207	Mouseover 	Ice Cream Shop
-63683854891219	Mouseover 	Ice Cream Shop
-63683854891223	Mouseover 	Ice Cream Shop
-63683854891235	Mouseover 	Ice Cream Shop
-63683854891239	Mouseover 	Ice Cream Shop
-63683854891256	Mouseover 	Ice Cream Shop
-63683854891259	Mouseover 	Ice Cream Shop
-63683854891272	Mouseover 	Ice Cream Shop
-63683854891275	Mouseover 	Ice Cream Shop
-63683854891523	Mouseover 	Toy Shop
-63683854891539	Mouseover 	Toy Shop
-63683854891543	Mouseover 	Toy Shop
-63683854891555	Mouseover 	Toy Shop
-63683854891559	Mouseover 	Toy Shop
-63683854891572	Mouseover 	Toy Shop
-63683854891575	Mouseover 	Toy Shop
-63683854891588	Mouseover 	Toy Shop
-63683854891591	Mouseover 	Toy Shop
-63683854891603	Mouseover 	Toy Shop
-63683854891607	Mouseover 	Toy Shop
-63683854891619	Mouseover 	Toy Shop
-63683854891628	Mouseover 	Toy Shop
-63683854891635	Mouseover 	Toy Shop
-63683854891639	Mouseover 	Toy Shop
-63683854891656	Mouseover 	Toy Shop
-63683854891659	Mouseover 	Toy Shop
-63683854891672	Mouseover 	Toy Shop
-63683854891675	Mouseover 	Toy Shop
-63683854891688	Mouseover 	Toy Shop
-63683854891691	Mouseover 	Toy Shop
-63683854891704	Mouseover 	Toy Shop
-63683854891707	Mouseover 	Toy Shop
-63683854891719	Mouseover 	Toy Shop
-63683854891723	Mouseover 	Toy Shop
-63683854891740	Mouseover 	Toy Shop
-63683854891743	Mouseover 	Toy Shop
-63683854891755	Mouseover 	Toy Shop
-63683854891759	Mouseover 	Toy Shop
-63683854891772	Mouseover 	Toy Shop
-63683854891775	Mouseover 	Toy Shop
-63683854891787	Mouseover 	Toy Shop
-63683854891791	Mouseover 	Toy Shop
-63683854892004	Mouseover 	Hair Dresser
-63683854892007	Mouseover 	Hair Dresser
-63683854892019	Mouseover 	Hair Dresser
-63683854892023	Mouseover 	Hair Dresser
-63683854892039	Mouseover 	Hair Dresser
-63683854892044	Mouseover 	Hair Dresser
-63683854892055	Mouseover 	Hair Dresser
-63683854892059	Mouseover 	Hair Dresser
-63683854892072	Mouseover 	Hair Dresser
-63683854892075	Mouseover 	Hair Dresser
-63683854892088	Mouseover 	Hair Dresser
-63683854892091	Mouseover 	Hair Dresser
-63683854892104	Mouseover 	Hair Dresser
-63683854892107	Mouseover 	Hair Dresser
-63683854892119	Mouseover 	Hair Dresser
-63683854892124	Mouseover 	Hair Dresser
-63683854892139	Mouseover 	Hair Dresser
-63683854892143	Mouseover 	Hair Dresser
-63683854892155	Mouseover 	Hair Dresser
-63683854892159	Mouseover 	Hair Dresser
-63683854892172	Mouseover 	Hair Dresser
-63683854892175	Mouseover 	Hair Dresser
-63683854892188	Mouseover 	Hair Dresser
-63683854892191	Mouseover 	Hair Dresser
-63683854892204	Mouseover 	Hair Dresser
-63683854892207	Mouseover 	Hair Dresser
-63683854892219	Mouseover 	Hair Dresser
-63683854892223	Mouseover 	Hair Dresser
-63683854892239	Mouseover 	Hair Dresser
-63683854892243	Mouseover 	Hair Dresser
-63683854892255	Mouseover 	Hair Dresser
-63683854892259	Mouseover 	Hair Dresser
-63683854892272	Mouseover 	Hair Dresser
-63683854893057	TASK_END	MapStudy	MapStudyTask	4353
-63683854893058	TASK_START	CopyObjects	CopyChildObjects
-63683854893068	TASK_END	CopyObjects	CopyChildObjects	10
-63683854893069	TASK_START	MapTestInstructions	InstructionsTask
-63683854893935	INPUT_EVENT	clear text	1
-63683854893936	TASK_END	MapTestInstructions	InstructionsTask	867
-63683854893937	TASK_START	MapTest	MapTestTask
-63683854895740	Moving :	Computer Shop	Position (xyz): 	107.7384	0.1999893	-9.626083	Rotation (xyz): 	270	90	0
-63683854895743	Moving :	Computer Shop	Position (xyz): 	107.7384	0.1999893	-9.626083	Rotation (xyz): 	270	90	0
-63683854895755	Moving :	Computer Shop	Position (xyz): 	107.6847	0.2000046	-9.500473	Rotation (xyz): 	270	90	0
-63683854895759	Moving :	Computer Shop	Position (xyz): 	107.6847	0.2000046	-9.500473	Rotation (xyz): 	270	90	0
-63683854895772	Moving :	Computer Shop	Position (xyz): 	107.472	0.1999969	-8.506943	Rotation (xyz): 	270	90	0
-63683854895780	Moving :	Computer Shop	Position (xyz): 	107.2173	0.1999969	-6.980614	Rotation (xyz): 	270	90	0
-63683854895788	Moving :	Computer Shop	Position (xyz): 	106.6326	0.1999969	-2.944595	Rotation (xyz): 	270	90	0
-63683854895795	Moving :	Computer Shop	Position (xyz): 	105.1741	0.1999969	5.350334	Rotation (xyz): 	270	90	0
-63683854895804	Moving :	Computer Shop	Position (xyz): 	105.1741	0.1999969	5.350334	Rotation (xyz): 	270	90	0
-63683854895812	Moving :	Computer Shop	Position (xyz): 	104.4362	0.1999969	9.646072	Rotation (xyz): 	270	90	0
-63683854895820	Moving :	Computer Shop	Position (xyz): 	102.656	0.2000046	18.45362	Rotation (xyz): 	270	90	0
-63683854895824	Moving :	Computer Shop	Position (xyz): 	102.656	0.2000046	18.45362	Rotation (xyz): 	270	90	0
-63683854895835	Moving :	Computer Shop	Position (xyz): 	100.9899	0.1999969	24.48679	Rotation (xyz): 	270	90	0
-63683854895840	Moving :	Computer Shop	Position (xyz): 	100.9899	0.1999969	24.48679	Rotation (xyz): 	270	90	0
-63683854895856	Moving :	Computer Shop	Position (xyz): 	94.80846	0.1999969	40.81357	Rotation (xyz): 	270	90	0
-63683854895864	Moving :	Computer Shop	Position (xyz): 	91.53722	0.1999969	47.97759	Rotation (xyz): 	270	90	0
-63683854895872	Moving :	Computer Shop	Position (xyz): 	91.53722	0.1999969	47.97759	Rotation (xyz): 	270	90	0
-63683854895875	Moving :	Computer Shop	Position (xyz): 	86.65175	0.1999969	57.95792	Rotation (xyz): 	270	90	0
-63683854895888	Moving :	Computer Shop	Position (xyz): 	83.54805	0.1999969	63.83859	Rotation (xyz): 	270	90	0
-63683854895891	Moving :	Computer Shop	Position (xyz): 	83.54805	0.1999969	63.83859	Rotation (xyz): 	270	90	0
-63683854895904	Moving :	Computer Shop	Position (xyz): 	79.48269	0.1999969	70.24035	Rotation (xyz): 	270	90	0
-63683854895912	Moving :	Computer Shop	Position (xyz): 	77.59705	0.1999969	72.64117	Rotation (xyz): 	270	90	0
-63683854895919	Moving :	Computer Shop	Position (xyz): 	75.80269	0.1999969	74.70694	Rotation (xyz): 	270	90	0
-63683854895924	Moving :	Computer Shop	Position (xyz): 	75.80269	0.1999969	74.70694	Rotation (xyz): 	270	90	0
-63683854895940	Moving :	Computer Shop	Position (xyz): 	75.09396	0.1999969	75.4173	Rotation (xyz): 	270	90	0
-63683854895948	Moving :	Computer Shop	Position (xyz): 	74.70444	0.1999969	75.80767	Rotation (xyz): 	270	90	0
-63683854895955	Moving :	Computer Shop	Position (xyz): 	74.27808	0.1999969	76.3572	Rotation (xyz): 	270	90	0
-63683854895959	Moving :	Computer Shop	Position (xyz): 	74.27808	0.1999969	76.3572	Rotation (xyz): 	270	90	0
-63683854895972	Moving :	Computer Shop	Position (xyz): 	73.99995	0.1999969	76.8297	Rotation (xyz): 	270	90	0
-63683854895975	Moving :	Computer Shop	Position (xyz): 	73.51156	0.1999969	77.88184	Rotation (xyz): 	270	90	0
-63683854895988	Moving :	Computer Shop	Position (xyz): 	73.15805	0.1999969	78.84015	Rotation (xyz): 	270	90	0
-63683854895995	Moving :	Computer Shop	Position (xyz): 	73.15805	0.1999969	78.84015	Rotation (xyz): 	270	90	0
-63683854896004	Moving :	Computer Shop	Position (xyz): 	72.51218	0.1999969	80.97797	Rotation (xyz): 	270	90	0
-63683854896011	Moving :	Computer Shop	Position (xyz): 	71.97522	0.1999969	83.03036	Rotation (xyz): 	270	90	0
-63683854896019	Moving :	Computer Shop	Position (xyz): 	71.97522	0.1999969	83.03036	Rotation (xyz): 	270	90	0
-63683854896024	Moving :	Computer Shop	Position (xyz): 	71.51868	0.1999969	86.05949	Rotation (xyz): 	270	90	0
-63683854896040	Moving :	Computer Shop	Position (xyz): 	70.98673	0.1999969	91.6838	Rotation (xyz): 	270	90	0
-63683854896043	Moving :	Computer Shop	Position (xyz): 	70.67178	0.1999969	95.46018	Rotation (xyz): 	270	90	0
-63683854896056	Moving :	Computer Shop	Position (xyz): 	70.19174	0.1999969	101.7932	Rotation (xyz): 	270	90	0
-63683854896059	Moving :	Computer Shop	Position (xyz): 	70.19174	0.1999969	101.7932	Rotation (xyz): 	270	90	0
-63683854896072	Moving :	Computer Shop	Position (xyz): 	69.99407	0.1999969	105.9582	Rotation (xyz): 	270	90	0
-63683854896080	Moving :	Computer Shop	Position (xyz): 	69.91614	0.1999969	112.0081	Rotation (xyz): 	270	90	0
-63683854896088	Moving :	Computer Shop	Position (xyz): 	69.91614	0.1999969	115.9135	Rotation (xyz): 	270	90	0
-63683854896091	Moving :	Computer Shop	Position (xyz): 	69.91614	0.1999969	115.9135	Rotation (xyz): 	270	90	0
-63683854896104	Moving :	Computer Shop	Position (xyz): 	69.98819	0.1999969	120.8593	Rotation (xyz): 	270	90	0
-63683854896107	Moving :	Computer Shop	Position (xyz): 	69.98819	0.1999969	120.8593	Rotation (xyz): 	270	90	0
-63683854896119	Moving :	Computer Shop	Position (xyz): 	70.20599	0.1999969	123.5784	Rotation (xyz): 	270	90	0
-63683854896124	Moving :	Computer Shop	Position (xyz): 	70.3551	0.1999969	125.7665	Rotation (xyz): 	270	90	0
-63683854896140	Moving :	Computer Shop	Position (xyz): 	70.52182	0.1999969	128.5895	Rotation (xyz): 	270	90	0
-63683854896148	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	130.1159	Rotation (xyz): 	270	90	0
-63683854896155	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	131.5751	Rotation (xyz): 	270	90	0
-63683854896159	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	131.5751	Rotation (xyz): 	270	90	0
-63683854896172	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	132.247	Rotation (xyz): 	270	90	0
-63683854896180	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	132.9707	Rotation (xyz): 	270	90	0
-63683854896188	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	132.9707	Rotation (xyz): 	270	90	0
-63683854896191	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	133.4616	Rotation (xyz): 	270	90	0
-63683854896204	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	133.914	Rotation (xyz): 	270	90	0
-63683854896211	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	133.914	Rotation (xyz): 	270	90	0
-63683854896219	Moving :	Computer Shop	Position (xyz): 	70.56538	0.1999969	134.482	Rotation (xyz): 	270	90	0
-63683854896224	Moving :	Computer Shop	Position (xyz): 	70.54529	0.1999969	134.6612	Rotation (xyz): 	270	90	0
-63683854896236	Moving :	Computer Shop	Position (xyz): 	70.45646	0.1999969	134.7517	Rotation (xyz): 	270	90	0
-63683854896239	Moving :	Computer Shop	Position (xyz): 	70.45646	0.1999969	134.7517	Rotation (xyz): 	270	90	0
-63683854896257	Moving :	Computer Shop	Position (xyz): 	70.35763	0.1999969	134.802	Rotation (xyz): 	270	90	0
-63683854896264	Moving :	Computer Shop	Position (xyz): 	70.23197	0.1999969	134.8555	Rotation (xyz): 	270	90	0
-63683854896272	Moving :	Computer Shop	Position (xyz): 	70.10632	0.1999969	134.8555	Rotation (xyz): 	270	90	0
-63683854896275	Moving :	Computer Shop	Position (xyz): 	70.10632	0.1999969	134.8555	Rotation (xyz): 	270	90	0
-63683854896288	Moving :	Computer Shop	Position (xyz): 	69.98067	0.1999969	134.8555	Rotation (xyz): 	270	90	0
-63683854896296	Moving :	Computer Shop	Position (xyz): 	69.80222	0.1999969	134.8354	Rotation (xyz): 	270	90	0
-63683854896304	Moving :	Computer Shop	Position (xyz): 	69.41521	0.1999969	134.6813	Rotation (xyz): 	270	90	0
-63683854896311	Moving :	Computer Shop	Position (xyz): 	69.41521	0.1999969	134.6813	Rotation (xyz): 	270	90	0
-63683854896319	Moving :	Computer Shop	Position (xyz): 	68.95279	0.1999969	134.4903	Rotation (xyz): 	270	90	0
-63683854896324	Moving :	Computer Shop	Position (xyz): 	68.95279	0.1999969	134.4903	Rotation (xyz): 	270	90	0
-63683854896340	Moving :	Computer Shop	Position (xyz): 	67.65267	0.1999969	133.8687	Rotation (xyz): 	270	90	0
-63683854896348	Moving :	Computer Shop	Position (xyz): 	67.06295	0.1999969	133.6024	Rotation (xyz): 	270	90	0
-63683854896351	Moving :	Computer Shop	Position (xyz): 	67.06295	0.1999969	133.6024	Rotation (xyz): 	270	90	0
-63683854896355	Moving :	Computer Shop	Position (xyz): 	67.06295	0.1999969	133.6024	Rotation (xyz): 	270	90	0
-63683854896372	Moving :	Computer Shop	Position (xyz): 	65.80386	0.1999969	133.212	Rotation (xyz): 	270	90	0
-63683854896380	Moving :	Computer Shop	Position (xyz): 	65.80386	0.1999969	133.212	Rotation (xyz): 	270	90	0
-63683854896388	Moving :	Computer Shop	Position (xyz): 	64.04973	0.1999969	133.078	Rotation (xyz): 	270	90	0
-63683854896391	Moving :	Computer Shop	Position (xyz): 	64.04973	0.1999969	133.078	Rotation (xyz): 	270	90	0
-63683854896404	Moving :	Computer Shop	Position (xyz): 	61.7762	0.1999969	133.078	Rotation (xyz): 	270	90	0
-63683854896407	Moving :	Computer Shop	Position (xyz): 	61.7762	0.1999969	133.078	Rotation (xyz): 	270	90	0
-63683854896419	Moving :	Computer Shop	Position (xyz): 	55.51438	0.1999969	133.4784	Rotation (xyz): 	270	90	0
-63683854896423	Moving :	Computer Shop	Position (xyz): 	55.51438	0.1999969	133.4784	Rotation (xyz): 	270	90	0
-63683854896436	Moving :	Computer Shop	Position (xyz): 	50.17403	0.1999969	133.7766	Rotation (xyz): 	270	90	0
-63683854896439	Moving :	Computer Shop	Position (xyz): 	46.83749	0.1999969	133.8369	Rotation (xyz): 	270	90	0
-63683854896456	Moving :	Computer Shop	Position (xyz): 	42.28292	0.1999969	133.9056	Rotation (xyz): 	270	90	0
-63683854896459	Moving :	Computer Shop	Position (xyz): 	39.25545	0.1999969	133.9056	Rotation (xyz): 	270	90	0
-63683854896472	Moving :	Computer Shop	Position (xyz): 	35.71367	0.1999969	133.9676	Rotation (xyz): 	270	90	0
-63683854896475	Moving :	Computer Shop	Position (xyz): 	35.71367	0.1999969	133.9676	Rotation (xyz): 	270	90	0
-63683854896488	Moving :	Computer Shop	Position (xyz): 	33.43931	0.1999969	134.12	Rotation (xyz): 	270	90	0
-63683854896491	Moving :	Computer Shop	Position (xyz): 	33.43931	0.1999969	134.12	Rotation (xyz): 	270	90	0
-63683854896504	Moving :	Computer Shop	Position (xyz): 	27.3844	0.1999969	135.0901	Rotation (xyz): 	270	90	0
-63683854896512	Moving :	Computer Shop	Position (xyz): 	27.3844	0.1999969	135.0901	Rotation (xyz): 	270	90	0
-63683854896519	Moving :	Computer Shop	Position (xyz): 	25.1963	0.1999969	135.5375	Rotation (xyz): 	270	90	0
-63683854896523	Moving :	Computer Shop	Position (xyz): 	25.1963	0.1999969	135.5375	Rotation (xyz): 	270	90	0
-63683854896536	Moving :	Computer Shop	Position (xyz): 	22.43022	0.1999969	136.2009	Rotation (xyz): 	270	90	0
-63683854896544	Moving :	Computer Shop	Position (xyz): 	20.80678	0.1999969	136.5963	Rotation (xyz): 	270	90	0
-63683854896556	Moving :	Computer Shop	Position (xyz): 	18.75523	0.2000046	137.0855	Rotation (xyz): 	270	90	0
-63683854896559	Moving :	Computer Shop	Position (xyz): 	18.75523	0.2000046	137.0855	Rotation (xyz): 	270	90	0
-63683854896573	Moving :	Computer Shop	Position (xyz): 	15.60798	0.1999893	137.7339	Rotation (xyz): 	270	90	0
-63683854896580	Moving :	Computer Shop	Position (xyz): 	15.60798	0.1999893	137.7339	Rotation (xyz): 	270	90	0
-63683854896588	Moving :	Computer Shop	Position (xyz): 	14.4151	0.2000046	137.888	Rotation (xyz): 	270	90	0
-63683854896595	Moving :	Computer Shop	Position (xyz): 	13.08903	0.1999893	137.9283	Rotation (xyz): 	270	90	0
-63683854896604	Moving :	Computer Shop	Position (xyz): 	13.08903	0.1999893	137.9283	Rotation (xyz): 	270	90	0
-63683854896612	Moving :	Computer Shop	Position (xyz): 	12.15835	0.1999969	137.9283	Rotation (xyz): 	270	90	0
-63683854896619	Moving :	Computer Shop	Position (xyz): 	11.22766	0.1999969	137.9283	Rotation (xyz): 	270	90	0
-63683854896623	Moving :	Computer Shop	Position (xyz): 	11.22766	0.1999969	137.9283	Rotation (xyz): 	270	90	0
-63683854896640	Moving :	Computer Shop	Position (xyz): 	9.677914	0.1999969	137.9617	Rotation (xyz): 	270	90	0
-63683854896644	Moving :	Computer Shop	Position (xyz): 	9.677914	0.1999969	137.9617	Rotation (xyz): 	270	90	0
-63683854896656	Moving :	Computer Shop	Position (xyz): 	8.851105	0.1999969	137.9299	Rotation (xyz): 	270	90	0
-63683854896659	Moving :	Computer Shop	Position (xyz): 	8.851105	0.1999969	137.9299	Rotation (xyz): 	270	90	0
-63683854896672	Moving :	Computer Shop	Position (xyz): 	8.180088	0.1999969	137.8998	Rotation (xyz): 	270	90	0
-63683854896679	Moving :	Computer Shop	Position (xyz): 	7.249405	0.1999969	137.8311	Rotation (xyz): 	270	90	0
-63683854896688	Moving :	Computer Shop	Position (xyz): 	6.630337	0.1999893	137.7724	Rotation (xyz): 	270	90	0
-63683854896695	Moving :	Computer Shop	Position (xyz): 	6.062401	0.1999969	137.687	Rotation (xyz): 	270	90	0
-63683854896704	Moving :	Computer Shop	Position (xyz): 	6.062401	0.1999969	137.687	Rotation (xyz): 	270	90	0
-63683854896711	Moving :	Computer Shop	Position (xyz): 	5.803532	0.2000046	137.687	Rotation (xyz): 	270	90	0
-63683854896719	Moving :	Computer Shop	Position (xyz): 	5.571484	0.1999969	137.687	Rotation (xyz): 	270	90	0
-63683854896723	Moving :	Computer Shop	Position (xyz): 	5.571484	0.1999969	137.687	Rotation (xyz): 	270	90	0
-63683854896735	Moving :	Computer Shop	Position (xyz): 	5.489384	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896739	Moving :	Computer Shop	Position (xyz): 	5.489384	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896756	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896764	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896771	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896775	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896787	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896791	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896804	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896807	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896819	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896823	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896839	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896843	Moving :	Computer Shop	Position (xyz): 	5.473492	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896856	Moving :	Computer Shop	Position (xyz): 	5.490227	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896859	Moving :	Computer Shop	Position (xyz): 	5.490227	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896872	Moving :	Computer Shop	Position (xyz): 	5.616714	0.1999893	137.6703	Rotation (xyz): 	270	90	0
-63683854896880	Moving :	Computer Shop	Position (xyz): 	5.716431	0.2000046	137.6703	Rotation (xyz): 	270	90	0
-63683854896888	Moving :	Computer Shop	Position (xyz): 	5.869705	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896891	Moving :	Computer Shop	Position (xyz): 	5.869705	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896904	Moving :	Computer Shop	Position (xyz): 	5.96941	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896907	Moving :	Computer Shop	Position (xyz): 	5.96941	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896919	Moving :	Computer Shop	Position (xyz): 	6.122696	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896924	Moving :	Computer Shop	Position (xyz): 	6.1889	0.1999969	137.6703	Rotation (xyz): 	270	90	0
-63683854896940	Moving :	Computer Shop	Position (xyz): 	6.255066	0.1999893	137.6703	Rotation (xyz): 	270	90	0
-63683854896943	Moving :	Computer Shop	Position (xyz): 	6.35474	0.1999893	137.6703	Rotation (xyz): 	270	90	0
-63683854896956	Moving :	Computer Shop	Position (xyz): 	6.42091	0.1999969	137.6887	Rotation (xyz): 	270	90	0
-63683854896959	Moving :	Computer Shop	Position (xyz): 	6.42091	0.1999969	137.6887	Rotation (xyz): 	270	90	0
-63683854896972	Moving :	Computer Shop	Position (xyz): 	6.520622	0.1999969	137.6887	Rotation (xyz): 	270	90	0
-63683854896975	Moving :	Computer Shop	Position (xyz): 	6.520622	0.1999969	137.6887	Rotation (xyz): 	270	90	0
-63683854896988	Moving :	Computer Shop	Position (xyz): 	6.63623	0.1999969	137.7054	Rotation (xyz): 	270	90	0
-63683854896996	Moving :	Computer Shop	Position (xyz): 	6.63623	0.1999969	137.7054	Rotation (xyz): 	270	90	0
-63683854897004	Moving :	Computer Shop	Position (xyz): 	6.669735	0.2000046	137.7054	Rotation (xyz): 	270	90	0
-63683854897007	Moving :	Computer Shop	Position (xyz): 	6.669735	0.2000046	137.7054	Rotation (xyz): 	270	90	0
-63683854897019	Moving :	Computer Shop	Position (xyz): 	6.703239	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897034	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897039	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897044	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897055	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897059	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897072	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897075	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897088	Moving :	Computer Shop	Position (xyz): 	6.736744	0.1999893	137.7221	Rotation (xyz): 	270	90	0
-63683854897096	Moving :	Computer Shop	Position (xyz): 	6.863232	0.1999969	137.759	Rotation (xyz): 	270	0	0
-63683854897104	Moving :	Computer Shop	Position (xyz): 	6.929409	0.1999969	137.7758	Rotation (xyz): 	270	0	0
-63683854897107	Moving :	Computer Shop	Position (xyz): 	6.929409	0.1999969	137.7758	Rotation (xyz): 	270	0	0
-63683854897119	Moving :	Computer Shop	Position (xyz): 	7.029076	0.1999893	137.7925	Rotation (xyz): 	270	0	0
-63683854897123	Moving :	Computer Shop	Position (xyz): 	7.078518	0.2000046	137.8093	Rotation (xyz): 	270	0	0
-63683854897140	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897146	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897155	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897159	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897172	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897175	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897187	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897191	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897203	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897207	Moving :	Computer Shop	Position (xyz): 	7.128792	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897219	Moving :	Computer Shop	Position (xyz): 	7.145519	0.1999969	137.8093	Rotation (xyz): 	270	0	0
-63683854897224	Moving :	Computer Shop	Position (xyz): 	7.145519	0.1999969	137.8093	Rotation (xyz): 	270	0	0
-63683854897235	Moving :	Computer Shop	Position (xyz): 	7.261971	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897239	Moving :	Computer Shop	Position (xyz): 	7.261971	0.1999893	137.8093	Rotation (xyz): 	270	0	0
-63683854897256	Moving :	Computer Shop	Position (xyz): 	7.295475	0.1999969	137.8093	Rotation (xyz): 	270	0	0
-63683854897264	Moving :	Computer Shop	Position (xyz): 	7.32814	0.2000046	137.8093	Rotation (xyz): 	270	0	0
-63683854897271	Moving :	Computer Shop	Position (xyz): 	7.345749	0.1999969	137.8093	Rotation (xyz): 	270	0	0
-63683854897275	Moving :	Computer Shop	Position (xyz): 	7.345749	0.1999969	137.8093	Rotation (xyz): 	270	0	0
-63683854897288	Moving :	Computer Shop	Position (xyz): 	7.362488	0.1999969	137.8277	Rotation (xyz): 	270	0	0
-63683854897291	Moving :	Computer Shop	Position (xyz): 	7.362488	0.1999969	137.8277	Rotation (xyz): 	270	0	0
-63683854897304	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897307	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897319	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897324	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897339	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897343	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897355	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897359	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897372	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897375	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897388	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897391	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897404	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897407	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897419	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897423	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897435	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897439	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897456	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897464	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897471	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897475	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897488	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897491	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897503	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897507	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897519	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897523	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897539	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897543	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897555	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897559	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897572	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897575	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897588	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897591	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897603	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897607	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897619	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897623	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897635	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897639	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897656	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897664	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897671	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897675	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897688	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897691	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897704	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897707	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897719	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897723	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897739	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897743	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897755	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897759	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897772	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897779	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897788	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897799	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897803	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897807	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897819	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897823	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897835	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897839	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897856	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897859	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897888	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	0	0
-63683854897895	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897904	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897907	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897935	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897939	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897956	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897964	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897971	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897975	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897988	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854897991	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898003	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898007	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898019	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898023	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898056	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898064	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898071	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898075	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898088	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898095	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898104	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898107	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898119	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898123	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898135	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898139	Moving :	Computer Shop	Position (xyz): 	7.380093	0.1999893	137.8277	Rotation (xyz): 	270	270	0
-63683854898173	Moving :	Computer Shop	Position (xyz): 	7.363323	0.1999969	137.7775	Rotation (xyz): 	270	270	0
-63683854898179	Moving :	Computer Shop	Position (xyz): 	7.363323	0.1999969	137.7775	Rotation (xyz): 	270	270	0
-63683854898188	Moving :	Computer Shop	Position (xyz): 	7.347431	0.1999969	137.7289	Rotation (xyz): 	270	270	0
-63683854898191	Moving :	Computer Shop	Position (xyz): 	7.347431	0.1999969	137.7289	Rotation (xyz): 	270	270	0
-63683854898204	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898211	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898219	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898223	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898235	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898239	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898256	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898264	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898271	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898275	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898288	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898291	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898319	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898323	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898352	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898355	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898372	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898375	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898388	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898395	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898404	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898407	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898419	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898423	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898435	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898439	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898451	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898455	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898472	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898475	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898488	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898491	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898504	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898507	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898519	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898524	Moving :	Computer Shop	Position (xyz): 	7.347435	0.1999969	137.6954	Rotation (xyz): 	270	270	0
-63683854898556	Moving :	Computer Shop	Position (xyz): 	7.449623	0.1999893	137.4893	Rotation (xyz): 	270	270	0
-63683854900008	Moving :	Green Grocer	Position (xyz): 	99.79865	0.2000046	-11.70866	Rotation (xyz): 	270	90	0
-63683854900019	Moving :	Green Grocer	Position (xyz): 	99.776	0.1999893	-11.41206	Rotation (xyz): 	270	90	0
-63683854900028	Moving :	Green Grocer	Position (xyz): 	99.72156	0.1999893	-10.9212	Rotation (xyz): 	270	90	0
-63683854900040	Moving :	Green Grocer	Position (xyz): 	99.69642	0.1999893	-10.50906	Rotation (xyz): 	270	90	0
-63683854900043	Moving :	Green Grocer	Position (xyz): 	99.69642	0.1999893	-10.50906	Rotation (xyz): 	270	90	0
-63683854900056	Moving :	Green Grocer	Position (xyz): 	99.62941	0.2000046	-9.629448	Rotation (xyz): 	270	90	0
-63683854900059	Moving :	Green Grocer	Position (xyz): 	99.59923	0.1999969	-8.957588	Rotation (xyz): 	270	90	0
-63683854900072	Moving :	Green Grocer	Position (xyz): 	99.56744	0.1999969	-8.181892	Rotation (xyz): 	270	90	0
-63683854900079	Moving :	Green Grocer	Position (xyz): 	99.56744	0.1999969	-8.181892	Rotation (xyz): 	270	90	0
-63683854900088	Moving :	Green Grocer	Position (xyz): 	99.50797	0.1999969	-7.561996	Rotation (xyz): 	270	90	0
-63683854900091	Moving :	Green Grocer	Position (xyz): 	99.50797	0.1999969	-7.561996	Rotation (xyz): 	270	90	0
-63683854900104	Moving :	Green Grocer	Position (xyz): 	99.47105	0.1999969	-6.436142	Rotation (xyz): 	270	90	0
-63683854900112	Moving :	Green Grocer	Position (xyz): 	99.43254	0.2000046	-5.176239	Rotation (xyz): 	270	90	0
-63683854900120	Moving :	Green Grocer	Position (xyz): 	99.358	0.1999969	-4.048698	Rotation (xyz): 	270	90	0
-63683854900123	Moving :	Green Grocer	Position (xyz): 	99.358	0.1999969	-4.048698	Rotation (xyz): 	270	90	0
-63683854900135	Moving :	Green Grocer	Position (xyz): 	99.25914	0.1999969	-1.860588	Rotation (xyz): 	270	90	0
-63683854900139	Moving :	Green Grocer	Position (xyz): 	99.16363	0.2000046	0.1532211	Rotation (xyz): 	270	90	0
-63683854900156	Moving :	Green Grocer	Position (xyz): 	99.06483	0.1999969	2.342987	Rotation (xyz): 	270	90	0
-63683854900164	Moving :	Green Grocer	Position (xyz): 	98.99446	0.1999893	3.334839	Rotation (xyz): 	270	90	0
-63683854900171	Moving :	Green Grocer	Position (xyz): 	98.99446	0.1999893	3.334839	Rotation (xyz): 	270	90	0
-63683854900175	Moving :	Green Grocer	Position (xyz): 	98.89807	0.1999969	4.110542	Rotation (xyz): 	270	90	0
-63683854900188	Moving :	Green Grocer	Position (xyz): 	98.8185	0.1999969	4.562881	Rotation (xyz): 	270	90	0
-63683854900191	Moving :	Green Grocer	Position (xyz): 	98.8185	0.1999969	4.562881	Rotation (xyz): 	270	90	0
-63683854900204	Moving :	Green Grocer	Position (xyz): 	98.73891	0.1999969	5.015213	Rotation (xyz): 	270	90	0
-63683854900212	Moving :	Green Grocer	Position (xyz): 	98.69792	0.2000046	5.221291	Rotation (xyz): 	270	90	0
-63683854900219	Moving :	Green Grocer	Position (xyz): 	98.67526	0.1999969	5.51783	Rotation (xyz): 	270	90	0
-63683854900223	Moving :	Green Grocer	Position (xyz): 	98.67526	0.1999969	5.51783	Rotation (xyz): 	270	90	0
-63683854900240	Moving :	Green Grocer	Position (xyz): 	98.61411	0.1999893	5.930038	Rotation (xyz): 	270	90	0
-63683854900248	Moving :	Green Grocer	Position (xyz): 	98.61411	0.1999893	5.930038	Rotation (xyz): 	270	90	0
-63683854900256	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900259	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900272	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900275	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900288	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900291	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900304	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900307	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900319	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900323	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900335	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900339	Moving :	Green Grocer	Position (xyz): 	98.59818	0.1999969	6.0121	Rotation (xyz): 	270	90	0
-63683854900356	Moving :	Green Grocer	Position (xyz): 	98.4985	0.1999969	6.452744	Rotation (xyz): 	270	90	0
-63683854900364	Moving :	Green Grocer	Position (xyz): 	98.43405	0.1999893	6.712379	Rotation (xyz): 	270	90	0
-63683854900372	Moving :	Green Grocer	Position (xyz): 	98.43405	0.1999893	6.712379	Rotation (xyz): 	270	90	0
-63683854900380	Moving :	Green Grocer	Position (xyz): 	98.35191	0.1999893	6.918457	Rotation (xyz): 	270	90	0
-63683854900388	Moving :	Green Grocer	Position (xyz): 	98.18438	0.1999969	7.230133	Rotation (xyz): 	270	90	0
-63683854900395	Moving :	Green Grocer	Position (xyz): 	98.18438	0.1999969	7.230133	Rotation (xyz): 	270	90	0
-63683854900404	Moving :	Green Grocer	Position (xyz): 	98.02522	0.1999969	7.503204	Rotation (xyz): 	270	90	0
-63683854900412	Moving :	Green Grocer	Position (xyz): 	97.90625	0.2000046	7.643959	Rotation (xyz): 	270	90	0
-63683854900419	Moving :	Green Grocer	Position (xyz): 	97.69514	0.2000046	7.771255	Rotation (xyz): 	270	90	0
-63683854900424	Moving :	Green Grocer	Position (xyz): 	97.69514	0.2000046	7.771255	Rotation (xyz): 	270	90	0
-63683854900440	Moving :	Green Grocer	Position (xyz): 	97.53598	0.1999969	7.87011	Rotation (xyz): 	270	90	0
-63683854900448	Moving :	Green Grocer	Position (xyz): 	97.1758	0.2000046	8.10302	Rotation (xyz): 	270	90	0
-63683854900455	Moving :	Green Grocer	Position (xyz): 	96.75108	0.1999893	8.262161	Rotation (xyz): 	270	90	0
-63683854900459	Moving :	Green Grocer	Position (xyz): 	96.75108	0.1999893	8.262161	Rotation (xyz): 	270	90	0
-63683854900472	Moving :	Green Grocer	Position (xyz): 	95.79357	0.1999969	8.547028	Rotation (xyz): 	270	90	0
-63683854900480	Moving :	Green Grocer	Position (xyz): 	94.6677	0.1999969	8.771507	Rotation (xyz): 	270	90	0
-63683854900488	Moving :	Green Grocer	Position (xyz): 	92.30708	0.1999893	9.029533	Rotation (xyz): 	270	90	0
-63683854900491	Moving :	Green Grocer	Position (xyz): 	92.30708	0.1999893	9.029533	Rotation (xyz): 	270	90	0
-63683854900504	Moving :	Green Grocer	Position (xyz): 	89.86015	0.2000046	9.187012	Rotation (xyz): 	270	90	0
-63683854900512	Moving :	Green Grocer	Position (xyz): 	85.56526	0.1999893	9.321022	Rotation (xyz): 	270	90	0
-63683854900519	Moving :	Green Grocer	Position (xyz): 	85.56526	0.1999893	9.321022	Rotation (xyz): 	270	90	0
-63683854900524	Moving :	Green Grocer	Position (xyz): 	82.02345	0.1999893	9.505325	Rotation (xyz): 	270	90	0
-63683854900540	Moving :	Green Grocer	Position (xyz): 	76.6831	0.2000046	9.728142	Rotation (xyz): 	270	90	0
-63683854900543	Moving :	Green Grocer	Position (xyz): 	70.63322	0.1999969	9.806908	Rotation (xyz): 	270	90	0
-63683854900556	Moving :	Green Grocer	Position (xyz): 	65.68909	0.1999893	9.8069	Rotation (xyz): 	270	90	0
-63683854900559	Moving :	Green Grocer	Position (xyz): 	65.68909	0.1999893	9.8069	Rotation (xyz): 	270	90	0
-63683854900572	Moving :	Green Grocer	Position (xyz): 	59.21451	0.1999969	9.563927	Rotation (xyz): 	270	90	0
-63683854900575	Moving :	Green Grocer	Position (xyz): 	59.21451	0.1999969	9.563927	Rotation (xyz): 	270	90	0
-63683854900588	Moving :	Green Grocer	Position (xyz): 	47.92481	0.1999969	9.332718	Rotation (xyz): 	270	90	0
-63683854900596	Moving :	Green Grocer	Position (xyz): 	47.92481	0.1999969	9.332718	Rotation (xyz): 	270	90	0
-63683854900604	Moving :	Green Grocer	Position (xyz): 	44.01945	0.1999893	9.33271	Rotation (xyz): 	270	90	0
-63683854900612	Moving :	Green Grocer	Position (xyz): 	39.33503	0.1999969	9.332718	Rotation (xyz): 	270	90	0
-63683854900619	Moving :	Green Grocer	Position (xyz): 	39.33503	0.1999969	9.332718	Rotation (xyz): 	270	90	0
-63683854900624	Moving :	Green Grocer	Position (xyz): 	36.80099	0.1999969	9.332718	Rotation (xyz): 	270	90	0
-63683854900640	Moving :	Green Grocer	Position (xyz): 	34.43953	0.1999969	9.384689	Rotation (xyz): 	270	90	0
-63683854900644	Moving :	Green Grocer	Position (xyz): 	34.43953	0.1999969	9.384689	Rotation (xyz): 	270	90	0
-63683854900656	Moving :	Green Grocer	Position (xyz): 	30.51239	0.1999893	9.543831	Rotation (xyz): 	270	90	0
-63683854900659	Moving :	Green Grocer	Position (xyz): 	30.51239	0.1999893	9.543831	Rotation (xyz): 	270	90	0
-63683854900672	Moving :	Green Grocer	Position (xyz): 	28.67195	0.1999969	9.773369	Rotation (xyz): 	270	90	0
-63683854900679	Moving :	Green Grocer	Position (xyz): 	26.31129	0.1999969	10.18552	Rotation (xyz): 	270	90	0
-63683854900688	Moving :	Green Grocer	Position (xyz): 	26.31129	0.1999969	10.18552	Rotation (xyz): 	270	90	0
-63683854900696	Moving :	Green Grocer	Position (xyz): 	24.12323	0.1999969	10.534	Rotation (xyz): 	270	90	0
-63683854900704	Moving :	Green Grocer	Position (xyz): 	22.59778	0.1999969	10.83055	Rotation (xyz): 	270	90	0
-63683854900711	Moving :	Green Grocer	Position (xyz): 	22.59778	0.1999969	10.83055	Rotation (xyz): 	270	90	0
-63683854900719	Moving :	Green Grocer	Position (xyz): 	20.67023	0.1999969	11.20755	Rotation (xyz): 	270	90	0
-63683854900723	Moving :	Green Grocer	Position (xyz): 	19.41115	0.2000046	11.48399	Rotation (xyz): 	270	90	0
-63683854900740	Moving :	Green Grocer	Position (xyz): 	17.65701	0.1999969	11.84418	Rotation (xyz): 	270	90	0
-63683854900743	Moving :	Green Grocer	Position (xyz): 	17.65701	0.1999969	11.84418	Rotation (xyz): 	270	90	0
-63683854900756	Moving :	Green Grocer	Position (xyz): 	16.46413	0.1999969	12.03688	Rotation (xyz): 	270	90	0
-63683854900764	Moving :	Green Grocer	Position (xyz): 	15.20504	0.2000046	12.19436	Rotation (xyz): 	270	90	0
-63683854900772	Moving :	Green Grocer	Position (xyz): 	14.48211	0.2000046	12.35184	Rotation (xyz): 	270	90	0
-63683854900775	Moving :	Green Grocer	Position (xyz): 	14.48211	0.2000046	12.35184	Rotation (xyz): 	270	90	0
-63683854900788	Moving :	Green Grocer	Position (xyz): 	13.91416	0.1999969	12.46576	Rotation (xyz): 	270	90	0
-63683854900796	Moving :	Green Grocer	Position (xyz): 	13.68211	0.1999969	12.5294	Rotation (xyz): 	270	90	0
-63683854900804	Moving :	Green Grocer	Position (xyz): 	13.52964	0.1999969	12.56799	Rotation (xyz): 	270	90	0
-63683854900811	Moving :	Green Grocer	Position (xyz): 	13.52964	0.1999969	12.56799	Rotation (xyz): 	270	90	0
-63683854900819	Moving :	Green Grocer	Position (xyz): 	13.49698	0.1999969	12.58472	Rotation (xyz): 	270	90	0
-63683854900824	Moving :	Green Grocer	Position (xyz): 	13.49698	0.1999969	12.58472	Rotation (xyz): 	270	90	0
-63683854900840	Moving :	Green Grocer	Position (xyz): 	13.46431	0.1999969	12.635	Rotation (xyz): 	270	90	0
-63683854900848	Moving :	Green Grocer	Position (xyz): 	13.41488	0.1999893	12.70201	Rotation (xyz): 	270	90	0
-63683854900851	Moving :	Green Grocer	Position (xyz): 	13.41488	0.1999893	12.70201	Rotation (xyz): 	270	90	0
-63683854900855	Moving :	Green Grocer	Position (xyz): 	13.41488	0.1999893	12.70201	Rotation (xyz): 	270	90	0
-63683854900872	Moving :	Green Grocer	Position (xyz): 	12.98011	0.1999969	13.00856	Rotation (xyz): 	270	90	0
-63683854900879	Moving :	Green Grocer	Position (xyz): 	12.98011	0.1999969	13.00856	Rotation (xyz): 	270	90	0
-63683854900888	Moving :	Green Grocer	Position (xyz): 	12.42054	0.1999969	13.30341	Rotation (xyz): 	270	90	0
-63683854900896	Moving :	Green Grocer	Position (xyz): 	11.75957	0.1999969	13.65023	Rotation (xyz): 	270	90	0
-63683854900904	Moving :	Green Grocer	Position (xyz): 	10.61865	0.1999969	14.2417	Rotation (xyz): 	270	90	0
-63683854900907	Moving :	Green Grocer	Position (xyz): 	10.61865	0.1999969	14.2417	Rotation (xyz): 	270	90	0
-63683854900919	Moving :	Green Grocer	Position (xyz): 	9.8069	0.1999969	14.61359	Rotation (xyz): 	270	90	0
-63683854900923	Moving :	Green Grocer	Position (xyz): 	9.8069	0.1999969	14.61359	Rotation (xyz): 	270	90	0
-63683854900940	Moving :	Green Grocer	Position (xyz): 	8.15247	0.1999969	15.27375	Rotation (xyz): 	270	90	0
-63683854900948	Moving :	Green Grocer	Position (xyz): 	8.15247	0.1999969	15.27375	Rotation (xyz): 	270	90	0
-63683854900956	Moving :	Green Grocer	Position (xyz): 	7.623875	0.1999969	15.44124	Rotation (xyz): 	270	90	0
-63683854900959	Moving :	Green Grocer	Position (xyz): 	7.418606	0.1999969	15.50496	Rotation (xyz): 	270	90	0
-63683854900972	Moving :	Green Grocer	Position (xyz): 	7.266171	0.1999969	15.54346	Rotation (xyz): 	270	90	0
-63683854900975	Moving :	Green Grocer	Position (xyz): 	7.266171	0.1999969	15.54346	Rotation (xyz): 	270	90	0
-63683854900988	Moving :	Green Grocer	Position (xyz): 	7.21674	0.1999969	15.5602	Rotation (xyz): 	270	90	0
-63683854900996	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901004	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901007	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901019	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901023	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901035	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901039	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901056	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901063	Moving :	Green Grocer	Position (xyz): 	7.200809	0.2000046	15.5602	Rotation (xyz): 	270	90	0
-63683854901071	Moving :	Green Grocer	Position (xyz): 	7.217579	0.1999969	15.59374	Rotation (xyz): 	270	90	0
-63683854901075	Moving :	Green Grocer	Position (xyz): 	7.217579	0.1999969	15.59374	Rotation (xyz): 	270	90	0
-63683854901088	Moving :	Green Grocer	Position (xyz): 	7.289631	0.1999969	15.70094	Rotation (xyz): 	270	90	0
-63683854901095	Moving :	Green Grocer	Position (xyz): 	7.323132	0.1999969	15.78469	Rotation (xyz): 	270	90	0
-63683854901103	Moving :	Green Grocer	Position (xyz): 	7.323132	0.1999969	15.78469	Rotation (xyz): 	270	90	0
-63683854901107	Moving :	Green Grocer	Position (xyz): 	7.340706	0.1999969	15.85009	Rotation (xyz): 	270	90	0
-63683854901120	Moving :	Green Grocer	Position (xyz): 	7.357479	0.1999969	15.93216	Rotation (xyz): 	270	90	0
-63683854901123	Moving :	Green Grocer	Position (xyz): 	7.357479	0.1999969	15.93216	Rotation (xyz): 	270	90	0
-63683854901140	Moving :	Green Grocer	Position (xyz): 	7.375053	0.1999969	16.0159	Rotation (xyz): 	270	90	0
-63683854901144	Moving :	Green Grocer	Position (xyz): 	7.375053	0.1999969	16.0159	Rotation (xyz): 	270	90	0
-63683854901155	Moving :	Green Grocer	Position (xyz): 	7.391827	0.1999969	16.09804	Rotation (xyz): 	270	90	0
-63683854901159	Moving :	Green Grocer	Position (xyz): 	7.391827	0.1999969	16.09804	Rotation (xyz): 	270	0	0
-63683854901172	Moving :	Green Grocer	Position (xyz): 	7.408558	0.1999893	16.18178	Rotation (xyz): 	270	0	0
-63683854901179	Moving :	Green Grocer	Position (xyz): 	7.408566	0.2000046	16.28065	Rotation (xyz): 	270	0	0
-63683854901188	Moving :	Green Grocer	Position (xyz): 	7.42617	0.1999969	16.37953	Rotation (xyz): 	270	0	0
-63683854901195	Moving :	Green Grocer	Position (xyz): 	7.426167	0.1999893	16.48	Rotation (xyz): 	270	0	0
-63683854901204	Moving :	Green Grocer	Position (xyz): 	7.426167	0.1999893	16.48	Rotation (xyz): 	270	0	0
-63683854901212	Moving :	Green Grocer	Position (xyz): 	7.42617	0.1999893	16.56213	Rotation (xyz): 	270	0	0
-63683854901219	Moving :	Green Grocer	Position (xyz): 	7.426174	0.1999969	16.62915	Rotation (xyz): 	270	0	0
-63683854901223	Moving :	Green Grocer	Position (xyz): 	7.426174	0.1999969	16.62915	Rotation (xyz): 	270	0	0
-63683854901239	Moving :	Green Grocer	Position (xyz): 	7.442905	0.1999969	16.69448	Rotation (xyz): 	270	0	0
-63683854901244	Moving :	Green Grocer	Position (xyz): 	7.442905	0.1999969	16.76149	Rotation (xyz): 	270	0	0
-63683854901256	Moving :	Green Grocer	Position (xyz): 	7.442902	0.1999893	16.81008	Rotation (xyz): 	270	0	0
-63683854901264	Moving :	Green Grocer	Position (xyz): 	7.442909	0.2000046	16.8771	Rotation (xyz): 	270	0	0
-63683854901272	Moving :	Green Grocer	Position (xyz): 	7.442909	0.2000046	16.8771	Rotation (xyz): 	270	0	0
-63683854901280	Moving :	Green Grocer	Position (xyz): 	7.460518	0.1999969	16.94242	Rotation (xyz): 	270	0	0
-63683854901288	Moving :	Green Grocer	Position (xyz): 	7.460514	0.1999893	16.99269	Rotation (xyz): 	270	0	0
-63683854901295	Moving :	Green Grocer	Position (xyz): 	7.460514	0.1999893	16.99269	Rotation (xyz): 	270	0	0
-63683854901304	Moving :	Green Grocer	Position (xyz): 	7.477249	0.1999893	17.07477	Rotation (xyz): 	270	0	0
-63683854901307	Moving :	Green Grocer	Position (xyz): 	7.477249	0.1999893	17.07477	Rotation (xyz): 	270	0	0
-63683854901320	Moving :	Green Grocer	Position (xyz): 	7.494019	0.1999969	17.17531	Rotation (xyz): 	270	0	0
-63683854901324	Moving :	Green Grocer	Position (xyz): 	7.494019	0.1999969	17.17531	Rotation (xyz): 	270	0	0
-63683854901335	Moving :	Green Grocer	Position (xyz): 	7.494022	0.1999893	17.20878	Rotation (xyz): 	270	0	0
-63683854901339	Moving :	Green Grocer	Position (xyz): 	7.494022	0.1999893	17.20878	Rotation (xyz): 	270	0	0
-63683854901356	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901364	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901371	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901375	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901388	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901391	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901404	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901407	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901419	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901423	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901440	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901443	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901451	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901455	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901472	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901479	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901488	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901491	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901504	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901507	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901519	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901523	Moving :	Green Grocer	Position (xyz): 	7.511597	0.1999969	17.22559	Rotation (xyz): 	270	0	0
-63683854901540	Moving :	Green Grocer	Position (xyz): 	7.5116	0.1999969	17.24232	Rotation (xyz): 	270	0	0
-63683854901543	Moving :	Green Grocer	Position (xyz): 	7.5116	0.1999969	17.24232	Rotation (xyz): 	270	0	0
-63683854901556	Moving :	Green Grocer	Position (xyz): 	7.419449	0.1999893	17.40988	Rotation (xyz): 	270	0	0
-63683854901559	Moving :	Green Grocer	Position (xyz): 	7.419449	0.1999893	17.40988	Rotation (xyz): 	270	0	0
-63683854901572	Moving :	Green Grocer	Position (xyz): 	7.402714	0.1999969	17.44335	Rotation (xyz): 	270	0	0
-63683854901575	Moving :	Green Grocer	Position (xyz): 	7.402714	0.1999969	17.44335	Rotation (xyz): 	270	0	0
-63683854901588	Moving :	Green Grocer	Position (xyz): 	7.386787	0.1999969	17.44336	Rotation (xyz): 	270	0	0
-63683854901596	Moving :	Green Grocer	Position (xyz): 	7.354122	0.2000046	17.49364	Rotation (xyz): 	270	0	0
-63683854901604	Moving :	Green Grocer	Position (xyz): 	7.321449	0.1999969	17.55895	Rotation (xyz): 	270	0	0
-63683854901611	Moving :	Green Grocer	Position (xyz): 	7.321449	0.1999969	17.55895	Rotation (xyz): 	270	0	0
-63683854901619	Moving :	Green Grocer	Position (xyz): 	7.288792	0.2000046	17.65951	Rotation (xyz): 	270	0	0
-63683854901624	Moving :	Green Grocer	Position (xyz): 	7.272022	0.1999969	17.72485	Rotation (xyz): 	270	0	0
-63683854901640	Moving :	Green Grocer	Position (xyz): 	7.255283	0.1999969	17.79186	Rotation (xyz): 	270	0	0
-63683854901643	Moving :	Green Grocer	Position (xyz): 	7.255283	0.1999969	17.79186	Rotation (xyz): 	270	0	0
-63683854901651	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901655	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901672	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901675	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901687	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901691	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901703	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901707	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901719	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901723	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901739	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	0	0
-63683854901744	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901755	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901759	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901772	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901775	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901787	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901791	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901804	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901807	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901819	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901823	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901839	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901843	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901851	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901855	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901872	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901875	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901888	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901891	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901904	Moving :	Green Grocer	Position (xyz): 	7.25528	0.1999893	17.82539	Rotation (xyz): 	270	270	0
-63683854901907	Moving :	Green Grocer	Position (xyz): 	7.255283	0.1999969	17.79186	Rotation (xyz): 	270	270	0
-63683854901924	Moving :	Green Grocer	Position (xyz): 	7.288792	0.1999969	17.74326	Rotation (xyz): 	270	270	0
-63683854901932	Moving :	Green Grocer	Position (xyz): 	7.322292	0.2000046	17.69466	Rotation (xyz): 	270	270	0
-63683854901935	Moving :	Green Grocer	Position (xyz): 	7.322292	0.2000046	17.69466	Rotation (xyz): 	270	270	0
-63683854901939	Moving :	Green Grocer	Position (xyz): 	7.33987	0.1999969	17.67793	Rotation (xyz): 	270	270	0
-63683854901956	Moving :	Green Grocer	Position (xyz): 	7.356644	0.1999969	17.64439	Rotation (xyz): 	270	270	0
-63683854901964	Moving :	Green Grocer	Position (xyz): 	7.374214	0.2000046	17.6126	Rotation (xyz): 	270	270	0
-63683854901971	Moving :	Green Grocer	Position (xyz): 	7.374214	0.2000046	17.6126	Rotation (xyz): 	270	270	0
-63683854901975	Moving :	Green Grocer	Position (xyz): 	7.374214	0.2000046	17.59586	Rotation (xyz): 	270	270	0
-63683854901988	Moving :	Green Grocer	Position (xyz): 	7.374214	0.2000046	17.59586	Rotation (xyz): 	270	270	0
-63683854901991	Moving :	Green Grocer	Position (xyz): 	7.374214	0.2000046	17.59586	Rotation (xyz): 	270	270	0
-63683854902004	Moving :	Green Grocer	Position (xyz): 	7.390984	0.1999893	17.57905	Rotation (xyz): 	270	270	0
-63683854902012	Moving :	Green Grocer	Position (xyz): 	7.390984	0.1999893	17.57905	Rotation (xyz): 	270	270	0
-63683854902019	Moving :	Green Grocer	Position (xyz): 	7.390984	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902023	Moving :	Green Grocer	Position (xyz): 	7.390984	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902044	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902051	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902055	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902059	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902072	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902075	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902087	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902091	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902104	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902107	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902119	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902124	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902139	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902143	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902151	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902155	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902172	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902175	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902187	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902191	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902204	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902207	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902219	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902223	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902235	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902239	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902256	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902264	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.564	Rotation (xyz): 	270	270	0
-63683854902271	Moving :	Green Grocer	Position (xyz): 	7.407726	0.2000046	17.54727	Rotation (xyz): 	270	270	0
-63683854902275	Moving :	Green Grocer	Position (xyz): 	7.407726	0.2000046	17.54727	Rotation (xyz): 	270	270	0
-63683854902288	Moving :	Green Grocer	Position (xyz): 	7.407726	0.2000046	17.54727	Rotation (xyz): 	270	270	0
-63683854902295	Moving :	Green Grocer	Position (xyz): 	7.407726	0.2000046	17.54727	Rotation (xyz): 	270	270	0
-63683854902304	Moving :	Green Grocer	Position (xyz): 	7.407722	0.1999969	17.51373	Rotation (xyz): 	270	270	0
-63683854903056	TASK_END	MapTest	MapTestTask	9119
-63683854903058	TASK_START	ScoreMapTest	ScoreMapTest
-63683854903060	Store: 	Computer Shop	Error Distance: 	0.6645253	Error Rotation (xyz): 	0	0	0
-63683854903061	Store: 	Green Grocer	Error Distance: 	0.6558592	Error Rotation (xyz): 	0	0	0
-63683854903062	Store: 	Hair Dresser	Error Distance: 	29.54657	Error Rotation (xyz): 	0	180	0
-63683854903063	Store: 	Ice Cream Shop	Error Distance: 	101.415	Error Rotation (xyz): 	0	0	0
-63683854903064	Store: 	Pet Shop	Error Distance: 	102.6158	Error Rotation (xyz): 	0	90	0
-63683854903065	Store: 	Pharmacy	Error Distance: 	147.9797	Error Rotation (xyz): 	0	90	0
-63683854903066	Store: 	Repair Shop	Error Distance: 	140.8013	Error Rotation (xyz): 	0	-90	0
-63683854903067	Store: 	Toy Shop	Error Distance: 	73.59348	Error Rotation (xyz): 	0	0	0
-63683854903068	Score: 	2	/	8	Percentage: 	25
-63683854903997	TASK_END	LM_Timeline	TaskList	22794
+63684004124429	TASK_START	LM_Timeline	TaskList
+63684004124430	TASK_START	InitializeExperiment	TaskList
+63684004124431	TASK_START	PlaceTargets	TaskList
+63684004124432	TASK_START	ListHighlightObjects	StoreList
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight01	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight02	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight03	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight04	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight05	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight06	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight07	null
+63684004124432	TASK_ADD	ListHighlightObjects	StoreList	Highlight08	null
+63684004124445	TASK_END	ListHighlightObjects	StoreList	13
+63684004124447	TASK_START	ListTargetPlaceholders	TransformList
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target01	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target02	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target03	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target04	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target05	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target06	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target07	null
+63684004124447	TASK_ADD	ListTargetPlaceholders	TransformList	Target08	null
+63684004124457	TASK_END	ListTargetPlaceholders	TransformList	10
+63684004124458	TASK_START	PopulateHighlightObjects	PopulateTargets
+63684004124460	Object: 	Highlight01	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
+63684004124462	Object: 	Highlight02	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
+63684004124463	Object: 	Highlight03	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
+63684004124465	Object: 	Highlight04	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
+63684004124466	Object: 	Highlight05	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
+63684004124468	Object: 	Highlight06	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
+63684004124469	Object: 	Highlight07	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
+63684004124471	Object: 	Highlight08	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
+63684004125004	TASK_END	PopulateHighlightObjects	PopulateTargets	546
+63684004125007	TASK_START	ListTargets	StoreList
+63684004125007	TASK_ADD	ListTargets	StoreList	Computer Shop	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Green Grocer	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Hair Dresser	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Ice Cream Shop	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Pet Shop	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Pharmacy	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Repair Shop	null
+63684004125007	TASK_ADD	ListTargets	StoreList	Toy Shop	null
+63684004125082	TASK_END	ListTargets	StoreList	75
+63684004125085	TASK_START	ListTargetLocations	TransformList
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target01	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target02	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target03	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target04	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target05	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target06	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target07	null
+63684004125085	TASK_ADD	ListTargetLocations	TransformList	Target08	null
+63684004125118	TASK_END	ListTargetLocations	TransformList	33
+63684004125119	TASK_START	PopulateTargets	PopulateTargets
+63684004125121	Object: 	Computer Shop	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
+63684004125122	Object: 	Green Grocer	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
+63684004125124	Object: 	Hair Dresser	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
+63684004125126	Object: 	Ice Cream Shop	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
+63684004125127	Object: 	Pet Shop	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
+63684004125129	Object: 	Pharmacy	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
+63684004125130	Object: 	Repair Shop	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
+63684004125132	Object: 	Toy Shop	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
+63684004125163	TASK_END	PopulateTargets	PopulateTargets	44
+63684004125163	TASK_END	PlaceTargets	TaskList	732
+63684004125163	TASK_END	InitializeExperiment	TaskList	733
+63684004125164	TASK_START	BeginMessage	InstructionsTask
+63684004141554	INPUT_EVENT	clear text	1
+63684004141555	TASK_END	BeginMessage	InstructionsTask	16391
+63684004141555	TASK_START	Tasks	TaskList
+63684004141556	TASK_START	PracticeTaskLoop	TaskList
+63684004141596	TASK_END	PracticeTaskLoop	TaskList	40
+63684004141597	TASK_START	PreTasksLoop	TaskList
+63684004141647	TASK_END	PreTasksLoop	TaskList	50
+63684004141648	TASK_START	MainTasksLoop	TaskList
+63684004141649	TASK_START	NavigationTask	TaskList
+63684004141652	TASK_START	ListNavigationTargets	StoreList
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Pet Shop	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Computer Shop	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Green Grocer	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Ice Cream Shop	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Pharmacy	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Repair Shop	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Hair Dresser	null
+63684004141652	TASK_ADD	ListNavigationTargets	StoreList	Toy Shop	null
+63684004141686	TASK_END	ListNavigationTargets	StoreList	34
+63684004141687	TASK_START	NavigationInstructions	InstructionsTask
+63684004144423	INPUT_EVENT	clear text	1
+63684004144424	TASK_END	NavigationInstructions	InstructionsTask	2737
+63684004144425	TASK_START	Navigate	TaskList
+63684004144427	TASK_START	Find	NavigationTask
+63684004144477	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144477	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144477	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144519	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144519	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144563	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144563	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144617	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144618	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144618	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144653	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144653	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144697	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144698	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144742	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144743	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144786	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144786	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144786	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144832	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144832	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144876	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144876	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144920	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144920	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144965	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004144965	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145010	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145010	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145011	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145056	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145056	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145099	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145099	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145145	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145145	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145190	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145191	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145191	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145233	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145233	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145279	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145279	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145321	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145322	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145367	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145367	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145368	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145411	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145411	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145456	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145456	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145502	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145503	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145534	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145534	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145568	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145568	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145601	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145635	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145636	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145668	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145669	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145703	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145735	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145736	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145769	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145769	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145803	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145835	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145836	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145869	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145869	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145904	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145936	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145937	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145970	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004145970	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146004	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146038	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146038	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146074	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146074	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146108	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146109	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146140	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146171	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146171	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146206	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146239	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146239	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146272	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146273	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146316	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146317	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146363	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146364	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146406	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146407	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146451	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146452	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146452	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146496	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146497	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146540	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146541	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146586	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146587	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146630	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146630	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146630	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146675	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146675	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146719	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146719	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146764	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146764	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146809	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146810	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146810	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146853	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146854	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146898	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146898	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146942	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146943	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146988	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146988	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004146988	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147032	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147033	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147077	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147077	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147122	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147122	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147166	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147166	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147211	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147211	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147211	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147256	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147256	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147289	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147289	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147322	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147356	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147356	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147390	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147390	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147422	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147457	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147457	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147490	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147490	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147523	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147557	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147558	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147590	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147590	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147624	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147657	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147658	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147691	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147691	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147724	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147758	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147758	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147790	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147791	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147825	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147859	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147859	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147892	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147892	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147925	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147959	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147959	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147992	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004147993	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148025	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148072	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148072	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148072	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148115	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148115	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148159	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148160	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148204	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148204	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148249	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148250	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148250	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148295	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148296	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148338	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148338	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148383	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148384	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148428	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148428	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148428	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148472	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148472	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148519	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148519	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148562	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148562	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148607	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148607	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148607	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148650	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148651	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148695	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148696	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148741	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148741	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148785	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148786	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148831	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148831	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148831	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148876	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148876	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148922	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148922	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148966	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004148966	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149009	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149009	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149010	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149042	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149075	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149076	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149109	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149109	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149143	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149177	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149178	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149209	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149210	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149243	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149277	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149277	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149310	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149311	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149343	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149379	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149380	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149411	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149411	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149445	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149478	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149479	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149513	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149513	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149545	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149580	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149580	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149612	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149613	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149646	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149679	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149679	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149713	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149713	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149747	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149781	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149781	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149825	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149825	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.4	0	Camera   (xyz): 	0	154.4	0	
+63684004149869	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004149870	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004149870	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004149914	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004149914	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004149959	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004149959	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	154.3	0	Camera   (xyz): 	0	154.3	0	
+63684004150004	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	148.7	0	Camera   (xyz): 	0	148.7	0	
+63684004150005	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	148.7	0	Camera   (xyz): 	0	148.7	0	
+63684004150048	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	151	0	Camera   (xyz): 	0	151	0	
+63684004150049	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	151	0	Camera   (xyz): 	0	151	0	
+63684004150049	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	151	0	Camera   (xyz): 	0	151	0	
+63684004150093	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	153.8	0	Camera   (xyz): 	0	153.8	0	
+63684004150093	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	153.8	0	Camera   (xyz): 	0	153.8	0	
+63684004150138	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	156.7	0	Camera   (xyz): 	0	156.7	0	
+63684004150138	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	156.7	0	Camera   (xyz): 	0	156.7	0	
+63684004150183	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	162.3	0	Camera   (xyz): 	0	162.3	0	
+63684004150183	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	162.3	0	Camera   (xyz): 	0	162.3	0	
+63684004150231	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	167.4	0	Camera   (xyz): 	0	167.4	0	
+63684004150231	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	167.4	0	Camera   (xyz): 	0	167.4	0	
+63684004150231	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	167.4	0	Camera   (xyz): 	0	167.4	0	
+63684004150276	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	177.3	0	Camera   (xyz): 	0	177.3	0	
+63684004150276	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	177.3	0	Camera   (xyz): 	0	177.3	0	
+63684004150317	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	186.3	0	Camera   (xyz): 	0	186.3	0	
+63684004150317	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	186.3	0	Camera   (xyz): 	0	186.3	0	
+63684004150363	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	191	0	Camera   (xyz): 	0	191	0	
+63684004150364	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	191	0	Camera   (xyz): 	0	191	0	
+63684004150408	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	197.9	0	Camera   (xyz): 	0	197.9	0	
+63684004150409	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	197.9	0	Camera   (xyz): 	0	197.9	0	
+63684004150409	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	197.9	0	Camera   (xyz): 	0	197.9	0	
+63684004150454	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	203	0	Camera   (xyz): 	0	203	0	
+63684004150455	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	203	0	Camera   (xyz): 	0	203	0	
+63684004150498	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	210.7	0	Camera   (xyz): 	0	210.7	0	
+63684004150498	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	210.7	0	Camera   (xyz): 	0	210.7	0	
+63684004150541	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	213.9	0	Camera   (xyz): 	0	213.9	0	
+63684004150541	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	213.9	0	Camera   (xyz): 	0	213.9	0	
+63684004150585	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	215.9	0	Camera   (xyz): 	0	215.9	0	
+63684004150586	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	215.9	0	Camera   (xyz): 	0	215.9	0	
+63684004150630	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	217.9	0	Camera   (xyz): 	0	217.9	0	
+63684004150630	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	217.9	0	Camera   (xyz): 	0	217.9	0	
+63684004150630	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	217.9	0	Camera   (xyz): 	0	217.9	0	
+63684004150675	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	220.5	0	Camera   (xyz): 	0	220.5	0	
+63684004150676	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	220.5	0	Camera   (xyz): 	0	220.5	0	
+63684004150721	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	224.9	0	Camera   (xyz): 	0	224.9	0	
+63684004150721	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	224.9	0	Camera   (xyz): 	0	224.9	0	
+63684004150766	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150766	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150799	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150799	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150830	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150830	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150865	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150898	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150898	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.7	0	Camera   (xyz): 	0	225.7	0	
+63684004150933	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	224.7	0	Camera   (xyz): 	0	224.7	0	
+63684004150933	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	224.7	0	Camera   (xyz): 	0	224.7	0	
+63684004150964	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004150998	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004150998	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151031	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151031	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151066	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151097	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151098	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151134	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151135	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151167	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151167	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151199	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151232	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151233	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151267	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151267	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151299	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151333	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151334	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	223.8	0	Camera   (xyz): 	0	223.8	0	
+63684004151367	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.2	0	Camera   (xyz): 	0	225.2	0	
+63684004151367	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	225.2	0	Camera   (xyz): 	0	225.2	0	
+63684004151402	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	227	0	Camera   (xyz): 	0	227	0	
+63684004151435	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	229.2	0	Camera   (xyz): 	0	229.2	0	
+63684004151436	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	229.2	0	Camera   (xyz): 	0	229.2	0	
+63684004151469	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	231.3	0	Camera   (xyz): 	0	231.3	0	
+63684004151469	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	231.3	0	Camera   (xyz): 	0	231.3	0	
+63684004151501	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	233.3	0	Camera   (xyz): 	0	233.3	0	
+63684004151534	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	234.6	0	Camera   (xyz): 	0	234.6	0	
+63684004151534	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	234.6	0	Camera   (xyz): 	0	234.6	0	
+63684004151579	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.3	0	Camera   (xyz): 	0	235.3	0	
+63684004151579	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.3	0	Camera   (xyz): 	0	235.3	0	
+63684004151623	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151624	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151675	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151675	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151675	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151714	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151714	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151757	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151757	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151801	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151802	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151846	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151847	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151847	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151891	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151891	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151937	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151938	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151980	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004151981	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152026	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152026	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152070	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152070	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152070	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152115	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152115	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152160	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152161	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152204	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152204	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152248	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152249	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152249	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152293	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152293	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152338	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152338	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152384	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152384	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152427	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152427	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152428	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152472	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152472	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152517	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152517	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152551	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152551	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152586	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152618	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152618	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152651	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152652	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152685	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152718	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152719	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152752	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152752	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152787	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152819	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152820	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152852	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152853	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152886	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152919	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152920	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152953	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152954	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	235.5	0	Camera   (xyz): 	0	235.5	0	
+63684004152988	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	234.7	0	Camera   (xyz): 	0	234.7	0	
+63684004152988	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	234.7	0	Camera   (xyz): 	0	234.7	0	
+63684004153021	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	231.1	0	Camera   (xyz): 	0	231.1	0	
+63684004153054	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	229.2	0	Camera   (xyz): 	0	229.2	0	
+63684004153054	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	229.2	0	Camera   (xyz): 	0	229.2	0	
+63684004153087	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	228.9	0	Camera   (xyz): 	0	228.9	0	
+63684004153121	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	228.9	0	Camera   (xyz): 	0	228.9	0	
+63684004153121	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	228.9	0	Camera   (xyz): 	0	228.9	0	
+63684004153164	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	227.7	0	Camera   (xyz): 	0	227.7	0	
+63684004153164	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	227.7	0	Camera   (xyz): 	0	227.7	0	
+63684004153199	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	224	0	Camera   (xyz): 	0	224	0	
+63684004153200	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	224	0	Camera   (xyz): 	0	224	0	
+63684004153257	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	218.3	0	Camera   (xyz): 	0	218.3	0	
+63684004153258	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	218.3	0	Camera   (xyz): 	0	218.3	0	
+63684004153258	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	218.3	0	Camera   (xyz): 	0	218.3	0	
+63684004153291	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	210.7	0	Camera   (xyz): 	0	210.7	0	
+63684004153291	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	210.7	0	Camera   (xyz): 	0	210.7	0	
+63684004153333	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	206.6	0	Camera   (xyz): 	0	206.6	0	
+63684004153334	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	206.6	0	Camera   (xyz): 	0	206.6	0	
+63684004153377	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153378	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153425	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153425	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153467	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153467	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153512	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153513	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153513	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.8	0	Camera   (xyz): 	0	205.8	0	
+63684004153556	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.2	0	Camera   (xyz): 	0	205.2	0	
+63684004153557	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	205.2	0	Camera   (xyz): 	0	205.2	0	
+63684004153604	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	201.6	0	Camera   (xyz): 	0	201.6	0	
+63684004153604	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	201.6	0	Camera   (xyz): 	0	201.6	0	
+63684004153649	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	195.1	0	Camera   (xyz): 	0	195.1	0	
+63684004153649	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	195.1	0	Camera   (xyz): 	0	195.1	0	
+63684004153650	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	195.1	0	Camera   (xyz): 	0	195.1	0	
+63684004153693	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	192.1	0	Camera   (xyz): 	0	192.1	0	
+63684004153694	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	192.1	0	Camera   (xyz): 	0	192.1	0	
+63684004153737	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	192.1	0	Camera   (xyz): 	0	192.1	0	
+63684004153738	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	192.1	0	Camera   (xyz): 	0	192.1	0	
+63684004153782	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	192.9	0	Camera   (xyz): 	0	192.9	0	
+63684004153782	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	192.9	0	Camera   (xyz): 	0	192.9	0	
+63684004153825	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.1	0	Camera   (xyz): 	0	194.1	0	
+63684004153826	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.1	0	Camera   (xyz): 	0	194.1	0	
+63684004153872	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.8	0	Camera   (xyz): 	0	194.8	0	
+63684004153873	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.8	0	Camera   (xyz): 	0	194.8	0	
+63684004153873	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.8	0	Camera   (xyz): 	0	194.8	0	
+63684004153917	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.9	0	Camera   (xyz): 	0	194.9	0	
+63684004153917	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.9	0	Camera   (xyz): 	0	194.9	0	
+63684004153960	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.6	0	Camera   (xyz): 	0	194.6	0	
+63684004153960	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	194.6	0	Camera   (xyz): 	0	194.6	0	
+63684004154005	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	191.4	0	Camera   (xyz): 	0	191.4	0	
+63684004154005	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	191.4	0	Camera   (xyz): 	0	191.4	0	
+63684004154048	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	188.2	0	Camera   (xyz): 	0	188.2	0	
+63684004154048	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	188.2	0	Camera   (xyz): 	0	188.2	0	
+63684004154048	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	188.2	0	Camera   (xyz): 	0	188.2	0	
+63684004154094	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	184.3	0	Camera   (xyz): 	0	184.3	0	
+63684004154094	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	184.3	0	Camera   (xyz): 	0	184.3	0	
+63684004154137	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	182.7	0	Camera   (xyz): 	0	182.7	0	
+63684004154138	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	182.7	0	Camera   (xyz): 	0	182.7	0	
+63684004154181	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	181.7	0	Camera   (xyz): 	0	181.7	0	
+63684004154181	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	181.7	0	Camera   (xyz): 	0	181.7	0	
+63684004154227	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	180.6	0	Camera   (xyz): 	0	180.6	0	
+63684004154227	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	180.6	0	Camera   (xyz): 	0	180.6	0	
+63684004154227	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	180.6	0	Camera   (xyz): 	0	180.6	0	
+63684004154271	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	179.3	0	Camera   (xyz): 	0	179.3	0	
+63684004154271	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	179.3	0	Camera   (xyz): 	0	179.3	0	
+63684004154306	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	178.6	0	Camera   (xyz): 	0	178.6	0	
+63684004154338	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	177.8	0	Camera   (xyz): 	0	177.8	0	
+63684004154339	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	177.8	0	Camera   (xyz): 	0	177.8	0	
+63684004154371	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	176.7	0	Camera   (xyz): 	0	176.7	0	
+63684004154372	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	176.7	0	Camera   (xyz): 	0	176.7	0	
+63684004154405	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.9	0	Camera   (xyz): 	0	175.9	0	
+63684004154439	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.7	0	Camera   (xyz): 	0	175.7	0	
+63684004154439	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.7	0	Camera   (xyz): 	0	175.7	0	
+63684004154471	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154472	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154507	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154507	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154539	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154572	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154573	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154612	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154613	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154644	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154680	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154680	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154713	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154713	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154744	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154774	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154775	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154810	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154811	Avatar: 	ViveVirtualizerController	Position (xyz): 	18.4	0	78.3	Rotation (xyz): 	0	175.6	0	Camera   (xyz): 	0	175.6	0	
+63684004154868	TASK_END	LM_Timeline	TaskList	30439
