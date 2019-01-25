@@ -49,7 +49,7 @@ public class MapStudyTask : ExperimentTask {
 
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<Text> ().text = "Continue to Test";
-		manager.actionButton.SetActive(true);
+		hud.actionButton.SetActive(true);
 		actionButton.onClick.AddListener (OnActionClick);
 	}	
 
@@ -146,7 +146,7 @@ public class MapStudyTask : ExperimentTask {
 
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);
-		manager.actionButton.SetActive(false);
+		hud.actionButton.SetActive(false);
 	}
 }
 
