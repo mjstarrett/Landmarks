@@ -1,78 +1,936 @@
-63684271388556	TASK_START	LM_Timeline	TaskList
-63684271388557	TASK_START	InitializeExperiment	TaskList
-63684271388558	TASK_START	PlaceTargets	TaskList
-63684271388559	TASK_START	ListHighlightObjects	StoreList
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight01	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight02	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight03	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight04	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight05	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight06	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight07	null
-63684271388559	TASK_ADD	ListHighlightObjects	StoreList	Highlight08	null
-63684271388572	TASK_END	ListHighlightObjects	StoreList	13
-63684271388573	TASK_START	ListTargetPlaceholders	TransformList
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target01	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target02	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target03	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target04	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target05	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target06	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target07	null
-63684271388573	TASK_ADD	ListTargetPlaceholders	TransformList	Target08	null
-63684271388592	TASK_END	ListTargetPlaceholders	TransformList	19
-63684271388594	TASK_START	PopulateHighlightObjects	PopulateTargets
-63684271388596	Object: 	Highlight01	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
-63684271388597	Object: 	Highlight02	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
-63684271388599	Object: 	Highlight03	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
-63684271388600	Object: 	Highlight04	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
-63684271388602	Object: 	Highlight05	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
-63684271388603	Object: 	Highlight06	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
-63684271388604	Object: 	Highlight07	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
-63684271388606	Object: 	Highlight08	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
-63684271388975	TASK_END	PopulateHighlightObjects	PopulateTargets	381
-63684271388978	TASK_START	ListTargets	StoreList
-63684271388978	TASK_ADD	ListTargets	StoreList	Computer Shop	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Green Grocer	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Hair Dresser	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Ice Cream Shop	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Pet Shop	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Pharmacy	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Repair Shop	null
-63684271388978	TASK_ADD	ListTargets	StoreList	Toy Shop	null
-63684271389009	TASK_END	ListTargets	StoreList	31
-63684271389011	TASK_START	ListTargetLocations	TransformList
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target01	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target02	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target03	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target04	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target05	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target06	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target07	null
-63684271389011	TASK_ADD	ListTargetLocations	TransformList	Target08	null
-63684271389019	TASK_END	ListTargetLocations	TransformList	8
-63684271389020	TASK_START	PopulateTargets	PopulateTargets
-63684271389021	Object: 	Computer Shop	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
-63684271389022	Object: 	Green Grocer	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
-63684271389024	Object: 	Hair Dresser	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
-63684271389025	Object: 	Ice Cream Shop	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
-63684271389027	Object: 	Pet Shop	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
-63684271389028	Object: 	Pharmacy	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
-63684271389030	Object: 	Repair Shop	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
-63684271389031	Object: 	Toy Shop	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
-63684271389037	TASK_END	PopulateTargets	PopulateTargets	17
-63684271389037	TASK_END	PlaceTargets	TaskList	479
-63684271389037	TASK_END	InitializeExperiment	TaskList	480
-63684271389038	TASK_START	BeginMessage	InstructionsTask
-63684271392913	INPUT_EVENT	clear text	1
-63684271392914	TASK_END	BeginMessage	InstructionsTask	3876
-63684271392915	TASK_START	Tasks	TaskList
-63684271392916	TASK_START	PracticeTaskLoop	TaskList
-63684271392922	TASK_END	PracticeTaskLoop	TaskList	6
-63684271392923	TASK_START	PreTasksLoop	TaskList
-63684271392923	TASK_START	MapTask	TaskList
-63684271392924	TASK_START	MapStudyInstructions	InstructionsTask
-63684271393455	INPUT_EVENT	clear text	1
-63684271393456	TASK_END	MapStudyInstructions	InstructionsTask	532
-63684271393457	TASK_START	MapStudy	MapStudyTask
-63684271405135	TASK_END	LM_Timeline	TaskList	16579
+63684273507069	TASK_START	LM_Timeline	TaskList
+63684273507070	TASK_START	InitializeExperiment	TaskList
+63684273507071	TASK_START	PlaceTargets	TaskList
+63684273507072	TASK_START	ListHighlightObjects	StoreList
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight01	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight02	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight03	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight04	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight05	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight06	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight07	null
+63684273507072	TASK_ADD	ListHighlightObjects	StoreList	Highlight08	null
+63684273507093	TASK_END	ListHighlightObjects	StoreList	21
+63684273507095	TASK_START	ListTargetPlaceholders	TransformList
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target01	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target02	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target03	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target04	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target05	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target06	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target07	null
+63684273507095	TASK_ADD	ListTargetPlaceholders	TransformList	Target08	null
+63684273507152	TASK_END	ListTargetPlaceholders	TransformList	57
+63684273507153	TASK_START	PopulateHighlightObjects	PopulateTargets
+63684273507156	Object: 	Highlight01	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
+63684273507157	Object: 	Highlight02	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
+63684273507158	Object: 	Highlight03	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
+63684273507160	Object: 	Highlight04	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
+63684273507161	Object: 	Highlight05	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
+63684273507163	Object: 	Highlight06	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
+63684273507164	Object: 	Highlight07	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
+63684273507165	Object: 	Highlight08	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
+63684273507584	TASK_END	PopulateHighlightObjects	PopulateTargets	431
+63684273507588	TASK_START	ListTargets	StoreList
+63684273507588	TASK_ADD	ListTargets	StoreList	Computer Shop	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Green Grocer	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Hair Dresser	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Ice Cream Shop	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Pet Shop	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Pharmacy	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Repair Shop	null
+63684273507588	TASK_ADD	ListTargets	StoreList	Toy Shop	null
+63684273507616	TASK_END	ListTargets	StoreList	28
+63684273507618	TASK_START	ListTargetLocations	TransformList
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target01	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target02	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target03	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target04	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target05	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target06	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target07	null
+63684273507618	TASK_ADD	ListTargetLocations	TransformList	Target08	null
+63684273507623	TASK_END	ListTargetLocations	TransformList	5
+63684273507624	TASK_START	PopulateTargets	PopulateTargets
+63684273507626	Object: 	Computer Shop	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
+63684273507627	Object: 	Green Grocer	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
+63684273507628	Object: 	Hair Dresser	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
+63684273507630	Object: 	Ice Cream Shop	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
+63684273507631	Object: 	Pet Shop	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
+63684273507633	Object: 	Pharmacy	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
+63684273507634	Object: 	Repair Shop	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
+63684273507635	Object: 	Toy Shop	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
+63684273507639	TASK_END	PopulateTargets	PopulateTargets	15
+63684273507640	TASK_END	PlaceTargets	TaskList	569
+63684273507640	TASK_END	InitializeExperiment	TaskList	570
+63684273507641	TASK_START	BeginMessage	InstructionsTask
+63684273507799	INPUT_EVENT	clear text	1
+63684273507800	TASK_END	BeginMessage	InstructionsTask	159
+63684273507801	TASK_START	Tasks	TaskList
+63684273507802	TASK_START	PracticeTaskLoop	TaskList
+63684273507807	TASK_END	PracticeTaskLoop	TaskList	5
+63684273507808	TASK_START	PreTasksLoop	TaskList
+63684273507808	TASK_START	MapTask	TaskList
+63684273507809	TASK_START	MapStudyInstructions	InstructionsTask
+63684273507952	INPUT_EVENT	clear text	1
+63684273507952	TASK_END	MapStudyInstructions	InstructionsTask	143
+63684273507954	TASK_START	MapStudy	MapStudyTask
+63684273509056	Mouseover 	Ice Cream Shop
+63684273509066	Mouseover 	Ice Cream Shop
+63684273509077	Mouseover 	Ice Cream Shop
+63684273509089	Mouseover 	Ice Cream Shop
+63684273509256	Mouseover 	Ice Cream Shop
+63684273509267	Mouseover 	Ice Cream Shop
+63684273509278	Mouseover 	Ice Cream Shop
+63684273509290	Mouseover 	Ice Cream Shop
+63684273509300	Mouseover 	Ice Cream Shop
+63684273509312	Mouseover 	Ice Cream Shop
+63684273509322	Mouseover 	Ice Cream Shop
+63684273509334	Mouseover 	Ice Cream Shop
+63684273509345	Mouseover 	Ice Cream Shop
+63684273509356	Mouseover 	Ice Cream Shop
+63684273509368	Mouseover 	Ice Cream Shop
+63684273509378	Mouseover 	Ice Cream Shop
+63684273509390	Mouseover 	Ice Cream Shop
+63684273509400	Mouseover 	Ice Cream Shop
+63684273509412	Mouseover 	Ice Cream Shop
+63684273509423	Mouseover 	Ice Cream Shop
+63684273509435	Mouseover 	Ice Cream Shop
+63684273509446	Mouseover 	Ice Cream Shop
+63684273509456	Mouseover 	Ice Cream Shop
+63684273509468	Mouseover 	Ice Cream Shop
+63684273509478	Mouseover 	Ice Cream Shop
+63684273509490	Mouseover 	Ice Cream Shop
+63684273509501	Mouseover 	Ice Cream Shop
+63684273509513	Mouseover 	Ice Cream Shop
+63684273509525	Mouseover 	Ice Cream Shop
+63684273509535	Mouseover 	Ice Cream Shop
+63684273509547	Mouseover 	Ice Cream Shop
+63684273509557	Mouseover 	Ice Cream Shop
+63684273509569	Mouseover 	Ice Cream Shop
+63684273509579	Mouseover 	Ice Cream Shop
+63684273509591	Mouseover 	Ice Cream Shop
+63684273509601	Mouseover 	Ice Cream Shop
+63684273509613	Mouseover 	Ice Cream Shop
+63684273509625	Mouseover 	Ice Cream Shop
+63684273509635	Mouseover 	Ice Cream Shop
+63684273509647	Mouseover 	Ice Cream Shop
+63684273509657	Mouseover 	Ice Cream Shop
+63684273509669	Mouseover 	Ice Cream Shop
+63684273509680	Mouseover 	Ice Cream Shop
+63684273509691	Mouseover 	Ice Cream Shop
+63684273509702	Mouseover 	Ice Cream Shop
+63684273509714	Mouseover 	Ice Cream Shop
+63684273509725	Mouseover 	Ice Cream Shop
+63684273509735	Mouseover 	Ice Cream Shop
+63684273509747	Mouseover 	Ice Cream Shop
+63684273509758	Mouseover 	Ice Cream Shop
+63684273509769	Mouseover 	Ice Cream Shop
+63684273509780	Mouseover 	Ice Cream Shop
+63684273509792	Mouseover 	Ice Cream Shop
+63684273509802	Mouseover 	Ice Cream Shop
+63684273509814	Mouseover 	Ice Cream Shop
+63684273509826	Mouseover 	Ice Cream Shop
+63684273509836	Mouseover 	Ice Cream Shop
+63684273509848	Mouseover 	Ice Cream Shop
+63684273509858	Mouseover 	Ice Cream Shop
+63684273509870	Mouseover 	Ice Cream Shop
+63684273509881	Mouseover 	Ice Cream Shop
+63684273509892	Mouseover 	Ice Cream Shop
+63684273509903	Mouseover 	Ice Cream Shop
+63684273509915	Mouseover 	Ice Cream Shop
+63684273509926	Mouseover 	Ice Cream Shop
+63684273509936	Mouseover 	Ice Cream Shop
+63684273509948	Mouseover 	Ice Cream Shop
+63684273509958	Mouseover 	Ice Cream Shop
+63684273509971	Mouseover 	Ice Cream Shop
+63684273509981	Mouseover 	Ice Cream Shop
+63684273509993	Mouseover 	Ice Cream Shop
+63684273510004	Mouseover 	Ice Cream Shop
+63684273510015	Mouseover 	Ice Cream Shop
+63684273510027	Mouseover 	Ice Cream Shop
+63684273510037	Mouseover 	Ice Cream Shop
+63684273510049	Mouseover 	Ice Cream Shop
+63684273510060	Mouseover 	Ice Cream Shop
+63684273510071	Mouseover 	Ice Cream Shop
+63684273510082	Mouseover 	Ice Cream Shop
+63684273510094	Mouseover 	Ice Cream Shop
+63684273510105	Mouseover 	Ice Cream Shop
+63684273510115	Mouseover 	Ice Cream Shop
+63684273510127	Mouseover 	Ice Cream Shop
+63684273510137	Mouseover 	Ice Cream Shop
+63684273510149	Mouseover 	Ice Cream Shop
+63684273510160	Mouseover 	Ice Cream Shop
+63684273510172	Mouseover 	Ice Cream Shop
+63684273510182	Mouseover 	Ice Cream Shop
+63684273510194	Mouseover 	Ice Cream Shop
+63684273510205	Mouseover 	Ice Cream Shop
+63684273510216	Mouseover 	Ice Cream Shop
+63684273510228	Mouseover 	Ice Cream Shop
+63684273510238	Mouseover 	Ice Cream Shop
+63684273510250	Mouseover 	Ice Cream Shop
+63684273510261	Mouseover 	Ice Cream Shop
+63684273510273	Mouseover 	Ice Cream Shop
+63684273510282	Mouseover 	Ice Cream Shop
+63684273510295	Mouseover 	Ice Cream Shop
+63684273510306	Mouseover 	Ice Cream Shop
+63684273510316	Mouseover 	Ice Cream Shop
+63684273510328	Mouseover 	Ice Cream Shop
+63684273510338	Mouseover 	Ice Cream Shop
+63684273510351	Mouseover 	Ice Cream Shop
+63684273510361	Mouseover 	Ice Cream Shop
+63684273510373	Mouseover 	Ice Cream Shop
+63684273510384	Mouseover 	Ice Cream Shop
+63684273510394	Mouseover 	Ice Cream Shop
+63684273510406	Mouseover 	Ice Cream Shop
+63684273510416	Mouseover 	Ice Cream Shop
+63684273510429	Mouseover 	Ice Cream Shop
+63684273510439	Mouseover 	Ice Cream Shop
+63684273510451	Mouseover 	Ice Cream Shop
+63684273510461	Mouseover 	Ice Cream Shop
+63684273510473	Mouseover 	Ice Cream Shop
+63684273510484	Mouseover 	Ice Cream Shop
+63684273510495	Mouseover 	Ice Cream Shop
+63684273510507	Mouseover 	Ice Cream Shop
+63684273510517	Mouseover 	Ice Cream Shop
+63684273510529	Mouseover 	Ice Cream Shop
+63684273510540	Mouseover 	Ice Cream Shop
+63684273510551	Mouseover 	Ice Cream Shop
+63684273510942	Mouseover 	Ice Cream Shop
+63684273510954	Mouseover 	Ice Cream Shop
+63684273510965	Mouseover 	Ice Cream Shop
+63684273510975	Mouseover 	Ice Cream Shop
+63684273510987	Mouseover 	Ice Cream Shop
+63684273510998	Mouseover 	Ice Cream Shop
+63684273511010	Mouseover 	Ice Cream Shop
+63684273511020	Mouseover 	Ice Cream Shop
+63684273511032	Mouseover 	Ice Cream Shop
+63684273511043	Mouseover 	Ice Cream Shop
+63684273511054	Mouseover 	Ice Cream Shop
+63684273511066	Mouseover 	Ice Cream Shop
+63684273511076	Mouseover 	Ice Cream Shop
+63684273511088	Mouseover 	Ice Cream Shop
+63684273511098	Mouseover 	Ice Cream Shop
+63684273511110	Mouseover 	Ice Cream Shop
+63684273511120	Mouseover 	Ice Cream Shop
+63684273511132	Mouseover 	Ice Cream Shop
+63684273511142	Mouseover 	Ice Cream Shop
+63684273511155	Mouseover 	Ice Cream Shop
+63684273511165	Mouseover 	Ice Cream Shop
+63684273511176	Mouseover 	Ice Cream Shop
+63684273511188	Mouseover 	Ice Cream Shop
+63684273511198	Mouseover 	Ice Cream Shop
+63684273511210	Mouseover 	Ice Cream Shop
+63684273511221	Mouseover 	Ice Cream Shop
+63684273511233	Mouseover 	Ice Cream Shop
+63684273511244	Mouseover 	Ice Cream Shop
+63684273511255	Mouseover 	Ice Cream Shop
+63684273511266	Mouseover 	Ice Cream Shop
+63684273511277	Mouseover 	Ice Cream Shop
+63684273511289	Mouseover 	Ice Cream Shop
+63684273511299	Mouseover 	Ice Cream Shop
+63684273511311	Mouseover 	Ice Cream Shop
+63684273511321	Mouseover 	Ice Cream Shop
+63684273511333	Mouseover 	Ice Cream Shop
+63684273511344	Mouseover 	Ice Cream Shop
+63684273511355	Mouseover 	Ice Cream Shop
+63684273511367	Mouseover 	Ice Cream Shop
+63684273511377	Mouseover 	Ice Cream Shop
+63684273511389	Mouseover 	Ice Cream Shop
+63684273511400	Mouseover 	Ice Cream Shop
+63684273511411	Mouseover 	Ice Cream Shop
+63684273511422	Mouseover 	Ice Cream Shop
+63684273511433	Mouseover 	Ice Cream Shop
+63684273511445	Mouseover 	Ice Cream Shop
+63684273511455	Mouseover 	Ice Cream Shop
+63684273511467	Mouseover 	Ice Cream Shop
+63684273511478	Mouseover 	Ice Cream Shop
+63684273511490	Mouseover 	Ice Cream Shop
+63684273511500	Mouseover 	Ice Cream Shop
+63684273511692	Mouseover 	Ice Cream Shop
+63684273511903	Mouseover 	Ice Cream Shop
+63684273511915	Mouseover 	Ice Cream Shop
+63684273511926	Mouseover 	Ice Cream Shop
+63684273511937	Mouseover 	Ice Cream Shop
+63684273511949	Mouseover 	Ice Cream Shop
+63684273511959	Mouseover 	Ice Cream Shop
+63684273511971	Mouseover 	Ice Cream Shop
+63684273511981	Mouseover 	Ice Cream Shop
+63684273511993	Mouseover 	Ice Cream Shop
+63684273512003	Mouseover 	Ice Cream Shop
+63684273512016	Mouseover 	Ice Cream Shop
+63684273512026	Mouseover 	Ice Cream Shop
+63684273512037	Mouseover 	Ice Cream Shop
+63684273512049	Mouseover 	Ice Cream Shop
+63684273512059	Mouseover 	Ice Cream Shop
+63684273512071	Mouseover 	Ice Cream Shop
+63684273512082	Mouseover 	Ice Cream Shop
+63684273512094	Mouseover 	Ice Cream Shop
+63684273512105	Mouseover 	Ice Cream Shop
+63684273512115	Mouseover 	Ice Cream Shop
+63684273512127	Mouseover 	Ice Cream Shop
+63684273512137	Mouseover 	Ice Cream Shop
+63684273512149	Mouseover 	Ice Cream Shop
+63684273512160	Mouseover 	Ice Cream Shop
+63684273512172	Mouseover 	Ice Cream Shop
+63684273512182	Mouseover 	Ice Cream Shop
+63684273512194	Mouseover 	Ice Cream Shop
+63684273512205	Mouseover 	Ice Cream Shop
+63684273512215	Mouseover 	Ice Cream Shop
+63684273512228	Mouseover 	Ice Cream Shop
+63684273512238	Mouseover 	Ice Cream Shop
+63684273512250	Mouseover 	Ice Cream Shop
+63684273512260	Mouseover 	Ice Cream Shop
+63684273512272	Mouseover 	Ice Cream Shop
+63684273512283	Mouseover 	Ice Cream Shop
+63684273512294	Mouseover 	Ice Cream Shop
+63684273512306	Mouseover 	Ice Cream Shop
+63684273512316	Mouseover 	Ice Cream Shop
+63684273512328	Mouseover 	Ice Cream Shop
+63684273512338	Mouseover 	Ice Cream Shop
+63684273512350	Mouseover 	Ice Cream Shop
+63684273512361	Mouseover 	Ice Cream Shop
+63684273512373	Mouseover 	Ice Cream Shop
+63684273512383	Mouseover 	Ice Cream Shop
+63684273512395	Mouseover 	Ice Cream Shop
+63684273512406	Mouseover 	Ice Cream Shop
+63684273512416	Mouseover 	Ice Cream Shop
+63684273512428	Mouseover 	Ice Cream Shop
+63684273512439	Mouseover 	Ice Cream Shop
+63684273512451	Mouseover 	Ice Cream Shop
+63684273512461	Mouseover 	Ice Cream Shop
+63684273512473	Mouseover 	Ice Cream Shop
+63684273512484	Mouseover 	Ice Cream Shop
+63684273512495	Mouseover 	Ice Cream Shop
+63684273512507	Mouseover 	Ice Cream Shop
+63684273512517	Mouseover 	Ice Cream Shop
+63684273512529	Mouseover 	Ice Cream Shop
+63684273512539	Mouseover 	Ice Cream Shop
+63684273512551	Mouseover 	Ice Cream Shop
+63684273512562	Mouseover 	Ice Cream Shop
+63684273512574	Mouseover 	Ice Cream Shop
+63684273512585	Mouseover 	Ice Cream Shop
+63684273512595	Mouseover 	Ice Cream Shop
+63684273512607	Mouseover 	Ice Cream Shop
+63684273512617	Mouseover 	Ice Cream Shop
+63684273512629	Mouseover 	Ice Cream Shop
+63684273512640	Mouseover 	Ice Cream Shop
+63684273512652	Mouseover 	Ice Cream Shop
+63684273512662	Mouseover 	Ice Cream Shop
+63684273512674	Mouseover 	Ice Cream Shop
+63684273512685	Mouseover 	Ice Cream Shop
+63684273512696	Mouseover 	Ice Cream Shop
+63684273512708	Mouseover 	Ice Cream Shop
+63684273512718	Mouseover 	Ice Cream Shop
+63684273512730	Mouseover 	Ice Cream Shop
+63684273512740	Mouseover 	Ice Cream Shop
+63684273512752	Mouseover 	Ice Cream Shop
+63684273512763	Mouseover 	Ice Cream Shop
+63684273512775	Mouseover 	Ice Cream Shop
+63684273512786	Mouseover 	Ice Cream Shop
+63684273512796	Mouseover 	Ice Cream Shop
+63684273512808	Mouseover 	Ice Cream Shop
+63684273512818	Mouseover 	Ice Cream Shop
+63684273512831	Mouseover 	Ice Cream Shop
+63684273512841	Mouseover 	Ice Cream Shop
+63684273512853	Mouseover 	Ice Cream Shop
+63684273512863	Mouseover 	Ice Cream Shop
+63684273512875	Mouseover 	Ice Cream Shop
+63684273512886	Mouseover 	Ice Cream Shop
+63684273512897	Mouseover 	Ice Cream Shop
+63684273512909	Mouseover 	Ice Cream Shop
+63684273512919	Mouseover 	Ice Cream Shop
+63684273512931	Mouseover 	Ice Cream Shop
+63684273512941	Mouseover 	Ice Cream Shop
+63684273512953	Mouseover 	Ice Cream Shop
+63684273512965	Mouseover 	Ice Cream Shop
+63684273512975	Mouseover 	Ice Cream Shop
+63684273512987	Mouseover 	Ice Cream Shop
+63684273512997	Mouseover 	Ice Cream Shop
+63684273513009	Mouseover 	Ice Cream Shop
+63684273513019	Mouseover 	Ice Cream Shop
+63684273513032	Mouseover 	Ice Cream Shop
+63684273513042	Mouseover 	Ice Cream Shop
+63684273513054	Mouseover 	Ice Cream Shop
+63684273513065	Mouseover 	Ice Cream Shop
+63684273513075	Mouseover 	Ice Cream Shop
+63684273513087	Mouseover 	Ice Cream Shop
+63684273513098	Mouseover 	Ice Cream Shop
+63684273513110	Mouseover 	Ice Cream Shop
+63684273513333	Mouseover 	Repair Shop
+63684273513345	Mouseover 	Repair Shop
+63684273513355	Mouseover 	Repair Shop
+63684273513367	Mouseover 	Repair Shop
+63684273513377	Mouseover 	Repair Shop
+63684273513389	Mouseover 	Repair Shop
+63684273513400	Mouseover 	Repair Shop
+63684273513412	Mouseover 	Repair Shop
+63684273513422	Mouseover 	Repair Shop
+63684273513591	Mouseover 	Repair Shop
+63684273513600	Mouseover 	Repair Shop
+63684273513613	Mouseover 	Repair Shop
+63684273513623	Mouseover 	Repair Shop
+63684273513635	Mouseover 	Repair Shop
+63684273513646	Mouseover 	Repair Shop
+63684273513656	Mouseover 	Repair Shop
+63684273513668	Mouseover 	Repair Shop
+63684273513678	Mouseover 	Repair Shop
+63684273513690	Mouseover 	Repair Shop
+63684273513701	Mouseover 	Repair Shop
+63684273513713	Mouseover 	Repair Shop
+63684273513723	Mouseover 	Repair Shop
+63684273513735	Mouseover 	Repair Shop
+63684273513746	Mouseover 	Repair Shop
+63684273513757	Mouseover 	Repair Shop
+63684273513769	Mouseover 	Repair Shop
+63684273513779	Mouseover 	Repair Shop
+63684273513791	Mouseover 	Repair Shop
+63684273513801	Mouseover 	Repair Shop
+63684273513813	Mouseover 	Repair Shop
+63684273513824	Mouseover 	Repair Shop
+63684273513835	Mouseover 	Repair Shop
+63684273513847	Mouseover 	Repair Shop
+63684273513857	Mouseover 	Repair Shop
+63684273513869	Mouseover 	Repair Shop
+63684273513880	Mouseover 	Repair Shop
+63684273513892	Mouseover 	Repair Shop
+63684273513902	Mouseover 	Repair Shop
+63684273513914	Mouseover 	Repair Shop
+63684273513925	Mouseover 	Repair Shop
+63684273513935	Mouseover 	Repair Shop
+63684273513947	Mouseover 	Repair Shop
+63684273513958	Mouseover 	Repair Shop
+63684273513970	Mouseover 	Repair Shop
+63684273513980	Mouseover 	Repair Shop
+63684273513992	Mouseover 	Repair Shop
+63684273514003	Mouseover 	Repair Shop
+63684273514015	Mouseover 	Repair Shop
+63684273514026	Mouseover 	Repair Shop
+63684273514036	Mouseover 	Repair Shop
+63684273514048	Mouseover 	Repair Shop
+63684273514058	Mouseover 	Repair Shop
+63684273515009	Mouseover 	Pharmacy
+63684273515019	Mouseover 	Pharmacy
+63684273515031	Mouseover 	Pharmacy
+63684273515041	Mouseover 	Pharmacy
+63684273515053	Mouseover 	Pharmacy
+63684273515064	Mouseover 	Pharmacy
+63684273515074	Mouseover 	Pharmacy
+63684273515087	Mouseover 	Pharmacy
+63684273515097	Mouseover 	Pharmacy
+63684273515108	Mouseover 	Pharmacy
+63684273515119	Mouseover 	Pharmacy
+63684273515131	Mouseover 	Pharmacy
+63684273515141	Mouseover 	Pharmacy
+63684273515153	Mouseover 	Pharmacy
+63684273515165	Mouseover 	Pharmacy
+63684273515175	Mouseover 	Pharmacy
+63684273515187	Mouseover 	Pharmacy
+63684273515197	Mouseover 	Pharmacy
+63684273515209	Mouseover 	Pharmacy
+63684273515220	Mouseover 	Pharmacy
+63684273515231	Mouseover 	Pharmacy
+63684273515242	Mouseover 	Pharmacy
+63684273515254	Mouseover 	Pharmacy
+63684273515265	Mouseover 	Pharmacy
+63684273515275	Mouseover 	Pharmacy
+63684273515287	Mouseover 	Pharmacy
+63684273515298	Mouseover 	Pharmacy
+63684273515310	Mouseover 	Pharmacy
+63684273515320	Mouseover 	Pharmacy
+63684273515332	Mouseover 	Pharmacy
+63684273515342	Mouseover 	Pharmacy
+63684273515354	Mouseover 	Pharmacy
+63684273515365	Mouseover 	Pharmacy
+63684273515376	Mouseover 	Pharmacy
+63684273515388	Mouseover 	Pharmacy
+63684273515398	Mouseover 	Pharmacy
+63684273515410	Mouseover 	Pharmacy
+63684273515421	Mouseover 	Pharmacy
+63684273515432	Mouseover 	Pharmacy
+63684273515444	Mouseover 	Pharmacy
+63684273515454	Mouseover 	Pharmacy
+63684273515466	Mouseover 	Pharmacy
+63684273515476	Mouseover 	Pharmacy
+63684273515488	Mouseover 	Pharmacy
+63684273515499	Mouseover 	Pharmacy
+63684273515511	Mouseover 	Pharmacy
+63684273515521	Mouseover 	Pharmacy
+63684273515980	Mouseover 	Repair Shop
+63684273515993	Mouseover 	Repair Shop
+63684273516003	Mouseover 	Repair Shop
+63684273516015	Mouseover 	Repair Shop
+63684273516026	Mouseover 	Repair Shop
+63684273516036	Mouseover 	Repair Shop
+63684273516048	Mouseover 	Repair Shop
+63684273516058	Mouseover 	Repair Shop
+63684273516070	Mouseover 	Repair Shop
+63684273516080	Mouseover 	Repair Shop
+63684273516092	Mouseover 	Repair Shop
+63684273516103	Mouseover 	Repair Shop
+63684273516115	Mouseover 	Repair Shop
+63684273516126	Mouseover 	Repair Shop
+63684273516136	Mouseover 	Repair Shop
+63684273516148	Mouseover 	Repair Shop
+63684273516159	Mouseover 	Repair Shop
+63684273516171	Mouseover 	Repair Shop
+63684273516181	Mouseover 	Repair Shop
+63684273516193	Mouseover 	Repair Shop
+63684273516203	Mouseover 	Repair Shop
+63684273516215	Mouseover 	Repair Shop
+63684273516226	Mouseover 	Repair Shop
+63684273516237	Mouseover 	Repair Shop
+63684273516249	Mouseover 	Repair Shop
+63684273516259	Mouseover 	Repair Shop
+63684273516271	Mouseover 	Repair Shop
+63684273516281	Mouseover 	Repair Shop
+63684273516293	Mouseover 	Repair Shop
+63684273516304	Mouseover 	Repair Shop
+63684273516315	Mouseover 	Repair Shop
+63684273516327	Mouseover 	Repair Shop
+63684273516337	Mouseover 	Repair Shop
+63684273516349	Mouseover 	Repair Shop
+63684273516360	Mouseover 	Repair Shop
+63684273516372	Mouseover 	Repair Shop
+63684273516662	Mouseover 	Ice Cream Shop
+63684273516673	Mouseover 	Ice Cream Shop
+63684273516685	Mouseover 	Ice Cream Shop
+63684273516695	Mouseover 	Ice Cream Shop
+63684273516707	Mouseover 	Ice Cream Shop
+63684273516717	Mouseover 	Ice Cream Shop
+63684273516729	Mouseover 	Ice Cream Shop
+63684273516740	Mouseover 	Ice Cream Shop
+63684273516752	Mouseover 	Ice Cream Shop
+63684273516762	Mouseover 	Ice Cream Shop
+63684273516774	Mouseover 	Ice Cream Shop
+63684273516785	Mouseover 	Ice Cream Shop
+63684273516795	Mouseover 	Ice Cream Shop
+63684273516807	Mouseover 	Ice Cream Shop
+63684273516818	Mouseover 	Ice Cream Shop
+63684273516829	Mouseover 	Ice Cream Shop
+63684273516840	Mouseover 	Ice Cream Shop
+63684273516852	Mouseover 	Ice Cream Shop
+63684273516862	Mouseover 	Ice Cream Shop
+63684273516874	Mouseover 	Ice Cream Shop
+63684273516885	Mouseover 	Ice Cream Shop
+63684273516896	Mouseover 	Ice Cream Shop
+63684273516908	Mouseover 	Ice Cream Shop
+63684273516918	Mouseover 	Ice Cream Shop
+63684273516930	Mouseover 	Ice Cream Shop
+63684273516941	Mouseover 	Ice Cream Shop
+63684273516952	Mouseover 	Ice Cream Shop
+63684273516963	Mouseover 	Ice Cream Shop
+63684273516975	Mouseover 	Ice Cream Shop
+63684273516986	Mouseover 	Ice Cream Shop
+63684273516996	Mouseover 	Ice Cream Shop
+63684273517008	Mouseover 	Ice Cream Shop
+63684273517018	Mouseover 	Ice Cream Shop
+63684273517031	Mouseover 	Ice Cream Shop
+63684273517041	Mouseover 	Ice Cream Shop
+63684273517053	Mouseover 	Ice Cream Shop
+63684273517063	Mouseover 	Ice Cream Shop
+63684273517075	Mouseover 	Ice Cream Shop
+63684273517086	Mouseover 	Ice Cream Shop
+63684273517097	Mouseover 	Ice Cream Shop
+63684273517109	Mouseover 	Ice Cream Shop
+63684273517119	Mouseover 	Ice Cream Shop
+63684273517131	Mouseover 	Ice Cream Shop
+63684273517142	Mouseover 	Ice Cream Shop
+63684273517154	Mouseover 	Ice Cream Shop
+63684273517165	Mouseover 	Ice Cream Shop
+63684273517175	Mouseover 	Ice Cream Shop
+63684273517187	Mouseover 	Ice Cream Shop
+63684273517198	Mouseover 	Ice Cream Shop
+63684273517209	Mouseover 	Ice Cream Shop
+63684273517220	Mouseover 	Ice Cream Shop
+63684273517232	Mouseover 	Ice Cream Shop
+63684273517242	Mouseover 	Ice Cream Shop
+63684273517477	Mouseover 	Ice Cream Shop
+63684273517489	Mouseover 	Ice Cream Shop
+63684273517499	Mouseover 	Ice Cream Shop
+63684273517712	Mouseover 	Ice Cream Shop
+63684273517722	Mouseover 	Ice Cream Shop
+63684273517734	Mouseover 	Ice Cream Shop
+63684273517746	Mouseover 	Ice Cream Shop
+63684273517755	Mouseover 	Ice Cream Shop
+63684273517767	Mouseover 	Ice Cream Shop
+63684273517778	Mouseover 	Ice Cream Shop
+63684273517790	Mouseover 	Ice Cream Shop
+63684273517800	Mouseover 	Ice Cream Shop
+63684273517812	Mouseover 	Ice Cream Shop
+63684273517823	Mouseover 	Ice Cream Shop
+63684273517834	Mouseover 	Ice Cream Shop
+63684273517846	Mouseover 	Ice Cream Shop
+63684273517856	Mouseover 	Ice Cream Shop
+63684273517868	Mouseover 	Ice Cream Shop
+63684273517879	Mouseover 	Ice Cream Shop
+63684273517890	Mouseover 	Ice Cream Shop
+63684273517901	Mouseover 	Ice Cream Shop
+63684273517913	Mouseover 	Ice Cream Shop
+63684273517923	Mouseover 	Ice Cream Shop
+63684273517935	Mouseover 	Ice Cream Shop
+63684273517946	Mouseover 	Ice Cream Shop
+63684273517956	Mouseover 	Ice Cream Shop
+63684273517968	Mouseover 	Ice Cream Shop
+63684273517979	Mouseover 	Ice Cream Shop
+63684273517991	Mouseover 	Ice Cream Shop
+63684273518001	Mouseover 	Ice Cream Shop
+63684273518013	Mouseover 	Ice Cream Shop
+63684273518024	Mouseover 	Ice Cream Shop
+63684273518035	Mouseover 	Ice Cream Shop
+63684273518047	Mouseover 	Ice Cream Shop
+63684273518057	Mouseover 	Ice Cream Shop
+63684273518069	Mouseover 	Ice Cream Shop
+63684273518079	Mouseover 	Ice Cream Shop
+63684273518091	Mouseover 	Ice Cream Shop
+63684273518102	Mouseover 	Ice Cream Shop
+63684273518114	Mouseover 	Ice Cream Shop
+63684273518125	Mouseover 	Ice Cream Shop
+63684273518135	Mouseover 	Ice Cream Shop
+63684273518148	Mouseover 	Ice Cream Shop
+63684273518158	Mouseover 	Ice Cream Shop
+63684273518170	Mouseover 	Ice Cream Shop
+63684273518180	Mouseover 	Ice Cream Shop
+63684273518415	Mouseover 	Ice Cream Shop
+63684273518427	Mouseover 	Ice Cream Shop
+63684273518437	Mouseover 	Ice Cream Shop
+63684273518449	Mouseover 	Ice Cream Shop
+63684273518628	Mouseover 	Ice Cream Shop
+63684273518638	Mouseover 	Ice Cream Shop
+63684273518650	Mouseover 	Ice Cream Shop
+63684273518661	Mouseover 	Ice Cream Shop
+63684273518673	Mouseover 	Ice Cream Shop
+63684273518682	Mouseover 	Ice Cream Shop
+63684273518695	Mouseover 	Ice Cream Shop
+63684273518706	Mouseover 	Ice Cream Shop
+63684273518716	Mouseover 	Ice Cream Shop
+63684273518728	Mouseover 	Ice Cream Shop
+63684273518739	Mouseover 	Ice Cream Shop
+63684273518750	Mouseover 	Ice Cream Shop
+63684273518761	Mouseover 	Ice Cream Shop
+63684273518772	Mouseover 	Ice Cream Shop
+63684273518784	Mouseover 	Ice Cream Shop
+63684273518794	Mouseover 	Ice Cream Shop
+63684273518806	Mouseover 	Ice Cream Shop
+63684273518817	Mouseover 	Ice Cream Shop
+63684273518829	Mouseover 	Ice Cream Shop
+63684273518839	Mouseover 	Ice Cream Shop
+63684273518851	Mouseover 	Ice Cream Shop
+63684273518861	Mouseover 	Ice Cream Shop
+63684273518873	Mouseover 	Ice Cream Shop
+63684273518884	Mouseover 	Ice Cream Shop
+63684273518895	Mouseover 	Ice Cream Shop
+63684273518907	Mouseover 	Ice Cream Shop
+63684273518917	Mouseover 	Ice Cream Shop
+63684273518929	Mouseover 	Ice Cream Shop
+63684273518939	Mouseover 	Ice Cream Shop
+63684273518951	Mouseover 	Ice Cream Shop
+63684273518962	Mouseover 	Ice Cream Shop
+63684273518975	Mouseover 	Ice Cream Shop
+63684273518985	Mouseover 	Ice Cream Shop
+63684273519576	Mouseover 	Ice Cream Shop
+63684273519588	Mouseover 	Ice Cream Shop
+63684273519599	Mouseover 	Ice Cream Shop
+63684273519610	Mouseover 	Ice Cream Shop
+63684273519621	Mouseover 	Ice Cream Shop
+63684273519633	Mouseover 	Ice Cream Shop
+63684273519834	Mouseover 	Ice Cream Shop
+63684273519845	Mouseover 	Ice Cream Shop
+63684273519855	Mouseover 	Ice Cream Shop
+63684273519867	Mouseover 	Ice Cream Shop
+63684273519878	Mouseover 	Ice Cream Shop
+63684273519890	Mouseover 	Ice Cream Shop
+63684273519900	Mouseover 	Ice Cream Shop
+63684273519912	Mouseover 	Ice Cream Shop
+63684273519922	Mouseover 	Ice Cream Shop
+63684273519934	Mouseover 	Ice Cream Shop
+63684273519945	Mouseover 	Ice Cream Shop
+63684273519956	Mouseover 	Ice Cream Shop
+63684273519968	Mouseover 	Ice Cream Shop
+63684273519978	Mouseover 	Ice Cream Shop
+63684273519990	Mouseover 	Ice Cream Shop
+63684273520000	Mouseover 	Ice Cream Shop
+63684273520012	Mouseover 	Ice Cream Shop
+63684273520023	Mouseover 	Ice Cream Shop
+63684273520035	Mouseover 	Ice Cream Shop
+63684273520046	Mouseover 	Ice Cream Shop
+63684273520056	Mouseover 	Ice Cream Shop
+63684273520069	Mouseover 	Ice Cream Shop
+63684273520079	Mouseover 	Ice Cream Shop
+63684273520092	Mouseover 	Ice Cream Shop
+63684273520102	Mouseover 	Ice Cream Shop
+63684273520114	Mouseover 	Ice Cream Shop
+63684273520125	Mouseover 	Ice Cream Shop
+63684273520135	Mouseover 	Ice Cream Shop
+63684273520147	Mouseover 	Ice Cream Shop
+63684273520158	Mouseover 	Ice Cream Shop
+63684273520170	Mouseover 	Ice Cream Shop
+63684273520180	Mouseover 	Ice Cream Shop
+63684273520192	Mouseover 	Ice Cream Shop
+63684273520202	Mouseover 	Ice Cream Shop
+63684273520214	Mouseover 	Ice Cream Shop
+63684273520226	Mouseover 	Ice Cream Shop
+63684273520236	Mouseover 	Ice Cream Shop
+63684273520248	Mouseover 	Ice Cream Shop
+63684273520258	Mouseover 	Ice Cream Shop
+63684273520270	Mouseover 	Ice Cream Shop
+63684273520280	Mouseover 	Ice Cream Shop
+63684273520292	Mouseover 	Ice Cream Shop
+63684273520303	Mouseover 	Ice Cream Shop
+63684273520315	Mouseover 	Ice Cream Shop
+63684273520326	Mouseover 	Ice Cream Shop
+63684273520336	Mouseover 	Ice Cream Shop
+63684273520348	Mouseover 	Ice Cream Shop
+63684273520358	Mouseover 	Ice Cream Shop
+63684273520370	Mouseover 	Ice Cream Shop
+63684273520381	Mouseover 	Ice Cream Shop
+63684273520393	Mouseover 	Ice Cream Shop
+63684273520403	Mouseover 	Ice Cream Shop
+63684273520415	Mouseover 	Ice Cream Shop
+63684273520426	Mouseover 	Ice Cream Shop
+63684273520437	Mouseover 	Ice Cream Shop
+63684273520449	Mouseover 	Ice Cream Shop
+63684273520459	Mouseover 	Ice Cream Shop
+63684273520471	Mouseover 	Ice Cream Shop
+63684273520481	Mouseover 	Ice Cream Shop
+63684273520494	Mouseover 	Ice Cream Shop
+63684273520505	Mouseover 	Ice Cream Shop
+63684273520515	Mouseover 	Ice Cream Shop
+63684273520528	Mouseover 	Ice Cream Shop
+63684273520538	Mouseover 	Ice Cream Shop
+63684273520550	Mouseover 	Ice Cream Shop
+63684273520560	Mouseover 	Ice Cream Shop
+63684273520571	Mouseover 	Ice Cream Shop
+63684273520582	Mouseover 	Ice Cream Shop
+63684273520594	Mouseover 	Ice Cream Shop
+63684273520605	Mouseover 	Ice Cream Shop
+63684273520615	Mouseover 	Ice Cream Shop
+63684273520627	Mouseover 	Ice Cream Shop
+63684273520638	Mouseover 	Ice Cream Shop
+63684273520650	Mouseover 	Ice Cream Shop
+63684273520660	Mouseover 	Ice Cream Shop
+63684273520672	Mouseover 	Ice Cream Shop
+63684273520683	Mouseover 	Ice Cream Shop
+63684273520695	Mouseover 	Ice Cream Shop
+63684273520706	Mouseover 	Ice Cream Shop
+63684273520716	Mouseover 	Ice Cream Shop
+63684273520728	Mouseover 	Ice Cream Shop
+63684273520738	Mouseover 	Ice Cream Shop
+63684273520751	Mouseover 	Ice Cream Shop
+63684273520761	Mouseover 	Ice Cream Shop
+63684273520772	Mouseover 	Ice Cream Shop
+63684273520783	Mouseover 	Ice Cream Shop
+63684273520795	Mouseover 	Ice Cream Shop
+63684273520806	Mouseover 	Ice Cream Shop
+63684273520817	Mouseover 	Ice Cream Shop
+63684273520828	Mouseover 	Ice Cream Shop
+63684273520839	Mouseover 	Ice Cream Shop
+63684273520851	Mouseover 	Ice Cream Shop
+63684273520861	Mouseover 	Ice Cream Shop
+63684273520873	Mouseover 	Ice Cream Shop
+63684273520884	Mouseover 	Ice Cream Shop
+63684273520895	Mouseover 	Ice Cream Shop
+63684273520907	Mouseover 	Ice Cream Shop
+63684273520917	Mouseover 	Ice Cream Shop
+63684273520929	Mouseover 	Ice Cream Shop
+63684273520940	Mouseover 	Ice Cream Shop
+63684273520952	Mouseover 	Ice Cream Shop
+63684273520962	Mouseover 	Ice Cream Shop
+63684273520974	Mouseover 	Ice Cream Shop
+63684273520985	Mouseover 	Ice Cream Shop
+63684273520995	Mouseover 	Ice Cream Shop
+63684273521008	Mouseover 	Ice Cream Shop
+63684273521018	Mouseover 	Ice Cream Shop
+63684273521030	Mouseover 	Ice Cream Shop
+63684273521040	Mouseover 	Ice Cream Shop
+63684273521052	Mouseover 	Ice Cream Shop
+63684273521063	Mouseover 	Ice Cream Shop
+63684273521074	Mouseover 	Ice Cream Shop
+63684273521085	Mouseover 	Ice Cream Shop
+63684273521096	Mouseover 	Ice Cream Shop
+63684273521108	Mouseover 	Ice Cream Shop
+63684273521118	Mouseover 	Ice Cream Shop
+63684273521130	Mouseover 	Ice Cream Shop
+63684273521140	Mouseover 	Ice Cream Shop
+63684273521152	Mouseover 	Ice Cream Shop
+63684273521163	Mouseover 	Ice Cream Shop
+63684273521175	Mouseover 	Ice Cream Shop
+63684273521186	Mouseover 	Ice Cream Shop
+63684273521197	Mouseover 	Ice Cream Shop
+63684273521208	Mouseover 	Ice Cream Shop
+63684273521219	Mouseover 	Ice Cream Shop
+63684273521231	Mouseover 	Ice Cream Shop
+63684273521241	Mouseover 	Ice Cream Shop
+63684273521253	Mouseover 	Ice Cream Shop
+63684273521264	Mouseover 	Ice Cream Shop
+63684273521275	Mouseover 	Ice Cream Shop
+63684273521286	Mouseover 	Ice Cream Shop
+63684273521297	Mouseover 	Ice Cream Shop
+63684273521309	Mouseover 	Ice Cream Shop
+63684273521319	Mouseover 	Ice Cream Shop
+63684273521332	Mouseover 	Ice Cream Shop
+63684273521342	Mouseover 	Ice Cream Shop
+63684273521353	Mouseover 	Ice Cream Shop
+63684273521365	Mouseover 	Ice Cream Shop
+63684273521375	Mouseover 	Ice Cream Shop
+63684273521387	Mouseover 	Ice Cream Shop
+63684273521397	Mouseover 	Ice Cream Shop
+63684273521410	Mouseover 	Ice Cream Shop
+63684273521420	Mouseover 	Ice Cream Shop
+63684273521432	Mouseover 	Ice Cream Shop
+63684273521442	Mouseover 	Ice Cream Shop
+63684273521454	Mouseover 	Ice Cream Shop
+63684273521466	Mouseover 	Ice Cream Shop
+63684273521475	Mouseover 	Ice Cream Shop
+63684273521488	Mouseover 	Ice Cream Shop
+63684273521498	Mouseover 	Ice Cream Shop
+63684273521510	Mouseover 	Ice Cream Shop
+63684273521689	Mouseover 	Ice Cream Shop
+63684273521699	Mouseover 	Ice Cream Shop
+63684273521711	Mouseover 	Ice Cream Shop
+63684273521721	Mouseover 	Ice Cream Shop
+63684273521733	Mouseover 	Ice Cream Shop
+63684273521744	Mouseover 	Ice Cream Shop
+63684273521755	Mouseover 	Ice Cream Shop
+63684273521767	Mouseover 	Ice Cream Shop
+63684273521777	Mouseover 	Ice Cream Shop
+63684273521789	Mouseover 	Ice Cream Shop
+63684273521799	Mouseover 	Ice Cream Shop
+63684273521811	Mouseover 	Ice Cream Shop
+63684273521822	Mouseover 	Ice Cream Shop
+63684273521834	Mouseover 	Ice Cream Shop
+63684273521845	Mouseover 	Ice Cream Shop
+63684273521855	Mouseover 	Ice Cream Shop
+63684273521867	Mouseover 	Ice Cream Shop
+63684273521878	Mouseover 	Ice Cream Shop
+63684273521889	Mouseover 	Ice Cream Shop
+63684273521900	Mouseover 	Ice Cream Shop
+63684273521912	Mouseover 	Ice Cream Shop
+63684273521922	Mouseover 	Ice Cream Shop
+63684273521934	Mouseover 	Ice Cream Shop
+63684273521946	Mouseover 	Ice Cream Shop
+63684273521956	Mouseover 	Ice Cream Shop
+63684273521968	Mouseover 	Ice Cream Shop
+63684273521978	Mouseover 	Ice Cream Shop
+63684273521990	Mouseover 	Ice Cream Shop
+63684273522000	Mouseover 	Ice Cream Shop
+63684273522013	Mouseover 	Ice Cream Shop
+63684273522023	Mouseover 	Ice Cream Shop
+63684273522035	Mouseover 	Ice Cream Shop
+63684273522046	Mouseover 	Ice Cream Shop
+63684273522056	Mouseover 	Ice Cream Shop
+63684273522068	Mouseover 	Ice Cream Shop
+63684273522078	Mouseover 	Ice Cream Shop
+63684273522090	Mouseover 	Ice Cream Shop
+63684273522101	Mouseover 	Ice Cream Shop
+63684273522113	Mouseover 	Ice Cream Shop
+63684273522123	Mouseover 	Ice Cream Shop
+63684273522135	Mouseover 	Ice Cream Shop
+63684273522147	Mouseover 	Ice Cream Shop
+63684273522157	Mouseover 	Ice Cream Shop
+63684273522168	Mouseover 	Ice Cream Shop
+63684273522179	Mouseover 	Ice Cream Shop
+63684273522191	Mouseover 	Ice Cream Shop
+63684273522201	Mouseover 	Ice Cream Shop
+63684273522213	Mouseover 	Ice Cream Shop
+63684273522224	Mouseover 	Ice Cream Shop
+63684273522235	Mouseover 	Ice Cream Shop
+63684273522247	Mouseover 	Ice Cream Shop
+63684273522258	Mouseover 	Ice Cream Shop
+63684273522269	Mouseover 	Ice Cream Shop
+63684273522280	Mouseover 	Ice Cream Shop
+63684273522292	Mouseover 	Ice Cream Shop
+63684273522302	Mouseover 	Ice Cream Shop
+63684273522314	Mouseover 	Ice Cream Shop
+63684273522325	Mouseover 	Ice Cream Shop
+63684273522335	Mouseover 	Ice Cream Shop
+63684273522347	Mouseover 	Ice Cream Shop
+63684273522358	Mouseover 	Ice Cream Shop
+63684273522370	Mouseover 	Ice Cream Shop
+63684273522380	Mouseover 	Ice Cream Shop
+63684273522400	Mouseover 	Ice Cream Shop
+63684273522405	Mouseover 	Ice Cream Shop
+63684273522414	Mouseover 	Ice Cream Shop
+63684273522425	Mouseover 	Ice Cream Shop
+63684273522436	Mouseover 	Ice Cream Shop
+63684273522448	Mouseover 	Ice Cream Shop
+63684273522458	Mouseover 	Ice Cream Shop
+63684273522470	Mouseover 	Ice Cream Shop
+63684273522480	Mouseover 	Ice Cream Shop
+63684273522492	Mouseover 	Ice Cream Shop
+63684273522503	Mouseover 	Ice Cream Shop
+63684273522515	Mouseover 	Ice Cream Shop
+63684273522526	Mouseover 	Ice Cream Shop
+63684273522537	Mouseover 	Ice Cream Shop
+63684273522548	Mouseover 	Ice Cream Shop
+63684273522559	Mouseover 	Ice Cream Shop
+63684273522571	Mouseover 	Ice Cream Shop
+63684273522581	Mouseover 	Ice Cream Shop
+63684273522593	Mouseover 	Ice Cream Shop
+63684273522604	Mouseover 	Ice Cream Shop
+63684273522615	Mouseover 	Ice Cream Shop
+63684273522626	Mouseover 	Ice Cream Shop
+63684273522637	Mouseover 	Ice Cream Shop
+63684273522649	Mouseover 	Ice Cream Shop
+63684273522659	Mouseover 	Ice Cream Shop
+63684273522671	Mouseover 	Ice Cream Shop
+63684273522681	Mouseover 	Ice Cream Shop
+63684273522693	Mouseover 	Ice Cream Shop
+63684273522705	Mouseover 	Ice Cream Shop
+63684273522715	Mouseover 	Ice Cream Shop
+63684273522727	Mouseover 	Ice Cream Shop
+63684273522737	Mouseover 	Ice Cream Shop
+63684273522749	Mouseover 	Ice Cream Shop
+63684273522760	Mouseover 	Ice Cream Shop
+63684273522771	Mouseover 	Ice Cream Shop
+63684273522782	Mouseover 	Ice Cream Shop
+63684273522794	Mouseover 	Ice Cream Shop
+63684273522805	Mouseover 	Ice Cream Shop
+63684273522816	Mouseover 	Ice Cream Shop
+63684273522828	Mouseover 	Ice Cream Shop
+63684273522838	Mouseover 	Ice Cream Shop
+63684273522850	Mouseover 	Ice Cream Shop
+63684273522860	Mouseover 	Ice Cream Shop
+63684273522872	Mouseover 	Ice Cream Shop
+63684273522883	Mouseover 	Ice Cream Shop
+63684273522895	Mouseover 	Ice Cream Shop
+63684273522906	Mouseover 	Ice Cream Shop
+63684273522916	Mouseover 	Ice Cream Shop
+63684273522928	Mouseover 	Ice Cream Shop
+63684273522938	Mouseover 	Ice Cream Shop
+63684273522950	Mouseover 	Ice Cream Shop
+63684273522961	Mouseover 	Ice Cream Shop
+63684273522972	Mouseover 	Ice Cream Shop
+63684273522983	Mouseover 	Ice Cream Shop
+63684273522995	Mouseover 	Ice Cream Shop
+63684273523006	Mouseover 	Ice Cream Shop
+63684273523016	Mouseover 	Ice Cream Shop
+63684273523028	Mouseover 	Ice Cream Shop
+63684273523039	Mouseover 	Ice Cream Shop
+63684273523051	Mouseover 	Ice Cream Shop
+63684273523062	Mouseover 	Ice Cream Shop
+63684273523074	Mouseover 	Ice Cream Shop
+63684273523085	Mouseover 	Ice Cream Shop
+63684273523095	Mouseover 	Ice Cream Shop
+63684273523107	Mouseover 	Ice Cream Shop
+63684273523118	Mouseover 	Ice Cream Shop
+63684273523130	Mouseover 	Ice Cream Shop
+63684273523140	Mouseover 	Ice Cream Shop
+63684273523152	Mouseover 	Ice Cream Shop
+63684273523163	Mouseover 	Ice Cream Shop
+63684273523175	Mouseover 	Ice Cream Shop
+63684273523186	Mouseover 	Ice Cream Shop
+63684273523196	Mouseover 	Ice Cream Shop
+63684273523208	Mouseover 	Ice Cream Shop
+63684273523219	Mouseover 	Ice Cream Shop
+63684273523230	Mouseover 	Ice Cream Shop
+63684273523241	Mouseover 	Ice Cream Shop
+63684273523253	Mouseover 	Ice Cream Shop
+63684273523263	Mouseover 	Ice Cream Shop
+63684273523275	Mouseover 	Ice Cream Shop
+63684273523286	Mouseover 	Ice Cream Shop
+63684273523297	Mouseover 	Ice Cream Shop
+63684273523308	Mouseover 	Ice Cream Shop
+63684273523319	Mouseover 	Ice Cream Shop
+63684273523331	Mouseover 	Ice Cream Shop
+63684273532596	TASK_END	LM_Timeline	TaskList	25528

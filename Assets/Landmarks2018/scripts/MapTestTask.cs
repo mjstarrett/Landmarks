@@ -22,8 +22,6 @@ public class MapTestTask : ExperimentTask {
 	{
 		TASK_START();	
 		avatarLog.navLog = false;	
-
-
 	}	
 
 
@@ -108,8 +106,14 @@ public class MapTestTask : ExperimentTask {
 				hud.setMessage (hit.transform.name);
 				hud.hudPanel.SetActive (true);
 				hud.ForceShowMessage ();
-				// move hud text to the store being highlighted
-				hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint (hit.transform.position + hudTextOffset);
+
+                // move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
+                // jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
+                if (!jitterGuardOn)
+                {
+                    hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position + hudTextOffset);
+                    StartCoroutine(HudJitterReduction());
+                }
 
 				// BEHAVIOR Click Store to make it follow mouse
 				if (Input.GetMouseButtonDown (0)) {
