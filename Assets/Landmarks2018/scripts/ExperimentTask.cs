@@ -57,6 +57,8 @@ public class ExperimentTask : MonoBehaviour{
 
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
 
+    protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
+
 
 	public void Awake () 
 	{
@@ -202,5 +204,11 @@ public class ExperimentTask : MonoBehaviour{
 		return true;
 	}
 
-
+    // Move the hud, but don't move it again for a time period to avoid jitter
+    public IEnumerator HudJitterReduction()
+    {
+        jitterGuardOn = true;
+        yield return new WaitForSeconds(0.5f);
+        jitterGuardOn = false;
+    }
 }
