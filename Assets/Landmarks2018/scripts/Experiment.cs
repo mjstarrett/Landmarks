@@ -88,21 +88,36 @@ public class Experiment : MonoBehaviour {
 		// Assign Player and Camera based on UI enum
 		// ------------------------------------------
 
-		if (userInterface == UserInterface.DesktopDefault) {
+		if (userInterface == UserInterface.DesktopDefault)
+        {
 			// Standard Desktop with Keyboard/mouse controller
 			player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
-		} else if (userInterface == UserInterface.ViveAndVirtualizer) {
+
+            // Render the overhead camera on the main display (none)
+            overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+		}
+        else if (userInterface == UserInterface.ViveAndVirtualizer)
+        {
 			// HTC Vive and Cyberith Virtualizer
 			player = GameObject.Find ("ViveVirtualizerController");
 			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
-		} else {
+
+            // Render the overhead camera to each lense of the HMD
+            overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+		}
+        else
+        {
 			// If nothing else, load the default player from the first if() section
 			Debug.Log ("The selected interface is not yet configured. Using DefaultDesktopPlayerController.");
 			player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
-		}
-		Debug.Log (player.name);
+
+            // Render the overhead camera on the main display (none)
+            overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+        }
+
+        Debug.Log (player.name);
 		// Tag the selected playerController
 		player.tag = "Player";
 		// Deactivate all other controllers
