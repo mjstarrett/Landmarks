@@ -233,9 +233,7 @@ public class HUD : MonoBehaviour
 		// if time is up, temporarily make the message an empty string
 	    var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-	    //GameObject avatar = GameObject.FindWithTag("HUDtext");
 		TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI> ();
-        Debug.Log(canvas.text);
         canvas.text = hidemessage ? string.Empty : message;
 
 		// if this happens, dim the background panel too
