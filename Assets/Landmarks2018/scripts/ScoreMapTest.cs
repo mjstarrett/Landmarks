@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreMapTest : ExperimentTask {
 
@@ -114,9 +115,9 @@ public class ScoreMapTest : ExperimentTask {
 		// ---------------------------------
 		GameObject sgo = new GameObject("Instruction Display");
 
-		GameObject avatar = GameObject.FindWithTag("HUDtext");
-		Text canvas = avatar.GetComponent<Text> ();
-		hud.SecondsToShow = hud.InstructionDuration;
+        GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
+        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        hud.SecondsToShow = hud.InstructionDuration;
 
 		sgo.AddComponent<GUIText>();
 		sgo.hideFlags = HideFlags.HideAndDontSave;
@@ -200,11 +201,11 @@ public class ScoreMapTest : ExperimentTask {
 		base.endTask ();
 
 		hud.setMessage ("");
-		hud.SecondsToShow = hud.GeneralDuration; 
+		hud.SecondsToShow = hud.GeneralDuration;
 
-		GameObject avatar = GameObject.FindWithTag("HUDtext");
-		Text canvas = avatar.GetComponent<Text>();
-		string nullstring = null;
+        GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
+        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        string nullstring = null;
 		canvas.text = nullstring;
 		//			StartCoroutine(storesInactive());
 		hud.showEverything();

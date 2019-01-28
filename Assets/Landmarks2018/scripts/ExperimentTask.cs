@@ -89,8 +89,12 @@ public class ExperimentTask : MonoBehaviour{
         debugButton = hud.debugButton.GetComponent<Button>();
         actionButton = hud.actionButton.GetComponent<Button>();
 
-		// Start listening for debug skips
-		debugButton.onClick.AddListener (onDebugClick);
+        // Start listening for debug skips
+        if (manager.debugging)
+        {
+            debugButton.gameObject.SetActive(true);
+            debugButton.onClick.AddListener(onDebugClick);
+        }
 
 		task_start = Experiment.Now();
 		hud.ForceShowMessage ();

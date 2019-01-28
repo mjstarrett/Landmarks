@@ -45,6 +45,8 @@ public class Experiment : MonoBehaviour {
 	public Camera overheadCamera;
     public GameObject scaledPlayer;
 
+    public bool debugging = false;
+
 	[HideInInspector] public dbLog dblog;
 	
 	

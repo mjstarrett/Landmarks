@@ -147,7 +147,6 @@ public class InstructionsTask : ExperimentTask {
 
 		}
 
-        // MJS 05/02/2018 - commented out. No apparent function (throws error); see HUD line 222
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
 		string nullstring = null;
