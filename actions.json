@@ -36,6 +36,10 @@
       "requirement": "optional"
     },
     {
+      "name": "/actions/default/in/MoveNorth",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -67,7 +71,7 @@
   "action_sets": [
     {
       "name": "/actions/default",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/platformer",
@@ -112,7 +116,8 @@
       "/actions/buggybuddy/in/Brake": "Brake",
       "/actions/buggybuddy/in/Reset": "Reset",
       "/actions/platformer/in/Move": "Move",
-      "/actions/platformer/in/Jump": "Jump"
+      "/actions/platformer/in/Jump": "Jump",
+      "/actions/default/in/MoveNorth": "MoveNorth"
     }
   ]
 }
