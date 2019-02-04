@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapTestTask : ExperimentTask {
 
@@ -49,7 +50,7 @@ public class MapTestTask : ExperimentTask {
 		overheadCamera.enabled = true;
 
 		// Change text and turn on the map action button
-		actionButton.GetComponentInChildren<Text> ().text = "Get Score";
+		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = "Get Score";
 		hud.actionButton.SetActive(true);
 		actionButton.onClick.AddListener (OnActionClick);
 
@@ -260,7 +261,8 @@ public class MapTestTask : ExperimentTask {
 
 		// turn off the map action button
 		actionButton.onClick.RemoveListener (OnActionClick);
-		hud.actionButton.SetActive(false);
+        actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+        hud.actionButton.SetActive(false);
 
 		// Turn off the maptarget highlights (to show where stores should be located
 		if (highlightAssist == true) 

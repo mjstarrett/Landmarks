@@ -100,7 +100,7 @@ public class ScoreMapTest : ExperimentTask {
 		// ----------------------------------------------------
 
 		if (percentCorrect >= percentCorrectCriterion) {
-			progressionText = "Continue";
+			progressionText = actionButton.GetComponent<DefaultText>().defaultText;
 
 		} else if (percentCorrect < percentCorrectCriterion) {
 			progressionText = "Try Again";
@@ -136,7 +136,7 @@ public class ScoreMapTest : ExperimentTask {
 		hud.flashStatus("");
 
 		// Change text and turn on the map action button
-		actionButton.GetComponentInChildren<Text> ().text = progressionText;
+		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = progressionText;
 		hud.actionButton.SetActive(true);
 		actionButton.onClick.AddListener (OnActionClick);
 	}
@@ -210,8 +210,9 @@ public class ScoreMapTest : ExperimentTask {
 		//			StartCoroutine(storesInactive());
 		hud.showEverything();
 
-		// turn off the map action button
-		actionButton.onClick.RemoveListener (OnActionClick);
+        // turn off the map action button
+        actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+        actionButton.onClick.RemoveListener (OnActionClick);
 		hud.actionButton.SetActive(false);
 
 		// -------------------------------
