@@ -16,8 +16,6 @@ public class NavigationTask : ExperimentTask
 
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
-
-    public bool blackoutOnMessage = false;
     
 	public override void startTask () 
 	{
@@ -44,7 +42,7 @@ public class NavigationTask : ExperimentTask
    		} 
 		else 
 		{
-			hud.setMessage ("What are we looking for?");
+            hud.SecondsToShow = 0;
 			//hud.setMessage("Please find the " + current.name);
 		}
 	}	
@@ -65,13 +63,6 @@ public class NavigationTask : ExperimentTask
 				hud.setScore(score);
 			}
 		}
-
-        // if we're gonna black out the screen when text is up... check and handle it
-        if (blackoutOnMessage)
-        {
-            if (!hud.hidemessage) hud.showOnlyHUD();
-            else if (hud.hidemessage) hud.showEverything();
-        }
 
 		if (killCurrent == true) 
 		{
@@ -114,6 +105,8 @@ public class NavigationTask : ExperimentTask
 		current = destinations.currentObject();
 		hud.setMessage("");
 		hud.showScore = false;
+
+        hud.SecondsToShow = hud.GeneralDuration;
 
 	}
 

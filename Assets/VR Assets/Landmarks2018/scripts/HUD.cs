@@ -36,6 +36,7 @@ public class HUD : MonoBehaviour
 	private string canvasName;
     public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
     public GameObject debugButton; // button that can be used to force continue in debug mode;
+    public GameObject confidenceSlider; // slider that can be used by any task for confidence judements
 
     public Camera[] cam;
 	public int hudLayer = 13;
