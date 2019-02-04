@@ -17,8 +17,8 @@ public class NavigationTask : ExperimentTask
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
 
-
-
+    public bool blackoutOnMessage = false;
+    
 	public override void startTask () 
 	{
 		TASK_START();
@@ -41,7 +41,7 @@ public class NavigationTask : ExperimentTask
 			string msg = NavigationInstruction.text;
 			if (destinations != null) msg = string.Format(msg, current.name);
 			hud.setMessage(msg);
-		} 
+   		} 
 		else 
 		{
 			hud.setMessage ("What are we looking for?");
@@ -65,6 +65,13 @@ public class NavigationTask : ExperimentTask
 				hud.setScore(score);
 			}
 		}
+
+        // if we're gonna black out the screen when text is up... check and handle it
+        if (blackoutOnMessage)
+        {
+            if (!hud.hidemessage) hud.showOnlyHUD();
+            else if (hud.hidemessage) hud.showEverything();
+        }
 
 		if (killCurrent == true) 
 		{

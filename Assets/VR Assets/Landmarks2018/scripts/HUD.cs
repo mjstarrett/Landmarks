@@ -38,7 +38,7 @@ public class HUD : MonoBehaviour
     public GameObject debugButton; // button that can be used to force continue in debug mode;
 
     public Camera[] cam;
-	public int hudLayer = 30;
+	public int hudLayer = 13;
 	public Color statusColor;
 	public Font hudFont;
 	public bool showFPS;
@@ -75,6 +75,7 @@ public class HUD : MonoBehaviour
 	public int InstructionDuration = 99999; // MJS - allow different duration for instructions tasks
 
 	[HideInInspector] public long playback_time = 0;
+    [HideInInspector] public bool hidemessage; // MJS - made public so other scripts could check hud message status (hidden or not) (e.g., Navigation task, blackoutOnMessage)
 	
 	public void Awake()
 	{
@@ -231,7 +232,7 @@ public class HUD : MonoBehaviour
 	    }
 	    
 		// if time is up, temporarily make the message an empty string
-	    var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
+	    hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
 		TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI> ();
         canvas.text = hidemessage ? string.Empty : message;
