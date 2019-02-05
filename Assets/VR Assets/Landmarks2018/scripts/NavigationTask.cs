@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NavigationTask : ExperimentTask 
 {
@@ -16,6 +17,7 @@ public class NavigationTask : ExperimentTask
 
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
+    public bool instructionAlwaysOn = true;
     
 	public override void startTask () 
 	{
@@ -42,9 +44,18 @@ public class NavigationTask : ExperimentTask
    		} 
 		else 
 		{
-            hud.SecondsToShow = 0;
-			//hud.setMessage("Please find the " + current.name);
+            hud.setMessage("No message set");
+            hud.setMessage("Please find the " + current.name);
 		}
+
+
+
+        // MJS 2019 - Move HUD to top left corner
+        hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
+        hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
+
+        // set the hud to never turn off
+        if (instructionAlwaysOn) hud.SecondsToShow = int.MaxValue;
 	}	
 
 	public override bool updateTask () 
@@ -108,7 +119,11 @@ public class NavigationTask : ExperimentTask
 
         hud.SecondsToShow = hud.GeneralDuration;
 
-	}
+        // Move hud back to center and reset
+        hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+        hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+
+    }
 
 	public override bool OnControllerColliderHit(GameObject hit)  
 	{
