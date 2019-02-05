@@ -1,18 +1,11 @@
-/*
-    Copyright (C) 2010  Jason Laczko
+﻿/*
+    Copyright (C) 2018 Michael James Starrett
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License.
+    Navigate by Starlite - Powered by Landmarks
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+    This is modified from InstructionsTask.cs to incorporate gui elements such as
+    a subjective slider for confidence ratings   
+*/   
 
 using UnityEngine;
 using System.Collections;
@@ -20,7 +13,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
 
-public class InstructionsTask : ExperimentTask {
+public class ConfidenceRating : ExperimentTask {
     
     public TextAsset instruction;
     public TextAsset message;
@@ -51,7 +44,7 @@ public class InstructionsTask : ExperimentTask {
     
     public override void startTask () {
         TASK_START();
-        Debug.Log ("Starting an Instructions Task");
+        Debug.Log ("Starting a Confidence Rating Task");
     }    
 
     public override void TASK_START()
@@ -114,11 +107,13 @@ public class InstructionsTask : ExperimentTask {
             hud.actionButton.SetActive(true);
             actionButton.onClick.AddListener(OnActionClick);
 
-            // we'll need the mouse, as well
             // make the cursor functional and visible
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+        // Turn on the slider gui element
+        hud.confidenceSlider.SetActive(true);
     }
     // Update is called once per frame
     public override bool updateTask () {
@@ -158,8 +153,14 @@ public class InstructionsTask : ExperimentTask {
     public override void TASK_END() {
         base.endTask ();
         hud.setMessage ("");
-        hud.SecondsToShow = hud.GeneralDuration; 
-        
+        hud.SecondsToShow = hud.GeneralDuration;
+
+        // Log the confidence rating
+        log.log("Task:\t" + transform.parent.name + 
+                "\tTarget:\t" + objects.currentObject().name + 
+                "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value + 
+                "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
+
         if (canIncrementLists) {
 
             if (objects) {
@@ -191,6 +192,10 @@ public class InstructionsTask : ExperimentTask {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
         }
+
+        // Reset and Deactivate the slider
+        hud.confidenceSlider.GetComponent<Slider>().value = 0;
+        hud.confidenceSlider.SetActive(false);
 
         // If we turned movement off; turn it back on
         if (restrictMovement)
