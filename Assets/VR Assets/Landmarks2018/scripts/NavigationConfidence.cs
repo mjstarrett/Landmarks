@@ -35,6 +35,10 @@ public class NavigationConfidence : ExperimentTask {
     private GUIText gui;
 
     public bool restrictMovement = false; // MJS do we want to keep them still during this?
+
+    private GameObject sliderObject;
+    private Slider slider;
+    public bool randomStartValue = true;
     
     void OnDisable ()
     {
@@ -112,8 +116,18 @@ public class NavigationConfidence : ExperimentTask {
             Cursor.visible = true;
         }
 
-        // Turn on the slider gui element
-        hud.confidenceSlider.SetActive(true);
+        //---------------------------
+        // Confidence Slider
+        //---------------------------
+        sliderObject = hud.confidenceSlider.gameObject;
+        slider = sliderObject.GetComponent<Slider>();
+
+        // Reset the value before the trial starts
+        if (randomStartValue) slider.value = Random.Range(slider.minValue, slider.maxValue);
+        else slider.value = 0;
+
+        sliderObject.SetActive(true);
+
     }
     // Update is called once per frame
     public override bool updateTask () {
@@ -193,8 +207,7 @@ public class NavigationConfidence : ExperimentTask {
             Cursor.visible = false;
         }
 
-        // Reset and Deactivate the slider
-        hud.confidenceSlider.GetComponent<Slider>().value = 0;
+        // Deactivate the slider
         hud.confidenceSlider.SetActive(false);
 
         // If we turned movement off; turn it back on
