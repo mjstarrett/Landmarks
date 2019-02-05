@@ -13,7 +13,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
 
-public class ConfidenceRating : ExperimentTask {
+public class NavigationConfidence : ExperimentTask {
     
     public TextAsset instruction;
     public TextAsset message;
