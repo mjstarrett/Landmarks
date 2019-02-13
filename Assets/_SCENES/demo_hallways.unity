@@ -952,6 +952,8 @@ MonoBehaviour:
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 0}
   instructionSize: 12
+  actionButtonOn: 1
+  customButtonText: 
   restrictMovement: 0
 --- !u!1 &292540064
 GameObject:
@@ -1323,14 +1325,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1888228914}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 717639092}
+    - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1888228914}
     - target: {fileID: 159396, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1958,6 +1960,8 @@ MonoBehaviour:
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 0}
   instructionSize: 12
+  actionButtonOn: 1
+  customButtonText: 
   restrictMovement: 0
 --- !u!1 &628265645
 GameObject:
@@ -3029,6 +3033,8 @@ MonoBehaviour:
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 0}
   instructionSize: 12
+  actionButtonOn: 1
+  customButtonText: 
   restrictMovement: 0
 --- !u!1 &789427001
 GameObject:
@@ -3467,6 +3473,7 @@ MonoBehaviour:
   hudPanelOFF: 0
   actionButton: {fileID: 0}
   debugButton: {fileID: 0}
+  confidenceSlider: {fileID: 0}
   cam:
   - {fileID: 395340527}
   - {fileID: 395340527}
@@ -3482,6 +3489,7 @@ MonoBehaviour:
   GeneralDuration: 10
   InstructionDuration: 99999
   playback_time: 0
+  hidemessage: 0
 --- !u!114 &961739885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3994,6 +4002,8 @@ MonoBehaviour:
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
   instructionSize: 24
+  actionButtonOn: 1
+  customButtonText: 
   restrictMovement: 0
 --- !u!1 &1144703643
 GameObject:
@@ -5223,35 +5233,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+    - target: {fileID: 143444347347150230, guid: 5623b1ead47744e9bac163c907a2b9ba,
         type: 3}
-      propertyPath: hudRig
-      value: 
-      objectReference: {fileID: 1055415378}
-    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
-        type: 3}
-      propertyPath: Canvas
-      value: 
-      objectReference: {fileID: 87601075}
-    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
-        type: 3}
-      propertyPath: hudPanel
-      value: 
-      objectReference: {fileID: 992936775}
-    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
-        type: 3}
-      propertyPath: hudPanelOFF
-      value: 0
+      propertyPath: m_Radius
+      value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+    - target: {fileID: 143444347347150230, guid: 5623b1ead47744e9bac163c907a2b9ba,
         type: 3}
-      propertyPath: debugButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
-        type: 3}
-      propertyPath: actionButton
-      value: 
+      propertyPath: m_Height
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 114620715842727754, guid: 5623b1ead47744e9bac163c907a2b9ba,
         type: 3}
@@ -5293,30 +5283,50 @@ PrefabInstance:
       propertyPath: m_UseHeadBob
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1315816265068564, guid: 5623b1ead47744e9bac163c907a2b9ba, type: 3}
-      propertyPath: m_Name
-      value: DesktopCamera
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 3}
+      propertyPath: hudRig
+      value: 
+      objectReference: {fileID: 1055415378}
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 87601075}
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 3}
+      propertyPath: hudPanel
+      value: 
+      objectReference: {fileID: 992936775}
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 3}
+      propertyPath: hudPanelOFF
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 143444347347150230, guid: 5623b1ead47744e9bac163c907a2b9ba,
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 3}
+      propertyPath: debugButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114767143541170866, guid: 5623b1ead47744e9bac163c907a2b9ba,
+        type: 3}
+      propertyPath: actionButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 136729176304162370, guid: 5623b1ead47744e9bac163c907a2b9ba,
         type: 3}
       propertyPath: m_Radius
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 143444347347150230, guid: 5623b1ead47744e9bac163c907a2b9ba,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.8
+    - target: {fileID: 1315816265068564, guid: 5623b1ead47744e9bac163c907a2b9ba, type: 3}
+      propertyPath: m_Name
+      value: DesktopCamera
       objectReference: {fileID: 0}
     - target: {fileID: 45762372342206636, guid: 5623b1ead47744e9bac163c907a2b9ba,
         type: 3}
       propertyPath: m_CustomSkybox
       value: 
       objectReference: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 136729176304162370, guid: 5623b1ead47744e9bac163c907a2b9ba,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5623b1ead47744e9bac163c907a2b9ba, type: 3}
 --- !u!1 &1687251332
@@ -5385,6 +5395,7 @@ MonoBehaviour:
   showScoring: 0
   NavigationInstruction: {fileID: 4900000, guid: 9640913f0e4984ce190c4c98b1787149,
     type: 3}
+  instructionAlwaysOn: 1
 --- !u!1 &1717516253
 GameObject:
   m_ObjectHideFlags: 0
