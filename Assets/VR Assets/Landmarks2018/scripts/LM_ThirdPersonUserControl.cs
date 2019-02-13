@@ -15,6 +15,7 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using Valve.VR;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -26,6 +27,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        private float h;                          // Horizontal axis value from our controller to be used for movement - MJS 2019
+        private float v;                          // Vertical axis value from our controller to be used for movement MJS 2019
+
+        public SteamVR_Action_Vector2 vrTouchpad;
+        public SteamVR_Action_Single squeezeTrigger;
         
         private void Start()
         {
@@ -58,9 +64,26 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
+            //------------------------------------
+            // Standard Input
+            //------------------------------------
+
             // read inputs -- MJS edited with ScaledNavigation button prefix to distinguish controls
-            float h = CrossPlatformInputManager.GetAxis("ScaledNavigation_Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("ScaledNavigation_Vertical");
+
+            float squeezeValue = squeezeTrigger.GetAxis(SteamVR_Input_Sources.Any);
+            if (squeezeValue > 0.0f)
+            {
+                h = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).x;
+                v = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).y;
+            }
+            else
+            {
+                h = CrossPlatformInputManager.GetAxis("ScaledNavigation_Horizontal");
+                v = CrossPlatformInputManager.GetAxis("ScaledNavigation_Vertical");
+            }
+
+            Debug.Log("horizontal: " + h + "\tVertical: " + v);
+
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character

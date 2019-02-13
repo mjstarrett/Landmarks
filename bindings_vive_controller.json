@@ -110,17 +110,11 @@
             },
             {
                "inputs" : {
-                  "center" : {
-                     "output" : "/actions/default/in/teleport"
-                  },
-                  "north" : {
-                     "output" : "/actions/default/in/movenorth"
+                  "position" : {
+                     "output" : "/actions/default/in/moveavatar"
                   }
                },
-               "mode" : "dpad",
-               "parameters" : {
-                  "sub_mode" : "click"
-               },
+               "mode" : "trackpad",
                "path" : "/user/hand/left/input/trackpad"
             },
             {
@@ -175,14 +169,11 @@
             },
             {
                "inputs" : {
-                  "north" : {
-                     "output" : "/actions/default/in/movenorth"
+                  "position" : {
+                     "output" : "/actions/default/in/moveavatar"
                   }
                },
-               "mode" : "dpad",
-               "parameters" : {
-                  "sub_mode" : "click"
-               },
+               "mode" : "trackpad",
                "path" : "/user/hand/right/input/trackpad"
             },
             {
@@ -216,6 +207,24 @@
                },
                "mode" : "trigger",
                "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/debugbutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/application_menu"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/debugbutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/application_menu"
             }
          ]
       },
