@@ -11,7 +11,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
-using TMPro;
 
 public class NavigationConfidence : ExperimentTask {
     
@@ -103,9 +102,9 @@ public class NavigationConfidence : ExperimentTask {
         if (actionButtonOn)
         {
             // Use custom text for button (if provided)
-            if (customButtonText != "") actionButton.GetComponentInChildren<TextMeshProUGUI>().text = customButtonText;
+            if (customButtonText != "") actionButton.GetComponentInChildren<Text>().text = customButtonText;
             // Otherwise, use default text attached to the button (component)
-            else actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+            else actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
 
             // activate the button
             hud.actionButton.SetActive(true);
@@ -198,7 +197,7 @@ public class NavigationConfidence : ExperimentTask {
         if (actionButtonOn)
         {
             // Reset and deactivate action button
-            actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+            actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
             actionButton.onClick.RemoveListener(OnActionClick);
             hud.actionButton.SetActive(false);
 
