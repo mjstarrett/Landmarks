@@ -18,7 +18,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;
-using TMPro;
 
 public class HUD : MonoBehaviour 
 {
@@ -231,15 +230,14 @@ public class HUD : MonoBehaviour
    			messageGuiBack.font = hudFont;
    			messageGuiBack.material.color = Color.black;
 	    }
-	    
-		// if time is up, temporarily make the message an empty string
-	    hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
+
+        // if time is up, temporarily make the message an empty string
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-		TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI> ();
+        Text canvas = avatar.GetComponent<Text>();
         canvas.text = hidemessage ? string.Empty : message;
 
-		// if this happens, dim the background panel too
-		if (hidemessage) 
+        // if this happens, dim the background panel too
+        if (hidemessage) 
 		{
 			Color panelTemp = hudPanel.GetComponent<Image> ().color; 
 			panelTemp.a = hudPanelOFF;

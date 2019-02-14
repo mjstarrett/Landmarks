@@ -70,7 +70,7 @@ public class InstructionsTask : ExperimentTask {
         GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        Text canvas = avatar.GetComponent<Text>();
         hud.SecondsToShow = hud.InstructionDuration;
 
             
@@ -174,7 +174,7 @@ public class InstructionsTask : ExperimentTask {
         }
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        Text canvas = avatar.GetComponent<Text>();
         string nullstring = null;
         canvas.text = nullstring;
 //            StartCoroutine(storesInactive());
