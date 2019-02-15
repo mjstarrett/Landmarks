@@ -30,6 +30,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private float h;                          // Horizontal axis value from our controller to be used for movement - MJS 2019
         private float v;                          // Vertical axis value from our controller to be used for movement MJS 2019
 
+        public float playerSpeedMultiplier = 1.0f;
         public SteamVR_Action_Vector2 vrTouchpad;
         public SteamVR_Action_Single squeezeTrigger;
         
@@ -82,8 +83,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 v = CrossPlatformInputManager.GetAxis("ScaledNavigation_Vertical");
             }
 
-            Debug.Log("horizontal: " + h + "\tVertical: " + v);
-
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character
@@ -91,17 +90,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 // calculate camera relative direction to move:
                 m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = 0.5f * (v*m_CamForward + h*m_Cam.right); // edited to make walking 
+                m_Move = playerSpeedMultiplier * (v*m_CamForward + h*m_Cam.right); // edited to make walking 
             }
             else
             {
                 // we use world-relative directions in the case of no main camera
-                m_Move = 0.5f * (v * Vector3.forward + h * Vector3.right);
+                m_Move = playerSpeedMultiplier * (v * Vector3.forward + h * Vector3.right);
             }
 
 #if !MOBILE_INPUT
 			// walk speed multiplier
 	        if (Input.GetKey(KeyCode.RightShift)) m_Move *= 8.0f;
+            //if (SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any)) m_Move *= 10.0f;
 #endif
 
             // pass all parameters to the character control script
