@@ -19,6 +19,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
+using Valve.VR;
 
 public class InstructionsTask : ExperimentTask {
     
@@ -134,7 +135,7 @@ public class InstructionsTask : ExperimentTask {
             return true;
         }
         
-        if (Input.GetButtonDown("Return")) {
+        if (Input.GetButtonDown("Return") || SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any)) {
             log.log("INPUT_EVENT    clear text    1",1 );
             return true;
         }

@@ -11,6 +11,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
+using Valve.VR;
 
 public class NavigationConfidence : ExperimentTask {
     
@@ -139,7 +140,7 @@ public class NavigationConfidence : ExperimentTask {
             return true;
         }
         
-        if (Input.GetButtonDown("Return")) {
+        if (Input.GetButtonDown("Return") || SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any)) {
             log.log("INPUT_EVENT    clear text    1",1 );
             return true;
         }

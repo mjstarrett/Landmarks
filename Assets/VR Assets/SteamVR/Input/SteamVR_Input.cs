@@ -114,7 +114,8 @@ namespace Valve.VR
 
             if (File.Exists(fullPath))
             {
-                Debug.Log("[SteamVR] Loading actions file: " + fullPath);
+
+
 
                 var err = OpenVR.Input.SetActionManifestPath(fullPath);
                 if (err != EVRInputError.None)
