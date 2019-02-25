@@ -134,9 +134,18 @@ public class InstructionsTask : ExperimentTask {
         if ( interval > 0 && Experiment.Now() - task_start >= interval)  {
             return true;
         }
-        
-        if (Input.GetButtonDown("Return") || SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any)) {
+
+
+        //------------------------------------------
+        // Handle buttons to advance the task - MJS
+        //------------------------------------------
+        if (Input.GetButtonDown("Return")) {
             log.log("INPUT_EVENT    clear text    1",1 );
+            return true;
+        }
+        else if (vrEnabled && SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
         else if (actionButtonClicked == true)
@@ -150,6 +159,8 @@ public class InstructionsTask : ExperimentTask {
         {
             return KillCurrent ();
         }
+
+
 
         return false;
     }
