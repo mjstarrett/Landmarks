@@ -53,6 +53,8 @@ public class ExperimentTask : MonoBehaviour{
 	[HideInInspector] public Button actionButton;
 	[HideInInspector] public bool actionButtonClicked = false;
 
+    [HideInInspector] public bool vrEnabled; // use hidden variable to communicate if we're using VR based on input interface
+
 	public static bool killCurrent = false;
 
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
@@ -80,6 +82,7 @@ public class ExperimentTask : MonoBehaviour{
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
 		log = manager.dblog;
+        vrEnabled = manager.usingVR;
 
         // if we have a scaled nav task/player grab the object and log it - MJS 2019
         if (manager.scaledPlayer != null)

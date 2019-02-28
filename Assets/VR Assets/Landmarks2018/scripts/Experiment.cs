@@ -47,6 +47,8 @@ public class Experiment : MonoBehaviour {
 
     public bool debugging = false;
 
+    [HideInInspector] public bool usingVR;
+
 	[HideInInspector] public dbLog dblog;
 	
 	
@@ -96,7 +98,10 @@ public class Experiment : MonoBehaviour {
 
             // Render the overhead camera on the main display (none)
             overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
-		}
+
+            // create variable to indicate if using VR
+            usingVR = false;
+        }
         else if (userInterface == UserInterface.ViveAndVirtualizer)
         {
 			// HTC Vive and Cyberith Virtualizer
@@ -105,7 +110,10 @@ public class Experiment : MonoBehaviour {
 
             // Render the overhead camera to each lense of the HMD
             overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
-		}
+
+            // create variable to indicate if using VR
+            usingVR = true;
+        }
         else
         {
 			// If nothing else, load the default player from the first if() section
@@ -115,6 +123,9 @@ public class Experiment : MonoBehaviour {
 
             // Render the overhead camera on the main display (none)
             overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+
+            // create variable to indicate if using VR
+            usingVR = false;
         }
 
         Debug.Log (player.name);
