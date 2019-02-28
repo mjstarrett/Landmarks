@@ -33,9 +33,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public float playerSpeedMultiplier = 1.0f;
         public SteamVR_Action_Vector2 vrTouchpad;
         public SteamVR_Action_Single squeezeTrigger;
-        
+
+        private Experiment manager;
+
+        private void Awake()
+        {
+            manager = GameObject.FindWithTag("Experiment").GetComponent<Experiment>();
+            if (!manager.usingVR)
+            {
+                vrTouchpad = null;
+                squeezeTrigger = null;
+            }
+
+        }
+
         private void Start()
         {
+           
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -47,7 +61,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     "Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls.", gameObject);
                 // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
             }
-
+            
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
@@ -71,11 +85,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // read inputs -- MJS edited with ScaledNavigation button prefix to distinguish controls
 
-            float squeezeValue = squeezeTrigger.GetAxis(SteamVR_Input_Sources.Any);
-            if (squeezeValue > 0.0f)
+            if (manager.usingVR)
             {
-                h = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).x;
-                v = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).y;
+                float squeezeValue = squeezeTrigger.GetAxis(SteamVR_Input_Sources.Any);
+                if (squeezeValue > 0.0f)
+                {
+                    h = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).x;
+                    v = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).y;
+                }
             }
             else
             {
