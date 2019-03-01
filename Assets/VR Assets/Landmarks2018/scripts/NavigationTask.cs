@@ -17,7 +17,6 @@ public class NavigationTask : ExperimentTask
 
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
-    public bool instructionAlwaysOn = true;
     
 	public override void startTask () 
 	{
@@ -50,12 +49,9 @@ public class NavigationTask : ExperimentTask
 
 
 
-        // MJS 2019 - Move HUD to top left corner
-        hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
-        hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
-
-        // set the hud to never turn off
-        if (instructionAlwaysOn) hud.SecondsToShow = int.MaxValue;
+        //// MJS 2019 - Move HUD to top left corner
+        //hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
+        //hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
 	}	
 
 	public override bool updateTask () 
