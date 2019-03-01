@@ -75,7 +75,6 @@ public class HUD : MonoBehaviour
 	public int InstructionDuration = 99999; // MJS - allow different duration for instructions tasks
 
 	[HideInInspector] public long playback_time = 0;
-    [HideInInspector] public bool hidemessage; // MJS - made public so other scripts could check hud message status (hidden or not) (e.g., Navigation task, blackoutOnMessage)
 	
 	public void Awake()
 	{
@@ -232,6 +231,7 @@ public class HUD : MonoBehaviour
 	    }
 
         // if time is up, temporarily make the message an empty string
+        var hidemessage = ((DateTime.Now - LastShown) > TimeSpan.FromSeconds(SecondsToShow));
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         Text canvas = avatar.GetComponent<Text>();
         canvas.text = hidemessage ? string.Empty : message;
