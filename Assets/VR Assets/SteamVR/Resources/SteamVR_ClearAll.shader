@@ -5,6 +5,8 @@ Shader "Custom/SteamVR_ClearAll" {
 	{
 		_Color ("Color", Color) = (0, 0, 0, 0)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_OutlineColor("Outline Color", Color) = (0, 0, 1, 1)
+		_Outline("Outline width", Range(.002, 0.03)) = .005
 	}
 
 	CGINCLUDE
