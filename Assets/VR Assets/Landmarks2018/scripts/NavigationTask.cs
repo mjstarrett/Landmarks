@@ -43,7 +43,7 @@ public class NavigationTask : ExperimentTask
    		} 
 		else 
 		{
-            hud.setMessage("No message set");
+            hud.SecondsToShow = 0;
             hud.setMessage("Please find the " + current.name);
 		}
 
