@@ -143,7 +143,7 @@ public class InstructionsTask : ExperimentTask {
             log.log("INPUT_EVENT    clear text    1",1 );
             return true;
         }
-        else if (vrEnabled && SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
+        else if (vrEnabled && SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
         {
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;
