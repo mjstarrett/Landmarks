@@ -87,11 +87,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             if (manager.usingVR)
             {
-                float squeezeValue = squeezeTrigger.GetAxis(SteamVR_Input_Sources.Any);
+                float squeezeValue = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).Squeeze.GetAxis(SteamVR_Input_Sources.Any);
                 if (squeezeValue > 0.0f)
                 {
-                    h = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).x;
-                    v = vrTouchpad.GetAxis(SteamVR_Input_Sources.Any).y;
+                    h = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).x;
+                    v = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).y;
+                }
+                else
+                {
+                    h = 0;
+                    v = 0;
                 }
             }
             else
