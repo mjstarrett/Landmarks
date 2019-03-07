@@ -18,6 +18,7 @@ using UnityEngine;
 using System.Collections;
 using System.Reflection;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class ExperimentTask : MonoBehaviour{
 
@@ -33,6 +34,8 @@ public class ExperimentTask : MonoBehaviour{
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
     
 	protected long task_start;
+
+    protected SteamVR_Input_ActionSet_landmarks vrInput;
 	
 	public bool skip = false;
 	public bool canIncrementLists = true;
@@ -83,6 +86,10 @@ public class ExperimentTask : MonoBehaviour{
 		overheadCamera = manager.overheadCamera;
 		log = manager.dblog;
         vrEnabled = manager.usingVR;
+
+        // set up vrInput if we're using VR
+        if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
+
 
         // if we have a scaled nav task/player grab the object and log it - MJS 2019
         if (manager.scaledPlayer != null)

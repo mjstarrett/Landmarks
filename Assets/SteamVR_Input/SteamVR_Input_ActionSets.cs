@@ -17,17 +17,17 @@ namespace Valve.VR
     public partial class SteamVR_Actions
     {
         
-        private static SteamVR_Input_ActionSet_default p__default;
+        private static SteamVR_Input_ActionSet_landmarks p_landmarks;
         
         private static SteamVR_Input_ActionSet_platformer p_platformer;
         
         private static SteamVR_Input_ActionSet_buggy p_buggy;
         
-        public static SteamVR_Input_ActionSet_default _default
+        public static SteamVR_Input_ActionSet_landmarks landmarks
         {
             get
             {
-                return SteamVR_Actions.p__default.GetCopy<SteamVR_Input_ActionSet_default>();
+                return SteamVR_Actions.p_landmarks.GetCopy<SteamVR_Input_ActionSet_landmarks>();
             }
         }
         
@@ -49,11 +49,11 @@ namespace Valve.VR
         
         private static void StartPreInitActionSets()
         {
-            SteamVR_Actions.p__default = ((SteamVR_Input_ActionSet_default)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_default>("/actions/default")));
+            SteamVR_Actions.p_landmarks = ((SteamVR_Input_ActionSet_landmarks)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_landmarks>("/actions/landmarks")));
             SteamVR_Actions.p_platformer = ((SteamVR_Input_ActionSet_platformer)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_platformer>("/actions/platformer")));
             SteamVR_Actions.p_buggy = ((SteamVR_Input_ActionSet_buggy)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_buggy>("/actions/buggy")));
             Valve.VR.SteamVR_Input.actionSets = new Valve.VR.SteamVR_ActionSet[] {
-                    SteamVR_Actions._default,
+                    SteamVR_Actions.landmarks,
                     SteamVR_Actions.platformer,
                     SteamVR_Actions.buggy};
         }

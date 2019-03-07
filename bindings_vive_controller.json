@@ -3,6 +3,10 @@
    "app_key" : "application.generated.unity.test.exe",
    "bindings" : {
       "/actions/buggy" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {
@@ -68,33 +72,71 @@
       },
       "/actions/default" : {
          "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
+         "sources" : []
+      },
+      "/actions/landmarks" : {
          "haptics" : [
             {
-               "output" : "/actions/default/out/haptic",
+               "output" : "none",
                "path" : "/user/hand/left/output/haptic"
             },
             {
-               "output" : "/actions/default/out/haptic",
+               "output" : "none",
                "path" : "/user/hand/right/output/haptic"
             }
          ],
          "poses" : [
             {
-               "output" : "/actions/default/in/pose",
+               "output" : "none",
+               "path" : "/user/hand/left/pose/base"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/right/pose/base"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/left/pose/gdc2015"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/right/pose/gdc2015"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/left/pose/handgrip"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/right/pose/handgrip"
+            },
+            {
+               "output" : "none",
                "path" : "/user/hand/left/pose/raw"
             },
             {
-               "output" : "/actions/default/in/pose",
+               "output" : "none",
                "path" : "/user/hand/right/pose/raw"
+            },
+            {
+               "output" : "/actions/landmarks/in/pose",
+               "path" : "/user/hand/left/pose/tip"
+            },
+            {
+               "output" : "/actions/landmarks/in/pose",
+               "path" : "/user/hand/right/pose/tip"
             }
          ],
          "skeleton" : [
             {
-               "output" : "/actions/default/in/skeletonlefthand",
+               "output" : "/actions/landmarks/in/skeletonlefthand",
                "path" : "/user/hand/left/input/skeleton/left"
             },
             {
-               "output" : "/actions/default/in/skeletonrighthand",
+               "output" : "/actions/landmarks/in/skeletonrighthand",
                "path" : "/user/hand/right/input/skeleton/right"
             }
          ],
@@ -102,116 +144,25 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/interactui"
+                     "output" : "/actions/landmarks/in/grabgrip"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "position" : {
-                     "output" : "/actions/default/in/moveavatar"
-                  }
-               },
-               "mode" : "trackpad",
-               "path" : "/user/hand/left/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/grabgrip"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.05",
-                  "click_deactivate_threshold" : "0",
-                  "force_input" : "force"
-               },
                "path" : "/user/hand/left/input/grip"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabpinch"
+                     "output" : "/actions/landmarks/in/grabgrip"
                   }
                },
                "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.75",
-                  "click_deactivate_threshold" : "0.7",
-                  "force_input" : "value"
-               },
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/interactui"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/grabpinch"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.75",
-                  "click_deactivate_threshold" : "0.7"
-               },
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "position" : {
-                     "output" : "/actions/default/in/moveavatar"
-                  }
-               },
-               "mode" : "trackpad",
-               "path" : "/user/hand/right/input/trackpad"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/grabgrip"
-                  }
-               },
-               "mode" : "button",
-               "parameters" : {
-                  "click_activate_threshold" : "0.05",
-                  "click_deactivate_threshold" : "0",
-                  "force_input" : "force"
-               },
                "path" : "/user/hand/right/input/grip"
             },
             {
                "inputs" : {
-                  "pull" : {
-                     "output" : "/actions/default/in/squeeze"
-                  }
-               },
-               "mode" : "trigger",
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "pull" : {
-                     "output" : "/actions/default/in/squeeze"
-                  }
-               },
-               "mode" : "trigger",
-               "path" : "/user/hand/right/input/trigger"
-            },
-            {
-               "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/debugbutton"
+                     "output" : "/actions/landmarks/in/debugbutton"
                   }
                },
                "mode" : "button",
@@ -220,15 +171,90 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/debugbutton"
+                     "output" : "/actions/landmarks/in/debugbutton"
                   }
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/application_menu"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/landmarks/in/interactui"
+                  },
+                  "pull" : {
+                     "output" : "/actions/landmarks/in/squeeze"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/landmarks/in/interactui"
+                  },
+                  "pull" : {
+                     "output" : "/actions/landmarks/in/squeeze"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/landmarks/in/teleport"
+                  },
+                  "position" : {
+                     "output" : "/actions/landmarks/in/moveavatar"
+                  }
+               },
+               "mode" : "trackpad",
+               "path" : "/user/hand/left/input/trackpad"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/landmarks/in/teleport"
+                  },
+                  "position" : {
+                     "output" : "/actions/landmarks/in/moveavatar"
+                  }
+               },
+               "mode" : "trackpad",
+               "path" : "/user/hand/right/input/trackpad"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/landmarks/in/grabpinch"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/landmarks/in/grabpinch"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {},
+               "mode" : "none",
+               "path" : "/user/hand/left/input/skeleton/left"
             }
          ]
       },
       "/actions/platformer" : {
+         "chords" : [],
+         "haptics" : [],
+         "poses" : [],
+         "skeleton" : [],
          "sources" : [
             {
                "inputs" : {

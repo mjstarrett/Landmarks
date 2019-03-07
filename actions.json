@@ -1,50 +1,50 @@
 {
   "actions": [
     {
-      "name": "/actions/default/in/InteractUI",
+      "name": "/actions/landmarks/in/InteractUI",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/Teleport",
+      "name": "/actions/landmarks/in/Teleport",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/GrabPinch",
+      "name": "/actions/landmarks/in/GrabPinch",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/GrabGrip",
+      "name": "/actions/landmarks/in/GrabGrip",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/Pose",
+      "name": "/actions/landmarks/in/Pose",
       "type": "pose"
     },
     {
-      "name": "/actions/default/in/SkeletonLeftHand",
+      "name": "/actions/landmarks/in/SkeletonLeftHand",
       "type": "skeleton",
       "skeleton": "/skeleton/hand/left"
     },
     {
-      "name": "/actions/default/in/SkeletonRightHand",
+      "name": "/actions/landmarks/in/SkeletonRightHand",
       "type": "skeleton",
       "skeleton": "/skeleton/hand/right"
     },
     {
-      "name": "/actions/default/in/Squeeze",
+      "name": "/actions/landmarks/in/Squeeze",
       "type": "vector1",
       "requirement": "optional"
     },
     {
-      "name": "/actions/default/in/MoveAvatar",
+      "name": "/actions/landmarks/in/MoveAvatar",
       "type": "vector2"
     },
     {
-      "name": "/actions/default/in/DebugButton",
+      "name": "/actions/landmarks/in/DebugButton",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/out/Haptic",
+      "name": "/actions/landmarks/out/Haptic",
       "type": "vibration"
     },
     {
@@ -74,7 +74,7 @@
   ],
   "action_sets": [
     {
-      "name": "/actions/default",
+      "name": "/actions/landmarks",
       "usage": "leftright"
     },
     {
@@ -107,18 +107,8 @@
   "localization": [
     {
       "language_tag": "en_US",
-      "/actions/default/in/InteractUI": "Interact With UI",
-      "/actions/default/in/Teleport": "Teleport",
-      "/actions/default/in/GrabPinch": "Grab Pinch",
-      "/actions/default/in/GrabGrip": "Grab Grip",
-      "/actions/default/in/SkeletonLeftHand": "Skeleton (Left)",
-      "/actions/default/in/SkeletonRightHand": "Skeleton (Right)",
-      "/actions/default/in/Pose": "Pose",
-      "/actions/default/out/Haptic": "Haptic",
       "/actions/platformer/in/Move": "Move",
-      "/actions/platformer/in/Jump": "Jump",
-      "/actions/default/in/MoveAvatar": "MoveAvatar",
-      "/actions/default/in/DebugButton": "DebugButton"
+      "/actions/platformer/in/Jump": "Jump"
     }
   ]
 }
