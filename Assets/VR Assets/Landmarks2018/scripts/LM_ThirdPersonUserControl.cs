@@ -31,21 +31,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private float v;                          // Vertical axis value from our controller to be used for movement MJS 2019
 
         public float playerSpeedMultiplier = 1.0f;
-        public SteamVR_Action_Vector2 vrTouchpad;
-        public SteamVR_Action_Single squeezeTrigger;
+
+        public SteamVR_Input_ActionSet_landmarks vrInput;
 
         private Experiment manager;
 
         private void Awake()
         {
             manager = GameObject.FindWithTag("Experiment").GetComponent<Experiment>();
-            if (!manager.usingVR)
-            {
-                vrTouchpad = null;
-                squeezeTrigger = null;
-            }
-
+            vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
         }
+
 
         private void Start()
         {
@@ -87,11 +83,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             if (manager.usingVR)
             {
-                float squeezeValue = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).Squeeze.GetAxis(SteamVR_Input_Sources.Any);
+                float squeezeValue =vrInput.Squeeze.GetAxis(SteamVR_Input_Sources.Any);
                 if (squeezeValue > 0.0f)
                 {
-                    h = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).x;
-                    v = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_default>(default).MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).y;
+                    h = vrInput.MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).x;
+                    v = vrInput.MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).y;
                 }
                 else
                 {

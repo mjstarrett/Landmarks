@@ -37,7 +37,7 @@ public class HUD : MonoBehaviour
     public GameObject debugButton; // button that can be used to force continue in debug mode;
     public GameObject confidenceSlider; // slider that can be used by any task for confidence judements
 
-    public GameObject externalHud; //  if empty, a camera overlay hud will be assumed (as in desktop)
+    public GameObject hudNonEssentials; // objects that can be turned off unless specifically needed if empty, a camera overlay hud will be assumed (as in desktop)
 
     public Camera[] cam;
 	public int hudLayer = 13;
@@ -246,9 +246,9 @@ public class HUD : MonoBehaviour
 			hudPanel.GetComponent<Image> ().color = panelTemp;
 
             // if we're using an external wall or screen for the hud (fixed position), turn it off as well.
-            if (externalHud != null)
+            if (hudNonEssentials != null)
             {
-                externalHud.SetActive(false);
+                hudNonEssentials.SetActive(false);
             }
         }
 		else
@@ -258,9 +258,9 @@ public class HUD : MonoBehaviour
 			hudPanel.GetComponent<Image> ().color = panelTemp;
 
             // if we're using an external wall or screen for the hud (fixed position), Make sure it's active.
-            if (externalHud != null)
+            if (hudNonEssentials != null)
             {
-                externalHud.SetActive(true);
+                hudNonEssentials.SetActive(true);
             }
         }
 
