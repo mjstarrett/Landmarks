@@ -35,7 +35,7 @@ public class ExperimentTask : MonoBehaviour{
     
 	protected long task_start;
 
-    protected SteamVR_Input_ActionSet_landmarks vrInput;
+    protected SteamVR_Input_ActionSet_vrtk vrInput;
 	
 	public bool skip = false;
 	public bool canIncrementLists = true;
@@ -88,7 +88,7 @@ public class ExperimentTask : MonoBehaviour{
         vrEnabled = manager.usingVR;
 
         // set up vrInput if we're using VR
-        if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
+        if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
 
 
         // if we have a scaled nav task/player grab the object and log it - MJS 2019
