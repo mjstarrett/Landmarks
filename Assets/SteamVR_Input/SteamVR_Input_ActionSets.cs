@@ -17,45 +17,21 @@ namespace Valve.VR
     public partial class SteamVR_Actions
     {
         
-        private static SteamVR_Input_ActionSet_landmarks p_landmarks;
+        private static SteamVR_Input_ActionSet_vrtk p_vrtk;
         
-        private static SteamVR_Input_ActionSet_platformer p_platformer;
-        
-        private static SteamVR_Input_ActionSet_buggy p_buggy;
-        
-        public static SteamVR_Input_ActionSet_landmarks landmarks
+        public static SteamVR_Input_ActionSet_vrtk vrtk
         {
             get
             {
-                return SteamVR_Actions.p_landmarks.GetCopy<SteamVR_Input_ActionSet_landmarks>();
-            }
-        }
-        
-        public static SteamVR_Input_ActionSet_platformer platformer
-        {
-            get
-            {
-                return SteamVR_Actions.p_platformer.GetCopy<SteamVR_Input_ActionSet_platformer>();
-            }
-        }
-        
-        public static SteamVR_Input_ActionSet_buggy buggy
-        {
-            get
-            {
-                return SteamVR_Actions.p_buggy.GetCopy<SteamVR_Input_ActionSet_buggy>();
+                return SteamVR_Actions.p_vrtk.GetCopy<SteamVR_Input_ActionSet_vrtk>();
             }
         }
         
         private static void StartPreInitActionSets()
         {
-            SteamVR_Actions.p_landmarks = ((SteamVR_Input_ActionSet_landmarks)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_landmarks>("/actions/landmarks")));
-            SteamVR_Actions.p_platformer = ((SteamVR_Input_ActionSet_platformer)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_platformer>("/actions/platformer")));
-            SteamVR_Actions.p_buggy = ((SteamVR_Input_ActionSet_buggy)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_buggy>("/actions/buggy")));
+            SteamVR_Actions.p_vrtk = ((SteamVR_Input_ActionSet_vrtk)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_vrtk>("/actions/vrtk")));
             Valve.VR.SteamVR_Input.actionSets = new Valve.VR.SteamVR_ActionSet[] {
-                    SteamVR_Actions.landmarks,
-                    SteamVR_Actions.platformer,
-                    SteamVR_Actions.buggy};
+                    SteamVR_Actions.vrtk};
         }
     }
 }

@@ -32,14 +32,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public float playerSpeedMultiplier = 1.0f;
 
-        public SteamVR_Input_ActionSet_landmarks vrInput;
+        public SteamVR_Input_ActionSet_vrtk vrInput;
 
         private Experiment manager;
 
         private void Awake()
         {
             manager = GameObject.FindWithTag("Experiment").GetComponent<Experiment>();
-            vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
+            vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
         }
 
 
@@ -83,11 +83,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             if (manager.usingVR)
             {
-                float squeezeValue =vrInput.Squeeze.GetAxis(SteamVR_Input_Sources.Any);
+                float squeezeValue =vrInput.TriggerSqueeze.GetAxis(SteamVR_Input_Sources.Any);
                 if (squeezeValue > 0.0f)
                 {
-                    h = vrInput.MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).x;
-                    v = vrInput.MoveAvatar.GetAxis(SteamVR_Input_Sources.Any).y;
+                    h = vrInput.TouchpadPosition.GetAxis(SteamVR_Input_Sources.Any).x;
+                    v = vrInput.TouchpadPosition.GetAxis(SteamVR_Input_Sources.Any).y;
                 }
                 else
                 {
