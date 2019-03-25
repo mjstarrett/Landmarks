@@ -2,6 +2,13 @@
 using UnityEngine;
 using System.Collections;
 
+public enum ControlerOptions
+{
+    hold2point,
+    press2toggle,
+    alwaysOn
+}
+
 namespace Valve.VR.Extras
 {
     public class SteamVR_LaserPointer : MonoBehaviour
@@ -9,6 +16,8 @@ namespace Valve.VR.Extras
         public SteamVR_Behaviour_Pose pose;
 
         //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
+        public ControlerOptions controlBehavior = ControlerOptions.hold2point;
+        public SteamVR_Action_Boolean activatePointer = SteamVR_Input.GetBooleanAction("InteractUI");
         public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.GetBooleanAction("InteractUI");
 
         public bool active = true;
@@ -95,11 +104,53 @@ namespace Valve.VR.Extras
         
         private void Update()
         {
-            if (!isActive)
+
+            //---------------------------------------------------------------------------------------------
+            //--------------------- MJS - Handle the on/off of the beam------------------------------------
+            //---------------------------------------------------------------------------------------------
+
+            // Handle our pointer states
             {
-                isActive = true;
-                this.transform.GetChild(0).gameObject.SetActive(true);
+                if (isActive)
+                {
+                    this.transform.GetChild(0).gameObject.SetActive(true);
+                }
+                else
+                {
+                    this.transform.GetChild(0).gameObject.SetActive(false);
+                }
             }
+            
+            
+            // Handle pointer on/off Behaviors based on selected interaction profile
+            if (controlBehavior == ControlerOptions.hold2point)
+            {
+                if (activatePointer.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    isActive = true;
+                }
+                else
+                {
+                    isActive = false;
+                }
+            }
+            else if (controlBehavior == ControlerOptions.press2toggle)
+            {
+                if (activatePointer.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    isActive = !isActive;
+                }
+            }
+            else if (controlBehavior == ControlerOptions.alwaysOn)
+            {
+                if (!isActive)
+                {
+                    isActive = true;
+                }
+            }
+            //---------------------------------------------------------------------------------------------
+            //---------------------------------------------------------------------------------------------
+            //---------------------------------------------------------------------------------------------
 
             float dist = 100f;
 
