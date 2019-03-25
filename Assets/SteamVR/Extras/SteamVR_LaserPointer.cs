@@ -39,12 +39,16 @@ namespace Valve.VR.Extras
             
 
             holder = new GameObject();
+            holder.name = "PointerHolder";
             holder.transform.parent = this.transform;
             holder.transform.localPosition = Vector3.zero;
             holder.transform.localRotation = Quaternion.identity;
+            holder.layer = LayerMask.NameToLayer("HUD only");
 
             pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            pointer.name = "Pointer";
             pointer.transform.parent = holder.transform;
+            pointer.layer = LayerMask.NameToLayer("HUD only");
             pointer.transform.localScale = new Vector3(thickness, thickness, 100f);
             pointer.transform.localPosition = new Vector3(0f, 0f, 50f);
             pointer.transform.localRotation = Quaternion.identity;
