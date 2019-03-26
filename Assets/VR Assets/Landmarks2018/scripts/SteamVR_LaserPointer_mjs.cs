@@ -10,7 +10,7 @@ public enum ControlOptions
     alwaysOn
 }
 
-public class SteamVR_LaserPointer_mjsModified : MonoBehaviour
+public class SteamVR_LaserPointer_mjs : MonoBehaviour
 {
     public SteamVR_Behaviour_Pose pose;
 
@@ -80,6 +80,9 @@ public class SteamVR_LaserPointer_mjsModified : MonoBehaviour
         Material newMaterial = new Material(Shader.Find("Unlit/Color"));
         newMaterial.SetColor("_Color", color);
         pointer.GetComponent<MeshRenderer>().material = newMaterial;
+
+        //// MJS - add collider to the beam
+        //MeshCollider boxCollider = pointer.AddComponent<MeshCollider>();
     }
 
     public virtual void OnPointerIn(PointerEventArgs e)
