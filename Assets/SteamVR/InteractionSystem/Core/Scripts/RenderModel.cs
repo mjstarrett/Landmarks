@@ -51,6 +51,7 @@ namespace Valve.VR.InteractionSystem
                 handInstance.transform.localPosition = Vector3.zero;
                 handInstance.transform.localRotation = Quaternion.identity;
                 handInstance.transform.localScale = handPrefab.transform.localScale;
+                handInstance.layer = this.gameObject.layer;
                 handSkeleton = handInstance.GetComponent<SteamVR_Behaviour_Skeleton>();
                 handSkeleton.origin = Player.instance.trackingOriginTransform;
                 handSkeleton.updatePose = false;
@@ -79,6 +80,7 @@ namespace Valve.VR.InteractionSystem
                 controllerInstance.transform.localPosition = Vector3.zero;
                 controllerInstance.transform.localRotation = Quaternion.identity;
                 controllerInstance.transform.localScale = controllerPrefab.transform.localScale;
+                controllerInstance.layer = gameObject.layer;
                 controllerRenderModel = controllerInstance.GetComponent<SteamVR_RenderModel>();
             }
         }
