@@ -19,7 +19,6 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
-using Valve.VR;
 
 public class InstructionsTask : ExperimentTask {
     
@@ -141,11 +140,6 @@ public class InstructionsTask : ExperimentTask {
         //------------------------------------------
         if (Input.GetButtonDown("Return")) {
             log.log("INPUT_EVENT    clear text    1",1 );
-            return true;
-        }
-        else if (vrEnabled && vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
-        {
-            log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
         else if (hud.actionButtonClicked == true)
