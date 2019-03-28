@@ -138,11 +138,11 @@ public class ScoreMapTest : ExperimentTask {
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = progressionText;
 		hud.actionButton.SetActive(true);
-		actionButton.onClick.AddListener (OnActionClick);
-	}
+        hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
+    }
 
 
-	public override void TASK_START ()
+    public override void TASK_START ()
 	{
 		if (!manager)
 			Start ();
@@ -183,9 +183,9 @@ public class ScoreMapTest : ExperimentTask {
 		// -----------------------------------------
 		// Handle action button behavior
 		// -----------------------------------------
-		if (actionButtonClicked == true) 
+		if (hud.actionButtonClicked == true) 
 		{
-			actionButtonClicked = false;
+			hud.actionButtonClicked = false;
 			return true;
 		}
 
@@ -212,8 +212,8 @@ public class ScoreMapTest : ExperimentTask {
 
         // turn off the map action button
         actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
-        actionButton.onClick.RemoveListener (OnActionClick);
-		hud.actionButton.SetActive(false);
+        hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
+        hud.actionButton.SetActive(false);
 
 		// -------------------------------
 		// Prep the Target Object States

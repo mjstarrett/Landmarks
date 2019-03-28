@@ -109,7 +109,7 @@ public class NavigationConfidence : ExperimentTask {
 
             // activate the button
             hud.actionButton.SetActive(true);
-            actionButton.onClick.AddListener(OnActionClick);
+            hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
 
             // make the cursor functional and visible
             Cursor.lockState = CursorLockMode.None;
@@ -153,9 +153,9 @@ public class NavigationConfidence : ExperimentTask {
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
-        else if (actionButtonClicked == true)
+        else if (hud.actionButtonClicked == true)
         {
-            actionButtonClicked = false;
+            hud.actionButtonClicked = false;
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
@@ -208,7 +208,7 @@ public class NavigationConfidence : ExperimentTask {
         {
             // Reset and deactivate action button
             actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
-            actionButton.onClick.RemoveListener(OnActionClick);
+            hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
             hud.actionButton.SetActive(false);
 
             // make the cursor invisible

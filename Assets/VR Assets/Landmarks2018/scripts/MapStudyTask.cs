@@ -49,7 +49,7 @@ public class MapStudyTask : ExperimentTask {
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = "Start Test";
 		hud.actionButton.SetActive(true);
-		actionButton.onClick.AddListener (OnActionClick);
+	    hud.actionButton.GetComponent<Button>().onClick.AddListener (hud.OnActionClick);
 	}	
 
 
@@ -101,9 +101,9 @@ public class MapStudyTask : ExperimentTask {
 			return KillCurrent ();
 		}
 
-		if (actionButtonClicked == true) 
+		if (hud.actionButtonClicked == true) 
 		{
-			actionButtonClicked = false;
+			hud.actionButtonClicked = false;
 			return true;
 		}
 
@@ -148,8 +148,8 @@ public class MapStudyTask : ExperimentTask {
 			GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
 		}
 
-		// turn off the map action button
-		actionButton.onClick.RemoveListener (OnActionClick);
+        // turn off the map action button
+        hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
         actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
         hud.actionButton.SetActive(false);
 	}

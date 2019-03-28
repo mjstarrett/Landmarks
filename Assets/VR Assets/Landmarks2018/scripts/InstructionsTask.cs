@@ -108,7 +108,7 @@ public class InstructionsTask : ExperimentTask {
         {
             
             // Use custom text for button (if provided)
-            Debug.Log(actionButton.GetComponent<DefaultText>().defaultText);
+            Debug.Log(hud.actionButton.GetComponent<DefaultText>().defaultText);
             if (customButtonText != "") actionButton.GetComponentInChildren<Text>().text = customButtonText;
             // Otherwise, use default text attached to the button (component)
             else actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
@@ -116,7 +116,7 @@ public class InstructionsTask : ExperimentTask {
 
             // activate the button
             hud.actionButton.SetActive(true);
-            actionButton.onClick.AddListener(OnActionClick);
+            hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
 
             // we'll need the mouse, as well
             // make the cursor functional and visible
@@ -148,9 +148,9 @@ public class InstructionsTask : ExperimentTask {
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
-        else if (actionButtonClicked == true)
+        else if (hud.actionButtonClicked == true)
         {
-            actionButtonClicked = false;
+            hud.actionButtonClicked = false;
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
@@ -198,8 +198,8 @@ public class InstructionsTask : ExperimentTask {
         if (actionButtonOn)
         {
             // Reset and deactivate action button
-            actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
-            actionButton.onClick.RemoveListener(OnActionClick);
+            hud.actionButton.GetComponentInChildren<Text>().text = hud.actionButton.GetComponent<DefaultText>().defaultText;
+            hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
             hud.actionButton.SetActive(false);
 
             // make the cursor invisible
