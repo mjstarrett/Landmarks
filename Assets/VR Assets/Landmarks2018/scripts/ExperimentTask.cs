@@ -54,7 +54,6 @@ public class ExperimentTask : MonoBehaviour{
 
 	[HideInInspector] public Button debugButton;
 	[HideInInspector] public Button actionButton;
-	[HideInInspector] public bool actionButtonClicked = false;
 
     [HideInInspector] public bool vrEnabled; // use hidden variable to communicate if we're using VR based on input interface
 
@@ -202,10 +201,7 @@ public class ExperimentTask : MonoBehaviour{
 		killCurrent = true;
 	}
 
-	public void OnActionClick()
-	{
-		actionButtonClicked = true;
-	}
+
 
 	public bool KillCurrent () 
 	{

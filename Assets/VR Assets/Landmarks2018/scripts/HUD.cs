@@ -34,6 +34,7 @@ public class HUD : MonoBehaviour
 	public float hudPanelOFF = 0f; // set the opacity when off
 	private string canvasName;
     public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
+    [HideInInspector] public bool actionButtonClicked = false;
     public GameObject debugButton; // button that can be used to force continue in debug mode;
     public GameObject confidenceSlider; // slider that can be used by any task for confidence judements
 
@@ -77,8 +78,8 @@ public class HUD : MonoBehaviour
 	public int InstructionDuration = 99999; // MJS - allow different duration for instructions tasks
 
 	[HideInInspector] public long playback_time = 0;
-	
-	public void Awake()
+
+    public void Awake()
 	{
 		SecondsToShow = GeneralDuration;
 		//Debug.Log ("Starting HUD.cs");
@@ -400,6 +401,10 @@ public class HUD : MonoBehaviour
 		Camera.main.fieldOfView = fullScreenFOV;
 		
 	}
-	
-	
+
+    // MJS - Moved from Experiment Task for VR functionality - March 2019
+    public void OnActionClick()
+    {
+        actionButtonClicked = true;
+    }
 }
