@@ -11,7 +11,6 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
-using Valve.VR;
 
 public class NavigationConfidence : ExperimentTask {
     
@@ -144,11 +143,6 @@ public class NavigationConfidence : ExperimentTask {
         // Handle buttons to advance the task - MJS
         //------------------------------------------
         if (Input.GetButtonDown("Return"))
-        {
-            log.log("INPUT_EVENT    clear text    1", 1);
-            return true;
-        }
-        else if (vrEnabled && vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
         {
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;

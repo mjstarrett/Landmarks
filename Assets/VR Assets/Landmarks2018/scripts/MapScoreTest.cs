@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ScoreMapTest : ExperimentTask {
+public class MapScoreTest : ExperimentTask {
 
 	private GameObject copyObjects; // should be the game object called copyObjects in the MapTask game object
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object
