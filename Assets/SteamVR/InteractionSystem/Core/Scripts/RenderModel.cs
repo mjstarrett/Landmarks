@@ -80,8 +80,8 @@ namespace Valve.VR.InteractionSystem
                 controllerInstance.transform.localPosition = Vector3.zero;
                 controllerInstance.transform.localRotation = Quaternion.identity;
                 controllerInstance.transform.localScale = controllerPrefab.transform.localScale;
-                controllerInstance.layer = gameObject.layer;
                 controllerRenderModel = controllerInstance.GetComponent<SteamVR_RenderModel>();
+
             }
         }
 
