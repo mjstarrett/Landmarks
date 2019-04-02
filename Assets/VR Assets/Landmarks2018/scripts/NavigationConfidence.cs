@@ -36,6 +36,7 @@ public class NavigationConfidence : ExperimentTask {
     public bool restrictMovement = false; // MJS do we want to keep them still during this?
 
     private GameObject sliderObject;
+    private LM_vrSlider vrSlider;
     private Slider slider;
     public bool randomStartValue = true;
     
@@ -119,11 +120,26 @@ public class NavigationConfidence : ExperimentTask {
         // Confidence Slider
         //---------------------------
         sliderObject = hud.confidenceSlider.gameObject;
-        slider = sliderObject.GetComponent<Slider>();
+        if (vrEnabled)
+        {
+            vrSlider = sliderObject.GetComponent<LM_vrSlider>();
+        }
+        else
+        {
+            slider = sliderObject.GetComponent<Slider>();
+        }
 
         // Reset the value before the trial starts
-        if (randomStartValue) slider.value = Random.Range(slider.minValue, slider.maxValue);
-        else slider.value = 0;
+        if (vrEnabled)
+        {
+            if (randomStartValue) vrSlider.value = Random.Range(vrSlider.minValue, vrSlider.maxValue);
+            else vrSlider.value = 0;
+        }
+        else
+        {
+            if (randomStartValue) slider.value = Random.Range(slider.minValue, slider.maxValue);
+            else slider.value = 0;
+        }
 
         sliderObject.SetActive(true);
 
@@ -173,11 +189,19 @@ public class NavigationConfidence : ExperimentTask {
         hud.SecondsToShow = hud.GeneralDuration;
 
         // Log the confidence rating
-        log.log("Task:\t" + transform.parent.name + 
-                "\tTarget:\t" + objects.currentObject().name + 
-                "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value + 
-                "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
-
+        if (vrEnabled)
+        {
+            log.log("Task:\t" + transform.parent.name +
+                  "\tTarget:\t" + objects.currentObject().name +
+                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().value +
+                  "\t/\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue, 1);
+        } else
+        {
+            log.log("Task:\t" + transform.parent.name +
+                  "\tTarget:\t" + objects.currentObject().name +
+                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().value +
+                  "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
+        }
         if (canIncrementLists) {
 
             if (objects) {
