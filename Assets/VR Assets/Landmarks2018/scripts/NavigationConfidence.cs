@@ -120,6 +120,7 @@ public class NavigationConfidence : ExperimentTask {
         // Confidence Slider
         //---------------------------
         sliderObject = hud.confidenceSlider.gameObject;
+        sliderObject.SetActive(true);
         if (vrEnabled)
         {
             vrSlider = sliderObject.GetComponent<LM_vrSlider>();
@@ -132,8 +133,7 @@ public class NavigationConfidence : ExperimentTask {
         // Reset the value before the trial starts
         if (vrEnabled)
         {
-            if (randomStartValue) vrSlider.value = Random.Range(vrSlider.minValue, vrSlider.maxValue);
-            else vrSlider.value = 0;
+            vrSlider.ResetSliderPosition(randomStartValue);
         }
         else
         {
@@ -141,7 +141,7 @@ public class NavigationConfidence : ExperimentTask {
             else slider.value = 0;
         }
 
-        sliderObject.SetActive(true);
+        
 
     }
     // Update is called once per frame

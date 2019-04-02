@@ -16,7 +16,7 @@ public class LM_vrSlider : MonoBehaviour
     public float[] anchorPoints;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Set up the anchor on the handle to be based on the far left of the slider (so it's displacement equals our value)
         handle.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0.5f);
@@ -71,7 +71,23 @@ public class LM_vrSlider : MonoBehaviour
                 break;
             }
         }
-
-       
     }
+
+    public void ResetSliderPosition(bool random)
+    {
+        //// Allow other scripts to call and reset the slider value to zero or a random value
+        Vector3 resetPosition = handle.GetComponent<RectTransform>().anchoredPosition;
+        if (random)
+        {
+            resetPosition.x = anchorPoints[Random.Range((int)minValue, (int)maxValue)];
+        }
+        else
+        {
+            resetPosition.x = anchorPoints[0];
+        }
+
+        handle.GetComponent<RectTransform>().anchoredPosition = resetPosition;
+
+    }
+    
 }
