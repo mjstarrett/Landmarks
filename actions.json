@@ -1,88 +1,96 @@
 {
   "actions": [
     {
-      "name": "/actions/default/in/InteractUI",
+      "name": "/actions/vrtk/in/TouchpadButton",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/Teleport",
+      "name": "/actions/vrtk/in/TriggerButton",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/GrabPinch",
+      "name": "/actions/vrtk/in/GripButton",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/GrabGrip",
-      "type": "boolean"
-    },
-    {
-      "name": "/actions/default/in/Pose",
+      "name": "/actions/vrtk/in/Pose",
       "type": "pose"
     },
     {
-      "name": "/actions/default/in/SkeletonLeftHand",
+      "name": "/actions/vrtk/in/SkeletonLeftHand",
       "type": "skeleton",
       "skeleton": "/skeleton/hand/left"
     },
     {
-      "name": "/actions/default/in/SkeletonRightHand",
+      "name": "/actions/vrtk/in/SkeletonRightHand",
       "type": "skeleton",
       "skeleton": "/skeleton/hand/right"
     },
     {
-      "name": "/actions/default/in/Squeeze",
+      "name": "/actions/vrtk/in/TriggerSqueeze",
       "type": "vector1",
       "requirement": "optional"
     },
     {
-      "name": "/actions/default/in/MoveAvatar",
-      "type": "vector2"
-    },
-    {
-      "name": "/actions/default/in/DebugButton",
+      "name": "/actions/vrtk/in/TouchpadTouch",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/out/Haptic",
-      "type": "vibration"
-    },
-    {
-      "name": "/actions/platformer/in/Move",
+      "name": "/actions/vrtk/in/TouchpadPosition",
       "type": "vector2"
     },
     {
-      "name": "/actions/platformer/in/Jump",
+      "name": "/actions/vrtk/in/ButtonStartMenu",
       "type": "boolean"
     },
     {
-      "name": "/actions/buggy/in/Steering",
+      "name": "/actions/vrtk/in/TriggerTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadTwoTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadTwoPosition",
       "type": "vector2"
     },
     {
-      "name": "/actions/buggy/in/Throttle",
+      "name": "/actions/vrtk/in/TouchpadTwoButton",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/GripTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/GripSqueeze",
       "type": "vector1"
     },
     {
-      "name": "/actions/buggy/in/Brake",
+      "name": "/actions/vrtk/in/ButtonOneTouch",
       "type": "boolean"
     },
     {
-      "name": "/actions/buggy/in/Reset",
+      "name": "/actions/vrtk/in/ButtonOneClick",
       "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonTwoTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonTwoClick",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/out/Haptic",
+      "type": "vibration"
     }
   ],
   "action_sets": [
     {
-      "name": "/actions/default",
-      "usage": "leftright"
-    },
-    {
-      "name": "/actions/platformer",
-      "usage": "single"
-    },
-    {
-      "name": "/actions/buggy",
+      "name": "/actions/vrtk",
       "usage": "single"
     }
   ],
@@ -107,23 +115,10 @@
   "localization": [
     {
       "language_tag": "en_US",
-      "/actions/default/in/InteractUI": "Interact With UI",
-      "/actions/default/in/Teleport": "Teleport",
-      "/actions/default/in/GrabPinch": "Grab Pinch",
-      "/actions/default/in/GrabGrip": "Grab Grip",
-      "/actions/default/in/SkeletonLeftHand": "Skeleton (Left)",
-      "/actions/default/in/SkeletonRightHand": "Skeleton (Right)",
-      "/actions/default/in/Pose": "Pose",
-      "/actions/default/out/Haptic": "Haptic",
-      "/actions/buggybuddy/in/Steering": "Steering",
-      "/actions/buggybuddy/in/Throttle": "Throttle",
-      "/actions/buggybuddy/in/Brake": "Brake",
-      "/actions/buggybuddy/in/Reset": "Reset",
-      "/actions/platformer/in/Move": "Move",
-      "/actions/platformer/in/Jump": "Jump",
-      "/actions/default/in/MoveNorth": "MoveNorth",
-      "/actions/default/in/MoveAvatar": "MoveAvatar",
-      "/actions/default/in/DebugButton": "DebugButton"
+      "/actions/vrtk/in/SkeletonLeftHand": "Skeleton (Left)",
+      "/actions/vrtk/in/SkeletonRightHand": "Skeleton (Right)",
+      "/actions/vrtk/in/Pose": "Pose",
+      "/actions/vrtk/out/Haptic": "Haptic"
     }
   ]
 }

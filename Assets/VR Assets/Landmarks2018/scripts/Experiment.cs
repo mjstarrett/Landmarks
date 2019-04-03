@@ -19,6 +19,7 @@ using System.Collections;
 using System.IO;
 using System;
 using System.Reflection;
+using Valve.VR.InteractionSystem;
 
 public enum EndListMode
 {
@@ -29,7 +30,8 @@ public enum EndListMode
 public enum UserInterface
 {
 	DesktopDefault,
-	ViveAndVirtualizer
+	ViveAndVirtualizer,
+    ViveRoomspace
 }
 
 public class Experiment : MonoBehaviour {
@@ -107,6 +109,18 @@ public class Experiment : MonoBehaviour {
 			// HTC Vive and Cyberith Virtualizer
 			player = GameObject.Find ("ViveVirtualizerController");
 			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
+
+            // Render the overhead camera to each lense of the HMD
+            overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+
+            // create variable to indicate if using VR
+            usingVR = true;
+        }
+        else if (userInterface == UserInterface.ViveRoomspace)
+        {
+            // HTC Vive and Cyberith Virtualizer
+            player = GameObject.Find("ViveRoomspaceController");
+            playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
 
             // Render the overhead camera to each lense of the HMD
             overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;

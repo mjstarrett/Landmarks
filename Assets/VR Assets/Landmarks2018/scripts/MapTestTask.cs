@@ -52,11 +52,11 @@ public class MapTestTask : ExperimentTask {
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = "Get Score";
 		hud.actionButton.SetActive(true);
-		actionButton.onClick.AddListener (OnActionClick);
+        hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
 
 
-		// Turn on the maptarget highlights (to show where stores should be located
-		if (highlightAssist == true) 
+        // Turn on the maptarget highlights (to show where stores should be located
+        if (highlightAssist == true) 
 		{
 			mapTestHighlights.SetActive (true);
 		}
@@ -202,9 +202,9 @@ public class MapTestTask : ExperimentTask {
 		// -----------------------------------------
 		// Handle action button behavior
 		// -----------------------------------------
-		if (actionButtonClicked == true) 
+		if (hud.actionButtonClicked == true) 
 		{
-			actionButtonClicked = false;
+			hud.actionButtonClicked = false;
 			return true;
 		}
 			
@@ -260,7 +260,7 @@ public class MapTestTask : ExperimentTask {
 		}
 
 		// turn off the map action button
-		actionButton.onClick.RemoveListener (OnActionClick);
+		hud.actionButton.GetComponent<Button>().onClick.RemoveListener (hud.OnActionClick);
         actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
         hud.actionButton.SetActive(false);
 
