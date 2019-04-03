@@ -199,7 +199,7 @@ public class NavigationConfidence : ExperimentTask {
         {
             log.log("Task:\t" + transform.parent.name +
                   "\tTarget:\t" + objects.currentObject().name +
-                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().value +
+                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value +
                   "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
         }
         if (canIncrementLists) {
