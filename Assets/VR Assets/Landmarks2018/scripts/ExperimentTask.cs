@@ -18,6 +18,7 @@ using UnityEngine;
 using System.Collections;
 using System.Reflection;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class ExperimentTask : MonoBehaviour{
 
@@ -33,6 +34,8 @@ public class ExperimentTask : MonoBehaviour{
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
     
 	protected long task_start;
+
+    protected SteamVR_Input_ActionSet_vrtk vrInput;
 	
 	public bool skip = false;
 	public bool canIncrementLists = true;
@@ -51,7 +54,6 @@ public class ExperimentTask : MonoBehaviour{
 
 	[HideInInspector] public Button debugButton;
 	[HideInInspector] public Button actionButton;
-	[HideInInspector] public bool actionButtonClicked = false;
 
     [HideInInspector] public bool vrEnabled; // use hidden variable to communicate if we're using VR based on input interface
 
@@ -83,6 +85,10 @@ public class ExperimentTask : MonoBehaviour{
 		overheadCamera = manager.overheadCamera;
 		log = manager.dblog;
         vrEnabled = manager.usingVR;
+
+        // set up vrInput if we're using VR
+        if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
+
 
         // if we have a scaled nav task/player grab the object and log it - MJS 2019
         if (manager.scaledPlayer != null)
@@ -195,10 +201,7 @@ public class ExperimentTask : MonoBehaviour{
 		killCurrent = true;
 	}
 
-	public void OnActionClick()
-	{
-		actionButtonClicked = true;
-	}
+
 
 	public bool KillCurrent () 
 	{

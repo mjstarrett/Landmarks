@@ -26,7 +26,7 @@ public class HUD : MonoBehaviour
 	private dbLog log;
 	private Experiment manager;
 
-	// MJS - Identify components of the HUD 
+    // MJS - Identify components of the HUD 
 	public GameObject hudRig; // canvas over screen space for clean text presentation (parent)
 	public GameObject hudPanel; // panel used to proved contrasting/anchoring background for hud text (child of hudRig)
 	public GameObject Canvas; // canvas containing the text element for hud messages (child of hudRig)
@@ -34,8 +34,11 @@ public class HUD : MonoBehaviour
 	public float hudPanelOFF = 0f; // set the opacity when off
 	private string canvasName;
     public GameObject actionButton; // button that subjects use to interact with the game (if necessary);
+    [HideInInspector] public bool actionButtonClicked = false;
     public GameObject debugButton; // button that can be used to force continue in debug mode;
     public GameObject confidenceSlider; // slider that can be used by any task for confidence judements
+
+    public GameObject hudNonEssentials; // objects that can be turned off unless specifically needed if empty, a camera overlay hud will be assumed (as in desktop)
 
     public Camera[] cam;
 	public int hudLayer = 13;
@@ -75,8 +78,8 @@ public class HUD : MonoBehaviour
 	public int InstructionDuration = 99999; // MJS - allow different duration for instructions tasks
 
 	[HideInInspector] public long playback_time = 0;
-	
-	public void Awake()
+
+    public void Awake()
 	{
 		SecondsToShow = GeneralDuration;
 		//Debug.Log ("Starting HUD.cs");
@@ -241,13 +244,26 @@ public class HUD : MonoBehaviour
 		{
 			Color panelTemp = hudPanel.GetComponent<Image> ().color; 
 			panelTemp.a = hudPanelOFF;
-			hudPanel.GetComponent<Image> ().color = panelTemp;		}
+			hudPanel.GetComponent<Image> ().color = panelTemp;
+
+            // if we're using an external wall or screen for the hud (fixed position), turn it off as well.
+            if (hudNonEssentials != null)
+            {
+                hudNonEssentials.SetActive(false);
+            }
+        }
 		else
 		{
 			Color panelTemp = hudPanel.GetComponent<Image>().color; 
 			panelTemp.a = hudPanelON;
 			hudPanel.GetComponent<Image> ().color = panelTemp;
-		}
+
+            // if we're using an external wall or screen for the hud (fixed position), Make sure it's active.
+            if (hudNonEssentials != null)
+            {
+                hudNonEssentials.SetActive(true);
+            }
+        }
 
 
 		messageGuiBack.text = hidemessage ? string.Empty : message;
@@ -385,6 +401,10 @@ public class HUD : MonoBehaviour
 		Camera.main.fieldOfView = fullScreenFOV;
 		
 	}
-	
-	
+
+    // MJS - Moved from Experiment Task for VR functionality - March 2019
+    public void OnActionClick()
+    {
+        actionButtonClicked = true;
+    }
 }

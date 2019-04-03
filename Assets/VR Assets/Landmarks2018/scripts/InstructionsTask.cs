@@ -19,7 +19,6 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
-using Valve.VR;
 
 public class InstructionsTask : ExperimentTask {
     
@@ -108,7 +107,7 @@ public class InstructionsTask : ExperimentTask {
         {
             
             // Use custom text for button (if provided)
-            Debug.Log(actionButton.GetComponent<DefaultText>().defaultText);
+            Debug.Log(hud.actionButton.GetComponent<DefaultText>().defaultText);
             if (customButtonText != "") actionButton.GetComponentInChildren<Text>().text = customButtonText;
             // Otherwise, use default text attached to the button (component)
             else actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
@@ -116,7 +115,7 @@ public class InstructionsTask : ExperimentTask {
 
             // activate the button
             hud.actionButton.SetActive(true);
-            actionButton.onClick.AddListener(OnActionClick);
+            hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
 
             // we'll need the mouse, as well
             // make the cursor functional and visible
@@ -143,14 +142,9 @@ public class InstructionsTask : ExperimentTask {
             log.log("INPUT_EVENT    clear text    1",1 );
             return true;
         }
-        else if (vrEnabled && SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
+        else if (hud.actionButtonClicked == true)
         {
-            log.log("INPUT_EVENT    clear text    1", 1);
-            return true;
-        }
-        else if (actionButtonClicked == true)
-        {
-            actionButtonClicked = false;
+            hud.actionButtonClicked = false;
             log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
@@ -198,8 +192,8 @@ public class InstructionsTask : ExperimentTask {
         if (actionButtonOn)
         {
             // Reset and deactivate action button
-            actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
-            actionButton.onClick.RemoveListener(OnActionClick);
+            hud.actionButton.GetComponentInChildren<Text>().text = hud.actionButton.GetComponent<DefaultText>().defaultText;
+            hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
             hud.actionButton.SetActive(false);
 
             // make the cursor invisible

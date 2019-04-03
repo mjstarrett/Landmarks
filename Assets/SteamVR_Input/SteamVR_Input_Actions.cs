@@ -14,158 +14,337 @@ namespace Valve.VR
     using UnityEngine;
     
     
-    public partial class SteamVR_Input
+    public partial class SteamVR_Actions
     {
         
-        public static SteamVR_Action_Boolean @__actions_default_in_InteractUI;
+        private static SteamVR_Action_Boolean p_vrtk_TouchpadButton;
         
-        public static SteamVR_Action_Boolean @__actions_default_in_Teleport;
+        private static SteamVR_Action_Boolean p_vrtk_TriggerButton;
         
-        public static SteamVR_Action_Boolean @__actions_default_in_GrabPinch;
+        private static SteamVR_Action_Boolean p_vrtk_GripButton;
         
-        public static SteamVR_Action_Boolean @__actions_default_in_GrabGrip;
+        private static SteamVR_Action_Pose p_vrtk_Pose;
         
-        public static SteamVR_Action_Pose @__actions_default_in_Pose;
+        private static SteamVR_Action_Skeleton p_vrtk_SkeletonLeftHand;
         
-        public static SteamVR_Action_Skeleton @__actions_default_in_SkeletonLeftHand;
+        private static SteamVR_Action_Skeleton p_vrtk_SkeletonRightHand;
         
-        public static SteamVR_Action_Skeleton @__actions_default_in_SkeletonRightHand;
+        private static SteamVR_Action_Single p_vrtk_TriggerSqueeze;
         
-        public static SteamVR_Action_Single @__actions_default_in_Squeeze;
+        private static SteamVR_Action_Boolean p_vrtk_TouchpadTouch;
         
-        public static SteamVR_Action_Vector2 @__actions_default_in_MoveAvatar;
+        private static SteamVR_Action_Vector2 p_vrtk_TouchpadPosition;
         
-        public static SteamVR_Action_Boolean @__actions_default_in_DebugButton;
+        private static SteamVR_Action_Boolean p_vrtk_ButtonStartMenu;
         
-        public static SteamVR_Action_Vibration @__actions_default_out_Haptic;
+        private static SteamVR_Action_Boolean p_vrtk_TriggerTouch;
         
-        public static SteamVR_Action_Vector2 @__actions_platformer_in_Move;
+        private static SteamVR_Action_Boolean p_vrtk_TouchpadTwoTouch;
         
-        public static SteamVR_Action_Boolean @__actions_platformer_in_Jump;
+        private static SteamVR_Action_Vector2 p_vrtk_TouchpadTwoPosition;
         
-        public static SteamVR_Action_Vector2 @__actions_buggy_in_Steering;
+        private static SteamVR_Action_Boolean p_vrtk_TouchpadTwoButton;
         
-        public static SteamVR_Action_Single @__actions_buggy_in_Throttle;
+        private static SteamVR_Action_Boolean p_vrtk_GripTouch;
         
-        public static SteamVR_Action_Boolean @__actions_buggy_in_Brake;
+        private static SteamVR_Action_Single p_vrtk_GripSqueeze;
         
-        public static SteamVR_Action_Boolean @__actions_buggy_in_Reset;
+        private static SteamVR_Action_Boolean p_vrtk_ButtonOneTouch;
         
-        public static void Dynamic_InitializeActions()
+        private static SteamVR_Action_Boolean p_vrtk_ButtonOneClick;
+        
+        private static SteamVR_Action_Boolean p_vrtk_ButtonTwoTouch;
+        
+        private static SteamVR_Action_Boolean p_vrtk_ButtonTwoClick;
+        
+        private static SteamVR_Action_Vibration p_vrtk_Haptic;
+        
+        public static SteamVR_Action_Boolean vrtk_TouchpadButton
         {
-            SteamVR_Input.@__actions_default_in_InteractUI.Initialize();
-            SteamVR_Input.@__actions_default_in_Teleport.Initialize();
-            SteamVR_Input.@__actions_default_in_GrabPinch.Initialize();
-            SteamVR_Input.@__actions_default_in_GrabGrip.Initialize();
-            SteamVR_Input.@__actions_default_in_Pose.Initialize();
-            SteamVR_Input.@__actions_default_in_SkeletonLeftHand.Initialize();
-            SteamVR_Input.@__actions_default_in_SkeletonRightHand.Initialize();
-            SteamVR_Input.@__actions_default_in_Squeeze.Initialize();
-            SteamVR_Input.@__actions_default_in_MoveAvatar.Initialize();
-            SteamVR_Input.@__actions_default_in_DebugButton.Initialize();
-            SteamVR_Input.@__actions_default_out_Haptic.Initialize();
-            SteamVR_Input.@__actions_platformer_in_Move.Initialize();
-            SteamVR_Input.@__actions_platformer_in_Jump.Initialize();
-            SteamVR_Input.@__actions_buggy_in_Steering.Initialize();
-            SteamVR_Input.@__actions_buggy_in_Throttle.Initialize();
-            SteamVR_Input.@__actions_buggy_in_Brake.Initialize();
-            SteamVR_Input.@__actions_buggy_in_Reset.Initialize();
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TouchpadButton.GetCopy<SteamVR_Action_Boolean>();
+            }
         }
         
-        public static void Dynamic_InitializeInstanceActions()
+        public static SteamVR_Action_Boolean vrtk_TriggerButton
         {
-            Valve.VR.SteamVR_Input.@__actions_default_in_InteractUI = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_default_in_InteractUI")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_Teleport = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_default_in_Teleport")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_GrabPinch = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_default_in_GrabPinch")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_GrabGrip = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_default_in_GrabGrip")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_Pose = ((SteamVR_Action_Pose)(SteamVR_Input_References.GetAction("__actions_default_in_Pose")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonLeftHand = ((SteamVR_Action_Skeleton)(SteamVR_Input_References.GetAction("__actions_default_in_SkeletonLeftHand")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonRightHand = ((SteamVR_Action_Skeleton)(SteamVR_Input_References.GetAction("__actions_default_in_SkeletonRightHand")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_Squeeze = ((SteamVR_Action_Single)(SteamVR_Input_References.GetAction("__actions_default_in_Squeeze")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_MoveAvatar = ((SteamVR_Action_Vector2)(SteamVR_Input_References.GetAction("__actions_default_in_MoveAvatar")));
-            Valve.VR.SteamVR_Input.@__actions_default_in_DebugButton = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_default_in_DebugButton")));
-            Valve.VR.SteamVR_Input.@__actions_default_out_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Input_References.GetAction("__actions_default_out_Haptic")));
-            Valve.VR.SteamVR_Input.@__actions_platformer_in_Move = ((SteamVR_Action_Vector2)(SteamVR_Input_References.GetAction("__actions_platformer_in_Move")));
-            Valve.VR.SteamVR_Input.@__actions_platformer_in_Jump = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_platformer_in_Jump")));
-            Valve.VR.SteamVR_Input.@__actions_buggy_in_Steering = ((SteamVR_Action_Vector2)(SteamVR_Input_References.GetAction("__actions_buggy_in_Steering")));
-            Valve.VR.SteamVR_Input.@__actions_buggy_in_Throttle = ((SteamVR_Action_Single)(SteamVR_Input_References.GetAction("__actions_buggy_in_Throttle")));
-            Valve.VR.SteamVR_Input.@__actions_buggy_in_Brake = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_buggy_in_Brake")));
-            Valve.VR.SteamVR_Input.@__actions_buggy_in_Reset = ((SteamVR_Action_Boolean)(SteamVR_Input_References.GetAction("__actions_buggy_in_Reset")));
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TriggerButton.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_GripButton
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_GripButton.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Pose vrtk_Pose
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_Pose.GetCopy<SteamVR_Action_Pose>();
+            }
+        }
+        
+        public static SteamVR_Action_Skeleton vrtk_SkeletonLeftHand
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_SkeletonLeftHand.GetCopy<SteamVR_Action_Skeleton>();
+            }
+        }
+        
+        public static SteamVR_Action_Skeleton vrtk_SkeletonRightHand
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_SkeletonRightHand.GetCopy<SteamVR_Action_Skeleton>();
+            }
+        }
+        
+        public static SteamVR_Action_Single vrtk_TriggerSqueeze
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TriggerSqueeze.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_TouchpadTouch
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TouchpadTouch.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 vrtk_TouchpadPosition
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TouchpadPosition.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_ButtonStartMenu
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_ButtonStartMenu.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_TriggerTouch
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TriggerTouch.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_TouchpadTwoTouch
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TouchpadTwoTouch.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 vrtk_TouchpadTwoPosition
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TouchpadTwoPosition.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_TouchpadTwoButton
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_TouchpadTwoButton.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_GripTouch
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_GripTouch.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Single vrtk_GripSqueeze
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_GripSqueeze.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_ButtonOneTouch
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_ButtonOneTouch.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_ButtonOneClick
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_ButtonOneClick.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_ButtonTwoTouch
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_ButtonTwoTouch.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrtk_ButtonTwoClick
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_ButtonTwoClick.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration vrtk_Haptic
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrtk_Haptic.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
+        private static void InitializeActionArrays()
+        {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_InteractUI,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Teleport,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabPinch,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabGrip,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Pose,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonLeftHand,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonRightHand,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Squeeze,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_MoveAvatar,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_DebugButton,
-                    Valve.VR.SteamVR_Input.@__actions_default_out_Haptic,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Move,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Jump,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Steering,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Throttle,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Brake,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Reset};
-            Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.SteamVR_Action_In[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_InteractUI,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Teleport,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabPinch,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabGrip,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Pose,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonLeftHand,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonRightHand,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Squeeze,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_MoveAvatar,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_DebugButton,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Move,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Jump,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Steering,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Throttle,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Brake,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Reset};
-            Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.SteamVR_Action_Out[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_out_Haptic};
+                    SteamVR_Actions.vrtk_TouchpadButton,
+                    SteamVR_Actions.vrtk_TriggerButton,
+                    SteamVR_Actions.vrtk_GripButton,
+                    SteamVR_Actions.vrtk_Pose,
+                    SteamVR_Actions.vrtk_SkeletonLeftHand,
+                    SteamVR_Actions.vrtk_SkeletonRightHand,
+                    SteamVR_Actions.vrtk_TriggerSqueeze,
+                    SteamVR_Actions.vrtk_TouchpadTouch,
+                    SteamVR_Actions.vrtk_TouchpadPosition,
+                    SteamVR_Actions.vrtk_ButtonStartMenu,
+                    SteamVR_Actions.vrtk_TriggerTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoPosition,
+                    SteamVR_Actions.vrtk_TouchpadTwoButton,
+                    SteamVR_Actions.vrtk_GripTouch,
+                    SteamVR_Actions.vrtk_GripSqueeze,
+                    SteamVR_Actions.vrtk_ButtonOneTouch,
+                    SteamVR_Actions.vrtk_ButtonOneClick,
+                    SteamVR_Actions.vrtk_ButtonTwoTouch,
+                    SteamVR_Actions.vrtk_ButtonTwoClick,
+                    SteamVR_Actions.vrtk_Haptic};
+            Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
+                    SteamVR_Actions.vrtk_TouchpadButton,
+                    SteamVR_Actions.vrtk_TriggerButton,
+                    SteamVR_Actions.vrtk_GripButton,
+                    SteamVR_Actions.vrtk_Pose,
+                    SteamVR_Actions.vrtk_SkeletonLeftHand,
+                    SteamVR_Actions.vrtk_SkeletonRightHand,
+                    SteamVR_Actions.vrtk_TriggerSqueeze,
+                    SteamVR_Actions.vrtk_TouchpadTouch,
+                    SteamVR_Actions.vrtk_TouchpadPosition,
+                    SteamVR_Actions.vrtk_ButtonStartMenu,
+                    SteamVR_Actions.vrtk_TriggerTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoPosition,
+                    SteamVR_Actions.vrtk_TouchpadTwoButton,
+                    SteamVR_Actions.vrtk_GripTouch,
+                    SteamVR_Actions.vrtk_GripSqueeze,
+                    SteamVR_Actions.vrtk_ButtonOneTouch,
+                    SteamVR_Actions.vrtk_ButtonOneClick,
+                    SteamVR_Actions.vrtk_ButtonTwoTouch,
+                    SteamVR_Actions.vrtk_ButtonTwoClick};
+            Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
+                    SteamVR_Actions.vrtk_Haptic};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_out_Haptic};
+                    SteamVR_Actions.vrtk_Haptic};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Pose};
+                    SteamVR_Actions.vrtk_Pose};
             Valve.VR.SteamVR_Input.actionsBoolean = new Valve.VR.SteamVR_Action_Boolean[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_InteractUI,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Teleport,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabPinch,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabGrip,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_DebugButton,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Jump,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Brake,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Reset};
+                    SteamVR_Actions.vrtk_TouchpadButton,
+                    SteamVR_Actions.vrtk_TriggerButton,
+                    SteamVR_Actions.vrtk_GripButton,
+                    SteamVR_Actions.vrtk_TouchpadTouch,
+                    SteamVR_Actions.vrtk_ButtonStartMenu,
+                    SteamVR_Actions.vrtk_TriggerTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoButton,
+                    SteamVR_Actions.vrtk_GripTouch,
+                    SteamVR_Actions.vrtk_ButtonOneTouch,
+                    SteamVR_Actions.vrtk_ButtonOneClick,
+                    SteamVR_Actions.vrtk_ButtonTwoTouch,
+                    SteamVR_Actions.vrtk_ButtonTwoClick};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Squeeze,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Throttle};
+                    SteamVR_Actions.vrtk_TriggerSqueeze,
+                    SteamVR_Actions.vrtk_GripSqueeze};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_MoveAvatar,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Move,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Steering};
+                    SteamVR_Actions.vrtk_TouchpadPosition,
+                    SteamVR_Actions.vrtk_TouchpadTwoPosition};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonLeftHand,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_SkeletonRightHand};
-            Valve.VR.SteamVR_Input.actionsNonPoseNonSkeletonIn = new Valve.VR.SteamVR_Action_In[] {
-                    Valve.VR.SteamVR_Input.@__actions_default_in_InteractUI,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Teleport,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabPinch,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_GrabGrip,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_Squeeze,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_MoveAvatar,
-                    Valve.VR.SteamVR_Input.@__actions_default_in_DebugButton,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Move,
-                    Valve.VR.SteamVR_Input.@__actions_platformer_in_Jump,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Steering,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Throttle,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Brake,
-                    Valve.VR.SteamVR_Input.@__actions_buggy_in_Reset};
+                    SteamVR_Actions.vrtk_SkeletonLeftHand,
+                    SteamVR_Actions.vrtk_SkeletonRightHand};
+            Valve.VR.SteamVR_Input.actionsNonPoseNonSkeletonIn = new Valve.VR.ISteamVR_Action_In[] {
+                    SteamVR_Actions.vrtk_TouchpadButton,
+                    SteamVR_Actions.vrtk_TriggerButton,
+                    SteamVR_Actions.vrtk_GripButton,
+                    SteamVR_Actions.vrtk_TriggerSqueeze,
+                    SteamVR_Actions.vrtk_TouchpadTouch,
+                    SteamVR_Actions.vrtk_TouchpadPosition,
+                    SteamVR_Actions.vrtk_ButtonStartMenu,
+                    SteamVR_Actions.vrtk_TriggerTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoTouch,
+                    SteamVR_Actions.vrtk_TouchpadTwoPosition,
+                    SteamVR_Actions.vrtk_TouchpadTwoButton,
+                    SteamVR_Actions.vrtk_GripTouch,
+                    SteamVR_Actions.vrtk_GripSqueeze,
+                    SteamVR_Actions.vrtk_ButtonOneTouch,
+                    SteamVR_Actions.vrtk_ButtonOneClick,
+                    SteamVR_Actions.vrtk_ButtonTwoTouch,
+                    SteamVR_Actions.vrtk_ButtonTwoClick};
+        }
+        
+        private static void PreInitActions()
+        {
+            SteamVR_Actions.p_vrtk_TouchpadButton = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/TouchpadButton")));
+            SteamVR_Actions.p_vrtk_TriggerButton = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/TriggerButton")));
+            SteamVR_Actions.p_vrtk_GripButton = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/GripButton")));
+            SteamVR_Actions.p_vrtk_Pose = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/vrtk/in/Pose")));
+            SteamVR_Actions.p_vrtk_SkeletonLeftHand = ((SteamVR_Action_Skeleton)(SteamVR_Action.Create<SteamVR_Action_Skeleton>("/actions/vrtk/in/SkeletonLeftHand")));
+            SteamVR_Actions.p_vrtk_SkeletonRightHand = ((SteamVR_Action_Skeleton)(SteamVR_Action.Create<SteamVR_Action_Skeleton>("/actions/vrtk/in/SkeletonRightHand")));
+            SteamVR_Actions.p_vrtk_TriggerSqueeze = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/vrtk/in/TriggerSqueeze")));
+            SteamVR_Actions.p_vrtk_TouchpadTouch = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/TouchpadTouch")));
+            SteamVR_Actions.p_vrtk_TouchpadPosition = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrtk/in/TouchpadPosition")));
+            SteamVR_Actions.p_vrtk_ButtonStartMenu = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/ButtonStartMenu")));
+            SteamVR_Actions.p_vrtk_TriggerTouch = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/TriggerTouch")));
+            SteamVR_Actions.p_vrtk_TouchpadTwoTouch = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/TouchpadTwoTouch")));
+            SteamVR_Actions.p_vrtk_TouchpadTwoPosition = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrtk/in/TouchpadTwoPosition")));
+            SteamVR_Actions.p_vrtk_TouchpadTwoButton = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/TouchpadTwoButton")));
+            SteamVR_Actions.p_vrtk_GripTouch = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/GripTouch")));
+            SteamVR_Actions.p_vrtk_GripSqueeze = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/vrtk/in/GripSqueeze")));
+            SteamVR_Actions.p_vrtk_ButtonOneTouch = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/ButtonOneTouch")));
+            SteamVR_Actions.p_vrtk_ButtonOneClick = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/ButtonOneClick")));
+            SteamVR_Actions.p_vrtk_ButtonTwoTouch = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/ButtonTwoTouch")));
+            SteamVR_Actions.p_vrtk_ButtonTwoClick = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrtk/in/ButtonTwoClick")));
+            SteamVR_Actions.p_vrtk_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/vrtk/out/Haptic")));
         }
     }
 }
