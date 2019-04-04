@@ -80,7 +80,7 @@ public class Experiment : MonoBehaviour {
 	
 	void Awake() {
 
-		Debug.Log ("Starting Experiment.cs");
+        Debug.Log ("Starting Experiment.cs");
 
 		// ------------------------------------------
 		// Grab the Landmarks Tasks GameObject (Timeline)
@@ -190,11 +190,19 @@ public class Experiment : MonoBehaviour {
 		} else if (config.runMode == ConfigRunMode.NEW) {
 			//dblog = new dbMockLog(logfile);
 		}
-			
-		//start session
 
 
-	}
+        // If a scaledPlayer isn't being used or wasn't created, instantiate the prefab to avoid errors
+        if (scaledPlayer == null)
+        {
+            scaledPlayer = (GameObject)Instantiate(Resources.Load("LM_ScaledPlayer"));
+        } 
+
+
+        //start session
+
+
+    }
 	
 	public void StartPlaying() {		
 		long tick = DateTime.Now.Ticks;
