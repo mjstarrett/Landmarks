@@ -47,7 +47,7 @@ public class MapStudyTask : ExperimentTask {
 
 
 		// Change text and turn on the map action button
-		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = "Start Test";
+		actionButton.GetComponentInChildren<Text> ().text = "Start Test";
 		hud.actionButton.SetActive(true);
 	    hud.actionButton.GetComponent<Button>().onClick.AddListener (hud.OnActionClick);
 	}	
@@ -150,7 +150,7 @@ public class MapStudyTask : ExperimentTask {
 
         // turn off the map action button
         hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
-        actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+        actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
         hud.actionButton.SetActive(false);
 	}
 }

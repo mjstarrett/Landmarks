@@ -50,7 +50,7 @@ public class MapTestTask : ExperimentTask {
 		overheadCamera.enabled = true;
 
 		// Change text and turn on the map action button
-		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = "Get Score";
+		actionButton.GetComponentInChildren<Text> ().text = "Get Score";
 		hud.actionButton.SetActive(true);
         hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
 
@@ -261,7 +261,7 @@ public class MapTestTask : ExperimentTask {
 
 		// turn off the map action button
 		hud.actionButton.GetComponent<Button>().onClick.RemoveListener (hud.OnActionClick);
-        actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+        actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
         hud.actionButton.SetActive(false);
 
 		// Turn off the maptarget highlights (to show where stores should be located
