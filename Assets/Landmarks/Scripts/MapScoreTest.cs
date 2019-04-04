@@ -116,7 +116,7 @@ public class MapScoreTest : ExperimentTask {
 		GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        Text canvas = avatar.GetComponent<Text>();
         hud.SecondsToShow = hud.InstructionDuration;
 
 		sgo.AddComponent<GUIText>();
@@ -136,7 +136,7 @@ public class MapScoreTest : ExperimentTask {
 		hud.flashStatus("");
 
 		// Change text and turn on the map action button
-		actionButton.GetComponentInChildren<TextMeshProUGUI> ().text = progressionText;
+		actionButton.GetComponentInChildren<Text> ().text = progressionText;
 		hud.actionButton.SetActive(true);
         hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
     }
@@ -204,14 +204,14 @@ public class MapScoreTest : ExperimentTask {
 		hud.SecondsToShow = hud.GeneralDuration;
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
-        TextMeshProUGUI canvas = avatar.GetComponent<TextMeshProUGUI>();
+        Text canvas = avatar.GetComponent<Text>();
         string nullstring = null;
 		canvas.text = nullstring;
 		//			StartCoroutine(storesInactive());
 		hud.showEverything();
 
         // turn off the map action button
-        actionButton.GetComponentInChildren<TextMeshProUGUI>().text = actionButton.GetComponent<DefaultText>().defaultText;
+        actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
         hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
         hud.actionButton.SetActive(false);
 
