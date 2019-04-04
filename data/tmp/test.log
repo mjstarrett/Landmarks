@@ -1,136 +1,774 @@
-63689986148112	TASK_START	LM_Timeline	TaskList
-63689986148113	TASK_START	InitializeExperiment	TaskList
-63689986148114	TASK_START	PlaceTargets	TaskList
-63689986148115	TASK_START	ListHighlightObjects	StoreList
-63689986148115	TASK_ADD	ListHighlightObjects	StoreList	Highlight01	null
-63689986148115	TASK_ADD	ListHighlightObjects	StoreList	Highlight02	null
-63689986148115	TASK_ADD	ListHighlightObjects	StoreList	Highlight03	null
-63689986148133	TASK_END	ListHighlightObjects	StoreList	18
-63689986148134	TASK_START	ListTargetPlaceholders	TransformList
-63689986148134	TASK_ADD	ListTargetPlaceholders	TransformList	Target01	null
-63689986148134	TASK_ADD	ListTargetPlaceholders	TransformList	Target02	null
-63689986148134	TASK_ADD	ListTargetPlaceholders	TransformList	Target03	null
-63689986148171	TASK_END	ListTargetPlaceholders	TransformList	37
-63689986148172	TASK_START	PopulateHighlightObjects	PopulateTargets
-63689986148174	Object: 	Highlight01	Position (xyz): 	-19.9	1.02	-19	Rotation (xyz): 	0	0	0
-63689986148175	Object: 	Highlight02	Position (xyz): 	17.3	1.03	-15.17001	Rotation (xyz): 	90	0	0
-63689986148177	Object: 	Highlight03	Position (xyz): 	15	1.42	17.70001	Rotation (xyz): 	0	0	0
-63689986148950	TASK_END	PopulateHighlightObjects	PopulateTargets	778
-63689986148952	TASK_START	ListTargets	StoreList
-63689986148952	TASK_ADD	ListTargets	StoreList	Red Sphere	null
-63689986148952	TASK_ADD	ListTargets	StoreList	Blue Capsule	null
-63689986148952	TASK_ADD	ListTargets	StoreList	Green Cylinder	null
-63689986148979	TASK_END	ListTargets	StoreList	27
-63689986148981	TASK_START	ListTargetLocations	TransformList
-63689986148981	TASK_ADD	ListTargetLocations	TransformList	Target01	null
-63689986148981	TASK_ADD	ListTargetLocations	TransformList	Target02	null
-63689986148981	TASK_ADD	ListTargetLocations	TransformList	Target03	null
-63689986148986	TASK_END	ListTargetLocations	TransformList	5
-63689986148987	TASK_START	PopulateTargets	PopulateTargets
-63689986148989	Object: 	Red Sphere	Position (xyz): 	-19.9	1.02	-19	Rotation (xyz): 	0	0	0
-63689986148991	Object: 	Blue Capsule	Position (xyz): 	17.3	1.03	-15.17001	Rotation (xyz): 	90	0	0
-63689986148993	Object: 	Green Cylinder	Position (xyz): 	15	1.42	17.70001	Rotation (xyz): 	0	0	0
-63689986148999	TASK_END	PopulateTargets	PopulateTargets	12
-63689986148999	TASK_END	PlaceTargets	TaskList	885
-63689986148999	TASK_END	InitializeExperiment	TaskList	886
-63689986149001	TASK_START	BeginMessage	InstructionsTask
-63689986149542	INPUT_EVENT    clear text    1
-63689986149543	TASK_END	BeginMessage	InstructionsTask	542
-63689986149544	TASK_START	Tasks	TaskList
-63689986149544	TASK_START	PracticeTaskLoop	TaskList
-63689986149551	TASK_END	PracticeTaskLoop	TaskList	7
-63689986149551	TASK_START	PreTaskLoop	TaskList
-63689986149554	TASK_END	PreTaskLoop	TaskList	3
-63689986149555	TASK_START	MainTaskLoop	TaskList
-63689986149555	TASK_START	NavigationTask	TaskList
-63689986149557	TASK_START	ListNavigationTargets	StoreList
-63689986149557	TASK_ADD	ListNavigationTargets	StoreList	Green Cylinder	null
-63689986149557	TASK_ADD	ListNavigationTargets	StoreList	Blue Capsule	null
-63689986149557	TASK_ADD	ListNavigationTargets	StoreList	Red Sphere	null
-63689986149562	TASK_END	ListNavigationTargets	StoreList	5
-63689986149563	TASK_START	NavigationInstructions	InstructionsTask
-63689986150255	INPUT_EVENT    clear text    1
-63689986150256	TASK_END	NavigationInstructions	InstructionsTask	693
-63689986150257	TASK_START	Navigate	TaskList
-63689986150258	TASK_START	CueTarget	InstructionsTask
-63689986151458	INPUT_EVENT    clear text    1
-63689986151459	TASK_END	CueTarget	InstructionsTask	1201
-63689986151461	TASK_START	ConfidenceRating	NavigationConfidence
-63689986152058	INPUT_EVENT    clear text    1
-63689986152060	TASK_END	ConfidenceRating	NavigationConfidence	599
-63689986152060	Task:	Navigate	Target:	Green Cylinder	Confidence:	1.601781	/	3
-63689986152061	TASK_START	MentalNavigation	InstructionsTask
-63689986152226	INPUT_EVENT    clear text    1
-63689986152227	TASK_END	MentalNavigation	InstructionsTask	166
-63689986152228	TASK_START	Navigate	NavigationTask
-63689986152235	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152259	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152278	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152294	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152310	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152343	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152350	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152375	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152390	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152411	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152430	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152458	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152474	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152495	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152511	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152530	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152558	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152574	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152595	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152610	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152630	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152658	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152674	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152695	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152710	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152730	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152758	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152787	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152790	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152811	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152830	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152858	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152874	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152890	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152910	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152930	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152955	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152974	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986152994	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153010	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153030	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153054	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153074	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153095	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153110	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153130	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153155	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153174	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153190	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153223	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153231	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153271	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153271	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153291	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	0.05000001	154.53	0	
-63689986153311	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.58	0	Camera   (xyz): 	0.05	154.58	0	
-63689986153339	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.73	0	Camera   (xyz): 	0.05000001	154.73	0	
-63689986153358	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.78	0	Camera   (xyz): 	0.05	154.78	0	
-63689986153386	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.78	0	Camera   (xyz): 	0.05	154.78	0	
-63689986153391	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.83	0	Camera   (xyz): 	0.05000001	154.83	-8.337636E-10	
-63689986153410	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.83	0	Camera   (xyz): 	0.05000001	154.83	-8.337636E-10	
-63689986153430	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153458	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153474	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153503	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153528	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153542	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153551	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153586	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153590	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153611	Avatar: 	DesktopDefaultController	Position (xyz): 	0	1	0	Rotation (xyz): 	0	154.88	0	Camera   (xyz): 	0.05000001	154.88	8.337636E-10	
-63689986153648	TASK_END	LM_Timeline	TaskList	5536
+63689988299832	TASK_START	LM_Timeline	TaskList
+63689988299833	TASK_START	InitializeExperiment	TaskList
+63689988299833	TASK_START	PlaceTargets	TaskList
+63689988299835	TASK_START	ListHighlightObjects	StoreList
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight01	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight02	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight03	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight04	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight05	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight06	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight07	null
+63689988299835	TASK_ADD	ListHighlightObjects	StoreList	Highlight08	null
+63689988299848	TASK_END	ListHighlightObjects	StoreList	13
+63689988299849	TASK_START	ListTargetPlaceholders	TransformList
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target01	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target02	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target03	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target04	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target05	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target06	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target07	null
+63689988299849	TASK_ADD	ListTargetPlaceholders	TransformList	Target08	null
+63689988299890	TASK_END	ListTargetPlaceholders	TransformList	41
+63689988299891	TASK_START	PopulateHighlightObjects	PopulateTargets
+63689988299893	Object: 	Highlight01	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
+63689988299894	Object: 	Highlight02	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
+63689988299895	Object: 	Highlight03	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
+63689988299896	Object: 	Highlight04	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
+63689988299898	Object: 	Highlight05	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
+63689988299899	Object: 	Highlight06	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
+63689988299900	Object: 	Highlight07	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
+63689988299901	Object: 	Highlight08	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
+63689988300647	TASK_END	PopulateHighlightObjects	PopulateTargets	756
+63689988300649	TASK_START	ListTargets	StoreList
+63689988300649	TASK_ADD	ListTargets	StoreList	Computer Shop	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Green Grocer	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Hair Dresser	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Ice Cream Shop	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Pet Shop	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Pharmacy	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Repair Shop	null
+63689988300649	TASK_ADD	ListTargets	StoreList	Toy Shop	null
+63689988300680	TASK_END	ListTargets	StoreList	31
+63689988300682	TASK_START	ListTargetLocations	TransformList
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target01	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target02	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target03	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target04	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target05	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target06	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target07	null
+63689988300682	TASK_ADD	ListTargetLocations	TransformList	Target08	null
+63689988300687	TASK_END	ListTargetLocations	TransformList	5
+63689988300688	TASK_START	PopulateTargets	PopulateTargets
+63689988300689	Object: 	Computer Shop	Position (xyz): 	7	0.1	137	Rotation (xyz): 	270	270	0
+63689988300691	Object: 	Green Grocer	Position (xyz): 	7	0.1	17	Rotation (xyz): 	270	270	0
+63689988300693	Object: 	Hair Dresser	Position (xyz): 	102	0.1	17	Rotation (xyz): 	270	270	0
+63689988300694	Object: 	Ice Cream Shop	Position (xyz): 	102	0.1	89	Rotation (xyz): 	270	90	0
+63689988300696	Object: 	Pet Shop	Position (xyz): 	43	0.1	89	Rotation (xyz): 	270	180	0
+63689988300697	Object: 	Pharmacy	Position (xyz): 	43	0.1	137	Rotation (xyz): 	270	180	0
+63689988300699	Object: 	Repair Shop	Position (xyz): 	90	0.1	125	Rotation (xyz): 	270	0	0
+63689988300700	Object: 	Toy Shop	Position (xyz): 	90	0.1	44	Rotation (xyz): 	270	90	0
+63689988300704	TASK_END	PopulateTargets	PopulateTargets	16
+63689988300704	TASK_END	PlaceTargets	TaskList	871
+63689988300704	TASK_END	InitializeExperiment	TaskList	871
+63689988300706	TASK_START	BeginMessage	InstructionsTask
+63689988301168	INPUT_EVENT    clear text    1
+63689988301169	TASK_END	BeginMessage	InstructionsTask	463
+63689988301170	TASK_START	Tasks	TaskList
+63689988301170	TASK_START	PracticeTaskLoop	TaskList
+63689988301191	TASK_END	PracticeTaskLoop	TaskList	21
+63689988301192	TASK_START	PreTasksLoop	TaskList
+63689988301193	TASK_START	MapTask	TaskList
+63689988301194	TASK_START	MapStudyInstructions	InstructionsTask
+63689988301907	INPUT_EVENT    clear text    1
+63689988301908	TASK_END	MapStudyInstructions	InstructionsTask	713
+63689988301909	TASK_START	MapStudy	MapStudyTask
+63689988305109	Mouseover 	Toy Shop
+63689988305116	Mouseover 	Toy Shop
+63689988305132	Mouseover 	Toy Shop
+63689988305139	Mouseover 	Toy Shop
+63689988305147	Mouseover 	Toy Shop
+63689988305151	Mouseover 	Toy Shop
+63689988305172	Mouseover 	Toy Shop
+63689988305175	Mouseover 	Toy Shop
+63689988305179	Mouseover 	Toy Shop
+63689988305183	Mouseover 	Toy Shop
+63689988305196	Mouseover 	Toy Shop
+63689988305199	Mouseover 	Toy Shop
+63689988305223	Mouseover 	Toy Shop
+63689988305227	Mouseover 	Toy Shop
+63689988305247	Mouseover 	Toy Shop
+63689988305251	Mouseover 	Toy Shop
+63689988305272	Mouseover 	Toy Shop
+63689988305275	Mouseover 	Toy Shop
+63689988305279	Mouseover 	Toy Shop
+63689988305283	Mouseover 	Toy Shop
+63689988305307	Mouseover 	Toy Shop
+63689988305311	Mouseover 	Toy Shop
+63689988305315	Mouseover 	Toy Shop
+63689988305319	Mouseover 	Toy Shop
+63689988305343	Mouseover 	Toy Shop
+63689988305347	Mouseover 	Toy Shop
+63689988305364	Mouseover 	Toy Shop
+63689988305367	Mouseover 	Toy Shop
+63689988305379	Mouseover 	Toy Shop
+63689988305383	Mouseover 	Toy Shop
+63689988305407	Mouseover 	Toy Shop
+63689988305411	Mouseover 	Toy Shop
+63689988305423	Mouseover 	Toy Shop
+63689988305427	Mouseover 	Toy Shop
+63689988305431	Mouseover 	Toy Shop
+63689988305435	Mouseover 	Toy Shop
+63689988305447	Mouseover 	Toy Shop
+63689988305451	Mouseover 	Toy Shop
+63689988305463	Mouseover 	Toy Shop
+63689988305467	Mouseover 	Toy Shop
+63689988305492	Mouseover 	Toy Shop
+63689988305495	Mouseover 	Toy Shop
+63689988305507	Mouseover 	Toy Shop
+63689988305511	Mouseover 	Toy Shop
+63689988305527	Mouseover 	Toy Shop
+63689988306308	TASK_END	MapStudy	MapStudyTask	4399
+63689988306310	TASK_START	CopyObjects	CopyChildObjects
+63689988306316	TASK_END	CopyObjects	CopyChildObjects	6
+63689988306316	TASK_START	MapTestInstructions	InstructionsTask
+63689988307876	INPUT_EVENT    clear text    1
+63689988307876	TASK_END	MapTestInstructions	InstructionsTask	1560
+63689988307878	TASK_START	MapTest	MapTestTask
+63689988309439	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309443	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309447	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309452	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309455	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309459	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309463	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309467	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309471	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309475	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309479	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309483	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309487	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309491	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309495	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309499	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309503	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309507	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309511	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309515	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309519	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.53502	Rotation (xyz): 	270	90	0
+63689988309523	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.51823	Rotation (xyz): 	270	90	0
+63689988309527	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.51823	Rotation (xyz): 	270	90	0
+63689988309531	Moving :	Computer Shop	Position (xyz): 	110.5387	0.1999969	-11.51823	Rotation (xyz): 	270	90	0
+63689988309535	Moving :	Computer Shop	Position (xyz): 	110.4885	0.1999969	-11.13963	Rotation (xyz): 	270	90	0
+63689988309539	Moving :	Computer Shop	Position (xyz): 	110.4885	0.1999969	-11.13963	Rotation (xyz): 	270	90	0
+63689988309543	Moving :	Computer Shop	Position (xyz): 	110.4885	0.1999969	-11.13963	Rotation (xyz): 	270	90	0
+63689988309547	Moving :	Computer Shop	Position (xyz): 	110.3007	0.1999969	-10.4091	Rotation (xyz): 	270	90	0
+63689988309551	Moving :	Computer Shop	Position (xyz): 	110.3007	0.1999969	-10.4091	Rotation (xyz): 	270	90	0
+63689988309555	Moving :	Computer Shop	Position (xyz): 	110.3007	0.1999969	-10.4091	Rotation (xyz): 	270	90	0
+63689988309559	Moving :	Computer Shop	Position (xyz): 	110.0864	0.1999893	-9.40728	Rotation (xyz): 	270	90	0
+63689988309563	Moving :	Computer Shop	Position (xyz): 	110.0864	0.1999893	-9.40728	Rotation (xyz): 	270	90	0
+63689988309567	Moving :	Computer Shop	Position (xyz): 	110.0864	0.1999893	-9.40728	Rotation (xyz): 	270	90	0
+63689988309572	Moving :	Computer Shop	Position (xyz): 	109.5434	0.1999969	-7.336418	Rotation (xyz): 	270	90	0
+63689988309575	Moving :	Computer Shop	Position (xyz): 	109.5434	0.1999969	-7.336418	Rotation (xyz): 	270	90	0
+63689988309579	Moving :	Computer Shop	Position (xyz): 	108.9638	0.2000046	-5.352501	Rotation (xyz): 	270	90	0
+63689988309583	Moving :	Computer Shop	Position (xyz): 	108.9638	0.2000046	-5.352501	Rotation (xyz): 	270	90	0
+63689988309587	Moving :	Computer Shop	Position (xyz): 	108.9638	0.2000046	-5.352501	Rotation (xyz): 	270	90	0
+63689988309592	Moving :	Computer Shop	Position (xyz): 	107.6301	0.1999893	-1.730309	Rotation (xyz): 	270	90	0
+63689988309595	Moving :	Computer Shop	Position (xyz): 	107.6301	0.1999893	-1.730309	Rotation (xyz): 	270	90	0
+63689988309599	Moving :	Computer Shop	Position (xyz): 	107.6301	0.1999893	-1.730309	Rotation (xyz): 	270	90	0
+63689988309603	Moving :	Computer Shop	Position (xyz): 	106.4974	0.1999969	1.051132	Rotation (xyz): 	270	90	0
+63689988309607	Moving :	Computer Shop	Position (xyz): 	106.4974	0.1999969	1.051132	Rotation (xyz): 	270	90	0
+63689988309611	Moving :	Computer Shop	Position (xyz): 	106.4974	0.1999969	1.051132	Rotation (xyz): 	270	90	0
+63689988309615	Moving :	Computer Shop	Position (xyz): 	105.1571	0.2000046	4.277931	Rotation (xyz): 	270	90	0
+63689988309619	Moving :	Computer Shop	Position (xyz): 	105.1571	0.2000046	4.277931	Rotation (xyz): 	270	90	0
+63689988309623	Moving :	Computer Shop	Position (xyz): 	105.1571	0.2000046	4.277931	Rotation (xyz): 	270	90	0
+63689988309627	Moving :	Computer Shop	Position (xyz): 	101.8799	0.1999969	11.00999	Rotation (xyz): 	270	90	0
+63689988309631	Moving :	Computer Shop	Position (xyz): 	101.8799	0.1999969	11.00999	Rotation (xyz): 	270	90	0
+63689988309643	Moving :	Computer Shop	Position (xyz): 	98.96462	0.1999893	16.75343	Rotation (xyz): 	270	90	0
+63689988309647	Moving :	Computer Shop	Position (xyz): 	92.61789	0.1999969	27.67086	Rotation (xyz): 	270	90	0
+63689988309656	Moving :	Computer Shop	Position (xyz): 	92.61789	0.1999969	27.67086	Rotation (xyz): 	270	90	0
+63689988309664	Moving :	Computer Shop	Position (xyz): 	87.83952	0.1999969	35.16682	Rotation (xyz): 	270	90	0
+63689988309667	Moving :	Computer Shop	Position (xyz): 	87.83952	0.1999969	35.16682	Rotation (xyz): 	270	90	0
+63689988309672	Moving :	Computer Shop	Position (xyz): 	79.86427	0.1999969	45.76255	Rotation (xyz): 	270	90	0
+63689988309679	Moving :	Computer Shop	Position (xyz): 	79.86427	0.1999969	45.76255	Rotation (xyz): 	270	90	0
+63689988309683	Moving :	Computer Shop	Position (xyz): 	74.14087	0.1999969	53.01389	Rotation (xyz): 	270	90	0
+63689988309687	Moving :	Computer Shop	Position (xyz): 	74.14087	0.1999969	53.01389	Rotation (xyz): 	270	90	0
+63689988309692	Moving :	Computer Shop	Position (xyz): 	74.14087	0.1999969	53.01389	Rotation (xyz): 	270	90	0
+63689988309695	Moving :	Computer Shop	Position (xyz): 	68.53139	0.1999969	59.45113	Rotation (xyz): 	270	90	0
+63689988309699	Moving :	Computer Shop	Position (xyz): 	68.53139	0.1999969	59.45113	Rotation (xyz): 	270	90	0
+63689988309703	Moving :	Computer Shop	Position (xyz): 	60.4859	0.1999969	68.36783	Rotation (xyz): 	270	90	0
+63689988309707	Moving :	Computer Shop	Position (xyz): 	60.4859	0.1999969	68.36783	Rotation (xyz): 	270	90	0
+63689988309711	Moving :	Computer Shop	Position (xyz): 	60.4859	0.1999969	68.36783	Rotation (xyz): 	270	90	0
+63689988309715	Moving :	Computer Shop	Position (xyz): 	55.30867	0.1999969	73.71588	Rotation (xyz): 	270	90	0
+63689988309719	Moving :	Computer Shop	Position (xyz): 	55.30867	0.1999969	73.71588	Rotation (xyz): 	270	90	0
+63689988309723	Moving :	Computer Shop	Position (xyz): 	55.30867	0.1999969	73.71588	Rotation (xyz): 	270	90	0
+63689988309727	Moving :	Computer Shop	Position (xyz): 	47.08218	0.1999969	81.83865	Rotation (xyz): 	270	90	0
+63689988309731	Moving :	Computer Shop	Position (xyz): 	47.08218	0.1999969	81.83865	Rotation (xyz): 	270	90	0
+63689988309735	Moving :	Computer Shop	Position (xyz): 	47.08218	0.1999969	81.83865	Rotation (xyz): 	270	90	0
+63689988309739	Moving :	Computer Shop	Position (xyz): 	42.00878	0.1999969	86.82805	Rotation (xyz): 	270	90	0
+63689988309743	Moving :	Computer Shop	Position (xyz): 	42.00878	0.1999969	86.82805	Rotation (xyz): 	270	90	0
+63689988309747	Moving :	Computer Shop	Position (xyz): 	42.00878	0.1999969	86.82805	Rotation (xyz): 	270	90	0
+63689988309752	Moving :	Computer Shop	Position (xyz): 	37.31419	0.1999969	91.27821	Rotation (xyz): 	270	90	0
+63689988309755	Moving :	Computer Shop	Position (xyz): 	37.31419	0.1999969	91.27821	Rotation (xyz): 	270	90	0
+63689988309759	Moving :	Computer Shop	Position (xyz): 	31.7717	0.1999969	95.96944	Rotation (xyz): 	270	90	0
+63689988309763	Moving :	Computer Shop	Position (xyz): 	31.7717	0.1999969	95.96944	Rotation (xyz): 	270	90	0
+63689988309767	Moving :	Computer Shop	Position (xyz): 	31.7717	0.1999969	95.96944	Rotation (xyz): 	270	90	0
+63689988309771	Moving :	Computer Shop	Position (xyz): 	31.7717	0.1999969	95.96944	Rotation (xyz): 	270	90	0
+63689988309775	Moving :	Computer Shop	Position (xyz): 	31.7717	0.1999969	95.96944	Rotation (xyz): 	270	90	0
+63689988309779	Moving :	Computer Shop	Position (xyz): 	31.7717	0.1999969	95.96944	Rotation (xyz): 	270	90	0
+63689988309783	Moving :	Computer Shop	Position (xyz): 	25.60272	0.1999969	100.7915	Rotation (xyz): 	270	90	0
+63689988309787	Moving :	Computer Shop	Position (xyz): 	25.60272	0.1999969	100.7915	Rotation (xyz): 	270	90	0
+63689988309791	Moving :	Computer Shop	Position (xyz): 	25.60272	0.1999969	100.7915	Rotation (xyz): 	270	90	0
+63689988309795	Moving :	Computer Shop	Position (xyz): 	23.98753	0.1999969	101.9308	Rotation (xyz): 	270	90	0
+63689988309799	Moving :	Computer Shop	Position (xyz): 	23.98753	0.1999969	101.9308	Rotation (xyz): 	270	90	0
+63689988309803	Moving :	Computer Shop	Position (xyz): 	23.98753	0.1999969	101.9308	Rotation (xyz): 	270	90	0
+63689988309807	Moving :	Computer Shop	Position (xyz): 	22.87168	0.1999969	102.8422	Rotation (xyz): 	270	90	0
+63689988309811	Moving :	Computer Shop	Position (xyz): 	22.87168	0.1999969	102.8422	Rotation (xyz): 	270	90	0
+63689988309815	Moving :	Computer Shop	Position (xyz): 	21.58827	0.1999969	103.9916	Rotation (xyz): 	270	90	0
+63689988309819	Moving :	Computer Shop	Position (xyz): 	21.58827	0.1999969	103.9916	Rotation (xyz): 	270	90	0
+63689988309823	Moving :	Computer Shop	Position (xyz): 	21.58827	0.1999969	103.9916	Rotation (xyz): 	270	90	0
+63689988309828	Moving :	Computer Shop	Position (xyz): 	20.89459	0.1999969	104.6552	Rotation (xyz): 	270	90	0
+63689988309831	Moving :	Computer Shop	Position (xyz): 	20.89459	0.1999969	104.6552	Rotation (xyz): 	270	90	0
+63689988309835	Moving :	Computer Shop	Position (xyz): 	20.89459	0.1999969	104.6552	Rotation (xyz): 	270	90	0
+63689988309839	Moving :	Computer Shop	Position (xyz): 	20.24459	0.1999969	105.2683	Rotation (xyz): 	270	90	0
+63689988309843	Moving :	Computer Shop	Position (xyz): 	20.24459	0.1999969	105.2683	Rotation (xyz): 	270	90	0
+63689988309847	Moving :	Computer Shop	Position (xyz): 	20.24459	0.1999969	105.2683	Rotation (xyz): 	270	90	0
+63689988309852	Moving :	Computer Shop	Position (xyz): 	20.05014	0.1999969	105.4661	Rotation (xyz): 	270	90	0
+63689988309859	Moving :	Computer Shop	Position (xyz): 	20.05014	0.1999969	105.4661	Rotation (xyz): 	270	90	0
+63689988309863	Moving :	Computer Shop	Position (xyz): 	19.92951	0.1999969	105.6068	Rotation (xyz): 	270	90	0
+63689988309867	Moving :	Computer Shop	Position (xyz): 	19.92951	0.1999969	105.6068	Rotation (xyz): 	270	90	0
+63689988309871	Moving :	Computer Shop	Position (xyz): 	19.92951	0.1999969	105.6068	Rotation (xyz): 	270	90	0
+63689988309875	Moving :	Computer Shop	Position (xyz): 	19.82904	0.1999969	105.7677	Rotation (xyz): 	270	90	0
+63689988309879	Moving :	Computer Shop	Position (xyz): 	19.82904	0.1999969	105.7677	Rotation (xyz): 	270	90	0
+63689988309883	Moving :	Computer Shop	Position (xyz): 	19.7821	0.1999969	105.8514	Rotation (xyz): 	270	90	0
+63689988309887	Moving :	Computer Shop	Position (xyz): 	19.7821	0.1999969	105.8514	Rotation (xyz): 	270	90	0
+63689988309891	Moving :	Computer Shop	Position (xyz): 	19.7821	0.1999969	105.8514	Rotation (xyz): 	270	90	0
+63689988309895	Moving :	Computer Shop	Position (xyz): 	19.7252	0.1999969	105.9787	Rotation (xyz): 	270	90	0
+63689988309899	Moving :	Computer Shop	Position (xyz): 	19.7252	0.1999969	105.9787	Rotation (xyz): 	270	90	0
+63689988309903	Moving :	Computer Shop	Position (xyz): 	19.7252	0.1999969	105.9787	Rotation (xyz): 	270	90	0
+63689988309908	Moving :	Computer Shop	Position (xyz): 	19.69496	0.1999969	106.0457	Rotation (xyz): 	270	90	0
+63689988309911	Moving :	Computer Shop	Position (xyz): 	19.69496	0.1999969	106.0457	Rotation (xyz): 	270	90	0
+63689988309915	Moving :	Computer Shop	Position (xyz): 	19.69496	0.1999969	106.0457	Rotation (xyz): 	270	90	0
+63689988309919	Moving :	Computer Shop	Position (xyz): 	19.67826	0.1999969	106.0793	Rotation (xyz): 	270	90	0
+63689988309923	Moving :	Computer Shop	Position (xyz): 	19.67826	0.1999969	106.0793	Rotation (xyz): 	270	90	0
+63689988309927	Moving :	Computer Shop	Position (xyz): 	19.67826	0.1999969	106.0793	Rotation (xyz): 	270	90	0
+63689988309932	Moving :	Computer Shop	Position (xyz): 	19.66147	0.1999969	106.0961	Rotation (xyz): 	270	90	0
+63689988309935	Moving :	Computer Shop	Position (xyz): 	19.66147	0.1999969	106.0961	Rotation (xyz): 	270	90	0
+63689988309939	Moving :	Computer Shop	Position (xyz): 	19.66147	0.1999969	106.0961	Rotation (xyz): 	270	90	0
+63689988309943	Moving :	Computer Shop	Position (xyz): 	19.66146	0.1999969	106.1631	Rotation (xyz): 	270	90	0
+63689988309947	Moving :	Computer Shop	Position (xyz): 	19.66146	0.1999969	106.1631	Rotation (xyz): 	270	90	0
+63689988309952	Moving :	Computer Shop	Position (xyz): 	19.66146	0.1999969	106.3707	Rotation (xyz): 	270	90	0
+63689988309955	Moving :	Computer Shop	Position (xyz): 	19.66146	0.1999969	106.3707	Rotation (xyz): 	270	90	0
+63689988309959	Moving :	Computer Shop	Position (xyz): 	19.66146	0.1999969	106.3707	Rotation (xyz): 	270	90	0
+63689988309964	Moving :	Computer Shop	Position (xyz): 	19.68824	0.1999969	106.8266	Rotation (xyz): 	270	90	0
+63689988309967	Moving :	Computer Shop	Position (xyz): 	19.68824	0.1999969	106.8266	Rotation (xyz): 	270	90	0
+63689988309972	Moving :	Computer Shop	Position (xyz): 	19.68824	0.1999969	106.8266	Rotation (xyz): 	270	90	0
+63689988309975	Moving :	Computer Shop	Position (xyz): 	19.72184	0.1999969	107.7682	Rotation (xyz): 	270	90	0
+63689988309979	Moving :	Computer Shop	Position (xyz): 	19.72184	0.1999969	107.7682	Rotation (xyz): 	270	90	0
+63689988309983	Moving :	Computer Shop	Position (xyz): 	19.72184	0.1999969	107.7682	Rotation (xyz): 	270	90	0
+63689988309987	Moving :	Computer Shop	Position (xyz): 	19.72184	0.1999969	109.0381	Rotation (xyz): 	270	90	0
+63689988309991	Moving :	Computer Shop	Position (xyz): 	19.72184	0.1999969	109.0381	Rotation (xyz): 	270	90	0
+63689988309995	Moving :	Computer Shop	Position (xyz): 	19.66819	0.1999969	111.5982	Rotation (xyz): 	270	90	0
+63689988309999	Moving :	Computer Shop	Position (xyz): 	19.66819	0.1999969	111.5982	Rotation (xyz): 	270	90	0
+63689988310003	Moving :	Computer Shop	Position (xyz): 	19.66819	0.1999969	111.5982	Rotation (xyz): 	270	90	0
+63689988310007	Moving :	Computer Shop	Position (xyz): 	19.51406	0.1999969	113.9807	Rotation (xyz): 	270	90	0
+63689988310011	Moving :	Computer Shop	Position (xyz): 	19.51406	0.1999969	113.9807	Rotation (xyz): 	270	90	0
+63689988310015	Moving :	Computer Shop	Position (xyz): 	19.51406	0.1999969	113.9807	Rotation (xyz): 	270	90	0
+63689988310019	Moving :	Computer Shop	Position (xyz): 	19.14207	0.1999969	117.66	Rotation (xyz): 	270	90	0
+63689988310023	Moving :	Computer Shop	Position (xyz): 	19.14207	0.1999969	117.66	Rotation (xyz): 	270	90	0
+63689988310027	Moving :	Computer Shop	Position (xyz): 	19.14207	0.1999969	117.66	Rotation (xyz): 	270	90	0
+63689988310032	Moving :	Computer Shop	Position (xyz): 	18.88736	0.1999969	119.9554	Rotation (xyz): 	270	90	0
+63689988310039	Moving :	Computer Shop	Position (xyz): 	18.88736	0.1999969	119.9554	Rotation (xyz): 	270	90	0
+63689988310043	Moving :	Computer Shop	Position (xyz): 	18.58583	0.1999969	121.4968	Rotation (xyz): 	270	90	0
+63689988310047	Moving :	Computer Shop	Position (xyz): 	18.58583	0.1999969	121.4968	Rotation (xyz): 	270	90	0
+63689988310052	Moving :	Computer Shop	Position (xyz): 	18.35464	0.1999969	122.2977	Rotation (xyz): 	270	90	0
+63689988310056	Moving :	Computer Shop	Position (xyz): 	18.35464	0.1999969	122.2977	Rotation (xyz): 	270	90	0
+63689988310063	Moving :	Computer Shop	Position (xyz): 	18.04628	0.1999969	123.149	Rotation (xyz): 	270	90	0
+63689988310067	Moving :	Computer Shop	Position (xyz): 	18.04628	0.1999969	123.149	Rotation (xyz): 	270	90	0
+63689988310071	Moving :	Computer Shop	Position (xyz): 	18.04628	0.1999969	123.149	Rotation (xyz): 	270	90	0
+63689988310075	Moving :	Computer Shop	Position (xyz): 	17.81845	0.1999969	123.6951	Rotation (xyz): 	270	90	0
+63689988310079	Moving :	Computer Shop	Position (xyz): 	17.81845	0.1999969	123.6951	Rotation (xyz): 	270	90	0
+63689988310083	Moving :	Computer Shop	Position (xyz): 	17.81845	0.1999969	123.6951	Rotation (xyz): 	270	90	0
+63689988310087	Moving :	Computer Shop	Position (xyz): 	17.41633	0.1999969	124.4624	Rotation (xyz): 	270	90	0
+63689988310091	Moving :	Computer Shop	Position (xyz): 	17.41633	0.1999969	124.4624	Rotation (xyz): 	270	90	0
+63689988310095	Moving :	Computer Shop	Position (xyz): 	17.41633	0.1999969	124.4624	Rotation (xyz): 	270	90	0
+63689988310099	Moving :	Computer Shop	Position (xyz): 	16.98408	0.1999969	125.1997	Rotation (xyz): 	270	90	0
+63689988310103	Moving :	Computer Shop	Position (xyz): 	16.98408	0.1999969	125.1997	Rotation (xyz): 	270	90	0
+63689988310107	Moving :	Computer Shop	Position (xyz): 	16.98408	0.1999969	125.1997	Rotation (xyz): 	270	90	0
+63689988310112	Moving :	Computer Shop	Position (xyz): 	16.36421	0.1999969	126.2485	Rotation (xyz): 	270	90	0
+63689988310115	Moving :	Computer Shop	Position (xyz): 	16.36421	0.1999969	126.2485	Rotation (xyz): 	270	90	0
+63689988310119	Moving :	Computer Shop	Position (xyz): 	15.95202	0.1999969	126.8516	Rotation (xyz): 	270	90	0
+63689988310123	Moving :	Computer Shop	Position (xyz): 	15.95202	0.1999969	126.8516	Rotation (xyz): 	270	90	0
+63689988310127	Moving :	Computer Shop	Position (xyz): 	15.95202	0.1999969	126.8516	Rotation (xyz): 	270	90	0
+63689988310132	Moving :	Computer Shop	Position (xyz): 	15.32542	0.1999969	127.7363	Rotation (xyz): 	270	90	0
+63689988310135	Moving :	Computer Shop	Position (xyz): 	15.32542	0.1999969	127.7363	Rotation (xyz): 	270	90	0
+63689988310139	Moving :	Computer Shop	Position (xyz): 	15.32542	0.1999969	127.7363	Rotation (xyz): 	270	90	0
+63689988310143	Moving :	Computer Shop	Position (xyz): 	14.87974	0.1999969	128.3395	Rotation (xyz): 	270	90	0
+63689988310147	Moving :	Computer Shop	Position (xyz): 	14.87974	0.1999969	128.3395	Rotation (xyz): 	270	90	0
+63689988310151	Moving :	Computer Shop	Position (xyz): 	14.87974	0.1999969	128.3395	Rotation (xyz): 	270	90	0
+63689988310155	Moving :	Computer Shop	Position (xyz): 	14.36035	0.1999969	128.9594	Rotation (xyz): 	270	90	0
+63689988310159	Moving :	Computer Shop	Position (xyz): 	14.36035	0.1999969	128.9594	Rotation (xyz): 	270	90	0
+63689988310163	Moving :	Computer Shop	Position (xyz): 	14.36035	0.1999969	128.9594	Rotation (xyz): 	270	90	0
+63689988310167	Moving :	Computer Shop	Position (xyz): 	14.0018	0.1999969	129.3179	Rotation (xyz): 	270	90	0
+63689988310172	Moving :	Computer Shop	Position (xyz): 	14.0018	0.1999969	129.3179	Rotation (xyz): 	270	90	0
+63689988310175	Moving :	Computer Shop	Position (xyz): 	13.57952	0.1999969	129.6832	Rotation (xyz): 	270	90	0
+63689988310179	Moving :	Computer Shop	Position (xyz): 	13.57952	0.1999969	129.6832	Rotation (xyz): 	270	90	0
+63689988310183	Moving :	Computer Shop	Position (xyz): 	13.57952	0.1999969	129.6832	Rotation (xyz): 	270	90	0
+63689988310187	Moving :	Computer Shop	Position (xyz): 	13.19757	0.1999969	130.0116	Rotation (xyz): 	270	90	0
+63689988310192	Moving :	Computer Shop	Position (xyz): 	13.19757	0.1999969	130.0116	Rotation (xyz): 	270	90	0
+63689988310200	Moving :	Computer Shop	Position (xyz): 	12.94285	0.1999969	130.1758	Rotation (xyz): 	270	90	0
+63689988310208	Moving :	Computer Shop	Position (xyz): 	12.94285	0.1999969	130.1758	Rotation (xyz): 	270	90	0
+63689988310217	Moving :	Computer Shop	Position (xyz): 	12.6178	0.1999969	130.4003	Rotation (xyz): 	270	90	0
+63689988310224	Moving :	Computer Shop	Position (xyz): 	12.2056	0.1999969	130.675	Rotation (xyz): 	270	0	0
+63689988310227	Moving :	Computer Shop	Position (xyz): 	12.2056	0.1999969	130.675	Rotation (xyz): 	270	0	0
+63689988310232	Moving :	Computer Shop	Position (xyz): 	11.99457	0.1999969	130.7823	Rotation (xyz): 	270	0	0
+63689988310235	Moving :	Computer Shop	Position (xyz): 	11.99457	0.1999969	130.7823	Rotation (xyz): 	270	0	0
+63689988310239	Moving :	Computer Shop	Position (xyz): 	11.99457	0.1999969	130.7823	Rotation (xyz): 	270	0	0
+63689988310243	Moving :	Computer Shop	Position (xyz): 	11.7533	0.1999969	130.8929	Rotation (xyz): 	270	0	0
+63689988310248	Moving :	Computer Shop	Position (xyz): 	11.7533	0.1999969	130.8929	Rotation (xyz): 	270	0	0
+63689988310251	Moving :	Computer Shop	Position (xyz): 	11.7533	0.1999969	130.8929	Rotation (xyz): 	270	0	0
+63689988310255	Moving :	Computer Shop	Position (xyz): 	11.54553	0.2000046	130.9767	Rotation (xyz): 	270	0	0
+63689988310259	Moving :	Computer Shop	Position (xyz): 	11.54553	0.2000046	130.9767	Rotation (xyz): 	270	0	0
+63689988310263	Moving :	Computer Shop	Position (xyz): 	11.54553	0.2000046	130.9767	Rotation (xyz): 	270	0	0
+63689988310267	Moving :	Computer Shop	Position (xyz): 	11.33439	0.1999969	131.0838	Rotation (xyz): 	270	0	0
+63689988310271	Moving :	Computer Shop	Position (xyz): 	11.33439	0.1999969	131.0838	Rotation (xyz): 	270	0	0
+63689988310275	Moving :	Computer Shop	Position (xyz): 	11.33439	0.1999969	131.0838	Rotation (xyz): 	270	0	0
+63689988310279	Moving :	Computer Shop	Position (xyz): 	11.23391	0.1999969	131.1342	Rotation (xyz): 	270	0	0
+63689988310283	Moving :	Computer Shop	Position (xyz): 	11.23391	0.1999969	131.1342	Rotation (xyz): 	270	0	0
+63689988310287	Moving :	Computer Shop	Position (xyz): 	11.23391	0.1999969	131.1342	Rotation (xyz): 	270	0	0
+63689988310292	Moving :	Computer Shop	Position (xyz): 	11.10656	0.2000046	131.1877	Rotation (xyz): 	270	0	0
+63689988310299	Moving :	Computer Shop	Position (xyz): 	11.00598	0.1999969	131.2379	Rotation (xyz): 	270	0	0
+63689988310304	Moving :	Computer Shop	Position (xyz): 	11.00598	0.1999969	131.2379	Rotation (xyz): 	270	0	0
+63689988310307	Moving :	Computer Shop	Position (xyz): 	11.00598	0.1999969	131.2379	Rotation (xyz): 	270	0	0
+63689988310312	Moving :	Computer Shop	Position (xyz): 	10.87873	0.2000046	131.2749	Rotation (xyz): 	270	0	0
+63689988310315	Moving :	Computer Shop	Position (xyz): 	10.87873	0.2000046	131.2749	Rotation (xyz): 	270	0	0
+63689988310319	Moving :	Computer Shop	Position (xyz): 	10.87873	0.2000046	131.2749	Rotation (xyz): 	270	0	0
+63689988310323	Moving :	Computer Shop	Position (xyz): 	10.7983	0.1999969	131.2917	Rotation (xyz): 	270	0	0
+63689988310327	Moving :	Computer Shop	Position (xyz): 	10.7983	0.1999969	131.2917	Rotation (xyz): 	270	0	0
+63689988310331	Moving :	Computer Shop	Position (xyz): 	10.7983	0.1999969	131.2917	Rotation (xyz): 	270	0	0
+63689988310335	Moving :	Computer Shop	Position (xyz): 	10.71452	0.1999893	131.3284	Rotation (xyz): 	270	0	0
+63689988310339	Moving :	Computer Shop	Position (xyz): 	10.71452	0.1999893	131.3284	Rotation (xyz): 	270	0	0
+63689988310343	Moving :	Computer Shop	Position (xyz): 	10.71452	0.1999893	131.3284	Rotation (xyz): 	270	0	0
+63689988310348	Moving :	Computer Shop	Position (xyz): 	10.61394	0.1999969	131.3788	Rotation (xyz): 	270	0	0
+63689988310351	Moving :	Computer Shop	Position (xyz): 	10.61394	0.1999969	131.3788	Rotation (xyz): 	270	0	0
+63689988310355	Moving :	Computer Shop	Position (xyz): 	10.56701	0.1999969	131.3788	Rotation (xyz): 	270	0	0
+63689988310359	Moving :	Computer Shop	Position (xyz): 	10.56701	0.1999969	131.3788	Rotation (xyz): 	270	0	0
+63689988310363	Moving :	Computer Shop	Position (xyz): 	10.56701	0.1999969	131.3788	Rotation (xyz): 	270	0	0
+63689988310368	Moving :	Computer Shop	Position (xyz): 	10.50002	0.1999893	131.429	Rotation (xyz): 	270	0	0
+63689988310371	Moving :	Computer Shop	Position (xyz): 	10.50002	0.1999893	131.429	Rotation (xyz): 	270	0	0
+63689988310375	Moving :	Computer Shop	Position (xyz): 	10.50002	0.1999893	131.429	Rotation (xyz): 	270	0	0
+63689988310379	Moving :	Computer Shop	Position (xyz): 	10.41624	0.1999893	131.4792	Rotation (xyz): 	270	0	0
+63689988310383	Moving :	Computer Shop	Position (xyz): 	10.41624	0.1999893	131.4792	Rotation (xyz): 	270	0	0
+63689988310387	Moving :	Computer Shop	Position (xyz): 	10.41624	0.1999893	131.4792	Rotation (xyz): 	270	0	0
+63689988310392	Moving :	Computer Shop	Position (xyz): 	10.35262	0.1999969	131.5464	Rotation (xyz): 	270	0	0
+63689988310395	Moving :	Computer Shop	Position (xyz): 	10.35262	0.1999969	131.5464	Rotation (xyz): 	270	0	0
+63689988310399	Moving :	Computer Shop	Position (xyz): 	10.35262	0.1999969	131.5464	Rotation (xyz): 	270	0	0
+63689988310403	Moving :	Computer Shop	Position (xyz): 	10.31913	0.1999969	131.5966	Rotation (xyz): 	270	0	0
+63689988310407	Moving :	Computer Shop	Position (xyz): 	10.31913	0.1999969	131.5966	Rotation (xyz): 	270	0	0
+63689988310411	Moving :	Computer Shop	Position (xyz): 	10.31913	0.1999969	131.5966	Rotation (xyz): 	270	0	0
+63689988310415	Moving :	Computer Shop	Position (xyz): 	10.28553	0.2000046	131.6602	Rotation (xyz): 	270	0	0
+63689988310419	Moving :	Computer Shop	Position (xyz): 	10.28553	0.2000046	131.6602	Rotation (xyz): 	270	0	0
+63689988310423	Moving :	Computer Shop	Position (xyz): 	10.21854	0.1999969	131.7474	Rotation (xyz): 	270	0	0
+63689988310427	Moving :	Computer Shop	Position (xyz): 	10.21854	0.1999969	131.7474	Rotation (xyz): 	270	0	0
+63689988310432	Moving :	Computer Shop	Position (xyz): 	10.21854	0.1999969	131.7474	Rotation (xyz): 	270	0	0
+63689988310435	Moving :	Computer Shop	Position (xyz): 	10.16499	0.1999893	131.8746	Rotation (xyz): 	270	0	0
+63689988310439	Moving :	Computer Shop	Position (xyz): 	10.16499	0.1999893	131.8746	Rotation (xyz): 	270	0	0
+63689988310443	Moving :	Computer Shop	Position (xyz): 	10.16499	0.1999893	131.8746	Rotation (xyz): 	270	0	0
+63689988310448	Moving :	Computer Shop	Position (xyz): 	10.08783	0.1999969	132.0289	Rotation (xyz): 	270	0	0
+63689988310451	Moving :	Computer Shop	Position (xyz): 	10.08783	0.1999969	132.0289	Rotation (xyz): 	270	0	0
+63689988310455	Moving :	Computer Shop	Position (xyz): 	10.08783	0.1999969	132.0289	Rotation (xyz): 	270	0	0
+63689988310459	Moving :	Computer Shop	Position (xyz): 	9.950497	0.1999893	132.3036	Rotation (xyz): 	270	0	0
+63689988310468	Moving :	Computer Shop	Position (xyz): 	9.836586	0.1999969	132.5818	Rotation (xyz): 	270	270	0
+63689988310476	Moving :	Computer Shop	Position (xyz): 	9.836586	0.1999969	132.5818	Rotation (xyz): 	270	270	0
+63689988310484	Moving :	Computer Shop	Position (xyz): 	9.685711	0.1999969	132.9335	Rotation (xyz): 	270	270	0
+63689988310492	Moving :	Computer Shop	Position (xyz): 	9.558456	0.1999969	133.1481	Rotation (xyz): 	270	270	0
+63689988310495	Moving :	Computer Shop	Position (xyz): 	9.558456	0.1999969	133.1481	Rotation (xyz): 	270	270	0
+63689988310499	Moving :	Computer Shop	Position (xyz): 	9.558456	0.1999969	133.1481	Rotation (xyz): 	270	270	0
+63689988310503	Moving :	Computer Shop	Position (xyz): 	9.370735	0.1999969	133.5769	Rotation (xyz): 	270	270	0
+63689988310507	Moving :	Computer Shop	Position (xyz): 	9.370735	0.1999969	133.5769	Rotation (xyz): 	270	270	0
+63689988310511	Moving :	Computer Shop	Position (xyz): 	9.370735	0.1999969	133.5769	Rotation (xyz): 	270	270	0
+63689988310515	Moving :	Computer Shop	Position (xyz): 	9.266903	0.1999969	133.7647	Rotation (xyz): 	270	270	0
+63689988310519	Moving :	Computer Shop	Position (xyz): 	9.266903	0.1999969	133.7647	Rotation (xyz): 	270	270	0
+63689988310523	Moving :	Computer Shop	Position (xyz): 	9.266903	0.1999969	133.7647	Rotation (xyz): 	270	270	0
+63689988310527	Moving :	Computer Shop	Position (xyz): 	9.136189	0.2000046	134.0026	Rotation (xyz): 	270	270	0
+63689988310531	Moving :	Computer Shop	Position (xyz): 	9.136189	0.2000046	134.0026	Rotation (xyz): 	270	270	0
+63689988310535	Moving :	Computer Shop	Position (xyz): 	9.039074	0.1999969	134.1399	Rotation (xyz): 	270	270	0
+63689988310539	Moving :	Computer Shop	Position (xyz): 	9.039074	0.1999969	134.1399	Rotation (xyz): 	270	270	0
+63689988310543	Moving :	Computer Shop	Position (xyz): 	9.039074	0.1999969	134.1399	Rotation (xyz): 	270	270	0
+63689988310547	Moving :	Computer Shop	Position (xyz): 	8.948566	0.1999969	134.2472	Rotation (xyz): 	270	270	0
+63689988310552	Moving :	Computer Shop	Position (xyz): 	8.948566	0.1999969	134.2472	Rotation (xyz): 	270	270	0
+63689988310555	Moving :	Computer Shop	Position (xyz): 	8.948566	0.1999969	134.2472	Rotation (xyz): 	270	270	0
+63689988310559	Moving :	Computer Shop	Position (xyz): 	8.861427	0.2000046	134.3377	Rotation (xyz): 	270	270	0
+63689988310563	Moving :	Computer Shop	Position (xyz): 	8.861427	0.2000046	134.3377	Rotation (xyz): 	270	270	0
+63689988310567	Moving :	Computer Shop	Position (xyz): 	8.861427	0.2000046	134.3377	Rotation (xyz): 	270	270	0
+63689988310572	Moving :	Computer Shop	Position (xyz): 	8.770916	0.1999893	134.4282	Rotation (xyz): 	270	270	0
+63689988310579	Moving :	Computer Shop	Position (xyz): 	8.770916	0.1999893	134.4282	Rotation (xyz): 	270	270	0
+63689988310583	Moving :	Computer Shop	Position (xyz): 	8.703938	0.2000046	134.5118	Rotation (xyz): 	270	270	0
+63689988310587	Moving :	Computer Shop	Position (xyz): 	8.703938	0.2000046	134.5118	Rotation (xyz): 	270	270	0
+63689988310591	Moving :	Computer Shop	Position (xyz): 	8.703938	0.2000046	134.5118	Rotation (xyz): 	270	270	0
+63689988310595	Moving :	Computer Shop	Position (xyz): 	8.653641	0.1999969	134.5622	Rotation (xyz): 	270	270	0
+63689988310599	Moving :	Computer Shop	Position (xyz): 	8.653641	0.1999969	134.5622	Rotation (xyz): 	270	270	0
+63689988310603	Moving :	Computer Shop	Position (xyz): 	8.636948	0.1999969	134.5989	Rotation (xyz): 	270	270	0
+63689988310607	Moving :	Computer Shop	Position (xyz): 	8.636948	0.1999969	134.5989	Rotation (xyz): 	270	270	0
+63689988310611	Moving :	Computer Shop	Position (xyz): 	8.636948	0.1999969	134.5989	Rotation (xyz): 	270	270	0
+63689988310616	Moving :	Computer Shop	Position (xyz): 	8.603458	0.1999969	134.6325	Rotation (xyz): 	270	270	0
+63689988310619	Moving :	Computer Shop	Position (xyz): 	8.603458	0.1999969	134.6325	Rotation (xyz): 	270	270	0
+63689988310623	Moving :	Computer Shop	Position (xyz): 	8.603458	0.1999969	134.6325	Rotation (xyz): 	270	270	0
+63689988310627	Moving :	Computer Shop	Position (xyz): 	8.590019	0.2000046	134.6827	Rotation (xyz): 	270	270	0
+63689988310632	Moving :	Computer Shop	Position (xyz): 	8.590019	0.2000046	134.6827	Rotation (xyz): 	270	270	0
+63689988310635	Moving :	Computer Shop	Position (xyz): 	8.590019	0.2000046	134.6827	Rotation (xyz): 	270	270	0
+63689988310639	Moving :	Computer Shop	Position (xyz): 	8.556526	0.2000046	134.7163	Rotation (xyz): 	270	270	0
+63689988310643	Moving :	Computer Shop	Position (xyz): 	8.556526	0.2000046	134.7163	Rotation (xyz): 	270	270	0
+63689988310647	Moving :	Computer Shop	Position (xyz): 	8.556526	0.2000046	134.7163	Rotation (xyz): 	270	270	0
+63689988310652	Moving :	Computer Shop	Position (xyz): 	8.556526	0.2000046	134.7331	Rotation (xyz): 	270	270	0
+63689988310655	Moving :	Computer Shop	Position (xyz): 	8.556526	0.2000046	134.7331	Rotation (xyz): 	270	270	0
+63689988310659	Moving :	Computer Shop	Position (xyz): 	8.53973	0.1999969	134.7331	Rotation (xyz): 	270	270	0
+63689988310663	Moving :	Computer Shop	Position (xyz): 	8.53973	0.1999969	134.7331	Rotation (xyz): 	270	270	0
+63689988310672	Moving :	Computer Shop	Position (xyz): 	8.53973	0.1999893	134.7499	Rotation (xyz): 	270	270	0
+63689988310679	Moving :	Computer Shop	Position (xyz): 	8.53973	0.1999893	134.7499	Rotation (xyz): 	270	270	0
+63689988310683	Moving :	Computer Shop	Position (xyz): 	8.523033	0.1999969	134.7665	Rotation (xyz): 	270	270	0
+63689988310687	Moving :	Computer Shop	Position (xyz): 	8.523033	0.1999969	134.7665	Rotation (xyz): 	270	270	0
+63689988310691	Moving :	Computer Shop	Position (xyz): 	8.523033	0.1999969	134.7665	Rotation (xyz): 	270	270	0
+63689988310695	Moving :	Computer Shop	Position (xyz): 	8.472744	0.1999969	134.7833	Rotation (xyz): 	270	270	0
+63689988310699	Moving :	Computer Shop	Position (xyz): 	8.472744	0.1999969	134.7833	Rotation (xyz): 	270	270	0
+63689988310703	Moving :	Computer Shop	Position (xyz): 	8.472744	0.1999969	134.7833	Rotation (xyz): 	270	270	0
+63689988310707	Moving :	Computer Shop	Position (xyz): 	8.439251	0.1999969	134.8169	Rotation (xyz): 	270	270	0
+63689988310711	Moving :	Computer Shop	Position (xyz): 	8.439251	0.1999969	134.8169	Rotation (xyz): 	270	270	0
+63689988310715	Moving :	Computer Shop	Position (xyz): 	8.372166	0.1999969	134.8503	Rotation (xyz): 	270	270	0
+63689988310720	Moving :	Computer Shop	Position (xyz): 	8.372166	0.1999969	134.8503	Rotation (xyz): 	270	270	0
+63689988310723	Moving :	Computer Shop	Position (xyz): 	8.372166	0.1999969	134.8503	Rotation (xyz): 	270	270	0
+63689988310727	Moving :	Computer Shop	Position (xyz): 	8.325233	0.1999969	134.8872	Rotation (xyz): 	270	270	0
+63689988310731	Moving :	Computer Shop	Position (xyz): 	8.325233	0.1999969	134.8872	Rotation (xyz): 	270	270	0
+63689988310735	Moving :	Computer Shop	Position (xyz): 	8.325233	0.1999969	134.8872	Rotation (xyz): 	270	270	0
+63689988310739	Moving :	Computer Shop	Position (xyz): 	8.275051	0.1999969	134.9206	Rotation (xyz): 	270	270	0
+63689988310743	Moving :	Computer Shop	Position (xyz): 	8.275051	0.1999969	134.9206	Rotation (xyz): 	270	270	0
+63689988310747	Moving :	Computer Shop	Position (xyz): 	8.275051	0.1999969	134.9206	Rotation (xyz): 	270	270	0
+63689988310752	Moving :	Computer Shop	Position (xyz): 	8.224754	0.1999969	134.9542	Rotation (xyz): 	270	270	0
+63689988310759	Moving :	Computer Shop	Position (xyz): 	8.224754	0.1999969	134.9542	Rotation (xyz): 	270	270	0
+63689988310763	Moving :	Computer Shop	Position (xyz): 	8.157768	0.1999969	135.0044	Rotation (xyz): 	270	270	0
+63689988310767	Moving :	Computer Shop	Position (xyz): 	8.157768	0.1999969	135.0044	Rotation (xyz): 	270	270	0
+63689988310772	Moving :	Computer Shop	Position (xyz): 	8.157768	0.1999969	135.0044	Rotation (xyz): 	270	270	0
+63689988310780	Moving :	Computer Shop	Position (xyz): 	8.09404	0.1999969	135.0548	Rotation (xyz): 	270	270	0
+63689988310788	Moving :	Computer Shop	Position (xyz): 	8.020336	0.1999969	135.1619	Rotation (xyz): 	270	270	0
+63689988310796	Moving :	Computer Shop	Position (xyz): 	7.929832	0.1999969	135.2524	Rotation (xyz): 	270	270	0
+63689988310803	Moving :	Computer Shop	Position (xyz): 	7.929832	0.1999969	135.2524	Rotation (xyz): 	270	270	0
+63689988310807	Moving :	Computer Shop	Position (xyz): 	7.859493	0.1999969	135.3631	Rotation (xyz): 	270	270	0
+63689988310811	Moving :	Computer Shop	Position (xyz): 	7.859493	0.1999969	135.3631	Rotation (xyz): 	270	270	0
+63689988310815	Moving :	Computer Shop	Position (xyz): 	7.859493	0.1999969	135.3631	Rotation (xyz): 	270	270	0
+63689988310819	Moving :	Computer Shop	Position (xyz): 	7.825996	0.1999893	135.4132	Rotation (xyz): 	270	270	0
+63689988310823	Moving :	Computer Shop	Position (xyz): 	7.825996	0.1999893	135.4132	Rotation (xyz): 	270	270	0
+63689988310827	Moving :	Computer Shop	Position (xyz): 	7.825996	0.1999893	135.4132	Rotation (xyz): 	270	270	0
+63689988310832	Moving :	Computer Shop	Position (xyz): 	7.792507	0.1999969	135.4636	Rotation (xyz): 	270	270	0
+63689988310835	Moving :	Computer Shop	Position (xyz): 	7.792507	0.1999969	135.4636	Rotation (xyz): 	270	270	0
+63689988310839	Moving :	Computer Shop	Position (xyz): 	7.792507	0.1999969	135.4636	Rotation (xyz): 	270	270	0
+63689988310843	Moving :	Computer Shop	Position (xyz): 	7.775711	0.1999969	135.5306	Rotation (xyz): 	270	270	0
+63689988310847	Moving :	Computer Shop	Position (xyz): 	7.775711	0.1999969	135.5306	Rotation (xyz): 	270	270	0
+63689988310852	Moving :	Computer Shop	Position (xyz): 	7.74221	0.1999893	135.5976	Rotation (xyz): 	270	270	0
+63689988310855	Moving :	Computer Shop	Position (xyz): 	7.74221	0.1999893	135.5976	Rotation (xyz): 	270	270	0
+63689988310859	Moving :	Computer Shop	Position (xyz): 	7.74221	0.1999893	135.5976	Rotation (xyz): 	270	270	0
+63689988310863	Moving :	Computer Shop	Position (xyz): 	7.725422	0.2000046	135.6478	Rotation (xyz): 	270	270	0
+63689988310867	Moving :	Computer Shop	Position (xyz): 	7.725422	0.2000046	135.6478	Rotation (xyz): 	270	270	0
+63689988310877	Moving :	Computer Shop	Position (xyz): 	7.712082	0.1999969	135.7148	Rotation (xyz): 	270	270	0
+63689988310883	Moving :	Computer Shop	Position (xyz): 	7.712082	0.1999969	135.7148	Rotation (xyz): 	270	270	0
+63689988310887	Moving :	Computer Shop	Position (xyz): 	7.695282	0.2000046	135.7484	Rotation (xyz): 	270	270	0
+63689988310891	Moving :	Computer Shop	Position (xyz): 	7.695282	0.2000046	135.7484	Rotation (xyz): 	270	270	0
+63689988310895	Moving :	Computer Shop	Position (xyz): 	7.678589	0.2000046	135.8288	Rotation (xyz): 	270	270	0
+63689988310900	Moving :	Computer Shop	Position (xyz): 	7.678589	0.2000046	135.8288	Rotation (xyz): 	270	270	0
+63689988310903	Moving :	Computer Shop	Position (xyz): 	7.678589	0.2000046	135.8288	Rotation (xyz): 	270	270	0
+63689988310907	Moving :	Computer Shop	Position (xyz): 	7.645092	0.1999969	135.9294	Rotation (xyz): 	270	270	0
+63689988310912	Moving :	Computer Shop	Position (xyz): 	7.645092	0.1999969	135.9294	Rotation (xyz): 	270	270	0
+63689988310920	Moving :	Computer Shop	Position (xyz): 	7.594803	0.1999969	136.03	Rotation (xyz): 	270	270	0
+63689988310923	Moving :	Computer Shop	Position (xyz): 	7.594803	0.1999969	136.03	Rotation (xyz): 	270	270	0
+63689988310927	Moving :	Computer Shop	Position (xyz): 	7.594803	0.1999969	136.03	Rotation (xyz): 	270	270	0
+63689988310932	Moving :	Computer Shop	Position (xyz): 	7.578011	0.1999969	136.1135	Rotation (xyz): 	270	270	0
+63689988310939	Moving :	Computer Shop	Position (xyz): 	7.578011	0.1999969	136.1135	Rotation (xyz): 	270	270	0
+63689988310943	Moving :	Computer Shop	Position (xyz): 	7.524464	0.1999969	136.241	Rotation (xyz): 	270	270	0
+63689988310947	Moving :	Computer Shop	Position (xyz): 	7.524464	0.1999969	136.241	Rotation (xyz): 	270	270	0
+63689988310951	Moving :	Computer Shop	Position (xyz): 	7.524464	0.1999969	136.241	Rotation (xyz): 	270	270	0
+63689988310955	Moving :	Computer Shop	Position (xyz): 	7.490868	0.1999969	136.3248	Rotation (xyz): 	270	270	0
+63689988310959	Moving :	Computer Shop	Position (xyz): 	7.490868	0.1999969	136.3248	Rotation (xyz): 	270	270	0
+63689988310963	Moving :	Computer Shop	Position (xyz): 	7.474174	0.2000046	136.375	Rotation (xyz): 	270	270	0
+63689988310968	Moving :	Computer Shop	Position (xyz): 	7.474174	0.2000046	136.375	Rotation (xyz): 	270	270	0
+63689988310971	Moving :	Computer Shop	Position (xyz): 	7.474174	0.2000046	136.375	Rotation (xyz): 	270	270	0
+63689988310975	Moving :	Computer Shop	Position (xyz): 	7.440681	0.1999969	136.4086	Rotation (xyz): 	270	270	0
+63689988310979	Moving :	Computer Shop	Position (xyz): 	7.440681	0.1999969	136.4086	Rotation (xyz): 	270	270	0
+63689988310983	Moving :	Computer Shop	Position (xyz): 	7.440681	0.1999969	136.4086	Rotation (xyz): 	270	270	0
+63689988310987	Moving :	Computer Shop	Position (xyz): 	7.393742	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988310992	Moving :	Computer Shop	Position (xyz): 	7.393742	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988310995	Moving :	Computer Shop	Position (xyz): 	7.393742	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988310999	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311003	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311007	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311011	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311015	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311019	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311023	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311027	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311031	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311035	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311039	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311043	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311047	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311051	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311055	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311059	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311063	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311067	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311071	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311080	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311083	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311087	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311091	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311095	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311099	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311103	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311107	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311111	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311115	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311119	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311123	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311127	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311131	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311135	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311139	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311143	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311147	Moving :	Computer Shop	Position (xyz): 	7.376945	0.1999969	136.4587	Rotation (xyz): 	270	270	0
+63689988311875	TASK_END	MapTest	MapTestTask	3997
+63689988311877	TASK_START	ScoreMapTest	MapScoreTest
+63689988311880	Store: 	Computer Shop	Error Distance: 	0.6595832	Error Rotation (xyz): 	0	0	0
+63689988311881	Store: 	Green Grocer	Error Distance: 	96.84007	Error Rotation (xyz): 	0	180	0
+63689988311882	Store: 	Hair Dresser	Error Distance: 	29.54657	Error Rotation (xyz): 	0	180	0
+63689988311883	Store: 	Ice Cream Shop	Error Distance: 	101.415	Error Rotation (xyz): 	0	0	0
+63689988311884	Store: 	Pet Shop	Error Distance: 	102.6158	Error Rotation (xyz): 	0	90	0
+63689988311885	Store: 	Pharmacy	Error Distance: 	147.9797	Error Rotation (xyz): 	0	90	0
+63689988311887	Store: 	Repair Shop	Error Distance: 	140.8013	Error Rotation (xyz): 	0	-90	0
+63689988311888	Store: 	Toy Shop	Error Distance: 	73.59348	Error Rotation (xyz): 	0	0	0
+63689988311889	Score: 	1	/	8	Percentage: 	12.5
+63689988313011	INPUT_EVENT	clear text	1
+63689988313012	TASK_END	ScoreMapTest	MapScoreTest	1135
+63689988313012	TASK_END	MapTask	TaskList	11819
+63689988313012	TASK_END	PreTasksLoop	TaskList	11820
+63689988313013	TASK_START	MainTasksLoop	TaskList
+63689988313013	TASK_START	NavigationTask	TaskList
+63689988313016	TASK_START	ListNavigationTargets	StoreList
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Hair Dresser	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Pet Shop	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Computer Shop	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Repair Shop	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Toy Shop	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Pharmacy	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Green Grocer	null
+63689988313016	TASK_ADD	ListNavigationTargets	StoreList	Ice Cream Shop	null
+63689988313019	TASK_END	ListNavigationTargets	StoreList	3
+63689988313020	TASK_START	NavigationInstructions	InstructionsTask
+63689988313751	INPUT_EVENT    clear text    1
+63689988313752	TASK_END	NavigationInstructions	InstructionsTask	732
+63689988313753	TASK_START	Navigate	TaskList
+63689988313754	TASK_START	CueTarget	InstructionsTask
+63689988314252	INPUT_EVENT    clear text    1
+63689988314253	TASK_END	CueTarget	InstructionsTask	499
+63689988314254	TASK_START	ConfidenceRating	NavigationConfidence
+63689988314752	INPUT_EVENT    clear text    1
+63689988314753	TASK_END	ConfidenceRating	NavigationConfidence	499
+63689988314753	Task:	Navigate	Target:	Hair Dresser	Confidence:	0.8342462	/	3
+63689988314755	TASK_START	MentalNavigation	InstructionsTask
+63689988315025	INPUT_EVENT    clear text    1
+63689988315025	TASK_END	MentalNavigation	InstructionsTask	270
+63689988315026	TASK_START	Navigate	NavigationTask
+63689988315031	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315055	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315071	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315091	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315119	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315135	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315155	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315171	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315191	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315211	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315235	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315255	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315275	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315291	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315323	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315339	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315355	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315371	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315391	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315423	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315439	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315455	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315475	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315491	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315519	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315539	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315551	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315571	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315591	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315623	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315639	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315651	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315675	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315691	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315719	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315739	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	153.13	0	Camera   (xyz): 	43.30001	153.13	0	
+63689988315755	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	154.43	0	Camera   (xyz): 	42.00002	154.43	0	
+63689988315771	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	154.53	0	Camera   (xyz): 	41.10003	154.53	0	
+63689988315792	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	152.13	0	Camera   (xyz): 	35.50002	152.13	1.048713E-06	
+63689988315819	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	139.63	0	Camera   (xyz): 	12.35002	139.63	0	
+63689988315835	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	136.98	0	Camera   (xyz): 	5.100019	136.98	0	
+63689988315855	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	135.38	0	Camera   (xyz): 	359.75	135.38	0	
+63689988315871	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	134.43	0	Camera   (xyz): 	357.9	134.43	0	
+63689988315891	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	133.98	0	Camera   (xyz): 	357.4	133.98	-1.068317E-07	
+63689988315911	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	132.53	0	Camera   (xyz): 	356.55	132.53	0	
+63689988315939	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	131.68	0	Camera   (xyz): 	356.4	131.68	1.069327E-07	
+63689988315951	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	131.33	0	Camera   (xyz): 	356.3	131.33	0	
+63689988315975	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	131.23	0	Camera   (xyz): 	356.25	131.23	0	
+63689988315991	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	130.33	0	Camera   (xyz): 	356.5	130.33	0	
+63689988316023	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	128.08	0	Camera   (xyz): 	358.15	128.08	-5.338869E-08	
+63689988316035	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	124.38	0	Camera   (xyz): 	0.1500172	124.38	0	
+63689988316055	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	122.73	0	Camera   (xyz): 	0.7500172	122.73	-2.668271E-08	
+63689988316071	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	119.88	0	Camera   (xyz): 	1.350017	119.88	0	
+63689988316091	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	118.48	0	Camera   (xyz): 	1.600017	118.48	0	
+63689988316111	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	118.08	0	Camera   (xyz): 	1.600017	118.08	0	
+63689988316139	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	117.73	0	Camera   (xyz): 	1.600017	117.73	5.338165E-08	
+63689988316155	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	117.28	0	Camera   (xyz): 	1.650017	117.28	-5.338298E-08	
+63689988316172	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	116.93	0	Camera   (xyz): 	1.700017	116.93	0	
+63689988316191	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	112.78	0	Camera   (xyz): 	2.850017	112.78	0	
+63689988316219	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	107.13	0	Camera   (xyz): 	4.400017	107.13	-2.140744E-07	
+63689988316239	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	104.43	0	Camera   (xyz): 	5.200017	104.43	2.143255E-07	
+63689988316255	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	99.77998	0	Camera   (xyz): 	6.950018	99.77998	0	
+63689988316271	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.97998	0	Camera   (xyz): 	7.350018	98.97998	0	
+63689988316291	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316323	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316335	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316351	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316371	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316391	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316411	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316435	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316455	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316475	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316519	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316520	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316539	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316559	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316575	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316599	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316619	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316651	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316651	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316683	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.47997	0	Camera   (xyz): 	7.600018	98.47997	0	
+63689988316691	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	100.88	0	Camera   (xyz): 	7.250018	100.88	-2.151637E-07	
+63689988316723	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	112.28	0	Camera   (xyz): 	6.400016	112.28	0	
+63689988316735	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	119.03	0	Camera   (xyz): 	6.050016	119.03	-2.146389E-07	
+63689988316751	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	138.68	0	Camera   (xyz): 	5.350018	138.68	1.071886E-07	
+63689988316771	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	157.78	0	Camera   (xyz): 	4.650018	157.78	1.070741E-07	
+63689988316807	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	172.28	0	Camera   (xyz): 	4.350018	172.28	0	
+63689988316815	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	180.08	0	Camera   (xyz): 	4.300019	180.08	0	
+63689988316836	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	181.63	0	Camera   (xyz): 	4.300018	181.63	0	
+63689988316851	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	183.83	0	Camera   (xyz): 	4.300019	183.83	0	
+63689988316875	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	184.83	0	Camera   (xyz): 	4.350018	184.83	-1.337875E-08	
+63689988316903	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	185.48	0	Camera   (xyz): 	4.400019	185.48	1.337965E-08	
+63689988316911	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.28	0	Camera   (xyz): 	4.550017	186.28	0	
+63689988316951	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.68	0	Camera   (xyz): 	4.600018	186.68	0	
+63689988316952	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.68	0	Camera   (xyz): 	4.600018	186.68	0	
+63689988316971	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988316991	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317011	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317039	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317055	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317075	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317091	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317111	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317139	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317155	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317175	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317191	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317211	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317239	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317259	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.78	0	Camera   (xyz): 	4.600019	186.78	0	
+63689988317275	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	186.58	0	Camera   (xyz): 	4.600019	186.58	2.676664E-08	
+63689988317291	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	185.48	0	Camera   (xyz): 	4.600019	185.48	0	
+63689988317311	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	180.63	0	Camera   (xyz): 	5.050018	180.63	3.348049E-09	
+63689988317331	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	162.73	0	Camera   (xyz): 	6.350019	162.73	0	
+63689988317359	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	135.73	0	Camera   (xyz): 	8.800019	135.73	2.159859E-07	
+63689988317375	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	120.73	0	Camera   (xyz): 	10.25002	120.73	0	
+63689988317391	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	98.52997	0	Camera   (xyz): 	12.05002	98.52997	0	
+63689988317411	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	88.62997	0	Camera   (xyz): 	12.85002	88.62997	-8.757052E-07	
+63689988317439	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	84.12997	0	Camera   (xyz): 	13.15002	84.12996	-4.383822E-07	
+63689988317455	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	83.42996	0	Camera   (xyz): 	13.15002	83.42996	-4.383822E-07	
+63689988317476	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	83.22997	0	Camera   (xyz): 	13.15002	83.22997	-4.383822E-07	
+63689988317491	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	82.92996	0	Camera   (xyz): 	13.15002	82.92996	4.383822E-07	
+63689988317511	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	81.82996	0	Camera   (xyz): 	13.10002	81.82997	4.38293E-07	
+63689988317539	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	78.42996	0	Camera   (xyz): 	12.80002	78.42996	4.377656E-07	
+63689988317555	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.32996	0	Camera   (xyz): 	12.70002	76.32996	0	
+63689988317575	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	73.07996	0	Camera   (xyz): 	12.45003	73.07996	4.37167E-07	
+63689988317591	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	65.47996	0	Camera   (xyz): 	11.85003	65.47996	-4.361825E-07	
+63689988317611	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	59.37996	0	Camera   (xyz): 	11.45003	59.37996	-4.355551E-07	
+63689988317639	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	51.82996	0	Camera   (xyz): 	10.80002	51.82996	-4.345845E-07	
+63689988317655	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	49.27996	0	Camera   (xyz): 	10.55002	49.27996	-4.342272E-07	
+63689988317671	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	44.02996	0	Camera   (xyz): 	9.900024	44.02995	-2.166698E-07	
+63689988317695	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	41.57996	0	Camera   (xyz): 	9.550023	41.57996	2.164431E-07	
+63689988317711	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	37.27995	0	Camera   (xyz): 	8.450024	37.27995	-2.157859E-07	
+63689988317739	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	34.12995	0	Camera   (xyz): 	7.150024	34.12995	0	
+63689988317759	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	32.67995	0	Camera   (xyz): 	6.450024	32.67995	1.074015E-07	
+63689988317775	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	29.37995	0	Camera   (xyz): 	4.800024	29.37995	0	
+63689988317792	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	28.37995	0	Camera   (xyz): 	4.400025	28.37995	1.070372E-07	
+63689988317811	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	26.17995	0	Camera   (xyz): 	3.450025	26.17995	-5.345773E-08	
+63689988317839	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.87995	0	Camera   (xyz): 	3.300025	25.87995	-1.06899E-07	
+63689988317855	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.77995	0	Camera   (xyz): 	3.300025	25.77995	0	
+63689988317871	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.77995	0	Camera   (xyz): 	3.250025	25.77995	0	
+63689988317891	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.77995	0	Camera   (xyz): 	3.250025	25.77995	0	
+63689988317911	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.67995	0	Camera   (xyz): 	3.250025	25.67995	-5.344681E-08	
+63689988317939	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.62995	0	Camera   (xyz): 	3.250025	25.62995	0	
+63689988317955	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.57995	0	Camera   (xyz): 	3.250025	25.57995	0	
+63689988317971	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988317991	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318011	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318039	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318055	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318071	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318091	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318111	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318151	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318152	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.52995	0	Camera   (xyz): 	3.250025	25.52995	0	
+63689988318175	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	25.72995	0	Camera   (xyz): 	3.200025	25.72995	0	
+63689988318191	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	28.57995	0	Camera   (xyz): 	2.750025	28.57995	-5.342237E-08	
+63689988318211	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	36.17995	0	Camera   (xyz): 	1.850025	36.17995	0	
+63689988318235	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	44.77995	0	Camera   (xyz): 	0.9500245	44.77996	0	
+63689988318259	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	68.82996	0	Camera   (xyz): 	357.75	68.82996	0	
+63689988318275	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	74.17995	0	Camera   (xyz): 	356.75	74.17995	-1.068936E-07	
+63689988318291	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	82.32995	0	Camera   (xyz): 	354.6	82.32995	4.287898E-07	
+63689988318311	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	84.87995	0	Camera   (xyz): 	353.65	84.87996	-2.14761E-07	
+63689988318339	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.12996	0	Camera   (xyz): 	353.45	85.12996	-2.148458E-07	
+63689988318355	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.12996	0	Camera   (xyz): 	353.45	85.12996	-2.148458E-07	
+63689988318375	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.12996	0	Camera   (xyz): 	353.45	85.12996	-2.148458E-07	
+63689988318391	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.27995	0	Camera   (xyz): 	353.4	85.27995	0	
+63689988318411	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.57995	0	Camera   (xyz): 	353.4	85.57996	-4.297348E-07	
+63689988318439	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.67995	0	Camera   (xyz): 	353.4	85.67995	-2.148674E-07	
+63689988318455	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.67995	0	Camera   (xyz): 	353.4	85.67995	-2.148674E-07	
+63689988318475	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.67995	0	Camera   (xyz): 	353.4	85.67995	-2.148674E-07	
+63689988318491	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.67995	0	Camera   (xyz): 	353.4	85.67995	-2.148674E-07	
+63689988318511	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	85.02995	0	Camera   (xyz): 	353.5	85.02995	2.148243E-07	
+63689988318539	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	83.62996	0	Camera   (xyz): 	353.85	83.62996	0	
+63689988318555	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	83.07996	0	Camera   (xyz): 	354.1	83.07996	0	
+63689988318575	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	81.72996	0	Camera   (xyz): 	354.75	81.72997	2.143426E-07	
+63689988318591	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	80.17996	0	Camera   (xyz): 	355.6	80.17997	0	
+63689988318611	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	78.47996	0	Camera   (xyz): 	356.55	78.47997	0	
+63689988318639	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	77.92997	0	Camera   (xyz): 	356.9	77.92997	0	
+63689988318655	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	77.77997	0	Camera   (xyz): 	357	77.77997	0	
+63689988318675	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	77.57996	0	Camera   (xyz): 	357.1	77.57996	-1.068586E-07	
+63689988318692	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	77.47997	0	Camera   (xyz): 	357.1	77.47997	0	
+63689988318711	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	77.12997	0	Camera   (xyz): 	357.15	77.12997	-2.137077E-07	
+63689988318739	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.92997	0	Camera   (xyz): 	357.15	76.92997	-1.068539E-07	
+63689988318755	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.92997	0	Camera   (xyz): 	357.15	76.92997	-1.068539E-07	
+63689988318771	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.87997	0	Camera   (xyz): 	357.15	76.87997	-1.068539E-07	
+63689988318791	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.87997	0	Camera   (xyz): 	357.15	76.87997	-1.068539E-07	
+63689988318811	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.72998	0	Camera   (xyz): 	357.1	76.72998	-1.068586E-07	
+63689988318839	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.52998	0	Camera   (xyz): 	357	76.52999	0	
+63689988318855	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.27998	0	Camera   (xyz): 	356.9	76.27998	1.068781E-07	
+63689988318871	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	76.07998	0	Camera   (xyz): 	356.85	76.07998	0	
+63689988318891	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.92999	0	Camera   (xyz): 	356.85	75.92999	1.068832E-07	
+63689988318923	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.87998	0	Camera   (xyz): 	356.85	75.87998	1.068832E-07	
+63689988318939	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.77998	0	Camera   (xyz): 	356.85	75.77998	0	
+63689988318955	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988318971	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988318991	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988319011	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988319039	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988319055	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988319071	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988319091	Avatar: 	DesktopDefaultController	Position (xyz): 	68.4	0.9799995	71.8	Rotation (xyz): 	0	75.67999	0	Camera   (xyz): 	356.85	75.67999	0	
+63689988319117	TASK_END	LM_Timeline	TaskList	19284
