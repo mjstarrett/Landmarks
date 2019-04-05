@@ -29,6 +29,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
     public bool randomStartLocation = false;
     public bool autoscale = true;
     public float scaleRatio = 1;
+    private CharacterController characterController;
     // public bool isScaled = false;
     
     public override void startTask()
@@ -94,9 +95,9 @@ public class ScalePlayerToEnvironment : ExperimentTask
         // Make the player bigger/smaller
         manager.player.transform.localScale = scaleRatio * manager.player.transform.localScale;
         // Adjust the radius
-        manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
+        //manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
         // Do this for capsule collider as well
-        manager.player.GetComponent<CapsuleCollider>().radius = manager.player.GetComponent<CapsuleCollider>().radius / scaleRatio;
+        //manager.player.GetComponent<CapsuleCollider>().radius = manager.player.GetComponent<CapsuleCollider>().radius / scaleRatio;
 
         //Move the player to the starting position and appropriate rotation;
         manager.player.transform.position = startLocationsParent.transform.position;
@@ -105,7 +106,15 @@ public class ScalePlayerToEnvironment : ExperimentTask
         manager.player.transform.localEulerAngles = startLocationsParent.transform.localEulerAngles;
 
         // Scale up the movement speed as well
-        manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
+        if (manager.userInterface == UserInterface.DesktopDefault)
+        {
+            manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
+        }
+        else if (manager.userInterface == UserInterface.ViveAndVirtualizer)
+        {
+            manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= scaleRatio;
+        }
+        else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironment.cs");
     }
 
     public override bool updateTask()

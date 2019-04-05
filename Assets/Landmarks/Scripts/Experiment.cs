@@ -152,6 +152,10 @@ public class Experiment : MonoBehaviour {
 			}
 		}
 
+        // Add audiolistener to camera (default one should be removed on on all LM_playerControllers)
+        // This ensures there will only be one in the scene, attached to the active camera
+        playerCamera.gameObject.AddComponent<AudioListener>();
+
 		// Set up Overhead Camera (for map task or any other top-down viewed tasks)
 		overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera> ();
 
