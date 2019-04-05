@@ -1,0 +1,124 @@
+{
+  "actions": [
+    {
+      "name": "/actions/vrtk/in/TouchpadButton",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TriggerButton",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/GripButton",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/Pose",
+      "type": "pose"
+    },
+    {
+      "name": "/actions/vrtk/in/SkeletonLeftHand",
+      "type": "skeleton",
+      "skeleton": "/skeleton/hand/left"
+    },
+    {
+      "name": "/actions/vrtk/in/SkeletonRightHand",
+      "type": "skeleton",
+      "skeleton": "/skeleton/hand/right"
+    },
+    {
+      "name": "/actions/vrtk/in/TriggerSqueeze",
+      "type": "vector1",
+      "requirement": "optional"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadPosition",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonStartMenu",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TriggerTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadTwoTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadTwoPosition",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/vrtk/in/TouchpadTwoButton",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/GripTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/GripSqueeze",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonOneTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonOneClick",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonTwoTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/in/ButtonTwoClick",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrtk/out/Haptic",
+      "type": "vibration"
+    }
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/vrtk",
+      "usage": "single"
+    }
+  ],
+  "default_bindings": [
+    {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller.json"
+    },
+    {
+      "controller_type": "oculus_touch",
+      "binding_url": "bindings_oculus_touch.json"
+    },
+    {
+      "controller_type": "knuckles",
+      "binding_url": "bindings_knuckles.json"
+    },
+    {
+      "controller_type": "holographic_controller",
+      "binding_url": "bindings_holographic_controller.json"
+    }
+  ],
+  "localization": [
+    {
+      "language_tag": "en_US",
+      "/actions/vrtk/in/SkeletonLeftHand": "Skeleton (Left)",
+      "/actions/vrtk/in/SkeletonRightHand": "Skeleton (Right)",
+      "/actions/vrtk/in/Pose": "Pose",
+      "/actions/vrtk/out/Haptic": "Haptic"
+    }
+  ]
+}
