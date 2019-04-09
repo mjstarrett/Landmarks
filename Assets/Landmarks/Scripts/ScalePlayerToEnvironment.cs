@@ -112,7 +112,13 @@ public class ScalePlayerToEnvironment : ExperimentTask
         }
         else if (manager.userInterface == UserInterface.ViveAndVirtualizer)
         {
-            manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= scaleRatio;
+            // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
+            if (isScaled)
+            {
+                manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio*3);
+            }
+            else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio/3);
+
         }
         else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironment.cs");
     }
