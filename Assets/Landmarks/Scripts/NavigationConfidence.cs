@@ -49,6 +49,7 @@ public class NavigationConfidence : ExperimentTask {
     public override void startTask () {
         TASK_START();
         Debug.Log ("Starting a Confidence Rating Task");
+        ResetHud();
     }    
 
     public override void TASK_START()
