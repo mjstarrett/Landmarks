@@ -49,6 +49,7 @@ public class NavigationConfidence : ExperimentTask {
     public override void startTask () {
         TASK_START();
         Debug.Log ("Starting a Confidence Rating Task");
+        ResetHud();
     }    
 
     public override void TASK_START()
@@ -193,7 +194,7 @@ public class NavigationConfidence : ExperimentTask {
         {
             log.log("Task:\t" + transform.parent.name +
                   "\tTarget:\t" + objects.currentObject().name +
-                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().value +
+                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().sliderValue +
                   "\t/\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue, 1);
         } else
         {

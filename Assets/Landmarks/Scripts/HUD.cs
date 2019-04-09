@@ -18,6 +18,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using VRStandardAssets.Utils;
 
 public class HUD : MonoBehaviour 
 {
@@ -249,7 +250,10 @@ public class HUD : MonoBehaviour
             // if we're using an external wall or screen for the hud (fixed position), turn it off as well.
             if (hudNonEssentials != null)
             {
-                hudNonEssentials.SetActive(false);
+                foreach (Transform child in hudNonEssentials.transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("Default");
+                }
             }
         }
 		else
@@ -261,7 +265,10 @@ public class HUD : MonoBehaviour
             // if we're using an external wall or screen for the hud (fixed position), Make sure it's active.
             if (hudNonEssentials != null)
             {
-                hudNonEssentials.SetActive(true);
+                foreach (Transform child in hudNonEssentials.transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("HUD only");
+                }
             }
         }
 

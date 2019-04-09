@@ -210,6 +210,12 @@ public class ExperimentTask : MonoBehaviour{
 		return true;
 	}
 
+    // Reset hud position to the forward direction (for world space Canvas UI)
+    public void ResetHud()
+    {
+        hud.hudRig.transform.localEulerAngles = avatar.GetComponent<avatarLog>().player.transform.localEulerAngles;
+    }
+
     // Move the hud, but don't move it again for a time period to avoid jitter
     public IEnumerator HudJitterReduction()
     {
