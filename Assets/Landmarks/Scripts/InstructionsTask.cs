@@ -52,6 +52,7 @@ public class InstructionsTask : ExperimentTask {
     public override void startTask () {
         TASK_START();
         Debug.Log ("Starting an Instructions Task");
+        ResetHud();
     }    
 
     public override void TASK_START()
