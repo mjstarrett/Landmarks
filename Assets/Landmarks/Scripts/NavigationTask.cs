@@ -6,7 +6,7 @@ using TMPro;
 public class NavigationTask : ExperimentTask 
 {
 
-	public StoreList destinations;
+	public ObjectList destinations;
 	private GameObject current;
 
 	private int score = 0;
