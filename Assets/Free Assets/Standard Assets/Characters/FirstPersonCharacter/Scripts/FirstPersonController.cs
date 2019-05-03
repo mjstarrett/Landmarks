@@ -255,5 +255,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
+        // Access the private MouseLook variable to reset it when reorineting the player manually
+        public void ResetMouselook()
+        { 
+            m_MouseLook.reInit = true;
+        }
     }
 }

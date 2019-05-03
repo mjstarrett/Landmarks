@@ -16,6 +16,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MoveSpawn : ExperimentTask {
 
@@ -25,7 +26,7 @@ public class MoveSpawn : ExperimentTask {
 	
 	public bool swap;
 	private static Vector3 position;
-	private static Quaternion rotation;
+	private static Vector3 rotation;
 
 
 	public override void startTask () {
@@ -49,15 +50,15 @@ public class MoveSpawn : ExperimentTask {
         {
             start = scaledAvatar;
         }
-        else start = avatar; 
+        else start = avatar;
 
 
-		if ( destinations ) {
+        if ( destinations ) {
 			destination = destinations.currentObject();		
 		}
 		
 		position = start.transform.position;
-        rotation = start.transform.rotation;
+        rotation = start.transform.eulerAngles;
 
 
         // Set the position, but ignore the y-axis (just 2d position on map)
@@ -69,13 +70,27 @@ public class MoveSpawn : ExperimentTask {
 
 
         // Set the rotation to random
-        start.transform.rotation = Random.rotation;
+
+        Vector3 tempRot = start.transform.eulerAngles;
+        tempRot.y = Random.Range(0, 359.999f);
+        start.transform.eulerAngles = tempRot;
+        if (!isScaled)
+        {
+            /* MJS 2019
+             * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
+             * so we need to access a modified firstpersoncontroller.cs script
+             * which will access a modified MouseLook.cs script to reset the mouselook 
+             * which effectively forces it not to undo our manual rotation
+            */           
+            avatar.GetComponent<FirstPersonController>().ResetMouselook();
+        }
+
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
 		
 
 		if (swap) {
 			destination.transform.position = position;
-			destination.transform.rotation = rotation;
+			destination.transform.eulerAngles = rotation;
 	
 		}
 	}
