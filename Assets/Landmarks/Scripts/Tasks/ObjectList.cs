@@ -25,7 +25,7 @@ public class ObjectList : ExperimentTask {
 	public GameObject parentObject;
 	public int current = 0;
 	
-	public static List<GameObject> objects;
+	public List<GameObject> objects;
 	public EndListMode EndListBehavior; 
 	public bool shuffle;
 	public GameObject order;

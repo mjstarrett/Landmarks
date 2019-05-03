@@ -1,4 +1,4 @@
-/*
+﻿/*
     Copyright (C) 2010  Jason Laczko
 
     This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@ using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class MoveSpawn : ExperimentTask {
+public class MoveSpawnScaled : ExperimentTask {
 
 	[HideInInspector] public GameObject start;
 	public GameObject destination;
@@ -46,11 +46,8 @@ public class MoveSpawn : ExperimentTask {
 		}
 
         // determine what we're moving
-        if (isScaled)
-        {
-            start = scaledAvatar;
-        }
-        else start = avatar;
+        start = scaledAvatar;
+
 
 
         if ( destinations ) {
@@ -65,7 +62,7 @@ public class MoveSpawn : ExperimentTask {
         Vector3 tempPos = start.transform.position; 
         tempPos.x = destination.transform.position.x;
         tempPos.z = destination.transform.position.z;
-        avatar.transform.position = tempPos;
+        scaledAvatar.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
@@ -74,29 +71,9 @@ public class MoveSpawn : ExperimentTask {
         Vector3 tempRot = start.transform.eulerAngles;
         tempRot.y = Random.Range(0, 359.999f);
         start.transform.eulerAngles = tempRot;
-        if (!isScaled)
-        {
-            /* MJS 2019
-             * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
-             * so we need to access a modified firstpersoncontroller.cs script
-             * which will access a modified MouseLook.cs script to reset the mouselook 
-             * which effectively forces it not to undo our manual rotation
-            */           
-            avatar.GetComponent<FirstPersonController>().ResetMouselook();
-        }
+       
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
-
-
-        Debug.Log("-------------------------------------------------");
-        Debug.Log(start.transform.position);
-        Debug.Log(destination.transform.position);
-        Debug.Log(avatar.transform.position);
-        Debug.Log("-------------------------------------------------");
-
-
-
-
 
         if (swap) {
 			destination.transform.position = position;
