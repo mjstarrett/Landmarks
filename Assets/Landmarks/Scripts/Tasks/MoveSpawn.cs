@@ -19,7 +19,7 @@ using System.Collections;
 
 public class MoveSpawn : ExperimentTask {
 
-	public GameObject start;
+	[HideInInspector] public GameObject start;
 	public GameObject destination;
 	public SpawnList destinations;
 	
@@ -43,7 +43,15 @@ public class MoveSpawn : ExperimentTask {
 			log.log("INFO	skip task	" + name,1 );
 			return;
 		}
-		
+
+        // determine what we're moving
+        if (isScaled)
+        {
+            start = scaledAvatar;
+        }
+        else start = avatar; 
+
+
 		if ( destinations ) {
 			destination = destinations.currentObject();		
 		}
@@ -51,16 +59,23 @@ public class MoveSpawn : ExperimentTask {
 		position = start.transform.position;
         rotation = start.transform.rotation;
 
-		
-			start.transform.position = destination.transform.position;
-			log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"),1);
 
-			start.transform.localRotation = destination.transform.localRotation;
-			log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"),1);
+        // Set the position, but ignore the y-axis (just 2d position on map)
+        Vector3 tempPos = start.transform.position; 
+        tempPos.x = destination.transform.position.x;
+        tempPos.z = destination.transform.position.z;
+        start.transform.position = tempPos;
+        log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
+
+
+        // Set the rotation to random
+        start.transform.rotation = Random.rotation;
+        log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
 		
+
 		if (swap) {
 			destination.transform.position = position;
-			destination.transform.localRotation = rotation;
+			destination.transform.rotation = rotation;
 	
 		}
 	}
