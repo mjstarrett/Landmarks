@@ -66,12 +66,11 @@ public class ExperimentTask : MonoBehaviour{
 
 	public void Awake () 
 	{
-		Debug.Log ("Starting Experiment Task");
+		
 	}
 
-	public void Start () {
-		
-
+	public void Start () 
+    {
 
 	}
 	
