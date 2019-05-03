@@ -1,4 +1,4 @@
-/*
+﻿/*
     Copyright (C) 2010  Jason Laczko
 
     This program is free software: you can redistribute it and/or modify
@@ -24,12 +24,12 @@ public class SpawnList : ExperimentTask {
 
 	public GameObject parentObject;
 	public int current = 0;
-	
+
 	public static List<GameObject> objects;
 	public EndListMode EndListBehavior; 
 	public bool shuffle;
 	public GameObject order;
-	
+
 	public override void startTask () {
 		//ViewObject.startObjects.current = 0;
 		//current = 0;
@@ -43,62 +43,62 @@ public class SpawnList : ExperimentTask {
 			i++;
 		}
 
-	
+
 
 		if (order ) {
 			// Deal with specific ordering
-			ObjectOrder ordered = order.GetComponent("ObjectOrder") as ObjectOrder;
-		
+			SpawnOrder ordered = order.GetComponent("SpawnOrder") as SpawnOrder;
+
 			if (ordered) {
 				Debug.Log("ordered");
-				Debug.Log(ordered.order.Count);
-				
-				if (ordered.order.Count > 0) {
-					objs = ordered.order.ToArray();
+				Debug.Log(ordered.spawnOrder.Count);
+
+				if (ordered.spawnOrder.Count > 0) {
+					objs = ordered.spawnOrder.ToArray();
 				}
 			}
 		}
-			
+
 		if ( shuffle ) {
 			Experiment.Shuffle(objs);			
-			
+
 		}
-		
+
 		TASK_START();
-		
-		
-			 
+
+
+
 		foreach (GameObject obj in objs) {	             
-        	objects.Add(obj);
+			objects.Add(obj);
 			log.log("TASK_ADD	" + name  + "\t" + this.GetType().Name + "\t" + obj.name  + "\t" + "null",1 );
 		}
-		
+
 	}	
-	
+
 	public override void TASK_ADD(GameObject go, string txt) {
 		objects.Add(go);
 	}
-	
+
 	public override void TASK_START()
 	{
 		base.startTask();		
 		if (!manager) Start();
-		
+
 		objects = new List<GameObject>();
 	}
-	
+
 	public override bool updateTask () {
-	    return true;
+		return true;
 	}
 	public override void endTask() {
 		//current = 0;
 		TASK_END();
 	}
-	
+
 	public override void TASK_END() {
 		base.endTask();
 	}
-	
+
 	public GameObject currentObject() {
 		if (current >= objects.Count) {
 			return null;
@@ -107,7 +107,7 @@ public class SpawnList : ExperimentTask {
 			return objects[current];
 		}
 	}
-	
+
 	public  void incrementCurrent() {
 		current++;
 		if (current >= objects.Count && EndListBehavior == EndListMode.Loop) {
