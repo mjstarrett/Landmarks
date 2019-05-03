@@ -15,6 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool smooth;
         public float smoothTime = 5f;
         public bool lockCursor = true;
+        public bool reInit = false; // created to allow manual reorientation of player MJS 2019
 
 
         private Quaternion m_CharacterTargetRot;
@@ -30,6 +31,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
+            // MJS 2019 - If our flag is detected, the player has been reoriented
+            // and mouselook should run Init() again to avoid undoing this.
+            if (reInit)
+            {
+                reInit = !reInit;
+                Init(character, camera);
+            }
+            // end MJS
+
             float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
