@@ -25,8 +25,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
 {
 
     public GameObject scaledEnvironment;
-    public GameObject startLocationsParent; // must have at least 1 child
-    public bool randomStartLocation = false;
     public bool autoscale = true;
     public float scaleRatio = 1;
     private CharacterController characterController;
@@ -72,22 +70,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
             scaledEnvironment.SetActive(true);
         }
 
-
-        //---------------------------------------------
-        // Select from starting locations in scaled Env.
-        //---------------------------------------------
-
-        //------FIXME Handle list of start locations-------- 
-        //// Select a starting location for the scaled player
-        //if (startLocationsParent.transform.childCount != 0)
-        //{
-        //    List<GameObject> startLocations = new List<GameObject>();
-        //    foreach (Transform child in startLocationsParent.transform)
-        //    {
-        //        startLocations.Add(child.gameObject);
-        //    }
-        //}
-
         //---------------------------------------------
         // Scale the player controller
         //---------------------------------------------
@@ -98,12 +80,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
         //manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
         // Do this for capsule collider as well
         //manager.player.GetComponent<CapsuleCollider>().radius = manager.player.GetComponent<CapsuleCollider>().radius / scaleRatio;
-
-        //Move the player to the starting position and appropriate rotation;
-        manager.player.transform.position = startLocationsParent.transform.position;
-       
-        // Rotate the player
-        manager.player.transform.localEulerAngles = startLocationsParent.transform.localEulerAngles;
 
         // Scale up the movement speed as well
         if (manager.userInterface == UserInterface.DesktopDefault)

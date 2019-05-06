@@ -22,7 +22,7 @@ public class MoveSpawn : ExperimentTask {
 
 	[HideInInspector] public GameObject start;
 	public GameObject destination;
-	public SpawnList destinations;
+	public ObjectList destinations;
 	
 	public bool swap;
 	private static Vector3 position;
@@ -65,7 +65,7 @@ public class MoveSpawn : ExperimentTask {
         Vector3 tempPos = start.transform.position; 
         tempPos.x = destination.transform.position.x;
         tempPos.z = destination.transform.position.z;
-        start.transform.position = tempPos;
+        avatar.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
@@ -86,9 +86,19 @@ public class MoveSpawn : ExperimentTask {
         }
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
-		
 
-		if (swap) {
+
+        Debug.Log("-------------------------------------------------");
+        Debug.Log(start.transform.position);
+        Debug.Log(destination.transform.position);
+        Debug.Log(avatar.transform.position);
+        Debug.Log("-------------------------------------------------");
+
+
+
+
+
+        if (swap) {
 			destination.transform.position = position;
 			destination.transform.eulerAngles = rotation;
 	

@@ -1,4 +1,4 @@
-/*
+﻿/*
     Copyright (C) 2010  Jason Laczko
 
     This program is free software: you can redistribute it and/or modify
@@ -18,11 +18,11 @@ using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class MoveScaledSpawnSmall : ExperimentTask {
+public class MoveSpawnScaled : ExperimentTask {
 
 	[HideInInspector] public GameObject start;
 	public GameObject destination;
-	public ScaledSpawnListSmall destinations;
+	public ObjectList destinations;
 	
 	public bool swap;
 	private static Vector3 position;
@@ -45,7 +45,9 @@ public class MoveScaledSpawnSmall : ExperimentTask {
 			return;
 		}
 
-        start = avatar;
+        // determine what we're moving
+        start = scaledAvatar;
+
 
 
         if ( destinations ) {
@@ -60,7 +62,7 @@ public class MoveScaledSpawnSmall : ExperimentTask {
         Vector3 tempPos = start.transform.position; 
         tempPos.x = destination.transform.position.x;
         tempPos.z = destination.transform.position.z;
-        start.transform.position = tempPos;
+        scaledAvatar.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
@@ -69,20 +71,11 @@ public class MoveScaledSpawnSmall : ExperimentTask {
         Vector3 tempRot = start.transform.eulerAngles;
         tempRot.y = Random.Range(0, 359.999f);
         start.transform.eulerAngles = tempRot;
-
-        /* MJS 2019
-            * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
-            * so we need to access a modified firstpersoncontroller.cs script
-            * which will access a modified MouseLook.cs script to reset the mouselook 
-            * which effectively forces it not to undo our manual rotation
-        */           
-        avatar.GetComponent<FirstPersonController>().ResetMouselook();
-
+       
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
-		
 
-		if (swap) {
+        if (swap) {
 			destination.transform.position = position;
 			destination.transform.eulerAngles = rotation;
 	

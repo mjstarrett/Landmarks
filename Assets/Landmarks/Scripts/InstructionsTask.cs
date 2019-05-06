@@ -25,7 +25,7 @@ public class InstructionsTask : ExperimentTask {
     public TextAsset instruction;
     public TextAsset message;
     
-    public StoreList objects;
+    public ObjectList objects;
     private GameObject currentObject;
     
     public TextList texts;
