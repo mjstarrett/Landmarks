@@ -83,16 +83,26 @@ public class Experiment : MonoBehaviour {
         Debug.Log ("Starting Experiment.cs");
 
 		// ------------------------------------------
-		// Grab the Landmarks Tasks GameObject (Timeline)
+		// Grab the Landmarks items that are not controller dependent
 		// ------------------------------------------
 		tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
+        overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
+        // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
+        scaledPlayer = GameObject.Find("SmallScalePlayerController");
+        if (scaledPlayer == null)
+        {
+            Debug.Log("Instntiating a SmallScalePlayerController to avoid errors.");
+            Debug.Log("Consider adding the SmallScalePlayerController to your scene for LM task(s) compatibility");
+            scaledPlayer = (GameObject)Instantiate(Resources.Load("LM_ScaledPlayer"));
+        }
 
 
-		// ------------------------------------------
-		// Assign Player and Camera based on UI enum
-		// ------------------------------------------
 
-		if (userInterface == UserInterface.DesktopDefault)
+        // ------------------------------------------
+        // Assign Player and Camera based on UI enum
+        // ------------------------------------------
+
+        if (userInterface == UserInterface.DesktopDefault)
         {
 			// Standard Desktop with Keyboard/mouse controller
 			player = GameObject.Find ("DesktopDefaultController");
@@ -194,14 +204,6 @@ public class Experiment : MonoBehaviour {
 		} else if (config.runMode == ConfigRunMode.NEW) {
 			//dblog = new dbMockLog(logfile);
 		}
-
-
-        // If a scaledPlayer isn't being used or wasn't created, instantiate the prefab to avoid errors
-        if (scaledPlayer == null)
-        {
-            scaledPlayer = (GameObject)Instantiate(Resources.Load("LM_ScaledPlayer"));
-        } 
-
 
         //start session
 
