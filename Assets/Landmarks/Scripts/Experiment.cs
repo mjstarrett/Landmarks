@@ -37,15 +37,15 @@ public enum UserInterface
 public class Experiment : MonoBehaviour {
 
 	public UserInterface userInterface = UserInterface.DesktopDefault;
-	public TaskList tasks;
+    [HideInInspector] public TaskList tasks; // set automatically by LM
 	private Config config;
 	private long microseconds = 1;
 	private string logfile;
-	private string configfile = ""; 
-	public GameObject player;
-	public Camera playerCamera;
-	public Camera overheadCamera;
-    public GameObject scaledPlayer;
+	private string configfile = "";
+    [HideInInspector] public GameObject player; // set automatically by LM
+    [HideInInspector] public Camera playerCamera; // set automatically by LM
+    [HideInInspector] public Camera overheadCamera; // set automatically by LM
+    [HideInInspector] public GameObject scaledPlayer; // set automatically by LM
 
     public bool debugging = false;
 
@@ -87,6 +87,7 @@ public class Experiment : MonoBehaviour {
 		// ------------------------------------------
 		tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
         overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
+
         // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
         if (scaledPlayer == null)
@@ -94,9 +95,8 @@ public class Experiment : MonoBehaviour {
             Debug.Log("Instntiating a SmallScalePlayerController to avoid errors.");
             Debug.Log("Consider adding the SmallScalePlayerController to your scene for LM task(s) compatibility");
             scaledPlayer = (GameObject)Instantiate(Resources.Load("LM_ScaledPlayer"));
+            scaledPlayer.SetActive(false);
         }
-
-
 
         // ------------------------------------------
         // Assign Player and Camera based on UI enum
