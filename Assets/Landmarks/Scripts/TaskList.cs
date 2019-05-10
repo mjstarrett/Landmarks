@@ -16,17 +16,23 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 
 
 public class TaskList : ExperimentTask {
 	
-	public GameObject[] tasks; // no longer need to preset, shown for debugging - MJS
+	public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
 	public GameObject[] objectsList;
 
 	public int repeat = 1;
 	public TextList overideRepeat;
+
+    public int catchTrialCount = 0;
+    public GameObject[] skipOnCatch; // which task-components are we skipping on catch trials
+    private bool catchFlag;
+
 	private int repeatCount = 1;
 
 	private int currentTaskIndex = 0;
@@ -60,9 +66,36 @@ public class TaskList : ExperimentTask {
 
         }
 
+        Debug.Log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
+        Debug.Log("catchtrials: " + catchTrialCount);
+
+
+        // Handle Setting up catch trials, if we want any
+        if (catchTrialCount > 0)
+        {
+            int[] trials = new int[repeat];
+
+            for (int i = 0; i < repeat; i++) trials[i] = i; // create a list of trials
+
+            Experiment.Shuffle(trials);
+
+            List<int> catchTrials = new List<int>();
+
+            for (int i = 0; i < catchTrialCount; i++)
+            {
+                if (i > catchTrialCount)
+                {
+                    catchTrials.Add(trials[i]);
+                    Debug.Log(trials[i] + "will be a catch trial");
+                }
+
+            }
+
+        }
 
         if (!skip) startNextTask();		
 	}	
+
 	public override void TASK_START () {
 		repeatCount = 1;
 	}	
@@ -96,7 +129,12 @@ public class TaskList : ExperimentTask {
 			}
 		}
 
-		return false;
+        //if (catchFlag)
+        //{
+
+        //}
+
+        return false;
 	}
 
 	public bool endChild() 

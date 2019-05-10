@@ -25,11 +25,11 @@ public class ObjectList : ExperimentTask {
 	public GameObject parentObject;
 	public int current = 0;
 	
-	[HideInInspector]  List<GameObject> objects;
+	[HideInInspector] public List<GameObject> objects;
 	public EndListMode EndListBehavior; 
 	public bool shuffle;
 	public GameObject order;
-	
+    	
 	public override void startTask () {
 		//ViewObject.startObjects.current = 0;
 		//current = 0;
