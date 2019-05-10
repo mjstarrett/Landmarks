@@ -88,11 +88,11 @@ public class MoveSpawn : ExperimentTask {
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
 
 
-        Debug.Log("-------------------------------------------------");
-        Debug.Log(start.transform.position);
-        Debug.Log(destination.transform.position);
-        Debug.Log(avatar.transform.position);
-        Debug.Log("-------------------------------------------------");
+        //Debug.Log("-------------------------------------------------");
+        //Debug.Log(start.transform.position);
+        //Debug.Log(destination.transform.position);
+        //Debug.Log(avatar.transform.position);
+        //Debug.Log("-------------------------------------------------");
 
 
 

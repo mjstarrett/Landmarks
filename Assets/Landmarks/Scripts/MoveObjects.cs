@@ -1,4 +1,4 @@
-/*
+﻿/*
     Copyright (C) 2010  Jason Laczko
 
     This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,9 @@ public class MoveObjects : ExperimentTask {
 	public ObjectList destinations;
 	
 	public bool swap;
+
+    public bool destroyExtraObjects; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
+
 	private static Vector3 position;
 	private static Quaternion rotation;
 
@@ -46,23 +49,42 @@ public class MoveObjects : ExperimentTask {
 			log.log("INFO	skip task	" + name,1 );
 			return;
 		}
-		
-		
-		destination = destinations.currentObject();		
+
+
+        // Destroy any objects that don't get moved (say if we're only randomly using 8 stores out of a possible selection of 16)
+        if (destroyExtraObjects)
+        {
+            Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
+            for (int i = 0; i < sources.objects.Count; i++)
+            {
+                Debug.Log(i);
+                if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
+                {
+                    Destroy(sources.objects[i]); // delete them from the list of target objects
+                }
+            }
+        }
+
+
+        destination = destinations.currentObject();		
 		source = sources.currentObject();	
 		
 		while (source != null && destination != null ) {	
 			position = source.transform.position;
 	        rotation = source.transform.rotation;
-			Debug.Log (destination.name.ToString());
-			Debug.Log (source.name);
 	
 			
 			source.transform.position = destination.transform.position;
-			log.log("TASK_ROTATE\t" + source.name + "\t" + this.GetType().Name + "\t" + source.transform.localEulerAngles.ToString("f1"),1);
-
 			source.transform.localRotation = destination.transform.localRotation;
-			log.log("TASK_POSITION\t" + source.name + "\t" + this.GetType().Name + "\t" + source.transform.position.ToString("f1"),1);
+            Debug.Log(sources.name + ": \t" + source.name +
+                    "\tPosition: \t" + source.transform.position.x + "\t" + source.transform.position.y + "\t" + source.transform.position.z +
+                    "\tRotation: \t" + source.transform.eulerAngles.x + "\t" + source.transform.eulerAngles.y + "\t" + source.transform.eulerAngles.z);
+
+            // Log the target info
+            log.log(destination.name + ": \t" + source.name + 
+                    "\tPosition: \t" + source.transform.position.x + "\t" + source.transform.position.y + "\t" + source.transform.position.z +
+                    "\tRotation: \t" + source.transform.eulerAngles.x + "\t" + source.transform.eulerAngles.y + "\t" + source.transform.eulerAngles.z
+                    , 1);
 
 			
 			if (swap) {
@@ -77,11 +99,12 @@ public class MoveObjects : ExperimentTask {
 			sources.incrementCurrent();
 			source = sources.currentObject();
 		}
-			
-			
-	}
-	
-	public override bool updateTask () {
+
+
+
+    }
+
+    public override bool updateTask () {
 	    return true;
 	}
 	public override void endTask() {
