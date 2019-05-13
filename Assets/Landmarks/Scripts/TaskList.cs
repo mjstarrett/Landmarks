@@ -31,6 +31,7 @@ public class TaskList : ExperimentTask {
 
     public int catchTrialCount = 0;
     public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
+    public bool noCatchOnFirstTrial = true;
     [HideInInspector] public List<int> catchTrials; // list of catch trials
 
 
@@ -68,9 +69,6 @@ public class TaskList : ExperimentTask {
 
         }
 
-        Debug.Log("catchtrials: " + catchTrialCount);
-
-
         //----------------------------------------------------------------------
         // create list of random trials to flag as catch trials
         //----------------------------------------------------------------------
@@ -79,7 +77,7 @@ public class TaskList : ExperimentTask {
         {
             // Create a list of our trial numbers
             int[] trials = new int[repeat];
-            for (int i = 0; i < repeat; i++) trials[i] = i; 
+            for (int i = 0; i < repeat; i++) trials[i] = i+1; // adjust because repeat count uses base-1 
 
             // Shuffle this list and use it to pick our catch trials
             Experiment.Shuffle(trials);
@@ -88,16 +86,22 @@ public class TaskList : ExperimentTask {
             // we have the specified number of catch trials
             for (int i = 0; i < catchTrialCount; i++)
             {
-                catchTrials.Add(trials[i]);
-
-                // once we have enough catch trials, break the loop and move on
-                if (catchTrials.Count == catchTrialCount)
+                Debug.Log(trials[i]);
+                // if Trial 1 can't be a catch trial
+                if (noCatchOnFirstTrial && trials[i] == 1)
                 {
-                    break;
+                    continue;
+                }
+                else
+                {
+                    catchTrials.Add(trials[i]);
                 }
             }
-
-
+            Debug.Log("HERE ARE OUR CATCH TRIALS (" + catchTrials.Count + ")");
+            foreach (int item in catchTrials)
+            {
+                Debug.Log(item);
+            }
         }
 
         if (!skip) startNextTask();		
