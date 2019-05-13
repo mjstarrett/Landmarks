@@ -30,7 +30,7 @@ public class TaskList : ExperimentTask {
 	public TextList overideRepeat;
 
     public int catchTrialCount = 0;
-    public GameObject[] skipOnCatch; // which task-components are we skipping on catch trials
+    public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
     [HideInInspector] public List<int> catchTrials; // list of catch trials
 
 
@@ -141,6 +141,10 @@ public class TaskList : ExperimentTask {
         if (catchTrialCount > 0 && catchTrials.Contains(repeatCount))
         {
             Debug.Log("trial " + repeatCount + ": THIS IS A CATCH TRIAL!!!!!!!!!!");
+            if (skipOnCatch.Contains(currentTask.gameObject))
+            {
+                return endChild();
+            }
         }
 
         return false;
