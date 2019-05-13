@@ -31,9 +31,10 @@ public class TaskList : ExperimentTask {
 
     public int catchTrialCount = 0;
     public GameObject[] skipOnCatch; // which task-components are we skipping on catch trials
-    private bool catchFlag;
+    [HideInInspector] public List<int> catchTrials; // list of catch trials
 
-	private int repeatCount = 1;
+
+    private int repeatCount = 1;
 
 	private int currentTaskIndex = 0;
 	[HideInInspector] public ExperimentTask currentTask;
@@ -54,6 +55,7 @@ public class TaskList : ExperimentTask {
         //----------------------------------------------------------------------
         // Automatically determine number of tasks based on children
         //----------------------------------------------------------------------
+
         tasks = new GameObject[transform.childCount];
 
         if (tasks.Length == 0) skip = true;
@@ -66,30 +68,35 @@ public class TaskList : ExperimentTask {
 
         }
 
-        Debug.Log("]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
         Debug.Log("catchtrials: " + catchTrialCount);
 
 
-        // Handle Setting up catch trials, if we want any
+        //----------------------------------------------------------------------
+        // create list of random trials to flag as catch trials
+        //----------------------------------------------------------------------
+
         if (catchTrialCount > 0)
         {
+            // Create a list of our trial numbers
             int[] trials = new int[repeat];
+            for (int i = 0; i < repeat; i++) trials[i] = i; 
 
-            for (int i = 0; i < repeat; i++) trials[i] = i; // create a list of trials
-
+            // Shuffle this list and use it to pick our catch trials
             Experiment.Shuffle(trials);
 
-            List<int> catchTrials = new List<int>();
-
+            // Pick our catch trials randomly from the shuffled trial order until
+            // we have the specified number of catch trials
             for (int i = 0; i < catchTrialCount; i++)
             {
-                if (i > catchTrialCount)
-                {
-                    catchTrials.Add(trials[i]);
-                    Debug.Log(trials[i] + "will be a catch trial");
-                }
+                catchTrials.Add(trials[i]);
 
+                // once we have enough catch trials, break the loop and move on
+                if (catchTrials.Count == catchTrialCount)
+                {
+                    break;
+                }
             }
+
 
         }
 
@@ -105,7 +112,9 @@ public class TaskList : ExperimentTask {
 
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 		currentTask.parentTask = this;
-		currentTask.startTask();	
+		currentTask.startTask();
+
+        	
 	}
 	
 	public override bool updateTask () {
@@ -129,10 +138,10 @@ public class TaskList : ExperimentTask {
 			}
 		}
 
-        //if (catchFlag)
-        //{
-
-        //}
+        if (catchTrialCount > 0 && catchTrials.Contains(repeatCount))
+        {
+            Debug.Log("trial " + repeatCount + ": THIS IS A CATCH TRIAL!!!!!!!!!!");
+        }
 
         return false;
 	}
