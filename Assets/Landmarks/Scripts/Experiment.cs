@@ -94,6 +94,7 @@ public class Experiment : MonoBehaviour {
             Debug.Log("Instntiating a SmallScalePlayerController to avoid errors.");
             Debug.Log("Consider adding the SmallScalePlayerController to your scene for LM task(s) compatibility");
             scaledPlayer = (GameObject)Instantiate(Resources.Load("LM_ScaledPlayer"));
+            scaledPlayer.SetActive(false);
         }
 
 
