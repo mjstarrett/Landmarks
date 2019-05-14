@@ -89,12 +89,9 @@ public class ExperimentTask : MonoBehaviour{
         if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
 
 
-        // if we have a scaled nav task/player grab the object and log it - MJS 2019
-        if (manager.scaledPlayer != null)
-        {
-            scaledAvatar = manager.scaledPlayer;
-            scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
-        }
+        // Grab the scaled nav task/player and log it - MJS 2019
+        scaledAvatar = manager.scaledPlayer;
+        scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
 
         debugButton = hud.debugButton.GetComponent<Button>();
         actionButton = hud.actionButton.GetComponent<Button>();

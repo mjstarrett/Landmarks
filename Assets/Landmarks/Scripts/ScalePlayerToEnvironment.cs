@@ -62,12 +62,14 @@ public class ScalePlayerToEnvironment : ExperimentTask
         if (isScaled == true)
         {
             scaledEnvironment.SetActive(false);
+            scaledAvatar.SetActive(false);
             scaleRatio = 1 / scaleRatio;
         } 
         else
         // Grab the scale of the scaled environment from it's gameobject
         {
             scaledEnvironment.SetActive(true);
+            scaledAvatar.SetActive(true);
         }
 
         //---------------------------------------------

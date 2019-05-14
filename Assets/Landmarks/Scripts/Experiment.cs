@@ -89,14 +89,6 @@ public class Experiment : MonoBehaviour {
         overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
         // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
-        if (scaledPlayer == null)
-        {
-            Debug.Log("Instntiating a SmallScalePlayerController to avoid errors.");
-            Debug.Log("Consider adding the SmallScalePlayerController to your scene for LM task(s) compatibility");
-            scaledPlayer = (GameObject)Instantiate(Resources.Load("LM_ScaledPlayer"));
-            scaledPlayer.SetActive(false);
-        }
-
 
 
         // ------------------------------------------
