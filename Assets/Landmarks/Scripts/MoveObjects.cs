@@ -76,9 +76,6 @@ public class MoveObjects : ExperimentTask {
 			
 			source.transform.position = destination.transform.position;
 			source.transform.localRotation = destination.transform.localRotation;
-            Debug.Log(sources.name + ": \t" + source.name +
-                    "\tPosition: \t" + source.transform.position.x + "\t" + source.transform.position.y + "\t" + source.transform.position.z +
-                    "\tRotation: \t" + source.transform.eulerAngles.x + "\t" + source.transform.eulerAngles.y + "\t" + source.transform.eulerAngles.z);
 
             // Log the target info
             log.log(destination.name + ": \t" + source.name + 

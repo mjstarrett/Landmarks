@@ -75,9 +75,22 @@ public class TaskList : ExperimentTask {
 
         if (catchTrialCount > 0)
         {
+
             // Create a list of our trial numbers
-            int[] trials = new int[repeat];
-            for (int i = 0; i < repeat; i++) trials[i] = i+1; // adjust because repeat count uses base-1 
+            int[] trials;
+
+            // if trial #1 can't be a catch trial
+            if (noCatchOnFirstTrial)
+            {
+                trials = new int[repeat - 1];
+                for (int i = 0; i < repeat - 1; i++) trials[i] = i + 2; // adjust because repeat count uses base-1 and to ignore trial 1
+            }
+            // Otherwise include all trials in our list
+            else
+            {
+                trials = new int[repeat];
+                for (int i = 0; i < repeat; i++) trials[i] = i + 1; // adjust because repeat count uses base-1
+            }
 
             // Shuffle this list and use it to pick our catch trials
             Experiment.Shuffle(trials);
@@ -86,16 +99,7 @@ public class TaskList : ExperimentTask {
             // we have the specified number of catch trials
             for (int i = 0; i < catchTrialCount; i++)
             {
-                Debug.Log(trials[i]);
-                // if Trial 1 can't be a catch trial
-                if (noCatchOnFirstTrial && trials[i] == 1)
-                {
-                    continue;
-                }
-                else
-                {
-                    catchTrials.Add(trials[i]);
-                }
+                catchTrials.Add(trials[i]);
             }
             Debug.Log("HERE ARE OUR CATCH TRIALS (" + catchTrials.Count + ")");
             foreach (int item in catchTrials)
