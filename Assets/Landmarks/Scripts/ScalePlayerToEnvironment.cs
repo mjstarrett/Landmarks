@@ -77,11 +77,11 @@ public class ScalePlayerToEnvironment : ExperimentTask
         //---------------------------------------------
 
         // Make the player bigger/smaller
-        manager.player.transform.localScale = scaleRatio * manager.player.transform.localScale;
+        manager.player.transform.localScale *= scaleRatio;
         // Adjust the radius
-        //manager.player.GetComponent<CharacterController>().radius = manager.player.GetComponent<CharacterController>().radius / scaleRatio;
+        manager.player.GetComponent<CharacterController>().radius /= scaleRatio;
         // Do this for capsule collider as well
-        //manager.player.GetComponent<CapsuleCollider>().radius = manager.player.GetComponent<CapsuleCollider>().radius / scaleRatio;
+        manager.player.GetComponent<CapsuleCollider>().radius /= scaleRatio;
 
         // Scale up the movement speed as well
         if (manager.userInterface == UserInterface.DesktopDefault)
