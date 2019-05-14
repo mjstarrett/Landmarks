@@ -12,7 +12,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class NavigationConfidence : ExperimentTask {
+public class Confidence : ExperimentTask {
     
     public TextAsset instruction;
     public TextAsset message;
@@ -39,6 +39,8 @@ public class NavigationConfidence : ExperimentTask {
     private LM_vrSlider vrSlider;
     private Slider slider;
     public bool randomStartValue = true;
+
+    public string[] customSliderLabels;
     
     void OnDisable ()
     {
@@ -64,7 +66,7 @@ public class NavigationConfidence : ExperimentTask {
             log.log("INFO    skip task    " + name,1 );
             return;
         }
-                   
+
         GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
@@ -142,7 +144,30 @@ public class NavigationConfidence : ExperimentTask {
             else slider.value = 0;
         }
 
-        
+        // Hangle renaming the levels on the slider object
+        // if we want to use the defaults preset in the inspector for the slider, do nothing
+        if (customSliderLabels.Length == 0)
+        {
+
+        }
+        else
+        {
+            if (vrEnabled)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+
+        // If they provide too many custom labels, warn them that only the first will be used until the options are filled up 
+        if (customSliderLabels.Length > slider.maxValue+1 || customSliderLabels.Length > vrSlider.maxValue+1)
+        {
+            Debug.Log("More customSliderLabels were provided than there are slider levels. The first n strings will be used to match the number of levels.");
+        }
 
     }
     // Update is called once per frame
