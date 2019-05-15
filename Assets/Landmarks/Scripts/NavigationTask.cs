@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum HideTargetOnStart
+{
+    Off,
+    SetInactive,
+    SetInvisible
+}
+
 public class NavigationTask : ExperimentTask 
 {
 
@@ -17,8 +24,14 @@ public class NavigationTask : ExperimentTask
 
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
-    
-	public override void startTask () 
+
+    public HideTargetOnStart hideTargetOnStart;
+    [Range(0,59.99f)] public float showTargetAfterSeconds;
+    public bool hideNonTargets;
+
+    private float startTime;
+
+    public override void startTask () 
 	{
 		TASK_START();
 		avatarLog.navLog = true;
@@ -47,19 +60,49 @@ public class NavigationTask : ExperimentTask
             hud.setMessage("Please find the " + current.name);
 		}
 
+        // Handle if we're hiding all the non-targets
+        if (hideNonTargets)
+        {
+            foreach (GameObject item in destinations.objects)
+            {
+                if (item.name != destinations.currentObject().name)
+                {
+                    item.SetActive(false);
+                }
+                else item.SetActive(true);
+            }
+        }
 
+        // Handle if we're hiding the target object
+        if (hideTargetOnStart != HideTargetOnStart.Off)
+        {
+            if (hideTargetOnStart == HideTargetOnStart.SetInactive)
+            {
+                destinations.currentObject().SetActive(false);
+            }
+            else if (hideTargetOnStart == HideTargetOnStart.SetInvisible)
+            {
+                destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
+        else
+        {
+            destinations.currentObject().SetActive(true); // make sure the target is visible unless the bool to hide was checked
+            destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+        }
+        startTime = System.DateTime.Now.Second;
 
         //// MJS 2019 - Move HUD to top left corner
         //hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
         //hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
-	}	
+    }	
 
 	public override bool updateTask () 
 	{
 		base.updateTask();
 
 		if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
-
+        
 
 		if (penaltyTimer >= penaltyRate) 
 		{
@@ -70,6 +113,11 @@ public class NavigationTask : ExperimentTask
 				hud.setScore(score);
 			}
 		}
+
+        if (hideTargetOnStart != HideTargetOnStart.Off && ((System.DateTime.Now.Second) - startTime > showTargetAfterSeconds || Input.GetButtonDown("Return")))
+        {
+            destinations.currentObject().SetActive(true);
+        }
 
 		if (killCurrent == true) 
 		{
