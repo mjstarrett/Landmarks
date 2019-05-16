@@ -143,6 +143,17 @@ public class HUD : MonoBehaviour
         cam[1].clearFlags = CameraClearFlags.SolidColor;
     }
 
+    public void showNothing()
+    {
+        cam[0].cullingMask = (0 << 30);
+        cam[1].cullingMask = (0 << 30);
+        cam[0].cullingMask = cam[0].cullingMask + (0 << 30);
+        cam[1].cullingMask = cam[1].cullingMask + (0 << 30);
+
+        cam[0].clearFlags = CameraClearFlags.SolidColor;
+        cam[1].clearFlags = CameraClearFlags.SolidColor;
+    }
+
     public void showEverything()
 	{
 	this.enabled = true;

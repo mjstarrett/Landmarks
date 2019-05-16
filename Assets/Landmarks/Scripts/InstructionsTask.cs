@@ -42,6 +42,7 @@ public class InstructionsTask : ExperimentTask {
     private GUIText gui;
 
     public bool restrictMovement = false; // MJS do we want to keep them still during this?
+    public bool selfPaced = false; // can they press return to end the task?
     
     void OnDisable ()
     {
@@ -139,7 +140,7 @@ public class InstructionsTask : ExperimentTask {
         //------------------------------------------
         // Handle buttons to advance the task - MJS
         //------------------------------------------
-        if (Input.GetButtonDown("Return")) {
+        if (selfPaced && Input.GetButtonDown("Return")) {
             log.log("INPUT_EVENT    clear text    1",1 );
             return true;
         }
