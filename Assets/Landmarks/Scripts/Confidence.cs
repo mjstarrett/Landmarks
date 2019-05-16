@@ -157,12 +157,7 @@ public class Confidence : ExperimentTask {
         //------------------------------------------
         // Handle buttons to advance the task - MJS
         //------------------------------------------
-        if (Input.GetButtonDown("Return"))
-        {
-            log.log("INPUT_EVENT    clear text    1", 1);
-            return true;
-        }
-        else if (hud.actionButtonClicked == true)
+        if (hud.actionButtonClicked == true)
         {
             hud.actionButtonClicked = false;
             log.log("INPUT_EVENT    clear text    1", 1);
@@ -190,13 +185,13 @@ public class Confidence : ExperimentTask {
         // Log the confidence rating
         if (vrEnabled)
         {
-            log.log("Task:\t" + transform.parent.name +
+            log.log("ConfidenceRating\t" + transform.parent.name +
                   "\tTarget:\t" + objects.currentObject().name +
                   "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().sliderValue +
                   "\t/\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue, 1);
         } else
         {
-            log.log("Task:\t" + transform.parent.name +
+            log.log("ConfidenceRating\t" + transform.parent.name +
                   "\tTarget:\t" + objects.currentObject().name +
                   "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value +
                   "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
