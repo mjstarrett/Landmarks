@@ -38,6 +38,7 @@ public class CheckForSavedObjects : ExperimentTask
         // Remove any targets that are not in Unused targets (i.e. use only targets
         // that have not been used previously)
         //----------------------------------------------------------------------
+        unusedTargets.SetActive(true);
 
         // Make a list of the previously used targets
         List<string> unusedTargetList = new List<string>();
@@ -49,7 +50,7 @@ public class CheckForSavedObjects : ExperimentTask
         // Destroy the previously used game objects from our pool of targets
         foreach (Transform child in targets.transform)
         {
-            if (!unusedTargetList.Contains(child.gameObject.name))
+            if (unusedTargetList.Contains(child.gameObject.name))
             {
                 Destroy(child.gameObject);
             }
@@ -60,6 +61,7 @@ public class CheckForSavedObjects : ExperimentTask
         {
             Destroy(child.gameObject);
         }
+        unusedTargets.SetActive(false);
     }
 
 
