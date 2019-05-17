@@ -16,6 +16,14 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public enum HandleExtraSources
+{
+    DoNothing,
+    Destroy,
+    Save
+}
 
 public class MoveObjects : ExperimentTask {
 
@@ -27,7 +35,8 @@ public class MoveObjects : ExperimentTask {
 	
 	public bool swap;
 
-    public bool destroyExtraObjects; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
+    public HandleExtraSources handleExtraSources; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
+    public GameObject extraSourcesDestination;
 
 	private static Vector3 position;
 	private static Quaternion rotation;
@@ -52,19 +61,29 @@ public class MoveObjects : ExperimentTask {
 
 
         // Destroy any objects that don't get moved (say if we're only randomly using 8 stores out of a possible selection of 16)
-        if (destroyExtraObjects)
+        if (handleExtraSources == HandleExtraSources.Destroy || extraSourcesDestination == null)
         {
             Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
             for (int i = 0; i < sources.objects.Count; i++)
             {
-                Debug.Log(i);
                 if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
                 {
                     Destroy(sources.objects[i]); // delete them from the list of target objects
                 }
             }
         }
-
+        else if (handleExtraSources == HandleExtraSources.Save)
+        {
+            Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
+            for (int i = 0; i < sources.objects.Count; i++)
+            {
+                if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
+                {
+                    sources.objects[i].transform.parent = extraSourcesDestination.transform; // delete them from the list of target objects
+                    //Destroy(sources.objects[i]); // delete them from the list of target objects
+                }
+            }
+        }
 
         destination = destinations.currentObject();		
 		source = sources.currentObject();	
