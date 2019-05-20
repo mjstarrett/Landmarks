@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class LM_ExperimentManager : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class LM_ExperimentManager : MonoBehaviour
         {
             Directory.CreateDirectory(appDir + "/data/");
         }
+
+        start.onClick.AddListener(LoadExperiment);
     }
 
     private void Update()
@@ -47,6 +50,22 @@ public class LM_ExperimentManager : MonoBehaviour
         }
         else start.gameObject.SetActive(false);
 
+    }
+
+    public void LoadExperiment()
+    {
+        ValidateBiosex();
+        ValidateUI();
+
+        if (!expidError && !subidError && !ageError && !biosexError && !uiError)
+        {
+            PlayerPrefs.SetString("expID", expID.text);
+            PlayerPrefs.SetInt("subID", int.Parse(subID.text));
+            PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
+            PlayerPrefs.SetInt("subAge", int.Parse(age.text));
+            PlayerPrefs.SetString("ui", ui.options[ui.value].text);
+            SceneManager.LoadScene("City01_StandardNavigation");
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -74,8 +93,6 @@ public class LM_ExperimentManager : MonoBehaviour
             _errorMessage.text = "You must provide an Experiment ID.";
             _errorMessage.gameObject.SetActive(true);
         }
-
-        Debug.Log("EXPID LOCK: " + expidError);
     }
 
 
@@ -124,9 +141,6 @@ public class LM_ExperimentManager : MonoBehaviour
             _errorMessage.text = "You must provide a Subject ID.";
             _errorMessage.gameObject.SetActive(true);
         }
-
-        Debug.Log("SUBID LOCK: " + subidError);
-
     }
 
 
@@ -150,9 +164,6 @@ public class LM_ExperimentManager : MonoBehaviour
             _errorMessage.gameObject.SetActive(true);
 
         }
-
-        Debug.Log("BioSex LOCK: " + biosexError);
-
     }
 
 
@@ -184,9 +195,6 @@ public class LM_ExperimentManager : MonoBehaviour
             _errorMessage.text = "You must provide an Age.";
             _errorMessage.gameObject.SetActive(true);
         }
-
-        Debug.Log("Age LOCK: " + ageError);
-
     }
 
 
@@ -209,9 +217,6 @@ public class LM_ExperimentManager : MonoBehaviour
             _errorMessage.text = "Please select a UI from the dropdown.";
             _errorMessage.gameObject.SetActive(true);
         }
-
-        Debug.Log("uiID LOCK: " + uiError);
-
     }
 
     //--------------------------------------------------------------------------
