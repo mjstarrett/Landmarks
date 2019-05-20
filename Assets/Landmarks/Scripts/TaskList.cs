@@ -30,7 +30,7 @@ public class TaskList : ExperimentTask {
 	public TextList overideRepeat;
 
     public int catchTrialCount = 0;
-    public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
+    public List<GameObject> toggleSkipOnCatch; // which task-components are we skipping on catch trials
     public bool noCatchOnFirstTrial = true;
     [HideInInspector] public List<int> catchTrials; // list of catch trials
 
@@ -119,7 +119,14 @@ public class TaskList : ExperimentTask {
 		Debug.Log("Starting " + tasks[currentTaskIndex].name);
 
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
-		currentTask.parentTask = this;
+
+        // Alter our task list based on our catch trial criteria
+        if (catchTrials.Contains(currentTaskIndex) && toggleSkipOnCatch.Contains(currentTask.gameObject))
+        {
+            currentTask.skip = !currentTask.skip;
+        }
+
+        currentTask.parentTask = this;
 		currentTask.startTask();
 
         	
@@ -127,29 +134,24 @@ public class TaskList : ExperimentTask {
 	
 	public override bool updateTask () {
 		if (skip) return true;
-		
-		if ( currentTask.updateTask() ) {
-			
-			
-			//cut
-					
-			if (pausedTasks) {
-				//currentTask.endTask();
-				//Debug.Log("pause");
-				currentTask = pausedTasks;
-				//endTask();
-				pausedTasks.startTask();
-				pausedTasks = null;		
-				//return true;	
-			} else {
-				return endChild();
-			}
-		}
 
-        if (catchTrialCount > 0 && catchTrials.Contains(repeatCount))
+        if (currentTask.updateTask())
         {
-            Debug.Log("trial " + repeatCount + ": THIS IS A CATCH TRIAL!!!!!!!!!!");
-            if (skipOnCatch.Contains(currentTask.gameObject))
+
+
+            //cut
+
+            if (pausedTasks)
+            {
+                //currentTask.endTask();
+                //Debug.Log("pause");
+                currentTask = pausedTasks;
+                //endTask();
+                pausedTasks.startTask();
+                pausedTasks = null;
+                //return true;	
+            }
+            else
             {
                 return endChild();
             }
@@ -160,7 +162,13 @@ public class TaskList : ExperimentTask {
 
 	public bool endChild() 
 	{
-		currentTask.endTask();
+        // Undo any alterations from our catch trial
+        if (catchTrials.Contains(currentTaskIndex) && toggleSkipOnCatch.Contains(currentTask.gameObject))
+        {
+            currentTask.skip = !currentTask.skip;
+        }
+
+        currentTask.endTask();
 		currentTaskIndex = currentTaskIndex + 1;
 
 		if (currentTaskIndex >= tasks.Length && repeatCount >= repeat) 

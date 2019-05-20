@@ -75,9 +75,11 @@ public class MentalNavigation : ExperimentTask
         //------------------------------------------
         navTime = Time.time - startTime; // how long have we been up
 
-        if (navTime > minimumRT && Input.GetButtonDown("Return"))
+        if (navTime > minimumRT)
         {
-            return true;
+            if (Input.GetButtonDown("Return")) return true;
+
+            if (vrEnabled && vrInput.TriggerButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any)) return true;
         }
 
 
@@ -86,7 +88,7 @@ public class MentalNavigation : ExperimentTask
             return KillCurrent();
         }
 
-        else return false;
+        return false;
     }
 
 
