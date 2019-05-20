@@ -9,11 +9,12 @@ using UnityEngine.SceneManagement;
 public class LM_ExperimentManager : MonoBehaviour
 {
 
-    public TMP_InputField expID;
+    public TMP_Dropdown expID;
     public TMP_InputField subID;
     public TMP_Dropdown biosex;
     public TMP_InputField age;
     public TMP_Dropdown ui;
+    public TMP_Dropdown conds;
     public Button start;
 
     private string appDir = "";
@@ -26,6 +27,7 @@ public class LM_ExperimentManager : MonoBehaviour
     private bool biosexError = true;
     private bool ageError = true;
     private bool uiError = true;
+    private bool condError = false;
 
     void Start()
     {
@@ -44,28 +46,53 @@ public class LM_ExperimentManager : MonoBehaviour
 
     private void Update()
     {
-        if (!expidError && !subidError && !ageError)
-        {
-            start.gameObject.SetActive(true);
-        }
-        else start.gameObject.SetActive(false);
 
     }
 
     public void LoadExperiment()
     {
+        TextMeshProUGUI _errorMessage = start.transform.Find("Error").GetComponent<TextMeshProUGUI>();
+
+        Debug.Log("starting to load experiment");
+
+        ValidateExpID();
+        ValidateSubjectID();
+        ValidateAge();
         ValidateBiosex();
         ValidateUI();
+        if (conds.gameObject.activeSelf) ValidateCondition();
 
-        if (!expidError && !subidError && !ageError && !biosexError && !uiError)
+
+        if (!expidError && !subidError && !ageError && !biosexError && uiError)
         {
-            PlayerPrefs.SetString("expID", expID.text);
+            //if (conds.gameObject.activeSelf && condError) ;
+
+            // Create the directories if they don't exist
+            if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
+            {
+                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text);
+                expDirCreated = true;
+            }
+            Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
+            subDirCreated = true;
+
+            Debug.Log("All error flags removed; proceeding");
+            _errorMessage.gameObject.SetActive(false);
+
+
+            PlayerPrefs.SetString("expID", expID.options[expID.value].text);
             PlayerPrefs.SetInt("subID", int.Parse(subID.text));
             PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
             PlayerPrefs.SetInt("subAge", int.Parse(age.text));
             PlayerPrefs.SetString("ui", ui.options[ui.value].text);
             SceneManager.LoadScene("City01_StandardNavigation");
+            
         }
+        else
+        {
+            _errorMessage.gameObject.SetActive(true);
+        }
+
     }
 
     //--------------------------------------------------------------------------
@@ -76,22 +103,40 @@ public class LM_ExperimentManager : MonoBehaviour
     {
         TextMeshProUGUI _errorMessage = expID.transform.Find("Error").GetComponent<TextMeshProUGUI>();
 
-        if (expID.text != "")
+        if (expID.value != 0)
         {
             expidError = false;
             _errorMessage.gameObject.SetActive(false);
-
-            if (!Directory.Exists(appDir + "/data/" + expID.text))
-            {
-                Directory.CreateDirectory(appDir + "/data/" + expID.text);
-                expDirCreated = true;
-            }
         }
         else
         {
             expidError = true;
             _errorMessage.text = "You must provide an Experiment ID.";
             _errorMessage.gameObject.SetActive(true);
+        }
+
+
+        // Show special options for individual experiments 
+
+        ////////////
+        /// ESC  ///
+        ////////////
+
+        if (expID.options[expID.value].text == "esc")
+        {
+            List<string> options = new List<string> { "-Select-", "1:1", "1:150" }; // List the starting options for ESC
+
+            conds.ClearOptions(); // clear any old options 
+            conds.AddOptions(options); // populate the options in the dropdown
+
+            conds.gameObject.SetActive(true); // activate this field
+
+            condError = true;
+        }
+        else
+        {
+            conds.gameObject.SetActive(false);
+            condError = false;
         }
     }
 
@@ -112,10 +157,8 @@ public class LM_ExperimentManager : MonoBehaviour
             {
 
                 // Even if the subID is an int, check if this ID has been used
-                if (!Directory.Exists(appDir + "/data/" + expID.text + "/" + subID.text))
+                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text))
                 {
-                    Directory.CreateDirectory(appDir + "/data/" + expID.text + "/" + subID.text);
-                    subDirCreated = true;
                     subidError = false;
                     _errorMessage.gameObject.SetActive(false); // then and only then, will we release the flag
                 }
@@ -219,6 +262,31 @@ public class LM_ExperimentManager : MonoBehaviour
         }
     }
 
+
+    //--------------------------------------------------------------------------
+    // Validate Condition Input
+    //--------------------------------------------------------------------------
+
+    public void ValidateCondition()
+    {
+        TextMeshProUGUI _errorMessage = conds.transform.Find("Error").GetComponent<TextMeshProUGUI>();
+
+        if (conds.value != 0)
+        {
+            condError = false;
+            _errorMessage.gameObject.SetActive(false);
+        }
+        else
+        {
+            condError = true;
+            _errorMessage.text = "You must select a condition for experiment " + expID.options[expID.value].text + ".";
+            _errorMessage.gameObject.SetActive(true);
+
+        }
+    }
+
+
+
     //--------------------------------------------------------------------------
     // set up our config for the LM experiment
     //--------------------------------------------------------------------------
@@ -227,12 +295,14 @@ public class LM_ExperimentManager : MonoBehaviour
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
 
-        config.expPath = appDir + "/data/" + expID.text;
-        config.subjectPath = appDir + "/data/" + expID.text + "/" + subID.text;
+        config.expPath = appDir + "/data/" + expID.options[expID.value].text;
+        config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
 
         config.appPath = appDir;
-        config.level = expID.text;
+        config.level = expID.options[expID.value].text;
         config.subject = subID.text;
+
+        DontDestroyOnLoad(config);
 
     }
 }
