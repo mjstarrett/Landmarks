@@ -261,7 +261,8 @@ MonoBehaviour:
   instructionSize: 12
   actionButtonOn: 1
   customButtonText: 
-  restrictMovement: 0
+  restrictMovement: 1
+  selfPaced: 1
 --- !u!1 &7370359404670751001
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +395,7 @@ MonoBehaviour:
   instructionSize: 12
   actionButtonOn: 1
   customButtonText: 
-  restrictMovement: 0
+  restrictMovement: 1
   randomStartValue: 1
 --- !u!1 &7370359404858890893
 GameObject:
@@ -464,6 +465,7 @@ MonoBehaviour:
   actionButtonOn: 1
   customButtonText: 
   restrictMovement: 1
+  selfPaced: 1
 --- !u!1 &7370359405009994999
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +533,7 @@ MonoBehaviour:
   instructionSize: 12
   actionButtonOn: 1
   customButtonText: 
-  restrictMovement: 0
+  restrictMovement: 1
   randomStartValue: 1
 --- !u!1 &7370359405209141753
 GameObject:
@@ -601,6 +603,7 @@ MonoBehaviour:
   actionButtonOn: 0
   customButtonText: 
   restrictMovement: 1
+  selfPaced: 0
 --- !u!1 &7370359405303324912
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +628,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7370359405303324912}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -739,6 +742,7 @@ MonoBehaviour:
   actionButtonOn: 0
   customButtonText: 
   restrictMovement: 1
+  selfPaced: 0
 --- !u!1 &7370359405873307550
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7370359405926384639}
-  - component: {fileID: 7370359405926384638}
+  - component: {fileID: 5173055039132425686}
   m_Layer: 0
   m_Name: MentalNavigation
   m_TagString: Untagged
@@ -833,7 +837,7 @@ Transform:
   m_Father: {fileID: 7370359404090811752}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7370359405926384638
+--- !u!114 &5173055039132425686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -842,11 +846,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7370359405926384632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46255799ed91e482381a6c84b742e3d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d5cdd5d84f284436846155d81a6b5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skip: 0
-  canIncrementLists: 0
+  canIncrementLists: 1
   interval: 0
   interruptTasks: {fileID: 0}
   interruptInterval: 0
@@ -859,6 +863,10 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  objects: {fileID: 7370359405873307549}
+  restrictMovement: 1
+  minimumRT: 0.5
+  blackout: 1
 --- !u!1 &7370359406021911057
 GameObject:
   m_ObjectHideFlags: 0

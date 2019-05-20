@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &8887157324897504908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8886142147021942053}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5000005, y: 0.7504999, z: 1.0000002}
+  m_Center: {x: 0.00000011920929, y: 0.37594995, z: -0.000000029802322}
 --- !u!1 &8887157324006795969
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +384,7 @@ MonoBehaviour:
   actionButtonOn: 1
   customButtonText: 
   restrictMovement: 1
+  selfPaced: 1
 --- !u!1 &8887157324152657018
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +828,7 @@ MonoBehaviour:
   actionButtonOn: 1
   customButtonText: 
   restrictMovement: 1
+  selfPaced: 1
 --- !u!1 &8887157324398899378
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +840,7 @@ GameObject:
   - component: {fileID: 8887157324398899389}
   - component: {fileID: 8887157324398899388}
   m_Layer: 0
-  m_Name: Find
+  m_Name: CueTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,13 +890,14 @@ MonoBehaviour:
   message: {fileID: 4900000, guid: 9640913f0e4984ce190c4c98b1787149, type: 3}
   objects: {fileID: 8887157324461353959}
   texts: {fileID: 0}
-  blackout: 1
+  blackout: 0
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 0}
   instructionSize: 12
-  actionButtonOn: 1
+  actionButtonOn: 0
   customButtonText: 
-  restrictMovement: 0
+  restrictMovement: 1
+  selfPaced: 0
 --- !u!1 &8887157324408880890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,19 +2310,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!65 &8887157324897504908
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8886142147021942053}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5000005, y: 0.7504999, z: 1.0000002}
-  m_Center: {x: 0.00000011920929, y: 0.37594995, z: -0.000000029802322}
 --- !u!1 &8887157324937910447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,7 +3574,7 @@ MonoBehaviour:
   instructionSize: 12
   actionButtonOn: 1
   customButtonText: 
-  restrictMovement: 0
+  restrictMovement: 1
   randomStartValue: 1
 --- !u!1 &8887157325480833329
 GameObject:
@@ -3641,6 +3644,7 @@ MonoBehaviour:
   actionButtonOn: 0
   customButtonText: 
   restrictMovement: 1
+  selfPaced: 0
 --- !u!1 &8887157325490315990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3890,7 +3894,7 @@ MonoBehaviour:
   instructionSize: 12
   actionButtonOn: 1
   customButtonText: 
-  restrictMovement: 0
+  restrictMovement: 1
   randomStartValue: 1
 --- !u!1 &8887157325561641398
 GameObject:
@@ -3992,7 +3996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8887157325681809951}
-  - component: {fileID: 8887157325681809950}
+  - component: {fileID: 858683462}
   m_Layer: 0
   m_Name: MentalNavigation
   m_TagString: Untagged
@@ -4014,7 +4018,7 @@ Transform:
   m_Father: {fileID: 8887157325392137962}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8887157325681809950
+--- !u!114 &858683462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4023,11 +4027,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8887157325681809948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46255799ed91e482381a6c84b742e3d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d5cdd5d84f284436846155d81a6b5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skip: 0
-  canIncrementLists: 0
+  canIncrementLists: 1
   interval: 0
   interruptTasks: {fileID: 0}
   interruptInterval: 0
@@ -4040,6 +4044,10 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  objects: {fileID: 8887157324461353959}
+  restrictMovement: 1
+  minimumRT: 0.5
+  blackout: 1
 --- !u!1 &8887157325690527482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,7 +4072,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8887157325690527482}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5086,22 +5094,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.2
       objectReference: {fileID: 0}
-    - target: {fileID: 4216628712293728, guid: 5d45a0342bc5f6747a5c251521994cb2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 64591850995009196, guid: 5d45a0342bc5f6747a5c251521994cb2,
-        type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64591850995009196, guid: 5d45a0342bc5f6747a5c251521994cb2,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 64591850995009196, guid: 5d45a0342bc5f6747a5c251521994cb2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d45a0342bc5f6747a5c251521994cb2, type: 3}
 --- !u!4 &8888836278510519259 stripped
 Transform:
