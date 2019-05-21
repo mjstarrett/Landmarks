@@ -42,7 +42,13 @@ public class NavigationTask : ExperimentTask
 		if (!manager) Start();
         base.startTask();
 
-		hud.showEverything();
+        if (skip)
+        {
+            log.log("INFO    skip task    " + name, 1);
+            return;
+        }
+
+        hud.showEverything();
 		hud.showScore = showScoring;
 		current = destinations.currentObject();
 		Debug.Log ("Find " + destinations.currentObject().name);
@@ -101,7 +107,13 @@ public class NavigationTask : ExperimentTask
 	{
 		base.updateTask();
 
-		if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
+        if (skip)
+        {
+            //log.log("INFO    skip task    " + name,1 );
+            return true;
+        }
+
+        if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
         
 
 		if (penaltyTimer >= penaltyRate) 

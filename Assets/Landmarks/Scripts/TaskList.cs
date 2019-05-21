@@ -33,6 +33,7 @@ public class TaskList : ExperimentTask {
     public List<GameObject> toggleSkipOnCatch; // which task-components are we skipping on catch trials
     public bool noCatchOnFirstTrial = true;
     [HideInInspector] public List<int> catchTrials; // list of catch trials
+    [HideInInspector] public bool catchFlag = false;
 
 
     private int repeatCount = 1;
@@ -49,9 +50,6 @@ public class TaskList : ExperimentTask {
 			repeatCount = 1;
 			repeat = Int32.Parse( overideRepeat.currentString().Trim() );
 		}
-        //Debug.Log("repeat: ");
-        //Debug.Log( repeat);
-
 
         //----------------------------------------------------------------------
         // Automatically determine number of tasks based on children
@@ -108,6 +106,22 @@ public class TaskList : ExperimentTask {
             }
         }
 
+        // Handle and log if the first block/trial of this tasklist is a catch trial/ block (will need to be done again each time the repeatCount is updated -- See EndChild())
+        if (catchTrials.Contains(repeatCount)) catchFlag = true;
+        else catchFlag = false;
+        log.log("TASK:\t" + this.name + "\t" + "Repetition:\t" + repeatCount.ToString() + "\tCatch:\t" + catchFlag.ToString(), 1);
+        if (catchFlag)
+        {
+            foreach (GameObject item in tasks)
+            {
+                if (toggleSkipOnCatch.Contains(item))
+                {
+                    item.GetComponent<ExperimentTask>().skip = !item.GetComponent<ExperimentTask>().skip;
+                }
+            }
+        }
+
+
         if (!skip) startNextTask();		
 	}	
 
@@ -120,16 +134,9 @@ public class TaskList : ExperimentTask {
 
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
-        // Alter our task list based on our catch trial criteria
-        if (catchTrials.Contains(currentTaskIndex) && toggleSkipOnCatch.Contains(currentTask.gameObject))
-        {
-            currentTask.skip = !currentTask.skip;
-        }
-
         currentTask.parentTask = this;
-		currentTask.startTask();
 
-        	
+        currentTask.startTask();
 	}
 	
 	public override bool updateTask () {
@@ -162,12 +169,6 @@ public class TaskList : ExperimentTask {
 
 	public bool endChild() 
 	{
-        // Undo any alterations from our catch trial
-        if (catchTrials.Contains(currentTaskIndex) && toggleSkipOnCatch.Contains(currentTask.gameObject))
-        {
-            currentTask.skip = !currentTask.skip;
-        }
-
         currentTask.endTask();
 		currentTaskIndex = currentTaskIndex + 1;
 
@@ -179,11 +180,42 @@ public class TaskList : ExperimentTask {
 		} 
 		else 
 		{
-			if (currentTaskIndex >= tasks.Length) {
-				repeatCount++;
-				currentTaskIndex = 0;
-			}
-	 		startNextTask();	
+            if (currentTaskIndex >= tasks.Length) {
+
+                // Undo the alterations to Tasklist if this was a catch block/trial
+                // Handle and log if the first block/trial of this tasklist is a catch trial/ block (will need to be done again each time the repeatCount is updated -- See EndChild())
+                if (catchFlag)
+                {
+                    foreach (GameObject item in tasks)
+                    {
+                        if (toggleSkipOnCatch.Contains(item))
+                        {
+                            item.GetComponent<ExperimentTask>().skip = !item.GetComponent<ExperimentTask>().skip;
+                        }
+                    }
+                }
+
+                repeatCount++;
+
+                // Handle and log if this NEXT block/trial of this tasklist is a catch trial/ block
+                if (catchTrials.Contains(repeatCount)) catchFlag = true;
+                else catchFlag = false;
+
+                log.log("TASK:\t" + this.name + "\t" + "Repetition:\t" + repeatCount.ToString() + "\tCatch:\t" + catchFlag.ToString(), 1);
+                if (catchFlag)
+                {
+                    foreach (GameObject item in tasks)
+                    {
+                        if (toggleSkipOnCatch.Contains(item))
+                        {
+                            item.GetComponent<ExperimentTask>().skip = !item.GetComponent<ExperimentTask>().skip;
+                        }
+                    }
+                }
+
+                currentTaskIndex = 0;
+            }
+            startNextTask();	
 		}
 
 		return false;
