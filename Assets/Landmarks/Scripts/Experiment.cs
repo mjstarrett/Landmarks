@@ -20,6 +20,7 @@ using System.IO;
 using System;
 using System.Reflection;
 using Valve.VR.InteractionSystem;
+using UnityEngine.SceneManagement;
 
 public enum EndListMode
 {
@@ -175,11 +176,16 @@ public class Experiment : MonoBehaviour {
 		// Set the avatar and hud
 		avatar = player;
 		hud = avatar.GetComponent("HUD") as HUD;
+        hud.showOnlyHUD();
 
-		logfile = config.subjectPath + "/test.log";
+
+        // ------------------------------------------
+        // Handle the config file
+        // ------------------------------------------
+
+        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + PlayerPrefs.GetInt("subID") + "_" + SceneManager.GetActiveScene().name + ".log";
 		configfile = config.expPath + "/" + config.filename;
-
-		hud.showOnlyHUD();
+		
 		//when in editor
 		if (!config.bootstrapped) {
 			logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";

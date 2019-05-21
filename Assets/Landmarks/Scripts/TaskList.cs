@@ -30,10 +30,10 @@ public class TaskList : ExperimentTask {
 	public TextList overideRepeat;
 
     public int catchTrialCount = 0;
-    public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
+    public List<GameObject> toggleSkipOnCatch; // which task-components are we skipping on catch trials
     public bool noCatchOnFirstTrial = true;
     [HideInInspector] public List<int> catchTrials; // list of catch trials
-    
+    [HideInInspector] public bool catchFlag = false;
 
     private int repeatCount = 1;
 
@@ -54,8 +54,7 @@ public class TaskList : ExperimentTask {
 
         //Sets repetition in MoveSpawn.cs to equal the repeat value given by TaskList.CS (sends the soonest iteration repeat)
         MoveSpawn.repetition = repeat;
-
-       
+		}
 
         //----------------------------------------------------------------------
         // Automatically determine number of tasks based on children
@@ -112,6 +111,22 @@ public class TaskList : ExperimentTask {
             }
         }
 
+        // Handle and log if the first block/trial of this tasklist is a catch trial/ block (will need to be done again each time the repeatCount is updated -- See EndChild())
+        if (catchTrials.Contains(repeatCount)) catchFlag = true;
+        else catchFlag = false;
+        log.log("TASK:\t" + this.name + "\t" + "Repetition:\t" + repeatCount.ToString() + "\tCatch:\t" + catchFlag.ToString(), 1);
+        if (catchFlag)
+        {
+            foreach (GameObject item in tasks)
+            {
+                if (toggleSkipOnCatch.Contains(item))
+                {
+                    item.GetComponent<ExperimentTask>().skip = !item.GetComponent<ExperimentTask>().skip;
+                }
+            }
+        }
+
+
         if (!skip) startNextTask();		
 	}	
 
@@ -123,48 +138,42 @@ public class TaskList : ExperimentTask {
 		Debug.Log("Starting " + tasks[currentTaskIndex].name);
 
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
-		currentTask.parentTask = this;
-		currentTask.startTask();
 
-        	
+        currentTask.parentTask = this;
+
+        currentTask.startTask();
 	}
 	
 	public override bool updateTask () {
 		if (skip) return true;
-		
-		if ( currentTask.updateTask() ) {
-			
-			
-			//cut
-					
-			if (pausedTasks) {
-				//currentTask.endTask();
-				//Debug.Log("pause");
-				currentTask = pausedTasks;
-				//endTask();
-				pausedTasks.startTask();
-				pausedTasks = null;		
-				//return true;	
-			} else {
-				return endChild();
-			}
-		}
 
-        if (catchTrialCount > 0 && catchTrials.Contains(repeatCount))
+        if (currentTask.updateTask())
         {
-            Debug.Log("trial " + repeatCount + ": THIS IS A CATCH TRIAL!!!!!!!!!!");
-            if (skipOnCatch.Contains(currentTask.gameObject))
+
+
+            //cut
+
+            if (pausedTasks)
+            {
+                //currentTask.endTask();
+                //Debug.Log("pause");
+                currentTask = pausedTasks;
+                //endTask();
+                pausedTasks.startTask();
+                pausedTasks = null;
+                //return true;	
+            }
+            else
             {
                 return endChild();
             }
         }
-
         return false;
 	}
 
 	public bool endChild() 
 	{
-		currentTask.endTask();
+        currentTask.endTask();
 		currentTaskIndex = currentTaskIndex + 1;
 
 		if (currentTaskIndex >= tasks.Length && repeatCount >= repeat) 
@@ -175,11 +184,42 @@ public class TaskList : ExperimentTask {
 		} 
 		else 
 		{
-			if (currentTaskIndex >= tasks.Length) {
-				repeatCount++;
-				currentTaskIndex = 0;
-			}
-	 		startNextTask();	
+            if (currentTaskIndex >= tasks.Length) {
+
+                // Undo the alterations to Tasklist if this was a catch block/trial
+                // Handle and log if the first block/trial of this tasklist is a catch trial/ block (will need to be done again each time the repeatCount is updated -- See EndChild())
+                if (catchFlag)
+                {
+                    foreach (GameObject item in tasks)
+                    {
+                        if (toggleSkipOnCatch.Contains(item))
+                        {
+                            item.GetComponent<ExperimentTask>().skip = !item.GetComponent<ExperimentTask>().skip;
+                        }
+                    }
+                }
+
+                repeatCount++;
+
+                // Handle and log if this NEXT block/trial of this tasklist is a catch trial/ block
+                if (catchTrials.Contains(repeatCount)) catchFlag = true;
+                else catchFlag = false;
+
+                log.log("TASK:\t" + this.name + "\t" + "Repetition:\t" + repeatCount.ToString() + "\tCatch:\t" + catchFlag.ToString(), 1);
+                if (catchFlag)
+                {
+                    foreach (GameObject item in tasks)
+                    {
+                        if (toggleSkipOnCatch.Contains(item))
+                        {
+                            item.GetComponent<ExperimentTask>().skip = !item.GetComponent<ExperimentTask>().skip;
+                        }
+                    }
+                }
+
+                currentTaskIndex = 0;
+            }
+            startNextTask();	
 		}
 
 		return false;
