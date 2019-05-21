@@ -75,12 +75,14 @@ public class MentalNavigation : ExperimentTask
         //------------------------------------------
         navTime = Time.time - startTime; // how long have we been up
 
-        if (navTime > minimumRT)
-        {
-            if (Input.GetButtonDown("Return")) return true;
+        while (navTime < minimumRT) return false;
 
-            if (vrEnabled && vrInput.TriggerButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any)) return true;
+        if (Input.GetButtonDown("Return") || (vrEnabled && vrInput.TriggerButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any)))
+        {
+            log.log("TASK:\t" + this.name + "\tTarget:\t" + objects.currentObject().name + "\tDuration(sec):\t" + navTime, 1);
+            return true;
         }
+
 
 
         if (killCurrent == true)
@@ -101,7 +103,7 @@ public class MentalNavigation : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
-        log.log("TASK:\t" + this.name + "\tTarget:\t" + objects.currentObject().name + "\tDuration(sec):\t" + navTime, 1);
+
 
         hud.showEverything();
     }
