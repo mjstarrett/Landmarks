@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Management;
 using UnityEngine;
 using TMPro;
 
@@ -7,7 +8,8 @@ public enum HideTargetOnStart
 {
     Off,
     SetInactive,
-    SetInvisible
+    SetInvisible,
+    SetProbeTrial
 }
 
 public class NavigationTask : ExperimentTask 
@@ -20,13 +22,14 @@ public class NavigationTask : ExperimentTask
 	public int scoreIncrement = 50;
 	public int penaltyRate = 2000;
 
-	private float penaltyTimer = 0;
+
+    private float penaltyTimer = 0;
 
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
 
     public HideTargetOnStart hideTargetOnStart;
-    [Range(0,59.99f)] public float showTargetAfterSeconds;
+    [Range(0,60)] public float showTargetAfterSeconds;
     public bool hideNonTargets;
 
     private float startTime;
@@ -73,6 +76,7 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+
         // Handle if we're hiding the target object
         if (hideTargetOnStart != HideTargetOnStart.Off)
         {
@@ -84,13 +88,21 @@ public class NavigationTask : ExperimentTask
             {
                 destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
             }
+            else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
+            {
+                destinations.currentObject().SetActive(false);
+                destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
+            }
         }
         else
         {
             destinations.currentObject().SetActive(true); // make sure the target is visible unless the bool to hide was checked
             destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
         }
-        startTime = System.DateTime.Now.Second;
+
+        // startTime = Current time in seconds
+        startTime = Time.time;
+        Debug.Log(startTime);
 
         //// MJS 2019 - Move HUD to top left corner
         //hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
@@ -114,9 +126,17 @@ public class NavigationTask : ExperimentTask
 			}
 		}
 
-        if (hideTargetOnStart != HideTargetOnStart.Off && ((System.DateTime.Now.Second) - startTime > showTargetAfterSeconds || Input.GetButtonDown("Return")))
+        if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || Input.GetButtonDown("Return"))))
         {
             destinations.currentObject().SetActive(true);
+        }
+
+        if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && Input.GetButtonDown("Return"))
+        {
+            //get current location and then log it
+
+            destinations.currentObject().SetActive(true);
+            destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
         }
 
 		if (killCurrent == true) 

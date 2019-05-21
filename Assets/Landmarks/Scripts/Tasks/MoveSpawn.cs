@@ -28,15 +28,20 @@ public class MoveSpawn : ExperimentTask {
 	private static Vector3 position;
 	private static Vector3 rotation;
 
+    //variables used for block repetition
+    public bool blockRepeat;
+    public static int repetition;
+    private int count = 1;
 
 	public override void startTask () {
-		TASK_START();
+        Debug.Log("MS Repetition:"+repetition);
+        TASK_START();
 	}	
 
 	public override void TASK_START()
 	{
 		base.startTask();
-		
+
 		if (!manager) Start();
 		
 		
@@ -109,15 +114,43 @@ public class MoveSpawn : ExperimentTask {
 	    return true;
 	}
 	public override void endTask() {
+
+        
+        
+
 		TASK_END();
 	}
 	
 	public override void TASK_END() {
 		base.endTask();
-		
 		if ( destinations ) {
-			destinations.incrementCurrent();
-			destination = destinations.currentObject();
+            if (blockRepeat)
+            {
+                BlockIncrementation();
+            }
+            else
+            {
+                destinations.incrementCurrent();
+            }
+            destination = destinations.currentObject();
 		}
 	}
+
+    //Method to get implemented when the Block Increment boolean in the GUI is selected
+    public void BlockIncrementation()
+    {
+        //Debug.Log("count before increment: " + count);
+
+        //If the player has done # of repetitions equal to the parent task Repetition Value then set count back to 0 & move the Spawn Location to the next in the list
+        if (count == repetition)
+        {
+            count = 1;
+            destinations.incrementCurrent();
+        }
+        else //increment count
+        {
+            count++;
+        }
+        //Debug.Log("count after increment: " + count);
+    }
 }

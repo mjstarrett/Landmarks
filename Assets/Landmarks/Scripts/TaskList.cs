@@ -33,7 +33,7 @@ public class TaskList : ExperimentTask {
     public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
     public bool noCatchOnFirstTrial = true;
     [HideInInspector] public List<int> catchTrials; // list of catch trials
-
+    
 
     private int repeatCount = 1;
 
@@ -48,10 +48,14 @@ public class TaskList : ExperimentTask {
 		if (overideRepeat) {
 			repeatCount = 1;
 			repeat = Int32.Parse( overideRepeat.currentString().Trim() );
-		}
-        //Debug.Log("repeat: ");
-        //Debug.Log( repeat);
+            Debug.Log("repeat: " + repeat);
+        }
+        Debug.Log("repeat: " + repeat);
 
+        //Sets repetition in MoveSpawn.cs to equal the repeat value given by TaskList.CS (sends the soonest iteration repeat)
+        MoveSpawn.repetition = repeat;
+
+       
 
         //----------------------------------------------------------------------
         // Automatically determine number of tasks based on children
