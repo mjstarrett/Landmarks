@@ -2032,9 +2032,10 @@ MonoBehaviour:
   repeat: 8
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  skipOnCatch: []
+  toggleSkipOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
+  catchFlag: 0
   currentTask: {fileID: 0}
 --- !u!1 &5040280175771407665
 GameObject:
@@ -3315,9 +3316,10 @@ MonoBehaviour:
   repeat: 1
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  skipOnCatch: []
+  toggleSkipOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
+  catchFlag: 0
   currentTask: {fileID: 0}
 --- !u!1 &7402925210830860859
 GameObject:
@@ -4074,7 +4076,7 @@ GameObject:
   - component: {fileID: 5119621281456872768}
   - component: {fileID: 3537766229715815961}
   m_Layer: 0
-  m_Name: Find
+  m_Name: CueTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4124,11 +4126,11 @@ MonoBehaviour:
   message: {fileID: 4900000, guid: 9640913f0e4984ce190c4c98b1787149, type: 3}
   objects: {fileID: 8003104560949172965}
   texts: {fileID: 0}
-  blackout: 1
+  blackout: 0
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 0}
   instructionSize: 12
-  actionButtonOn: 1
+  actionButtonOn: 0
   customButtonText: 
   restrictMovement: 1
   selfPaced: 0
