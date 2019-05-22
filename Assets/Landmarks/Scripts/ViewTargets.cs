@@ -125,12 +125,12 @@ public class ViewTargets : ExperimentTask {
 	}
 	public void initCurrent() {
 		position = current.transform.position;
-        rotation = current.transform.localRotation;
+        rotation = current.transform.rotation;
 		scale = current.transform.localScale;
 		
 		current.transform.position = destination.transform.position;
-		current.transform.localRotation = destination.transform.localRotation;
-        current.transform.localEulerAngles += objectRotationOffset;
+		current.transform.rotation = destination.transform.rotation;
+        current.transform.eulerAngles += objectRotationOffset;
 		current.transform.localScale = destination.transform.localScale;
 
         // but Turn on the current object

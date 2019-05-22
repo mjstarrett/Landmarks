@@ -63,12 +63,13 @@ MonoBehaviour:
   vrEnabled: 0
   tasks: []
   objectsList: []
-  repeat: 1
+  repeat: 2
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  skipOnCatch: []
+  toggleSkipOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
+  catchFlag: 0
   currentTask: {fileID: 0}
 --- !u!1 &6282823827259011963
 GameObject:
@@ -205,9 +206,10 @@ MonoBehaviour:
   repeat: 8
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  skipOnCatch: []
+  toggleSkipOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
+  catchFlag: 0
   currentTask: {fileID: 0}
 --- !u!1 &6283590481920638031
 GameObject:
@@ -402,7 +404,7 @@ MonoBehaviour:
   message: {fileID: 4900000, guid: 9640913f0e4984ce190c4c98b1787149, type: 3}
   objects: {fileID: 8475965484490080533}
   texts: {fileID: 0}
-  blackout: 1
+  blackout: 0
   text_color: {r: 1, g: 1, b: 1, a: 1}
   instructionFont: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
   instructionSize: 24
