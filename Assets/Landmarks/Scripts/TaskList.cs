@@ -54,7 +54,7 @@ public class TaskList : ExperimentTask {
 
         //Sets repetition in MoveSpawn.cs to equal the repeat value given by TaskList.CS (sends the soonest iteration repeat)
         MoveSpawn.repetition = repeat;
-		}
+		
 
         //----------------------------------------------------------------------
         // Automatically determine number of tasks based on children
