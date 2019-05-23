@@ -138,6 +138,24 @@ public class NavigationTask : ExperimentTask
 			}
 		}
 
+        //VR capabiity with showing target
+        if (vrEnabled)
+        {
+            if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))))
+            {
+                destinations.currentObject().SetActive(true);
+            }
+
+            if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))
+            {
+                //get current location and then log it
+
+                destinations.currentObject().SetActive(true);
+                destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+            }
+        }
+
+        //show target on button click or after set time
         if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || Input.GetButtonDown("Return"))))
         {
             destinations.currentObject().SetActive(true);

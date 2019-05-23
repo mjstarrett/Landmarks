@@ -28,6 +28,8 @@ public class MoveSpawn : ExperimentTask {
 	private static Vector3 position;
 	private static Vector3 rotation;
 
+    public bool randomRotation;
+
     //variables used for block repetition
     public bool blockRepeat;
     public static int repetition;
@@ -36,19 +38,19 @@ public class MoveSpawn : ExperimentTask {
 	public override void startTask () {
         Debug.Log("MS Repetition:"+repetition);
         TASK_START();
-	}	
+	}
 
-	public override void TASK_START()
-	{
-		base.startTask();
+    public override void TASK_START()
+    {
+        base.startTask();
 
-		if (!manager) Start();
-		
-		
-		if (skip) {
-			log.log("INFO	skip task	" + name,1 );
-			return;
-		}
+        if (!manager) Start();
+
+
+        if (skip) {
+            log.log("INFO	skip task	" + name, 1);
+            return;
+        }
 
         // determine what we're moving
         if (isScaled)
@@ -58,27 +60,30 @@ public class MoveSpawn : ExperimentTask {
         else start = avatar;
 
 
-        if ( destinations ) {
-			destination = destinations.currentObject();		
-		}
-		
-		position = start.transform.position;
+        if (destinations) {
+            destination = destinations.currentObject();
+        }
+
+        position = start.transform.position;
         rotation = start.transform.eulerAngles;
 
 
         // Set the position, but ignore the y-axis (just 2d position on map)
-        Vector3 tempPos = start.transform.position; 
+        Vector3 tempPos = start.transform.position;
         tempPos.x = destination.transform.position.x;
         tempPos.z = destination.transform.position.z;
         avatar.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
-        // Set the rotation to random
-
+        // Set the rotation to random if selected
+        if (randomRotation)
+        { 
         Vector3 tempRot = start.transform.eulerAngles;
         tempRot.y = Random.Range(0, 359.999f);
         start.transform.eulerAngles = tempRot;
+        }
+
         if (!isScaled)
         {
             /* MJS 2019

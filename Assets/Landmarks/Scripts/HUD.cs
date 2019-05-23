@@ -435,5 +435,6 @@ public class HUD : MonoBehaviour
     public void OnActionClick()
     {
         actionButtonClicked = true;
+        Debug.Log("+++++++++++++++++++++++++++++++ACTION!!!!!!!!!!!!!!");
     }
 }

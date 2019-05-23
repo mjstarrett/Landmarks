@@ -140,10 +140,12 @@ public class InstructionsTask : ExperimentTask {
         //------------------------------------------
         // Handle buttons to advance the task - MJS
         //------------------------------------------
-        if (selfPaced && Input.GetButtonDown("Return")) {
-            log.log("INPUT_EVENT    clear text    1",1 );
+        if (selfPaced && Input.GetButtonDown("Return"))
+        {
+            log.log("INPUT_EVENT    clear text    1", 1);
             return true;
         }
+        //else if (vrEnabled && vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any)) return true;
         else if (hud.actionButtonClicked == true)
         {
             hud.actionButtonClicked = false;
