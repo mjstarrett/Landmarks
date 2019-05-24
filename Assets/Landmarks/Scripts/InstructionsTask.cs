@@ -140,15 +140,21 @@ public class InstructionsTask : ExperimentTask {
         //------------------------------------------
         // Handle buttons to advance the task - MJS
         //------------------------------------------
-        if (selfPaced && Input.GetButtonDown("Return")) {
-            log.log("INPUT_EVENT    clear text    1",1 );
-            return true;
-        }
-        else if (hud.actionButtonClicked == true)
+        if (selfPaced)  
         {
-            hud.actionButtonClicked = false;
-            log.log("INPUT_EVENT    clear text    1", 1);
-            return true;
+            if (!actionButtonOn && Input.GetButtonDown("Return"))
+            {
+                log.log("INPUT_EVENT    PlayerPressedReturn    1", 1);
+                return true;
+            }
+
+            else if (selfPaced && actionButtonOn && hud.actionButtonClicked == true)
+            {
+                hud.actionButtonClicked = false;
+                log.log("INPUT_EVENT    PlayerPressedActionButton    1", 1);
+                return true;
+            }
+            else return false;
         }
 
         if (killCurrent == true) 
