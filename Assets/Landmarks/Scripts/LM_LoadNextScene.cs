@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 public class LM_LoadNextScene : ExperimentTask
 {
 
-    public string nextScene;
-
     public override void startTask()
     {
         TASK_START();
+
     }
 
 
@@ -19,12 +18,38 @@ public class LM_LoadNextScene : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
-        
+
+        // Grab any info about loading next scenes or conditions from PlayerPrefs(X)
+        var nextIndex = PlayerPrefs.GetInt("NextIndex");
+        var nextLevels = PlayerPrefsX.GetStringArray("NextLevels");
+        var nextConditions = PlayerPrefsX.GetStringArray("NextConditions");
+
+        // If we have a next task/condition, update it
+        if (nextIndex < nextLevels.Length)
+        {
+            manager.config.level = nextLevels[nextIndex];
+            manager.config.condition = nextConditions[nextIndex];
+
+            nextIndex++;
+            PlayerPrefs.SetInt("NextIndex", nextIndex);
+
+            SceneManager.LoadScene(manager.config.level);
+
+        }
+        else
+        {
+            this.skip = true;
+        }
     }
 
 
     public override bool updateTask()
     {
+        if (skip)
+        {
+            //log.log("INFO    skip task    " + name,1 );
+            return true;
+        }
         return true;
     }
 

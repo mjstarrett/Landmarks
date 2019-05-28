@@ -268,27 +268,26 @@ public class LM_ExperimentManager : MonoBehaviour
             {
                 config.level = "esc_city01";
                 PlayerPrefsX.SetStringArray("NextLevels", new string[1] {"esc_city02"}); // using arrayprefs2 allows for multiple 'next' levels
-                PlayerPrefs.SetInt("NextLevelIndex", 0);
             }
             else if (id > 200 && id < 300)
             {
                 config.level = "esc_city02";
                 PlayerPrefsX.SetStringArray("NextLevels", new string[1] {"esc_city01"}); // using arrayprefs2 allows for multiple 'next' levels
-                PlayerPrefs.SetInt("NextLevelIndex", 0);
             }
-
 
             // if it's odd, start with standard navigation
             if (id % 2 != 0)
             {
                 config.condition = "Standard";
-                PlayerPrefs.SetString("NextCondition", "Scaled");
+                PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Scaled" });
             }
             else
             {
                 config.condition = "Scaled";
-                PlayerPrefs.SetString("NextCondition", "Standard");
+                PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Standard" });
             }
+
+            PlayerPrefs.SetInt("NextIndex", 0);
         }
         // ---------------------------------------------------------------------
 
