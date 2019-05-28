@@ -267,13 +267,16 @@ public class LM_ExperimentManager : MonoBehaviour
             if (id > 100 && id < 200)
             {
                 config.level = "esc_city01";
-                PlayerPrefs.SetString("NextLevel", "esc_city02");
+                PlayerPrefsX.SetStringArray("NextLevels", new string[1] {"esc_city02"}); // using arrayprefs2 allows for multiple 'next' levels
+                PlayerPrefs.SetInt("NextLevelIndex", 0);
             }
             else if (id > 200 && id < 300)
             {
                 config.level = "esc_city02";
-                PlayerPrefs.SetString("NextLevel", "esc_city01");
+                PlayerPrefsX.SetStringArray("NextLevels", new string[1] {"esc_city01"}); // using arrayprefs2 allows for multiple 'next' levels
+                PlayerPrefs.SetInt("NextLevelIndex", 0);
             }
+
 
             // if it's odd, start with standard navigation
             if (id % 2 != 0)
