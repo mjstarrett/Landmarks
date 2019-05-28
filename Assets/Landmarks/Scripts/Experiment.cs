@@ -39,7 +39,7 @@ public class Experiment : MonoBehaviour {
 
 	public UserInterface userInterface = UserInterface.DesktopDefault;
 	public TaskList tasks;
-	private Config config;
+	[HideInInspector] public Config config;
 	private long microseconds = 1;
 	private string logfile;
 	private string configfile = ""; 
