@@ -22,7 +22,8 @@ using UnityEngine.UI;
 
 
 public class TaskList : ExperimentTask {
-	
+
+    public string skipCondition = "";
 	public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
 	public GameObject[] objectsList;
 
@@ -46,7 +47,12 @@ public class TaskList : ExperimentTask {
 		// Debug.Log(this.GetType().Name);
 		base.startTask();
 
-		if (overideRepeat) {
+        if (skipCondition == manager.config.condition)
+        {
+            skip = true;
+        }
+
+        if (overideRepeat) {
 			repeatCount = 1;
 			repeat = Int32.Parse( overideRepeat.currentString().Trim() );
 		}

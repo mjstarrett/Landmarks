@@ -83,14 +83,38 @@ public class Experiment : MonoBehaviour {
 
         Debug.Log ("Starting Experiment.cs");
 
-		// ------------------------------------------
-		// Grab the Landmarks items that are not controller dependent
-		// ------------------------------------------
-		tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
+        //since config is a singleton it will be the one created in scene 0 or this scene
+        config = Config.instance;
+
+        // ------------------------------------------
+        // Grab the Landmarks items that are not controller dependent
+        // ------------------------------------------
+        tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
         overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
         // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
 
+
+        if (PlayerPrefs.GetString("UserInterface") != "default")
+        {
+            Debug.Log("Getting user interface from config file.");
+
+            switch (config.ui)
+            {
+                case "Desktop":
+                    userInterface = UserInterface.DesktopDefault;
+                    break;
+                case "Vive Virt.":
+                    userInterface = UserInterface.ViveAndVirtualizer;
+                    break;
+                case "Vive Std.":
+                    userInterface = UserInterface.ViveRoomspace;
+                    break;
+                default:
+                    userInterface = UserInterface.DesktopDefault;
+                    break;
+            }
+        }
 
         // ------------------------------------------
         // Assign Player and Camera based on UI enum
@@ -170,8 +194,7 @@ public class Experiment : MonoBehaviour {
 		playerCamera.enabled = true;
 		overheadCamera.enabled = false;
 		Cursor.visible = false;
-		//since config is a singleton it will be the one created in scene 0 or this scene
-		config = Config.instance;
+		
 
 		// Set the avatar and hud
 		avatar = player;
@@ -183,7 +206,7 @@ public class Experiment : MonoBehaviour {
         // Handle the config file
         // ------------------------------------------
 
-        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + PlayerPrefs.GetInt("subID") + "_" + SceneManager.GetActiveScene().name + ".log";
+        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + ".log";
 		configfile = config.expPath + "/" + config.filename;
 		
 		//when in editor
@@ -200,13 +223,12 @@ public class Experiment : MonoBehaviour {
 			CharacterController c = avatar.GetComponent<CharacterController>();
             c.detectCollisions = false;
 			dblog = new dbPlaybackLog(logfile);
-		} else if (config.runMode == ConfigRunMode.NEW) {
-			//dblog = new dbMockLog(logfile);
 		}
 
         //start session
 
-
+        dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + "\tBIOSEX:\t" + PlayerPrefs.GetString("biosex") + 
+                  "\tAGE:\t" + PlayerPrefs.GetInt("subAge") + "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
     }
 	
 	public void StartPlaying() {		

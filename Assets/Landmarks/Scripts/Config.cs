@@ -52,7 +52,7 @@ public class Config : MonoBehaviour{
 	public string session = "default";
 	public string level = "default";
     public string condition = "default";
-    public int totalScenes;
+    public string ui = "default";
 
 	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
 	[HideInInspector] public bool 	bootstrapped = false;

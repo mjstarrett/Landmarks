@@ -187,25 +187,6 @@ public class LM_ExperimentManager : MonoBehaviour
     }
 
 
-    //--------------------------------------------------------------------------
-    // set up our config for the LM experiment
-    //--------------------------------------------------------------------------
-    void readyConfig()
-    {
-        config.runMode = ConfigRunMode.NEW;
-        config.bootstrapped = true;
-
-        config.expPath = appDir + "/data/" + expID.options[expID.value].text;
-        config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
-
-        config.appPath = appDir;
-        config.subject = subID.text;
-
-        DontDestroyOnLoad(config);
-
-    }
-
-
     public void LoadExperiment()
     {
         TextMeshProUGUI _errorMessage = start.transform.Find("Error").GetComponent<TextMeshProUGUI>();
@@ -234,10 +215,8 @@ public class LM_ExperimentManager : MonoBehaviour
 
 
             PlayerPrefs.SetString("expID", expID.options[expID.value].text);
-            PlayerPrefs.SetInt("subID", int.Parse(subID.text));
             PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
             PlayerPrefs.SetInt("subAge", int.Parse(age.text));
-            PlayerPrefs.SetString("ui", ui.options[ui.value].text);
 
             readyConfig();
             ReadyExp();
@@ -295,6 +274,27 @@ public class LM_ExperimentManager : MonoBehaviour
 
 
         else config.level = "simpleSample_gettingStarted";
+
+    }
+
+
+
+    //--------------------------------------------------------------------------
+    // set up our config for the LM experiment
+    //--------------------------------------------------------------------------
+    void readyConfig()
+    {
+        config.runMode = ConfigRunMode.NEW;
+        config.bootstrapped = true;
+
+        config.expPath = appDir + "/data/" + expID.options[expID.value].text;
+        config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
+
+        config.appPath = appDir;
+        config.subject = subID.text;
+        config.ui = ui.options[ui.value].text;
+
+        DontDestroyOnLoad(config);
 
     }
 }
