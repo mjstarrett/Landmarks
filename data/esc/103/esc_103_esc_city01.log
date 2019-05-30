@@ -1,0 +1,703 @@
+63694807290151	EXPERIMENT:	esc	SUBJECT:	103	BIOSEX:	Male	AGE:	30	START_SCENE	esc_city01	START_CONDITION:	Standard	UI:	DesktopDefault
+63694807290201	TASK_START	LM_Timeline	TaskList
+63694807290201	TASK:	LM_Timeline	Repetition:	1	Catch:	False
+63694807290202	TASK_START	InitializeExperiment	TaskList
+63694807290202	TASK:	InitializeExperiment	Repetition:	1	Catch:	False
+63694807290202	TASK_START	PlaceTargets	TaskList
+63694807290202	TASK:	PlaceTargets	Repetition:	1	Catch:	False
+63694807290203	TASK_START	CheckForUsedTargets	LM_CompareLists
+63694807290214	TASK_END	CheckForUsedTargets	LM_CompareLists	11
+63694807290215	TASK_START	ListHighlightObjects	ObjectList
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight01	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight02	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight03	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight04	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight05	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight06	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight07	null
+63694807290215	TASK_ADD	ListHighlightObjects	ObjectList	Highlight08	null
+63694807290257	TASK_END	ListHighlightObjects	ObjectList	42
+63694807290258	TASK_START	ListTargetPlaceholders	ObjectList
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target01	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target02	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target03	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target04	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target05	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target06	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target07	null
+63694807290258	TASK_ADD	ListTargetPlaceholders	ObjectList	Target08	null
+63694807290284	TASK_END	ListTargetPlaceholders	ObjectList	26
+63694807290285	TASK_START	PopulateHighlightObjects	MoveObjects
+63694807290286	Target01: 	Highlight01	Position: 	5.95	0.085	116.45	Rotation: 	270	270	0
+63694807290286	Target02: 	Highlight02	Position: 	5.95	0.085	14.45	Rotation: 	270	270	0
+63694807290286	Target03: 	Highlight03	Position: 	85.935	0.085	14.45	Rotation: 	270	270	0
+63694807290286	Target04: 	Highlight04	Position: 	85.935	0.085	74.45999	Rotation: 	270	270	0
+63694807290286	Target05: 	Highlight05	Position: 	36.55	0.085	74.45999	Rotation: 	270	180	0
+63694807290286	Target06: 	Highlight06	Position: 	36.55	0.085	116.45	Rotation: 	270	180	0
+63694807290286	Target07: 	Highlight07	Position: 	76.49999	0.085	106.25	Rotation: 	270	0	0
+63694807290286	Target08: 	Highlight08	Position: 	76.49999	0.085	37.4	Rotation: 	270	90	0
+63694807290300	TASK_END	PopulateHighlightObjects	MoveObjects	15
+63694807290301	TASK_START	ListTargets	ObjectList
+63694807290302	TASK_ADD	ListTargets	ObjectList	Post Office	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Ice Cream Shop	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Camera Store	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Barber	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Computer Shop	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Music Store	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Pharmacy	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Repair Shop	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Hair Dresser	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Clothing Store	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Bike Shop	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Toy Shop	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Bakery	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Grocery	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Coffee Shop	null
+63694807290302	TASK_ADD	ListTargets	ObjectList	Pet Shop	null
+63694807290305	TASK_END	ListTargets	ObjectList	4
+63694807290305	TASK_START	ListTargetLocations	ObjectList
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target04	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target05	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target06	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target07	null
+63694807290305	TASK_ADD	ListTargetLocations	ObjectList	Target08	null
+63694807290309	TASK_END	ListTargetLocations	ObjectList	4
+63694807290310	TASK_START	PopulateTargets	MoveObjects
+63694807290310	Target01: 	Post Office	Position: 	5.95	0.085	116.45	Rotation: 	270	270	0
+63694807290310	Target02: 	Ice Cream Shop	Position: 	5.95	0.085	14.45	Rotation: 	270	270	0
+63694807290310	Target03: 	Camera Store	Position: 	85.935	0.085	14.45	Rotation: 	270	270	0
+63694807290310	Target04: 	Barber	Position: 	85.935	0.085	74.45998	Rotation: 	270	270	0
+63694807290310	Target05: 	Computer Shop	Position: 	36.55	0.085	74.45998	Rotation: 	270	180	0
+63694807290310	Target06: 	Music Store	Position: 	36.55	0.085	116.45	Rotation: 	270	180	0
+63694807290310	Target07: 	Pharmacy	Position: 	76.49999	0.085	106.25	Rotation: 	270	0	0
+63694807290310	Target08: 	Repair Shop	Position: 	76.49999	0.085	37.4	Rotation: 	270	90	0
+63694807290318	TASK_END	PopulateTargets	MoveObjects	8
+63694807290319	TASK_START	UpdateUsedTargets	LM_CompareLists
+63694807290324	TASK_END	UpdateUsedTargets	LM_CompareLists	5
+63694807290325	TASK_END	PlaceTargets	TaskList	123
+63694807290325	TASK_START	ListNavigationStarts	ObjectList
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc06	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc01	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc03	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc02	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc04	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc05	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc08	null
+63694807290325	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc07	null
+63694807290328	TASK_END	ListNavigationStarts	ObjectList	3
+63694807290329	TASK_START	ListLargePlayerStarts	ObjectList
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
+63694807290329	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
+63694807290337	TASK_END	ListLargePlayerStarts	ObjectList	8
+63694807290338	TASK_START	ListSmallPlayerStarts	ObjectList
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc04	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc08	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc01	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc02	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc03	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc07	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc06	null
+63694807290338	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc05	null
+63694807290341	TASK_END	ListSmallPlayerStarts	ObjectList	3
+63694807290341	TASK_END	InitializeExperiment	TaskList	139
+63694807290342	TASK_START	BeginMessage	InstructionsTask
+63694807291280	INPUT_EVENT    PlayerPressedActionButton    1
+63694807291281	TASK_END	BeginMessage	InstructionsTask	939
+63694807291283	TASK_START	Tasks	TaskList
+63694807291283	TASK:	Tasks	Repetition:	1	Catch:	False
+63694807291283	TASK_START	PracticeTaskLoop	TaskList
+63694807291283	TASK:	PracticeTaskLoop	Repetition:	1	Catch:	False
+63694807291284	TASK_START	LearnTargets	TaskList
+63694807291284	TASK:	LearnTargets	Repetition:	1	Catch:	False
+63694807291284	TASK_START	LearnTargets Instructions	InstructionsTask
+63694807292661	INPUT_EVENT    PlayerPressedActionButton    1
+63694807292661	TASK_END	LearnTargets Instructions	InstructionsTask	1377
+63694807292662	TASK_START	ViewTargets	TaskList
+63694807292662	TASK:	ViewTargets	Repetition:	1	Catch:	False
+63694807292663	TASK_START	ListTargetsForLearning	ObjectList
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Computer Shop	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Music Store	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Repair Shop	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Post Office	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Barber	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Ice Cream Shop	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Camera Store	null
+63694807292663	TASK_ADD	ListTargetsForLearning	ObjectList	Pharmacy	null
+63694807292673	TASK_END	ListTargetsForLearning	ObjectList	10
+63694807292674	TASK_START	RotateTarget	ViewTargets
+63694807292675	Practice	Computer Shop
+63694807295678	Practice	Music Store
+63694807298694	Practice	Repair Shop
+63694807301697	Practice	Post Office
+63694807304697	Practice	Barber
+63694807307701	Practice	Ice Cream Shop
+63694807310709	Practice	Camera Store
+63694807313709	Practice	Pharmacy
+63694807316713	TASK_END	RotateTarget	ViewTargets	24039
+63694807316713	TASK:	ViewTargets	Repetition:	2	Catch:	False
+63694807316714	TASK_START	ListTargetsForLearning	ObjectList
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Post Office	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Barber	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Computer Shop	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Music Store	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Pharmacy	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Repair Shop	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Camera Store	null
+63694807316714	TASK_ADD	ListTargetsForLearning	ObjectList	Ice Cream Shop	null
+63694807316725	TASK_END	ListTargetsForLearning	ObjectList	11
+63694807316726	TASK_START	RotateTarget	ViewTargets
+63694807316726	Practice	Post Office
+63694807319729	Practice	Barber
+63694807322730	Practice	Computer Shop
+63694807325746	Practice	Music Store
+63694807328746	Practice	Pharmacy
+63694807331749	Practice	Repair Shop
+63694807334762	Practice	Camera Store
+63694807337773	Practice	Ice Cream Shop
+63694807340777	TASK_END	RotateTarget	ViewTargets	24051
+63694807340777	TASK_END	ViewTargets	TaskList	48115
+63694807340777	TASK_END	LearnTargets	TaskList	49493
+63694807340777	TASK_END	PracticeTaskLoop	TaskList	49494
+63694807340778	TASK_START	Standard	TaskList
+63694807340778	TASK:	Standard	Repetition:	1	Catch:	False
+63694807340779	TASK_START	NavigationTask	TaskList
+63694807340779	TASK:	NavigationTask	Repetition:	1	Catch:	False
+63694807340780	TASK_START	MovePlayerToSpawn	MoveSpawn
+63694807340780	TASK_POSITION	DesktopDefaultController	MoveSpawn	(67.2, 1.2, 69.6)
+63694807340780	TASK_ROTATE	DesktopDefaultController	MoveSpawn	(0.0, 94.4, 0.0)
+63694807340793	TASK_END	MovePlayerToSpawn	MoveSpawn	13
+63694807340794	TASK_START	ListNavigationTargets	ObjectList
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Repair Shop	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Music Store	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Camera Store	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Pharmacy	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Post Office	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Computer Shop	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Barber	null
+63694807340794	TASK_ADD	ListNavigationTargets	ObjectList	Ice Cream Shop	null
+63694807340809	TASK_END	ListNavigationTargets	ObjectList	15
+63694807340810	TASK_START	NavigationInstructions	InstructionsTask
+63694807460965	INPUT_EVENT    PlayerPressedActionButton    1
+63694807460965	TASK_END	NavigationInstructions	InstructionsTask	120155
+63694807460966	TASK_START	Navigate	TaskList
+63694807460966	TASK:	Navigate	Repetition:	1	Catch:	False
+63694807460967	TASK_START	CueTarget	InstructionsTask
+63694807465970	TASK_END	CueTarget	InstructionsTask	5003
+63694807465971	TASK_START	ConfidenceRating	Confidence
+63694807470913	INPUT_EVENT    clear text    1
+63694807470914	TASK_END	ConfidenceRating	Confidence	4943
+63694807470914	ConfidenceRating	Navigate	Question:	ConfidenceRating	Target:	Repair Shop	Confidence:	1.661815	/	3
+63694807470916	TASK_START	Navigate	NavigationTask
+63694807470930	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807470946	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807470961	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807470977	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471001	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471029	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471045	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471061	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471077	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471097	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471129	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471137	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471161	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471177	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.10956	0	Camera   (xyz): 	3.350005	51.10956	1.069044E-07	
+63694807471197	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.05956	0	Camera   (xyz): 	3.350005	51.05956	0	
+63694807471217	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.05956	0	Camera   (xyz): 	3.350005	51.05956	0	
+63694807471245	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.00956	0	Camera   (xyz): 	3.350004	51.00956	0	
+63694807471261	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	51.00956	0	Camera   (xyz): 	3.350004	51.00956	0	
+63694807471277	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	50.90956	0	Camera   (xyz): 	3.350005	50.90956	1.069044E-07	
+63694807471297	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	50.80956	0	Camera   (xyz): 	3.350005	50.80956	0	
+63694807471317	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	50.45956	0	Camera   (xyz): 	3.300005	50.45956	-1.06899E-07	
+63694807471345	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	49.45956	0	Camera   (xyz): 	3.200005	49.45956	0	
+63694807471361	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	48.20956	0	Camera   (xyz): 	2.950005	48.20956	0	
+63694807471377	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	47.45956	0	Camera   (xyz): 	2.750005	47.45956	0	
+63694807471397	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	46.00956	0	Camera   (xyz): 	2.350005	46.00956	5.340577E-08	
+63694807471429	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	44.55956	0	Camera   (xyz): 	1.800005	44.55956	0	
+63694807471445	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	41.05956	0	Camera   (xyz): 	0.4000049	41.05956	0	
+63694807471461	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	36.20956	0	Camera   (xyz): 	358.45	36.20956	-5.338038E-08	
+63694807471477	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	34.10956	0	Camera   (xyz): 	357.65	34.10956	0	
+63694807471497	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	26.80956	0	Camera   (xyz): 	355.25	26.80956	1.070895E-07	
+63694807471529	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	21.90956	0	Camera   (xyz): 	354.05	21.90956	-1.072998E-07	
+63694807471545	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	20.00956	0	Camera   (xyz): 	353.8	20.00956	-1.073496E-07	
+63694807471561	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	15.45957	0	Camera   (xyz): 	353.35	15.45957	0	
+63694807471577	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	13.75956	0	Camera   (xyz): 	353.35	13.75957	0	
+63694807471597	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	8.459565	0	Camera   (xyz): 	353.45	8.459564	5.371144E-08	
+63694807471617	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	6.759564	0	Camera   (xyz): 	353.65	6.759563	-2.684513E-08	
+63694807471645	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	5.809564	0	Camera   (xyz): 	353.8	5.809563	5.36748E-08	
+63694807471661	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	4.559563	0	Camera   (xyz): 	354.05	4.559564	0	
+63694807471677	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	4.159564	0	Camera   (xyz): 	354.15	4.159565	0	
+63694807471697	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	3.609564	0	Camera   (xyz): 	354.4	3.609564	0	
+63694807471729	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	3.009564	0	Camera   (xyz): 	354.85	3.009564	0	
+63694807471745	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.709564	0	Camera   (xyz): 	355.2	2.709565	0	
+63694807471761	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.559565	0	Camera   (xyz): 	355.45	2.559565	-6.691194E-09	
+63694807471777	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.5	2.509565	0	
+63694807471797	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.55	2.509565	0	
+63694807471829	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.55	2.509565	0	
+63694807471845	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.6	2.509565	-6.689823E-09	
+63694807471861	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.6	2.509565	-6.689823E-09	
+63694807471877	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.6	2.509565	-6.689823E-09	
+63694807471897	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.6	2.509565	-6.689823E-09	
+63694807471917	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.6	2.509565	-6.689823E-09	
+63694807471945	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.459565	0	Camera   (xyz): 	355.55	2.459565	-6.690274E-09	
+63694807471961	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807471977	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807471997	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472017	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472045	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472061	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472077	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472097	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472129	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472145	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472161	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472177	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472197	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472217	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472245	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472261	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472277	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472297	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472329	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472345	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472361	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472377	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.459565	0	Camera   (xyz): 	355.55	2.459565	-6.690274E-09	
+63694807472397	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.709565	0	Camera   (xyz): 	355.55	2.709565	6.690275E-09	
+63694807472429	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.709565	0	Camera   (xyz): 	355.55	2.709565	6.690275E-09	
+63694807472445	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.709565	0	Camera   (xyz): 	355.55	2.709565	6.690275E-09	
+63694807472461	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.659565	0	Camera   (xyz): 	355.55	2.659565	-6.690274E-09	
+63694807472477	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.609565	0	Camera   (xyz): 	355.55	2.609565	0	
+63694807472497	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.509565	0	Camera   (xyz): 	355.55	2.509565	-6.690274E-09	
+63694807472521	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.459565	0	Camera   (xyz): 	355.55	2.459565	0	
+63694807472537	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472557	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472585	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472601	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472621	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472637	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472657	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.409565	0	Camera   (xyz): 	355.55	2.409565	6.690274E-09	
+63694807472689	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.359565	0	Camera   (xyz): 	355.55	2.359565	-6.690275E-09	
+63694807472701	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.309565	0	Camera   (xyz): 	355.55	2.309565	-6.690275E-09	
+63694807472721	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	2.159565	0	Camera   (xyz): 	355.55	2.159565	-6.690274E-09	
+63694807472737	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	1.959565	0	Camera   (xyz): 	355.55	1.959565	6.690274E-09	
+63694807472757	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	0.9595645	0	Camera   (xyz): 	355.65	0.9595644	3.344689E-09	
+63694807472785	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	359.5596	0	Camera   (xyz): 	355.7	359.5596	0	
+63694807472801	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	358.3096	0	Camera   (xyz): 	355.75	358.3096	0	
+63694807472821	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	357.4096	0	Camera   (xyz): 	355.8	357.4096	6.688067E-09	
+63694807472837	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	355.3096	0	Camera   (xyz): 	355.9	355.3096	0	
+63694807472857	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	352.6596	0	Camera   (xyz): 	355.95	352.6596	8.024166E-08	
+63694807472885	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	351.9596	0	Camera   (xyz): 	356	351.9596	0	
+63694807472905	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	351.5596	0	Camera   (xyz): 	356	351.5596	0	
+63694807472922	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	351.3096	0	Camera   (xyz): 	356.05	351.3096	-2.674395E-08	
+63694807472937	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	351.2096	0	Camera   (xyz): 	356.05	351.2096	0	
+63694807472957	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.9596	0	Camera   (xyz): 	356.1	350.9596	0	
+63694807472985	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.9596	0	Camera   (xyz): 	356.15	350.9596	0	
+63694807473006	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.9096	0	Camera   (xyz): 	356.15	350.9096	0	
+63694807473021	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.9096	0	Camera   (xyz): 	356.15	350.9096	0	
+63694807473037	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.9096	0	Camera   (xyz): 	356.15	350.9096	0	
+63694807473057	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.8596	0	Camera   (xyz): 	356.15	350.8596	5.348154E-08	
+63694807473085	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.8096	0	Camera   (xyz): 	356.2	350.8096	2.673921E-08	
+63694807473106	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.6096	0	Camera   (xyz): 	356.2	350.6096	0	
+63694807473121	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	350.5096	0	Camera   (xyz): 	356.25	350.5096	2.673767E-08	
+63694807473137	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	349.9596	0	Camera   (xyz): 	356.3	349.9596	0	
+63694807473157	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	348.7596	0	Camera   (xyz): 	356.35	348.7596	0	
+63694807473177	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	346.4596	0	Camera   (xyz): 	356.5	346.4596	-2.673028E-08	
+63694807473205	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	342.5596	0	Camera   (xyz): 	356.8	342.5596	0	
+63694807473221	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	341.5596	0	Camera   (xyz): 	356.8	341.5596	5.344418E-08	
+63694807473237	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	339.6096	0	Camera   (xyz): 	356.95	339.6096	0	
+63694807473257	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	338.4096	0	Camera   (xyz): 	357.05	338.4096	-5.343166E-08	
+63694807473277	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	337.6096	0	Camera   (xyz): 	357.2	337.6096	5.342463E-08	
+63694807473297	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	337.1595	0	Camera   (xyz): 	357.3	337.1596	1.068403E-07	
+63694807473321	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	336.1096	0	Camera   (xyz): 	357.5	336.1096	0	
+63694807473337	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	335.3096	0	Camera   (xyz): 	357.7	335.3096	0	
+63694807473357	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	334.5096	0	Camera   (xyz): 	357.85	334.5096	0	
+63694807473377	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	333.1596	0	Camera   (xyz): 	358.1	333.1596	0	
+63694807473405	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	332.2096	0	Camera   (xyz): 	358.35	332.2096	0	
+63694807473421	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	331.7596	0	Camera   (xyz): 	358.5	331.7596	0	
+63694807473437	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	331.0596	0	Camera   (xyz): 	358.75	331.0596	0	
+63694807473457	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	330.5596	0	Camera   (xyz): 	358.9	330.5596	2.668534E-08	
+63694807473477	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	330.0096	0	Camera   (xyz): 	359.1	330.0096	0	
+63694807473506	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	329.3096	0	Camera   (xyz): 	359.2	329.3096	0	
+63694807473521	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	329.0096	0	Camera   (xyz): 	359.25	329.0096	1.334136E-08	
+63694807473537	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6596	0	Camera   (xyz): 	359.3	328.6596	-1.334121E-08	
+63694807473557	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.1596	0	Camera   (xyz): 	359.3	328.1596	1.334121E-08	
+63694807473589	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0096	0	Camera   (xyz): 	359.3	328.0096	1.334121E-08	
+63694807473597	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0096	0	Camera   (xyz): 	359.3	328.0096	1.334121E-08	
+63694807473621	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0096	0	Camera   (xyz): 	359.3	328.0096	1.334121E-08	
+63694807473637	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0096	0	Camera   (xyz): 	359.3	328.0096	1.334121E-08	
+63694807473657	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0096	0	Camera   (xyz): 	359.3	328.0096	1.334121E-08	
+63694807473689	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.3	328.0596	-1.334121E-08	
+63694807473705	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.3	328.0596	-1.334121E-08	
+63694807473721	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.3	328.0596	-1.334121E-08	
+63694807473737	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.3	328.0596	-1.334121E-08	
+63694807473761	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.25	328.0596	0	
+63694807473777	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.25	328.0596	0	
+63694807473805	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.0596	0	Camera   (xyz): 	359.15	328.0596	0	
+63694807473829	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.1596	0	Camera   (xyz): 	359.15	328.1596	0	
+63694807473837	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.3096	0	Camera   (xyz): 	359.15	328.3096	0	
+63694807473861	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.4596	0	Camera   (xyz): 	359.15	328.4596	1.334168E-08	
+63694807473877	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.5596	0	Camera   (xyz): 	359.15	328.5596	2.668336E-08	
+63694807473905	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.5596	0	Camera   (xyz): 	359.15	328.5596	2.668336E-08	
+63694807473929	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807473945	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807473961	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807473993	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807473997	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474029	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474037	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474057	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474077	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474113	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474117	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474145	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474157	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474177	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474214	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474217	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474245	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474257	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474277	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474309	Avatar: 	DesktopDefaultController	Position (xyz): 	67.15	1.182005	69.61501	Rotation (xyz): 	0	328.6096	0	Camera   (xyz): 	359.15	328.6096	0	
+63694807474321	Avatar: 	DesktopDefaultController	Position (xyz): 	67.1188	1.182005	69.66625	Rotation (xyz): 	0	328.6596	0	Camera   (xyz): 	359.15	328.6596	-1.334168E-08	
+63694807474337	Avatar: 	DesktopDefaultController	Position (xyz): 	67.08759	1.182005	69.7175	Rotation (xyz): 	0	328.6596	0	Camera   (xyz): 	359.15	328.6596	-1.334168E-08	
+63694807474361	Avatar: 	DesktopDefaultController	Position (xyz): 	67.05638	1.182005	69.76875	Rotation (xyz): 	0	328.6596	0	Camera   (xyz): 	359.15	328.6596	-1.334168E-08	
+63694807474393	Avatar: 	DesktopDefaultController	Position (xyz): 	67.02531	1.182005	69.82007	Rotation (xyz): 	0	328.8096	0	Camera   (xyz): 	359.15	328.8096	0	
+63694807474398	Avatar: 	DesktopDefaultController	Position (xyz): 	66.99432	1.182005	69.87145	Rotation (xyz): 	0	328.9096	0	Camera   (xyz): 	359.1	328.9096	-2.668372E-08	
+63694807474429	Avatar: 	DesktopDefaultController	Position (xyz): 	66.96348	1.182005	69.92291	Rotation (xyz): 	0	329.0596	0	Camera   (xyz): 	359.05	329.0596	0	
+63694807474445	Avatar: 	DesktopDefaultController	Position (xyz): 	66.93289	1.182005	69.97453	Rotation (xyz): 	0	329.3596	0	Camera   (xyz): 	359.05	329.3596	2.668409E-08	
+63694807474461	Avatar: 	DesktopDefaultController	Position (xyz): 	66.9024	1.182005	70.02621	Rotation (xyz): 	0	329.4596	0	Camera   (xyz): 	359.05	329.4596	0	
+63694807474498	Avatar: 	DesktopDefaultController	Position (xyz): 	66.80093	1.182005	70.19855	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474498	Avatar: 	DesktopDefaultController	Position (xyz): 	66.69945	1.182005	70.3709	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474521	Avatar: 	DesktopDefaultController	Position (xyz): 	66.59797	1.182005	70.54324	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474537	Avatar: 	DesktopDefaultController	Position (xyz): 	66.49649	1.182005	70.71558	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474561	Avatar: 	DesktopDefaultController	Position (xyz): 	66.39501	1.182005	70.88792	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474577	Avatar: 	DesktopDefaultController	Position (xyz): 	66.29353	1.182005	71.06027	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474597	Avatar: 	DesktopDefaultController	Position (xyz): 	66.19205	1.182005	71.23261	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474629	Avatar: 	DesktopDefaultController	Position (xyz): 	66.09058	1.182005	71.40495	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474637	Avatar: 	DesktopDefaultController	Position (xyz): 	65.9891	1.182005	71.57729	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474662	Avatar: 	DesktopDefaultController	Position (xyz): 	65.88762	1.182005	71.74964	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474689	Avatar: 	DesktopDefaultController	Position (xyz): 	65.78614	1.182005	71.92198	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474713	Avatar: 	DesktopDefaultController	Position (xyz): 	65.68466	1.182005	72.09432	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474717	Avatar: 	DesktopDefaultController	Position (xyz): 	65.58318	1.182005	72.26667	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474745	Avatar: 	DesktopDefaultController	Position (xyz): 	65.4817	1.182005	72.43901	Rotation (xyz): 	0	329.5096	0	Camera   (xyz): 	359.05	329.5096	2.668409E-08	
+63694807474761	Avatar: 	DesktopDefaultController	Position (xyz): 	65.38052	1.182005	72.61153	Rotation (xyz): 	0	329.6096	0	Camera   (xyz): 	359.05	329.6096	2.668409E-08	
+63694807474790	Avatar: 	DesktopDefaultController	Position (xyz): 	65.28101	1.182005	72.78501	Rotation (xyz): 	0	330.1596	0	Camera   (xyz): 	358.9	330.1596	-2.668535E-08	
+63694807474797	Avatar: 	DesktopDefaultController	Position (xyz): 	65.18255	1.182005	72.9591	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474817	Avatar: 	DesktopDefaultController	Position (xyz): 	65.0841	1.182005	73.13319	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474837	Avatar: 	DesktopDefaultController	Position (xyz): 	64.98564	1.182005	73.30727	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474857	Avatar: 	DesktopDefaultController	Position (xyz): 	64.88718	1.182005	73.48136	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474877	Avatar: 	DesktopDefaultController	Position (xyz): 	64.78873	1.182005	73.65545	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474910	Avatar: 	DesktopDefaultController	Position (xyz): 	64.69028	1.182005	73.82954	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474917	Avatar: 	DesktopDefaultController	Position (xyz): 	64.59182	1.182005	74.00362	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474946	Avatar: 	DesktopDefaultController	Position (xyz): 	64.49336	1.182005	74.17771	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474961	Avatar: 	DesktopDefaultController	Position (xyz): 	64.39491	1.182005	74.3518	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807474977	Avatar: 	DesktopDefaultController	Position (xyz): 	64.29645	1.182005	74.52589	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475013	Avatar: 	DesktopDefaultController	Position (xyz): 	64.198	1.182005	74.69997	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475017	Avatar: 	DesktopDefaultController	Position (xyz): 	64.09954	1.182005	74.87406	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475045	Avatar: 	DesktopDefaultController	Position (xyz): 	64.00108	1.182005	75.04815	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475061	Avatar: 	DesktopDefaultController	Position (xyz): 	63.90263	1.182005	75.22224	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475093	Avatar: 	DesktopDefaultController	Position (xyz): 	63.80417	1.182005	75.39632	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475097	Avatar: 	DesktopDefaultController	Position (xyz): 	63.70572	1.182005	75.57041	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475121	Avatar: 	DesktopDefaultController	Position (xyz): 	63.60726	1.182005	75.7445	Rotation (xyz): 	0	330.5096	0	Camera   (xyz): 	358.85	330.5096	0	
+63694807475146	Avatar: 	DesktopDefaultController	Position (xyz): 	63.50835	1.182005	75.91833	Rotation (xyz): 	0	330.3596	0	Camera   (xyz): 	358.85	330.3596	0	
+63694807475157	Avatar: 	DesktopDefaultController	Position (xyz): 	63.40732	1.182005	76.09094	Rotation (xyz): 	0	329.6596	0	Camera   (xyz): 	358.85	329.6596	0	
+63694807475177	Avatar: 	DesktopDefaultController	Position (xyz): 	63.30211	1.182005	76.26102	Rotation (xyz): 	0	328.2596	0	Camera   (xyz): 	358.85	328.2596	0	
+63694807475197	Avatar: 	DesktopDefaultController	Position (xyz): 	63.19248	1.182005	76.42831	Rotation (xyz): 	0	326.7596	0	Camera   (xyz): 	358.85	326.7596	0	
+63694807475229	Avatar: 	DesktopDefaultController	Position (xyz): 	63.07242	1.182005	76.58826	Rotation (xyz): 	0	323.1096	0	Camera   (xyz): 	359.25	323.1096	0	
+63694807475245	Avatar: 	DesktopDefaultController	Position (xyz): 	62.94685	1.182005	76.74393	Rotation (xyz): 	0	321.1096	0	Camera   (xyz): 	359.5	321.1096	0	
+63694807475261	Avatar: 	DesktopDefaultController	Position (xyz): 	62.8162	1.182005	76.89535	Rotation (xyz): 	0	319.2096	0	Camera   (xyz): 	359.8	319.2096	0	
+63694807475277	Avatar: 	DesktopDefaultController	Position (xyz): 	62.68383	1.182005	77.04528	Rotation (xyz): 	0	318.5596	0	Camera   (xyz): 	359.9	318.5596	0	
+63694807475297	Avatar: 	DesktopDefaultController	Position (xyz): 	62.54835	1.182005	77.19241	Rotation (xyz): 	0	317.3596	0	Camera   (xyz): 	0.1999976	317.3596	0	
+63694807475318	Avatar: 	DesktopDefaultController	Position (xyz): 	62.41121	1.182005	77.33798	Rotation (xyz): 	0	316.7096	0	Camera   (xyz): 	0.4999976	316.7096	-2.668144E-08	
+63694807475345	Avatar: 	DesktopDefaultController	Position (xyz): 	62.27205	1.182005	77.48163	Rotation (xyz): 	0	315.9096	0	Camera   (xyz): 	1.199998	315.9096	0	
+63694807475361	Avatar: 	DesktopDefaultController	Position (xyz): 	62.13177	1.182005	77.62418	Rotation (xyz): 	0	315.4596	0	Camera   (xyz): 	1.699998	315.4596	0	
+63694807475377	Avatar: 	DesktopDefaultController	Position (xyz): 	61.99086	1.182005	77.76612	Rotation (xyz): 	0	315.2096	0	Camera   (xyz): 	1.899998	315.2096	0	
+63694807475397	Avatar: 	DesktopDefaultController	Position (xyz): 	61.84861	1.182005	77.9067	Rotation (xyz): 	0	314.6596	0	Camera   (xyz): 	2.449998	314.6596	-5.340967E-08	
+63694807475429	Avatar: 	DesktopDefaultController	Position (xyz): 	61.70525	1.182005	78.04615	Rotation (xyz): 	0	314.2096	0	Camera   (xyz): 	2.899998	314.2096	-1.068586E-07	
+63694807475445	Avatar: 	DesktopDefaultController	Position (xyz): 	61.5614	1.182005	78.18511	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.099998	314.0096	0	
+63694807475457	Avatar: 	DesktopDefaultController	Position (xyz): 	61.41756	1.182005	78.32407	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.149998	314.0096	0	
+63694807475477	Avatar: 	DesktopDefaultController	Position (xyz): 	61.27371	1.182005	78.46302	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475513	Avatar: 	DesktopDefaultController	Position (xyz): 	61.12987	1.182005	78.60197	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475517	Avatar: 	DesktopDefaultController	Position (xyz): 	60.98602	1.182005	78.74093	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475545	Avatar: 	DesktopDefaultController	Position (xyz): 	60.84218	1.182005	78.87989	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475557	Avatar: 	DesktopDefaultController	Position (xyz): 	60.69833	1.182005	79.01884	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475577	Avatar: 	DesktopDefaultController	Position (xyz): 	60.55449	1.182005	79.1578	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475597	Avatar: 	DesktopDefaultController	Position (xyz): 	60.41064	1.182005	79.29675	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.199997	314.0096	1.068884E-07	
+63694807475617	Avatar: 	DesktopDefaultController	Position (xyz): 	60.2668	1.182005	79.43571	Rotation (xyz): 	0	314.0096	0	Camera   (xyz): 	3.149998	314.0096	0	
+63694807475645	Avatar: 	DesktopDefaultController	Position (xyz): 	60.12271	1.182005	79.57442	Rotation (xyz): 	0	313.9096	0	Camera   (xyz): 	3.049998	313.9096	0	
+63694807475661	Avatar: 	DesktopDefaultController	Position (xyz): 	59.9785	1.182005	79.713	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475677	Avatar: 	DesktopDefaultController	Position (xyz): 	59.8343	1.182005	79.85157	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475697	Avatar: 	DesktopDefaultController	Position (xyz): 	59.69009	1.176219	79.99015	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475717	Avatar: 	DesktopDefaultController	Position (xyz): 	59.54712	1.15015	80.12915	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475745	Avatar: 	DesktopDefaultController	Position (xyz): 	59.40969	1.103743	80.27004	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475761	Avatar: 	DesktopDefaultController	Position (xyz): 	59.28208	1.080005	80.41438	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475777	Avatar: 	DesktopDefaultController	Position (xyz): 	59.13787	1.080005	80.55296	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475797	Avatar: 	DesktopDefaultController	Position (xyz): 	58.99366	1.080005	80.69154	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475817	Avatar: 	DesktopDefaultController	Position (xyz): 	58.84946	1.080005	80.83012	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475837	Avatar: 	DesktopDefaultController	Position (xyz): 	58.70525	1.080005	80.96869	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475857	Avatar: 	DesktopDefaultController	Position (xyz): 	58.56104	1.080005	81.10727	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475878	Avatar: 	DesktopDefaultController	Position (xyz): 	58.41683	1.080005	81.24585	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475922	Avatar: 	DesktopDefaultController	Position (xyz): 	58.27262	1.080005	81.38443	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475922	Avatar: 	DesktopDefaultController	Position (xyz): 	58.12841	1.080005	81.52301	Rotation (xyz): 	0	313.8596	0	Camera   (xyz): 	3.049998	313.8596	0	
+63694807475941	Avatar: 	DesktopDefaultController	Position (xyz): 	57.98397	1.080005	81.66133	Rotation (xyz): 	0	313.7596	0	Camera   (xyz): 	2.999998	313.7596	1.068681E-07	
+63694807475961	Avatar: 	DesktopDefaultController	Position (xyz): 	57.83915	1.080006	81.79928	Rotation (xyz): 	0	313.6096	0	Camera   (xyz): 	2.999998	313.6096	0	
+63694807475977	Avatar: 	DesktopDefaultController	Position (xyz): 	57.69374	1.080005	81.9366	Rotation (xyz): 	0	313.3596	0	Camera   (xyz): 	2.999998	313.3596	0	
+63694807475997	Avatar: 	DesktopDefaultController	Position (xyz): 	57.54749	1.080005	82.07302	Rotation (xyz): 	0	313.0096	0	Camera   (xyz): 	2.999998	313.0096	0	
+63694807476021	Avatar: 	DesktopDefaultController	Position (xyz): 	57.40042	1.080005	82.20855	Rotation (xyz): 	0	312.6596	0	Camera   (xyz): 	2.999998	312.6596	0	
+63694807476041	Avatar: 	DesktopDefaultController	Position (xyz): 	57.2524	1.079993	82.34305	Rotation (xyz): 	0	312.2596	0	Camera   (xyz): 	2.999998	312.2596	0	
+63694807476057	Avatar: 	DesktopDefaultController	Position (xyz): 	57.10275	1.080005	82.47573	Rotation (xyz): 	0	311.5596	0	Camera   (xyz): 	2.999998	311.5596	0	
+63694807476077	Avatar: 	DesktopDefaultController	Position (xyz): 	56.9524	1.080005	82.60762	Rotation (xyz): 	0	311.2596	0	Camera   (xyz): 	2.999998	311.2596	-1.068682E-07	
+63694807476097	Avatar: 	DesktopDefaultController	Position (xyz): 	56.80022	1.079233	82.7374	Rotation (xyz): 	0	310.4596	0	Camera   (xyz): 	2.999998	310.4596	0	
+63694807476117	Avatar: 	DesktopDefaultController	Position (xyz): 	56.64766	1.080005	82.86658	Rotation (xyz): 	0	310.2096	0	Camera   (xyz): 	2.949998	310.2096	1.068633E-07	
+63694807476145	Avatar: 	DesktopDefaultController	Position (xyz): 	56.49469	1.080005	82.99543	Rotation (xyz): 	0	310.1096	0	Camera   (xyz): 	2.949998	310.1096	0	
+63694807476162	Avatar: 	DesktopDefaultController	Position (xyz): 	56.34173	1.080005	83.12428	Rotation (xyz): 	0	310.1096	0	Camera   (xyz): 	2.949998	310.1096	0	
+63694807476177	Avatar: 	DesktopDefaultController	Position (xyz): 	56.18865	1.080005	83.253	Rotation (xyz): 	0	310.0596	0	Camera   (xyz): 	2.949998	310.0596	0	
+63694807476197	Avatar: 	DesktopDefaultController	Position (xyz): 	56.03535	1.079965	83.38145	Rotation (xyz): 	0	309.9596	0	Camera   (xyz): 	2.949998	309.9596	0	
+63694807476217	Avatar: 	DesktopDefaultController	Position (xyz): 	55.88062	1.080005	83.50815	Rotation (xyz): 	0	309.3096	0	Camera   (xyz): 	2.949998	309.3096	0	
+63694807476245	Avatar: 	DesktopDefaultController	Position (xyz): 	55.72314	1.080005	83.63145	Rotation (xyz): 	0	308.0596	0	Camera   (xyz): 	2.899998	308.0596	0	
+63694807476261	Avatar: 	DesktopDefaultController	Position (xyz): 	55.56386	1.080005	83.7524	Rotation (xyz): 	0	307.2096	0	Camera   (xyz): 	2.899998	307.2096	0	
+63694807476277	Avatar: 	DesktopDefaultController	Position (xyz): 	55.40394	1.080005	83.87251	Rotation (xyz): 	0	306.9096	0	Camera   (xyz): 	2.899998	306.9096	-1.068586E-07	
+63694807476297	Avatar: 	DesktopDefaultController	Position (xyz): 	55.24257	1.080006	83.99065	Rotation (xyz): 	0	306.2096	0	Camera   (xyz): 	2.899998	306.2096	0	
+63694807476317	Avatar: 	DesktopDefaultController	Position (xyz): 	55.07886	1.080005	84.10554	Rotation (xyz): 	0	305.0596	0	Camera   (xyz): 	2.899998	305.0596	1.068586E-07	
+63694807476345	Avatar: 	DesktopDefaultController	Position (xyz): 	54.91219	1.080005	84.21609	Rotation (xyz): 	0	303.5596	0	Camera   (xyz): 	2.899998	303.5596	0	
+63694807476361	Avatar: 	DesktopDefaultController	Position (xyz): 	54.74069	1.080005	84.31898	Rotation (xyz): 	0	300.9596	0	Camera   (xyz): 	2.999998	300.9596	-1.068682E-07	
+63694807476382	Avatar: 	DesktopDefaultController	Position (xyz): 	54.56411	1.080005	84.41291	Rotation (xyz): 	0	298.0096	0	Camera   (xyz): 	3.099998	298.0096	1.068781E-07	
+63694807476397	Avatar: 	DesktopDefaultController	Position (xyz): 	54.38214	1.080005	84.49588	Rotation (xyz): 	0	294.5096	0	Camera   (xyz): 	3.199998	294.5096	-1.068884E-07	
+63694807476417	Avatar: 	DesktopDefaultController	Position (xyz): 	54.19556	1.080006	84.56791	Rotation (xyz): 	0	291.1096	0	Camera   (xyz): 	3.299997	291.1096	2.137979E-07	
+63694807476445	Avatar: 	DesktopDefaultController	Position (xyz): 	54.00341	1.080006	84.62341	Rotation (xyz): 	0	286.1096	0	Camera   (xyz): 	3.349997	286.1096	-2.138088E-07	
+63694807476461	Avatar: 	DesktopDefaultController	Position (xyz): 	53.80997	1.080005	84.67419	Rotation (xyz): 	0	284.7096	0	Camera   (xyz): 	3.349997	284.7096	2.138088E-07	
+63694807476481	Avatar: 	DesktopDefaultController	Position (xyz): 	53.61514	1.07922	84.71938	Rotation (xyz): 	0	283.0596	0	Camera   (xyz): 	3.399997	283.0596	1.069099E-07	
+63694807476497	Avatar: 	DesktopDefaultController	Position (xyz): 	53.41986	1.080006	84.76188	Rotation (xyz): 	0	282.2596	0	Camera   (xyz): 	3.399997	282.2596	1.069099E-07	
+63694807476517	Avatar: 	DesktopDefaultController	Position (xyz): 	53.2242	1.080006	84.80332	Rotation (xyz): 	0	281.9596	0	Camera   (xyz): 	3.399997	281.9596	2.138198E-07	
+63694807476545	Avatar: 	DesktopDefaultController	Position (xyz): 	53.02847	1.080006	84.84443	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476561	Avatar: 	DesktopDefaultController	Position (xyz): 	52.83274	1.080006	84.88553	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476578	Avatar: 	DesktopDefaultController	Position (xyz): 	52.63701	1.080006	84.92664	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476597	Avatar: 	DesktopDefaultController	Position (xyz): 	52.44128	1.080006	84.96774	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476617	Avatar: 	DesktopDefaultController	Position (xyz): 	52.24555	1.080006	85.00883	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476645	Avatar: 	DesktopDefaultController	Position (xyz): 	52.04982	1.080006	85.04994	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476661	Avatar: 	DesktopDefaultController	Position (xyz): 	51.85408	1.080006	85.09104	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476677	Avatar: 	DesktopDefaultController	Position (xyz): 	51.65836	1.080006	85.13215	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476697	Avatar: 	DesktopDefaultController	Position (xyz): 	51.46262	1.080006	85.17325	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476717	Avatar: 	DesktopDefaultController	Position (xyz): 	51.26689	1.080006	85.21436	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476745	Avatar: 	DesktopDefaultController	Position (xyz): 	51.07116	1.080006	85.25546	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476761	Avatar: 	DesktopDefaultController	Position (xyz): 	50.87543	1.080006	85.29655	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476777	Avatar: 	DesktopDefaultController	Position (xyz): 	50.6797	1.080006	85.33766	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476797	Avatar: 	DesktopDefaultController	Position (xyz): 	50.48397	1.080006	85.37876	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476817	Avatar: 	DesktopDefaultController	Position (xyz): 	50.28824	1.080006	85.41987	Rotation (xyz): 	0	281.8596	0	Camera   (xyz): 	3.399997	281.8596	0	
+63694807476845	Avatar: 	DesktopDefaultController	Position (xyz): 	50.09247	1.080006	85.4608	Rotation (xyz): 	0	281.8096	0	Camera   (xyz): 	3.399997	281.8096	0	
+63694807476861	Avatar: 	DesktopDefaultController	Position (xyz): 	49.89671	1.080006	85.50173	Rotation (xyz): 	0	281.8096	0	Camera   (xyz): 	3.399997	281.8096	0	
+63694807476877	Avatar: 	DesktopDefaultController	Position (xyz): 	49.70094	1.079239	85.54266	Rotation (xyz): 	0	281.8096	0	Camera   (xyz): 	3.399997	281.8096	0	
+63694807476897	Avatar: 	DesktopDefaultController	Position (xyz): 	49.50528	1.080006	85.58372	Rotation (xyz): 	0	281.8096	0	Camera   (xyz): 	3.399997	281.8096	0	
+63694807476917	Avatar: 	DesktopDefaultController	Position (xyz): 	49.30951	1.080006	85.62466	Rotation (xyz): 	0	281.8096	0	Camera   (xyz): 	3.399997	281.8096	0	
+63694807476945	Avatar: 	DesktopDefaultController	Position (xyz): 	49.11371	1.080006	85.66542	Rotation (xyz): 	0	281.7596	0	Camera   (xyz): 	3.399997	281.7596	0	
+63694807476961	Avatar: 	DesktopDefaultController	Position (xyz): 	48.91773	1.079958	85.70533	Rotation (xyz): 	0	281.5096	0	Camera   (xyz): 	3.449998	281.5096	0	
+63694807476977	Avatar: 	DesktopDefaultController	Position (xyz): 	48.72162	1.080006	85.74455	Rotation (xyz): 	0	281.3096	0	Camera   (xyz): 	3.449998	281.3096	0	
+63694807476997	Avatar: 	DesktopDefaultController	Position (xyz): 	48.52504	1.080006	85.78138	Rotation (xyz): 	0	280.6096	0	Camera   (xyz): 	3.449998	280.6096	-1.069155E-07	
+63694807477017	Avatar: 	DesktopDefaultController	Position (xyz): 	48.32771	1.080006	85.8139	Rotation (xyz): 	0	279.3596	0	Camera   (xyz): 	3.449998	279.3596	0	
+63694807477045	Avatar: 	DesktopDefaultController	Position (xyz): 	48.12942	1.080006	85.84004	Rotation (xyz): 	0	277.5096	0	Camera   (xyz): 	3.399998	277.5096	0	
+63694807477061	Avatar: 	DesktopDefaultController	Position (xyz): 	47.93017	1.080006	85.85734	Rotation (xyz): 	0	274.9596	0	Camera   (xyz): 	3.449998	274.9596	0	
+63694807477078	Avatar: 	DesktopDefaultController	Position (xyz): 	47.73056	1.080006	85.86993	Rotation (xyz): 	0	273.6096	0	Camera   (xyz): 	3.549998	273.6096	-1.069269E-07	
+63694807477097	Avatar: 	DesktopDefaultController	Position (xyz): 	47.53062	1.079769	85.86507	Rotation (xyz): 	0	268.6096	0	Camera   (xyz): 	3.799998	268.6096	-2.139137E-07	
+63694807477117	Avatar: 	DesktopDefaultController	Position (xyz): 	47.33329	1.080005	85.83266	Rotation (xyz): 	0	260.6596	0	Camera   (xyz): 	4.099998	260.6596	0	
+63694807477145	Avatar: 	DesktopDefaultController	Position (xyz): 	47.13877	1.080005	85.78618	Rotation (xyz): 	0	256.5596	0	Camera   (xyz): 	4.049998	256.5596	-2.139777E-07	
+63694807477162	Avatar: 	DesktopDefaultController	Position (xyz): 	46.94675	1.080005	85.73024	Rotation (xyz): 	0	253.7596	0	Camera   (xyz): 	3.949998	253.7596	0	
+63694807477177	Avatar: 	DesktopDefaultController	Position (xyz): 	46.75637	1.080005	85.66897	Rotation (xyz): 	0	252.1596	0	Camera   (xyz): 	3.949998	252.1596	-2.139516E-07	
+63694807477197	Avatar: 	DesktopDefaultController	Position (xyz): 	46.56669	1.080005	85.60554	Rotation (xyz): 	0	251.5096	0	Camera   (xyz): 	3.949998	251.5096	2.139516E-07	
+63694807477217	Avatar: 	DesktopDefaultController	Position (xyz): 	46.37752	1.080005	85.54063	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477245	Avatar: 	DesktopDefaultController	Position (xyz): 	46.18835	1.080005	85.47571	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477261	Avatar: 	DesktopDefaultController	Position (xyz): 	45.99918	1.079726	85.41079	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477277	Avatar: 	DesktopDefaultController	Position (xyz): 	45.81001	1.080005	85.34593	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477297	Avatar: 	DesktopDefaultController	Position (xyz): 	45.62084	1.080005	85.28101	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477317	Avatar: 	DesktopDefaultController	Position (xyz): 	45.43167	1.080005	85.21609	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477345	Avatar: 	DesktopDefaultController	Position (xyz): 	45.2425	1.080005	85.15118	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477361	Avatar: 	DesktopDefaultController	Position (xyz): 	45.05333	1.080005	85.08627	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477381	Avatar: 	DesktopDefaultController	Position (xyz): 	44.86415	1.080005	85.02135	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477397	Avatar: 	DesktopDefaultController	Position (xyz): 	44.67498	1.080005	84.95643	Rotation (xyz): 	0	251.0596	0	Camera   (xyz): 	3.949998	251.0596	0	
+63694807477417	Avatar: 	DesktopDefaultController	Position (xyz): 	44.48558	1.080005	84.89217	Rotation (xyz): 	0	251.2596	0	Camera   (xyz): 	3.899998	251.2596	0	
+63694807477446	Avatar: 	DesktopDefaultController	Position (xyz): 	44.42873	1.080005	84.87299	Rotation (xyz): 	0	251.3596	0	Camera   (xyz): 	3.849998	251.3596	2.139262E-07	
+63694807477457	Avatar: 	DesktopDefaultController	Position (xyz): 	44.37131	1.080005	84.85561	Rotation (xyz): 	0	253.1596	0	Camera   (xyz): 	3.199999	253.1596	1.068884E-07	
+63694807477485	Avatar: 	DesktopDefaultController	Position (xyz): 	44.31348	1.080005	84.83959	Rotation (xyz): 	0	254.5096	0	Camera   (xyz): 	2.799999	254.5096	1.068493E-07	
+63694807477510	Avatar: 	DesktopDefaultController	Position (xyz): 	44.25463	1.080005	84.82794	Rotation (xyz): 	0	258.8096	0	Camera   (xyz): 	1.449999	258.8096	1.067559E-07	
+63694807477525	Avatar: 	DesktopDefaultController	Position (xyz): 	44.195	1.080005	84.82127	Rotation (xyz): 	0	263.6096	0	Camera   (xyz): 	359.65	263.6096	1.334046E-08	
+63694807477541	Avatar: 	DesktopDefaultController	Position (xyz): 	44.13515	1.080005	84.81693	Rotation (xyz): 	0	265.8596	0	Camera   (xyz): 	358.55	265.8596	5.337795E-08	
+63694807477562	Avatar: 	DesktopDefaultController	Position (xyz): 	44.07518	1.080005	84.81867	Rotation (xyz): 	0	271.6596	0	Camera   (xyz): 	354.75	271.6596	2.143426E-07	
+63694807477577	Avatar: 	DesktopDefaultController	Position (xyz): 	44.01551	1.080005	84.82491	Rotation (xyz): 	0	275.9596	0	Camera   (xyz): 	351.3	275.9596	0	
+63694807477609	Avatar: 	DesktopDefaultController	Position (xyz): 	43.95608	1.080005	84.83316	Rotation (xyz): 	0	277.9096	0	Camera   (xyz): 	349.4	277.9096	0	
+63694807477621	Avatar: 	DesktopDefaultController	Position (xyz): 	43.89681	1.080005	84.84251	Rotation (xyz): 	0	278.9596	0	Camera   (xyz): 	348.35	278.9596	0	
+63694807477637	Avatar: 	DesktopDefaultController	Position (xyz): 	43.8378	1.080005	84.85335	Rotation (xyz): 	0	280.4096	0	Camera   (xyz): 	347	280.4096	4.381157E-07	
+63694807477657	Avatar: 	DesktopDefaultController	Position (xyz): 	43.77903	1.080005	84.86547	Rotation (xyz): 	0	281.6596	0	Camera   (xyz): 	346.2	281.6596	0	
+63694807477689	Avatar: 	DesktopDefaultController	Position (xyz): 	43.7205	1.080005	84.87867	Rotation (xyz): 	0	282.7096	0	Camera   (xyz): 	345.6	282.7096	0	
+63694807477705	Avatar: 	DesktopDefaultController	Position (xyz): 	43.66246	1.080005	84.89385	Rotation (xyz): 	0	284.6596	0	Camera   (xyz): 	344.75	284.6596	0	
+63694807477725	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	287.7596	0	Camera   (xyz): 	343.75	287.7596	0	
+63694807477742	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	290.0096	0	Camera   (xyz): 	343.15	290.0096	8.92073E-07	
+63694807477757	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	292.3596	0	Camera   (xyz): 	342.4	292.3596	8.957007E-07	
+63694807477777	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	294.0596	0	Camera   (xyz): 	341.75	294.0596	0	
+63694807477810	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	295.1596	0	Camera   (xyz): 	341.3	295.1596	0	
+63694807477817	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	295.4096	0	Camera   (xyz): 	341.2	295.4096	0	
+63694807477841	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	295.7096	0	Camera   (xyz): 	341.05	295.7096	0	
+63694807477857	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	295.7596	0	Camera   (xyz): 	341	295.7596	-9.029687E-07	
+63694807477877	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.1596	0	Camera   (xyz): 	340.95	296.1596	0	
+63694807477909	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.7596	0	Camera   (xyz): 	340.85	296.7596	9.037865E-07	
+63694807477925	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.1096	0	Camera   (xyz): 	340.6	298.1096	9.051665E-07	
+63694807477941	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	299.8596	0	Camera   (xyz): 	340.3	299.8596	0	
+63694807477957	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	300.8596	0	Camera   (xyz): 	340.2	300.8596	0	
+63694807477977	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	305.5596	0	Camera   (xyz): 	339.85	305.5596	0	
+63694807478009	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	308.6596	0	Camera   (xyz): 	339.65	308.6596	0	
+63694807478026	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	309.8596	0	Camera   (xyz): 	339.5	309.8596	9.114968E-07	
+63694807478041	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	313.7096	0	Camera   (xyz): 	339.1	313.7096	-9.139044E-07	
+63694807478057	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	315.3596	0	Camera   (xyz): 	338.9	315.3596	9.151298E-07	
+63694807478077	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	320.9096	0	Camera   (xyz): 	338.25	320.9096	-4.596064E-07	
+63694807478105	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	324.6096	0	Camera   (xyz): 	338.2	324.6096	-4.597667E-07	
+63694807478125	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	327.7596	0	Camera   (xyz): 	338.2	327.7596	4.597667E-07	
+63694807478141	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	329.2096	0	Camera   (xyz): 	338.15	329.2096	4.599273E-07	
+63694807478157	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	329.4096	0	Camera   (xyz): 	338.1	329.4096	9.20177E-07	
+63694807478177	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	329.2596	0	Camera   (xyz): 	337.6	329.2596	9.234518E-07	
+63694807478197	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	328.7096	0	Camera   (xyz): 	337.15	328.7096	4.632396E-07	
+63694807478225	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	325.7596	0	Camera   (xyz): 	335.45	325.7596	-4.693132E-07	
+63694807478241	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	321.1596	0	Camera   (xyz): 	333.65	321.1596	0	
+63694807478257	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	318.7596	0	Camera   (xyz): 	332.85	318.7596	-9.594957E-07	
+63694807478277	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	313.2096	0	Camera   (xyz): 	331.2	313.2096	-9.742864E-07	
+63694807478297	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	307.9596	0	Camera   (xyz): 	330.1	307.9596	-9.848619E-07	
+63694807478325	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	302.5596	0	Camera   (xyz): 	329.4	302.5596	9.919041E-07	
+63694807478345	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.5596	0	Camera   (xyz): 	329	296.5596	0	
+63694807478357	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	286.9596	0	Camera   (xyz): 	328.7	286.9596	0	
+63694807478377	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	285.5096	0	Camera   (xyz): 	328.65	285.5096	-1.999458E-06	
+63694807478397	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	282.7096	0	Camera   (xyz): 	328.6	282.7096	0	
+63694807478415	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	282.6596	0	Camera   (xyz): 	328.6	282.6596	0	
+63694807478445	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	282.6096	0	Camera   (xyz): 	328.6	282.6096	0	
+63694807478461	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	282.8096	0	Camera   (xyz): 	328.6	282.8096	2.000522E-06	
+63694807478481	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	283.2096	0	Camera   (xyz): 	328.6	283.2096	2.000522E-06	
+63694807478497	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	284.4096	0	Camera   (xyz): 	328.65	284.4096	0	
+63694807478525	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	286.5096	0	Camera   (xyz): 	328.8	286.5096	9.981404E-07	
+63694807478541	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	288.8596	0	Camera   (xyz): 	329.05	288.8596	-1.991039E-06	
+63694807478557	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	290.9596	0	Camera   (xyz): 	329.3	290.9596	0	
+63694807478577	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	292.7596	0	Camera   (xyz): 	329.7	292.7596	9.888557E-07	
+63694807478605	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	294.9596	0	Camera   (xyz): 	330.2	294.9596	0	
+63694807478625	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	295.5096	0	Camera   (xyz): 	330.4	295.5096	-9.81919E-07	
+63694807478641	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.3596	0	Camera   (xyz): 	330.65	296.3596	-9.795003E-07	
+63694807478658	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.8096	0	Camera   (xyz): 	330.9	296.8096	-9.771124E-07	
+63694807478677	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.8596	0	Camera   (xyz): 	330.95	296.8596	-9.766385E-07	
+63694807478697	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9096	0	Camera   (xyz): 	331	296.9096	-9.761656E-07	
+63694807478725	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9596	0	Camera   (xyz): 	331.15	296.9596	9.747544E-07	
+63694807478745	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9596	0	Camera   (xyz): 	331.2	296.9596	0	
+63694807478761	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9596	0	Camera   (xyz): 	331.25	296.9596	9.738196E-07	
+63694807478777	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9596	0	Camera   (xyz): 	331.25	296.9596	9.738196E-07	
+63694807478810	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9596	0	Camera   (xyz): 	331.35	296.9596	9.728894E-07	
+63694807478829	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	296.9596	0	Camera   (xyz): 	331.4	296.9596	-9.724261E-07	
+63694807478841	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	297.1096	0	Camera   (xyz): 	331.55	297.1096	-9.710435E-07	
+63694807478861	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	297.2596	0	Camera   (xyz): 	331.6	297.2596	0	
+63694807478877	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	297.4596	0	Camera   (xyz): 	331.7	297.4596	9.696712E-07	
+63694807478909	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	297.8096	0	Camera   (xyz): 	331.8	297.8096	-9.687624E-07	
+63694807478930	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.0096	0	Camera   (xyz): 	331.8	298.0096	-9.687625E-07	
+63694807478941	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.2596	0	Camera   (xyz): 	331.8	298.2596	9.687624E-07	
+63694807478957	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807478977	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479009	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479029	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479045	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479057	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479077	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479097	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479117	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479145	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479157	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479177	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479197	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479229	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479245	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479261	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479277	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479297	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479329	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479345	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479357	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479377	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479409	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479430	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479445	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479457	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479477	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479497	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479525	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479545	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479561	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479577	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479597	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479629	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479645	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479657	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479677	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479697	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479725	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479745	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479761	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479777	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479797	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479825	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479845	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479861	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479877	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479897	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479929	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479945	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479961	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807479977	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480009	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480029	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480045	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480061	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480077	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480097	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480117	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480145	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480161	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480177	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480197	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480229	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480245	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480261	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480277	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480297	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480329	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480345	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480361	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480377	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480397	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480429	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480445	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480461	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480477	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480497	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480529	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480545	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480561	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480577	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480597	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480625	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480645	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480661	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480677	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480697	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480729	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480745	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480761	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480777	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480800	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480817	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480845	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480861	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480877	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480897	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480917	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480945	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480962	Avatar: 	DesktopDefaultController	Position (xyz): 	43.60532	1.080005	84.91216	Rotation (xyz): 	0	298.3096	0	Camera   (xyz): 	331.8	298.3096	9.687625E-07	
+63694807480997	TASK_END	LM_Timeline	TaskList	190796

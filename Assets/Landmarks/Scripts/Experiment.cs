@@ -21,6 +21,7 @@ using System;
 using System.Reflection;
 using Valve.VR.InteractionSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
 public enum EndListMode
 {
@@ -111,7 +112,6 @@ public class Experiment : MonoBehaviour {
                     userInterface = UserInterface.ViveRoomspace;
                     break;
                 default:
-                    userInterface = UserInterface.DesktopDefault;
                     break;
             }
         }
@@ -122,6 +122,9 @@ public class Experiment : MonoBehaviour {
 
         if (userInterface == UserInterface.DesktopDefault)
         {
+            XRSettings.LoadDeviceByName("None"); // change XR project settings
+            XRSettings.enabled = false;
+
 			// Standard Desktop with Keyboard/mouse controller
 			player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
@@ -134,8 +137,16 @@ public class Experiment : MonoBehaviour {
         }
         else if (userInterface == UserInterface.ViveAndVirtualizer)
         {
-			// HTC Vive and Cyberith Virtualizer
-			player = GameObject.Find ("ViveVirtualizerController");
+
+            if (XRDevice.isPresent)
+            {
+                XRSettings.LoadDeviceByName("OpenVR"); // change XR project settings
+            }
+            else XRSettings.LoadDeviceByName("MockHMD"); // if there's no headset, use the mockHMD
+
+
+            // HTC Vive and Cyberith Virtualizer
+            player = GameObject.Find ("ViveVirtualizerController");
 			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
 
             // Render the overhead camera to each lense of the HMD
@@ -146,6 +157,12 @@ public class Experiment : MonoBehaviour {
         }
         else if (userInterface == UserInterface.ViveRoomspace)
         {
+            if (XRDevice.isPresent)
+            {
+                XRSettings.LoadDeviceByName("OpenVR"); // change XR project settings
+            }
+            else XRSettings.LoadDeviceByName("MockHMD"); // if there's no headset, use the mockHMD
+
             // HTC Vive and Cyberith Virtualizer
             player = GameObject.Find("ViveRoomspaceController");
             playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
@@ -160,7 +177,11 @@ public class Experiment : MonoBehaviour {
         {
 			// If nothing else, load the default player from the first if() section
 			Debug.Log ("The selected interface is not yet configured. Using DefaultDesktopPlayerController.");
-			player = GameObject.Find ("DesktopDefaultController");
+
+            XRSettings.LoadDeviceByName("None"); // change XR project settings
+            XRSettings.enabled = false;
+
+            player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
 
             // Render the overhead camera on the main display (none)
@@ -184,7 +205,7 @@ public class Experiment : MonoBehaviour {
         // This ensures there will only be one in the scene, attached to the active camera
         playerCamera.gameObject.AddComponent<AudioListener>();
 
-		// Set up Overhead Camera (for map task or any other top-down viewed tasks)
+        // Set up Overhead Camera (for map task or any other top-down viewed tasks)
 		overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera> ();
 
 		// ------------------------------------------
@@ -229,17 +250,20 @@ public class Experiment : MonoBehaviour {
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + "\tBIOSEX:\t" + PlayerPrefs.GetString("biosex") + 
                   "\tAGE:\t" + PlayerPrefs.GetInt("subAge") + "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
+
+        Debug.Log("is it line here?");
+        Debug.Log(XRSettings.loadedDeviceName);
     }
-	
-	public void StartPlaying() {		
+
+    public void StartPlaying() {		
 		long tick = DateTime.Now.Ticks;
         playback_start = tick / TimeSpan.TicksPerMillisecond;
         playback_offset = 0;
 	}
-        
+
 	void Start () {
-		
-		ConfigOverrides.parse(configfile,dblog);
+
+        ConfigOverrides.parse(configfile,dblog);
 		hud.showFPS = config.showFPS;
 		hud.showTimestamp = (config.runMode == ConfigRunMode.PLAYBACK);
 

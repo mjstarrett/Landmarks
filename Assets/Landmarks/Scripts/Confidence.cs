@@ -186,15 +186,17 @@ public class Confidence : ExperimentTask {
         if (vrEnabled)
         {
             log.log("ConfidenceRating\t" + transform.parent.name +
-                  "\tTarget:\t" + objects.currentObject().name +
-                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().sliderValue +
-                  "\t/\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue, 1);
+                    "\tQuestion:\t" + this.name +
+                    "\tTarget:\t" + objects.currentObject().name +
+                    "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().sliderValue +
+                    "\t/\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue, 1);
         } else
         {
             log.log("ConfidenceRating\t" + transform.parent.name +
-                  "\tTarget:\t" + objects.currentObject().name +
-                  "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value +
-                  "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
+                    "\tQuestion:\t" + this.name +
+                    "\tTarget:\t" + objects.currentObject().name +
+                    "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value +
+                    "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
         }
         if (canIncrementLists) {
 

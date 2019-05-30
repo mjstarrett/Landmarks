@@ -113,7 +113,7 @@ public class ViewTargets : ExperimentTask {
                 {
                     current.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
                 }
-                log.log("TASK_ROTATE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localEulerAngles.ToString("f1"),2);
+                //log.log("TASK_ROTATE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localEulerAngles.ToString("f1"),2);
 			}
 
 			if ( Experiment.Now() - rotation_start >= interval)  {
@@ -149,11 +149,7 @@ public class ViewTargets : ExperimentTask {
         hud.setMessage(current.name);
         hud.ForceShowMessage();
 		
-		log.log("TASK_ADD\t" + name  + "\t" + this.GetType().Name + "\t" + current.name + "\tadd",1);		
-		log.log("TASK_POSITION\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.position.ToString("f4"),1);
-		log.log("TASK_ROTATE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localEulerAngles.ToString("f3"),1);
-		log.log("TASK_SCALE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localScale.ToString("f3"),1);
-
+		log.log("Practice\t" + current.name,1);
 
 	}
 	
@@ -172,11 +168,6 @@ public class ViewTargets : ExperimentTask {
 		current.transform.localRotation = rotation;
 		current.transform.localScale = scale;
 		setLayer(current.transform,saveLayer);
-		
-		log.log("TASK_ADD\t" + name  + "\t" + this.GetType().Name + "\t" + current.name + "\tremove",1);		
-		log.log("TASK_POSITION\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.position.ToString("f4"),1);
-		log.log("TASK_ROTATE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localEulerAngles.ToString("f3"),1);
-		log.log("TASK_SCALE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localScale.ToString("f3"),1);
 
         // turn off the object we're returning before turning on the next one
         current.SetActive(false);
