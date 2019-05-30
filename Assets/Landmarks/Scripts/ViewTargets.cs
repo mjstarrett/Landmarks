@@ -16,6 +16,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public enum RotationAxis
 {
@@ -42,6 +43,7 @@ public class ViewTargets : ExperimentTask {
     public Vector3 objectRotationOffset;
     public RotationAxis rotationAxis;
     public float rotationSpeed = 30.0f;
+    public bool restrictMovement = true;
 
 
     public override void startTask () {
@@ -69,6 +71,12 @@ public class ViewTargets : ExperimentTask {
 
 	    if (blackout) hud.showOnlyTargets();
 	    else hud.showEverything();
+
+        if (restrictMovement)
+        {
+            manager.player.GetComponent<CharacterController>().enabled = false;
+            manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
+        }
 
         destination = avatar.GetComponentInChildren<LM_SnapPoint>();
 

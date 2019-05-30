@@ -20,7 +20,8 @@ using UnityEngine;
 public class CheckForSavedObjects : ExperimentTask
 {
     public GameObject targets;
-    public GameObject unusedTargets;
+    public string unusedTargetsObject = "UnusedTargets";
+    private GameObject unusedTargets;
 
     public override void startTask()
     {

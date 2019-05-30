@@ -206,7 +206,7 @@ public class Experiment : MonoBehaviour {
         // Handle the config file
         // ------------------------------------------
 
-        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + ".log";
+        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + "_" + config.level + ".log";
 		configfile = config.expPath + "/" + config.filename;
 		
 		//when in editor
@@ -214,11 +214,11 @@ public class Experiment : MonoBehaviour {
 			logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
 			configfile = Directory.GetCurrentDirectory() + "/data/tmp/" + config.filename;
 		}
-		
-		if (config.runMode == ConfigRunMode.NEW) {
+
+        if (config.runMode == ConfigRunMode.NEW) {
 			dblog = new dbLog(logfile);
 		} else if (config.runMode == ConfigRunMode.RESUME) {
-			dblog = new dbPlaybackLog(logfile);
+            dblog = new dbPlaybackLog(logfile);
 		} else if (config.runMode == ConfigRunMode.PLAYBACK) {
 			CharacterController c = avatar.GetComponent<CharacterController>();
             c.detectCollisions = false;
