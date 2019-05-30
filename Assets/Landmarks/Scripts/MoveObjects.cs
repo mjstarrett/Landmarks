@@ -18,12 +18,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum HandleExtraSources
-{
-    DoNothing,
-    Destroy,
-    Save
-}
+
 
 public class MoveObjects : ExperimentTask {
 
@@ -35,9 +30,7 @@ public class MoveObjects : ExperimentTask {
 	
 	public bool swap;
 
-    public HandleExtraSources handleExtraSources; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
-    public string extraSourcesDestinationObject = "";
-    private GameObject extraSourcesDestination;
+    public bool destroyExtraSources = false; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
 
 	private static Vector3 position;
 	private static Quaternion rotation;
@@ -62,7 +55,7 @@ public class MoveObjects : ExperimentTask {
 
 
         // Destroy any objects that don't get moved (say if we're only randomly using 8 stores out of a possible selection of 16)
-        if (handleExtraSources == HandleExtraSources.Destroy || extraSourcesDestinationObject == null)
+        if (destroyExtraSources)
         {
             Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
             for (int i = 0; i < sources.objects.Count; i++)
@@ -73,29 +66,7 @@ public class MoveObjects : ExperimentTask {
                 }
             }
         }
-        else if (handleExtraSources == HandleExtraSources.Save)
-        {
-            if (extraSourcesDestinationObject != "")
-            {
-                if (GameObject.Find(extraSourcesDestinationObject) != null)
-                {
-                    extraSourcesDestination = GameObject.Find(extraSourcesDestinationObject);
-                }
-                else extraSourcesDestination = new GameObject(extraSourcesDestinationObject);
-            }
-            else extraSourcesDestination = new GameObject("ObjectListSave_NoName");
-            DontDestroyOnLoad(extraSourcesDestination);
 
-            Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
-            for (int i = 0; i < sources.objects.Count; i++)
-            {
-                if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
-                {
-                    sources.objects[i].transform.parent = extraSourcesDestination.transform; // delete them from the list of target objects
-                    //Destroy(sources.objects[i]); // delete them from the list of target objects
-                }
-            }
-        }
 
         destination = destinations.currentObject();		
 		source = sources.currentObject();	

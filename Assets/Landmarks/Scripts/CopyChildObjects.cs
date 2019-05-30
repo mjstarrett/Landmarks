@@ -38,7 +38,7 @@ public class CopyChildObjects : ExperimentTask {
 			copy.name = sourceChild.name;
 		}
 
-		if (setOriginalInactive = true) {
+		if (setOriginalInactive == true) {
 			sourcesParent.SetActive (false);
 		}
 	}
