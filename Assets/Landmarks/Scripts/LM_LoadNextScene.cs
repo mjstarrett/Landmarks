@@ -28,12 +28,16 @@ public class LM_LoadNextScene : ExperimentTask
         if (nextIndex < nextLevels.Length)
         {
             manager.config.level = nextLevels[nextIndex];
+            var levelname = manager.config.level; // save from destruction
             manager.config.condition = nextConditions[nextIndex];
 
             nextIndex++;
             PlayerPrefs.SetInt("NextIndex", nextIndex);
 
-            SceneManager.LoadScene(manager.config.level);
+            //destroy the current landmarks structure
+            Destroy(GameObject.Find("_Landmarks_"));
+
+            SceneManager.LoadScene(levelname);
 
         }
         else
