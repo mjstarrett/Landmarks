@@ -44,9 +44,14 @@ public class LM_CompareLists : ExperimentTask
         if (comparisonListParent == null)
         {
             comparisonListParent = new GameObject(comparisonListObjectName);
+            DontDestroyOnLoad(comparisonListParent); // keep this object for subsequent levels
         }
-        DontDestroyOnLoad(comparisonListParent); // keep this object for subsequent levels
 
+        // Make sure any children of our comparisonlistobject are active
+        foreach (Transform child in comparisonListParent.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
 
 
         // ---------------------------------------------------------------------
@@ -82,6 +87,7 @@ public class LM_CompareLists : ExperimentTask
                     GameObject childcopy = Instantiate<GameObject>(child.gameObject);
                     childcopy.transform.SetParent(comparisonListParent.transform);
                     childcopy.name = child.gameObject.name;
+                    childcopy.SetActive(false);
                 }
             }
         }
