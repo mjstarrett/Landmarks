@@ -27,6 +27,7 @@ public class MoveSpawn : ExperimentTask {
 	public bool swap;
 	private static Vector3 position;
 	private static Vector3 rotation;
+    public bool ignoreY = false;
 
 
 	public override void startTask () {
@@ -64,6 +65,10 @@ public class MoveSpawn : ExperimentTask {
         // Set the position, but ignore the y-axis (just 2d position on map)
         Vector3 tempPos = start.transform.position; 
         tempPos.x = destination.transform.position.x;
+        if (!ignoreY)
+        {
+            tempPos.y = destination.transform.position.y;
+        }
         tempPos.z = destination.transform.position.z;
         avatar.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);

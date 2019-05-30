@@ -142,13 +142,13 @@ public class InstructionsTask : ExperimentTask {
         //------------------------------------------
         if (selfPaced)  
         {
-            if (!actionButtonOn && Input.GetButtonDown("Return"))
+            if (Input.GetButtonDown("Return"))
             {
                 log.log("INPUT_EVENT    PlayerPressedReturn    1", 1);
                 return true;
             }
 
-            else if (selfPaced && actionButtonOn && hud.actionButtonClicked == true)
+            else if (actionButtonOn && hud.actionButtonClicked == true)
             {
                 hud.actionButtonClicked = false;
                 log.log("INPUT_EVENT    PlayerPressedActionButton    1", 1);
