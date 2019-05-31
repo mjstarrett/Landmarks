@@ -122,9 +122,7 @@ public class Experiment : MonoBehaviour {
 
         if (userInterface == UserInterface.DesktopDefault)
         {
-            XRSettings.LoadDeviceByName("None"); // change XR project settings
-            XRSettings.enabled = false;
-
+            
 			// Standard Desktop with Keyboard/mouse controller
 			player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
@@ -137,14 +135,6 @@ public class Experiment : MonoBehaviour {
         }
         else if (userInterface == UserInterface.ViveAndVirtualizer)
         {
-
-            if (XRDevice.isPresent)
-            {
-                XRSettings.LoadDeviceByName("OpenVR"); // change XR project settings
-            }
-            else XRSettings.LoadDeviceByName("MockHMD"); // if there's no headset, use the mockHMD
-
-
             // HTC Vive and Cyberith Virtualizer
             player = GameObject.Find ("ViveVirtualizerController");
 			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
@@ -157,12 +147,7 @@ public class Experiment : MonoBehaviour {
         }
         else if (userInterface == UserInterface.ViveRoomspace)
         {
-            if (XRDevice.isPresent)
-            {
-                XRSettings.LoadDeviceByName("OpenVR"); // change XR project settings
-            }
-            else XRSettings.LoadDeviceByName("MockHMD"); // if there's no headset, use the mockHMD
-
+            
             // HTC Vive and Cyberith Virtualizer
             player = GameObject.Find("ViveRoomspaceController");
             playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
@@ -175,12 +160,7 @@ public class Experiment : MonoBehaviour {
         }
         else
         {
-			// If nothing else, load the default player from the first if() section
-			Debug.Log ("The selected interface is not yet configured. Using DefaultDesktopPlayerController.");
-
-            XRSettings.LoadDeviceByName("None"); // change XR project settings
-            XRSettings.enabled = false;
-
+			
             player = GameObject.Find ("DesktopDefaultController");
 			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
 
