@@ -219,4 +219,12 @@ public class ExperimentTask : MonoBehaviour{
         yield return new WaitForSeconds(0.5f);
         jitterGuardOn = false;
     }
+
+    //recursive calls
+    public void MoveToLayer(Transform root, int layer)
+    {
+        root.gameObject.layer = layer;
+        foreach (Transform child in root)
+            MoveToLayer(child, layer);
+    }
 }
