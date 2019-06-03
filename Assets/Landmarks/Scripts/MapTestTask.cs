@@ -6,7 +6,6 @@ using TMPro;
 
 public class MapTestTask : ExperimentTask {
 
-	public GameObject mapTestLocations;
 	public bool flattenMap = true;
 	public bool highlightAssist = false;
 	public GameObject mapTestHighlights;

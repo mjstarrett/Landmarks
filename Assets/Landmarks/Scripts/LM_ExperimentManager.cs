@@ -15,6 +15,7 @@ public class LM_ExperimentManager : MonoBehaviour
     public TMP_InputField age;
     public TMP_Dropdown ui;
     public Button start;
+    public Toggle practice;
 
     private string appDir = "";
     private bool expDirCreated = false;
@@ -40,6 +41,14 @@ public class LM_ExperimentManager : MonoBehaviour
         }
 
         start.onClick.AddListener(LoadExperiment);
+
+       
+    }
+
+    private void Update()
+    {
+        practice.onValueChanged.AddListener(delegate { TogglePracticeState(practice); });
+
     }
 
 
@@ -81,7 +90,7 @@ public class LM_ExperimentManager : MonoBehaviour
             {
 
                 // Even if the subID is an int, check if this ID has been used
-                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text))
+                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text) || practice.isOn)
                 {
                     subidError = false;
                     _errorMessage.gameObject.SetActive(false); // then and only then, will we release the flag
@@ -175,12 +184,12 @@ public class LM_ExperimentManager : MonoBehaviour
 
         if (ui.value != 0)
         {
-            biosexError = false;
+            uiError = false;
             _errorMessage.gameObject.SetActive(false);
         }
         else
         {
-            biosexError = true;
+            uiError = true;
             _errorMessage.text = "Please select a UI from the dropdown.";
             _errorMessage.gameObject.SetActive(true);
         }
@@ -193,13 +202,27 @@ public class LM_ExperimentManager : MonoBehaviour
 
         Debug.Log("starting to load experiment");
 
-        ValidateExpID();
-        ValidateSubjectID();
-        ValidateAge();
-        ValidateBiosex();
-        ValidateUI();
+        // if we're doing practice, then ignore subid, age, and biosex errors
+        if (practice.isOn)
+        {
+            ValidateExpID();
+            subidError = false;
+            biosexError = false;
+            ageError = false;
+            ValidateUI();
+        }
+        else
+        {
+            ValidateExpID();
+            ValidateSubjectID();
+            ValidateBiosex();
+            ValidateAge();
+            ValidateUI();
+        }
 
-        if (!expidError && !subidError && !ageError && !biosexError && uiError)
+        Debug.Log(expidError + "\t" + subidError + biosexError + ageError + uiError);
+
+        if (!expidError && !subidError && !ageError && !biosexError && !uiError)
         {
             // Create the directories if they don't exist
             if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
@@ -207,16 +230,31 @@ public class LM_ExperimentManager : MonoBehaviour
                 Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text);
                 expDirCreated = true;
             }
-            Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
-            subDirCreated = true;
 
+            if (practice.isOn)
+            {
+                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/practice"))
+                {
+                    Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/practice");
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
+                subDirCreated = true;
+            }
+            
             Debug.Log("All error flags removed; proceeding");
             _errorMessage.gameObject.SetActive(false);
 
 
             PlayerPrefs.SetString("expID", expID.options[expID.value].text);
-            PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
-            PlayerPrefs.SetInt("subAge", int.Parse(age.text));
+            if (!practice.isOn)
+            {
+                PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
+                PlayerPrefs.SetInt("subAge", int.Parse(age.text));
+            }
+            
 
             readyConfig();
             ReadyExp();
@@ -242,16 +280,23 @@ public class LM_ExperimentManager : MonoBehaviour
         {
             int id = int.Parse(subID.text); // parse the id input string to int
 
-            // if it's in the 100 range, load city 01
-            if (id > 100 && id < 200)
+            if (practice.isOn)
             {
-                config.level = "esc_city01";
-                PlayerPrefsX.SetStringArray("NextLevels", new string[1] {"esc_city02"}); // using arrayprefs2 allows for multiple 'next' levels
+                config.level = "esc_practice";
             }
-            else if (id > 200 && id < 300)
+            else
             {
-                config.level = "esc_city02";
-                PlayerPrefsX.SetStringArray("NextLevels", new string[1] {"esc_city01"}); // using arrayprefs2 allows for multiple 'next' levels
+                // if it's in the 100 range, load city 01
+                if (id > 100 && id < 200)
+                {
+                    config.level = "esc_city01";
+                    PlayerPrefsX.SetStringArray("NextLevels", new string[1] { "esc_city02" }); // using arrayprefs2 allows for multiple 'next' levels
+                }
+                else if (id > 200 && id < 300)
+                {
+                    config.level = "esc_city02";
+                    PlayerPrefsX.SetStringArray("NextLevels", new string[1] { "esc_city01" }); // using arrayprefs2 allows for multiple 'next' levels
+                }
             }
 
             // if it's odd, start with standard navigation
@@ -288,13 +333,33 @@ public class LM_ExperimentManager : MonoBehaviour
         config.bootstrapped = true;
 
         config.expPath = appDir + "/data/" + expID.options[expID.value].text;
-        config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
+
+        if (practice.isOn)
+        {
+            config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/practice";
+        }
+        else
+        {
+            config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
+        }
 
         config.appPath = appDir;
         config.subject = subID.text;
         config.ui = ui.options[ui.value].text;
 
         DontDestroyOnLoad(config);
+
+    }
+
+    void TogglePracticeState(Toggle toggle)
+    {
+        age.gameObject.SetActive(!toggle.isOn);
+        biosex.gameObject.SetActive(!toggle.isOn);
+        if (toggle.isOn)
+        {
+            ValidateSubjectID();
+
+        }
 
     }
 }
