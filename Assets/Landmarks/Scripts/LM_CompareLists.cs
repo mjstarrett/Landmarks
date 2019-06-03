@@ -109,6 +109,12 @@ public class LM_CompareLists : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
+
+        // Make sure any children of our comparisonlistobject are inactive so they don't show up in any subsequent levels
+        foreach (Transform child in comparisonListParent.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
 }

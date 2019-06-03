@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
+using CybSDK;
 
 public class LM_LoadNextScene : ExperimentTask
 {
@@ -35,7 +37,15 @@ public class LM_LoadNextScene : ExperimentTask
             PlayerPrefs.SetInt("NextIndex", nextIndex);
 
             //destroy the current landmarks structure
-            Destroy(GameObject.Find("_Landmarks_"));
+            avatar.tag = "Untagged";
+
+            if (avatar.GetComponent<CVirtHapticListener>() != null)
+            {
+                Destroy(avatar.GetComponent<CVirtHapticListener>());
+            }
+
+            GameObject.Find("_Landmarks_").SetActive(false) ;
+
 
             SceneManager.LoadScene(levelname);
 
