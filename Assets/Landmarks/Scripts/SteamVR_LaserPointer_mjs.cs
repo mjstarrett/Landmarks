@@ -15,9 +15,11 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
     public SteamVR_Behaviour_Pose pose;
 
     //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
+    public SteamVR_Input_Sources inputSource;
     public ControlOptions controlBehavior = ControlOptions.hold2point;
     public SteamVR_Action_Boolean activatePointer = SteamVR_Input.GetBooleanAction("InteractUI");
     public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.GetBooleanAction("InteractUI");
+    
 
     public bool active = true;
     public Color color;
@@ -139,7 +141,7 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
         }
         else if (controlBehavior == ControlOptions.press2toggle)
         {
-            if (activatePointer.GetStateDown(SteamVR_Input_Sources.Any))
+            if (activatePointer.GetStateDown(inputSource))
             {
                 isActive = !isActive;
             }
