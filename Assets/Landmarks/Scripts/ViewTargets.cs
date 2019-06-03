@@ -45,6 +45,7 @@ public class ViewTargets : ExperimentTask {
     public float rotationSpeed = 30.0f;
     public bool restrictMovement = true;
 
+    private Vector3 initialHUDposition;
 
     public override void startTask () {
 		TASK_START();
@@ -80,9 +81,23 @@ public class ViewTargets : ExperimentTask {
 
         destination = avatar.GetComponentInChildren<LM_SnapPoint>();
 
-        // Change the anchor points to put the message at the bottom
-        RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
-        hudposition.pivot = new Vector2(0.5f, 0.1f);
+        // handle changes to the hud
+        if (vrEnabled)
+        {
+            initialHUDposition = hud.hudPanel.transform.position;
+
+            var temp = destination.transform.position;
+            temp.y += 2.5f;
+            hud.hudPanel.transform.position = temp;
+
+        }
+        else
+        {
+            // Change the anchor points to put the message at the bottom
+            RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
+            hudposition.pivot = new Vector2(0.5f, 0.1f);
+        }
+        
 
         // turn off all objects
         foreach (GameObject item in startObjects.objects)
@@ -185,9 +200,16 @@ public class ViewTargets : ExperimentTask {
 		if (blackout) hud.showEverything();
 		else hud.showOnlyTargets();
 
-        // Change the anchor points to put the message back in center
-        RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
-        hudposition.pivot = new Vector2(0.5f, 0.5f);
+        if (vrEnabled)
+        {
+            hud.hudPanel.transform.position = initialHUDposition;
+        }
+        else
+        {
+            // Change the anchor points to put the message back in center
+            RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
+            hudposition.pivot = new Vector2(0.5f, 0.5f);
+        }
 
         // turn on all targets
         foreach (GameObject item in startObjects.objects)

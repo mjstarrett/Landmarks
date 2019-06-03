@@ -134,8 +134,8 @@ public class HUD : MonoBehaviour
 
     public void showOnlyTargets()
     {
-        cam[0].cullingMask = (1 << LayerMask.NameToLayer("Targets"));
-        cam[1].cullingMask = (1 << LayerMask.NameToLayer("Targets"));
+        cam[0].cullingMask = 1 << LayerMask.NameToLayer("Targets") | 1 << hudLayer;
+        cam[1].cullingMask = 1 << LayerMask.NameToLayer("Targets") | 1 << hudLayer;
         cam[0].cullingMask = cam[0].cullingMask + (1 << 0);
         cam[1].cullingMask = cam[1].cullingMask + (1 << 0);
 
