@@ -89,7 +89,10 @@ public class InstructionsTask : ExperimentTask {
         if (texts) currentText = texts.currentString().Trim();
         if (objects) currentObject = objects.currentObject();
         if (instruction) canvas.text = instruction.text;
+
         if (blackout) hud.showOnlyHUD();
+        else hud.showEverything();
+
         if (message) {
             string msg = message.text;
             if (currentText != null) msg = string.Format(msg, currentText);
@@ -195,7 +198,6 @@ public class InstructionsTask : ExperimentTask {
         string nullstring = null;
         canvas.text = nullstring;
 //            StartCoroutine(storesInactive());
-        hud.showEverything();
 
         if (actionButtonOn)
         {

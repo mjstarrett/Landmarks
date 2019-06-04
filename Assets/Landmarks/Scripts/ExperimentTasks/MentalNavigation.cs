@@ -105,7 +105,6 @@ public class MentalNavigation : ExperimentTask
         base.endTask();
 
 
-        hud.showEverything();
     }
 
 }

@@ -196,9 +196,6 @@ public class ViewTargets : ExperimentTask {
 	public override void TASK_END() {
 
 		base.endTask();
-		
-		if (blackout) hud.showEverything();
-		else hud.showOnlyTargets();
 
         if (vrEnabled)
         {
