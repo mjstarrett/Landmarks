@@ -216,7 +216,6 @@ public class Confidence : ExperimentTask {
         string nullstring = null;
         canvas.text = nullstring;
 //            StartCoroutine(storesInactive());
-        hud.showEverything();
 
         if (actionButtonOn)
         {

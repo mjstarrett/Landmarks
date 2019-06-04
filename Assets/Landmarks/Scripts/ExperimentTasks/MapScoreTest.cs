@@ -208,7 +208,6 @@ public class MapScoreTest : ExperimentTask {
         string nullstring = null;
 		canvas.text = nullstring;
 		//			StartCoroutine(storesInactive());
-		hud.showEverything();
 
         // turn off the map action button
         actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;

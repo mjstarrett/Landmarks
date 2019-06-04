@@ -172,9 +172,7 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
         if (Physics.Raycast(raycast, out hit))
         { 
 
-            Debug.Log("======================" + hit.collider.gameObject.name);
             dist = hit.distance;
-            //Debug.Log(dist);
         }
         else
         {
