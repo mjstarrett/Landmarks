@@ -44,7 +44,13 @@ public class LM_LoadNextScene : ExperimentTask
                 Destroy(avatar.GetComponent<CVirtHapticListener>());
             }
 
-            GameObject.Find("_Landmarks_").SetActive(false) ;
+            GameObject oldInstance = GameObject.Find("_Landmarks_");
+            oldInstance.name = "OldInstance";
+            GameObject.FindWithTag("Experiment").SetActive(false);
+            GameObject.FindWithTag("Environment").SetActive(false);
+            
+
+
 
 
             SceneManager.LoadScene(levelname);

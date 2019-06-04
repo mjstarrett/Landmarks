@@ -82,6 +82,13 @@ public class Experiment : MonoBehaviour {
 	
 	void Awake() {
 
+        // check if we have any old Landmarks instances from LoadScene.cs and destroy them
+        GameObject oldInstance = GameObject.Find("OldInstance");
+        if (oldInstance != null)
+        {
+            Destroy(oldInstance);
+        }
+
         Debug.Log ("Starting Experiment.cs");
 
         //since config is a singleton it will be the one created in scene 0 or this scene
