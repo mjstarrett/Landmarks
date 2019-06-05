@@ -92,7 +92,7 @@ public class MoveSpawn : ExperimentTask {
              * which will access a modified MouseLook.cs script to reset the mouselook 
              * which effectively forces it not to undo our manual rotation
             */           
-            avatar.GetComponent<FirstPersonController>().ResetMouselook();
+            //avatar.GetComponent<FirstPersonController>().ResetMouselook();
         }
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
