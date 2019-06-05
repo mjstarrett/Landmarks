@@ -82,11 +82,15 @@ public class Experiment : MonoBehaviour {
 	
 	void Awake() {
 
-        // check if we have any old Landmarks instances from LoadScene.cs and destroy them
+        // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");
         if (oldInstance != null)
         {
-            Destroy(oldInstance);
+            foreach (var item in oldInstance.transform)
+            {
+                //Destroy(item); // this tends to break the steamvr skeleton buttons and hand rendermodels
+                oldInstance.SetActive(false);
+            }
         }
 
         Debug.Log ("Starting Experiment.cs");

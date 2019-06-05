@@ -48,12 +48,14 @@ public class LM_LoadNextScene : ExperimentTask
             oldInstance.name = "OldInstance";
             GameObject.FindWithTag("Experiment").SetActive(false);
             GameObject.FindWithTag("Environment").SetActive(false);
-            
 
-
-
-
-            SceneManager.LoadScene(levelname);
+            // avoid frame drop forcing to compositor by using SteamVR_LoadLevel for VR apps
+            if (vrEnabled)
+            {
+                SteamVR_LoadLevel.Begin(levelname);
+                Debug.Log("Loading new VR scene");
+            }
+            else SceneManager.LoadScene(levelname);
 
         }
         else
