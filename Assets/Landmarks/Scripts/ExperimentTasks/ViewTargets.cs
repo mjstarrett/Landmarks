@@ -29,7 +29,7 @@ public class ViewTargets : ExperimentTask {
 
 	public ObjectList startObjects;
 	private GameObject current;
-	[HideInInspector] public LM_SnapPoint destination;
+	[HideInInspector] public GameObject destination;
 
 	private static Vector3 position;
 	private static Quaternion rotation;
@@ -79,9 +79,24 @@ public class ViewTargets : ExperimentTask {
             manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
         }
 
-        destination = avatar.GetComponentInChildren<LM_SnapPoint>();
+        destination = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
 
-        
+        // handle changes to the hud
+        if (vrEnabled)
+        {
+            initialHUDposition = hud.hudPanel.transform.position;
+
+            var temp = destination.transform.position;
+            temp.y += 2.5f;
+            hud.hudPanel.transform.position = temp;
+
+        }
+        else
+        {
+            // Change the anchor points to put the message at the bottom
+            RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
+            hudposition.pivot = new Vector2(0.5f, 0.1f);
+        }
         
 
         // turn off all objects
@@ -146,23 +161,6 @@ public class ViewTargets : ExperimentTask {
 
         saveLayer = current.layer;
 		setLayer(current.transform,viewLayer);
-
-        // handle changes to the hud
-        if (vrEnabled)
-        {
-            initialHUDposition = hud.hudPanel.transform.position;
-
-            var temp = destination.transform.position;
-            temp.y += 2.5f;
-            hud.hudPanel.transform.position = temp;
-
-        }
-        else
-        {
-            // Change the anchor points to put the message at the bottom
-            RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
-            hudposition.pivot = new Vector2(0.5f, 0.1f);
-        }
         hud.setMessage(current.name);
         hud.ForceShowMessage();
 		
