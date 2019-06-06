@@ -242,7 +242,6 @@ public class Experiment : MonoBehaviour {
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + "\tBIOSEX:\t" + PlayerPrefs.GetString("biosex") + 
                   "\tAGE:\t" + PlayerPrefs.GetInt("subAge") + "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
 
-        Debug.Log("is it line here?");
         Debug.Log(XRSettings.loadedDeviceName);
     }
 
