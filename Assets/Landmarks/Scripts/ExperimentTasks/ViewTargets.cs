@@ -81,22 +81,7 @@ public class ViewTargets : ExperimentTask {
 
         destination = avatar.GetComponentInChildren<LM_SnapPoint>();
 
-        // handle changes to the hud
-        if (vrEnabled)
-        {
-            initialHUDposition = hud.hudPanel.transform.position;
-
-            var temp = destination.transform.position;
-            temp.y += 2.5f;
-            hud.hudPanel.transform.position = temp;
-
-        }
-        else
-        {
-            // Change the anchor points to put the message at the bottom
-            RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
-            hudposition.pivot = new Vector2(0.5f, 0.1f);
-        }
+        
         
 
         // turn off all objects
@@ -161,6 +146,23 @@ public class ViewTargets : ExperimentTask {
 
         saveLayer = current.layer;
 		setLayer(current.transform,viewLayer);
+
+        // handle changes to the hud
+        if (vrEnabled)
+        {
+            initialHUDposition = hud.hudPanel.transform.position;
+
+            var temp = destination.transform.position;
+            temp.y += 2.5f;
+            hud.hudPanel.transform.position = temp;
+
+        }
+        else
+        {
+            // Change the anchor points to put the message at the bottom
+            RectTransform hudposition = hud.hudPanel.GetComponent<RectTransform>() as RectTransform;
+            hudposition.pivot = new Vector2(0.5f, 0.1f);
+        }
         hud.setMessage(current.name);
         hud.ForceShowMessage();
 		

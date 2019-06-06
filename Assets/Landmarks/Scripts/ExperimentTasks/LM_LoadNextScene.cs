@@ -36,26 +36,25 @@ public class LM_LoadNextScene : ExperimentTask
             nextIndex++;
             PlayerPrefs.SetInt("NextIndex", nextIndex);
 
-            //destroy the current landmarks structure
-            avatar.tag = "Untagged";
 
+            // Handle the current Landmarks structure to avoid breaking the game on loading the next scene
             if (avatar.GetComponent<CVirtHapticListener>() != null)
             {
-                Destroy(avatar.GetComponent<CVirtHapticListener>());
+                Destroy(avatar.GetComponent<CVirtHapticListener>()); // There can only be one!
             }
-
-            GameObject oldInstance = GameObject.Find("_Landmarks_");
+            GameObject oldInstance = GameObject.Find("_Landmarks_"); 
             oldInstance.name = "OldInstance";
             GameObject.FindWithTag("Experiment").SetActive(false);
             GameObject.FindWithTag("Environment").SetActive(false);
+            Destroy(avatar); // particularly important for SteamVR and interaction system; bugs on load
 
-            // avoid frame drop forcing to compositor by using SteamVR_LoadLevel for VR apps
+            // avoid frame-drop during load forcing to SteamVr compositor by using SteamVR_LoadLevel for VR apps
             if (vrEnabled)
             {
                 SteamVR_LoadLevel.Begin(levelname);
                 Debug.Log("Loading new VR scene");
             }
-            else SceneManager.LoadScene(levelname);
+            else SceneManager.LoadScene(levelname); // otherwise, just load the level like usual
 
         }
         else
