@@ -46,32 +46,28 @@ public class LM_vrSlider : MonoBehaviour
     {
         sliderValue = handle.GetComponent<RectTransform>().anchoredPosition.x / (totalSliderRange / maxValue);
         linearMapping.GetComponent<LinearMapping>().value = sliderValue/maxValue;
-        if (wholeNumbers)
-        {
-            sliderValue = Mathf.RoundToInt(sliderValue);
-        }
     }
-
-    public void GetSnap()
-{
-		SnapToPosition();
-}
 
 
     public void SnapToPosition()
     {
-        //Cycle through each predefined anchor point
-        for (int i = 0; i < anchorPoints.Length; i++)
+        if (wholeNumbers)
         {
-            //If lever is within "snapping distance" of that anchor point
-            if (Mathf.Abs(handle.GetComponent<RectTransform>().anchoredPosition.x - anchorPoints[i]) < ((totalSliderRange/maxValue)/2))
+            sliderValue = Mathf.RoundToInt(sliderValue);
+
+            //Cycle through each predefined anchor point
+            for (int i = 0; i < anchorPoints.Length; i++)
             {
-                //Get current lever position and update z pos to anchor point
-                Vector3 snapPosition = handle.GetComponent<RectTransform>().anchoredPosition;
-                snapPosition.x = anchorPoints[i];
-                handle.GetComponent<RectTransform>().anchoredPosition = snapPosition;
-                //Break so it stops checking other anchor points
-                break;
+                //If lever is within "snapping distance" of that anchor point
+                if (Mathf.Abs(handle.GetComponent<RectTransform>().anchoredPosition.x - anchorPoints[i]) < ((totalSliderRange / maxValue) / 2))
+                {
+                    //Get current lever position and update z pos to anchor point
+                    Vector3 snapPosition = handle.GetComponent<RectTransform>().anchoredPosition;
+                    snapPosition.x = anchorPoints[i];
+                    handle.GetComponent<RectTransform>().anchoredPosition = snapPosition;
+                    //Break so it stops checking other anchor points
+                    break;
+                }
             }
         }
     }
