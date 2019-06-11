@@ -93,9 +93,9 @@ public class ScalePlayerToEnvironment : ExperimentTask
             // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
             if (isScaled)
             {
-                manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio*3);
+                manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio);
             }
-            else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio/3);
+            else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio);
 
         }
         else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironment.cs");
