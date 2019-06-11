@@ -239,8 +239,8 @@ public class Experiment : MonoBehaviour {
 
         //start session
 
-        dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + "\tBIOSEX:\t" + PlayerPrefs.GetString("biosex") + 
-                  "\tAGE:\t" + PlayerPrefs.GetInt("subAge") + "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
+        dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + 
+                  "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
 
         Debug.Log(XRSettings.loadedDeviceName);
     }
