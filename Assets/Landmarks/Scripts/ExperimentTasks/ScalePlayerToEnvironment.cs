@@ -23,8 +23,7 @@ using System;
 
 public class ScalePlayerToEnvironment : ExperimentTask
 {
-
-    public GameObject scaledEnvironment;
+    private GameObject scaledEnvironment;
     public bool autoscale = true;
     public float scaleRatio = 1;
     private CharacterController characterController;
@@ -42,6 +41,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
+
+        scaledEnvironment = manager.scaledEnvironment;
 
         //---------------------------------------------
         // Set up basic parameters

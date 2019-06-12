@@ -48,6 +48,8 @@ public class Experiment : MonoBehaviour {
 	public Camera playerCamera;
 	public Camera overheadCamera;
     public GameObject scaledPlayer;
+    public GameObject environment;
+    public GameObject scaledEnvironment;
 
     public bool debugging = false;
 
@@ -105,6 +107,11 @@ public class Experiment : MonoBehaviour {
         overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
         // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
+        // find Environment
+        environment = GameObject.FindGameObjectWithTag("Environment");
+        // find scaled environment
+        scaledEnvironment = GameObject.FindGameObjectWithTag("ScaledEnvironment");
+        scaledEnvironment.SetActive(false);
 
 
         if (PlayerPrefs.GetString("UserInterface") != "default")
