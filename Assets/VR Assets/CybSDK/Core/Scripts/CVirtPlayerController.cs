@@ -9,9 +9,9 @@ public class CVirtPlayerController : MonoBehaviour
     private CVirtDeviceController deviceController;
     private CharacterController characterController;
 
-    public Transform forwardDirection;
+    [HideInInspector] public Transform forwardDirection;
 
-    public float movementSpeedMultiplier = 1.0f;
+    [Range(0.0f, 1000.0f)] public float movementSpeedMultiplier = 1.0f;
 
     // Use this for initialization
     void Start ()
