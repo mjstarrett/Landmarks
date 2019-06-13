@@ -83,9 +83,10 @@ public class HUD : MonoBehaviour
     public void Awake()
 	{
 		SecondsToShow = GeneralDuration;
-		//Debug.Log ("Starting HUD.cs");
-		//canvasName = Canvas.name;
-		//Debug.Log ("Canvas Name: " + canvasName);
+        //Debug.Log ("Starting HUD.cs");
+        //canvasName = Canvas.name;
+        //Debug.Log ("Canvas Name: " + canvasName);
+        this.actionButton.GetComponent<Button>().onClick.AddListener(OnActionClick);
 	}
 	public void setMessage(string newMessage)
 	{
@@ -435,5 +436,6 @@ public class HUD : MonoBehaviour
     public void OnActionClick()
     {
         actionButtonClicked = true;
+
     }
 }
