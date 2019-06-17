@@ -15,7 +15,8 @@ namespace Valve.VR.InteractionSystem
 	[RequireComponent( typeof( Interactable ) )]
 	public class UIElement : MonoBehaviour
 	{
-		public CustomEvents.UnityEventHand onHandClick;
+        public SteamVR_Action_Boolean clickButton;
+        public CustomEvents.UnityEventHand onHandClick;
 
         protected Hand currentHand;
 
