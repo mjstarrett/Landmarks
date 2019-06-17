@@ -1646,7 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardDirection: {fileID: 0}
-  movementSpeedMultiplier: 1.8
+  movementSpeedMultiplier: 2.5
 --- !u!114 &7412682519830804321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,7 +4066,7 @@ RectTransform:
   m_GameObject: {fileID: 2019907630035877474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 6091272669581790903}
   m_RootOrder: 0
@@ -5993,6 +5993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd2ef2dd3d5d64e96af4420220d1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickButton:
+    actionPath: 
+    needsReinit: 0
   onHandClick:
     m_PersistentCalls:
       m_Calls: []
@@ -7058,7 +7061,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3268420187710108580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.54993826}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.003000014, y: 0.0030000026, z: 0.0030000112}
   m_Children:
   - {fileID: 2543272756138975626}
@@ -8940,7 +8943,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.2784314, g: 0.45490196, b: 0.972549, a: 1}
     m_PressedColor: {r: 0.6039216, g: 0.654902, b: 0.70980394, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -9036,6 +9039,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd2ef2dd3d5d64e96af4420220d1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickButton:
+    actionPath: /actions/vrtk/in/TriggerButton
+    needsReinit: 0
   onHandClick:
     m_PersistentCalls:
       m_Calls:
@@ -14957,13 +14963,13 @@ MonoBehaviour:
     actionPath: /actions/vrtk/in/TriggerButton
     needsReinit: 0
   grabGripAction:
-    actionPath: /actions/vrtk/in/GripButton
+    actionPath: /actions/vrtk/in/TriggerButton
     needsReinit: 0
   hapticAction:
     actionPath: /actions/vrtk/out/Haptic
     needsReinit: 1
   uiInteractAction:
-    actionPath: /actions/vrtk/in/TouchpadButton
+    actionPath: /actions/vrtk/in/TriggerButton
     needsReinit: 0
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 8817722687800454261}
@@ -19019,18 +19025,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8042122514672724913}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5499001}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0.311}
   m_LocalScale: {x: 0.0030000156, y: 0.0030000026, z: 0.0030000128}
   m_Children:
   - {fileID: 8373930491325940839}
   - {fileID: 6847609524254411511}
   m_Father: {fileID: 918421474138340661}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.010001137, y: 1.0210007}
+  m_AnchoredPosition: {x: 0.01, y: 0.875}
   m_SizeDelta: {x: 274.56, y: 239.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8677839004722998407
@@ -19259,7 +19265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117493622730653864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffebc012055484b4899e163803755608, type: 3}
   m_Name: 
@@ -20561,13 +20567,13 @@ MonoBehaviour:
     actionPath: /actions/vrtk/in/TriggerButton
     needsReinit: 0
   grabGripAction:
-    actionPath: /actions/vrtk/in/GripButton
+    actionPath: /actions/vrtk/in/TriggerButton
     needsReinit: 0
   hapticAction:
     actionPath: /actions/vrtk/out/Haptic
     needsReinit: 1
   uiInteractAction:
-    actionPath: /actions/vrtk/in/TouchpadButton
+    actionPath: /actions/vrtk/in/TriggerButton
     needsReinit: 0
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 500423418167849971}
