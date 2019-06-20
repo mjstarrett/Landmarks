@@ -30,6 +30,9 @@ public class MoveObjects : ExperimentTask {
 	
 	public bool swap;
 
+    public bool ignoreYPos = false;
+    public bool ignoreRotation = false;
+
     public bool destroyExtraSources = false; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
 
 	private static Vector3 position;
@@ -79,10 +82,22 @@ public class MoveObjects : ExperimentTask {
 		while (source != null && destination != null ) {	
 			position = source.transform.position;
 	        rotation = source.transform.rotation;
-	
-			
-			source.transform.position = destination.transform.position;
-			source.transform.localRotation = destination.transform.localRotation;
+
+
+            if (ignoreYPos)
+            {
+                Vector3 temp = source.transform.position;
+                temp.x = destination.transform.position.x;
+                temp.z = destination.transform.position.z;
+                source.transform.position = temp;
+            }
+            else source.transform.position = destination.transform.position;
+
+
+            if (!ignoreRotation)
+            {
+                source.transform.localRotation = destination.transform.localRotation;
+            }
 
             // Log the target info
             log.log(destination.name + ": \t" + source.name + 
