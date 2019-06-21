@@ -31,9 +31,9 @@ public enum EndListMode
 
 public enum UserInterface
 {
-	DesktopDefault,
-	ViveAndVirtualizer,
-    ViveRoomspace
+	DesktopDefault,	
+    ViveRoomspace,
+    ViveAndVirtualizer
 }
 
 public class Experiment : MonoBehaviour {
@@ -138,55 +138,70 @@ public class Experiment : MonoBehaviour {
         // Assign Player and Camera based on UI enum
         // ------------------------------------------
 
-        if (userInterface == UserInterface.DesktopDefault)
+
+        switch (userInterface)
         {
-            
-			// Standard Desktop with Keyboard/mouse controller
-			player = GameObject.Find ("DesktopDefaultController");
-			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
+            case UserInterface.DesktopDefault:
+                // Standard Desktop with Keyboard/mouse controller
+                player = GameObject.Find("DesktopDefaultController");
+                playerCamera = GameObject.Find("DesktopDefaultCamera").GetComponent<Camera>();
 
-            // Render the overhead camera on the main display (none)
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+                // Render the overhead camera on the main display (none)
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
 
-            // create variable to indicate if using VR
-            usingVR = false;
-        }
-        else if (userInterface == UserInterface.ViveAndVirtualizer)
-        {
-            // HTC Vive and Cyberith Virtualizer
-            player = GameObject.Find ("ViveVirtualizerController");
-			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
+                // create variable to indicate if using VR
+                usingVR = false;
 
-            // Render the overhead camera to each lense of the HMD
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+                break;
 
-            // create variable to indicate if using VR
-            usingVR = true;
-        }
-        else if (userInterface == UserInterface.ViveRoomspace)
-        {
-            
-            // HTC Vive and Cyberith Virtualizer
-            player = GameObject.Find("ViveRoomspaceController");
-            playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
+            case UserInterface.ViveRoomspace:
 
-            // Render the overhead camera to each lense of the HMD
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+                // HTC Vive and Cyberith Virtualizer
+                player = GameObject.Find("ViveRoomspaceController");
+                playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
 
-            // create variable to indicate if using VR
-            usingVR = true;
-        }
-        else
-        {
-			
-            player = GameObject.Find ("DesktopDefaultController");
-			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
+                // Render the overhead camera to each lense of the HMD
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
 
-            // Render the overhead camera on the main display (none)
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+                // create variable to indicate if using VR
+                usingVR = true;
 
-            // create variable to indicate if using VR
-            usingVR = false;
+                break;
+
+            case UserInterface.ViveAndVirtualizer:
+
+                // This is a proprietary asset that must be added to the _Landmarks_ prefab to work
+                // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
+                if (GameObject.Find("ViveVirtualizerController") == null)
+                {
+                    Debug.Log("UserInterface player controller not found. Falling back to Default");
+                    goto default;
+                }
+
+                // HTC Vive and Cyberith Virtualizer
+                player = GameObject.Find("ViveVirtualizerController");
+                playerCamera = GameObject.Find("ViveVirtualizerCamera").GetComponent<Camera>();
+
+                // Render the overhead camera to each lense of the HMD
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+
+                // create variable to indicate if using VR
+                usingVR = true;
+
+                break;
+
+            default:
+                // Standard Desktop with Keyboard/mouse controller
+                player = GameObject.Find("DesktopDefaultController");
+                playerCamera = GameObject.Find("DesktopDefaultCamera").GetComponent<Camera>();
+
+                // Render the overhead camera on the main display (none)
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+
+                // create variable to indicate if using VR
+                usingVR = false;
+
+                break;
         }
 
         Debug.Log (player.name);
