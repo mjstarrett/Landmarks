@@ -32,8 +32,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
     public override void startTask()
     {
         TASK_START();
-        avatarLog.navLog = true;
-        scaledAvatarLog.navLog = true;
+        avatarLog.navLog = false;
+        scaledAvatarLog.navLog = false;
     }
 
     public override void TASK_START()
