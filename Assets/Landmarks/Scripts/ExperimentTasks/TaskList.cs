@@ -37,7 +37,7 @@ public class TaskList : ExperimentTask {
     [HideInInspector] public bool catchFlag = false;
 
 
-    private int repeatCount = 1;
+    [HideInInspector] public int repeatCount = 1;
 
 	private int currentTaskIndex = 0;
 	[HideInInspector] public ExperimentTask currentTask;
@@ -81,29 +81,33 @@ public class TaskList : ExperimentTask {
         {
 
             // Create a list of our trial numbers
-            int[] trials;
+            int[] catchCandidates;
 
             // if trial #1 can't be a catch trial
             if (noCatchOnFirstTrial)
             {
-                trials = new int[repeat - 1];
-                for (int i = 0; i < repeat - 1; i++) trials[i] = i + 2; // adjust because repeat count uses base-1 and to ignore trial 1
+                catchCandidates = new int[repeat - 1];
+
+                for (int i = 0; i < repeat - 1; i++) catchCandidates[i] = i + 2; // adjust because repeat count uses base-1 and to ignore trial 1
             }
             // Otherwise include all trials in our list
             else
             {
-                trials = new int[repeat];
-                for (int i = 0; i < repeat; i++) trials[i] = i + 1; // adjust because repeat count uses base-1
+                catchCandidates = new int[repeat];
+                for (int i = 0; i < repeat; i++) catchCandidates[i] = i + 1; // adjust because repeat count uses base-1
             }
 
             // Shuffle this list and use it to pick our catch trials
-            Experiment.Shuffle(trials);
+            Experiment.Shuffle(catchCandidates);
 
             // Pick our catch trials randomly from the shuffled trial order until
             // we have the specified number of catch trials
+            catchTrials = new List<int>(); // must reset each time or we can get additive catch trials across blocks
             for (int i = 0; i < catchTrialCount; i++)
             {
-                catchTrials.Add(trials[i]);
+                Debug.Log(i);
+                Debug.Log(catchTrialCount);
+                catchTrials.Add(catchCandidates[i]);
             }
             Debug.Log("HERE ARE OUR CATCH TRIALS (" + catchTrials.Count + ")");
             foreach (int item in catchTrials)
