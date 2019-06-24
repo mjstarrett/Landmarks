@@ -122,7 +122,7 @@ public class MoveObjects : ExperimentTask {
         // Clearly mark the log file with the end of the target info so it's easy to find, visually
         if (sources.objects[1].CompareTag("Target"))
         {
-            log.log("-----------------------------------------------------------", 1);
+            log.log("-----------------------------------------------------------/", 1);
         }
 
     }
