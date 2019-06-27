@@ -205,8 +205,11 @@ public class Confidence : ExperimentTask {
         // Get the parent and grandparent task to provide context in log file
         var parent = this.parentTask;
         var masterTask = parent;
-        while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
-
+        while (!masterTask.gameObject.CompareTag("Task"))
+        {
+            Debug.Log(masterTask.name);
+            masterTask = masterTask.parentTask;
+        }
         // Output log for this task in tab delimited format
         log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
                 "Task\tBlock\tTrial\tTargetName\tRating\tMaxRating\tRT\n" +
