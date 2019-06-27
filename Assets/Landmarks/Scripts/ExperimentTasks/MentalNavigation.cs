@@ -82,12 +82,13 @@ public class MentalNavigation : ExperimentTask
 
             // Get the parent and grandparent task to provide context in log file
             var parent = this.parentTask;
-            var grandparent = parent.parentTask;
+            var masterTask = parent;
+            while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
 
             // Output log for this task in tab delimited format
-            log.log("LM_OUTPUT\tMentalNavigation.cs\t" + grandparent.name + "\t" + this.name + "\n" +
-            "Block\tTrial\tTargetName\tDuration\n" +
-            grandparent.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + navTime
+            log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
+            "Task\tBlock\tTrial\tTargetName\tDuration\n" +
+            masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + navTime
             , 1);
 
 
