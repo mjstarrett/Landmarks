@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 6729248069004794530}
   m_Layer: 0
   m_Name: esc_NavigationTask
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,6 +542,7 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
+  repeatCount: 1
   currentTask: {fileID: 0}
 --- !u!1 &6729248069287847141
 GameObject:
@@ -669,6 +670,7 @@ MonoBehaviour:
   destinationListName: ListNavigationStarts
   destinations: {fileID: 0}
   swap: 0
+  scaledPlayer: 0
   ignoreY: 0
 --- !u!1 &6729248069376343428
 GameObject:
@@ -750,7 +752,7 @@ GameObject:
   - component: {fileID: 6729248069632180148}
   - component: {fileID: 6729248069632180147}
   m_Layer: 0
-  m_Name: Navigate
+  m_Name: NavigationTrials
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -820,6 +822,7 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
+  repeatCount: 1
   currentTask: {fileID: 0}
 --- !u!1 &6729248069813829960
 GameObject:
@@ -881,7 +884,6 @@ MonoBehaviour:
   start: {fileID: 0}
   destination: {fileID: 0}
   destinations: {fileID: 6729248069287847140}
-  useSnapPoints: 1
   ignoreDestinationY: 1
   swap: 0
 --- !u!1 &6729248069880101319
