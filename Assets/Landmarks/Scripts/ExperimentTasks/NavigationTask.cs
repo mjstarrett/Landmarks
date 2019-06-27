@@ -227,11 +227,12 @@ public class NavigationTask : ExperimentTask
 
 
         var parent = this.parentTask;
-        var grandparent = parent.parentTask;
+        var masterTask = parent;
+        while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
         // This will log all final trial info in tab delimited format
-        log.log("LM_OUTPUT\tNavigationTask.cs\t" + grandparent.name + "\t" + this.name + "\n" +
-        	"Block\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
-        	grandparent.repeatCount + "\t" + parent.repeatCount + "\t" + m_targetName + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + (perfDistance - optimalDistance) + "\t" + (Time.time - startTime)
+        log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
+        	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
+        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + m_targetName + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + (perfDistance - optimalDistance) + "\t" + (Time.time - startTime)
             , 1);
     }
 
