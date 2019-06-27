@@ -39,17 +39,17 @@ public enum UserInterface
 public class Experiment : MonoBehaviour {
 
 	public UserInterface userInterface = UserInterface.DesktopDefault;
-	public TaskList tasks;
+    [HideInInspector] public TaskList tasks;
 	[HideInInspector] public Config config;
 	private long microseconds = 1;
 	private string logfile;
-	private string configfile = ""; 
-	public GameObject player;
-	public Camera playerCamera;
-	public Camera overheadCamera;
-    public GameObject scaledPlayer;
-    public GameObject environment;
-    public GameObject scaledEnvironment;
+	private string configfile = "";
+    [HideInInspector] public GameObject player;
+    [HideInInspector] public Camera playerCamera;
+    [HideInInspector] public Camera overheadCamera;
+    [HideInInspector] public GameObject scaledPlayer;
+    [HideInInspector] public GameObject environment;
+    [HideInInspector] public GameObject scaledEnvironment;
 
     public bool debugging = false;
 
@@ -110,8 +110,11 @@ public class Experiment : MonoBehaviour {
         // find Environment
         environment = GameObject.FindGameObjectWithTag("Environment");
         // find scaled environment
-        scaledEnvironment = GameObject.FindGameObjectWithTag("ScaledEnvironment");
-        scaledEnvironment.SetActive(false);
+        if (GameObject.FindGameObjectsWithTag("ScaledEnvironment") != null)
+        {
+            scaledEnvironment = GameObject.FindGameObjectWithTag("ScaledEnvironment");
+            scaledEnvironment.SetActive(false);
+        }
 
 
         if (PlayerPrefs.GetString("UserInterface") != "default")
