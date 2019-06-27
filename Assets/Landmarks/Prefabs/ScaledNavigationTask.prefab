@@ -317,7 +317,6 @@ MonoBehaviour:
   start: {fileID: 0}
   destination: {fileID: 0}
   destinations: {fileID: 8003104560949172965}
-  useSnapPoints: 1
   ignoreDestinationY: 1
   swap: 0
 --- !u!1 &4096788816581537194
@@ -454,7 +453,7 @@ GameObject:
   - component: {fileID: 8872554110975319653}
   - component: {fileID: 8054289813803597616}
   m_Layer: 0
-  m_Name: Navigate
+  m_Name: NavigationTrials
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -514,6 +513,7 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
+  repeatCount: 1
   currentTask: {fileID: 0}
 --- !u!1 &6252240411586193869
 GameObject:
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 6833851842772532862}
   m_Layer: 0
   m_Name: ScaledNavigationTask
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -658,6 +658,7 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
+  repeatCount: 1
   currentTask: {fileID: 0}
 --- !u!1 &7595080909231628217
 GameObject:
