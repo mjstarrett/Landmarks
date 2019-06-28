@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 6729248069004794531}
   - component: {fileID: 6729248069004794530}
   m_Layer: 0
-  m_Name: esc_NavigationTask
+  m_Name: TASK_esc_NavigationTask
   m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +538,8 @@ MonoBehaviour:
   repeat: 5
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
@@ -814,10 +815,11 @@ MonoBehaviour:
   repeat: 8
   overideRepeat: {fileID: 0}
   catchTrialCount: 1
-  toggleSkipOnCatch:
+  skipOnCatch:
   - {fileID: 6729248068955711268}
   - {fileID: 6729248070155255467}
   - {fileID: 6729248068141756773}
+  onlyOnCatch:
   - {fileID: 6729248068755103912}
   noCatchOnFirstTrial: 1
   catchTrials: 
