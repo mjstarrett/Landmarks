@@ -159,7 +159,6 @@ public class LM_ExperimentManager : MonoBehaviour
             ValidateUI();
         }
 
-        Debug.Log(expidError + "\t" + subidError + uiError);
 
         if (!expidError && !subidError && !uiError)
         {
