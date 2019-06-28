@@ -73,10 +73,11 @@ MonoBehaviour:
   repeat: 8
   overideRepeat: {fileID: 0}
   catchTrialCount: 1
-  toggleSkipOnCatch:
+  skipOnCatch:
   - {fileID: 1500695758897240381}
   - {fileID: 1500695757696339867}
   - {fileID: 1500695757799238548}
+  onlyOnCatch:
   - {fileID: 1500695757398145646}
   noCatchOnFirstTrial: 1
   catchTrials: 
@@ -767,7 +768,7 @@ GameObject:
   - component: {fileID: 1500695758937609006}
   - component: {fileID: 1500695758116101163}
   m_Layer: 0
-  m_Name: esc_ScaledNavigationTask
+  m_Name: TASK_esc_ScaledNavigationTask
   m_TagString: Task
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -826,7 +827,8 @@ MonoBehaviour:
   repeat: 5
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
