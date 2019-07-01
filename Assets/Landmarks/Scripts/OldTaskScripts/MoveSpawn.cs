@@ -82,21 +82,21 @@ public class MoveSpawn : ExperimentTask {
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
-        // Set the rotation to random
+        //// Set the rotation to random
 
-        Vector3 tempRot = start.transform.eulerAngles;
-        tempRot.y = Random.Range(0, 359.999f);
-        start.transform.eulerAngles = tempRot;
-        if (!scaledPlayer)
-        {
-            /* MJS 2019
-             * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
-             * so we need to access a modified firstpersoncontroller.cs script
-             * which will access a modified MouseLook.cs script to reset the mouselook 
-             * which effectively forces it not to undo our manual rotation
-            */           
-            avatar.GetComponent<FirstPersonController>().ResetMouselook();
-        }
+        //Vector3 tempRot = start.transform.eulerAngles;
+        //tempRot.y = Random.Range(0, 359.999f);
+        //start.transform.eulerAngles = tempRot;
+        //if (!scaledPlayer)
+        //{
+        //    /* MJS 2019
+        //     * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
+        //     * so we need to access a modified firstpersoncontroller.cs script
+        //     * which will access a modified MouseLook.cs script to reset the mouselook 
+        //     * which effectively forces it not to undo our manual rotation
+        //    */           
+        //    avatar.GetComponent<FirstPersonController>().ResetMouselook();
+        //}
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
 
