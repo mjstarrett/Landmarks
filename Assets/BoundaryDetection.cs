@@ -49,7 +49,7 @@ public class BoundaryDetection : MonoBehaviour
         if (this.transform.position.x >= xPosBound || this.transform.position.x <= xNegBound || this.transform.position.z >= zPosBound || this.transform.position.z <= zNegBound)
         {
             fadeIn();
-            Debug.Log("Your " + this.name + " is getting close to a boundary");
+            //Debug.Log("Your " + this.name + " is getting close to a boundary");
         }
         else
         {
