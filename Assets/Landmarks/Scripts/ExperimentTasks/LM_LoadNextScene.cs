@@ -50,6 +50,13 @@ public class LM_LoadNextScene : ExperimentTask
                 GameObject.FindWithTag("Environment").SetActive(false);
                 Destroy(avatar); // particularly important for SteamVR and interaction system; bugs on load
 
+                // End the timeline and close the log file so there is no data loss/clipping at the end
+                if (manager.config.runMode != ConfigRunMode.PLAYBACK)
+                {
+                    manager.tasks.endTask();
+                }
+                manager.dblog.close();
+
                 // avoid frame-drop during load forcing to SteamVr compositor by using SteamVR_LoadLevel for VR apps
                 if (vrEnabled)
                 {
