@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Valve.VR;
-using CybSDK;
+// using CybSDK; // removed as this is only used for proprietary Cyberith Virtualizer SDK; If using, uncomment this line
 
 public class LM_LoadNextScene : ExperimentTask
 {
@@ -38,12 +38,12 @@ public class LM_LoadNextScene : ExperimentTask
                 nextIndex++;
                 PlayerPrefs.SetInt("NextIndex", nextIndex);
 
-
-                // Handle the current Landmarks structure to avoid breaking the game on loading the next scene
-                if (avatar.GetComponent<CVirtHapticListener>() != null)
-                {
-                    Destroy(avatar.GetComponent<CVirtHapticListener>()); // There can only be one!
-                }
+                // removed as this is only used for proprietary Cyberith Virtualizer SDK; If using, uncomment this code
+                //// Handle the current Landmarks structure to avoid breaking the game on loading the next scene
+                //if (avatar.GetComponent<CVirtHapticListener>() != null)
+                //{
+                //    Destroy(avatar.GetComponent<CVirtHapticListener>()); // There can only be one!
+                //}
                 GameObject oldInstance = GameObject.Find("_Landmarks_");
                 oldInstance.name = "OldInstance";
                 GameObject.FindWithTag("Experiment").SetActive(false);
