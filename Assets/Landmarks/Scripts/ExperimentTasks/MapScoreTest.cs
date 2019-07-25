@@ -6,8 +6,10 @@ using TMPro;
 
 public class MapScoreTest : ExperimentTask {
 
-	private GameObject copyObjects; // should be the game object called copyObjects in the MapTask game object
+    public GameObject copyObjects;
+
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object
+
 	public float distanceErrorTolerance = 30; // world units (suggest meters)
 	[Range(0,100)] public int percentCorrectCriterion = 100; // Allow adjustment of the score required to continue advance the experiment (0%-100%)
 	private int numberTargets;
@@ -35,13 +37,12 @@ public class MapScoreTest : ExperimentTask {
 			return;
 		}
 
-		// --------------------------------------------------------------------
-		// Set up Lists of the copies and originals to compare and score
-		// --------------------------------------------------------------------
+        // --------------------------------------------------------------------
+        // Set up Lists of the copies and originals to compare and score
+        // --------------------------------------------------------------------
 
-		// Automatically select the answers and targets based on LandMarks structure (can be changed)
-		copyObjects = GameObject.Find("CopyObjects"); // should be the game object called copyObjects in the MapTask game object
-		targetObjects = copyObjects.GetComponent<CopyChildObjects>().sourcesParent; // should be the game object called TargetObjects under Environment game object
+        // Automatically select the answers and targets based on LandMarks structure (can be changed)
+        targetObjects = copyObjects.GetComponent<CopyChildObjects>().sourcesParent.parentObject; // should be the game object called TargetObjects under Environment game object
 
 		// Get the total possible
 		numberTargets = copyObjects.transform.childCount;
