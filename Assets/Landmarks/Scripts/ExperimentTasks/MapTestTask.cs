@@ -7,9 +7,9 @@ using TMPro;
 public class MapTestTask : ExperimentTask {
 
 	public bool flattenMap = true;
-	public bool highlightAssist = false;
-	public GameObject mapTestHighlights;
-	public bool snapToTargetAssist = false;
+	//public bool highlightAssist = false; // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
+	//public GameObject mapTestHighlights; // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
+    public bool snapToTargetAssist = false;
 	private GameObject activeTarget;
 	private bool targetActive = false;
 	private Vector3 previousTargetPos;
@@ -53,12 +53,12 @@ public class MapTestTask : ExperimentTask {
 		hud.actionButton.SetActive(true);
         hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
 
-
-        // Turn on the maptarget highlights (to show where stores should be located
-        if (highlightAssist == true) 
-		{
-			mapTestHighlights.SetActive (true);
-		}
+        // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
+  //      // Turn on the maptarget highlights (to show where stores should be located
+  //      if (highlightAssist == true) 
+		//{
+		//	mapTestHighlights.SetActive (true);
+		//}
 
 		// Remove environment topography so tall things don't get in the way of dragging objects
 		if (flattenMap) 
@@ -68,12 +68,13 @@ public class MapTestTask : ExperimentTask {
 			//Flatten out the copied target stores
 			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 0.01f, 1);
 
-			// Make sure we can still see the highlights by elveating them
-			if (highlightAssist) {
-				Vector3 tmp = mapTestHighlights.transform.localPosition;
-				tmp.y = mapTestHighlights.transform.localPosition.y + 10;
-				mapTestHighlights.transform.localPosition = tmp;
-			}
+            // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
+   //         // Make sure we can still see the highlights by elveating them
+   //         if (highlightAssist) {
+			//	Vector3 tmp = mapTestHighlights.transform.localPosition;
+			//	tmp.y = mapTestHighlights.transform.localPosition.y + 10;
+			//	mapTestHighlights.transform.localPosition = tmp;
+			//}
 		}
 
 	}	
@@ -250,12 +251,13 @@ public class MapTestTask : ExperimentTask {
 			// un-Flatten out the copied target stores
 			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 1, 1);
 
-			// Return the highlights to their unflattened position
-			if (highlightAssist) {
-				Vector3 tmp = mapTestHighlights.transform.localPosition;
-				tmp.y = mapTestHighlights.transform.localPosition.y - 10;
-				mapTestHighlights.transform.localPosition = tmp;
-			}
+            // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
+   //         // Return the highlights to their unflattened position
+   //         if (highlightAssist) {
+			//	Vector3 tmp = mapTestHighlights.transform.localPosition;
+			//	tmp.y = mapTestHighlights.transform.localPosition.y - 10;
+			//	mapTestHighlights.transform.localPosition = tmp;
+			//}
 		}
 
 		// turn off the map action button
@@ -263,14 +265,15 @@ public class MapTestTask : ExperimentTask {
         actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
         hud.actionButton.SetActive(false);
 
-		// Turn off the maptarget highlights (to show where stores should be located
-		if (highlightAssist == true) 
-		{
-			mapTestHighlights.SetActive (false);
-		}
-	}
+        // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
+        //// Turn off the maptarget highlights (to show where stores should be located
+        //if (highlightAssist == true) 
+        //{
+        //	mapTestHighlights.SetActive (false);
+        //}
+    }
 
-	void HideStoreName()
+    void HideStoreName()
 	{
 		hud.setMessage ("");
 		hud.hudPanel.SetActive (true);
