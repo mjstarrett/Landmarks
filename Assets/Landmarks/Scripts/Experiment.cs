@@ -242,14 +242,19 @@ public class Experiment : MonoBehaviour {
         // ------------------------------------------
         // Handle the config file
         // ------------------------------------------
-
         logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + "_" + config.level + ".log";
 		configfile = config.expPath + "/" + config.filename;
 		
 		//when in editor
 		if (!config.bootstrapped) {
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp/"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp/");
+            }
 			logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
 			configfile = Directory.GetCurrentDirectory() + "/data/tmp/" + config.filename;
+
+            PlayerPrefs.SetString("expID", "TEST");
 		}
 
         if (config.runMode == ConfigRunMode.NEW) {

@@ -162,14 +162,25 @@ public class MapTestTask : ExperimentTask {
                 if (snapToTargetProximity > 0.0f)
                 {
                     // determine which target is closest (see helper function at the end of this script)
-                    Transform snapTransform = GetClosestTarget(activeTarget.transform, targetList.parentObject.transform);
-                    activeTarget.transform.position = snapTransform.position;
-                    var tmp = snapTransform.eulerAngles;
-                    tmp.x = activeTarget.transform.eulerAngles.x;
-                    tmp.z = activeTarget.transform.eulerAngles.z;
-                    snapTransform.eulerAngles = tmp;
-                    activeTarget.transform.eulerAngles = snapTransform.eulerAngles;
-                    
+
+                    Transform tMin = null; // initialize a container for the winner's transform and make it null to start
+                    float minDist = Mathf.Infinity; // initialize a container for the current winning distance and set it to infinity to start
+                    Vector3 currentPos = activeTarget.transform.position; // get the position of the object we're comparing 
+                    foreach (Transform child in targetList.parentObject.transform)
+                    {
+                        float dist = vector2DDistance(child.position, currentPos); // get the distance between this child and the activeTarget we're comparing
+                        if (dist < minDist) // if this is lower than the initial value of infinity or the current winner
+                        {
+                            tMin = child; // save this child's transform as the current winner
+                            minDist = dist; // save the distance from the activeTarget to this child as the winning distance
+                        }
+                    }
+
+                    if (minDist <= snapToTargetProximity)
+                    {
+                        activeTarget.transform.position = tMin.position;
+                        activeTarget.transform.eulerAngles = tMin.eulerAngles;
+                    }
                 }
 
                 targetActive = false;
@@ -313,7 +324,6 @@ public class MapTestTask : ExperimentTask {
 
         if (minDist <= snapToTargetProximity)
         {
-            Debug.Log("RETURNING TMIN");
             return tMin; // only return if the winning distance is within our snapping threshold
         }
         else return selected;

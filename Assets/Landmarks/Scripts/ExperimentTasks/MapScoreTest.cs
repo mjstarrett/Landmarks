@@ -37,6 +37,10 @@ public class MapScoreTest : ExperimentTask {
 			return;
 		}
 
+        // make the cursor functional and visible
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // --------------------------------------------------------------------
         // Set up Lists of the copies and originals to compare and score
         // --------------------------------------------------------------------
@@ -203,6 +207,10 @@ public class MapScoreTest : ExperimentTask {
 
 		hud.setMessage ("");
 		hud.SecondsToShow = hud.GeneralDuration;
+
+        // make the cursor invisible
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         Text canvas = avatar.GetComponent<Text>();
