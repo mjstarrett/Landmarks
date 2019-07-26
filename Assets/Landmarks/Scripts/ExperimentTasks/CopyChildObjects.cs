@@ -8,6 +8,7 @@ public class CopyChildObjects : ExperimentTask {
 	public ObjectList destinationsParent;
 
 	public bool setOriginalInactive = true;
+    public bool randomlyRotateCopy = false;
 
 	private string copiedParent;
 
@@ -33,8 +34,16 @@ public class CopyChildObjects : ExperimentTask {
             GameObject sourceChild = sourcesParent.objects[i];
             GameObject destinationChild = destinationsParent.objects[i];
 
-			GameObject copy = Instantiate<GameObject> (sourceChild, destinationChild.transform.position, destinationChild.transform.rotation, this.transform);
-			copy.name = sourceChild.name;
+			GameObject copy = Instantiate<GameObject> (sourceChild, destinationChild.transform.position, sourceChild.transform.rotation, this.transform);
+
+            if (randomlyRotateCopy)
+            {
+                // Randomly rotate the copied object 0, 90, 180, or 270 degrees
+                List<float> rotateOptions = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
+                copy.transform.Rotate(0.0f, rotateOptions[Random.Range(0, rotateOptions.Count)], 0.0f, Space.World);
+            }
+           
+            copy.name = sourceChild.name;
 		}
 
 		if (setOriginalInactive == true) {
