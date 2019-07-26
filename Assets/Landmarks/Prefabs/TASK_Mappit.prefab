@@ -131,7 +131,7 @@ MonoBehaviour:
   current: 0
   objects: []
   EndListBehavior: 1
-  shuffle: 1
+  shuffle: 0
   order: {fileID: 0}
 --- !u!1 &2124298954873378043
 GameObject:
@@ -190,6 +190,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  copyObjects: {fileID: 6891802954355110682}
   distanceErrorTolerance: 7
   percentCorrectCriterion: 1
   message: {fileID: 4900000, guid: 3e82b2819585f4a69abbc5b3f4bce65e, type: 3}
@@ -379,8 +380,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  targetList: {fileID: 4472178114858927060}
   flattenMap: 1
-  snapToTargetAssist: 1
+  snapToTargetProximity: 7
   hudTextOffset: {x: 0, y: 0, z: 25}
 --- !u!1 &6891802954355110682
 GameObject:
@@ -442,6 +444,7 @@ MonoBehaviour:
   sourcesParent: {fileID: 4472178114858927060}
   destinationsParent: {fileID: 3490893334939156838}
   setOriginalInactive: 1
+  randomlyRotateCopy: 1
 --- !u!1 &8115200545215876391
 GameObject:
   m_ObjectHideFlags: 0
