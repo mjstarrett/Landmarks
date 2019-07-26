@@ -6,16 +6,17 @@ using TMPro;
 
 public class MapTestTask : ExperimentTask {
 
+    public ObjectList targetList;
 	public bool flattenMap = true;
 	//public bool highlightAssist = false; // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
 	//public GameObject mapTestHighlights; // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
-    public bool snapToTargetAssist = false;
-	private GameObject activeTarget;
-	private bool targetActive = false;
-	private Vector3 previousTargetPos;
-	private Vector3 previousTargetRot;
+    public float snapToTargetProximity = 0.0f; // leave at 0.0f to have snapping off. Otherwise this will be the straight line distance within a target users must be to snap object to target position/location
+	private GameObject activeTarget; // This is the container we will use for whichever object is currently being clicked and dragged
+	private bool targetActive = false; // Are we currently manipulating a targetobject?
+	private Vector3 previousTargetPos; // save the position when a target was clicked so users can undo the current move
+	private Vector3 previousTargetRot; // save the rotation when a target was clicked so users can undo the current rotate 
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
-	public Vector3 hudTextOffset;
+	public Vector3 hudTextOffset; // Text will be centered over an object. This allows users to move that to a desireable distance in order to keep the object visible when the name is shown
 
 
 	public override void startTask () 
@@ -157,13 +158,24 @@ public class MapTestTask : ExperimentTask {
 
             // BEHAVIOR: left click released (e.g., drop the store where it is)
             if (Input.GetMouseButtonUp (0)) {
-				targetActive = false;
+                // Get position/rotation of nearest target location (if snapping assist is turned on)
+                if (snapToTargetProximity > 0.0f)
+                {
+                    // determine which target is closest (see helper function at the end of this script)
+                    Transform snapTransform = GetClosestTarget(activeTarget.transform, targetList.parentObject.transform);
+                    activeTarget.transform.position = snapTransform.position;
+                    var tmp = snapTransform.eulerAngles;
+                    tmp.x = activeTarget.transform.eulerAngles.x;
+                    tmp.z = activeTarget.transform.eulerAngles.z;
+                    snapTransform.eulerAngles = tmp;
+                    activeTarget.transform.eulerAngles = snapTransform.eulerAngles;
+                    
+                }
+
+                targetActive = false;
 				activeTarget = null;
 
-				// Get position/rotation of nearest target location (if snapping assist is turned on)
-				if (snapToTargetAssist) {
-
-				}
+				
 			}
 			// BEHAVIOR: Undo current move
 			// INPUT NAME: Cancel
@@ -176,20 +188,12 @@ public class MapTestTask : ExperimentTask {
 
 			// BEHAVIOR: Rotate active drag object 90 degrees CCW
 			// INPUT NAME: MapTest_RotateCCW
-			if (Input.GetButtonDown("MapTest_RotateCCW")) {
-				Vector3 tempRotation = activeTarget.transform.eulerAngles;
-				tempRotation.z = activeTarget.transform.eulerAngles.z - 90;
-				activeTarget.transform.eulerAngles = tempRotation;
-			}
+			if (Input.GetButtonDown("MapTest_RotateCCW")) activeTarget.transform.Rotate(0.0f, -90.0f, 0.0f, Space.World);
 
 			// BEHAVIOR: Rotate active drag object 90 degrees CW
 			// INPUT NAME: MapTest_RotateCW
-			if (Input.GetButtonDown("MapTest_RotateCW")) {
-				Vector3 tempRotation = activeTarget.transform.eulerAngles;
-				tempRotation.z = activeTarget.transform.eulerAngles.z + 90;
-				activeTarget.transform.eulerAngles = tempRotation;
-			}
-		}
+			if (Input.GetButtonDown("MapTest_RotateCW")) activeTarget.transform.Rotate(0.0f, 90.0f, 0.0f, Space.World);
+        }
 
 		// -----------------------------------------
 		// Handle debug button behavior (kill task)
@@ -281,6 +285,40 @@ public class MapTestTask : ExperimentTask {
 		// move hud off screen if we aren't hitting a target shop
 		hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
 	}
+
+    // Calculate the planar distance between placement and targets (i.e., ignore the y-axis height of the copies)
+    private float vector2DDistance(Vector3 v1, Vector3 v2)
+    {
+        return (Mathf.Sqrt(Mathf.Pow(Mathf.Abs(v1.x - v2.x), 2f) + Mathf.Pow(Mathf.Abs(v1.z - v2.z), 2f)));
+    }
+
+
+    private Transform GetClosestTarget(Transform selected, Transform targets)
+    {
+        Transform tMin = null; // initialize a container for the winner's transform and make it null to start
+        float minDist = Mathf.Infinity; // initialize a container for the current winning distance and set it to infinity to start
+        Vector3 currentPos = selected.position; // get the position of the object we're comparing 
+        foreach (Transform child in targets)
+        {
+            Debug.Log(child.name);
+            float dist = vector2DDistance(child.position, currentPos); // get the distance between this child and the activeTarget we're comparing
+            if (dist < minDist) // if this is lower than the initial value of infinity or the current winner
+            {
+                tMin = child; // save this child's transform as the current winner
+                minDist = dist; // save the distance from the activeTarget to this child as the winning distance
+            }
+        }
+
+        Debug.Log(minDist);
+
+        if (minDist <= snapToTargetProximity)
+        {
+            Debug.Log("RETURNING TMIN");
+            return tMin; // only return if the winning distance is within our snapping threshold
+        }
+        else return selected;
+        
+    }
 }
 
 
