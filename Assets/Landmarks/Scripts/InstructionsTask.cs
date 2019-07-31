@@ -21,7 +21,9 @@ using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
 
 public class InstructionsTask : ExperimentTask {
-    
+
+    public static int instructionsCounter;
+
     public TextAsset instruction;
     public TextAsset message;
     
@@ -58,7 +60,7 @@ public class InstructionsTask : ExperimentTask {
 
     public override void TASK_START()
     {
-        
+        instructionsCounter += 1;
         if (!manager) Start();
         base.startTask();
         
