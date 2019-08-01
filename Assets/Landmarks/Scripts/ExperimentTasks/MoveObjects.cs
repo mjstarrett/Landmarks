@@ -71,7 +71,7 @@ public class MoveObjects : ExperimentTask {
         }
 
         // If we are moving our target objects, list their info
-        if (sources.objects[1].CompareTag("Target"))
+        if (sources.objects[0].CompareTag("Target"))
         {
             log.log("TARGET INFORMATION ----------------------------------------", 1);
         }
@@ -120,7 +120,7 @@ public class MoveObjects : ExperimentTask {
 		}
 
         // Clearly mark the log file with the end of the target info so it's easy to find, visually
-        if (sources.objects[1].CompareTag("Target"))
+        if (sources.objects[0].CompareTag("Target"))
         {
             log.log("-----------------------------------------------------------/", 1);
         }
