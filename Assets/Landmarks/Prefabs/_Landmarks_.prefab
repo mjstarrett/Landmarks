@@ -7004,7 +7004,6 @@ Transform:
   - {fileID: 5308465570264605405}
   - {fileID: 5308465571114052281}
   - {fileID: 5308465570121322754}
-  - {fileID: 5308465571124869580}
   - {fileID: 5308465571149786399}
   - {fileID: 5308465570839962019}
   m_Father: {fileID: 5308465572113532639}
@@ -7454,7 +7453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5308465570167263629}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5308465570839962028
 MonoBehaviour:
@@ -7557,7 +7556,7 @@ GameObject:
   - component: {fileID: 5308465571114052281}
   - component: {fileID: 5308465571114052280}
   m_Layer: 0
-  m_Name: ListTargetPlaceholders
+  m_Name: ListTargetLocations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7584,70 +7583,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5308465571114052287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7b965bfa25a4393bf115e4c0000ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skip: 0
-  canIncrementLists: 1
-  interval: 0
-  interruptTasks: {fileID: 0}
-  interruptInterval: 0
-  repeatInterrupts: 9999
-  currentInterrupt: 0
-  pausedTasks: {fileID: 0}
-  parentTask: {fileID: 0}
-  firstPersonCamera: {fileID: 0}
-  overheadCamera: {fileID: 0}
-  debugButton: {fileID: 0}
-  actionButton: {fileID: 0}
-  vrEnabled: 0
-  parentName: TargetLocations
-  parentObject: {fileID: 5308465571347722053}
-  current: 0
-  objects: []
-  EndListBehavior: 1
-  shuffle: 0
-  order: {fileID: 0}
---- !u!1 &5308465571124869570
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5308465571124869580}
-  - component: {fileID: 5308465571124869571}
-  m_Layer: 0
-  m_Name: ListTargetLocations
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5308465571124869580
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5308465571124869570}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5308465570167263629}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5308465571124869571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5308465571124869570}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c7b965bfa25a4393bf115e4c0000ad3, type: 3}
@@ -7703,7 +7638,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5308465570167263629}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5308465571149786392
 MonoBehaviour:
@@ -7732,7 +7667,7 @@ MonoBehaviour:
   actionButton: {fileID: 0}
   vrEnabled: 0
   sources: {fileID: 5308465570121322753}
-  destinations: {fileID: 5308465571124869571}
+  destinations: {fileID: 5308465571114052280}
   swap: 1
   ignoreYPos: 0
   ignoreRotation: 0
