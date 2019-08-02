@@ -1,0 +1,93 @@
+63700288559274	EXPERIMENT:	TEST	SUBJECT:	129	START_SCENE	esc_city02	START_CONDITION:	Scaled	UI:	DesktopDefault
+63700288559327	TASK_START	LM_Timeline	TaskList
+63700288559327	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+LM_Timeline1False
+63700288559328	TASK_START	InitializeExperiment	TaskList
+63700288559328	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+InitializeExperiment1False
+63700288559328	TASK_START	PlaceTargets	TaskList
+63700288559329	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+PlaceTargets1False
+63700288559329	TASK_START	CheckForUsedTargets	LM_CompareLists
+63700288559347	TASK_END	CheckForUsedTargets	LM_CompareLists	18
+63700288559348	TASK_START	ListTargetPlaceholders	ObjectList
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target01	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target02	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target03	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target04	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target05	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target06	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target07	null
+63700288559348	TASK_ADD	ListTargetPlaceholders	ObjectList	Target08	null
+63700288559381	TASK_END	ListTargetPlaceholders	ObjectList	33
+63700288559382	TASK_START	ListTargets	ObjectList
+63700288559382	TASK_ADD	ListTargets	ObjectList	Toy Shop	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Pharmacy	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Repair Shop	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Post Office	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Coffee Shop	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Grocery	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Pet Shop	null
+63700288559382	TASK_ADD	ListTargets	ObjectList	Bakery	null
+63700288559412	TASK_END	ListTargets	ObjectList	30
+63700288559413	TASK_START	ListTargetLocations	ObjectList
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target04	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target05	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target06	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target07	null
+63700288559413	TASK_ADD	ListTargetLocations	ObjectList	Target08	null
+63700288559449	TASK_END	ListTargetLocations	ObjectList	36
+63700288559450	TASK_START	PopulateTargets	MoveObjects
+63700288559451	TARGET INFORMATION ----------------------------------------
+63700288559451	Target01: 	Toy Shop	Position: 	86.7	0.08500671	138.55	Rotation: 	270	0	0
+63700288559451	Target02: 	Pharmacy	Position: 	86.7	0.08500671	55.25	Rotation: 	270	270	0
+63700288559451	Target03: 	Repair Shop	Position: 	36.54999	0.08500671	55.25	Rotation: 	270	90	0
+63700288559451	Target04: 	Post Office	Position: 	36.54999	0.08500671	86.7	Rotation: 	270	270	0
+63700288559451	Target05: 	Coffee Shop	Position: 	76.49999	0.08500671	86.7	Rotation: 	270	180	0
+63700288559451	Target06: 	Grocery	Position: 	76.49999	0.08500671	16.15	Rotation: 	270	90	0
+63700288559451	Target07: 	Pet Shop	Position: 	14.28003	0.08500671	16.15	Rotation: 	270	90	0
+63700288559451	Target08: 	Bakery	Position: 	14.28003	0.08500671	137.445	Rotation: 	270	0	0
+63700288559451	-----------------------------------------------------------/
+63700288559457	TASK_END	PopulateTargets	MoveObjects	7
+63700288559457	TASK_START	UpdateUsedTargets	LM_CompareLists
+63700288559464	TASK_END	UpdateUsedTargets	LM_CompareLists	7
+63700288559464	TASK_END	PlaceTargets	TaskList	136
+63700288559465	TASK_START	ListNavigationStarts	ObjectList
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc02	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc03	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc06	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc07	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc04	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc08	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc05	null
+63700288559465	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc01	null
+63700288559467	TASK_END	ListNavigationStarts	ObjectList	2
+63700288559468	TASK_START	ListLargePlayerStarts	ObjectList
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
+63700288559468	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
+63700288559484	TASK_END	ListLargePlayerStarts	ObjectList	16
+63700288559485	TASK_START	ListSmallPlayerStarts	ObjectList
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc03	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc05	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc02	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc07	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc06	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc01	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc08	null
+63700288559485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc04	null
+63700288559487	TASK_END	ListSmallPlayerStarts	ObjectList	2
+63700288559487	TASK_END	InitializeExperiment	TaskList	159
+63700288559488	TASK_START	BeginMessage	InstructionsTask
+63700288590244	TASK_END	LM_Timeline	TaskList	30917
