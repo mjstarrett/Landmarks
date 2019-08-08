@@ -63,9 +63,13 @@ public class InstructionsTask : ExperimentTask {
         instructionsCounter += 1;
         if (!manager) Start();
         base.startTask();
-        
-        
-        
+
+        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderedEnvironment)
+        {
+            r.enabled = false;
+        }
+
         if (skip) {
             log.log("INFO    skip task    " + name,1 );
             return;
@@ -172,6 +176,13 @@ public class InstructionsTask : ExperimentTask {
     
     public override void TASK_END() {
         base.endTask ();
+
+        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderedEnvironment)
+        {
+            r.enabled = true;
+        }
+
         hud.setMessage ("");
         hud.SecondsToShow = hud.GeneralDuration; 
         

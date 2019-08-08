@@ -33,7 +33,7 @@ public class MountainTaskOutput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 90;
+        //Application.targetFrameRate = 90;
 
         Debug.Log("This is where we error check and validate our file names");
         //if the researcher wants output to be generated but both file types are unselected
@@ -89,18 +89,18 @@ public class MountainTaskOutput : MonoBehaviour
         //Initialize the boolean representing if the button was pushed to be false
         wasItPushed = false;
 
-        //InvokeRepeating("Logging", 0.02000000f, 0.02000000f);
+        StartCoroutine(Logging());
 
     }//End of Start
 
     // FixedUpdate is called once every time step
         //Make sure Fixed Timestep = .0200000 to get an output of always 20ms
             //Fixed Timestep is located in the Time settings (Edit > Project Settings > Time > Fixed Timestep) or in TimeManager.asset (ProjectName > ProjectSettings > TimeManager.asset)
-    void FixedUpdate()
+     IEnumerator Logging()
     {
-       // while (true)
-       // {
-            if (GreekNavigationTask.trialNumber >= 1)
+        while (true)
+        {
+            if (GreekNavigationTask.trialNumber > 0)
             {
                 //Validate the button press state
                 ValidateButtonPress();
@@ -115,8 +115,8 @@ public class MountainTaskOutput : MonoBehaviour
                 //Set the previous button push state to the current
                 previousButton = currentButton;
             }
-            //yield return new WaitForSeconds(0.02000000f);
-       // }
+            yield return new WaitForSeconds(0.03000000f);
+        }
     }//End of FixedUpdate
 
     //ValidatePath is called once in Start()

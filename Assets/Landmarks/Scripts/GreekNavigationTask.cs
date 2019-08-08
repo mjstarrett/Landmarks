@@ -53,12 +53,12 @@ public class GreekNavigationTask : ExperimentTask
     public ObjectList destinations;
     private GameObject current;
 
-    private int score = 0;
-    public int scoreIncrement = 50;
-    public int penaltyRate = 2000;
-    private float penaltyTimer = 0;
+    //private int score = 0;
+    //public int scoreIncrement = 50;
+    //public int penaltyRate = 2000;
+    //private float penaltyTimer = 0;
+   // public bool showScoring;
 
-    public bool showScoring;
     public TextAsset NavigationInstruction;
 
     public HeraclesHideTargetOnStart hideTargetOnStart;
@@ -94,12 +94,18 @@ public class GreekNavigationTask : ExperimentTask
     public override void startTask()
     {
         TASK_START();
-        avatarLog.navLog = true;
-        if (isScaled) scaledAvatarLog.navLog = true;
+        //avatarLog.navLog = true;
+        //if (isScaled) scaledAvatarLog.navLog = true;
     }
 
     public override void TASK_START()
     {
+        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderedEnvironment)
+        {
+            r.enabled = true;
+        }
+
         //OutputFileLoggingInformation
         trialNumber += 1;
         targetName = destinations.currentObject().name;
@@ -121,8 +127,8 @@ public class GreekNavigationTask : ExperimentTask
             return;
         }
 
-        hud.showEverything();
-        hud.showScore = showScoring;
+        //hud.showEverything();
+        //hud.showScore = showScoring;
         current = destinations.currentObject();
         Debug.Log("Find " + destinations.currentObject().name);
 
@@ -205,18 +211,18 @@ public class GreekNavigationTask : ExperimentTask
             return true;
         }
 
-        if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
+        //if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
 
 
-        if (penaltyTimer >= penaltyRate)
-        {
-            penaltyTimer = penaltyTimer - penaltyRate;
-            if (score > 0)
-            {
-                score = score - 1;
-                hud.setScore(score);
-            }
-        }
+        //if (penaltyTimer >= penaltyRate)
+        //{
+        //    penaltyTimer = penaltyTimer - penaltyRate;
+        //    if (score > 0)
+        //    {
+        //        score = score - 1;
+        //        hud.setScore(score);
+        //    }
+        //}
 
         //VR capabiity with showing target
         if (vrEnabled)
@@ -292,6 +298,11 @@ public class GreekNavigationTask : ExperimentTask
 
     public override void TASK_END()
     {
+        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderedEnvironment)
+        {
+            r.enabled = false;
+        }
         running = false;
         //When the task is done and the conditions are met, we want to call MoveObjectBack() once to essentially "reset" the environment.
         if (implementHeraclesFunction && moveBackAtEnd && degreesToMove != 0 && movementDirection != MovementDirection.None)
@@ -328,22 +339,22 @@ public class GreekNavigationTask : ExperimentTask
     {
         if (hit == current)
         {
-            if (showScoring)
-            {
-                score = score + scoreIncrement;
-                hud.setScore(score);
-            }
+            //if (showScoring)
+            //{
+            //    score = score + scoreIncrement;
+            //    hud.setScore(score);
+            //}
             return true;
         }
 
         //        Debug.Log (hit.transform.parent.name + " = " + current.name);
         if (hit.transform.parent == current.transform)
         {
-            if (showScoring)
-            {
-                score = score + scoreIncrement;
-                hud.setScore(score);
-            }
+            //if (showScoring)
+            //{
+            //    score = score + scoreIncrement;
+            //    hud.setScore(score);
+            //}
             return true;
         }
         return false;
