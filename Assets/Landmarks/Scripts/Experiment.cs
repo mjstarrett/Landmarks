@@ -56,6 +56,7 @@ public class Experiment : MonoBehaviour {
     [HideInInspector] public bool usingVR;
 
 	[HideInInspector] public dbLog dblog;
+    [HideInInspector] public LM_TrialLog trialLog;
 	
 	
 	private bool playback = false;
@@ -306,8 +307,11 @@ public class Experiment : MonoBehaviour {
 	}
 	
 	void Update () {
-		
-		if ( !done) {
+
+        // If the trial log get's cleared, add our default headers and values back in
+        // If the trial log get's cleared, 
+
+        if ( !done) {
 			if (config.runMode != ConfigRunMode.PLAYBACK) {
 				
 				if (Input.GetKeyDown (KeyCode.T)) {

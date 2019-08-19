@@ -24,11 +24,11 @@ public class ExperimentTask : MonoBehaviour{
 
 	protected GameObject avatar;
 	protected HUD hud;
-
 	protected GameObject experiment;
 	protected dbLog log;
 	protected Experiment manager;
 	protected avatarLog avatarLog;
+    protected LM_TrialLog trialLog;
 
     protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
@@ -36,6 +36,9 @@ public class ExperimentTask : MonoBehaviour{
 	protected long task_start;
 
     protected SteamVR_Input_ActionSet_vrtk vrInput;
+
+    protected ArrayList trialHeader;
+    protected ArrayList trialData;
 	
 	public bool skip = false;
 	public bool canIncrementLists = true;
@@ -83,6 +86,7 @@ public class ExperimentTask : MonoBehaviour{
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
 		log = manager.dblog;
+        trialLog = manager.trialLog;
         vrEnabled = manager.usingVR;
 
         // set up vrInput if we're using VR
@@ -198,9 +202,7 @@ public class ExperimentTask : MonoBehaviour{
 		killCurrent = true;
 	}
 
-
-
-	public bool KillCurrent () 
+    public bool KillCurrent () 
 	{
 		killCurrent = false;
 		Debug.Log ("ForceKilling " + this.name);
