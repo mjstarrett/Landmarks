@@ -24,7 +24,6 @@ public class MovePlayerToDestination : ExperimentTask {
 	[HideInInspector] public GameObject start;
 	[HideInInspector] public GameObject destination;
 	public ObjectList destinations;
-    public bool useSnapPoints;
     public bool ignoreDestinationY;
 	
 	public bool swap;
@@ -55,11 +54,11 @@ public class MovePlayerToDestination : ExperimentTask {
 		}
 		
 		if ( destinations ) {
-            if (useSnapPoints)
+            if (destinations.currentObject().GetComponentInChildren<LM_SnapPoint>() != null)
             {
                 destination = destinations.currentObject().GetComponentInChildren<LM_SnapPoint>().gameObject;
                 Debug.Log(destination.name);
-            } else destination = destinations.currentObject();
+            } else destination = start;
 
         }
 
