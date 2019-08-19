@@ -33,11 +33,11 @@ namespace Valve.VR.InteractionSystem
 		}
 
 
-		//-------------------------------------------------
-		private void OnAttachedToHand( Hand hand )
-		{
-			onAttachedToHand.Invoke();
-		}
+        //-------------------------------------------------
+        private void OnAttachedToHand(Hand hand)
+        {
+            onAttachedToHand.Invoke();
+        }
 
 
 		//-------------------------------------------------
