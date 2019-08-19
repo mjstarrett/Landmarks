@@ -23,6 +23,7 @@ public enum Behavior
 
 public class LM_CompareLists : ExperimentTask
 {
+    public string list1ParentName = "";
     public GameObject list1Parent;
     public string comparisonListObjectName = "UsedTargets";
     private GameObject comparisonListParent;
@@ -39,7 +40,10 @@ public class LM_CompareLists : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
-        
+        if (list1Parent == null && list1ParentName != "")
+        {
+            list1Parent = GameObject.Find(list1ParentName);
+        }
     }
 
 

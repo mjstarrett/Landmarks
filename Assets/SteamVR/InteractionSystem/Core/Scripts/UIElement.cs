@@ -15,7 +15,8 @@ namespace Valve.VR.InteractionSystem
 	[RequireComponent( typeof( Interactable ) )]
 	public class UIElement : MonoBehaviour
 	{
-		public CustomEvents.UnityEventHand onHandClick;
+        public SteamVR_Action_Boolean clickButton;
+        public CustomEvents.UnityEventHand onHandClick;
 
         protected Hand currentHand;
 
@@ -33,7 +34,8 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		protected virtual void OnHandHoverBegin( Hand hand )
 		{
-			currentHand = hand;
+
+            currentHand = hand;
 			InputModule.instance.HoverBegin( gameObject );
 			ControllerButtonHints.ShowButtonHint( hand, hand.uiInteractAction);
 		}
@@ -51,10 +53,13 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void HandHoverUpdate( Hand hand )
 		{
-			if ( hand.uiInteractAction != null && hand.uiInteractAction.GetStateDown(hand.handType) )
+			if (hand.uiInteractAction.GetStateDown(hand.handType) )
 			{
-				InputModule.instance.Submit( gameObject );
+                Debug.Log("hand is interacting!!!!!!!!!!!!!!!!!!!!!");
+                Debug.Log(InputModule.instance.gameObject.name);
+                InputModule.instance.Submit( gameObject );
 				ControllerButtonHints.HideButtonHint( hand, hand.uiInteractAction);
+                
 			}
 		}
 
@@ -62,7 +67,7 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void OnButtonClick()
 		{
-			onHandClick.Invoke( currentHand );
+            onHandClick.Invoke( currentHand );
 		}
 	}
 
