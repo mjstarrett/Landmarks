@@ -22,6 +22,7 @@ using System.Collections.Generic;
 
 public class ObjectList : ExperimentTask {
 
+    public string parentName = "";
 	public GameObject parentObject;
 	public int current = 0;
 	
@@ -31,9 +32,18 @@ public class ObjectList : ExperimentTask {
 	public GameObject order;
     	
 	public override void startTask () {
-		//ViewObject.startObjects.current = 0;
-		//current = 0;
-		GameObject[] objs;
+        //ViewObject.startObjects.current = 0;
+        //current = 0;
+
+        // If parentObject is left blank and parentName is not, use parentName to get parentObject
+        if (parentObject == null && parentName != "") 
+        {
+            parentObject = GameObject.Find(parentName);
+        }
+        // otherwise, parentObject will need to be provided
+
+
+        GameObject[] objs;
 
 		objs = new GameObject[parentObject.transform.childCount];
 		Array.Sort(objs);
