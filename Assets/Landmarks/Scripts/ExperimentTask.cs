@@ -66,7 +66,6 @@ public class ExperimentTask : MonoBehaviour{
 
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
 
-
 	public void Awake () 
 	{
 		
@@ -88,6 +87,19 @@ public class ExperimentTask : MonoBehaviour{
 		log = manager.dblog;
         trialLog = manager.trialLog;
         vrEnabled = manager.usingVR;
+
+
+        // If the object is tagged as "Task" store the current task in player prefs
+        if (CompareTag("Task"))
+        {
+            Debug.Log("==================" + name);
+            PlayerPrefs.SetString("task", name);
+        }
+        // add the current umbrella task (next up in hierarcy tagged as "Task") to the trialLog
+        trialLog.AddTrialData("task", PlayerPrefs.GetString("task"));
+        Debug.Log(trialLog.current);
+        trialLog.Reset();
+
 
         // set up vrInput if we're using VR
         if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
