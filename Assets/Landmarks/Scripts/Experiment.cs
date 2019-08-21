@@ -268,6 +268,17 @@ public class Experiment : MonoBehaviour {
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + 
                   "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
 
+
+        // Set up the trial logging
+        trialLog = new LM_TrialLog();
+        trialLog.AddDefault("id", config.subject);
+        trialLog.AddDefault("scene", config.level);
+        trialLog.AddDefault("condition", config.condition);
+        trialLog.Reset();
+        Debug.Log(trialLog.current);
+        dblog.Write(trialLog.current);
+
+
         Debug.Log(XRSettings.loadedDeviceName);
     }
 
@@ -283,10 +294,8 @@ public class Experiment : MonoBehaviour {
 		hud.showFPS = config.showFPS;
 		hud.showTimestamp = (config.runMode == ConfigRunMode.PLAYBACK);
 
-		
-		
-		//start experiment
-		if (config.runMode != ConfigRunMode.PLAYBACK) {
+        //start experiment
+        if (config.runMode != ConfigRunMode.PLAYBACK) {
 			Debug.Log ("Trying to start a task");
 			tasks.startTask();	
 		} else {
