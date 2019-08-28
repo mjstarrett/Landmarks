@@ -100,11 +100,11 @@ public class GreekNavigationTask : ExperimentTask
 
     public override void TASK_START()
     {
-        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in renderedEnvironment)
-        {
-            r.enabled = true;
-        }
+        //Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+       // foreach (Renderer r in renderedEnvironment)
+        //{
+       //     r.enabled = true;
+       // }
 
         //OutputFileLoggingInformation
         trialNumber += 1;
@@ -298,11 +298,11 @@ public class GreekNavigationTask : ExperimentTask
 
     public override void TASK_END()
     {
-        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in renderedEnvironment)
-        {
-            r.enabled = false;
-        }
+       // Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+       // foreach (Renderer r in renderedEnvironment)
+        //{
+       //     r.enabled = false;
+       // }
         running = false;
         //When the task is done and the conditions are met, we want to call MoveObjectBack() once to essentially "reset" the environment.
         if (implementHeraclesFunction && moveBackAtEnd && degreesToMove != 0 && movementDirection != MovementDirection.None)

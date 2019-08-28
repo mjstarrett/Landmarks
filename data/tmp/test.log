@@ -1,68 +1,94 @@
-63700972073762	TASK_START	LM_Timeline	TaskList
-63700972073762	TASK:	LM_Timeline	Repetition:	1	Catch:	False
-63700972073763	TASK_START	InitializeExperiment	TaskList
-63700972073763	TASK:	InitializeExperiment	Repetition:	1	Catch:	False
-63700972073763	TASK_START	PlaceTargets	TaskList
-63700972073763	TASK:	PlaceTargets	Repetition:	1	Catch:	False
-63700972073763	TASK_START	ListHighlightObjects	ObjectList
-63700972073763	TASK_ADD	ListHighlightObjects	ObjectList	Highlight01	null
-63700972073763	TASK_ADD	ListHighlightObjects	ObjectList	Highlight02	null
-63700972073764	TASK_ADD	ListHighlightObjects	ObjectList	Highlight03	null
-63700972073812	TASK_END	ListHighlightObjects	ObjectList	49
-63700972073813	TASK_START	ListTargetPlaceholders	ObjectList
-63700972073813	TASK_ADD	ListTargetPlaceholders	ObjectList	Slot01 (Missing Prefab)	null
-63700972073813	TASK_ADD	ListTargetPlaceholders	ObjectList	Slot02 (Missing Prefab)	null
-63700972073813	TASK_ADD	ListTargetPlaceholders	ObjectList	Slot03 (Missing Prefab)	null
-63700972073838	TASK_END	ListTargetPlaceholders	ObjectList	25
-63700972073839	TASK_START	PopulateHighlightObjects	MoveObjects
-63700972073840	Slot01 (Missing Prefab): 	Highlight01	Position: 	0	0	-10	Rotation: 	0	0	0
-63700972073840	Slot02 (Missing Prefab): 	Highlight02	Position: 	0	0	-10	Rotation: 	0	0	0
-63700972073840	Slot03 (Missing Prefab): 	Highlight03	Position: 	0	0	-10	Rotation: 	0	0	0
-63700972074169	TASK_END	PopulateHighlightObjects	MoveObjects	330
-63700972074170	TASK_START	ListTargets	ObjectList
-63700972074170	TASK_ADD	ListTargets	ObjectList	book	null
-63700972074170	TASK_ADD	ListTargets	ObjectList	puzzle cube	null
-63700972074170	TASK_ADD	ListTargets	ObjectList	teapot	null
-63700972074218	TASK_END	ListTargets	ObjectList	48
-63700972074218	TASK_START	ListTargetLocations	ObjectList
-63700972074218	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
-63700972074218	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
-63700972074218	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
-63700972074236	TASK_END	ListTargetLocations	ObjectList	18
-63700972074236	TASK_START	PopulateTargets	MoveObjects
-63700972074237	Target01: 	book	Position: 	-1.7	1.240999	0.6375	Rotation: 	315	45	1.207418E-06
-63700972074237	Target02: 	puzzle cube	Position: 	-1.7	1.147499	1.7	Rotation: 	0	45	0
-63700972074237	Target03: 	teapot	Position: 	2.125	1.147499	1.9125	Rotation: 	270	45	0
-63700972074254	TASK_END	PopulateTargets	MoveObjects	18
-63700972074254	TASK_END	PlaceTargets	TaskList	491
-63700972074254	TASK_END	InitializeExperiment	TaskList	491
-63700972074255	TASK_START	BeginMessage	InstructionsTask
-63700972075564	INPUT_EVENT    clear text    1
-63700972075565	TASK_END	BeginMessage	InstructionsTask	1310
-63700972075566	TASK_START	Tasks	TaskList
-63700972075566	TASK:	Tasks	Repetition:	1	Catch:	False
-63700972075566	TASK_START	NavigationInstructions	InstructionsTask
-63700972076000	INPUT_EVENT    clear text    1
-63700972076000	TASK_END	NavigationInstructions	InstructionsTask	434
-63700972076001	TASK_START	MovePlayerToCenter	MoveSpawn
-63700972076001	TASK_POSITION	ViveVirtualizerController	MoveSpawn	(0.0, 0.0, 0.0)
-63700972076001	TASK_ROTATE	ViveVirtualizerController	MoveSpawn	(0.0, 82.9, 0.0)
-63700972076022	TASK_END	MovePlayerToCenter	MoveSpawn	21
-63700972076023	TASK_START	T1_Training	TaskList
-63700972076023	TASK:	T1_Training	Repetition:	1	Catch:	False
-63700972076023	TASK_START	Navigate	TaskList
-63700972076023	TASK:	Navigate	Repetition:	1	Catch:	False
-63700972076023	TASK_START	ListNavigationTargets	ObjectList
-63700972076023	TASK_ADD	ListNavigationTargets	ObjectList	teapot	null
-63700972076023	TASK_ADD	ListNavigationTargets	ObjectList	book	null
-63700972076023	TASK_ADD	ListNavigationTargets	ObjectList	puzzle cube	null
-63700972076041	TASK_END	ListNavigationTargets	ObjectList	18
-63700972076041	TASK_START	WaitCue	InstructionsTask
-63700972081044	TASK_END	WaitCue	InstructionsTask	5002
-63700972081044	TASK_START	CueTarget	InstructionsTask
-63700972082734	INPUT_EVENT    clear text    1
-63700972082734	TASK_END	CueTarget	InstructionsTask	1690
-63700972082736	TASK_START	Navigate	GreekNavigationTask
-63700972088231	TASK_END	Navigate	GreekNavigationTask	5495
-63700972088232	TASK_START	Found	InstructionsTask
-63700972092496	TASK_END	LM_Timeline	TaskList	18734
+63702526257396	TASK_START	LM_Timeline	TaskList
+63702526257397	TASK:	LM_Timeline	Repetition:	1	Catch:	False
+63702526257397	TASK_START	InitializeExperiment	TaskList
+63702526257397	TASK:	InitializeExperiment	Repetition:	1	Catch:	False
+63702526257398	TASK_START	PlaceTargets	TaskList
+63702526257398	TASK:	PlaceTargets	Repetition:	1	Catch:	False
+63702526257399	TASK_START	ListHighlightObjects	ObjectList
+63702526257399	TASK_ADD	ListHighlightObjects	ObjectList	Highlight01	null
+63702526257399	TASK_ADD	ListHighlightObjects	ObjectList	Highlight02	null
+63702526257399	TASK_ADD	ListHighlightObjects	ObjectList	Highlight03	null
+63702526257411	TASK_END	ListHighlightObjects	ObjectList	12
+63702526257411	TASK_START	ListTargetPlaceholders	ObjectList
+63702526257411	TASK_ADD	ListTargetPlaceholders	ObjectList	Slot01 (Missing Prefab)	null
+63702526257411	TASK_ADD	ListTargetPlaceholders	ObjectList	Slot02 (Missing Prefab)	null
+63702526257411	TASK_ADD	ListTargetPlaceholders	ObjectList	Slot03 (Missing Prefab)	null
+63702526257451	TASK_END	ListTargetPlaceholders	ObjectList	39
+63702526257452	TASK_START	PopulateHighlightObjects	MoveObjects
+63702526257452	Slot01 (Missing Prefab): 	Highlight01	Position: 	0	0	-10	Rotation: 	0	0	0
+63702526257452	Slot02 (Missing Prefab): 	Highlight02	Position: 	0	0	-10	Rotation: 	0	0	0
+63702526257452	Slot03 (Missing Prefab): 	Highlight03	Position: 	0	0	-10	Rotation: 	0	0	0
+63702526257983	TASK_END	PopulateHighlightObjects	MoveObjects	531
+63702526257984	TASK_START	ListTargets	ObjectList
+63702526257984	TASK_ADD	ListTargets	ObjectList	book	null
+63702526257984	TASK_ADD	ListTargets	ObjectList	clay pot	null
+63702526258013	TASK_END	ListTargets	ObjectList	29
+63702526258014	TASK_START	ListTargetLocations	ObjectList
+63702526258014	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63702526258014	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63702526258017	TASK_END	ListTargetLocations	ObjectList	3
+63702526258017	TASK_START	PopulateTargets	MoveObjects
+63702526258017	Target01: 	book	Position: 	0	1.08375	0	Rotation: 	0	0	0
+63702526258017	Target02: 	clay pot	Position: 	1.7	1.08375	-1.7	Rotation: 	270	45	0
+63702526258023	TASK_END	PopulateTargets	MoveObjects	6
+63702526258023	TASK_END	PlaceTargets	TaskList	625
+63702526258023	TASK_END	InitializeExperiment	TaskList	626
+63702526258024	TASK_START	BeginMessage	InstructionsTask
+63702526259161	INPUT_EVENT    clear text    1
+63702526259161	TASK_END	BeginMessage	InstructionsTask	1137
+63702526259162	TASK_START	Tasks	TaskList
+63702526259162	TASK:	Tasks	Repetition:	1	Catch:	False
+63702526259162	TASK_START	ListNavigationTargets	ObjectList
+63702526259162	TASK_ADD	ListNavigationTargets	ObjectList	book	null
+63702526259162	TASK_ADD	ListNavigationTargets	ObjectList	clay pot	null
+63702526259165	TASK_END	ListNavigationTargets	ObjectList	3
+63702526259165	TASK_START	NavigationInstructions	InstructionsTask
+63702526259779	INPUT_EVENT    clear text    1
+63702526259779	TASK_END	NavigationInstructions	InstructionsTask	614
+63702526259780	TASK_START	MovePlayerToCenter	MoveSpawn
+63702526259780	TASK_POSITION	DesktopDefaultController	MoveSpawn	(0.0, 1.0, 0.0)
+63702526259780	TASK_ROTATE	DesktopDefaultController	MoveSpawn	(0.0, 10.4, 0.0)
+63702526259786	TASK_END	MovePlayerToCenter	MoveSpawn	6
+63702526259787	TASK_START	Practice_NoTarget	TaskList
+63702526259787	TASK:	Practice_NoTarget	Repetition:	1	Catch:	False
+63702526259787	TASK_START	Navigate	TaskList
+63702526259787	TASK:	Navigate	Repetition:	1	Catch:	False
+63702526259787	TASK_START	WaitCue	InstructionsTask
+63702526264791	TASK_END	WaitCue	InstructionsTask	5004
+63702526264792	TASK_START	Navigate	GreekNavigationTask
+63702526270094	TASK_END	Navigate	GreekNavigationTask	5302
+63702526270094	TASK:	Navigate	Repetition:	2	Catch:	False
+63702526270095	TASK_START	WaitCue	InstructionsTask
+63702526275096	TASK_END	WaitCue	InstructionsTask	5001
+63702526275097	TASK_START	Navigate	GreekNavigationTask
+63702526277093	TASK_END	Navigate	GreekNavigationTask	1996
+63702526277093	TASK:	Navigate	Repetition:	3	Catch:	False
+63702526277093	TASK_START	WaitCue	InstructionsTask
+63702526282096	TASK_END	WaitCue	InstructionsTask	5003
+63702526282097	TASK_START	Navigate	GreekNavigationTask
+63702526283637	TASK_END	Navigate	GreekNavigationTask	1540
+63702526283637	TASK:	Navigate	Repetition:	4	Catch:	False
+63702526283637	TASK_START	WaitCue	InstructionsTask
+63702526288640	TASK_END	WaitCue	InstructionsTask	5003
+63702526288640	TASK_START	Navigate	GreekNavigationTask
+63702526289314	TASK_END	Navigate	GreekNavigationTask	674
+63702526289314	TASK:	Navigate	Repetition:	5	Catch:	False
+63702526289314	TASK_START	WaitCue	InstructionsTask
+63702526294319	TASK_END	WaitCue	InstructionsTask	5005
+63702526294319	TASK_START	Navigate	GreekNavigationTask
+63702526294913	TASK_END	Navigate	GreekNavigationTask	594
+63702526294913	TASK_END	Navigate	TaskList	35126
+63702526294913	TASK_END	Practice_NoTarget	TaskList	35126
+63702526294913	TASK_START	Increment	InstructionsTask
+63702526299916	TASK_END	Increment	InstructionsTask	5003
+63702526299917	TASK_START	Practice_WithTarget	TaskList
+63702526299917	TASK:	Practice_WithTarget	Repetition:	1	Catch:	False
+63702526299917	TASK_START	Navigate	TaskList
+63702526299917	TASK:	Navigate	Repetition:	1	Catch:	False
+63702526299917	TASK_START	WaitCue	InstructionsTask
+63702526304919	TASK_END	WaitCue	InstructionsTask	5002
+63702526304919	TASK_START	CueTarget	InstructionsTask
+63702526316514	INPUT_EVENT    clear text    1
+63702526316514	TASK_END	CueTarget	InstructionsTask	11595
+63702526316514	TASK_START	Navigate	GreekNavigationTask
+63702526324934	TASK_END	LM_Timeline	TaskList	67538

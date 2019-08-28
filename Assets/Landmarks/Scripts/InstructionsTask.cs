@@ -23,6 +23,7 @@ using TMPro;
 public class InstructionsTask : ExperimentTask {
 
     public static int instructionsCounter;
+    public static bool logging;
 
     public TextAsset instruction;
     public TextAsset message;
@@ -63,13 +64,14 @@ public class InstructionsTask : ExperimentTask {
         instructionsCounter += 1;
         if (!manager) Start();
         base.startTask();
-
-        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in renderedEnvironment)
-        {
-            r.enabled = false;
-        }
-
+       // if (logging)
+       // {
+       //     Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+       //     foreach (Renderer r in renderedEnvironment)
+       //     {
+       //         r.enabled = false;
+       //     }
+       // }
         if (skip) {
             log.log("INFO    skip task    " + name,1 );
             return;
@@ -173,16 +175,16 @@ public class InstructionsTask : ExperimentTask {
         Debug.Log ("Ending an instructions task");
         TASK_END();
     }
-    
+
     public override void TASK_END() {
-        base.endTask ();
-
-        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in renderedEnvironment)
-        {
-            r.enabled = true;
-        }
-
+        base.endTask();
+       // if (logging) { 
+        //    Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+         //   foreach (Renderer r in renderedEnvironment)
+         //   {
+         //        r.enabled = true;
+         //   }
+        //}
         hud.setMessage ("");
         hud.SecondsToShow = hud.GeneralDuration; 
         

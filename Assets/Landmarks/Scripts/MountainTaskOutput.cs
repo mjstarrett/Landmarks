@@ -100,8 +100,8 @@ public class MountainTaskOutput : MonoBehaviour
     {
         while (true)
         {
-            if (GreekNavigationTask.trialNumber > 0)
-            {
+            //if (GreekNavigationTask.trialNumber > 0)
+           // {
                 //Validate the button press state
                 ValidateButtonPress();
                 //Set the target data values
@@ -114,8 +114,8 @@ public class MountainTaskOutput : MonoBehaviour
 
                 //Set the previous button push state to the current
                 previousButton = currentButton;
-            }
-            yield return new WaitForSeconds(0.03000000f);
+            //}
+            yield return new WaitForSeconds(0.10000000f);
         }
     }//End of FixedUpdate
 
