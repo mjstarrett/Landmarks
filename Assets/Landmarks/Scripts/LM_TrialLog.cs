@@ -5,6 +5,16 @@ using UnityEngine;
 public class LM_TrialLog : MonoBehaviour
 {
     public Dictionary<string, string> trialData;
+    private Dictionary<string, string> defaults; 
+
+    public void Init()
+    {
+        // restore the defaults (if any)
+        foreach (var entry in defaults)
+        {
+            trialData.Add(entry.Key, entry.Value);
+        }
+    }
 
     public virtual string Format(string msg)
     {
@@ -37,5 +47,7 @@ public class LM_TrialLog : MonoBehaviour
     public virtual void ClearData()
     {
         trialData.Clear(); // clean up and clear the trial data dictionary so we don't record this info again
+
+
     }
 }
