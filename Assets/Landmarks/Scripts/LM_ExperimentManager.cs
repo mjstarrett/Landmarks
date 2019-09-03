@@ -11,8 +11,6 @@ public class LM_ExperimentManager : MonoBehaviour
 
     public TMP_Dropdown expID;
     public TMP_InputField subID;
-    public TMP_Dropdown biosex;
-    public TMP_InputField age;
     public TMP_Dropdown ui;
     public Button start;
     public Toggle practice;
@@ -24,8 +22,6 @@ public class LM_ExperimentManager : MonoBehaviour
 
     private bool expidError = true;
     private bool subidError = true;
-    private bool biosexError = true;
-    private bool ageError = true;
     private bool uiError = true;
 
     void Start()
@@ -121,60 +117,6 @@ public class LM_ExperimentManager : MonoBehaviour
 
 
     //--------------------------------------------------------------------------
-    // Validate Biosex Input
-    //--------------------------------------------------------------------------
-
-    public void ValidateBiosex()
-    {
-        TextMeshProUGUI _errorMessage = biosex.transform.Find("Error").GetComponent<TextMeshProUGUI>();
-
-        if (biosex.value != 0)
-        {
-            biosexError = false;
-            _errorMessage.gameObject.SetActive(false);
-        }
-        else
-        {
-            biosexError = true;
-            _errorMessage.text = "Please select one of the options provided.";
-            _errorMessage.gameObject.SetActive(true);
-
-        }
-    }
-
-
-    //--------------------------------------------------------------------------
-    // Validate Age Input
-    //--------------------------------------------------------------------------
-
-    public void ValidateAge()
-    {
-        TextMeshProUGUI _errorMessage = age.transform.Find("Error").GetComponent<TextMeshProUGUI>();
-
-        if (age.text != "")
-        {
-            if (int.TryParse(age.text, out int _age))
-            {
-                ageError = false;
-                _errorMessage.gameObject.SetActive(false);
-            }
-            else
-            {
-                ageError = true;
-                _errorMessage.text = "Age must be an integer.";
-                _errorMessage.gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            ageError = true;
-            _errorMessage.text = "You must provide an Age.";
-            _errorMessage.gameObject.SetActive(true);
-        }
-    }
-
-
-    //--------------------------------------------------------------------------
     // Validate UI selected (make sure they selected one)
     //--------------------------------------------------------------------------
 
@@ -202,27 +144,23 @@ public class LM_ExperimentManager : MonoBehaviour
 
         Debug.Log("starting to load experiment");
 
-        // if we're doing practice, then ignore subid, age, and biosex errors
+        // if we're doing practice, then ignore subid errors
         if (practice.isOn)
         {
             ValidateExpID();
             subidError = false;
-            biosexError = false;
-            ageError = false;
+
             ValidateUI();
         }
         else
         {
             ValidateExpID();
             ValidateSubjectID();
-            ValidateBiosex();
-            ValidateAge();
             ValidateUI();
         }
 
-        Debug.Log(expidError + "\t" + subidError + biosexError + ageError + uiError);
 
-        if (!expidError && !subidError && !ageError && !biosexError && !uiError)
+        if (!expidError && !subidError && !uiError)
         {
             // Create the directories if they don't exist
             if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
@@ -246,14 +184,6 @@ public class LM_ExperimentManager : MonoBehaviour
             
             Debug.Log("All error flags removed; proceeding");
             _errorMessage.gameObject.SetActive(false);
-
-
-            PlayerPrefs.SetString("expID", expID.options[expID.value].text);
-            if (!practice.isOn)
-            {
-                PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
-                PlayerPrefs.SetInt("subAge", int.Parse(age.text));
-            }
             
 
             readyConfig();
@@ -353,12 +283,9 @@ public class LM_ExperimentManager : MonoBehaviour
 
     void TogglePracticeState(Toggle toggle)
     {
-        age.gameObject.SetActive(!toggle.isOn);
-        biosex.gameObject.SetActive(!toggle.isOn);
         if (toggle.isOn)
         {
             ValidateSubjectID();
-
         }
 
     }

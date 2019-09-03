@@ -23,8 +23,7 @@ using System;
 
 public class ScalePlayerToEnvironment : ExperimentTask
 {
-
-    public GameObject scaledEnvironment;
+    private GameObject scaledEnvironment;
     public bool autoscale = true;
     public float scaleRatio = 1;
     private CharacterController characterController;
@@ -33,8 +32,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
     public override void startTask()
     {
         TASK_START();
-        avatarLog.navLog = true;
-        scaledAvatarLog.navLog = true;
+        avatarLog.navLog = false;
+        scaledAvatarLog.navLog = false;
     }
 
     public override void TASK_START()
@@ -42,6 +41,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
+
+        scaledEnvironment = manager.scaledEnvironment;
 
         //---------------------------------------------
         // Set up basic parameters

@@ -39,6 +39,8 @@ public class Confidence : ExperimentTask {
     private LM_vrSlider vrSlider;
     private Slider slider;
     public bool randomStartValue = true;
+
+    private float startTime;
     
     void OnDisable ()
     {
@@ -57,13 +59,14 @@ public class Confidence : ExperimentTask {
         
         if (!manager) Start();
         base.startTask();
-        
-        
+
+        startTime = Time.time;
         
         if (skip) {
             log.log("INFO    skip task    " + name,1 );
             return;
         }
+        
 
         GameObject sgo = new GameObject("Instruction Display");
 
@@ -173,7 +176,6 @@ public class Confidence : ExperimentTask {
     }
     
     public override void endTask() {
-        Debug.Log ("Ending an instructions task");
         TASK_END();
     }
     
@@ -182,22 +184,40 @@ public class Confidence : ExperimentTask {
         hud.setMessage ("");
         hud.SecondsToShow = hud.GeneralDuration;
 
-        // Log the confidence rating
+        // Save the rating to a variable depending on the object we're using
+        float sliderValue;
+        float sliderMax;
         if (vrEnabled)
         {
-            log.log("ConfidenceRating\t" + transform.parent.name +
-                    "\tQuestion:\t" + this.name +
-                    "\tTarget:\t" + objects.currentObject().name +
-                    "\tConfidence:\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().sliderValue +
-                    "\t/\t" + hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue, 1);
+            sliderValue = hud.confidenceSlider.GetComponent<LM_vrSlider>().sliderValue;
+            sliderMax = hud.confidenceSlider.GetComponent<LM_vrSlider>().maxValue;
         } else
         {
-            log.log("ConfidenceRating\t" + transform.parent.name +
-                    "\tQuestion:\t" + this.name +
-                    "\tTarget:\t" + objects.currentObject().name +
-                    "\tConfidence:\t" + hud.confidenceSlider.GetComponent<Slider>().value +
-                    "\t/\t" + hud.confidenceSlider.GetComponent<Slider>().maxValue, 1);
+            sliderValue = hud.confidenceSlider.GetComponent<Slider>().value;
+            sliderMax = hud.confidenceSlider.GetComponent<Slider>().maxValue;
         }
+
+
+        // -----------------------
+        // Log Trial info
+        // -----------------------
+
+        // Get the parent and grandparent task to provide context in log file
+        var parent = this.parentTask;
+        var masterTask = parent;
+        while (!masterTask.gameObject.CompareTag("Task"))
+        {
+            Debug.Log(masterTask.name);
+            masterTask = masterTask.parentTask;
+        }
+        // Output log for this task in tab delimited format
+        log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
+                "Task\tBlock\tTrial\tTargetName\tRating\tMaxRating\tRT\n" +
+                masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + sliderValue + "\t" + sliderMax + "\t" + (Time.time - startTime)
+                , 1);
+
+
+
         if (canIncrementLists) {
 
             if (objects) {
