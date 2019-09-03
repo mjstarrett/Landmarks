@@ -6,8 +6,10 @@ using TMPro;
 
 public class MapScoreTest : ExperimentTask {
 
-	private GameObject copyObjects; // should be the game object called copyObjects in the MapTask game object
+    public GameObject copyObjects;
+
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object
+
 	public float distanceErrorTolerance = 30; // world units (suggest meters)
 	[Range(0,100)] public int percentCorrectCriterion = 100; // Allow adjustment of the score required to continue advance the experiment (0%-100%)
 	private int numberTargets;
@@ -35,13 +37,16 @@ public class MapScoreTest : ExperimentTask {
 			return;
 		}
 
-		// --------------------------------------------------------------------
-		// Set up Lists of the copies and originals to compare and score
-		// --------------------------------------------------------------------
+        // make the cursor functional and visible
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
-		// Automatically select the answers and targets based on LandMarks structure (can be changed)
-		copyObjects = GameObject.Find("CopyObjects"); // should be the game object called copyObjects in the MapTask game object
-		targetObjects = copyObjects.GetComponent<CopyChildObjects>().sourcesParent; // should be the game object called TargetObjects under Environment game object
+        // --------------------------------------------------------------------
+        // Set up Lists of the copies and originals to compare and score
+        // --------------------------------------------------------------------
+
+        // Automatically select the answers and targets based on LandMarks structure (can be changed)
+        targetObjects = copyObjects.GetComponent<CopyChildObjects>().sourcesParent.parentObject; // should be the game object called TargetObjects under Environment game object
 
 		// Get the total possible
 		numberTargets = copyObjects.transform.childCount;
@@ -95,25 +100,37 @@ public class MapScoreTest : ExperimentTask {
         log.log("Score: \t" + numberCorrect + "\t/\t" + numberTargets + "\tPercentage: \t" + percentCorrect, 0);
 
 
-		// ----------------------------------------------------
-		// React to Score based on Performance Criterion
-		// ----------------------------------------------------
+        // ----------------------------------------------------
+        // React to Score based on Performance Criterion
+        // ----------------------------------------------------
 
-		if (percentCorrect >= percentCorrectCriterion) {
-			progressionText = actionButton.GetComponent<DefaultText>().defaultText;
+        // Store the selected, default number of reps so we can reset it after sub-criterion scores
+        if (parentTask.GetComponent<TaskList>().repeatCount == 1) // the repeat count variable starts at 1 (not 0)
+        {
+            PlayerPrefs.SetInt("BaseMapRepeats", parentTask.GetComponent<TaskList>().repeat); // store the users repeat value in player prefs
+        }
 
-		} else if (percentCorrect < percentCorrectCriterion) {
-			progressionText = "Try Again";
-			parentTask.GetComponent<TaskList> ().repeat++;
-		} else {
-			progressionText = "CHECK WHAT'S WRONG WITH THE CODE";
-		}
+        // Based on performance, update the instruction text and add another repeat to the parent task, if below criterion
+        if (percentCorrect >= percentCorrectCriterion)
+        {
+            progressionText = actionButton.GetComponent<DefaultText>().defaultText;
+            parentTask.GetComponent<TaskList>().repeat = PlayerPrefs.GetInt("BaseMapRepeats"); // if criterion is met, reset the repeat value of the parent
+        }
+        else if (percentCorrect < percentCorrectCriterion)
+        {
+            progressionText = "Try Again";
+            parentTask.GetComponent<TaskList>().repeat++; // if criterion is not met, add another repetition
+        }
+        else
+        {
+            progressionText = "CHECK WHAT'S WRONG WITH THE CODE";
+        }
 
 
-		// ---------------------------------
-		// Create the GUI object
-		// ---------------------------------
-		GameObject sgo = new GameObject("Instruction Display");
+        // ---------------------------------
+        // Create the GUI object
+        // ---------------------------------
+        GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         Text canvas = avatar.GetComponent<Text>();
@@ -202,6 +219,10 @@ public class MapScoreTest : ExperimentTask {
 
 		hud.setMessage ("");
 		hud.SecondsToShow = hud.GeneralDuration;
+
+        // make the cursor invisible
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false; 
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         Text canvas = avatar.GetComponent<Text>();
