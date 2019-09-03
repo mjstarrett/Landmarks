@@ -22,13 +22,14 @@ public class MoveSpawn : ExperimentTask {
 
 	[HideInInspector] public GameObject start;
 	public GameObject destination;
+    public string destinationListName;
 	public ObjectList destinations;
 	
 	public bool swap;
 	private static Vector3 position;
 	private static Vector3 rotation;
+    public bool scaledPlayer = false;
     public bool ignoreY = false;
-
 
 	public override void startTask () {
 		TASK_START();
@@ -39,20 +40,27 @@ public class MoveSpawn : ExperimentTask {
 		base.startTask();
 		
 		if (!manager) Start();
-		
-		
-		if (skip) {
+
+        if (skip) {
 			log.log("INFO	skip task	" + name,1 );
 			return;
 		}
 
-        // determine what we're moving
-        if (isScaled)
-        {
-            start = scaledAvatar;
-        }
-        else start = avatar;
 
+
+        if (scaledPlayer)
+        {
+            Debug.Log("%%%%%");
+            start = scaledAvatar;
+        } else start = avatar;
+
+        // Find destinations with string destinationsName 
+        if (destinations == null && destinationListName != "") // only if destinations is blank and destinationsName is not
+        {
+            destinations = GameObject.Find(destinationListName).GetComponent<ObjectList>();
+            Debug.Log("moving the " + start.gameObject.name + " to " + destinations.currentObject());
+        }
+        // otherwise, use destination or destinations.
 
         if ( destinations ) {
 			destination = destinations.currentObject();		
@@ -70,25 +78,25 @@ public class MoveSpawn : ExperimentTask {
             tempPos.y = destination.transform.position.y;
         }
         tempPos.z = destination.transform.position.z;
-        avatar.transform.position = tempPos;
+        start.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
-        // Set the rotation to random
+        //// Set the rotation to random
 
-        Vector3 tempRot = start.transform.eulerAngles;
-        tempRot.y = Random.Range(0, 359.999f);
-        start.transform.eulerAngles = tempRot;
-        if (!isScaled)
-        {
-            /* MJS 2019
-             * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
-             * so we need to access a modified firstpersoncontroller.cs script
-             * which will access a modified MouseLook.cs script to reset the mouselook 
-             * which effectively forces it not to undo our manual rotation
-            */           
-            avatar.GetComponent<FirstPersonController>().ResetMouselook();
-        }
+        //Vector3 tempRot = start.transform.eulerAngles;
+        //tempRot.y = Random.Range(0, 359.999f);
+        //start.transform.eulerAngles = tempRot;
+        //if (!scaledPlayer)
+        //{
+        //    /* MJS 2019
+        //     * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
+        //     * so we need to access a modified firstpersoncontroller.cs script
+        //     * which will access a modified MouseLook.cs script to reset the mouselook 
+        //     * which effectively forces it not to undo our manual rotation
+        //    */           
+        //    avatar.GetComponent<FirstPersonController>().ResetMouselook();
+        //}
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
 

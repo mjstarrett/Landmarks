@@ -27,9 +27,6 @@ public class ScalePlayerToEnvironmentEditor : Editor
         // set our custom inspector up to communicate with the main script and alias that script for brevity
         ScalePlayerToEnvironment spte = (ScalePlayerToEnvironment)target;
 
-        // Gameobject field for Scaled environment
-        spte.scaledEnvironment = (GameObject)EditorGUILayout.ObjectField("Scaled Enviornment", spte.scaledEnvironment, typeof(GameObject), true);
-
         // publish our autoscale option
         spte.autoscale = EditorGUILayout.Toggle("AutoScale", spte.autoscale);
         // tell inspector to hide the scale ratio option if they are autoscaling

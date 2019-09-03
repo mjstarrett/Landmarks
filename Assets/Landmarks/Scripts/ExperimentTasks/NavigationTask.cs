@@ -29,7 +29,15 @@ public class NavigationTask : ExperimentTask
     [Range(0,59.99f)] public float showTargetAfterSeconds;
     public bool hideNonTargets;
 
+
+    // For logging output
     private float startTime;
+    private Vector3 playerLastPosition;
+    private float playerDistance = 0;
+    private Vector3 scaledPlayerLastPosition;
+    private float scaledPlayerDistance = 0;
+    private float optimalDistance;
+    private string m_targetName;
 
     public override void startTask () 
 	{
@@ -96,14 +104,33 @@ public class NavigationTask : ExperimentTask
             destinations.currentObject().SetActive(true); // make sure the target is visible unless the bool to hide was checked
             destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
         }
-        startTime = System.DateTime.Now.Second;
+
+        startTime = Time.time;
+
+        // Get the avatar start location (distance = 0)
+        playerDistance = 0.0f;
+        playerLastPosition = avatar.transform.position;
+        if (isScaled)
+        {
+            scaledPlayerDistance = 0.0f;
+            scaledPlayerLastPosition = scaledAvatar.transform.position;
+        }
+
+        // Calculate optimal distance to travel (straight line)
+        if (isScaled)
+        {
+            optimalDistance = Vector3.Distance(scaledAvatar.transform.position, current.transform.position);
+        }
+        else optimalDistance = Vector3.Distance(avatar.transform.position, current.transform.position);
+        m_targetName = current.name;
+
 
         //// MJS 2019 - Move HUD to top left corner
         //hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
         //hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
-    }	
+    }
 
-	public override bool updateTask () 
+    public override bool updateTask () 
 	{
 		base.updateTask();
 
@@ -125,6 +152,16 @@ public class NavigationTask : ExperimentTask
 				hud.setScore(score);
 			}
 		}
+
+        // Keep updating the distance traveled
+        playerDistance += Vector3.Distance(avatar.transform.position, playerLastPosition);
+        playerLastPosition = avatar.transform.position;
+        if (isScaled)
+        {
+            scaledPlayerDistance += Vector3.Distance(scaledAvatar.transform.position, scaledPlayerLastPosition);
+            scaledPlayerLastPosition = scaledAvatar.transform.position;
+        }
+
 
         if (hideTargetOnStart != HideTargetOnStart.Off && ((System.DateTime.Now.Second) - startTime > showTargetAfterSeconds || Input.GetButtonDown("Return")))
         {
@@ -179,6 +216,24 @@ public class NavigationTask : ExperimentTask
         hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
 
+        float perfDistance;
+        if (isScaled)
+        {
+            perfDistance = scaledPlayerDistance;
+        }
+        else perfDistance = playerDistance;
+
+
+
+
+        var parent = this.parentTask;
+        var masterTask = parent;
+        while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
+        // This will log all final trial info in tab delimited format
+        log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
+        	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
+        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + m_targetName + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + (perfDistance - optimalDistance) + "\t" + (Time.time - startTime)
+            , 1);
     }
 
 	public override bool OnControllerColliderHit(GameObject hit)  
