@@ -109,12 +109,8 @@ public class Experiment : MonoBehaviour {
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
         // find Environment
         environment = GameObject.FindGameObjectWithTag("Environment");
-        // find scaled environment
-        if (GameObject.FindGameObjectsWithTag("ScaledEnvironment") != null)
-        {
-            scaledEnvironment = GameObject.FindGameObjectWithTag("ScaledEnvironment");
-            scaledEnvironment.SetActive(false);
-        }
+        // find ScaledEnvironment
+        scaledEnvironment = FindObjectOfType<LM_ScaledEnvironment>().transform.gameObject;
 
 
         if (PlayerPrefs.GetString("UserInterface") != "default")
@@ -270,11 +266,12 @@ public class Experiment : MonoBehaviour {
         Debug.Log(XRSettings.loadedDeviceName);
     }
 
+
     public void StartPlaying() {		
 		long tick = DateTime.Now.Ticks;
         playback_start = tick / TimeSpan.TicksPerMillisecond;
         playback_offset = 0;
-	}
+    }
 
 	void Start () {
 
@@ -297,7 +294,8 @@ public class Experiment : MonoBehaviour {
         	playback_offset = 0;
         	now = playback_start;
    		}
-	}
+
+    }
 	
 	public void OnControllerColliderHit(GameObject hit)  {
 		if (config.runMode != ConfigRunMode.PLAYBACK) {
