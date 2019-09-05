@@ -43,6 +43,10 @@ public class ScalePlayerToEnvironment : ExperimentTask
 
 
         scaledEnvironment = manager.scaledEnvironment;
+        if (scaledEnvironment == null)
+        {
+            throw new Exception("Missing a Scaled Environment. Try adding the LM_ScaledEnvironment prefab to your scene.");
+        }
 
         //---------------------------------------------
         // Set up basic parameters
@@ -58,7 +62,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
         }
 
 
-        Debug.Log("The environment is currently scaled" + isScaled);
         // Are we reversing the scale?
         if (isScaled == true)
         {
