@@ -103,16 +103,21 @@ public class Experiment : MonoBehaviour {
         // ------------------------------------------
         // Grab the Landmarks items that are not controller dependent
         // ------------------------------------------
+
+        // Grab the tasklist that controls the timeline of the experiment
         tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
+
+        // grab the overhead camera in the scene
         overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
-        // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
+
+        // Assign the scaled player if it's in the scene
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
+
         // find Environment
         environment = GameObject.FindGameObjectWithTag("Environment");
-        // find ScaledEnvironment
-        scaledEnvironment = FindObjectOfType<LM_ScaledEnvironment>().transform.gameObject;
+        
 
-
+        // Handle the selected UI enum from the inspector
         if (PlayerPrefs.GetString("UserInterface") != "default")
         {
             Debug.Log("Getting user interface from config file.");
@@ -294,6 +299,17 @@ public class Experiment : MonoBehaviour {
         	playback_offset = 0;
         	now = playback_start;
    		}
+
+        // find ScaledEnvironment
+        try
+        {
+            scaledEnvironment = FindObjectOfType<LM_ScaledEnvironment>().transform.gameObject;
+            scaledEnvironment.gameObject.SetActive(false);
+        }
+        catch
+        {
+            scaledEnvironment = null; 
+        }
 
     }
 	
