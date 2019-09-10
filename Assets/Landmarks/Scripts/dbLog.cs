@@ -20,14 +20,14 @@ using System.IO;
 
 
 public class dbLog {
-
+    
     protected long microseconds = 1;
     protected string workingFile = "";
     private StreamWriter logfile;
 
 	public dbLog(string filename) {
-		workingFile = filename;
-		logfile = new StreamWriter ( workingFile );
+		//workingFile = filename;
+		//logfile = new StreamWriter ( workingFile );
 	}
 	
 	public dbLog() {
@@ -36,7 +36,7 @@ public class dbLog {
 	
 	public virtual void close()
 	{
-		logfile.Close();	
+		//logfile.Close();	
 	}
 	
 	public virtual string[] NextAction() {
@@ -48,13 +48,14 @@ public class dbLog {
 	
 	public virtual void log(string msg, int level) {
 		
-	    long tick = DateTime.Now.Ticks;
+	   // long tick = DateTime.Now.Ticks;
         //long seconds = tick / TimeSpan.TicksPerSecond;
-        long milliseconds = tick / TimeSpan.TicksPerMillisecond;
-        microseconds = tick / 10;
+       //long milliseconds = tick / TimeSpan.TicksPerMillisecond;
+       // microseconds = tick / 10;
         //Debug.Log(milliseconds);
         //Debug.Log(Time.frameCount + ": " + Event.current);
         
-		logfile.WriteLine( milliseconds + "\t" + msg );
+		//logfile.WriteLine( milliseconds + "\t" + msg );
 	}
+    
 }

@@ -123,7 +123,7 @@ public class GreekNavigationTask : ExperimentTask
 
         if (skip)
         {
-            log.log("INFO    skip task    " + name, 1);
+           // log.log("INFO    skip task    " + name, 1);
             return;
         }
 
@@ -288,7 +288,7 @@ public class GreekNavigationTask : ExperimentTask
         avatarLog.navLog = false;
         if (isScaled) scaledAvatarLog.navLog = false;
         //base.endTask();
-        log.log("TASK_PAUSE\t" + name + "\t" + this.GetType().Name + "\t", 1);
+      //  log.log("TASK_PAUSE\t" + name + "\t" + this.GetType().Name + "\t", 1);
         //avatarController.stop();
 
         hud.setMessage("");
@@ -298,12 +298,34 @@ public class GreekNavigationTask : ExperimentTask
 
     public override void TASK_END()
     {
-       // Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-       // foreach (Renderer r in renderedEnvironment)
+        // Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        // foreach (Renderer r in renderedEnvironment)
         //{
-       //     r.enabled = false;
-       // }
+        //     r.enabled = false;
+        // }
         running = false;
+        if (MountainTaskOutput.outputting && trialNumber != 0)
+        {
+            if (MountainTaskOutput.textBuffer != "")
+            {
+                using (StreamWriter swt = File.AppendText(MountainTaskOutput.accessibleTextPath))
+                {
+                    swt.WriteLine(MountainTaskOutput.textBuffer);
+                }
+                MountainTaskOutput.textBuffer = "";
+            }
+
+            if (MountainTaskOutput.excelBuffer != "")
+            { 
+                using (StreamWriter swe = File.AppendText(MountainTaskOutput.accessibleExcelPath))
+                {
+                    swe.WriteLine(MountainTaskOutput.excelBuffer);
+                }
+                MountainTaskOutput.excelBuffer = "";
+            }
+
+        }
+        
         //When the task is done and the conditions are met, we want to call MoveObjectBack() once to essentially "reset" the environment.
         if (implementHeraclesFunction && moveBackAtEnd && degreesToMove != 0 && movementDirection != MovementDirection.None)
         {
