@@ -250,11 +250,9 @@ public class Experiment : MonoBehaviour {
 			if (config.runMode != ConfigRunMode.PLAYBACK) {
 				
 				if (Input.GetKeyDown (KeyCode.T)) {
-<<<<<<< HEAD
-					dblog.log("BOOKMARK	t-trigger",1 );
-=======
+
 					//dblog.log("BOOKMARK	t-trigger",1 );
->>>>>>> mountain
+
 				}
 				
 				done = tasks.updateTask();	
