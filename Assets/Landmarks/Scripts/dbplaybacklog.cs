@@ -37,7 +37,7 @@ public class dbPlaybackLog : dbLog {
 
 
 	public dbPlaybackLog(string filename) {
-		/*workingFile = filename;
+		workingFile = filename;
 		logfile = new StreamReader ( workingFile );
 
 		
@@ -61,7 +61,6 @@ public class dbPlaybackLog : dbLog {
 		//string[] actiondefs = next_action.Split(new char[] {'\t'});
 		//Debug.Log(actiondefs[0]);
 		start_time = Int64.Parse(actions[0][0]);
-        */
 	}
 
 	public override string[] NextAction() {

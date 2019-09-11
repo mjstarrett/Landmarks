@@ -9,10 +9,9 @@ public class MountainTaskOutput : MonoBehaviour
     //Editor Variables for File(s)
     [Header("Output")]
     public bool generateOutput; //do we want to create a file
-    public static bool outputting;
     public string inputName;    // what the file name is
     public bool textFile, excelFile; //do we want .txt or .xls
-    public static string textBuffer, excelBuffer;
+   
     //Editor Variables for Tracking of Head & Feet :=> Could be expanded to hands, and other trackers
     [Header("Tracking")]
     public GameObject head; //participants head
@@ -23,19 +22,17 @@ public class MountainTaskOutput : MonoBehaviour
     
     //Scripting Variables for file(s) and tracking
     private string fileNames; //names given in editor
-    private string textPath, excelPath, textHeader, excelHeader, textInfo, excelInfo; //names of the .txt and .xls file paths & what their headers and information lines should contain
+    private string textPath, excelPath; //names of the .txt and .xls file paths
     private GameObject[] targets;   //array of the target objects at the start of the experiment
     private int currentTargetNumber;    //the number representing the current target when the experiment is running
     private string currentTargetName;   //the name of the current target when the experiment is running
-    private int setNameNumber; //have we set the name & number of the target
+    private bool setNameNumber; //have we set the name & number of the target
     private int currentButton, previousButton; //boolean integers representing the button press of the current button press status and the previous button press status
     public static bool wasItPushed; //was the button pressed
-    public static string accessibleTextPath, accessibleExcelPath;
+    
     // Start is called before the first frame update
     void Start()
     {
-        setNameNumber = -1;
-        outputting = generateOutput;
         //Application.targetFrameRate = 90;
 
         Debug.Log("This is where we error check and validate our file names");
@@ -96,26 +93,29 @@ public class MountainTaskOutput : MonoBehaviour
 
     }//End of Start
 
-    //Logging Coroutine gets called every 100ms (+/- variance)
-    IEnumerator Logging()
+    // FixedUpdate is called once every time step
+        //Make sure Fixed Timestep = .0200000 to get an output of always 20ms
+            //Fixed Timestep is located in the Time settings (Edit > Project Settings > Time > Fixed Timestep) or in TimeManager.asset (ProjectName > ProjectSettings > TimeManager.asset)
+     IEnumerator Logging()
     {
-
-    
         while (true)
         {
-            if (GreekNavigationTask.running)
+            if (GreekNavigationTask.trialNumber > 0)
             {
-                //Validate the button press state while the participant is in the task
+                //Validate the button press state
                 ValidateButtonPress();
-                //Set the target data values while the participant is in the task
+                //Set the target data values
                 SetTargetData();
                 //Write all the apropriate data to the file(s) (except on the break instruction (which should be instruction task #101)
+                if (InstructionsTask.instructionsCounter != 101)
+                {
+                    WriteToFile();
+                }
 
                 //Set the previous button push state to the current
                 previousButton = currentButton;
             }
-        WriteToFile();
-         yield return new WaitForSeconds(0.10000000f);
+            yield return new WaitForSeconds(0.03000000f);
         }
     }//End of FixedUpdate
 
@@ -125,7 +125,7 @@ public class MountainTaskOutput : MonoBehaviour
     {
         //set the file names to be equal to the given string (we don't directly check the given string for variable security reasons; i.e. we don't want to accidentally override it)
         fileNames = inputName;
-        //Debug.Log("Our file names are: " + fileNames);
+        Debug.Log("Our file names are: " + fileNames);
         //if the fileNames is NOT an empty string
         if (fileNames != "")
         {
@@ -133,18 +133,13 @@ public class MountainTaskOutput : MonoBehaviour
             if (textFile)
             {
                 //then we set the path to be our current directory and give the log.txt extension
-                textPath = Application.dataPath + "/" + fileNames + ".txt";
-                accessibleTextPath = textPath;
+                textPath = Application.dataPath + "/" + fileNames + "log.txt";
                 Debug.Log("Our textPath is: " + textPath);
                 //and if the file doesnt exist
                 if (!File.Exists(textPath))
                 {
-                    using (StreamWriter swt = File.CreateText(textPath))
-                    {
-                        swt.WriteLine(fileNames + "Output File");
-                    }
                     //then we write to the file its name + Output File on the first line
-                    //File.WriteAllText(textPath, fileNames + " Output File \n");
+                    File.WriteAllText(textPath, fileNames + " Output File \n");
                 }
                 //however, if the file exists
                 else
@@ -159,18 +154,13 @@ public class MountainTaskOutput : MonoBehaviour
             if (excelFile)
             {
                 //then we set the path to be our current directory and give the log.xls extension (NOTE: this is an older extension that excel may claim to be "corrupted." It is not and the newer extension doesn'w work properly with line breaks).
-                excelPath = Application.dataPath + "/" + fileNames + ".xls";
+                excelPath = Application.dataPath + "/" + fileNames + "log.xls";
                 Debug.Log("Our excelPath is: " + excelPath);
-                accessibleExcelPath = excelPath;
                 //and if the file doesnt exist
                 if (!File.Exists(excelPath))
                 {
-                    using (StreamWriter swe = File.CreateText(excelPath))
-                    {
-                        swe.WriteLine(fileNames + "Output File");
-                    }
-                        //then we write to the file its name + Output File on the first line
-                       // File.WriteAllText(excelPath, fileNames + " Output File \n");
+                    //then we write to the file its name + Output File on the first line
+                    File.WriteAllText(excelPath, fileNames + " Output File \n");
                 }
                 //however, if the file exists
                 else
@@ -200,62 +190,43 @@ public class MountainTaskOutput : MonoBehaviour
         //if we are outputting a text file
         if (textFile)
         {
-            
             //write the columns: Time, Trial, TargetName, and TargetNumber to the txt file
-            //File.AppendAllText(textPath, "Time \tTrial \tTargetName \tTargetNumber");
-            textHeader += "Time \tTrial \tTargetName \tTargetNumber";
+            File.AppendAllText(textPath, "Time \tTrial \tTargetName \tTargetNumber");
             //if we are tracking the participants head
             if (trackHead)
             {
                 //write the columns: HeadX, HeadZ, and HeadAngle to the txt file
-                //File.AppendAllText(textPath, "\tHeadX \tHeadZ \tHeadAngle");
-                textHeader += "\tHeadX \tHeadZ \tHeadAngle";
+                File.AppendAllText(textPath, "\tHeadX \tHeadZ \tHeadAngle");
             }
             //if we are tracking the participants feet
             if (trackFeet)
             {
                 //write the columns: LFootX, LFootZ, LFootAngle, RFootX, RFootZ, and RFootAngle to the txt file
-                //File.AppendAllText(textPath, "\tLFootX \tLFootZ \tLFootAngle \tRFootX \tRFootZ \tRFootAngle");
-                textHeader += "\tLFootX \tLFootZ \tLFootAngle \tRFootX \tRFootZ \tRFootAngle";
+                File.AppendAllText(textPath, "\tLFootX \tLFootZ \tLFootAngle \tRFootX \tRFootZ \tRFootAngle");
             }
             //write the last column: IsPredictedLocation to the txt file
-            //File.AppendAllText(textPath, "\tIsPredictedLocation\n");
-            textHeader += "\tIsPredictedLocation";
-
-            using (StreamWriter swt = File.AppendText(textPath))
-            {
-                swt.WriteLine(textHeader);
-            }
+            File.AppendAllText(textPath, "\tIsPredictedLocation\n");
         }
 
         //if we are outputting an excel file
         if (excelFile)
         {
             //write the columns: Time, Trial, TargetName, and TargetNumber to the xls file
-            //File.AppendAllText(excelPath, "Time \tTrial \tTargetName \tTargetNumber");
-            excelHeader += "Time \tTrial \tTargetName \tTargetNumber";
+            File.AppendAllText(excelPath, "Time \tTrial \tTargetName \tTargetNumber");
             //if we are tracking the participants head
             if (trackHead)
             {
                 //write the columns: HeadX, HeadZ, and HeadAngle to the xls file
-                //File.AppendAllText(excelPath, "\tHeadX \tHeadZ \tHeadAngle");
-                excelHeader += "\tHeadX \tHeadZ \tHeadAngle";
+                File.AppendAllText(excelPath, "\tHeadX \tHeadZ \tHeadAngle");
             }
             //if we are tracking the participants feet
             if (trackFeet)
             {
                 //write the columns: LFootX, LFootZ, LFootAngle, RFootX, RFootZ, and RFootAngle to the xls file
-                //File.AppendAllText(excelPath, "\tLFootX \tLFootZ \tLFootAngle \tRFootX \tRFootZ \tRFootAngle");
-                excelHeader += "\tLFootX \tLFootZ \tLFootAngle \tRFootX \tRFootZ \tRFootAngle";
+                File.AppendAllText(excelPath, "\tLFootX \tLFootZ \tLFootAngle \tRFootX \tRFootZ \tRFootAngle");
             }
             //write the last column: IsPredictedLocation to the xls file
-            //File.AppendAllText(excelPath, "\tIsPredictedLocation\n");
-            excelHeader += "\tIsPredictedLocation";
-
-            using (StreamWriter swe = File.AppendText(excelPath))
-            {
-                swe.WriteLine(excelHeader);
-            }
+            File.AppendAllText(excelPath, "\tIsPredictedLocation\n");
         }
     }//End of FormatFile
 
@@ -293,16 +264,14 @@ public class MountainTaskOutput : MonoBehaviour
             {
                 //Write the Time, Trial#, TargetName, and TargetNumber to the txt file
                 //                               Time in ms                            Trial #                         TargetName                  TargetNumber
-                //File.AppendAllText(textPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + GreekNavigationTask.trialNumber + "\t" + currentTargetName + "\t" + currentTargetNumber);
-                textInfo += ((Time.time * 1000)) +"\t" + GreekNavigationTask.trialNumber + "\t" + currentTargetName + "\t" + currentTargetNumber;
+                File.AppendAllText(textPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + GreekNavigationTask.trialNumber + "\t" + currentTargetName + "\t" + currentTargetNumber);
             }
             //however, if GreekNavigationTask is not currently running
             else if (GreekNavigationTask.running == false)
             {
                 //Write the Time, Inverse Trial#, No Target Name, and No Target Name to the txt file
                 //                               Time in ms                           Trial #                        TargetName     TargetNumber
-                //File.AppendAllText(textPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + (-(GreekNavigationTask.trialNumber)) + "\t" + "None" + "\t" + "None");
-                textInfo += ((Time.time * 1000)) + "\t" + (-(GreekNavigationTask.trialNumber)) + "\tNone \tNone";
+                File.AppendAllText(textPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + (-(GreekNavigationTask.trialNumber)) + "\t" + "None" + "\t" + "None");
             }
 
             //if we are tracking the participants head
@@ -310,29 +279,17 @@ public class MountainTaskOutput : MonoBehaviour
             {
                 //Write the x & z coordinates and y angle of the participants head to the txt file
                 //                              head x position         head z position         head angle
-                //File.AppendAllText(textPath, "\t" + GetX(head) + "\t" + GetZ(head) + "\t" + GetAngle(head));
-                textInfo += "\t" + GetX(head) + "\t" + GetZ(head) + "\t" + GetAngle(head);
+                File.AppendAllText(textPath, "\t" + GetX(head) + "\t" + GetZ(head) + "\t" + GetAngle(head));
             }
             //if we are tracking the participants feet
             if (trackFeet)
             {
                 //Write the x & z coordinates and y angle of the participants left and right feet to the txt file
                 //                              left foot x position        left foot z position    left foot angle         right foot x position     right foot z position         right foot angle
-                //File.AppendAllText(textPath, "\t" + GetX(leftFoot) + "\t" + GetZ(leftFoot) + "\t" + GetAngle(leftFoot) + "\t" + GetX(rightFoot) + "\t" + GetZ(rightFoot) + "\t" + GetAngle(rightFoot));
-                textInfo += "\t" + GetX(leftFoot) + "\t" + GetZ(leftFoot) + "\t" + GetAngle(leftFoot) + "\t" + GetX(rightFoot) + "\t" + GetZ(rightFoot) + "\t" + GetAngle(rightFoot);
+                File.AppendAllText(textPath, "\t" + GetX(leftFoot) + "\t" + GetZ(leftFoot) + "\t" + GetAngle(leftFoot) + "\t" + GetX(rightFoot) + "\t" + GetZ(rightFoot) + "\t" + GetAngle(rightFoot));
             }
             //Write the current button press value to the txt file
-            //File.AppendAllText(textPath, "\t" + currentButton + "\n");
-
-            textInfo += "\t" + currentButton + "\n";
-
-            //using (StreamWriter swt = File.AppendText(textPath))
-            // {
-            //     swt.WriteLine(textInfo);
-            //}
-            textBuffer += textInfo;
-            textInfo = "";
-
+            File.AppendAllText(textPath, "\t" + currentButton + "\n");
         }
 
         //if we are outputting an excel file
@@ -343,16 +300,14 @@ public class MountainTaskOutput : MonoBehaviour
             {
                 //Write the Time, Trial#, TargetName, and TargetNumber to the xls file
                 //                               Time in ms                            Trial #                         TargetName                  TargetNumber
-                //File.AppendAllText(excelPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + GreekNavigationTask.trialNumber + "\t" + currentTargetName + "\t" + currentTargetNumber);
-                excelInfo += ((Time.time * 1000)) + "\t" + GreekNavigationTask.trialNumber + "\t" + currentTargetName + "\t" + currentTargetNumber;
+                File.AppendAllText(excelPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + GreekNavigationTask.trialNumber + "\t" + currentTargetName + "\t" + currentTargetNumber);
             }
             //however, if GreekNavigationTask is not currently running
             else if (GreekNavigationTask.running == false)
             {
                 //Write the Time, Inverse Trial#, No Target Name, and No Target Name to the xls file
                 //                               Time in ms                            Trial #                       TargetName       TargetNumber
-                //File.AppendAllText(excelPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + (-(GreekNavigationTask.trialNumber)) + "\t" + "None" + "\t" + "None");
-                excelInfo += ((Time.time * 1000)) + "\t" + (-(GreekNavigationTask.trialNumber)) + "\tNone\tNone";
+                File.AppendAllText(excelPath, ((Time.time * 1000) - Time.deltaTime) + "\t" + (-(GreekNavigationTask.trialNumber)) + "\t" + "None" + "\t" + "None");
             }
 
             //if we are tracking the participants head
@@ -360,44 +315,44 @@ public class MountainTaskOutput : MonoBehaviour
             {
                 //Write the x & z coordinates and y angle of the participants head to the xls file
                 //                              head x position         head z position         head angle
-                //File.AppendAllText(excelPath, "\t" + GetX(head) + "\t" + GetZ(head) + "\t" + GetAngle(head));
-                excelInfo += "\t" + GetX(head) + "\t" + GetZ(head) + "\t" + GetAngle(head);
+                File.AppendAllText(excelPath, "\t" + GetX(head) + "\t" + GetZ(head) + "\t" + GetAngle(head));
             }
             //if we are tracking the participants feet
             if (trackFeet)
             {
                 //Write the x & z coordinates and y angle of the participants left and right feet to the xls file
                 //                              left foot x position        left foot z position    left foot angle         right foot x position     right foot z position         right foot angle
-                //File.AppendAllText(excelPath, "\t" + GetX(leftFoot) + "\t" + GetZ(leftFoot) + "\t" + GetAngle(leftFoot) + "\t" + GetX(rightFoot) + "\t" + GetZ(rightFoot) + "\t" + GetAngle(rightFoot));
-                excelInfo += "\t" + GetX(leftFoot) + "\t" + GetZ(leftFoot) + "\t" + GetAngle(leftFoot) + "\t" + GetX(rightFoot) + "\t" + GetZ(rightFoot) + "\t" + GetAngle(rightFoot);
+                File.AppendAllText(excelPath, "\t" + GetX(leftFoot) + "\t" + GetZ(leftFoot) + "\t" + GetAngle(leftFoot) + "\t" + GetX(rightFoot) + "\t" + GetZ(rightFoot) + "\t" + GetAngle(rightFoot));
             }
             //Write the current button press value to the txt file
-            //File.AppendAllText(excelPath, "\t" + currentButton + "\n");
-
-            excelInfo += "\t" + currentButton + "\n";
-
-            //using (StreamWriter swe = File.AppendText(excelPath))
-            // {
-            //     swe.WriteLine(excelInfo);
-            //}
-            excelBuffer += excelInfo;
-            excelInfo = "";
-
+            File.AppendAllText(excelPath, "\t" + currentButton + "\n");
         }
     }//End of WriteToFile
 
-    //SetTargetData is called after ValidateButtonPress()
+    //SetTargetData is called in FixedUpdate() after ValidateButtonPress()
         //SetTargetData is used to establish the current target's name and corresponding number
     private void SetTargetData()
     {
-        if (setNameNumber != GreekNavigationTask.trialNumber)
+        //If the GreekNavigationTask is running
+        if (GreekNavigationTask.running)
         {
-            //set the current targets number by calling the GetCurrentTargetNumber() function
-            currentTargetNumber = GetCurrentTargetNumber();
-            //set the current targets name
-            currentTargetName = GreekNavigationTask.targetName;
-            //set the name number counter
-            setNameNumber = GreekNavigationTask.trialNumber;
+            //if we havent set the target name and number
+            if (!setNameNumber)
+            {
+                //set the current targets number by calling the GetCurrentTargetNumber() function
+                currentTargetNumber = GetCurrentTargetNumber();
+                //set the current targets name
+                currentTargetName = GreekNavigationTask.targetName;
+                Debug.Log("We are on trial: " + GreekNavigationTask.trialNumber + ", The current target is the: " + currentTargetName + ", whose number is: " + currentTargetNumber);
+                //set the boolean value to true
+                setNameNumber = true;
+            }
+        }
+        //but, if the GreekNavigationTask is not running
+        else
+        {
+            //set the boolean value to false
+            setNameNumber = false;
         }
     }//End of SetTargetData
 
