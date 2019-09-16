@@ -33,7 +33,8 @@ public enum UserInterface
 {
 	DesktopDefault,	
     ViveRoomspace,
-    ViveAndVirtualizer
+    ViveAndVirtualizer,
+    ViveKatwalk
 }
 
 public class Experiment : MonoBehaviour {
@@ -132,6 +133,9 @@ public class Experiment : MonoBehaviour {
                 case "Vive Std.":
                     userInterface = UserInterface.ViveRoomspace;
                     break;
+                case "Vive Katwalk":
+                    userInterface = UserInterface.ViveKatwalk;
+                    break;
                 default:
                     break;
             }
@@ -177,13 +181,35 @@ public class Experiment : MonoBehaviour {
                 // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
                 if (GameObject.Find("ViveVirtualizerController") == null)
                 {
-                    Debug.Log("UserInterface player controller not found. Falling back to Default");
+                    Debug.LogWarning("UserInterface player controller not found. Falling back to Default");
                     goto default;
                 }
 
                 // HTC Vive and Cyberith Virtualizer
                 player = GameObject.Find("ViveVirtualizerController");
                 playerCamera = GameObject.Find("ViveVirtualizerCamera").GetComponent<Camera>();
+
+                // Render the overhead camera to each lense of the HMD
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+
+                // create variable to indicate if using VR
+                usingVR = true;
+
+                break;
+
+            case UserInterface.ViveKatwalk:
+
+                // This is a proprietary asset that must be added to the _Landmarks_ prefab to work
+                // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
+                if (GameObject.Find("ViveKatwalkController") == null)
+                {
+                    Debug.LogWarning("The player controller for this user interface could not be found. Falling back to default.");
+                    goto default;
+                }
+
+                // HTC Vive and Katwalk omnidirectional treadmill
+                player = GameObject.Find("ViveKatwalkController");
+                playerCamera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
 
                 // Render the overhead camera to each lense of the HMD
                 overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
