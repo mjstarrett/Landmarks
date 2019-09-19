@@ -31,14 +31,17 @@ public enum EndListMode
 
 public enum UserInterface
 {
-	DesktopDefault,	
+    DesktopDefault,
     ViveRoomspace,
-    ViveAndVirtualizer
+    ViveVirtualizer,
+    ViveKatwalk
 }
+
 
 public class Experiment : MonoBehaviour {
 
-	public UserInterface userInterface = UserInterface.DesktopDefault;
+    public GameObject uiParent;
+    public UserInterface userInterface = UserInterface.DesktopDefault;
     [HideInInspector] public TaskList tasks;
 	[HideInInspector] public Config config;
 	private long microseconds = 1;
@@ -112,6 +115,7 @@ public class Experiment : MonoBehaviour {
 
         // Assign the scaled player if it's in the scene
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
+        scaledPlayer.SetActive(false);
 
         // find Environment
         environment = GameObject.FindGameObjectWithTag("Environment");
@@ -128,7 +132,7 @@ public class Experiment : MonoBehaviour {
                     userInterface = UserInterface.DesktopDefault;
                     break;
                 case "Vive Virt.":
-                    userInterface = UserInterface.ViveAndVirtualizer;
+                    userInterface = UserInterface.ViveVirtualizer;
                     break;
                 case "Vive Std.":
                     userInterface = UserInterface.ViveRoomspace;
@@ -172,7 +176,7 @@ public class Experiment : MonoBehaviour {
 
                 break;
 
-            case UserInterface.ViveAndVirtualizer:
+            case UserInterface.ViveVirtualizer:
 
                 // This is a proprietary asset that must be added to the _Landmarks_ prefab to work
                 // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
