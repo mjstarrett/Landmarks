@@ -30,6 +30,5 @@ public class LM_ScaledEnvironment : MonoBehaviour
         listSmallPlayerStarts.GetComponent<ObjectList>().shuffle = true;
         listSmallPlayerStarts.GetComponent<ObjectList>().parentObject = GameObject.Find("NavigationStartingLocations"); // these are a necessary part of the Landmarks prefab (LM_Environment)
 
-        Debug.Log("did we make lists???????????????????????????????????");
     }
 }

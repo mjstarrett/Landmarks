@@ -112,7 +112,6 @@ public class InstructionsTask : ExperimentTask {
         {
             
             // Use custom text for button (if provided)
-            Debug.Log(hud.actionButton.GetComponent<DefaultText>().defaultText);
             if (customButtonText != "") actionButton.GetComponentInChildren<Text>().text = customButtonText;
             // Otherwise, use default text attached to the button (component)
             else actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;

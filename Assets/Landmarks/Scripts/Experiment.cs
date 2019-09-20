@@ -29,19 +29,22 @@ public enum EndListMode
 	End
 }
 
+[SerializeField]
 public enum UserInterface
 {
-    DesktopDefault,
-    ViveRoomspace,
-    ViveVirtualizer,
-    ViveKatwalk
+    DesktopDefaultController,
+    ViveRoomspaceController,
+    ViveVirtualizerController,
+    ViveKatwalkController
+    
 }
 
 
 public class Experiment : MonoBehaviour {
 
     public GameObject uiParent;
-    public UserInterface userInterface = UserInterface.DesktopDefault;
+    public UserInterface controllerOptions;
+    [HideInInspector] public string userInterface;
     [HideInInspector] public TaskList tasks;
 	[HideInInspector] public Config config;
 	private long microseconds = 1;
@@ -87,6 +90,10 @@ public class Experiment : MonoBehaviour {
 	
 	void Awake() {
 
+
+        userInterface = Enum.GetName(typeof(UserInterface), (int)controllerOptions);
+        Debug.Log("The " + userInterface + "option was selected");
+
         // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");
         if (oldInstance != null)
@@ -129,13 +136,13 @@ public class Experiment : MonoBehaviour {
             switch (config.ui)
             {
                 case "Desktop":
-                    userInterface = UserInterface.DesktopDefault;
+                    userInterface = "DesktopDefaultController";
                     break;
-                case "Vive Virt.":
-                    userInterface = UserInterface.ViveVirtualizer;
+                case "ViveVirtualizer":
+                    userInterface = "ViveVirtualizerController";
                     break;
-                case "Vive Std.":
-                    userInterface = UserInterface.ViveRoomspace;
+                case "ViveRoomspace":
+                    userInterface = "ViveRoomspaceController";
                     break;
                 default:
                     break;
@@ -146,10 +153,10 @@ public class Experiment : MonoBehaviour {
         // Assign Player and Camera based on UI enum
         // ------------------------------------------
 
-
+        Debug.Log(userInterface);
         switch (userInterface)
         {
-            case UserInterface.DesktopDefault:
+            case "DesktopDefaultController":
                 // Standard Desktop with Keyboard/mouse controller
                 player = GameObject.Find("DesktopDefaultController");
                 playerCamera = GameObject.Find("DesktopDefaultCamera").GetComponent<Camera>();
@@ -162,7 +169,7 @@ public class Experiment : MonoBehaviour {
 
                 break;
 
-            case UserInterface.ViveRoomspace:
+            case "ViveRoomspaceController":
 
                 // HTC Vive and Cyberith Virtualizer
                 player = GameObject.Find("ViveRoomspaceController");
@@ -176,7 +183,7 @@ public class Experiment : MonoBehaviour {
 
                 break;
 
-            case UserInterface.ViveVirtualizer:
+            case "ViveVirtualizerController":
 
                 // This is a proprietary asset that must be added to the _Landmarks_ prefab to work
                 // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
@@ -209,6 +216,7 @@ public class Experiment : MonoBehaviour {
                 // create variable to indicate if using VR
                 usingVR = false;
 
+                Debug.LogWarning("Falling back to default controller");
                 break;
         }
 
@@ -270,7 +278,7 @@ public class Experiment : MonoBehaviour {
         //start session
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + 
-                  "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
+                  "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface, 1);
 
         Debug.Log(XRSettings.loadedDeviceName);
     }
