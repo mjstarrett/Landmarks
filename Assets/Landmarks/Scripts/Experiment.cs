@@ -21,6 +21,7 @@ using System;
 using System.Reflection;
 using Valve.VR.InteractionSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
 public enum EndListMode
 {
@@ -30,23 +31,25 @@ public enum EndListMode
 
 public enum UserInterface
 {
-	DesktopDefault,
-	ViveAndVirtualizer,
-    ViveRoomspace
+	DesktopDefault,	
+    ViveRoomspace,
+    ViveAndVirtualizer
 }
 
 public class Experiment : MonoBehaviour {
 
 	public UserInterface userInterface = UserInterface.DesktopDefault;
-	public TaskList tasks;
-	private Config config;
+    [HideInInspector] public TaskList tasks;
+	[HideInInspector] public Config config;
 	private long microseconds = 1;
 	private string logfile;
-	private string configfile = ""; 
-	public GameObject player;
-	public Camera playerCamera;
-	public Camera overheadCamera;
-    public GameObject scaledPlayer;
+	private string configfile = "";
+    [HideInInspector] public GameObject player;
+    [HideInInspector] public Camera playerCamera;
+    [HideInInspector] public Camera overheadCamera;
+    [HideInInspector] public GameObject scaledPlayer;
+    [HideInInspector] public GameObject environment;
+    [HideInInspector] public GameObject scaledEnvironment;
 
     public bool debugging = false;
 
@@ -81,69 +84,127 @@ public class Experiment : MonoBehaviour {
 	
 	void Awake() {
 
+        // check if we have any old Landmarks instances from LoadScene.cs and handle them
+        GameObject oldInstance = GameObject.Find("OldInstance");
+        if (oldInstance != null)
+        {
+            foreach (var item in oldInstance.transform)
+            {
+                //Destroy(item); // this tends to break the steamvr skeleton buttons and hand rendermodels
+                oldInstance.SetActive(false);
+            }
+        }
+
         Debug.Log ("Starting Experiment.cs");
 
-		// ------------------------------------------
-		// Grab the Landmarks items that are not controller dependent
-		// ------------------------------------------
-		tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
+        //since config is a singleton it will be the one created in scene 0 or this scene
+        config = Config.instance;
+
+        // ------------------------------------------
+        // Grab the Landmarks items that are not controller dependent
+        // ------------------------------------------
+        tasks = GameObject.Find("LM_Timeline").GetComponent<TaskList>();
         overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera>();
         // Assign the scaled player if it's in the scene, otherwise instantiate to avoid errors
         scaledPlayer = GameObject.Find("SmallScalePlayerController");
+        // find Environment
+        environment = GameObject.FindGameObjectWithTag("Environment");
+        // find scaled environment
+        if (GameObject.FindGameObjectsWithTag("ScaledEnvironment") != null)
+        {
+            scaledEnvironment = GameObject.FindGameObjectWithTag("ScaledEnvironment");
+            scaledEnvironment.SetActive(false);
+        }
 
+
+        if (PlayerPrefs.GetString("UserInterface") != "default")
+        {
+            Debug.Log("Getting user interface from config file.");
+
+            switch (config.ui)
+            {
+                case "Desktop":
+                    userInterface = UserInterface.DesktopDefault;
+                    break;
+                case "Vive Virt.":
+                    userInterface = UserInterface.ViveAndVirtualizer;
+                    break;
+                case "Vive Std.":
+                    userInterface = UserInterface.ViveRoomspace;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         // ------------------------------------------
         // Assign Player and Camera based on UI enum
         // ------------------------------------------
 
-        if (userInterface == UserInterface.DesktopDefault)
+
+        switch (userInterface)
         {
-			// Standard Desktop with Keyboard/mouse controller
-			player = GameObject.Find ("DesktopDefaultController");
-			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
+            case UserInterface.DesktopDefault:
+                // Standard Desktop with Keyboard/mouse controller
+                player = GameObject.Find("DesktopDefaultController");
+                playerCamera = GameObject.Find("DesktopDefaultCamera").GetComponent<Camera>();
 
-            // Render the overhead camera on the main display (none)
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+                // Render the overhead camera on the main display (none)
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
 
-            // create variable to indicate if using VR
-            usingVR = false;
-        }
-        else if (userInterface == UserInterface.ViveAndVirtualizer)
-        {
-			// HTC Vive and Cyberith Virtualizer
-			player = GameObject.Find ("ViveVirtualizerController");
-			playerCamera = GameObject.Find ("ViveVirtualizerCamera").GetComponent<Camera> ();
+                // create variable to indicate if using VR
+                usingVR = false;
 
-            // Render the overhead camera to each lense of the HMD
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+                break;
 
-            // create variable to indicate if using VR
-            usingVR = true;
-        }
-        else if (userInterface == UserInterface.ViveRoomspace)
-        {
-            // HTC Vive and Cyberith Virtualizer
-            player = GameObject.Find("ViveRoomspaceController");
-            playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
+            case UserInterface.ViveRoomspace:
 
-            // Render the overhead camera to each lense of the HMD
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+                // HTC Vive and Cyberith Virtualizer
+                player = GameObject.Find("ViveRoomspaceController");
+                playerCamera = GameObject.Find("VRCamera").GetComponent<Camera>();
 
-            // create variable to indicate if using VR
-            usingVR = true;
-        }
-        else
-        {
-			// If nothing else, load the default player from the first if() section
-			Debug.Log ("The selected interface is not yet configured. Using DefaultDesktopPlayerController.");
-			player = GameObject.Find ("DesktopDefaultController");
-			playerCamera = GameObject.Find ("DesktopDefaultCamera").GetComponent<Camera> ();
+                // Render the overhead camera to each lense of the HMD
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
 
-            // Render the overhead camera on the main display (none)
-            overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+                // create variable to indicate if using VR
+                usingVR = true;
 
-            // create variable to indicate if using VR
-            usingVR = false;
+                break;
+
+            case UserInterface.ViveAndVirtualizer:
+
+                // This is a proprietary asset that must be added to the _Landmarks_ prefab to work
+                // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
+                if (GameObject.Find("ViveVirtualizerController") == null)
+                {
+                    Debug.Log("UserInterface player controller not found. Falling back to Default");
+                    goto default;
+                }
+
+                // HTC Vive and Cyberith Virtualizer
+                player = GameObject.Find("ViveVirtualizerController");
+                playerCamera = GameObject.Find("ViveVirtualizerCamera").GetComponent<Camera>();
+
+                // Render the overhead camera to each lense of the HMD
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.Both;
+
+                // create variable to indicate if using VR
+                usingVR = true;
+
+                break;
+
+            default:
+                // Standard Desktop with Keyboard/mouse controller
+                player = GameObject.Find("DesktopDefaultController");
+                playerCamera = GameObject.Find("DesktopDefaultCamera").GetComponent<Camera>();
+
+                // Render the overhead camera on the main display (none)
+                overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
+
+                // create variable to indicate if using VR
+                usingVR = false;
+
+                break;
         }
 
         Debug.Log (player.name);
@@ -160,7 +221,7 @@ public class Experiment : MonoBehaviour {
         // This ensures there will only be one in the scene, attached to the active camera
         playerCamera.gameObject.AddComponent<AudioListener>();
 
-		// Set up Overhead Camera (for map task or any other top-down viewed tasks)
+        // Set up Overhead Camera (for map task or any other top-down viewed tasks)
 		overheadCamera = GameObject.Find("OverheadCamera").GetComponent<Camera> ();
 
 		// ------------------------------------------
@@ -170,8 +231,7 @@ public class Experiment : MonoBehaviour {
 		playerCamera.enabled = true;
 		overheadCamera.enabled = false;
 		Cursor.visible = false;
-		//since config is a singleton it will be the one created in scene 0 or this scene
-		config = Config.instance;
+		
 
 		// Set the avatar and hud
 		avatar = player;
@@ -183,7 +243,7 @@ public class Experiment : MonoBehaviour {
         // Handle the config file
         // ------------------------------------------
 
-        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + PlayerPrefs.GetInt("subID") + "_" + SceneManager.GetActiveScene().name + ".log";
+        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + "_" + config.level + ".log";
 		configfile = config.expPath + "/" + config.filename;
 		
 		//when in editor
@@ -191,33 +251,34 @@ public class Experiment : MonoBehaviour {
 			logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
 			configfile = Directory.GetCurrentDirectory() + "/data/tmp/" + config.filename;
 		}
-		
-		if (config.runMode == ConfigRunMode.NEW) {
+
+        if (config.runMode == ConfigRunMode.NEW) {
 			dblog = new dbLog(logfile);
 		} else if (config.runMode == ConfigRunMode.RESUME) {
-			dblog = new dbPlaybackLog(logfile);
+            dblog = new dbPlaybackLog(logfile);
 		} else if (config.runMode == ConfigRunMode.PLAYBACK) {
 			CharacterController c = avatar.GetComponent<CharacterController>();
             c.detectCollisions = false;
 			dblog = new dbPlaybackLog(logfile);
-		} else if (config.runMode == ConfigRunMode.NEW) {
-			//dblog = new dbMockLog(logfile);
 		}
 
         //start session
 
+        dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + 
+                  "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
 
+        Debug.Log(XRSettings.loadedDeviceName);
     }
-	
-	public void StartPlaying() {		
+
+    public void StartPlaying() {		
 		long tick = DateTime.Now.Ticks;
         playback_start = tick / TimeSpan.TicksPerMillisecond;
         playback_offset = 0;
 	}
-        
+
 	void Start () {
-		
-		ConfigOverrides.parse(configfile,dblog);
+
+        ConfigOverrides.parse(configfile,dblog);
 		hud.showFPS = config.showFPS;
 		hud.showTimestamp = (config.runMode == ConfigRunMode.PLAYBACK);
 
