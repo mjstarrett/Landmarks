@@ -15,9 +15,11 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
     public SteamVR_Behaviour_Pose pose;
 
     //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
+    public SteamVR_Input_Sources inputSource;
     public ControlOptions controlBehavior = ControlOptions.hold2point;
     public SteamVR_Action_Boolean activatePointer = SteamVR_Input.GetBooleanAction("InteractUI");
     public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.GetBooleanAction("InteractUI");
+    
 
     public bool active = true;
     public Color color;
@@ -37,6 +39,9 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
 
     private void Start()
     {
+
+        
+
         if (pose == null)
             pose = this.GetComponent<SteamVR_Behaviour_Pose>();
         if (pose == null)
@@ -45,6 +50,7 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
         if (interactWithUI == null)
             Debug.LogError("No ui interaction action has been set on this component.");
             
+       
 
         holder = new GameObject();
         holder.name = "PointerHolder";
@@ -103,7 +109,7 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
             PointerOut(this, e);
     }
 
-        
+
     private void Update()
     {
 
@@ -119,11 +125,11 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
             }
             else
             {
-               pointer.SetActive(false);
+                pointer.SetActive(false);
             }
         }
-            
-            
+
+
         // Handle pointer on/off Behaviors based on selected interaction profile
         if (controlBehavior == ControlOptions.hold2point)
         {
@@ -135,11 +141,11 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
             {
                 isActive = false;
             }
-            
+
         }
         else if (controlBehavior == ControlOptions.press2toggle)
         {
-            if (activatePointer.GetStateDown(SteamVR_Input_Sources.Any))
+            if (activatePointer.GetStateDown(inputSource))
             {
                 isActive = !isActive;
             }
@@ -155,51 +161,25 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
         //---------------------------------------------------------------------------------------------
         //---------------------------------------------------------------------------------------------
 
-        float dist = 100f;
+
 
         Ray raycast = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        bool bHit = Physics.Raycast(raycast, out hit);
 
-        if (previousContact && previousContact != hit.transform)
-        {
-            PointerEventArgs args = new PointerEventArgs();
-            args.fromInputSource = pose.inputSource;
-            args.distance = 0f;
-            args.flags = 0;
-            args.target = previousContact;
-            OnPointerOut(args);
-            previousContact = null;
-        }
-        if (bHit && previousContact != hit.transform)
-        {
-            PointerEventArgs argsIn = new PointerEventArgs();
-            argsIn.fromInputSource = pose.inputSource;
-            argsIn.distance = hit.distance;
-            argsIn.flags = 0;
-            argsIn.target = hit.transform;
-            OnPointerIn(argsIn);
-            previousContact = hit.transform;
-        }
-        if (!bHit)
-        {
-            previousContact = null;
-        }
-        if (bHit && hit.distance < 100f)
-        {
+        float dist;
+
+        // set the distance depending on what whe're hitting
+        if (Physics.Raycast(raycast, out hit))
+        { 
+
             dist = hit.distance;
         }
-
-        if (bHit && interactWithUI.GetStateUp(pose.inputSource))
+        else
         {
-            PointerEventArgs argsClick = new PointerEventArgs();
-            argsClick.fromInputSource = pose.inputSource;
-            argsClick.distance = hit.distance;
-            argsClick.flags = 0;
-            argsClick.target = hit.transform;
-            OnPointerClick(argsClick);
+            dist = 100f;
         }
 
+        // draw the pointer
         if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
         {
             pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
@@ -210,7 +190,13 @@ public class SteamVR_LaserPointer_mjs : MonoBehaviour
             pointer.transform.localScale = new Vector3(thickness, thickness, dist);
             pointer.GetComponent<MeshRenderer>().material.color = color;
         }
-        pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
+        pointer.transform.localPosition = new Vector3(0.0f, 0.0f, dist / 2);
+
+        // adjust for avatar scaling
+        Vector3 playerScale = GameObject.FindWithTag("Player").transform.localScale;
+        Vector3 temp = holder.transform.localScale;
+        temp.z = 1 / playerScale.z;
+        holder.transform.localScale = temp;
     }
 }
 

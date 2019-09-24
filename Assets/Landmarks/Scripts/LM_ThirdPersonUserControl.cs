@@ -75,25 +75,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
-            //------------------------------------
-            // Standard Input
-            //------------------------------------
 
             // read inputs -- MJS edited with ScaledNavigation button prefix to distinguish controls
 
             if (manager.usingVR)
             {
-                float squeezeValue =vrInput.TriggerSqueeze.GetAxis(SteamVR_Input_Sources.Any);
-                if (squeezeValue > 0.0f)
-                {
-                    h = vrInput.TouchpadPosition.GetAxis(SteamVR_Input_Sources.Any).x;
-                    v = vrInput.TouchpadPosition.GetAxis(SteamVR_Input_Sources.Any).y;
-                }
-                else
-                {
-                    h = 0;
-                    v = 0;
-                }
+                h = vrInput.TouchpadPosition.GetAxis(SteamVR_Input_Sources.Any).x;
+                v = vrInput.TouchpadPosition.GetAxis(SteamVR_Input_Sources.Any).y;
             }
             else
             {

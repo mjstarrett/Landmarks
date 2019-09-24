@@ -11,11 +11,9 @@ public class LM_ExperimentManager : MonoBehaviour
 
     public TMP_Dropdown expID;
     public TMP_InputField subID;
-    public TMP_Dropdown biosex;
-    public TMP_InputField age;
     public TMP_Dropdown ui;
-    public TMP_Dropdown conds;
     public Button start;
+    public Toggle practice;
 
     private string appDir = "";
     private bool expDirCreated = false;
@@ -24,10 +22,7 @@ public class LM_ExperimentManager : MonoBehaviour
 
     private bool expidError = true;
     private bool subidError = true;
-    private bool biosexError = true;
-    private bool ageError = true;
     private bool uiError = true;
-    private bool condError = false;
 
     void Start()
     {
@@ -42,58 +37,16 @@ public class LM_ExperimentManager : MonoBehaviour
         }
 
         start.onClick.AddListener(LoadExperiment);
+
+       
     }
 
     private void Update()
     {
+        practice.onValueChanged.AddListener(delegate { TogglePracticeState(practice); });
 
     }
 
-    public void LoadExperiment()
-    {
-        TextMeshProUGUI _errorMessage = start.transform.Find("Error").GetComponent<TextMeshProUGUI>();
-
-        Debug.Log("starting to load experiment");
-
-        ValidateExpID();
-        ValidateSubjectID();
-        ValidateAge();
-        ValidateBiosex();
-        ValidateUI();
-        if (conds.gameObject.activeSelf) ValidateCondition();
-
-
-        if (!expidError && !subidError && !ageError && !biosexError && uiError)
-        {
-            //if (conds.gameObject.activeSelf && condError) ;
-
-            // Create the directories if they don't exist
-            if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
-            {
-                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text);
-                expDirCreated = true;
-            }
-            Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
-            subDirCreated = true;
-
-            Debug.Log("All error flags removed; proceeding");
-            _errorMessage.gameObject.SetActive(false);
-
-
-            PlayerPrefs.SetString("expID", expID.options[expID.value].text);
-            PlayerPrefs.SetInt("subID", int.Parse(subID.text));
-            PlayerPrefs.SetString("biosex", biosex.options[biosex.value].text);
-            PlayerPrefs.SetInt("subAge", int.Parse(age.text));
-            PlayerPrefs.SetString("ui", ui.options[ui.value].text);
-            SceneManager.LoadScene("City01_StandardNavigation");
-            
-        }
-        else
-        {
-            _errorMessage.gameObject.SetActive(true);
-        }
-
-    }
 
     //--------------------------------------------------------------------------
     // Validate Exp Id
@@ -114,30 +67,6 @@ public class LM_ExperimentManager : MonoBehaviour
             _errorMessage.text = "You must provide an Experiment ID.";
             _errorMessage.gameObject.SetActive(true);
         }
-
-
-        // Show special options for individual experiments 
-
-        ////////////
-        /// ESC  ///
-        ////////////
-
-        if (expID.options[expID.value].text == "esc")
-        {
-            List<string> options = new List<string> { "-Select-", "1:1", "1:150" }; // List the starting options for ESC
-
-            conds.ClearOptions(); // clear any old options 
-            conds.AddOptions(options); // populate the options in the dropdown
-
-            conds.gameObject.SetActive(true); // activate this field
-
-            condError = true;
-        }
-        else
-        {
-            conds.gameObject.SetActive(false);
-            condError = false;
-        }
     }
 
 
@@ -157,7 +86,7 @@ public class LM_ExperimentManager : MonoBehaviour
             {
 
                 // Even if the subID is an int, check if this ID has been used
-                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text))
+                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text) || practice.isOn)
                 {
                     subidError = false;
                     _errorMessage.gameObject.SetActive(false); // then and only then, will we release the flag
@@ -188,60 +117,6 @@ public class LM_ExperimentManager : MonoBehaviour
 
 
     //--------------------------------------------------------------------------
-    // Validate Biosex Input
-    //--------------------------------------------------------------------------
-
-    public void ValidateBiosex()
-    {
-        TextMeshProUGUI _errorMessage = biosex.transform.Find("Error").GetComponent<TextMeshProUGUI>();
-
-        if (biosex.value != 0)
-        {
-            biosexError = false;
-            _errorMessage.gameObject.SetActive(false);
-        }
-        else
-        {
-            biosexError = true;
-            _errorMessage.text = "Please select one of the options provided.";
-            _errorMessage.gameObject.SetActive(true);
-
-        }
-    }
-
-
-    //--------------------------------------------------------------------------
-    // Validate Age Input
-    //--------------------------------------------------------------------------
-
-    public void ValidateAge()
-    {
-        TextMeshProUGUI _errorMessage = age.transform.Find("Error").GetComponent<TextMeshProUGUI>();
-
-        if (age.text != "")
-        {
-            if (int.TryParse(age.text, out int _age))
-            {
-                ageError = false;
-                _errorMessage.gameObject.SetActive(false);
-            }
-            else
-            {
-                ageError = true;
-                _errorMessage.text = "Age must be an integer.";
-                _errorMessage.gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            ageError = true;
-            _errorMessage.text = "You must provide an Age.";
-            _errorMessage.gameObject.SetActive(true);
-        }
-    }
-
-
-    //--------------------------------------------------------------------------
     // Validate UI selected (make sure they selected one)
     //--------------------------------------------------------------------------
 
@@ -251,38 +126,130 @@ public class LM_ExperimentManager : MonoBehaviour
 
         if (ui.value != 0)
         {
-            biosexError = false;
+            uiError = false;
             _errorMessage.gameObject.SetActive(false);
         }
         else
         {
-            biosexError = true;
+            uiError = true;
             _errorMessage.text = "Please select a UI from the dropdown.";
             _errorMessage.gameObject.SetActive(true);
         }
     }
 
 
-    //--------------------------------------------------------------------------
-    // Validate Condition Input
-    //--------------------------------------------------------------------------
-
-    public void ValidateCondition()
+    public void LoadExperiment()
     {
-        TextMeshProUGUI _errorMessage = conds.transform.Find("Error").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI _errorMessage = start.transform.Find("Error").GetComponent<TextMeshProUGUI>();
 
-        if (conds.value != 0)
+        Debug.Log("starting to load experiment");
+
+        // if we're doing practice, then ignore subid errors
+        if (practice.isOn)
         {
-            condError = false;
-            _errorMessage.gameObject.SetActive(false);
+            ValidateExpID();
+            subidError = false;
+
+            ValidateUI();
         }
         else
         {
-            condError = true;
-            _errorMessage.text = "You must select a condition for experiment " + expID.options[expID.value].text + ".";
-            _errorMessage.gameObject.SetActive(true);
+            ValidateExpID();
+            ValidateSubjectID();
+            ValidateUI();
+        }
+
+
+        if (!expidError && !subidError && !uiError)
+        {
+            // Create the directories if they don't exist
+            if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
+            {
+                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text);
+                expDirCreated = true;
+            }
+
+            if (practice.isOn)
+            {
+                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/practice"))
+                {
+                    Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/practice");
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
+                subDirCreated = true;
+            }
+            
+            Debug.Log("All error flags removed; proceeding");
+            _errorMessage.gameObject.SetActive(false);
+            
+
+            readyConfig();
+            ReadyExp();
+            SceneManager.LoadScene(config.level);
 
         }
+        else
+        {
+            _errorMessage.gameObject.SetActive(true);
+        }
+
+    }
+
+    // Specific paramerters for loading experiments
+
+    void ReadyExp()
+    {
+
+        // ---------------------------------------------------------------------
+        // Experiment: ESC return name of city to load based on id number
+        // ---------------------------------------------------------------------
+        if (expID.options[expID.value].text == "esc")
+        {
+            int id = int.Parse(subID.text); // parse the id input string to int
+
+            if (practice.isOn)
+            {
+                config.level = "esc_practice";
+            }
+            else
+            {
+                // if it's in the 100 range, load city 01
+                if (id > 100 && id < 200)
+                {
+                    config.level = "esc_city01";
+                    PlayerPrefsX.SetStringArray("NextLevels", new string[1] { "esc_city02" }); // using arrayprefs2 allows for multiple 'next' levels
+                }
+                else if (id > 200 && id < 300)
+                {
+                    config.level = "esc_city02";
+                    PlayerPrefsX.SetStringArray("NextLevels", new string[1] { "esc_city01" }); // using arrayprefs2 allows for multiple 'next' levels
+                }
+            }
+
+            // if it's odd, start with standard navigation
+            if (id % 2 != 0)
+            {
+                config.condition = "Standard";
+                PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Scaled" });
+            }
+            else
+            {
+                config.condition = "Scaled";
+                PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Standard" });
+            }
+
+            PlayerPrefs.SetInt("NextIndex", 0);
+        }
+        // ---------------------------------------------------------------------
+
+
+
+
+        else config.level = "simpleSample_gettingStarted";
+
     }
 
 
@@ -296,13 +263,30 @@ public class LM_ExperimentManager : MonoBehaviour
         config.bootstrapped = true;
 
         config.expPath = appDir + "/data/" + expID.options[expID.value].text;
-        config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
+
+        if (practice.isOn)
+        {
+            config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/practice";
+        }
+        else
+        {
+            config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
+        }
 
         config.appPath = appDir;
-        config.level = expID.options[expID.value].text;
         config.subject = subID.text;
+        config.ui = ui.options[ui.value].text;
 
         DontDestroyOnLoad(config);
+
+    }
+
+    void TogglePracticeState(Toggle toggle)
+    {
+        if (toggle.isOn)
+        {
+            ValidateSubjectID();
+        }
 
     }
 }
