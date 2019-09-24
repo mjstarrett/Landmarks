@@ -155,6 +155,7 @@ public class ExperimentTask : MonoBehaviour{
 		long duration = Experiment.Now() - task_start;
 		currentInterrupt = 0;    //put here because of interrupts
 		log.log("TASK_END\t" + name + "\t" + this.GetType().Name + "\t" + duration,1 );
+        hud.showNothing();
 	}
 	public virtual void TASK_END () {
 	}
@@ -218,5 +219,13 @@ public class ExperimentTask : MonoBehaviour{
         jitterGuardOn = true;
         yield return new WaitForSeconds(0.5f);
         jitterGuardOn = false;
+    }
+
+    //recursive calls
+    public void MoveToLayer(Transform root, int layer)
+    {
+        root.gameObject.layer = layer;
+        foreach (Transform child in root)
+            MoveToLayer(child, layer);
     }
 }

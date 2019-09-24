@@ -51,6 +51,9 @@ public class Config : MonoBehaviour{
 	public string subject = "default";
 	public string session = "default";
 	public string level = "default";
+    public string condition = "default";
+    public string ui = "default";
+
 	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
 	[HideInInspector] public bool 	bootstrapped = false;
 	
