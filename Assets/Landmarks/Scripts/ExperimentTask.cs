@@ -90,8 +90,8 @@ public class ExperimentTask : MonoBehaviour{
 
 
         // Grab the scaled nav task/player and log it - MJS 2019
-        scaledAvatar = manager.scaledPlayer;
-        scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
+        //scaledAvatar = manager.scaledPlayer;
+        //scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
 
         debugButton = hud.debugButton.GetComponent<Button>();
         actionButton = hud.actionButton.GetComponent<Button>();
