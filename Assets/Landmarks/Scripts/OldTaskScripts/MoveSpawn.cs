@@ -24,27 +24,36 @@ public class MoveSpawn : ExperimentTask {
 	public GameObject destination;
     public string destinationListName;
 	public ObjectList destinations;
-	
+
 	public bool swap;
 	private static Vector3 position;
 	private static Vector3 rotation;
-    public bool scaledPlayer = false;
+
+    public bool randomRotation;
+		public bool scaledPlayer = false;
     public bool ignoreY = false;
 
-	public override void startTask () {
-		TASK_START();
-	}	
+    //variables used for block repetition
+    public bool blockRepeat;
+    public static int repetition;
+    private int count = 1;
 
-	public override void TASK_START()
-	{
-		base.startTask();
-		
-		if (!manager) Start();
+	public override void startTask () {
+        Debug.Log("MS Repetition:"+repetition);
+        TASK_START();
+	}
+
+    public override void TASK_START()
+    {
+        base.startTask();
+
+        if (!manager) Start();
+
 
         if (skip) {
-			log.log("INFO	skip task	" + name,1 );
-			return;
-		}
+            log.log("INFO	skip task	" + name, 1);
+            return;
+        }
 
 
 
@@ -54,7 +63,7 @@ public class MoveSpawn : ExperimentTask {
             start = scaledAvatar;
         } else start = avatar;
 
-        // Find destinations with string destinationsName 
+        // Find destinations with string destinationsName
         if (destinations == null && destinationListName != "") // only if destinations is blank and destinationsName is not
         {
             destinations = GameObject.Find(destinationListName).GetComponent<ObjectList>();
@@ -62,16 +71,16 @@ public class MoveSpawn : ExperimentTask {
         }
         // otherwise, use destination or destinations.
 
-        if ( destinations ) {
-			destination = destinations.currentObject();		
-		}
-		
-		position = start.transform.position;
+        if (destinations) {
+            destination = destinations.currentObject();
+        }
+
+        position = start.transform.position;
         rotation = start.transform.eulerAngles;
 
 
         // Set the position, but ignore the y-axis (just 2d position on map)
-        Vector3 tempPos = start.transform.position; 
+        Vector3 tempPos = start.transform.position;
         tempPos.x = destination.transform.position.x;
         if (!ignoreY)
         {
@@ -82,6 +91,26 @@ public class MoveSpawn : ExperimentTask {
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
 
 
+<<<<<<< HEAD:Assets/Landmarks/Scripts/Tasks/MoveSpawn.cs
+        // Set the rotation to random if selected
+        if (randomRotation)
+        {
+        Vector3 tempRot = start.transform.eulerAngles;
+        tempRot.y = Random.Range(0, 359.999f);
+        start.transform.eulerAngles = tempRot;
+        }
+
+        if (!isScaled)
+        {
+            /* MJS 2019
+             * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually,
+             * so we need to access a modified firstpersoncontroller.cs script
+             * which will access a modified MouseLook.cs script to reset the mouselook
+             * which effectively forces it not to undo our manual rotation
+            */
+            //avatar.GetComponent<FirstPersonController>().ResetMouselook();
+        }
+=======
         //// Set the rotation to random
 
         //Vector3 tempRot = start.transform.eulerAngles;
@@ -90,13 +119,14 @@ public class MoveSpawn : ExperimentTask {
         //if (!scaledPlayer)
         //{
         //    /* MJS 2019
-        //     * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually, 
+        //     * It is not possible to simply rotate the unity standard asset firstpersoncontroller manually,
         //     * so we need to access a modified firstpersoncontroller.cs script
-        //     * which will access a modified MouseLook.cs script to reset the mouselook 
+        //     * which will access a modified MouseLook.cs script to reset the mouselook
         //     * which effectively forces it not to undo our manual rotation
-        //    */           
+        //    */
         //    avatar.GetComponent<FirstPersonController>().ResetMouselook();
         //}
+>>>>>>> master:Assets/Landmarks/Scripts/OldTaskScripts/MoveSpawn.cs
 
         log.log("TASK_ROTATE\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.localEulerAngles.ToString("f1"), 1);
 
@@ -114,23 +144,51 @@ public class MoveSpawn : ExperimentTask {
         if (swap) {
 			destination.transform.position = position;
 			destination.transform.eulerAngles = rotation;
-	
+
 		}
 	}
-	
+
 	public override bool updateTask () {
 	    return true;
 	}
 	public override void endTask() {
+
+
+
+
 		TASK_END();
 	}
-	
+
 	public override void TASK_END() {
 		base.endTask();
-		
 		if ( destinations ) {
-			destinations.incrementCurrent();
-			destination = destinations.currentObject();
+            if (blockRepeat)
+            {
+                BlockIncrementation();
+            }
+            else
+            {
+                destinations.incrementCurrent();
+            }
+            destination = destinations.currentObject();
 		}
 	}
+
+    //Method to get implemented when the Block Increment boolean in the GUI is selected
+    public void BlockIncrementation()
+    {
+        //Debug.Log("count before increment: " + count);
+
+        //If the player has done # of repetitions equal to the parent task Repetition Value then set count back to 0 & move the Spawn Location to the next in the list
+        if (count == repetition)
+        {
+            count = 1;
+            destinations.incrementCurrent();
+        }
+        else //increment count
+        {
+            count++;
+        }
+        //Debug.Log("count after increment: " + count);
+    }
 }
