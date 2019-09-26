@@ -40,7 +40,7 @@ public class ExperimentEditor : Editor
             uiList.Add(child.name);
         }
         exp.userInterface = uiList[EditorGUILayout.Popup(label: "User Interface", (int)Enum.Parse(typeof(UserInterface), exp.userInterface), uiList.ToArray<string>())];
-        exp.userInterface = EditorGUILayout.PropertyField(exp.userInterface, new GUIContent("hello"))
+        //exp.userInterface = EditorGUILayout.PropertyField(exp.userInterface, new GUIContent("hello"))
 
         //var selection = uiList[index];
 
