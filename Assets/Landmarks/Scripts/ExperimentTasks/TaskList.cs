@@ -50,8 +50,8 @@ public class TaskList : ExperimentTask {
         TASK_START();
 
 
-        if (!skip) startNextTask();		
-	}	
+        if (!skip) startNextTask();
+	}
 
 	public override void TASK_START () {
 		repeatCount = 1;
@@ -126,8 +126,8 @@ public class TaskList : ExperimentTask {
                 Debug.Log(item);
             }
         }
-    }	
-	
+    }
+
 	public void startNextTask() {
 		Debug.Log("Starting " + tasks[currentTaskIndex].name);
 
@@ -173,7 +173,7 @@ public class TaskList : ExperimentTask {
         }
     }
 
-	
+
 	public override bool updateTask () {
 		if (skip) return true;
 
@@ -191,18 +191,17 @@ public class TaskList : ExperimentTask {
                 //endTask();
                 pausedTasks.startTask();
                 pausedTasks = null;
-                //return true;	
+                //return true;
             }
             else
             {
                 return endChild();
             }
         }
-
         return false;
 	}
 
-	public bool endChild() 
+	public bool endChild()
 	{
         currentTask.endTask();
 		currentTaskIndex++;
@@ -231,38 +230,38 @@ public class TaskList : ExperimentTask {
 
 		return false;
 	}
-	
-	
+
+
 	public override void endTask() {
 		base.endTask();
-						
+
 			//	if (pausedTasks) {
 				//currentTask = pausedTasks;
 				//endTask();
 			//	pausedTasks.startTask();
 		//if (!skip) currentTask.endTask();
 	}
-	
+
 	public override bool OnControllerColliderHit(GameObject hit)  {
 		if ( currentTask.OnControllerColliderHit(hit) ) {
-			
+
 			return endChild();
-			
+
 			//cut
 			currentTask.endTask();
 			currentTaskIndex = currentTaskIndex + 1;
 			if (currentTaskIndex >= tasks.Length) {
 				return true;
 			} else {
-		 		startNextTask();	
+		 		startNextTask();
 			}
 			//
 		}
 		return false;
 	}
-	
+
 	public string format(string str) {
-		
+
 		string[] names = new string[objectsList.Length];
 		int i = 0;
 		foreach( GameObject go in objectsList ) {
@@ -281,5 +280,5 @@ public class TaskList : ExperimentTask {
 	var pair = enumerator.Current;
 	b += pair.Value;
     }
-    
+
     */
