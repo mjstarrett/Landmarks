@@ -21,16 +21,18 @@ using UnityStandardAssets.Characters.ThirdPerson;
 using TMPro;
 
 public class InstructionsTask : ExperimentTask {
-    
+
+    public static int instructionsCounter;
+
     public TextAsset instruction;
     public TextAsset message;
-    
+
     public ObjectList objects;
     private GameObject currentObject;
-    
+
     public TextList texts;
     private string currentText;
-        
+
     public bool blackout = true;
     public Color text_color = Color.white;
     public Font instructionFont;
@@ -38,44 +40,48 @@ public class InstructionsTask : ExperimentTask {
 
     public bool actionButtonOn = true;
     public string customButtonText = "";
-        
+
     private GUIText gui;
 
     public bool restrictMovement = false; // MJS do we want to keep them still during this?
     public bool selfPaced = false; // can they press return to end the task?
-    
+
     void OnDisable ()
     {
         if (gui)
             DestroyImmediate (gui.gameObject);
     }
-    
+
     public override void startTask () {
         TASK_START();
         Debug.Log ("Starting an Instructions Task");
         ResetHud();
-    }    
+    }
 
     public override void TASK_START()
     {
-        
+        instructionsCounter += 1;
         if (!manager) Start();
         base.startTask();
-        
-        
-        
+
+        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderedEnvironment)
+        {
+            r.enabled = false;
+        }
+
         if (skip) {
             log.log("INFO    skip task    " + name,1 );
             return;
         }
-                   
+
         GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         Text canvas = avatar.GetComponent<Text>();
         hud.SecondsToShow = hud.InstructionDuration;
 
-            
+
         sgo.AddComponent<GUIText>();
         sgo.hideFlags = HideFlags.HideAndDontSave;
         sgo.transform.position = new Vector3(0,0,0);
@@ -84,7 +90,7 @@ public class InstructionsTask : ExperimentTask {
         gui.font = instructionFont;
         gui.fontSize = instructionSize;
         gui.material.color = text_color;
-        gui.text = message.text;                   
+        gui.text = message.text;
 
         if (texts) currentText = texts.currentString().Trim();
         if (objects) currentObject = objects.currentObject();
@@ -110,13 +116,13 @@ public class InstructionsTask : ExperimentTask {
         // Change text and turn on the map action button if we're using it
         if (actionButtonOn)
         {
-            
+
             // Use custom text for button (if provided)
             Debug.Log(hud.actionButton.GetComponent<DefaultText>().defaultText);
             if (customButtonText != "") actionButton.GetComponentInChildren<Text>().text = customButtonText;
             // Otherwise, use default text attached to the button (component)
             else actionButton.GetComponentInChildren<Text>().text = actionButton.GetComponent<DefaultText>().defaultText;
-            
+
 
             // activate the button
             hud.actionButton.SetActive(true);
@@ -130,7 +136,7 @@ public class InstructionsTask : ExperimentTask {
     }
     // Update is called once per frame
     public override bool updateTask () {
-        
+
         if (skip) {
             //log.log("INFO    skip task    " + name,1 );
             return true;
@@ -160,7 +166,7 @@ public class InstructionsTask : ExperimentTask {
             else return false;
         }
 
-        if (killCurrent == true) 
+        if (killCurrent == true)
         {
             return KillCurrent ();
         }
@@ -169,17 +175,24 @@ public class InstructionsTask : ExperimentTask {
 
         return false;
     }
-    
+
     public override void endTask() {
         Debug.Log ("Ending an instructions task");
         TASK_END();
     }
-    
+
     public override void TASK_END() {
         base.endTask ();
+
+        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderedEnvironment)
+        {
+            r.enabled = true;
+        }
+
         hud.setMessage ("");
-        hud.SecondsToShow = hud.GeneralDuration; 
-        
+        hud.SecondsToShow = hud.GeneralDuration;
+
         if (canIncrementLists) {
 
             if (objects) {
@@ -187,7 +200,7 @@ public class InstructionsTask : ExperimentTask {
                 currentObject = objects.currentObject ();
             }
             if (texts) {
-                texts.incrementCurrent ();        
+                texts.incrementCurrent ();
                 currentText = texts.currentString ();
             }
 
