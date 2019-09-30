@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Management;
 using UnityEngine;
 using TMPro;
 
@@ -7,10 +8,11 @@ public enum HideTargetOnStart
 {
     Off,
     SetInactive,
-    SetInvisible
+    SetInvisible,
+    SetProbeTrial
 }
 
-public class NavigationTask : ExperimentTask 
+public class NavigationTask : ExperimentTask
 {
 
 	public ObjectList destinations;
@@ -20,13 +22,14 @@ public class NavigationTask : ExperimentTask
 	public int scoreIncrement = 50;
 	public int penaltyRate = 2000;
 
-	private float penaltyTimer = 0;
+
+    private float penaltyTimer = 0;
 
 	public bool showScoring;
 	public TextAsset NavigationInstruction;
 
     public HideTargetOnStart hideTargetOnStart;
-    [Range(0,59.99f)] public float showTargetAfterSeconds;
+    [Range(0,60)] public float showTargetAfterSeconds;
     public bool hideNonTargets;
 
 
@@ -39,13 +42,13 @@ public class NavigationTask : ExperimentTask
     private float optimalDistance;
     private string m_targetName;
 
-    public override void startTask () 
+    public override void startTask ()
 	{
 		TASK_START();
 		avatarLog.navLog = true;
         if (isScaled) scaledAvatarLog.navLog = true;
-    }	
-	public override void TASK_START() 
+    }
+	public override void TASK_START()
 	{
 		if (!manager) Start();
         base.startTask();
@@ -62,13 +65,13 @@ public class NavigationTask : ExperimentTask
 		Debug.Log ("Find " + destinations.currentObject().name);
 
 
-		if (NavigationInstruction) 
+		if (NavigationInstruction)
 		{
 			string msg = NavigationInstruction.text;
 			if (destinations != null) msg = string.Format(msg, current.name);
 			hud.setMessage(msg);
-   		} 
-		else 
+   		}
+		else
 		{
             hud.SecondsToShow = 0;
             hud.setMessage("Please find the " + current.name);
@@ -87,6 +90,7 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+
         // Handle if we're hiding the target object
         if (hideTargetOnStart != HideTargetOnStart.Off)
         {
@@ -98,6 +102,11 @@ public class NavigationTask : ExperimentTask
             {
                 destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
             }
+            else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
+            {
+                destinations.currentObject().SetActive(false);
+                destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
+            }
         }
         else
         {
@@ -105,6 +114,7 @@ public class NavigationTask : ExperimentTask
             destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
         }
 
+        // startTime = Current time in seconds
         startTime = Time.time;
 
         // Get the avatar start location (distance = 0)
@@ -130,7 +140,7 @@ public class NavigationTask : ExperimentTask
         //hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
     }
 
-    public override bool updateTask () 
+    public override bool updateTask ()
 	{
 		base.updateTask();
 
@@ -141,17 +151,48 @@ public class NavigationTask : ExperimentTask
         }
 
         if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
-        
 
-		if (penaltyTimer >= penaltyRate) 
+
+		if (penaltyTimer >= penaltyRate)
 		{
 			penaltyTimer = penaltyTimer - penaltyRate;
-			if (score > 0) 
+			if (score > 0)
 			{
 				score = score - 1;
 				hud.setScore(score);
 			}
 		}
+
+        //VR capabiity with showing target
+        if (vrEnabled)
+        {
+            if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))))
+            {
+                destinations.currentObject().SetActive(true);
+            }
+
+            if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))
+            {
+                //get current location and then log it
+
+                destinations.currentObject().SetActive(true);
+                destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+            }
+        }
+
+        //show target on button click or after set time
+        if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || Input.GetButtonDown("Return"))))
+        {
+            destinations.currentObject().SetActive(true);
+        }
+
+        if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && Input.GetButtonDown("Return"))
+        {
+            //get current location and then log it
+
+            destinations.currentObject().SetActive(true);
+            destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+        }
 
         // Keep updating the distance traveled
         playerDistance += Vector3.Distance(avatar.transform.position, playerLastPosition);
@@ -162,27 +203,21 @@ public class NavigationTask : ExperimentTask
             scaledPlayerLastPosition = scaledAvatar.transform.position;
         }
 
-
-        if (hideTargetOnStart != HideTargetOnStart.Off && ((System.DateTime.Now.Second) - startTime > showTargetAfterSeconds || Input.GetButtonDown("Return")))
-        {
-            destinations.currentObject().SetActive(true);
-        }
-
-		if (killCurrent == true) 
+		if (killCurrent == true)
 		{
 			return KillCurrent ();
 		}
 
-		return false;	
+		return false;
 	}
 
-	public override void endTask() 
+	public override void endTask()
 	{
 		TASK_END();
 		//avatarController.handleInput = false;
 	}
 
-	public override void TASK_PAUSE() 
+	public override void TASK_PAUSE()
 	{
 		avatarLog.navLog = false;
         if (isScaled) scaledAvatarLog.navLog = false;
@@ -195,14 +230,14 @@ public class NavigationTask : ExperimentTask
 
 	}
 
-	public override void TASK_END() 
+	public override void TASK_END()
 	{
 		base.endTask();
 		//avatarController.stop();
 		avatarLog.navLog = false;
         if (isScaled) scaledAvatarLog.navLog = false;
 
-        if (canIncrementLists) 
+        if (canIncrementLists)
 		{
 			destinations.incrementCurrent();
 		}
@@ -236,11 +271,11 @@ public class NavigationTask : ExperimentTask
             , 1);
     }
 
-	public override bool OnControllerColliderHit(GameObject hit)  
+	public override bool OnControllerColliderHit(GameObject hit)
 	{
-		if (hit == current) 
+		if (hit == current)
 		{
-			if (showScoring) 
+			if (showScoring)
 			{
 				score = score + scoreIncrement;
 				hud.setScore(score);
@@ -249,9 +284,9 @@ public class NavigationTask : ExperimentTask
 		}
 
 		//		Debug.Log (hit.transform.parent.name + " = " + current.name);
-		if (hit.transform.parent == current.transform) 
+		if (hit.transform.parent == current.transform)
 		{
-			if (showScoring) 
+			if (showScoring)
 			{
 				score = score + scoreIncrement;
 				hud.setScore(score);
