@@ -176,7 +176,7 @@ public class InstructionsTask : ExperimentTask {
     }
 
     public override void endTask() {
-        Debug.Log ("Ending an instructions task");
+        // Debug.Log ("Ending an instructions task");
         TASK_END();
     }
 

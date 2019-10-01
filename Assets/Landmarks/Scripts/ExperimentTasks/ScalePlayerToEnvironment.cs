@@ -41,7 +41,6 @@ public class ScalePlayerToEnvironment : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
-
         scaledEnvironment = manager.scaledEnvironment;
         if (scaledEnvironment == null)
         {
@@ -92,7 +91,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
         {
             manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
         }
-        else if (manager.userInterface == UserInterface.ViveAndVirtualizer)
+        else if (manager.userInterface == UserInterface.ViveVirtualizer)
         {
             // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
             if (isScaled)
