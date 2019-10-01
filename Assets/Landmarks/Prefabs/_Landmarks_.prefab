@@ -212,15 +212,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328441400270694664}
+  - component: {fileID: 7343394690694754685}
+  - component: {fileID: 722609337442248017}
+  - component: {fileID: 5503707998484640882}
+  - component: {fileID: 8952489905210430501}
+  - component: {fileID: 9179946605368722058}
   - component: {fileID: 5715056432683044169}
   - component: {fileID: 5747545545247055905}
-  - component: {fileID: 722609337442248017}
   - component: {fileID: 8153293783063781906}
   - component: {fileID: 6599167102252928781}
   - component: {fileID: 4383361693700410310}
-  - component: {fileID: 9179946605368722058}
-  - component: {fileID: 5503707998484640882}
-  - component: {fileID: 1681628004623080880}
   m_Layer: 0
   m_Name: DesktopDefaultController
   m_TagString: Untagged
@@ -244,6 +245,100 @@ Transform:
   m_Father: {fileID: 2609564540858403405}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7343394690694754685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584591454377952837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecf817dbf1ed440ca0bc4786b3a0a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 584591454377952837}
+  cam: {fileID: 2040867346082494156}
+  headsUpDisplay: {fileID: 8952489905210430501}
+  usesVR: 0
+--- !u!114 &722609337442248017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584591454377952837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9371747dd9e49418c800e05cd2a31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navLog: 0
+  player: {fileID: 584591454377952837}
+  camerarig: {fileID: 6915135651566107078}
+--- !u!114 &5503707998484640882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584591454377952837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e34c5cf68e84a5e8a4685aa334f10a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8952489905210430501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584591454377952837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41c2d2a3405347afba19e8d99bc4cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudRig: {fileID: 4630722352633836899}
+  hudPanel: {fileID: 3858292938485345708}
+  Canvas: {fileID: 1968952458315310087}
+  hudPanelON: 0.95
+  hudPanelOFF: 0
+  actionButton: {fileID: 2915355095726025203}
+  actionButtonClicked: 0
+  debugButton: {fileID: 2791841877889606388}
+  confidenceSlider: {fileID: 5389393644237248730}
+  hudNonEssentials: {fileID: 0}
+  cam:
+  - {fileID: 2040867346082494156}
+  - {fileID: 2040867346082494156}
+  hudLayer: 13
+  statusColor: {r: 0, g: 0, b: 0, a: 0}
+  hudFont: {fileID: 0}
+  showFPS: 0
+  showTimestamp: 0
+  showStatus: 0
+  showScore: 0
+  fadeSpeed: 0.05
+  SecondsToShow: 5
+  GeneralDuration: 5
+  InstructionDuration: 99999
+  playback_time: 0
+--- !u!136 &9179946605368722058
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584591454377952837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!143 &5715056432683044169
 CharacterController:
   m_ObjectHideFlags: 0
@@ -387,21 +482,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_JumpSound: {fileID: 0}
   m_LandSound: {fileID: 0}
---- !u!114 &722609337442248017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584591454377952837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9371747dd9e49418c800e05cd2a31e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navLog: 0
-  player: {fileID: 584591454377952837}
-  camerarig: {fileID: 6915135651566107078}
 --- !u!82 &8153293783063781906
 AudioSource:
   m_ObjectHideFlags: 0
@@ -543,69 +623,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584591454377952837}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!136 &9179946605368722058
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584591454377952837}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5503707998484640882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584591454377952837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e34c5cf68e84a5e8a4685aa334f10a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1681628004623080880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584591454377952837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d41c2d2a3405347afba19e8d99bc4cc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hudRig: {fileID: 4630722352633836899}
-  hudPanel: {fileID: 3858292938485345708}
-  Canvas: {fileID: 1968952458315310087}
-  hudPanelON: 0.95
-  hudPanelOFF: 0
-  actionButton: {fileID: 2915355095726025203}
-  actionButtonClicked: 0
-  debugButton: {fileID: 2791841877889606388}
-  confidenceSlider: {fileID: 5389393644237248730}
-  hudNonEssentials: {fileID: 0}
-  cam:
-  - {fileID: 2040867346082494156}
-  - {fileID: 2040867346082494156}
-  hudLayer: 13
-  statusColor: {r: 0, g: 0, b: 0, a: 0}
-  hudFont: {fileID: 0}
-  showFPS: 0
-  showTimestamp: 0
-  showStatus: 0
-  showScore: 0
-  fadeSpeed: 0.05
-  SecondsToShow: 5
-  GeneralDuration: 5
-  InstructionDuration: 99999
-  playback_time: 0
 --- !u!1 &593610827266407116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5269,8 +5286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4e35d27c9414774bad36a089f9be6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiParent: {fileID: 3121825908047180886}
+  availableControllers: {fileID: 0}
   userInterface: 2
+  debugging: 0
   tasks: {fileID: 0}
   config: {fileID: 0}
   player: {fileID: 0}
@@ -5279,7 +5297,6 @@ MonoBehaviour:
   scaledPlayer: {fileID: 0}
   environment: {fileID: 0}
   scaledEnvironment: {fileID: 0}
-  debugging: 0
   usingVR: 0
   playback_time: 0
 --- !u!1 &5308465570426420111
