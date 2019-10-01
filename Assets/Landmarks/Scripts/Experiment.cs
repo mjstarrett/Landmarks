@@ -45,7 +45,7 @@ public class Experiment : MonoBehaviour {
 
     [HideInInspector]
     public TaskList tasks;
-		[HideInInspector]
+	[HideInInspector]
     public Config config;
     [HideInInspector]
     public GameObject player;
@@ -61,26 +61,25 @@ public class Experiment : MonoBehaviour {
     public GameObject scaledEnvironment;
     [HideInInspector]
     public bool usingVR;
-		[HideInInspector]
+	[HideInInspector]
     public dbLog dblog;
     [HideInInspector]
     public long playback_time;
 
-		private bool pause = true;
-		private bool done = false;
-		private long now;
-		private Event evt;
-		private long playback_start;
-		private long playback_offset;
-		private long next_time;
-		private string[] next_action;
-    //private long playback_start;
+	private bool pause = true;
+	private bool done = false;
+	private long now;
+	private Event evt;
+	private long playback_start;
+	private long playback_offset;
+	private long next_time;
+	private string[] next_action;
     private string logfile;
     private string configfile = "";
 
     protected GameObject avatar;
-		protected AvatarController avatarController;
-		protected HUD hud;
+	protected AvatarController avatarController;
+	protected HUD hud;
 
 
     // -------------------------------------------------------------------------
@@ -93,10 +92,6 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
         // Clean up & Initialize Scene
         // ------------------------------
-
-
-        userInterface = Enum.GetName(typeof(UserInterface), (int)controllerOptions);
-        Debug.Log("The " + userInterface + "option was selected");
 
         // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");
@@ -196,7 +191,7 @@ public class Experiment : MonoBehaviour {
         //start experiment
         if (config.runMode != ConfigRunMode.PLAYBACK)
         {
-            Debug.Log("Trying to start a task");
+            //Debug.Log("Starting the Experiment");
             tasks.startTask();
         }
         else
@@ -254,6 +249,73 @@ public class Experiment : MonoBehaviour {
     // -------------------------------------------------------------------------
     // ------------------------ LM-Specific Methods ----------------------------
     // -------------------------------------------------------------------------
+    public LM_PlayerController GetController()
+    {
+
+        LM_PlayerController lmPlayer;
+
+        // Handle the selected UI enum from the inspector
+        if (config.ui != "default")
+        {
+            switch (config.ui)
+            {
+                case "Desktop":
+                    userInterface = UserInterface.KeyboardMouse;
+                    break;
+                case "Vive Virt.":
+                    userInterface = UserInterface.ViveVirtualizer;
+                    break;
+                case "Vive Std.":
+                    userInterface = UserInterface.ViveRoomspace;
+                    break;
+                default:
+                    userInterface = UserInterface.KeyboardMouse;
+                    break;
+            }
+        }
+
+        // Based on the UserInterface enum that was selected, get the player
+        switch (userInterface)
+        {
+            case UserInterface.KeyboardMouse:
+                lmPlayer = GameObject.Find("KeyboardMouseController").GetComponent<LM_PlayerController>();
+
+                break;
+
+            case UserInterface.ViveRoomspace:
+                lmPlayer = GameObject.Find("ViveRoomspaceController").GetComponent<LM_PlayerController>();
+
+                break;
+
+            case UserInterface.ViveVirtualizer:
+
+                try
+                {
+                    lmPlayer = GameObject.Find("ViveVirtualizerController").GetComponent<LM_PlayerController>();
+
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning("The proprietary ViveVirtualizerController asset cannot be found.\n" +
+                    	"Are you missing the prefab in your Landmarks project or a reference to the prefab in your scene?");
+
+                    goto default;
+                }
+
+            default:
+
+                lmPlayer = GameObject.Find("KeyboardMouseController").GetComponent<LM_PlayerController>();
+                Debug.LogWarning("Falling back to default controller (" + lmPlayer.name + ").");
+
+                break;
+
+        }
+
+        return lmPlayer;
+
+    }
+
 
     public void StartPlaying() {
 		long tick = DateTime.Now.Ticks;
@@ -427,68 +489,6 @@ public class Experiment : MonoBehaviour {
         }
         dblog.close();
         Cursor.visible = true;
-    }
-
-
-    public  LM_PlayerController GetController()
-    {
-
-        var lmPlayer = new LM_PlayerController();
-
-        // Handle the selected UI enum from the inspector
-        if (config.ui != "default")
-        {
-            switch (config.ui)
-            {
-                case "Desktop":
-                    userInterface = UserInterface.KeyboardMouse;
-                    break;
-                case "Vive Virt.":
-                    userInterface = UserInterface.ViveVirtualizer;
-                    break;
-                case "Vive Std.":
-                    userInterface = UserInterface.ViveRoomspace;
-                    break;
-                default:
-                    userInterface = UserInterface.KeyboardMouse;
-                    break;
-            }
-        }
-
-        // Based on the UserInterface enum that was selected, get the player
-        switch (userInterface)
-        {
-            case UserInterface.KeyboardMouse :
-                lmPlayer = GameObject.Find("DesktopDefaultController").GetComponent<LM_PlayerController>();
-
-                break;
-
-            case UserInterface.ViveRoomspace :
-                lmPlayer = GameObject.Find("ViveRoomspaceController").GetComponent<LM_PlayerController>();
-
-                break;
-
-            case UserInterface.ViveVirtualizer:
-
-                lmPlayer = GameObject.Find("ViveVirtualizerController").GetComponent<LM_PlayerController>();
-
-                if (lmPlayer = null)
-                {
-                    Debug.LogWarning("The proprietary ViveVirtualizerController asset cannot be found");
-                    goto default;
-                }
-
-                break;
-
-            default:
-                lmPlayer = GameObject.Find("DesktopDefaultController").GetComponent<LM_PlayerController>();
-
-                break;
-
-        }
-
-        return lmPlayer;
-
     }
 
 }
