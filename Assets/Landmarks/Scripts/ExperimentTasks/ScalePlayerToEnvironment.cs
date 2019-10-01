@@ -88,7 +88,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
         manager.player.GetComponent<CapsuleCollider>().radius /= scaleRatio;
 
         // Scale up the movement speed as well
-        if (manager.userInterface == UserInterface.DesktopDefault)
+        if (manager.userInterface == UserInterface.KeyboardMouse)
         {
             manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
         }
