@@ -62,7 +62,7 @@ public class NavigationTask : ExperimentTask
         hud.showEverything();
 		hud.showScore = showScoring;
 		current = destinations.currentObject();
-		Debug.Log ("Find " + destinations.currentObject().name);
+		// Debug.Log ("Find " + destinations.currentObject().name);
 
 
 		if (NavigationInstruction)
