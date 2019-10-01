@@ -133,7 +133,7 @@ public class Experiment : MonoBehaviour {
                     userInterface = "DesktopDefaultController";
                     break;
                 case "Vive Virt.":
-                    userInterface = UserInterface.ViveVirtualizer;
+                    userInterface = UserInterface.ViveAndVirtualizer;
                     break;
                 case "ViveRoomspace":
                     userInterface = "ViveRoomspaceController";
@@ -177,7 +177,7 @@ public class Experiment : MonoBehaviour {
 
                 break;
 
-            case UserInterface.ViveVirtualizer:
+            case UserInterface.ViveAndVirtualizer:
 
                 // This is a proprietary asset that must be added to the _Landmarks_ prefab to work
                 // If it is not added (either for lack of need or lack of the proprietary SDK), use the default
