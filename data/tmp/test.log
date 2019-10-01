@@ -1,0 +1,43 @@
+63705522701739	TASK_START	LM_Timeline	TaskList
+63705522701740	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+LM_Timeline1False
+63705522701740	TASK_START	InitializeExperiment	TaskList
+63705522701741	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+InitializeExperiment1False
+63705522701741	TASK_START	PlaceTargets	TaskList
+63705522701742	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+PlaceTargets1False
+63705522701742	TASK_START	CheckForUsedTargets	LM_CompareLists
+63705522701764	TASK_END	CheckForUsedTargets	LM_CompareLists	22
+63705522701766	TASK_START	ListTargetLocations	ObjectList
+63705522701766	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63705522701766	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63705522701766	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63705522701805	TASK_END	ListTargetLocations	ObjectList	39
+63705522701807	TASK_START	ListTargets	ObjectList
+63705522701807	TASK_ADD	ListTargets	ObjectList	Red Sphere	null
+63705522701807	TASK_ADD	ListTargets	ObjectList	Green Cylinder	null
+63705522701807	TASK_ADD	ListTargets	ObjectList	Blue Capsule	null
+63705522702159	TASK_END	ListTargets	ObjectList	352
+63705522702162	TASK_START	PopulateTargets	MoveObjects
+63705522702163	TARGET INFORMATION ----------------------------------------
+63705522702165	Target01: 	Red Sphere	Position: 	-23.41177	1	-22.35297	Rotation: 	0	0	0
+63705522702165	Target02: 	Green Cylinder	Position: 	20.35294	1	-17.84705	Rotation: 	0	0	0
+63705522702165	Target03: 	Blue Capsule	Position: 	17.64706	1	20.82355	Rotation: 	90	0	0
+63705522702165	-----------------------------------------------------------/
+63705522702201	TASK_END	PopulateTargets	MoveObjects	39
+63705522702202	TASK_START	UpdateUsedTargets	LM_CompareLists
+63705522702213	TASK_END	UpdateUsedTargets	LM_CompareLists	11
+63705522702213	TASK_END	PlaceTargets	TaskList	472
+63705522702214	TASK_START	ListNavigationStarts	ObjectList
+63705522702214	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
+63705522702214	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc01	null
+63705522702214	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc03	null
+63705522702214	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc02	null
+63705522702219	TASK_END	ListNavigationStarts	ObjectList	5
+63705522702219	TASK_END	InitializeExperiment	TaskList	479
+63705522702221	TASK_START	BeginMessage	InstructionsTask
+63705522707030	TASK_END	LM_Timeline	TaskList	5291
