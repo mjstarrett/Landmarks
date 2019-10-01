@@ -1,14 +1,14 @@
 ﻿/*
     ScalePlayerToEnvironment
-       
-    Takes a Player controller and scale it manually or automatically to an 
-    environment or reverse a previous scaling.   
+
+    Takes a Player controller and scale it manually or automatically to an
+    environment or reverse a previous scaling.
 
     Copyright (C) 2019 Michael J. Starrett
 
     Navigate by StarrLite (Powered by LandMarks)
     Human Spatial Cognition Laboratory
-    Department of Psychology - University of Arizona   
+    Department of Psychology - University of Arizona
 */
 
 
@@ -28,7 +28,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
     public float scaleRatio = 1;
     private CharacterController characterController;
     // public bool isScaled = false;
-    
+
     public override void startTask()
     {
         TASK_START();
@@ -68,7 +68,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
             scaledEnvironment.SetActive(false);
             scaledAvatar.SetActive(false);
             scaleRatio = 1 / scaleRatio;
-        } 
+        }
         else
         // Grab the scale of the scaled environment from it's gameobject
         {
@@ -92,7 +92,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
         {
             manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
         }
-        else if (manager.userInterface == UserInterface.ViveVirtualizer)
+        else if (manager.userInterface == UserInterface.ViveAndVirtualizer)
         {
             // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
             if (isScaled)
@@ -102,7 +102,7 @@ public class ScalePlayerToEnvironment : ExperimentTask
             else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio/3);
 
         }
-        else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironment.cs");
+        else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironmentEditor.cs");
     }
 
     public override bool updateTask()
@@ -121,5 +121,3 @@ public class ScalePlayerToEnvironment : ExperimentTask
         isScaled = !isScaled;
     }
 }
-
-

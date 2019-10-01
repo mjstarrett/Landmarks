@@ -29,6 +29,7 @@ public enum EndListMode
 	End
 }
 
+[SerializeField]
 public enum UserInterface
 {
     KeyboardMouse,
@@ -36,51 +37,50 @@ public enum UserInterface
     ViveVirtualizer,
 }
 
-
 public class Experiment : MonoBehaviour {
 
     public GameObject availableControllers;
     public UserInterface userInterface = UserInterface.KeyboardMouse;
     public bool debugging = false;
 
-    [HideInInspector] 
+    [HideInInspector]
     public TaskList tasks;
-	[HideInInspector] 
-    public Config config;	
+		[HideInInspector]
+    public Config config;
     [HideInInspector]
     public GameObject player;
     [HideInInspector]
     public Camera playerCamera;
     [HideInInspector]
     public Camera overheadCamera;
-    [HideInInspector] 
+    [HideInInspector]
     public GameObject scaledPlayer;
-    [HideInInspector] 
+    [HideInInspector]
     public GameObject environment;
-    [HideInInspector] 
+    [HideInInspector]
     public GameObject scaledEnvironment;
-    [HideInInspector] 
+    [HideInInspector]
     public bool usingVR;
-	[HideInInspector] 
+		[HideInInspector]
     public dbLog dblog;
-    [HideInInspector] 
+    [HideInInspector]
     public long playback_time;
 
-	private bool pause = true;
-	private bool done = false;
-	private long now;
-	private Event evt;
-	private long playback_start;
-	private long playback_offset;
-	private long next_time;
-	private string[] next_action;
+		private bool pause = true;
+		private bool done = false;
+		private long now;
+		private Event evt;
+		private long playback_start;
+		private long playback_offset;
+		private long next_time;
+		private string[] next_action;
     //private long playback_start;
     private string logfile;
     private string configfile = "";
 
     protected GameObject avatar;
-	protected AvatarController avatarController;
-	protected HUD hud;
+		protected AvatarController avatarController;
+		protected HUD hud;
 
 
     // -------------------------------------------------------------------------
@@ -93,6 +93,10 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
         // Clean up & Initialize Scene
         // ------------------------------
+
+
+        userInterface = Enum.GetName(typeof(UserInterface), (int)controllerOptions);
+        Debug.Log("The " + userInterface + "option was selected");
 
         // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");
@@ -161,8 +165,8 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
 
         logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + "_" + config.level + ".log";
-		configfile = config.expPath + "/" + config.filename;
-		
+				configfile = config.expPath + "/" + config.filename;
+
 		//when in editor
 		if (!config.bootstrapped) {
 			logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
@@ -251,19 +255,19 @@ public class Experiment : MonoBehaviour {
     // ------------------------ LM-Specific Methods ----------------------------
     // -------------------------------------------------------------------------
 
-    public void StartPlaying() {		
+    public void StartPlaying() {
 		long tick = DateTime.Now.Ticks;
         playback_start = tick / TimeSpan.TicksPerMillisecond;
         playback_offset = 0;
     }
 
-	
+
 	public void OnControllerColliderHit(GameObject hit)  {
 		if (config.runMode != ConfigRunMode.PLAYBACK) {
 			tasks.OnControllerColliderHit(hit);
 		}
 	}
-	
+
 
     public static long Now()
     {
@@ -274,11 +278,11 @@ public class Experiment : MonoBehaviour {
 
 
     void updatePlayback() {
-		
+
 		long last_now = now;
 		long tick = DateTime.Now.Ticks;
         now = tick / TimeSpan.TicksPerMillisecond;
-		
+
 		if (Input.GetButtonDown("PlayPause")) {
 			pause = !pause;
 			hud.flashStatus( "Playback Paused" );
@@ -287,15 +291,15 @@ public class Experiment : MonoBehaviour {
 		if (pause) {
 			playback_offset -= now - last_now;
 		}
-		
+
 		float seek = Input.GetAxis("Horizontal");
 		//if (seek != 0.0) {
 		if (Input.GetButton("Horizontal")) {
-			playback_offset += 250;// * Convert.ToInt64(seek);	
+			playback_offset += 250;// * Convert.ToInt64(seek);
 		}
         playback_time = now - playback_start + playback_offset;
 		hud.playback_time = playback_time;
-		
+
 		string[] vec;
 		Vector3 vec3;
 
@@ -303,7 +307,7 @@ public class Experiment : MonoBehaviour {
         {
             Debug.Log(next_action[2]);
 
-            //try {							
+            //try {
                 if (next_action[2] == "AVATAR_HPR" || next_action[2] == "AVATAR_POS" || next_action[2] == "AVATAR_STOP")
                 {
                     vec = next_action[3].Split(new char[] { ',', '(', ')', ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -319,14 +323,14 @@ public class Experiment : MonoBehaviour {
 
                     GameObject taskObject = GameObject.Find(next_action[3]);
                     Component script = taskObject.GetComponent(next_action[4]) as Component;
-                    //Type t = typeof(AvatarController); 
+                    //Type t = typeof(AvatarController);
                     this.GetType().InvokeMember(next_action[2], BindingFlags.Default | BindingFlags.InvokeMethod, null, this, new System.Object[] { taskObject, vec3 });
                 }
                 else if (next_action[2] == "TASK_ADD")
                 {
                     GameObject taskObject = GameObject.Find(next_action[3]);
                     Component script = taskObject.GetComponent(next_action[4]) as Component;
-                    //Type t = typeof(AvatarController); 
+                    //Type t = typeof(AvatarController);
                     GameObject secondObject = GameObject.Find(next_action[5]);
                     script.GetType().InvokeMember(next_action[2], BindingFlags.Default | BindingFlags.InvokeMethod, null, script, new System.Object[] { secondObject, next_action[6] });
                 }
@@ -362,10 +366,10 @@ public class Experiment : MonoBehaviour {
                     GameObject taskObject = GameObject.Find(next_action[3]);
                     Component script = taskObject.GetComponent(next_action[4]) as Component;
 
-                    //Type t = typeof(AvatarController); 
+                    //Type t = typeof(AvatarController);
                     script.GetType().InvokeMember(next_action[2], BindingFlags.Default | BindingFlags.InvokeMethod, null, script, null);
                 }
-        	//} 
+        	//}
             //catch (FormatException)
             //{
 
@@ -388,19 +392,18 @@ public class Experiment : MonoBehaviour {
 
 	public  void TASK_ROTATE (GameObject go, Vector3 hpr) {
 		go.transform.localEulerAngles = hpr;
-	}	
-
+	}
 
 	public  void TASK_POSITION (GameObject go, Vector3 pos) {
 		go.transform.position = pos;
-	}	
+	}
 
 
 	public  void TASK_SCALE (GameObject go, Vector3 scale) {
 		go.transform.localScale = scale;
-	}	
+	}
 
-	
+
 	public static void Shuffle<T>(T[] array)
     {
 		var random = new System.Random();
@@ -466,7 +469,7 @@ public class Experiment : MonoBehaviour {
                 break;
 
             case UserInterface.ViveVirtualizer:
-            
+
                 lmPlayer = GameObject.Find("ViveVirtualizerController").GetComponent<LM_PlayerController>();
 
                 if (lmPlayer = null)

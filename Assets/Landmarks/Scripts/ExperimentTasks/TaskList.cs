@@ -235,10 +235,6 @@ public class TaskList : ExperimentTask {
 	public override void endTask() {
 		base.endTask();
 
-		if (overideRepeat) {
-				overideRepeat.incrementCurrent();
-		}
-
 			//	if (pausedTasks) {
 				//currentTask = pausedTasks;
 				//endTask();
