@@ -111,7 +111,7 @@ public class LM_CompareLists : ExperimentTask
             int destroyed = 0;
             foreach (Transform child in list1Parent.transform)
             {
-                Debug.Log(child.name);
+                // Debug.Log(child.name);
                 if (comparisonList.Contains(child.gameObject.name))
                 {
                     Destroy(child.gameObject);
@@ -119,7 +119,7 @@ public class LM_CompareLists : ExperimentTask
                     destroyed++;
                 }
             }
-            Debug.Log(destroyed + "objects destroyed during " + this.name);
+            // Debug.Log(destroyed + " objects destroyed during " + this.name);
         }
         // Add any new items from list1 to the comparisonlist
         else if (behavior == Behavior.AddToComparisonList)
