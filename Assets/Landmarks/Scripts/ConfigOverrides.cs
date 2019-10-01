@@ -30,7 +30,7 @@ public class ConfigOverrides {
 
 	public static void parse(string filepath, dbLog log) {
 		
-		Debug.Log("#########   " + filepath);
+		// Debug.Log("Filepath:\t" + filepath);
 		if (File.Exists(filepath)) {
 			
 			StreamReader file = new StreamReader ( filepath );
