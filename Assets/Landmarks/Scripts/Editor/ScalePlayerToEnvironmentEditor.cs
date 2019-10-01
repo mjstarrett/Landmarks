@@ -22,10 +22,6 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class ScalePlayerToEnvironmentEditor : Editor
 {
-    SerializedProperty scalePlayerToEnvironment;
-
-
-
     public override void OnInspectorGUI()
     {
         // set our custom inspector up to communicate with the main script and alias that script for brevity
