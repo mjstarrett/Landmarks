@@ -39,7 +39,7 @@ public class MoveSpawn : ExperimentTask {
     private int count = 1;
 
 	public override void startTask () {
-        Debug.Log("MS Repetition:"+repetition);
+        // Debug.Log("MS Repetition:"+repetition);
         TASK_START();
 	}
 
@@ -59,7 +59,6 @@ public class MoveSpawn : ExperimentTask {
 
         if (scaledPlayer)
         {
-            Debug.Log("%%%%%");
             start = scaledAvatar;
         } else start = avatar;
 
@@ -67,7 +66,7 @@ public class MoveSpawn : ExperimentTask {
         if (destinations == null && destinationListName != "") // only if destinations is blank and destinationsName is not
         {
             destinations = GameObject.Find(destinationListName).GetComponent<ObjectList>();
-            Debug.Log("moving the " + start.gameObject.name + " to " + destinations.currentObject());
+            // Debug.Log("moving the " + start.gameObject.name + " to " + destinations.currentObject());
         }
         // otherwise, use destination or destinations.
 
