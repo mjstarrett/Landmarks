@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6279364624764035789}
   - component: {fileID: 6242013941690299331}
   m_Layer: 0
-  m_Name: NavigationTask
+  m_Name: TASK_NavigationTask
   m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,8 @@ MonoBehaviour:
   repeat: 1
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
@@ -214,7 +215,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6285781053553488291}
   - component: {fileID: 6242776888988061129}
-  - component: {fileID: 128724126685394496}
   m_Layer: 0
   m_Name: NavigationTrials
   m_TagString: Untagged
@@ -270,42 +270,15 @@ MonoBehaviour:
   tasks: []
   objectsList: []
   repeat: 8
-  overideRepeat: {fileID: 0}
+  overideRepeat: {fileID: 8475965484490080533}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
   repeatCount: 1
   currentTask: {fileID: 0}
---- !u!114 &128724126685394496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6283521768762849893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af936f9fea23c4b7a815af11f22de58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skip: 0
-  canIncrementLists: 1
-  interval: 0
-  interruptTasks: {fileID: 0}
-  interruptInterval: 0
-  repeatInterrupts: 9999
-  currentInterrupt: 0
-  pausedTasks: {fileID: 0}
-  parentTask: {fileID: 0}
-  firstPersonCamera: {fileID: 0}
-  overheadCamera: {fileID: 0}
-  debugButton: {fileID: 0}
-  actionButton: {fileID: 0}
-  vrEnabled: 0
-  blocks: {fileID: 0}
-  trials: {fileID: 0}
 --- !u!1 &6283590481920638031
 GameObject:
   m_ObjectHideFlags: 0

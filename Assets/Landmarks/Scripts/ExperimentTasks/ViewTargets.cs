@@ -45,6 +45,7 @@ public class ViewTargets : ExperimentTask {
     public float rotationSpeed = 30.0f;
     public bool restrictMovement = true;
 
+
     private Vector3 initialHUDposition;
 
     public override void startTask () {
@@ -54,7 +55,7 @@ public class ViewTargets : ExperimentTask {
 		initCurrent();	
 		rotation_start = Experiment.Now();
 		rotation_start_float = rotation_start/1f;
-		print(rotation_start);
+		// Debug.Log(rotation_start);
 		
 	}	
 
