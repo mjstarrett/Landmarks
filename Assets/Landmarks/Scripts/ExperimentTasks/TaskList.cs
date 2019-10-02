@@ -28,7 +28,7 @@ public class TaskList : ExperimentTask {
 	public GameObject[] objectsList;
 
 	public int repeat = 1;
-	public TextList overideRepeat;
+	public ObjectList overideRepeat; // Allow repeat to be defined by an ObjectList GameObject (e.g. a list of navigation targets)
 
     public int catchTrialCount = 0;
     public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
@@ -65,8 +65,7 @@ public class TaskList : ExperimentTask {
 
         if (overideRepeat)
         {
-            repeatCount = 1;
-            repeat = Int32.Parse(overideRepeat.currentString().Trim());
+            repeat = overideRepeat.objects.Count;
         }
 
         //----------------------------------------------------------------------
@@ -235,10 +234,6 @@ public class TaskList : ExperimentTask {
 
 	public override void endTask() {
 		base.endTask();
-
-		if (overideRepeat) {
-				overideRepeat.incrementCurrent();
-		}
 
 			//	if (pausedTasks) {
 				//currentTask = pausedTasks;
