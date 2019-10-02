@@ -35,6 +35,7 @@ public enum UserInterface
     KeyboardMouse,
     ViveRoomspace,
     ViveVirtualizer,
+    ViveKatwalk
 }
 
 public class Experiment : MonoBehaviour {
@@ -268,6 +269,9 @@ public class Experiment : MonoBehaviour {
                 case "Vive Std.":
                     userInterface = UserInterface.ViveRoomspace;
                     break;
+                case "Vive Katwalk":
+                    userInterface = UserInterface.ViveKatwalk;
+                    break;
                 default:
                     userInterface = UserInterface.KeyboardMouse;
                     break;
@@ -302,6 +306,22 @@ public class Experiment : MonoBehaviour {
 
                     goto default;
                 }
+
+            case UserInterface.ViveKatwalk:
+
+								try
+								{
+										lmPlayer = GameObject.Find("ViveKatwalkController").GetComponent<LM_PlayerController>();
+
+										break;
+								}
+								catch (Exception ex)
+								{
+										Debug.LogWarning("The proprietary ViveKatwalkController asset cannot be found.\n" +
+											"Are you missing the prefab in your Landmarks project or a reference to the prefab in your scene?");
+
+										goto default;
+								}
 
             default:
 
