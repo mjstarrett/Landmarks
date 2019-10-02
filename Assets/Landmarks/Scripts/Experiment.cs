@@ -35,7 +35,7 @@ public enum UserInterface
     KeyboardMouse,
     ViveRoomspace,
     ViveVirtualizer,
-		ViveKatwalk
+    ViveKatwalk
 }
 
 public class Experiment : MonoBehaviour {
@@ -322,8 +322,6 @@ public class Experiment : MonoBehaviour {
 
 										goto default;
 								}
-                
-                break;
 
             default:
 
