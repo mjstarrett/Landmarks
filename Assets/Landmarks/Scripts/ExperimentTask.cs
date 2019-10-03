@@ -84,30 +84,17 @@ public class ExperimentTask : MonoBehaviour{
 		manager = experiment.GetComponent("Experiment") as Experiment;
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
-		log = manager.dblog;
-        trialLog = manager.trialLog;
+        log = manager.dblog;
         vrEnabled = manager.usingVR;
-
-
-        // If the object is tagged as "Task" store the current task in player prefs
-        if (CompareTag("Task"))
-        {
-            Debug.Log("==================" + name);
-            PlayerPrefs.SetString("task", name);
-        }
-        // add the current umbrella task (next up in hierarcy tagged as "Task") to the trialLog
-        trialLog.AddTrialData("task", PlayerPrefs.GetString("task"));
-        Debug.Log(trialLog.current);
-        trialLog.Reset();
+        trialLog = manager.trialLogger;
 
 
         // set up vrInput if we're using VR
         if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
 
-
         // Grab the scaled nav task/player and log it - MJS 2019
-        //scaledAvatar = manager.scaledPlayer;
-        //scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
+        scaledAvatar = manager.scaledPlayer;
+        scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
 
         debugButton = hud.debugButton.GetComponent<Button>();
         actionButton = hud.actionButton.GetComponent<Button>();

@@ -8,12 +8,11 @@
  *
  */
 
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class LM_TrialLog
 {
+    public bool active;
     public Dictionary<string, string> trialData = new Dictionary<string, string>(); // the lists of header/data pairs
     public Dictionary<string, string> defaults = new Dictionary<string, string>(); // user-defined default header/data pairs to be reinititialized on subsequent resets
     public string current;
@@ -24,16 +23,9 @@ public class LM_TrialLog
 
     public virtual void AddDefault(string key, string value)
     {
-        // Allows any task with access to the class instance to add an entry for logging
+        // Allows any task with access to the class instance to add an entry and protect it
         defaults.Add(key, value);
-
-        FormatCurrent();
-    }
-
-    public virtual void RemoveDefault(string key, string value)
-    {
-        // Allows any task with access to the class instance to add an entry for logging
-        defaults.Add(key, value);
+        trialData.Add(key, value);
 
         FormatCurrent();
     }
@@ -43,19 +35,10 @@ public class LM_TrialLog
     // Manage trialData values
     // ------------------------
 
-    public virtual void AddTrialData(string key, string value)
+    public virtual void AddData(string key, string value)
     {
         // Allows any task with access to the class instance to add an entry for logging
         trialData.Add(key, value);
-
-        FormatCurrent();
-    }
-
-
-    public virtual void RemoveTrialData(string key)
-    {
-        // Allows values to be removed (not recommended; use Reset() )
-        trialData.Remove(key);
 
         FormatCurrent();
     }
@@ -82,10 +65,17 @@ public class LM_TrialLog
         FormatCurrent();
     }
 
+    public virtual void HardReset()
+    {
+        trialData.Clear();
 
-    // ------------------------------------
+        FormatCurrent();
+    }
+
+
+    // ----------------------------------------
     // Format for printing as a single string
-    // ------------------------------------
+    // ----------------------------------------
 
     public virtual string FormatCurrent()
     {
@@ -104,5 +94,6 @@ public class LM_TrialLog
 
         // return the string and pass it to a function such as dblog.log()
         return current;
+        
     }
 }
