@@ -56,8 +56,7 @@ public class Experiment : MonoBehaviour {
     [HideInInspector] public bool usingVR;
 
 	[HideInInspector] public dbLog dblog;
-    [HideInInspector] public LM_TrialLog trialLog;
-	
+    [HideInInspector] public LM_TrialLog trialLogger;
 	
 	private bool playback = false;
 	private bool pause = true;
@@ -84,6 +83,8 @@ public class Experiment : MonoBehaviour {
 	}
 	
 	void Awake() {
+
+        trialLogger = new LM_TrialLog();
 
         // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");
@@ -267,17 +268,6 @@ public class Experiment : MonoBehaviour {
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject + 
                   "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
-
-
-        // Set up the trial logging
-        trialLog = new LM_TrialLog();
-        trialLog.AddDefault("id", config.subject);
-        trialLog.AddDefault("scene", config.level);
-        trialLog.AddDefault("condition", config.condition);
-        trialLog.Reset();
-        Debug.Log(trialLog.current);
-        dblog.Write(trialLog.current);
-
 
         Debug.Log(XRSettings.loadedDeviceName);
     }
