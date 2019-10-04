@@ -210,12 +210,18 @@ public class Confidence : ExperimentTask {
             Debug.Log(masterTask.name);
             masterTask = masterTask.parentTask;
         }
+        var rt = Time.time - startTime;
         // Output log for this task in tab delimited format
         log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
                 "Task\tBlock\tTrial\tTargetName\tRating\tMaxRating\tRT\n" +
-                masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + sliderValue + "\t" + sliderMax + "\t" + (Time.time - startTime)
+                masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + sliderValue + "\t" + sliderMax + "\t" + rt
                 , 1);
 
+        if (trialLog.active)
+        {
+            trialLog.AddData(transform.name + "_rating", sliderValue.ToString());
+            trialLog.AddData(transform.name + "_rt", rt.ToString());
+        }
 
 
         if (canIncrementLists) {
