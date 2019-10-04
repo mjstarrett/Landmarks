@@ -165,6 +165,7 @@ public class InstructionsTask : ExperimentTask {
             else return false;
         }
 
+
         if (killCurrent == true)
         {
             return KillCurrent ();
