@@ -91,6 +91,12 @@ public class MentalNavigation : ExperimentTask
             masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + navTime
             , 1);
 
+            if (trialLog.active)
+            {
+                trialLog.AddData(transform.name + "_target", objects.currentObject().name);
+                trialLog.AddData(transform.name + "_duration", navTime.ToString());
+            }
+
 
             // end the current task
             return true; 
