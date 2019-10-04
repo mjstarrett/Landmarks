@@ -262,7 +262,18 @@ public class NavigationTask : ExperimentTask
         while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
         // This will log all final trial info in tab delimited format
         var excessPath = perfDistance - optimalDistance;
+
         var navTime = Time.time - startTime;
+
+        // set impossible values if the nav task was skipped
+        if (skip)
+        {
+            navTime = -99f;
+            perfDistance = -99f;
+        }
+        
+
+
         log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
         	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
         	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + destinations.currentObject().name + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + excessPath + "\t" + navTime
@@ -272,11 +283,11 @@ public class NavigationTask : ExperimentTask
         // More concise LM_TrialLog logging
         if (trialLog.active)
         {
-            trialLog.AddData(transform.name + "_navTarget", destinations.currentObject().name);
-            trialLog.AddData(transform.name + "_navActualPath", perfDistance.ToString());
-            trialLog.AddData(transform.name + "_navOptimalPath", optimalDistance.ToString());
-            trialLog.AddData(transform.name + "_navExcessPath", excessPath.ToString());
-            trialLog.AddData(transform.name + "_navTime", navTime.ToString());
+            trialLog.AddData(transform.name + "_target", destinations.currentObject().name);
+            trialLog.AddData(transform.name + "_actualPath", perfDistance.ToString());
+            trialLog.AddData(transform.name + "_optimalPath", optimalDistance.ToString());
+            trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
+            trialLog.AddData(transform.name + "_duration", navTime.ToString());
         }
     }
 

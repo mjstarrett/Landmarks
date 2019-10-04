@@ -50,7 +50,7 @@ public class TaskList : ExperimentTask {
     public bool catchFlag = false;
     
     // LOG DATA TRIAL-BY-TRIAL
-    public bool logTrials;
+    public bool trialLogging;
 
     #endregion
 
@@ -147,25 +147,21 @@ public class TaskList : ExperimentTask {
         // Set up the trial log (if enabled)
         //----------------------------------------------------------------------
 
-
-        if (logTrials)
+        if (trialLogging)
         {
-            trialLog.HardReset();
+            trialLog.Reset();
             trialLog.active = true;
-            trialLog.AddDefault("task", parentTask.name);
-            trialLog.AddDefault("block", parentTask.repeatCount.ToString());
-            trialLog.AddData("trial", repeatCount.ToString());
+            NewTrialLog();
+
         }
         else trialLog.active = false;
+
     }
+
+
 
     public void startNextTask() {
 		Debug.Log("Starting " + tasks[currentTaskIndex].name);
-
-        if (currentTaskIndex == 0)
-        {
-            startNewRepeat();
-        }
 
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
@@ -240,10 +236,11 @@ public class TaskList : ExperimentTask {
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
-            if (logTrials) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
-            if (logTrials) trialLog.HardReset(); // clear out any values that aren't protected as defaults
+            if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
+            if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
 
             currentTaskIndex = 0;
+            startNewRepeat();
             repeatCount = 1;
             return true;
         }
@@ -253,13 +250,14 @@ public class TaskList : ExperimentTask {
             if (currentTaskIndex >= tasks.Length)
             {
 
-				if (logTrials) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
-                if (logTrials) trialLog.Reset(); // clear out any values that aren't protected as defaults
+                if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
+                if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
 
                 repeatCount++; // increment the repeat count (i.e., update block/trial/repeat number)
                 currentTaskIndex = 0; // reset the task index so the next task that starts is the first in the list
+                startNewRepeat();
 
-                if (logTrials) trialLog.AddData("trial", repeatCount.ToString());
+                if (trialLogging) NewTrialLog();
             }
 
             // Start the next task in the list
@@ -270,6 +268,14 @@ public class TaskList : ExperimentTask {
 		return false;
 	}
 
+    public void NewTrialLog()
+    {
+        trialLog.AddData("task", parentTask.name);
+        trialLog.AddData("block", parentTask.repeatCount.ToString());
+        trialLog.AddData("trial", repeatCount.ToString());
+        trialLog.AddData("catchTrial", catchFlag.ToString());
+    }
+
 
 	public override void endTask() {
 		base.endTask();
@@ -278,7 +284,7 @@ public class TaskList : ExperimentTask {
 				overideRepeat.incrementCurrent();
 		}
 
-        trialLog = new LM_TrialLog(); // Run the constructor to ensure the log gets cleared completely
+        trialLog.Reset(); // Run the constructor to ensure the log gets cleared completely
 
 			//	if (pausedTasks) {
 				//currentTask = pausedTasks;
