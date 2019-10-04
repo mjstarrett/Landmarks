@@ -381,8 +381,10 @@ MonoBehaviour:
   destinationListName: ListLargePlayerStarts
   destinations: {fileID: 0}
   swap: 0
+  randomRotation: 0
   scaledPlayer: 0
   ignoreY: 0
+  blockRepeat: 0
 --- !u!1 &4501121492365727685
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,13 +510,15 @@ MonoBehaviour:
   objectsList: []
   repeat: 8
   overideRepeat: {fileID: 0}
+  repeatCount: 1
+  currentTask: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  repeatCount: 1
-  currentTask: {fileID: 0}
+  trialLogging: 1
 --- !u!1 &6252240411586193869
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +599,7 @@ GameObject:
   - component: {fileID: 7560776588999321567}
   - component: {fileID: 6833851842772532862}
   m_Layer: 0
-  m_Name: ScaledNavigationTask
+  m_Name: TASK_ScaledNavigationTask
   m_TagString: Task
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -653,13 +657,15 @@ MonoBehaviour:
   objectsList: []
   repeat: 1
   overideRepeat: {fileID: 0}
+  repeatCount: 1
+  currentTask: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  repeatCount: 1
-  currentTask: {fileID: 0}
+  trialLogging: 0
 --- !u!1 &7595080909231628217
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,8 +728,10 @@ MonoBehaviour:
   destinationListName: ListSmallPlayerStarts
   destinations: {fileID: 0}
   swap: 0
+  randomRotation: 0
   scaledPlayer: 1
   ignoreY: 0
+  blockRepeat: 0
 --- !u!1 &8304476604835183565
 GameObject:
   m_ObjectHideFlags: 0
