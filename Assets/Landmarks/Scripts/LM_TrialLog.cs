@@ -14,22 +14,7 @@ public class LM_TrialLog
 {
     public bool active;
     public Dictionary<string, string> trialData = new Dictionary<string, string>(); // the lists of header/data pairs
-    public Dictionary<string, string> defaults = new Dictionary<string, string>(); // user-defined default header/data pairs to be reinititialized on subsequent resets
     public string current;
-
-    // ------------------------
-    // Manage default values
-    // ------------------------
-
-    public virtual void AddDefault(string key, string value)
-    {
-        // Allows any task with access to the class instance to add an entry and protect it
-        defaults.Add(key, value);
-        trialData.Add(key, value);
-
-        FormatCurrent();
-    }
-
 
     // ------------------------
     // Manage trialData values
@@ -49,23 +34,6 @@ public class LM_TrialLog
     // ------------------------------------
 
     public virtual void Reset()
-    {
-        // remove all entries from the trialData dictionary
-        trialData.Clear(); // clean up and clear the trial data dictionary so we don't record this info again
-
-        // IF defaults exist, add them into the now empty trialData
-        if (defaults.Count > 0)
-        {
-            foreach (var entry in defaults)
-            {
-                trialData.Add(entry.Key, entry.Value);
-            }
-        }
-
-        FormatCurrent();
-    }
-
-    public virtual void HardReset()
     {
         trialData.Clear();
 
