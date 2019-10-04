@@ -30,7 +30,7 @@ public class TaskList : ExperimentTask {
 	public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
 	public GameObject[] objectsList;
 	public int repeat = 1;
-	public TextList overideRepeat;
+	public ObjectList overideRepeat;
     public int repeatCount = 1;
 
     [HideInInspector]
