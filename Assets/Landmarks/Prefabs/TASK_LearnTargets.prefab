@@ -75,8 +75,8 @@ GameObject:
   - component: {fileID: 170528091735560576}
   - component: {fileID: 170528091735560577}
   m_Layer: 0
-  m_Name: LearnTargets
-  m_TagString: Untagged
+  m_Name: TASK_LearnTargets
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,10 +129,12 @@ MonoBehaviour:
   repeat: 1
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
+  repeatCount: 1
   currentTask: {fileID: 0}
 --- !u!1 &170528092056186901
 GameObject:
@@ -335,8 +337,10 @@ MonoBehaviour:
   repeat: 3
   overideRepeat: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
+  repeatCount: 1
   currentTask: {fileID: 0}
