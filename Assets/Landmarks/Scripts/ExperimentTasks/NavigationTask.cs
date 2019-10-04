@@ -268,11 +268,12 @@ public class NavigationTask : ExperimentTask
         // set impossible values if the nav task was skipped
         if (skip)
         {
-            navTime = -99f;
-            perfDistance = -99f;
+            navTime = float.NaN;
+            perfDistance = float.NaN;
+            optimalDistance = float.NaN;
+            excessPath = float.NaN;
         }
         
-
 
         log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
         	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
