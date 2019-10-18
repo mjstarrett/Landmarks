@@ -5737,7 +5737,7 @@ Transform:
   m_Children:
   - {fileID: 3668406659836193063}
   m_Father: {fileID: 5308465571741448061}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5308465571114052287
 GameObject:
@@ -5947,6 +5947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5308465571347722055}
+  - component: {fileID: 3777918987852694404}
   m_Layer: 0
   m_Name: TargetLocations
   m_TagString: Untagged
@@ -5969,36 +5970,19 @@ Transform:
   m_Father: {fileID: 5308465571741448061}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5308465571615523347
-GameObject:
+--- !u!114 &3777918987852694404
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5308465571615523356}
-  m_Layer: 0
-  m_Name: MapTestPlaceHolders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5308465571615523356
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5308465571615523347}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5308465571741448061}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5308465571347722053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd8fb803896d4b3db3c73601a332e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskToSkip: {fileID: 5308465571149786392}
 --- !u!1 &5308465571741448060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,7 +6014,6 @@ Transform:
   - {fileID: 5308465570891636407}
   - {fileID: 5308465572180033509}
   - {fileID: 5308465571347722055}
-  - {fileID: 5308465571615523356}
   - {fileID: 5308465571056132516}
   m_Father: {fileID: 5308465570229703754}
   m_RootOrder: 1
