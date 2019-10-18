@@ -355,11 +355,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4893276594441236595}
   - component: {fileID: 4520344234623116671}
-  - component: {fileID: 3665877065302305843}
   - component: {fileID: 6044799488899503794}
   - component: {fileID: 1400672107468478722}
-  - component: {fileID: 79725800296998161}
-  - component: {fileID: 7598144084228277851}
   - component: {fileID: 8167246341995062119}
   - component: {fileID: 5458461812267056915}
   m_Layer: 0
@@ -425,14 +422,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!92 &3665877065302305843
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281185508407760122}
-  m_Enabled: 1
 --- !u!124 &6044799488899503794
 Behaviour:
   m_ObjectHideFlags: 0
@@ -458,38 +447,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4
   m_Reticle: {fileID: 0}
-  m_VrInput: {fileID: 79725800296998161}
+  m_VrInput: {fileID: 0}
   m_ShowDebugRay: 0
   m_DebugRayLength: 5
   m_DebugRayDuration: 1
   m_RayLength: 500
---- !u!114 &79725800296998161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281185508407760122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8902ef04f323e444b98d2e4fd80a56ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DoubleClickTime: 0.3
-  m_SwipeWidth: 0.3
---- !u!114 &7598144084228277851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281185508407760122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c18b880c62744449e7f9ea93ee01f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Canvas: {fileID: 0}
 --- !u!114 &8167246341995062119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,17 +2204,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4152877021505175641, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 4893276594441236595}
     - target: {fileID: 4450039970836217275, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6926101132244187594}
-    - target: {fileID: 7672631097001123430, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-        type: 3}
-      propertyPath: onHandClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6926101132244187594}
-    - target: {fileID: 6043571556564613149, guid: 6a71ba01c9e92408d959a1fbbaf55999,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2262,11 +2219,16 @@ PrefabInstance:
       propertyPath: onHandClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6926101132244187594}
-    - target: {fileID: 4152877021505175641, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+    - target: {fileID: 6043571556564613149, guid: 6a71ba01c9e92408d959a1fbbaf55999,
         type: 3}
-      propertyPath: m_Camera
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4893276594441236595}
+      objectReference: {fileID: 6926101132244187594}
+    - target: {fileID: 7672631097001123430, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+        type: 3}
+      propertyPath: onHandClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6926101132244187594}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a71ba01c9e92408d959a1fbbaf55999, type: 3}
 --- !u!1 &2158460912558095550 stripped
