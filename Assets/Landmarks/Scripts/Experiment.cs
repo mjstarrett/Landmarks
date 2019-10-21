@@ -165,7 +165,7 @@ public class Experiment : MonoBehaviour {
         // Handle Config file
         // ------------------------------
 
-        logfile = config.subjectPath + "/" + PlayerPrefs.GetString("expID") + "_" + config.subject + "_" + config.level + ".log";
+        logfile = config.subjectPath + "/" + config.experiment + "_" + config.subject + "_" + config.level + ".log";
 				configfile = config.expPath + "/" + config.filename;
 
 		//when in editor
@@ -184,6 +184,8 @@ public class Experiment : MonoBehaviour {
 			dblog = new dbPlaybackLog(logfile);
 		}
 
+        dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject +
+                  "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
     }
 
 
@@ -265,16 +267,16 @@ public class Experiment : MonoBehaviour {
         {
             switch (config.ui)
             {
-                case "Desktop":
+                case "KeyboardMouse":
                     userInterface = UserInterface.KeyboardMouse;
                     break;
-                case "Vive Virt.":
+                case "ViveVirtualizer":
                     userInterface = UserInterface.ViveVirtualizer;
                     break;
-                case "Vive Std.":
+                case "ViveRoomspace":
                     userInterface = UserInterface.ViveRoomspace;
                     break;
-                case "Vive Katwalk":
+                case "ViveKatwalk":
                     userInterface = UserInterface.ViveKatwalk;
                     break;
                 default:

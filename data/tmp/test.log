@@ -1,57 +1,105 @@
-63706994354367	TASK_START	LM_Timeline	TaskList
-63706994354367	TASK_START	InitializeExperiment	TaskList
-63706994354368	TASK_START	PlaceTargets	TaskList
-63706994354369	TASK_START	CheckForUsedTargets	LM_CompareLists
-63706994354389	TASK_END	CheckForUsedTargets	LM_CompareLists	20
-63706994354390	TASK_START	ListTargetLocations	ObjectList
-63706994354429	TASK_END	ListTargetLocations	ObjectList	39
-63706994354430	TASK_START	ListTargets	ObjectList
-63706994354430	TASK_ADD	ListTargets	ObjectList	Red Sphere	null
-63706994354430	TASK_ADD	ListTargets	ObjectList	Blue Capsule	null
-63706994354430	TASK_ADD	ListTargets	ObjectList	Green Cylinder	null
-63706994355168	TASK_END	ListTargets	ObjectList	738
-63706994355170	TASK_START	PopulateTargets	MoveObjects
-63706994355170	INFO	skip task	PopulateTargets
-63706994355201	TASK_END	PopulateTargets	MoveObjects	31
-63706994355202	TASK_START	UpdateUsedTargets	LM_CompareLists
-63706994355219	TASK_END	UpdateUsedTargets	LM_CompareLists	17
-63706994355220	LM_Output	TaskList
+63707259890947	TASK_START	LM_Timeline	TaskList
+63707259890948	TASK_START	InitializeExperiment	TaskList
+63707259890949	TASK_START	PlaceTargets	TaskList
+63707259890950	TASK_START	CheckForUsedTargets	LM_CompareLists
+63707259890969	TASK_END	CheckForUsedTargets	LM_CompareLists	19
+63707259890971	TASK_START	ListTargetLocations	ObjectList
+63707259890971	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63707259890971	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63707259890971	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63707259891015	TASK_END	ListTargetLocations	ObjectList	44
+63707259891017	TASK_START	ListTargets	ObjectList
+63707259891017	TASK_ADD	ListTargets	ObjectList	Blue Capsule	null
+63707259891017	TASK_ADD	ListTargets	ObjectList	Green Cylinder	null
+63707259891017	TASK_ADD	ListTargets	ObjectList	Red Sphere	null
+63707259891337	TASK_END	ListTargets	ObjectList	320
+63707259891340	TASK_START	PopulateTargets	MoveObjects
+63707259891340	TARGET INFORMATION ----------------------------------------
+63707259891342	Target01: 	Blue Capsule	Position: 	-23.41177	1	-22.35297	Rotation: 	90	0	0
+63707259891342	Target02: 	Green Cylinder	Position: 	20.35294	1	-17.84705	Rotation: 	0	0	0
+63707259891342	Target03: 	Red Sphere	Position: 	17.64706	1	20.82355	Rotation: 	0	0	0
+63707259891342	-----------------------------------------------------------/
+63707259891379	TASK_END	PopulateTargets	MoveObjects	39
+63707259891380	TASK_START	UpdateUsedTargets	LM_CompareLists
+63707259891389	TASK_END	UpdateUsedTargets	LM_CompareLists	9
+63707259891389	LM_Output	TaskList
 TaskListName	RepetitionNumber	CatchFlag
 PlaceTargets1False
-63706994355220	TASK_END	PlaceTargets	TaskList	852
-63706994355221	TASK_START	ListNavigationStarts	ObjectList
-63706994355221	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
-63706994355228	TASK_END	ListNavigationStarts	ObjectList	7
-63706994355228	LM_Output	TaskList
+63707259891389	TASK_END	PlaceTargets	TaskList	440
+63707259891391	TASK_START	ListNavigationStarts	ObjectList
+63707259891391	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc03	null
+63707259891391	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc01	null
+63707259891391	TASK_ADD	ListNavigationStarts	ObjectList	StartLoc02	null
+63707259891391	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
+63707259891400	TASK_END	ListNavigationStarts	ObjectList	9
+63707259891401	TASK_START	ListLargePlayerStarts	ObjectList
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
+63707259891401	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
+63707259891408	TASK_END	ListLargePlayerStarts	ObjectList	7
+63707259891410	TASK_START	ListSmallPlayerStarts	ObjectList
+63707259891410	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation01	null
+63707259891410	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc03	null
+63707259891410	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc01	null
+63707259891410	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLoc02	null
+63707259891418	TASK_END	ListSmallPlayerStarts	ObjectList	8
+63707259891418	LM_Output	TaskList
 TaskListName	RepetitionNumber	CatchFlag
 InitializeExperiment1False
-63706994355228	TASK_END	InitializeExperiment	TaskList	861
-63706994355230	TASK_START	BeginMessage	InstructionsTask
-63706994355230	INFO    skip task    BeginMessage
-63706994355240	TASK_END	BeginMessage	InstructionsTask	10
-63706994355241	TASK_START	Tasks	TaskList
-63706994355242	TASK_START	TASK_Mappit	TaskList
-63706994355243	TASK_START	ListMapTestTargets	ObjectList
-63706994355243	TASK_ADD	ListMapTestTargets	ObjectList	Red Sphere	null
-63706994355243	TASK_ADD	ListMapTestTargets	ObjectList	Blue Capsule	null
-63706994355243	TASK_ADD	ListMapTestTargets	ObjectList	Green Cylinder	null
-63706994355252	TASK_END	ListMapTestTargets	ObjectList	10
-63706994355253	TASK_START	MapTestPlaceholders	LM_CreatePlaceHolders
-63706994355264	TASK_END	MapTestPlaceholders	LM_CreatePlaceHolders	11
-63706994355264	TASK_START	ListMapTestPlaceholders	ObjectList
-63706994355264	TASK_ADD	ListMapTestPlaceholders	ObjectList	PlaceHolder(Clone)	null
-63706994355264	TASK_ADD	ListMapTestPlaceholders	ObjectList	PlaceHolder(Clone)	null
-63706994355264	TASK_ADD	ListMapTestPlaceholders	ObjectList	PlaceHolder(Clone)	null
-63706994355271	TASK_END	ListMapTestPlaceholders	ObjectList	7
-63706994355272	TASK_START	MapStudyInstructions	InstructionsTask
-63706994357704	INPUT_EVENT    PlayerPressedActionButton    1
-63706994357704	TASK_END	MapStudyInstructions	InstructionsTask	2432
-63706994357705	TASK_START	MapStudy	MapStudyTask
-63706994358296	TASK_END	MapStudy	MapStudyTask	591
-63706994358297	TASK_START	CopyObjects	CopyChildObjects
-63706994358303	TASK_END	CopyObjects	CopyChildObjects	6
-63706994358304	TASK_START	MapTestInstructions	InstructionsTask
-63706994358812	INPUT_EVENT    PlayerPressedActionButton    1
-63706994358812	TASK_END	MapTestInstructions	InstructionsTask	508
-63706994358813	TASK_START	MapTest	MapTestTask
-63706994379704	TASK_END	LM_Timeline	TaskList	25337
+63707259891418	TASK_END	InitializeExperiment	TaskList	470
+63707259891420	TASK_START	BeginMessage	InstructionsTask
+63707259894532	INPUT_EVENT    PlayerPressedActionButton    1
+63707259894532	TASK_END	BeginMessage	InstructionsTask	3112
+63707259894534	TASK_START	Tasks	TaskList
+63707259894534	TASK_START	PracticeTaskLoop	TaskList
+63707259894535	TASK_START	LearnTargets	TaskList
+63707259894537	TASK_START	LearnTargets Instructions	InstructionsTask
+63707259896109	INPUT_EVENT    PlayerPressedActionButton    1
+63707259896109	TASK_END	LearnTargets Instructions	InstructionsTask	1572
+63707259896111	TASK_START	ViewTargets	TaskList
+63707259896112	TASK_START	ListTargetsForLearning	ObjectList
+63707259896112	TASK_ADD	ListTargetsForLearning	ObjectList	Green Cylinder	null
+63707259896112	TASK_ADD	ListTargetsForLearning	ObjectList	Blue Capsule	null
+63707259896112	TASK_ADD	ListTargetsForLearning	ObjectList	Red Sphere	null
+63707259896118	TASK_END	ListTargetsForLearning	ObjectList	6
+63707259896120	TASK_START	RotateTarget	ViewTargets
+63707259896121	Practice	Green Cylinder
+63707259899121	Practice	Blue Capsule
+63707259902122	Practice	Red Sphere
+63707259905145	TASK_END	RotateTarget	ViewTargets	9025
+63707259905145	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+ViewTargets1False
+63707259905145	TASK_END	ViewTargets	TaskList	9034
+63707259905145	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+LearnTargets1False
+63707259905145	TASK_END	LearnTargets	TaskList	10610
+63707259905145	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+PracticeTaskLoop1False
+63707259905145	TASK_END	PracticeTaskLoop	TaskList	10611
+63707259905146	TASK_START	ScaledFirst	TaskList
+63707259905148	TASK_START	ScaledNavigationTask	TaskList
+63707259905149	TASK_START	ScaleUp	ScalePlayerToEnvironment
+63707259905165	TASK_END	ScaleUp	ScalePlayerToEnvironment	16
+63707259905166	TASK_START	MoveLargePlayerToSpawn	MoveSpawn
+63707259905167	TASK_POSITION	KeyboardMouseController	MoveSpawn	(225.0, -147.6, -225.0)
+63707259905167	TASK_ROTATE	KeyboardMouseController	MoveSpawn	(0.0, 14.3, 0.0)
+63707259905177	TASK_END	MoveLargePlayerToSpawn	MoveSpawn	11
+63707259905178	TASK_START	MoveSmallPlayerToSpawn	MoveSpawn
+63707259905178	TASK_POSITION	SmallScalePlayerController	MoveSpawn	(0.0, 0.0, 0.0)
+63707259905178	TASK_ROTATE	SmallScalePlayerController	MoveSpawn	(0.0, 0.0, 0.0)
+63707259905185	TASK_END	MoveSmallPlayerToSpawn	MoveSpawn	7
+63707259905186	TASK_START	ListNavigationTargets	ObjectList
+63707259905186	TASK_ADD	ListNavigationTargets	ObjectList	Red Sphere	null
+63707259905186	TASK_ADD	ListNavigationTargets	ObjectList	Blue Capsule	null
+63707259905186	TASK_ADD	ListNavigationTargets	ObjectList	Green Cylinder	null
+63707259905193	TASK_END	ListNavigationTargets	ObjectList	7
+63707259905194	TASK_START	ScaledNavInstructions	InstructionsTask
+63707260003775	TASK_END	LM_Timeline	TaskList	112828
