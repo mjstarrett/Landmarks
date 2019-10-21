@@ -38,7 +38,6 @@ public class LM_ExperimentManager : MonoBehaviour
 
         start.onClick.AddListener(LoadExperiment);
 
-       
     }
 
     private void Update()
@@ -85,18 +84,17 @@ public class LM_ExperimentManager : MonoBehaviour
             if (int.TryParse(subID.text, out int _subID))
             {
 
-                // Even if the subID is an int, check if this ID has been used
-                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text) || practice.isOn)
-                {
-                    subidError = false;
-                    _errorMessage.gameObject.SetActive(false); // then and only then, will we release the flag
-                }
-                // otherwise, flag an error and for in-use id;
-                else
+                // If this id has already been used to save data, flag an error
+                if (Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text) && !practice.isOn)
                 {
                     subidError = true;
                     _errorMessage.text = "That SubjectID is already in use.";
                     _errorMessage.gameObject.SetActive(true);
+                }
+                else
+                {
+                    subidError = false;
+                    _errorMessage.gameObject.SetActive(false); // then and only then, will we release the flag
                 }
             }
             // if the subID is not an int, throw the message to fix
@@ -137,31 +135,20 @@ public class LM_ExperimentManager : MonoBehaviour
         }
     }
 
-
     public void LoadExperiment()
     {
-        TextMeshProUGUI _errorMessage = start.transform.Find("Error").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI startErrorMessage = start.transform.Find("Error").GetComponent<TextMeshProUGUI>();
 
-        Debug.Log("starting to load experiment");
+        Debug.Log("trying to load experiment");
 
-        // if we're doing practice, then ignore subid errors
-        if (practice.isOn)
-        {
-            ValidateExpID();
-            subidError = false;
-
-            ValidateUI();
-        }
-        else
-        {
-            ValidateExpID();
-            ValidateSubjectID();
-            ValidateUI();
-        }
-
+        ValidateExpID();
+        ValidateSubjectID();
+        ValidateUI();
 
         if (!expidError && !subidError && !uiError)
         {
+            startErrorMessage.gameObject.SetActive(false);
+
             // Create the directories if they don't exist
             if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
             {
@@ -181,21 +168,15 @@ public class LM_ExperimentManager : MonoBehaviour
                 Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
                 subDirCreated = true;
             }
-            
-            Debug.Log("All error flags removed; proceeding");
-            _errorMessage.gameObject.SetActive(false);
-            
 
             readyConfig();
             ReadyExp();
             SceneManager.LoadScene(config.level);
-
         }
         else
         {
-            _errorMessage.gameObject.SetActive(true);
+            startErrorMessage.gameObject.SetActive(true);
         }
-
     }
 
     // Specific paramerters for loading experiments
@@ -273,6 +254,7 @@ public class LM_ExperimentManager : MonoBehaviour
             config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
         }
 
+        config.experiment = expID.options[expID.value].text;
         config.appPath = appDir;
         config.subject = subID.text;
         config.ui = ui.options[ui.value].text;
@@ -285,7 +267,7 @@ public class LM_ExperimentManager : MonoBehaviour
     {
         if (toggle.isOn)
         {
-            ValidateSubjectID();
+            // ValidateSubjectID();
         }
 
     }
