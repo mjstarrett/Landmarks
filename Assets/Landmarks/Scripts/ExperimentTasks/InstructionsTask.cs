@@ -64,12 +64,6 @@ public class InstructionsTask : ExperimentTask {
         if (!manager) Start();
         base.startTask();
 
-        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in renderedEnvironment)
-        {
-            r.enabled = false;
-        }
-
         if (skip) {
             log.log("INFO    skip task    " + name,1 );
             return;
@@ -80,7 +74,6 @@ public class InstructionsTask : ExperimentTask {
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
         Text canvas = avatar.GetComponent<Text>();
         hud.SecondsToShow = hud.InstructionDuration;
-
 
         sgo.AddComponent<GUIText>();
         sgo.hideFlags = HideFlags.HideAndDontSave;
@@ -183,12 +176,6 @@ public class InstructionsTask : ExperimentTask {
 
     public override void TASK_END() {
         base.endTask ();
-
-        Renderer[] renderedEnvironment = GameObject.FindGameObjectWithTag("Environment").GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in renderedEnvironment)
-        {
-            r.enabled = true;
-        }
 
         hud.setMessage ("");
         hud.SecondsToShow = hud.GeneralDuration;
