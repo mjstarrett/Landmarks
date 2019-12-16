@@ -57,4 +57,10 @@ public class dbLog {
         
 		logfile.WriteLine( milliseconds + "\t" + msg );
 	}
+
+    // MJS function to cleanly log info with no prefixes
+    public virtual void Write(string msg)
+    {
+        logfile.WriteLine(msg);
+    }
 }

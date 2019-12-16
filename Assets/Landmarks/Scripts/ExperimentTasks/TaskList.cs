@@ -23,28 +23,42 @@ using UnityEngine.UI;
 
 public class TaskList : ExperimentTask {
 
+    #region Variables
+
+    // CONTROL FLOW VARIABLES
     public string skipCondition = "";
 	public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
 	public GameObject[] objectsList;
-
 	public int repeat = 1;
-	public TextList overideRepeat;
+	public ObjectList overideRepeat;
+    public int repeatCount = 1;
 
+    [HideInInspector]
+    public ExperimentTask currentTask;
+
+    private int currentTaskIndex = 0;
+
+    // CATCH TRIAL VARIABLES
     public int catchTrialCount = 0;
     public List<GameObject> skipOnCatch; // which task-components are we skipping on catch trials
     public List<GameObject> onlyOnCatch; // which task-components are we adding on catch trials
     public bool noCatchOnFirstTrial = true;
-    [HideInInspector] public List<int> catchTrials; // list of catch trials
-    [HideInInspector] public bool catchFlag = false;
+
+    [HideInInspector]
+    public List<int> catchTrials; // list of catch trials
+    [HideInInspector]
+    public bool catchFlag = false;
+
+    // LOG DATA TRIAL-BY-TRIAL
+    public bool trialLogging;
+
+    #endregion
 
 
-    [HideInInspector] public int repeatCount = 1;
-
-	private int currentTaskIndex = 0;
-	[HideInInspector] public ExperimentTask currentTask;
+    #region Methods
 
 
-	public override void startTask() {
+    public override void startTask() {
         // Debug.Log(this.GetType().Name);
 
         TASK_START();
@@ -65,8 +79,7 @@ public class TaskList : ExperimentTask {
 
         if (overideRepeat)
         {
-            repeatCount = 1;
-            repeat = Int32.Parse(overideRepeat.currentString().Trim());
+            repeat = overideRepeat.objects.Count;
         }
 
         //----------------------------------------------------------------------
@@ -127,15 +140,27 @@ public class TaskList : ExperimentTask {
                 Debug.Log(item);
             }
         }
+
+
+        //----------------------------------------------------------------------
+        // Set up the trial log (if enabled)
+        //----------------------------------------------------------------------
+
+        if (trialLogging)
+        {
+            trialLog.Reset();
+            trialLog.active = true;
+            NewTrialLog();
+
+        }
+        else trialLog.active = false;
+
     }
 
-	public void startNextTask() {
-		Debug.Log("Starting " + tasks[currentTaskIndex].name);
 
-        if (currentTaskIndex == 0)
-        {
-            startNewRepeat();
-        }
+
+    public void startNextTask() {
+		Debug.Log("Starting " + tasks[currentTaskIndex].name);
 
 		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
@@ -207,11 +232,14 @@ public class TaskList : ExperimentTask {
         currentTask.endTask();
 		currentTaskIndex++;
 
-
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
+            if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
+            if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
+
             currentTaskIndex = 0;
+            startNewRepeat();
             repeatCount = 1;
             return true;
         }
@@ -220,8 +248,15 @@ public class TaskList : ExperimentTask {
             // If we've reached the last task but have cycles (repeats) left -- reset task index, increment repeatcount and run startNextTask()
             if (currentTaskIndex >= tasks.Length)
             {
+
+                if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
+                if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
+
                 repeatCount++; // increment the repeat count (i.e., update block/trial/repeat number)
                 currentTaskIndex = 0; // reset the task index so the next task that starts is the first in the list
+                startNewRepeat();
+
+                if (trialLogging) NewTrialLog();
             }
 
             // Start the next task in the list
@@ -232,6 +267,14 @@ public class TaskList : ExperimentTask {
 		return false;
 	}
 
+    public void NewTrialLog()
+    {
+        trialLog.AddData("task", parentTask.name);
+        trialLog.AddData("block", parentTask.repeatCount.ToString());
+        trialLog.AddData("trial", repeatCount.ToString());
+        trialLog.AddData("catchTrial", catchFlag.ToString());
+    }
+
 
 	public override void endTask() {
 		base.endTask();
@@ -239,6 +282,8 @@ public class TaskList : ExperimentTask {
 		if (overideRepeat) {
 				overideRepeat.incrementCurrent();
 		}
+
+        trialLog.Reset(); // Run the constructor to ensure the log gets cleared completely
 
 			//	if (pausedTasks) {
 				//currentTask = pausedTasks;
@@ -275,15 +320,6 @@ public class TaskList : ExperimentTask {
 		}
 		return string.Format(str, names);
 	}
+
+    #endregion
 }
-
-/*
-
-   var enumerator = d.GetEnumerator();
-    while (enumerator.MoveNext())
-    {
-	var pair = enumerator.Current;
-	b += pair.Value;
-    }
-
-    */

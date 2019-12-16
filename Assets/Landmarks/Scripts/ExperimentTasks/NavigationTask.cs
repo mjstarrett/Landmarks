@@ -40,7 +40,6 @@ public class NavigationTask : ExperimentTask
     private Vector3 scaledPlayerLastPosition;
     private float scaledPlayerDistance = 0;
     private float optimalDistance;
-    private string m_targetName;
 
     public override void startTask ()
 	{
@@ -62,7 +61,7 @@ public class NavigationTask : ExperimentTask
         hud.showEverything();
 		hud.showScore = showScoring;
 		current = destinations.currentObject();
-		Debug.Log ("Find " + destinations.currentObject().name);
+		// Debug.Log ("Find " + destinations.currentObject().name);
 
 
 		if (NavigationInstruction)
@@ -132,7 +131,6 @@ public class NavigationTask : ExperimentTask
             optimalDistance = Vector3.Distance(scaledAvatar.transform.position, current.transform.position);
         }
         else optimalDistance = Vector3.Distance(avatar.transform.position, current.transform.position);
-        m_targetName = current.name;
 
 
         //// MJS 2019 - Move HUD to top left corner
@@ -163,7 +161,7 @@ public class NavigationTask : ExperimentTask
 			}
 		}
 
-        //VR capabiity with showing target
+        //VR capability with showing target
         if (vrEnabled)
         {
             if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))))
@@ -259,16 +257,39 @@ public class NavigationTask : ExperimentTask
         else perfDistance = playerDistance;
 
 
-
-
         var parent = this.parentTask;
         var masterTask = parent;
         while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
         // This will log all final trial info in tab delimited format
+        var excessPath = perfDistance - optimalDistance;
+
+        var navTime = Time.time - startTime;
+
+        // set impossible values if the nav task was skipped
+        if (skip)
+        {
+            navTime = float.NaN;
+            perfDistance = float.NaN;
+            optimalDistance = float.NaN;
+            excessPath = float.NaN;
+        }
+        
+
         log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
         	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
-        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + m_targetName + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + (perfDistance - optimalDistance) + "\t" + (Time.time - startTime)
+        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + destinations.currentObject().name + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + excessPath + "\t" + navTime
             , 1);
+
+
+        // More concise LM_TrialLog logging
+        if (trialLog.active)
+        {
+            trialLog.AddData(transform.name + "_target", destinations.currentObject().name);
+            trialLog.AddData(transform.name + "_actualPath", perfDistance.ToString());
+            trialLog.AddData(transform.name + "_optimalPath", optimalDistance.ToString());
+            trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
+            trialLog.AddData(transform.name + "_duration", navTime.ToString());
+        }
     }
 
 	public override bool OnControllerColliderHit(GameObject hit)

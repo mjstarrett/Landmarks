@@ -41,8 +41,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1acfcde066a5e4f04808a2e2c8f4794e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6279364624764035789}
   - component: {fileID: 6242013941690299331}
   m_Layer: 0
-  m_Name: NavigationTask
+  m_Name: TASK_NavigationTask
   m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b72e5b9b995348e0a53c738244f788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -123,18 +123,20 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
-  skipCondition: 
+  skipCondition:
   tasks: []
   objectsList: []
   repeat: 1
   overideRepeat: {fileID: 0}
-  catchTrialCount: 0
-  toggleSkipOnCatch: []
-  noCatchOnFirstTrial: 1
-  catchTrials: 
-  catchFlag: 0
   repeatCount: 1
   currentTask: {fileID: 0}
+  catchTrialCount: 0
+  skipOnCatch: []
+  onlyOnCatch: []
+  noCatchOnFirstTrial: 1
+  catchTrials:
+  catchFlag: 0
+  trialLogging: 0
 --- !u!1 &6282823827259011963
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,8 +178,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f2b24b10a1d6446ea483dff9d3e43da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 5000
@@ -201,7 +203,7 @@ MonoBehaviour:
   instructionFont: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
   instructionSize: 24
   actionButtonOn: 0
-  customButtonText: 
+  customButtonText:
   restrictMovement: 1
   selfPaced: 0
 --- !u!1 &6283521768762849893
@@ -214,7 +216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6285781053553488291}
   - component: {fileID: 6242776888988061129}
-  - component: {fileID: 128724126685394496}
   m_Layer: 0
   m_Name: NavigationTrials
   m_TagString: Untagged
@@ -250,8 +251,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b72e5b9b995348e0a53c738244f788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -266,46 +267,23 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
-  skipCondition: 
+  skipCondition:
   tasks: []
   objectsList: []
   repeat: 8
+  overideRepeat: {fileID: 8475965484490080533}
   overideRepeat: {fileID: 0}
+  repeatCount: 1
+  currentTask: {fileID: 0}
   catchTrialCount: 0
-  toggleSkipOnCatch: []
+  skipOnCatch: []
+  onlyOnCatch: []
   noCatchOnFirstTrial: 1
-  catchTrials: 
+  catchTrials:
   catchFlag: 0
   repeatCount: 1
   currentTask: {fileID: 0}
---- !u!114 &128724126685394496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6283521768762849893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af936f9fea23c4b7a815af11f22de58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skip: 0
-  canIncrementLists: 1
-  interval: 0
-  interruptTasks: {fileID: 0}
-  interruptInterval: 0
-  repeatInterrupts: 9999
-  currentInterrupt: 0
-  pausedTasks: {fileID: 0}
-  parentTask: {fileID: 0}
-  firstPersonCamera: {fileID: 0}
-  overheadCamera: {fileID: 0}
-  debugButton: {fileID: 0}
-  actionButton: {fileID: 0}
-  vrEnabled: 0
-  blocks: {fileID: 0}
-  trials: {fileID: 0}
+  trialLogging: 1
 --- !u!1 &6283590481920638031
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,8 +325,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c7b965bfa25a4393bf115e4c0000ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -411,8 +389,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f2b24b10a1d6446ea483dff9d3e43da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 5000
@@ -436,7 +414,7 @@ MonoBehaviour:
   instructionFont: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
   instructionSize: 24
   actionButtonOn: 0
-  customButtonText: 
+  customButtonText:
   restrictMovement: 1
   selfPaced: 0
 --- !u!1 &6284228760012605179
@@ -480,8 +458,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f2b24b10a1d6446ea483dff9d3e43da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 0
@@ -505,7 +483,7 @@ MonoBehaviour:
   instructionFont: {fileID: 0}
   instructionSize: 12
   actionButtonOn: 1
-  customButtonText: 
+  customButtonText:
   restrictMovement: 1
   selfPaced: 1
 --- !u!1 &8475901024885170228
@@ -549,8 +527,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a143aa6c55cc4ba9b524fdac40b25f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 0
@@ -614,8 +592,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 201e9890d1a764c8ea736797b2ca29a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -635,5 +613,7 @@ MonoBehaviour:
   destinationListName: ListNavigationStarts
   destinations: {fileID: 0}
   swap: 0
+  randomRotation: 0
   scaledPlayer: 0
   ignoreY: 0
+  blockRepeat: 0

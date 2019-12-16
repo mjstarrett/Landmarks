@@ -41,8 +41,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c04b8f76af24526acc9bfad5806562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c7b965bfa25a4393bf115e4c0000ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f2b24b10a1d6446ea483dff9d3e43da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   instructionFont: {fileID: 0}
   instructionSize: 12
   actionButtonOn: 1
-  customButtonText: 
+  customButtonText:
   restrictMovement: 1
   selfPaced: 1
 --- !u!1 &3298979431995412513
@@ -233,8 +233,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a143aa6c55cc4ba9b524fdac40b25f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 0
@@ -298,8 +298,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1acfcde066a5e4f04808a2e2c8f4794e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 201e9890d1a764c8ea736797b2ca29a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -381,8 +381,10 @@ MonoBehaviour:
   destinationListName: ListLargePlayerStarts
   destinations: {fileID: 0}
   swap: 0
+  randomRotation: 0
   scaledPlayer: 0
   ignoreY: 0
+  blockRepeat: 0
 --- !u!1 &4501121492365727685
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,8 +426,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c04b8f76af24526acc9bfad5806562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -487,8 +489,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b72e5b9b995348e0a53c738244f788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -503,18 +505,21 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
-  skipCondition: 
+  skipCondition:
   tasks: []
   objectsList: []
   repeat: 8
+  overideRepeat: {fileID: 8003104560949172965}
   overideRepeat: {fileID: 0}
-  catchTrialCount: 0
-  toggleSkipOnCatch: []
-  noCatchOnFirstTrial: 1
-  catchTrials: 
-  catchFlag: 0
   repeatCount: 1
   currentTask: {fileID: 0}
+  catchTrialCount: 0
+  skipOnCatch: []
+  onlyOnCatch: []
+  noCatchOnFirstTrial: 1
+  catchTrials:
+  catchFlag: 0
+  trialLogging: 1
 --- !u!1 &6252240411586193869
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,8 +561,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f2b24b10a1d6446ea483dff9d3e43da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 5000
@@ -581,7 +586,7 @@ MonoBehaviour:
   instructionFont: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
   instructionSize: 24
   actionButtonOn: 0
-  customButtonText: 
+  customButtonText:
   restrictMovement: 1
   selfPaced: 0
 --- !u!1 &7081536350028486581
@@ -595,7 +600,7 @@ GameObject:
   - component: {fileID: 7560776588999321567}
   - component: {fileID: 6833851842772532862}
   m_Layer: 0
-  m_Name: ScaledNavigationTask
+  m_Name: TASK_ScaledNavigationTask
   m_TagString: Task
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -632,8 +637,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b72e5b9b995348e0a53c738244f788b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -648,18 +653,20 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
-  skipCondition: 
+  skipCondition:
   tasks: []
   objectsList: []
   repeat: 1
   overideRepeat: {fileID: 0}
-  catchTrialCount: 0
-  toggleSkipOnCatch: []
-  noCatchOnFirstTrial: 1
-  catchTrials: 
-  catchFlag: 0
   repeatCount: 1
   currentTask: {fileID: 0}
+  catchTrialCount: 0
+  skipOnCatch: []
+  onlyOnCatch: []
+  noCatchOnFirstTrial: 1
+  catchTrials:
+  catchFlag: 0
+  trialLogging: 0
 --- !u!1 &7595080909231628217
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,8 +708,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 201e9890d1a764c8ea736797b2ca29a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 1
   interval: 0
@@ -722,8 +729,10 @@ MonoBehaviour:
   destinationListName: ListSmallPlayerStarts
   destinations: {fileID: 0}
   swap: 0
+  randomRotation: 0
   scaledPlayer: 1
   ignoreY: 0
+  blockRepeat: 0
 --- !u!1 &8304476604835183565
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,8 +774,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f2b24b10a1d6446ea483dff9d3e43da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   skip: 0
   canIncrementLists: 0
   interval: 5000
@@ -790,6 +799,6 @@ MonoBehaviour:
   instructionFont: {fileID: 0}
   instructionSize: 12
   actionButtonOn: 0
-  customButtonText: 
+  customButtonText:
   restrictMovement: 1
   selfPaced: 0

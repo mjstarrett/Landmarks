@@ -60,7 +60,7 @@ public class MoveObjects : ExperimentTask {
         // Destroy any objects that don't get moved (say if we're only randomly using 8 stores out of a possible selection of 16)
         if (destroyExtraSources)
         {
-            Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
+            // Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
             for (int i = 0; i < sources.objects.Count; i++)
             {
                 if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
