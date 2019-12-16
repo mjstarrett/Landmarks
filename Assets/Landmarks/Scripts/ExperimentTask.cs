@@ -24,11 +24,11 @@ public class ExperimentTask : MonoBehaviour{
 
 	protected GameObject avatar;
 	protected HUD hud;
-
 	protected GameObject experiment;
 	protected dbLog log;
 	protected Experiment manager;
 	protected avatarLog avatarLog;
+    protected LM_TrialLog trialLog;
 
     protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
@@ -36,6 +36,9 @@ public class ExperimentTask : MonoBehaviour{
 	protected long task_start;
 
     protected SteamVR_Input_ActionSet_vrtk vrInput;
+
+    protected ArrayList trialHeader;
+    protected ArrayList trialData;
 	
 	public bool skip = false;
 	public bool canIncrementLists = true;
@@ -63,7 +66,6 @@ public class ExperimentTask : MonoBehaviour{
 
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
 
-
 	public void Awake () 
 	{
 		
@@ -82,16 +84,17 @@ public class ExperimentTask : MonoBehaviour{
 		manager = experiment.GetComponent("Experiment") as Experiment;
 		firstPersonCamera = manager.playerCamera;
 		overheadCamera = manager.overheadCamera;
-		log = manager.dblog;
+        log = manager.dblog;
         vrEnabled = manager.usingVR;
+        trialLog = manager.trialLogger;
+
 
         // set up vrInput if we're using VR
         if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
 
-
         // Grab the scaled nav task/player and log it - MJS 2019
-        //scaledAvatar = manager.scaledPlayer;
-        //scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
+        scaledAvatar = manager.scaledPlayer;
+        scaledAvatarLog = scaledAvatar.GetComponent("avatarLog") as avatarLog;
 
         debugButton = hud.debugButton.GetComponent<Button>();
         actionButton = hud.actionButton.GetComponent<Button>();
@@ -198,9 +201,7 @@ public class ExperimentTask : MonoBehaviour{
 		killCurrent = true;
 	}
 
-
-
-	public bool KillCurrent () 
+    public bool KillCurrent () 
 	{
 		killCurrent = false;
 		Debug.Log ("ForceKilling " + this.name);

@@ -44,6 +44,7 @@ public class Config : MonoBehaviour{
 
 	public string filename = "config.txt";
 
+    public string experiment = "default";
 	public string home = "default";
 	public string appPath = "default";
 	public string expPath = "default";
