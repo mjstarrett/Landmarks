@@ -134,7 +134,7 @@ public class TaskList : ExperimentTask {
                 Debug.Log(catchTrialCount);
                 catchTrials.Add(catchCandidates[i]);
             }
-            Debug.Log("HERE ARE OUR CATCH TRIALS (" + catchTrials.Count + ")");
+            Debug.LogWarning("HERE ARE OUR CATCH TRIALS (" + catchTrials.Count + ")");
             foreach (int item in catchTrials)
             {
                 Debug.Log(item);
@@ -168,36 +168,6 @@ public class TaskList : ExperimentTask {
 
         currentTask.startTask();
 	}
-
-    public void startNewRepeat()
-    {
-        // Mark if this repetition is a catch trial/block etc.
-        if (catchTrials.Contains(repeatCount)) catchFlag = true;
-        else catchFlag = false;
-
-
-        // Send Block info to our log file at the start of each new block
-        log.log("LM_Output\tTaskList\n" +
-                "TaskListName\tRepetitionNumber\tCatchFlag\n" +
-                this.name + repeatCount.ToString() + catchFlag.ToString()
-                , 1);
-
-
-        // Turn on/off items we are skipping/adding on catch trials
-        foreach (GameObject item in tasks)
-        {
-            // Set the proper skip bool for tasks that are skipped on catch trials
-            if (skipOnCatch.Contains(item))
-            {
-                item.GetComponent<ExperimentTask>().skip = catchFlag;
-            }
-            // Set the proper skip bool for tasks that are only on catch trials
-            if (onlyOnCatch.Contains(item))
-            {
-                item.GetComponent<ExperimentTask>().skip = !catchFlag;
-            }
-        }
-    }
 
 
 	public override bool updateTask () {
@@ -238,9 +208,12 @@ public class TaskList : ExperimentTask {
             if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
             if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
 
-            currentTaskIndex = 0;
+
+            // Clean up at the end in case this object is repeated in a nest
+            currentTaskIndex = 0; 
             startNewRepeat();
             repeatCount = 1;
+            catchFlag = false; // MJS - Added to prevent catch trials on first trial of next block 
             return true;
         }
         else
@@ -266,6 +239,38 @@ public class TaskList : ExperimentTask {
 
 		return false;
 	}
+
+
+    public void startNewRepeat()
+    {
+        // Mark if this repetition is a catch trial/block etc.
+        if (catchTrials.Contains(repeatCount)) catchFlag = true;
+        else catchFlag = false;
+
+
+        // Send Block info to our log file at the start of each new block
+        log.log("LM_Output\tTaskList\n" +
+                "TaskListName\tRepetitionNumber\tCatchFlag\n" +
+                this.name + repeatCount.ToString() + catchFlag.ToString()
+                , 1);
+
+
+        // Turn on/off items we are skipping/adding on catch trials
+        foreach (GameObject item in tasks)
+        {
+            // Set the proper skip bool for tasks that are skipped on catch trials
+            if (skipOnCatch.Contains(item))
+            {
+                item.GetComponent<ExperimentTask>().skip = catchFlag;
+            }
+            // Set the proper skip bool for tasks that are only on catch trials
+            if (onlyOnCatch.Contains(item))
+            {
+                item.GetComponent<ExperimentTask>().skip = !catchFlag;
+            }
+        }
+    }
+
 
     public void NewTrialLog()
     {
