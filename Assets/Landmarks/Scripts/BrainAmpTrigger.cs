@@ -6,22 +6,22 @@ using UnityEngine;
 
 public class BrainAmpTrigger : MonoBehaviour {
 
-    public int initialState = 0; // 0 in bits 0x00;
-    public int state;
+    public int initialState; // default state (Hex: 0xFF, Dec.: 0, 8-bit: 0000 0000)
     public int port = 3; // COM port number
-    public int nTriggers = 255; // how many unique combinations (e.g., 8 bits = 256 possibilities)
+    public int nTriggers = 255; // how many unique combinations (e.g., 8 bits = 0-255, 256 permutations)
 
-    private SerialPort triggerBox;
+    private SerialPort triggerBox; // container for our communication with triggerbox virtual port
     private float delay = 0.05f; // how long to wait before turning off squarewave
-    private Byte[] bit = { 0 };
+    private Byte[] bit = { 0 }; // container for our trigger configuration info in 8-bit format
 
     // Use this for initialization
     void Start () {
         //initiate trigger box
         initiatePort();
-        state = initialState;
     }
 
+    //// -----------------------------------------------------------------------
+    //// MJS - use for debugging to send random trigger values with keypress
     //private void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.Return))
@@ -29,7 +29,6 @@ public class BrainAmpTrigger : MonoBehaviour {
     //        Test(UnityEngine.Random.Range(0, nTriggers));
     //    }
     //}
-
     //public void Test(int trigger)
     //{
     //    Debug.Log(trigger);
@@ -37,6 +36,7 @@ public class BrainAmpTrigger : MonoBehaviour {
     //    Debug.Log(bit[0]);
     //    triggerBox.Write(bit, 0, 1);
     //}
+    //// -----------------------------------------------------------------------
 
     // Coroutine to define square-wave pulse (with pause so we don't turn off too early)
     public IEnumerator Mark(int trigger)
@@ -54,8 +54,6 @@ public class BrainAmpTrigger : MonoBehaviour {
         bit[0] = (byte)initialState;
         triggerBox.Write(bit, 0, 1);
         Debug.Log("port data written: " + triggerBox.ReadByte());
-
-        state++;
     }
 
 
@@ -80,7 +78,7 @@ public class BrainAmpTrigger : MonoBehaviour {
     public void closePort()
     {
         // Reset the port to its default state
-        bit[0] = 0xFF;
+        bit[0] = 0xFF; // HEX: 0xFF, DEC: 255, BIN: 1111 1111
         triggerBox.Write(bit, 0, 1);
         // Close the serial port
         triggerBox.Close();
