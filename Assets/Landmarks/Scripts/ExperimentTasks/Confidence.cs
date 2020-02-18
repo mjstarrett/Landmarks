@@ -13,7 +13,9 @@ using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Confidence : ExperimentTask {
-    
+
+    [Header("Task-specific Properties")]
+
     public TextAsset instruction;
     public TextAsset message;
     

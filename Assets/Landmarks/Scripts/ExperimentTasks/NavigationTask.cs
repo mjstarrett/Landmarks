@@ -14,8 +14,8 @@ public enum HideTargetOnStart
 
 public class NavigationTask : ExperimentTask
 {
-
-	public ObjectList destinations;
+    [Header("Task-specific Properties")]
+    public ObjectList destinations;
 	private GameObject current;
 
 	private int score = 0;
