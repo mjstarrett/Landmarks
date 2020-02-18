@@ -23,6 +23,9 @@ using System;
 
 public class ScalePlayerToEnvironment : ExperimentTask
 {
+
+    [Header("Task-specific Properties")]
+
     private GameObject scaledEnvironment;
     public bool autoscale = true;
     public float scaleRatio = 1;

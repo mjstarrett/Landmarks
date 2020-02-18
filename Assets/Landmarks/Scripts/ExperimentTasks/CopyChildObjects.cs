@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CopyChildObjects : ExperimentTask {
 
-	public ObjectList sourcesParent;
+    [Header("Task-specific Properties")]
+
+    public ObjectList sourcesParent;
 	public ObjectList destinationsParent;
 
 	public bool setOriginalInactive = true;
