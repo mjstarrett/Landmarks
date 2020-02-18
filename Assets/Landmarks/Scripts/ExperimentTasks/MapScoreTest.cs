@@ -6,6 +6,8 @@ using TMPro;
 
 public class MapScoreTest : ExperimentTask {
 
+    [Header("Task-specific Properties")]
+
     public GameObject copyObjects;
 
 	private GameObject targetObjects; // should be the game object called TargetObjects under Environment game object

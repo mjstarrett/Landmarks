@@ -21,13 +21,12 @@ using System;
 using UnityEngine.UI;
 
 
-public class TaskList : ExperimentTask {
+public class TaskList : ExperimentTask
+{
+    [Header("Task-specific Properties")]
 
-    #region Variables
-
-    // CONTROL FLOW VARIABLES
     public string skipCondition = "";
-	public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
+    public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
 	public GameObject[] objectsList;
 	public int repeat = 1;
 	public ObjectList overideRepeat;
@@ -51,12 +50,6 @@ public class TaskList : ExperimentTask {
 
     // LOG DATA TRIAL-BY-TRIAL
     public bool trialLogging;
-
-    #endregion
-
-
-    #region Methods
-
 
     public override void startTask() {
         // Debug.Log(this.GetType().Name);
@@ -326,5 +319,4 @@ public class TaskList : ExperimentTask {
 		return string.Format(str, names);
 	}
 
-    #endregion
 }
