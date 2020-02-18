@@ -2,9 +2,10 @@
 using System.Collections;
 using System.IO.Ports;
 using UnityEngine;
+using System.Collections.Generic;
 
 
-public class BrainAmpTrigger : MonoBehaviour {
+public class BrainAmpManager : MonoBehaviour {
 
     public int initialState; // default state (Hex: 0xFF, Dec.: 0, 8-bit: 0000 0000)
     public int port = 3; // COM port number
@@ -13,6 +14,7 @@ public class BrainAmpTrigger : MonoBehaviour {
     private SerialPort triggerBox; // container for our communication with triggerbox virtual port
     private float delay = 0.05f; // how long to wait before turning off squarewave
     private Byte[] bit = { 0 }; // container for our trigger configuration info in 8-bit format
+    public Dictionary<string, int> trialData = new Dictionary<string, int>(); // Store trigger name/number pairs
 
     // Use this for initialization
     void Start () {
@@ -39,9 +41,9 @@ public class BrainAmpTrigger : MonoBehaviour {
     //// -----------------------------------------------------------------------
 
     // Coroutine to define square-wave pulse (with pause so we don't turn off too early)
-    public IEnumerator Mark(int trigger)
+    public IEnumerator MarkByNumber(int trigger)
     {
-        if (trigger < nTriggers)
+        if (trigger > nTriggers)
         {
             Debug.LogWarning("too many unique triggers");
         }
@@ -55,7 +57,6 @@ public class BrainAmpTrigger : MonoBehaviour {
         triggerBox.Write(bit, 0, 1);
         Debug.Log("port data written: " + triggerBox.ReadByte());
     }
-
 
     public void initiatePort()
     {

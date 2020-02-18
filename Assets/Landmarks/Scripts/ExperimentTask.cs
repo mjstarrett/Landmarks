@@ -19,6 +19,7 @@ using System.Collections;
 using System.Reflection;
 using UnityEngine.UI;
 using Valve.VR;
+using UnityEditor;
 
 public class ExperimentTask : MonoBehaviour{
 
@@ -60,13 +61,18 @@ public class ExperimentTask : MonoBehaviour{
 
     [HideInInspector] public bool vrEnabled; // use hidden variable to communicate if we're using VR based on input interface
 
-	public static bool killCurrent = false;
-
+    public static bool killCurrent = false;
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
-
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
 
-	public void Awake () 
+
+    [Header("EEG Settings (if available)")]
+    public string label; // name prefix for unique triggers
+    public bool onStart; // mark a unique trigger at TASK_START
+    public bool onEnd; // mark a unique trigger at TASK_END
+
+
+    public void Awake () 
 	{
 		
 	}
