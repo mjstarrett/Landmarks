@@ -67,9 +67,9 @@ public class ExperimentTask : MonoBehaviour{
 
 
     [Header("EEG Settings (if available)")]
-    public string label; // name prefix for unique triggers
-    public bool onStart; // mark a unique trigger at TASK_START
-    public bool onEnd; // mark a unique trigger at TASK_END
+    public string triggerLabel; // name prefix for unique triggers
+    public bool triggerOnStart; // mark a unique trigger at TASK_START
+    public bool triggerOnEnd; // mark a unique trigger at TASK_END
 
 
     public void Awake () 
@@ -116,7 +116,8 @@ public class ExperimentTask : MonoBehaviour{
 		hud.ForceShowMessage ();
 		//currentInterrupt = 0;        Not here since after an interuupt we will restart
 		
-		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );		
+		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );	
+        	
 	}
 	
 	public virtual void TASK_START () {
