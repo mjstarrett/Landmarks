@@ -47,6 +47,7 @@ public class NavigationTask : ExperimentTask
 		avatarLog.navLog = true;
         if (isScaled) scaledAvatarLog.navLog = true;
     }
+
 	public override void TASK_START()
 	{
 		if (!manager) Start();

@@ -14,12 +14,14 @@ public class BrainAmpManager : MonoBehaviour {
     private SerialPort triggerBox; // container for our communication with triggerbox virtual port
     private float delay = 0.05f; // how long to wait before turning off squarewave
     private Byte[] bit = { 0 }; // container for our trigger configuration info in 8-bit format
-    public Dictionary<string, int> trialData = new Dictionary<string, int>(); // Store trigger name/number pairs
+    public Dictionary<string, int> triggers = new Dictionary<string, int>(); // Store trigger name/number pairs
+    private int nextTriggerValue;
 
     // Use this for initialization
     void Start () {
         //initiate trigger box
         initiatePort();
+        nextTriggerValue = initialState++;
     }
 
     //// -----------------------------------------------------------------------
@@ -41,22 +43,35 @@ public class BrainAmpManager : MonoBehaviour {
     //// -----------------------------------------------------------------------
 
     // Coroutine to define square-wave pulse (with pause so we don't turn off too early)
-    public IEnumerator MarkByNumber(int trigger)
+    public IEnumerator Mark(string triggerName)
     {
-        if (trigger > nTriggers)
+        // if the trigger doesn't exist, add it
+        if (!triggers.ContainsKey(triggerName))
+        {
+            triggers.Add(triggerName, nextTriggerValue);
+            nextTriggerValue++;
+        }
+
+        var triggerNumber = triggers[triggerName];
+
+        // Warn if this trigger is outside the feasible bit range
+        if (triggers[triggerName] > nTriggers)
         {
             Debug.LogWarning("too many unique triggers");
         }
-        bit[0] = (byte)trigger; // set the trigger number 
+
+
+        // Set the trigger value and write
+        bit[0] = (byte)triggerNumber; 
         triggerBox.Write(bit, 0, 1);
-        // suspend execution 
         yield return new WaitForSeconds(delay);
 
-        //reset to the initial state
+        //reset Trigger to the initial state
         bit[0] = (byte)initialState;
         triggerBox.Write(bit, 0, 1);
         Debug.Log("port data written: " + triggerBox.ReadByte());
     }
+
 
     public void initiatePort()
     {
@@ -74,7 +89,6 @@ public class BrainAmpManager : MonoBehaviour {
         triggerBox.Write(bit, 0, 1);
         Debug.Log("port data written: " + triggerBox.ReadByte());
     }
-
 
     public void closePort()
     {
