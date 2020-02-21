@@ -83,7 +83,7 @@ public class ExperimentTask : MonoBehaviour{
 
 	}
 	
-	public virtual void startTask() {	
+	public virtual void startTask() {
 		avatar = GameObject.FindWithTag ("Player");
 		avatarLog = avatar.GetComponent("avatarLog") as avatarLog; //jdstokes 2015
 		hud = avatar.GetComponent("HUD") as HUD;
@@ -126,7 +126,7 @@ public class ExperimentTask : MonoBehaviour{
                 triggerLabel = transform.name + "_start";
             }
 
-            eegManager.Mark(triggerLabel);
+            eegManager.EEGTrigger(triggerLabel);
         }
 	}
 	
@@ -183,7 +183,7 @@ public class ExperimentTask : MonoBehaviour{
                 triggerLabel = transform.name + "_end";
             }
 
-            eegManager.Mark(triggerLabel);
+            eegManager.EEGTrigger(triggerLabel);
         }
 
         long duration = Experiment.Now() - task_start;
