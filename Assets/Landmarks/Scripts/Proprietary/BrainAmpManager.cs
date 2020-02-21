@@ -42,8 +42,7 @@ public class BrainAmpManager : MonoBehaviour {
     //}
     //// -----------------------------------------------------------------------
 
-    // Coroutine to define square-wave pulse (with pause so we don't turn off too early)
-    public IEnumerator Mark(string triggerName)
+    public void EEGTrigger(string triggerName)
     {
         // if the trigger doesn't exist, add it
         if (!triggers.ContainsKey(triggerName))
@@ -51,16 +50,23 @@ public class BrainAmpManager : MonoBehaviour {
             triggers.Add(triggerName, nextTriggerValue);
             nextTriggerValue++;
         }
+        Debug.Log(triggers[triggerName].ToString());
 
-        var triggerNumber = triggers[triggerName];
+        Mark(triggers[triggerName]);
+    }
+
+    // Coroutine to define square-wave pulse (with pause so we don't turn off too early)
+    public IEnumerator Mark(int triggerNumber)
+    {
+        
 
         // Warn if this trigger is outside the feasible bit range
-        if (triggers[triggerName] > nTriggers)
+        if (triggerNumber > nTriggers)
         {
             Debug.LogWarning("too many unique triggers");
         }
 
-        Debug.Log(triggers[triggerName]);
+        Debug.Log(triggerNumber);
 
         // Set the trigger value and write
         bit[0] = (byte)triggerNumber; 
