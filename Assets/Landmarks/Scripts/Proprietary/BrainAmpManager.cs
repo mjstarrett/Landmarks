@@ -60,6 +60,7 @@ public class BrainAmpManager : MonoBehaviour {
             Debug.LogWarning("too many unique triggers");
         }
 
+        Debug.Log(triggers[triggerName]);
 
         // Set the trigger value and write
         bit[0] = (byte)triggerNumber; 

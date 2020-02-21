@@ -70,11 +70,12 @@ public class ExperimentTask : MonoBehaviour{
     public string triggerLabel; // name prefix for unique triggers
     public bool triggerOnStart; // mark a unique trigger at TASK_START
     public bool triggerOnEnd; // mark a unique trigger at TASK_END
+    private BrainAmpManager eegManager;
 
 
     public void Awake () 
 	{
-		
+        eegManager = FindObjectOfType<BrainAmpManager>();
 	}
 
 	public void Start () 
@@ -116,8 +117,17 @@ public class ExperimentTask : MonoBehaviour{
 		hud.ForceShowMessage ();
 		//currentInterrupt = 0;        Not here since after an interuupt we will restart
 		
-		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );	
-        	
+		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );
+
+        if (eegManager != null & triggerOnStart)
+        {
+            if (triggerLabel == "")
+            {
+                triggerLabel = transform.name + "_start";
+            }
+
+            eegManager.Mark(triggerLabel);
+        }
 	}
 	
 	public virtual void TASK_START () {
@@ -161,52 +171,100 @@ public class ExperimentTask : MonoBehaviour{
 		
 		return false;
 	}
-	public virtual void endTask() {
-		long duration = Experiment.Now() - task_start;
+
+
+	public virtual void endTask()
+    {
+
+        if (eegManager != null & triggerOnEnd)
+        {
+            if (triggerLabel == "")
+            {
+                triggerLabel = transform.name + "_end";
+            }
+
+            eegManager.Mark(triggerLabel);
+        }
+
+        long duration = Experiment.Now() - task_start;
 		currentInterrupt = 0;    //put here because of interrupts
 		log.log("TASK_END\t" + name + "\t" + this.GetType().Name + "\t" + duration,1 );
         hud.showNothing();
 	}
-	public virtual void TASK_END () {
-	}
-	public virtual void TASK_PAUSE () {
+
+
+	public virtual void TASK_END ()
+    {
+
 	}
 
-	public virtual bool OnControllerColliderHit(GameObject hit)  {
+
+	public virtual void TASK_PAUSE ()
+    {
+
+	}
+
+
+	public virtual bool OnControllerColliderHit(GameObject hit)
+    {
 		return false;
 	}
-	
-	public virtual void TASK_ROTATE (GameObject go, Vector3 hpr) {
-	}	
-	public virtual void TASK_POSITION (GameObject go, Vector3 hpr) {
-	}	
-	public virtual void TASK_SCALE (GameObject go, Vector3 scale) {
-	}		
-	public virtual void TASK_ADD(GameObject go, string txt) {
+
+
+	public virtual void TASK_ROTATE (GameObject go, Vector3 hpr)
+    {
+
 	}
+
+
+	public virtual void TASK_POSITION (GameObject go, Vector3 hpr)
+    {
+
+	}
+
+
+	public virtual void TASK_SCALE (GameObject go, Vector3 scale)
+    {
+
+	}
+
+
+	public virtual void TASK_ADD(GameObject go, string txt)
+    {
+
+	}
+
 	
-	public virtual string currentString() {
+	public virtual string currentString()
+    {
 		return "";
 	}
-	
-	public virtual void incrementCurrent() {
+
+
+	public virtual void incrementCurrent()
+    {
+
 	}
+
 
 	// http://www.haslo.ch/blog/setproperty-and-getproperty-with-c-reflection/
 	private object getProperty(object containingObject, string propertyName)
 	{
 	    return containingObject.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, containingObject, null);
 	}
-	 
+
+
 	private void setProperty(object containingObject, string propertyName, object newValue)
 	{
 	    containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
 	}
 
+
 	public void onDebugClick ()
 	{
 		killCurrent = true;
 	}
+
 
     public bool KillCurrent () 
 	{
@@ -215,11 +273,13 @@ public class ExperimentTask : MonoBehaviour{
 		return true;
 	}
 
+
     // Reset hud position to the forward direction (for world space Canvas UI)
     public void ResetHud()
     {
         hud.hudRig.transform.localEulerAngles = avatar.GetComponent<avatarLog>().player.transform.localEulerAngles;
     }
+
 
     // Move the hud, but don't move it again for a time period to avoid jitter
     public IEnumerator HudJitterReduction()
@@ -228,6 +288,7 @@ public class ExperimentTask : MonoBehaviour{
         yield return new WaitForSeconds(0.5f);
         jitterGuardOn = false;
     }
+
 
     //recursive calls
     public void MoveToLayer(Transform root, int layer)
