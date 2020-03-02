@@ -121,14 +121,17 @@ public class ExperimentTask : MonoBehaviour{
 
         if (eegManager != null & triggerOnStart)
         {
-            if (triggerLabel == "")
+            var startLabel = triggerLabel;
+            if (startLabel == "")
             {
-                triggerLabel = transform.name + "_start";
+                startLabel = transform.name + "_start";
             }
+            else startLabel += "_start";
 
-            eegManager.EEGTrigger(triggerLabel);
+            eegManager.EEGTrigger(startLabel);
+            log.log("EEG_TRIGGER\tName\t" + startLabel + "\tValue\t" + eegManager.triggers[startLabel].ToString(), 1);
         }
-	}
+    }
 	
 	public virtual void TASK_START () {
 	}	
@@ -178,12 +181,15 @@ public class ExperimentTask : MonoBehaviour{
 
         if (eegManager != null & triggerOnEnd)
         {
-            if (triggerLabel == "")
+            var endLabel = triggerLabel;
+            if (endLabel == "")
             {
-                triggerLabel = transform.name + "_end";
+                endLabel = transform.name + "_end";
             }
+            else endLabel += "_end";
 
-            eegManager.EEGTrigger(triggerLabel);
+            eegManager.EEGTrigger(endLabel);
+            log.log("EEG_TRIGGER\tName\t" + endLabel + "\tValue\t" + eegManager.triggers[endLabel].ToString(), 1);
         }
 
         long duration = Experiment.Now() - task_start;
