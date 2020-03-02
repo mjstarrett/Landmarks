@@ -12,16 +12,16 @@ public class BrainAmpManager : MonoBehaviour {
     public int nTriggers = 255; // how many unique combinations (e.g., 8 bits = 0-255, 256 permutations)
 
     private SerialPort triggerBox; // container for our communication with triggerbox virtual port
-    private float delay = 0.05f; // how long to wait before turning off squarewave
+    private float delay = 5f; // how long to wait before turning off squarewave
     private Byte[] bit = { 0 }; // container for our trigger configuration info in 8-bit format
     public Dictionary<string, int> triggers = new Dictionary<string, int>(); // Store trigger name/number pairs
     private int nextTriggerValue;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         //initiate trigger box
         initiatePort();
-        nextTriggerValue = initialState++;
+        nextTriggerValue = initialState+1;
     }
 
     //// -----------------------------------------------------------------------
@@ -33,13 +33,7 @@ public class BrainAmpManager : MonoBehaviour {
     //        Test(UnityEngine.Random.Range(0, nTriggers));
     //    }
     //}
-    //public void Test(int trigger)
-    //{
-    //    Debug.Log(trigger);
-    //    bit[0] = (byte)trigger; // set the trigger number 
-    //    Debug.Log(bit[0]);
-    //    triggerBox.Write(bit, 0, 1);
-    //}
+
     //// -----------------------------------------------------------------------
 
     public void EEGTrigger(string triggerName)
@@ -50,34 +44,41 @@ public class BrainAmpManager : MonoBehaviour {
             triggers.Add(triggerName, nextTriggerValue);
             nextTriggerValue++;
         }
-        Debug.Log(triggers[triggerName].ToString());
+        Debug.Log("EEG trigger\t" + triggerName + ": " + triggers[triggerName].ToString());
 
-        Mark(triggers[triggerName]);
+        var triggerNumber = triggers[triggerName];
+        Test(triggerNumber);
     }
 
-    // Coroutine to define square-wave pulse (with pause so we don't turn off too early)
-    public IEnumerator Mark(int triggerNumber)
+    public void Test(int trigger)
     {
-        
-
-        // Warn if this trigger is outside the feasible bit range
-        if (triggerNumber > nTriggers)
-        {
-            Debug.LogWarning("too many unique triggers");
-        }
-
-        Debug.Log(triggerNumber);
-
-        // Set the trigger value and write
-        bit[0] = (byte)triggerNumber; 
+        Debug.Log(trigger);
+        bit[0] = (byte)trigger; // set the trigger number 
+        Debug.Log(bit[0]);
         triggerBox.Write(bit, 0, 1);
-        yield return new WaitForSeconds(delay);
-
-        //reset Trigger to the initial state
-        bit[0] = (byte)initialState;
-        triggerBox.Write(bit, 0, 1);
-        Debug.Log("port data written: " + triggerBox.ReadByte());
     }
+
+    //// Coroutine to define square-wave pulse (with pause so we don't turn off too early)
+    //public IEnumerator Mark(int triggerNumber)
+    //{
+    //    // Warn if this trigger is outside the feasible bit range
+    //    if (triggerNumber > nTriggers)
+    //    {
+    //        Debug.LogWarning("too many unique triggers");
+    //    }
+
+    //    Debug.Log("Inside Marking method for EEG!");
+
+    //    // Set the trigger value and write
+    //    bit[0] = (byte)triggerNumber; 
+    //    triggerBox.Write(bit, 0, 1);
+    //    yield return new WaitForSeconds(delay);
+
+    //    //reset Trigger to the initial state
+    //    bit[0] = 0x00;
+    //    triggerBox.Write(bit, 0, 1);
+    //    Debug.Log("Reset trigger state" + triggerBox.ReadByte());
+    //}
 
 
     public void initiatePort()
