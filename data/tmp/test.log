@@ -1,537 +1,648 @@
-63717882009278	EXPERIMENT:		SUBJECT:	default	START_SCENE	default	START_CONDITION:	default	UI:	KeyboardMouse
-63717882009323	TASK_START	LM_Timeline	TaskList
-63717882009324	TASK_START	InitializeExperiment	TaskList
-63717882009325	TASK_START	PlaceTargets	TaskList
-63717882009326	TASK_START	CheckForUsedTargets	LM_CompareLists
-63717882009505	TASK_END	CheckForUsedTargets	LM_CompareLists	179
-63717882009507	TASK_START	ListTargetLocations	ObjectList
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target04	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target05	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target06	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target07	null
-63717882009507	TASK_ADD	ListTargetLocations	ObjectList	Target08	null
-63717882009548	TASK_END	ListTargetLocations	ObjectList	41
-63717882009550	TASK_START	ListTargets	ObjectList
-63717882009550	TASK_ADD	ListTargets	ObjectList	Ice Cream Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Bakery	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Hair Dresser	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Music Store	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Repair Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Grocery	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Bike Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Barber Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Pharmacy	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Pet Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Post Office	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Clothing Store	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Computer Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Coffee Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Toy Shop	null
-63717882009550	TASK_ADD	ListTargets	ObjectList	Camera Store	null
-63717882010310	TASK_END	ListTargets	ObjectList	760
-63717882010313	TASK_START	PopulateTargets	MoveObjects
-63717882010314	TARGET INFORMATION ----------------------------------------
-63717882010314	Target01: 	Ice Cream Shop	Position: 	5.95	0.085	116.45	Rotation: 	270	270	0
-63717882010314	Target02: 	Bakery	Position: 	5.95	0.085	14.45	Rotation: 	270	270	0
-63717882010314	Target03: 	Hair Dresser	Position: 	85.935	0.085	14.45	Rotation: 	270	270	0
-63717882010314	Target04: 	Music Store	Position: 	85.935	0.085	74.45998	Rotation: 	270	270	0
-63717882010314	Target05: 	Repair Shop	Position: 	36.55	0.085	74.45998	Rotation: 	270	180	0
-63717882010314	Target06: 	Grocery	Position: 	36.55	0.085	116.45	Rotation: 	270	180	0
-63717882010314	Target07: 	Bike Shop	Position: 	76.49999	0.085	106.25	Rotation: 	270	0	0
-63717882010314	Target08: 	Barber Shop	Position: 	76.49999	0.085	37.4	Rotation: 	270	90	0
-63717882010314	-----------------------------------------------------------/
-63717882010353	TASK_END	PopulateTargets	MoveObjects	40
-63717882010354	TASK_START	UpdateUsedTargets	LM_CompareLists
-63717882010363	TASK_END	UpdateUsedTargets	LM_CompareLists	9
-63717882010364	LM_Output	TaskList
+63718754255487	EXPERIMENT:		SUBJECT:	default	START_SCENE	default	START_CONDITION:	default	UI:	KeyboardMouse
+63718754255534	TASK_START	LM_Timeline	TaskList
+63718754255537	EEG_TRIGGER	Name	EXP_start	Value	1
+63718754255538	TASK_START	InitializeExperiment	TaskList
+63718754255539	TASK_START	PlaceTargets	TaskList
+63718754255540	TASK_START	CheckForUsedTargets	LM_CompareLists
+63718754255559	TASK_END	CheckForUsedTargets	LM_CompareLists	19
+63718754255561	TASK_START	ListTargetLocations	ObjectList
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target04	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target05	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target06	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target07	null
+63718754255561	TASK_ADD	ListTargetLocations	ObjectList	Target08	null
+63718754255616	TASK_END	ListTargetLocations	ObjectList	55
+63718754255617	TASK_START	ListTargets	ObjectList
+63718754255617	TASK_ADD	ListTargets	ObjectList	Music Store	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Post Office	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Bakery	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Barber Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Clothing Store	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Repair Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Pharmacy	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Computer Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Hair Dresser	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Pet Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Grocery	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Ice Cream Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Bike Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Coffee Shop	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Camera Store	null
+63718754255617	TASK_ADD	ListTargets	ObjectList	Toy Shop	null
+63718754256411	TASK_END	ListTargets	ObjectList	794
+63718754256414	TASK_START	PopulateTargets	MoveObjects
+63718754256414	TARGET INFORMATION ----------------------------------------
+63718754256415	Target01: 	Music Store	Position: 	86.7	0.08500671	138.55	Rotation: 	270	0	0
+63718754256415	Target02: 	Post Office	Position: 	86.7	0.08500671	55.25	Rotation: 	270	270	0
+63718754256415	Target03: 	Bakery	Position: 	36.54999	0.08500671	55.25	Rotation: 	270	90	0
+63718754256415	Target04: 	Barber Shop	Position: 	36.54999	0.08500671	86.7	Rotation: 	270	270	0
+63718754256415	Target05: 	Clothing Store	Position: 	76.49999	0.08500671	86.7	Rotation: 	270	180	0
+63718754256415	Target06: 	Repair Shop	Position: 	76.49999	0.08500671	16.15	Rotation: 	270	90	0
+63718754256415	Target07: 	Pharmacy	Position: 	14.28003	0.08500671	16.15	Rotation: 	270	90	0
+63718754256415	Target08: 	Computer Shop	Position: 	14.28003	0.08500671	137.445	Rotation: 	270	0	0
+63718754256415	-----------------------------------------------------------/
+63718754256458	TASK_END	PopulateTargets	MoveObjects	44
+63718754256459	TASK_START	UpdateUsedTargets	LM_CompareLists
+63718754256466	TASK_END	UpdateUsedTargets	LM_CompareLists	7
+63718754256466	LM_Output	TaskList
 TaskListName	RepetitionNumber	CatchFlag
 PlaceTargets1False
-63717882010364	TASK_END	PlaceTargets	TaskList	1039
-63717882010365	TASK_START	ListNavigationStarts	ObjectList
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation03	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation07	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation02	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation08	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation06	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation04	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation05	null
-63717882010365	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
-63717882010370	TASK_END	ListNavigationStarts	ObjectList	5
-63717882010371	TASK_START	ListLargePlayerStarts	ObjectList
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
-63717882010371	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
-63717882010380	TASK_END	ListLargePlayerStarts	ObjectList	9
-63717882010381	TASK_START	ListSmallPlayerStarts	ObjectList
-63717882010381	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation07	null
-63717882010381	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation01	null
-63717882010382	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation08	null
-63717882010382	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation06	null
-63717882010382	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation02	null
-63717882010382	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation05	null
-63717882010382	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation03	null
-63717882010382	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation04	null
-63717882010390	TASK_END	ListSmallPlayerStarts	ObjectList	9
-63717882010390	LM_Output	TaskList
+63718754256466	TASK_END	PlaceTargets	TaskList	927
+63718754256468	TASK_START	ListNavigationStarts	ObjectList
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation08	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation04	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation02	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation07	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation06	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation05	null
+63718754256468	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation03	null
+63718754256472	TASK_END	ListNavigationStarts	ObjectList	4
+63718754256473	TASK_START	ListLargePlayerStarts	ObjectList
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
+63718754256473	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
+63718754256483	TASK_END	ListLargePlayerStarts	ObjectList	10
+63718754256485	TASK_START	ListSmallPlayerStarts	ObjectList
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation08	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation04	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation05	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation07	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation02	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation01	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation03	null
+63718754256485	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation06	null
+63718754256493	TASK_END	ListSmallPlayerStarts	ObjectList	8
+63718754256493	LM_Output	TaskList
 TaskListName	RepetitionNumber	CatchFlag
 InitializeExperiment1False
-63717882010390	TASK_END	InitializeExperiment	TaskList	1066
-63717882010392	TASK_START	BeginMessage	InstructionsTask
-63717882012931	INPUT_EVENT    PlayerPressedActionButton    1
-63717882012931	TASK_END	BeginMessage	InstructionsTask	2539
-63717882012932	TASK_START	Tasks	TaskList
-63717882012933	TASK_START	Practice	TaskList
-63717882012940	TASK_END	Practice	TaskList	7
-63717882012941	TASK_START	Standard	TaskList
-63717882012942	TASK_START	NavigationTask	TaskList
-63717882012944	TASK_START	MovePlayerToSpawn	MoveSpawn
-63717882012944	TASK_POSITION	KeyboardMouseController	MoveSpawn	(10.5, 0.0, 78.9)
-63717882012944	TASK_ROTATE	KeyboardMouseController	MoveSpawn	(0.0, 355.7, 0.0)
-63717882012952	TASK_END	MovePlayerToSpawn	MoveSpawn	8
-63717882012953	TASK_START	ListNavigationTargets	ObjectList
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Bike Shop	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Grocery	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Repair Shop	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Hair Dresser	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Music Store	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Bakery	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Barber Shop	null
-63717882012953	TASK_ADD	ListNavigationTargets	ObjectList	Ice Cream Shop	null
-63717882012970	TASK_END	ListNavigationTargets	ObjectList	17
-63717882012971	TASK_START	NavigationInstructions	InstructionsTask
-63717882013364	INPUT_EVENT    PlayerPressedActionButton    1
-63717882013364	TASK_END	NavigationInstructions	InstructionsTask	393
-63717882013366	TASK_START	NavigationTrials	TaskList
-63717882013367	TASK_START	CueTarget	InstructionsTask
-63717882018367	TASK_END	CueTarget	InstructionsTask	5000
-63717882018369	TASK_START	Navigate	NavigationTask
-63717882018381	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018400	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018412	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018436	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018456	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018478	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018501	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018512	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018535	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018557	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	309.9	0	Camera   (xyz): 	336.2	309.9	0	
-63717882018581	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310	0	Camera   (xyz): 	336.2	310	0	
-63717882018604	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.1	0	Camera   (xyz): 	336.3	310.1	0	
-63717882018613	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.1	0	Camera   (xyz): 	336.3	310.1	0	
-63717882018635	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.1	0	Camera   (xyz): 	336.3	310.1	0	
-63717882018657	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018679	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018702	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018713	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018735	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018757	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018780	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018802	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018813	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018836	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018858	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018880	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018892	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018914	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018936	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.3	0	Camera   (xyz): 	336.4	310.3	0	
-63717882018959	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.4	0	Camera   (xyz): 	336.4	310.4	0	
-63717882018982	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.4	0	Camera   (xyz): 	336.4	310.4	0	
-63717882018993	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.4	0	Camera   (xyz): 	336.4	310.4	0	
-63717882019016	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	310.4	0	Camera   (xyz): 	336.4	310.4	0	
-63717882019041	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	311.3	0	Camera   (xyz): 	336.2	311.3	-9.331274E-07	
-63717882019063	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	313.1	0	Camera   (xyz): 	334.9	313.1	-9.42804E-07	
-63717882019074	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	313.6	0	Camera   (xyz): 	334.4	313.6	0	
-63717882019096	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	314.8	0	Camera   (xyz): 	332.9999	314.8	9.58213E-07	
-63717882019119	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.7	0	Camera   (xyz): 	331.0999	315.7	0	
-63717882019140	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.2	0	Camera   (xyz): 	329.9	316.2	0	
-63717882019163	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.4	0	Camera   (xyz): 	329.4	316.4	0	
-63717882019174	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.2	316.5	0	
-63717882019196	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019216	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019239	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019261	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019283	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019294	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019316	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019339	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019364	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019373	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019397	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019419	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019441	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019462	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019476	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019497	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019518	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019541	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019563	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019574	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019596	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019619	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019641	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019653	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019675	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019697	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019719	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019742	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019753	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019775	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019798	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019820	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019842	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019853	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019876	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019898	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019920	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019943	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019954	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019977	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882019999	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.5	0	Camera   (xyz): 	329.0999	316.5	-9.949993E-07	
-63717882020023	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.2	0	Camera   (xyz): 	329.8	316.2	0	
-63717882020034	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	330.4	316	-9.819194E-07	
-63717882020057	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.5	0	Camera   (xyz): 	332.3	315.5	0	
-63717882020079	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.3	0	Camera   (xyz): 	334.2	315.3	0	
-63717882020101	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.2	0	Camera   (xyz): 	335.0999	315.2	0	
-63717882020113	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.2	0	Camera   (xyz): 	335.3	315.2	0	
-63717882020132	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.2	0	Camera   (xyz): 	335.4	315.2	-9.390014E-07	
-63717882020157	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315	0	Camera   (xyz): 	335.7	315	0	
-63717882020180	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	314.7	0	Camera   (xyz): 	336.7	314.7	0	
-63717882020202	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	314.7	0	Camera   (xyz): 	338.2	314.7	-9.195335E-07	
-63717882020213	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	314.7	0	Camera   (xyz): 	340.3	314.7	0	
-63717882020236	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	314.8	0	Camera   (xyz): 	342.3	314.8	0	
-63717882020259	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.2	0	Camera   (xyz): 	345.3	315.2	-4.413328E-07	
-63717882020279	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.6	0	Camera   (xyz): 	347.4	315.6	-8.74843E-07	
-63717882020302	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.7	0	Camera   (xyz): 	347.9	315.7	4.365864E-07	
-63717882020322	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.7	0	Camera   (xyz): 	347.9	315.7	4.365864E-07	
-63717882020335	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.7	0	Camera   (xyz): 	347.7	315.7	0	
-63717882020358	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.7	0	Camera   (xyz): 	347.0999	315.7	4.3794E-07	
-63717882020380	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.8	0	Camera   (xyz): 	346.7	315.8	4.38652E-07	
-63717882020400	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.9	0	Camera   (xyz): 	346.5999	315.9	-4.388338E-07	
-63717882020422	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.9	0	Camera   (xyz): 	346.5999	315.9	-4.388338E-07	
-63717882020433	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.9	0	Camera   (xyz): 	346.5999	315.9	-4.388338E-07	
-63717882020456	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	315.9	0	Camera   (xyz): 	346.5999	315.9	-4.388338E-07	
-63717882020480	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.7	316	0	
-63717882020500	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020523	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020534	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020556	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020579	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020601	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020612	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020635	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	346.9	316	0	
-63717882020659	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.4	316	-4.374215E-07	
-63717882020681	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020702	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020713	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020736	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020758	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020780	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020802	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020814	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020836	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020858	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020881	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020903	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020914	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020937	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020959	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020982	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882020992	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021015	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021037	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021060	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021082	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021093	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021115	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021137	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021160	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021183	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021193	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021216	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021238	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021260	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021283	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021294	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021316	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021339	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021361	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021372	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316	0	Camera   (xyz): 	347.5999	316	0	
-63717882021398	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.1	0	Camera   (xyz): 	347.4999	316.1	0	
-63717882021416	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.1	0	Camera   (xyz): 	347.4999	316.1	0	
-63717882021438	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.1	0	Camera   (xyz): 	347.4999	316.1	0	
-63717882021461	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.1	0	Camera   (xyz): 	347.4999	316.1	0	
-63717882021472	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.1	0	Camera   (xyz): 	347.4999	316.1	0	
-63717882021497	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	316.3	0	Camera   (xyz): 	347.2	316.3	4.377657E-07	
-63717882021519	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	317.4	0	Camera   (xyz): 	344.9	317.4	0	
-63717882021541	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	320.2	0	Camera   (xyz): 	338.9999	320.2	4.572579E-07	
-63717882021553	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	322	0	Camera   (xyz): 	336.0999	322	0	
-63717882021575	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	327.7	0	Camera   (xyz): 	326.4999	327.7	-1.02385E-06	
-63717882021597	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	333.1	0	Camera   (xyz): 	319.0999	333.1	1.12955E-06	
-63717882021619	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	336.1	0	Camera   (xyz): 	314.9	336.1	-1.209532E-06	
-63717882021642	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	336.9	0	Camera   (xyz): 	313.5999	336.9	1.238037E-06	
-63717882021653	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	337.3	0	Camera   (xyz): 	313.0999	337.3	-1.249535E-06	
-63717882021675	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	337.8	0	Camera   (xyz): 	312.5999	337.8	-1.261345E-06	
-63717882021697	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	338.3	0	Camera   (xyz): 	312.0999	338.3	0	
-63717882021720	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	338.8	0	Camera   (xyz): 	311.5999	338.8	0	
-63717882021742	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	339.7	0	Camera   (xyz): 	310.8999	339.7	0	
-63717882021753	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	340.2	0	Camera   (xyz): 	310.4999	340.2	0	
-63717882021776	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	342.2	0	Camera   (xyz): 	309.3999	342.2	-6.72549E-07	
-63717882021799	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	345.1	0	Camera   (xyz): 	308.2	345.1	1.3806E-06	
-63717882021821	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	347.8	0	Camera   (xyz): 	307.5999	347.8	-6.996489E-07	
-63717882021832	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	348.6	0	Camera   (xyz): 	307.4	348.6	-7.028389E-07	
-63717882021855	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	351.2	0	Camera   (xyz): 	306.9999	351.2	3.546667E-07	
-63717882021877	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	353.9	0	Camera   (xyz): 	306.3999	353.9	3.596847E-07	
-63717882021899	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	356.4	0	Camera   (xyz): 	305.6999	356.4	1.828866E-07	
-63717882021922	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	358.2	0	Camera   (xyz): 	305.1999	358.2	-9.257104E-08	
-63717882021933	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	-1.044707E-05	0	Camera   (xyz): 	304.7999	-1.044707E-05	0	
-63717882021955	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	2.79999	0	Camera   (xyz): 	304.4999	2.799989	0	
-63717882021977	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	4.99999	0	Camera   (xyz): 	304.4999	4.99999	0	
-63717882022000	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	8.09999	0	Camera   (xyz): 	304.4999	8.09999	0	
-63717882022022	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	12.39999	0	Camera   (xyz): 	305.9999	12.39999	7.262644E-07	
-63717882022034	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.99999	0	Camera   (xyz): 	306.6999	13.99999	-7.143065E-07	
-63717882022056	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	18.19999	0	Camera   (xyz): 	307.8999	18.19999	6.949336E-07	
-63717882022079	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	19.69999	0	Camera   (xyz): 	308.2999	19.69999	0	
-63717882022097	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	19.79999	0	Camera   (xyz): 	308.3999	19.8	-1.374511E-06	
-63717882022120	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	19.79999	0	Camera   (xyz): 	308.3999	19.8	-1.374511E-06	
-63717882022143	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	19.79999	0	Camera   (xyz): 	308.3999	19.8	-1.374511E-06	
-63717882022156	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	19.69999	0	Camera   (xyz): 	308.4999	19.69999	0	
-63717882022179	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	18.09999	0	Camera   (xyz): 	308.7999	18.09999	-6.812716E-07	
-63717882022201	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.89999	0	Camera   (xyz): 	309.1999	15.89999	6.754233E-07	
-63717882022223	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.89999	0	Camera   (xyz): 	309.5999	13.89999	6.697071E-07	
-63717882022234	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.59999	0	Camera   (xyz): 	309.7999	13.59999	0	
-63717882022254	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.49999	0	Camera   (xyz): 	309.7999	13.49999	0	
-63717882022276	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.39999	0	Camera   (xyz): 	309.8999	13.39999	-6.655042E-07	
-63717882022299	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.39999	0	Camera   (xyz): 	309.8999	13.39999	-6.655042E-07	
-63717882022321	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022332	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022354	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022377	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022399	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022422	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022433	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	13.29999	0	Camera   (xyz): 	309.9999	13.29999	6.64119E-07	
-63717882022458	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	14.39999	0	Camera   (xyz): 	309.8999	14.39999	0	
-63717882022480	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.39999	0	Camera   (xyz): 	309.6999	15.39999	-6.682984E-07	
-63717882022500	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022522	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022534	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022556	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022579	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022601	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022623	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022634	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022656	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022679	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022701	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022712	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022735	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022757	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022779	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022802	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022813	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022835	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022857	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022880	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022902	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022913	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022936	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022959	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882022981	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023003	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023014	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023036	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023059	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023081	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023092	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023115	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023137	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023159	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023181	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023193	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023215	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023237	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023260	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023282	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023293	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023315	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023338	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023360	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023382	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023394	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023417	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023439	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023461	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023472	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023494	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023516	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023539	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023561	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023573	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023595	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023617	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023640	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023662	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023673	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023695	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023718	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023740	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023762	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023773	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023796	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023818	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023840	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023863	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023874	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023896	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023919	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023941	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023952	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023974	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882023997	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024019	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024041	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024053	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024075	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024097	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024120	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024142	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024154	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024175	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024198	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024220	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024242	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024253	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024276	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024298	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024320	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024343	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024354	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024376	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024399	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024421	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024432	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024455	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024477	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024499	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024522	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024533	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024555	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024577	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024600	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024622	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024633	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024656	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024678	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024700	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024722	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024734	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024756	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024778	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024801	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024812	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024834	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024857	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024879	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024902	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024913	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024935	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024957	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882024979	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025002	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025013	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025035	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025057	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025080	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025102	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025113	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025136	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025158	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025180	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025192	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025214	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025236	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025259	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025281	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025292	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025314	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025337	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025359	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025382	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025393	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025415	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025437	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025460	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025482	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025493	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025516	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025538	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025560	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025572	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025594	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025616	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025638	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025661	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025672	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025694	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025717	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025740	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025762	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025774	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025796	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025818	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025840	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025863	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025874	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025896	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025919	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025941	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025963	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025974	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882025997	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026019	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026042	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026053	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026075	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026097	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026120	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026142	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026153	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026175	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026198	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026220	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026243	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026253	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026276	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026299	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026321	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026343	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026354	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026376	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026399	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026421	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026435	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026454	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026477	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026499	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026521	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026532	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026555	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026577	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026600	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026622	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026633	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026655	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026678	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026700	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026723	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026734	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026756	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026782	Avatar: 	KeyboardMouseController	Position (xyz): 	10.455	0.1819987	78.88	Rotation (xyz): 	0	15.49999	0	Camera   (xyz): 	309.5999	15.49999	0	
-63717882026814	TASK_END	LM_Timeline	TaskList	17491
+63718754256493	TASK_END	InitializeExperiment	TaskList	955
+63718754256495	TASK_START	BeginMessage	InstructionsTask
+63718754257474	INPUT_EVENT    PlayerPressedActionButton    1
+63718754257475	TASK_END	BeginMessage	InstructionsTask	980
+63718754257476	TASK_START	Tasks	TaskList
+63718754257477	TASK_START	Practice	TaskList
+63718754257478	TASK_START	LearnTargets	TaskList
+63718754257479	TASK_START	LearnTargets Instructions	InstructionsTask
+63718754259472	INPUT_EVENT    PlayerPressedActionButton    1
+63718754259472	TASK_END	LearnTargets Instructions	InstructionsTask	1993
+63718754259474	TASK_START	ViewTargets	TaskList
+63718754259475	TASK_START	ListTargetsForLearning	ObjectList
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Post Office	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Repair Shop	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Music Store	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Clothing Store	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Bakery	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Pharmacy	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Barber Shop	null
+63718754259475	TASK_ADD	ListTargetsForLearning	ObjectList	Computer Shop	null
+63718754259481	TASK_END	ListTargetsForLearning	ObjectList	6
+63718754259483	TASK_START	RotateTarget	ViewTargets
+63718754259487	EEG_TRIGGER	Name	ViewTarget_start	Value	2
+63718754259489	Practice	Post Office
+63718754262496	Practice	Repair Shop
+63718754265500	Practice	Music Store
+63718754268504	Practice	Clothing Store
+63718754271508	Practice	Bakery
+63718754274515	Practice	Pharmacy
+63718754277520	Practice	Barber Shop
+63718754277802	TASK_END	Practice	TaskList	20325
+63718754277803	TASK_START	Scaled	TaskList
+63718754277804	TASK_START	ScaledNavigationTask	TaskList
+63718754277805	TASK_START	ScaleUp	ScalePlayerToEnvironment
+63718754277825	TASK_END	ScaleUp	ScalePlayerToEnvironment	20
+63718754277827	TASK_START	MoveLargePlayerToSpawn	MoveSpawn
+63718754277827	TASK_POSITION	KeyboardMouseController	MoveSpawn	(-174.0, -147.6, 296.4)
+63718754277827	TASK_ROTATE	KeyboardMouseController	MoveSpawn	(0.0, 31.2, 0.0)
+63718754277837	TASK_END	MoveLargePlayerToSpawn	MoveSpawn	11
+63718754277838	TASK_START	MoveSmallPlayerToSpawn	MoveSpawn
+63718754277838	TASK_POSITION	SmallScalePlayerController	MoveSpawn	(10.9, 0.0, 47.9)
+63718754277838	TASK_ROTATE	SmallScalePlayerController	MoveSpawn	(0.0, 0.0, 0.0)
+63718754277844	TASK_END	MoveSmallPlayerToSpawn	MoveSpawn	6
+63718754277846	TASK_START	ListNavigationTargets	ObjectList
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Bakery	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Computer Shop	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Music Store	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Clothing Store	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Pharmacy	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Post Office	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Barber Shop	null
+63718754277846	TASK_ADD	ListNavigationTargets	ObjectList	Repair Shop	null
+63718754277858	TASK_END	ListNavigationTargets	ObjectList	12
+63718754277859	TASK_START	ScaledNavInstructions	InstructionsTask
+63718754280704	INPUT_EVENT    PlayerPressedActionButton    1
+63718754280704	TASK_END	ScaledNavInstructions	InstructionsTask	2845
+63718754280706	TASK_START	NavigationTrials	TaskList
+63718754280708	TASK_START	CueTarget	InstructionsTask
+63718754280714	EEG_TRIGGER	Name	CueTarget_start	Value	3
+63718754285718	TASK_END	CueTarget	InstructionsTask	5010
+63718754285720	TASK_START	Navigate	NavigationTask
+63718754285724	EEG_TRIGGER	Name	Navigate_start	Value	4
+63718754285732	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285732	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285751	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285751	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285773	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285773	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285795	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285795	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285818	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285818	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285840	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285840	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285854	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285854	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285873	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285874	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285896	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285896	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285918	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285918	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285940	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285941	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285952	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285952	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285974	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285974	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754285997	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754285997	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286019	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286019	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286030	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286030	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286053	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286053	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286074	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286074	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286097	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286097	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286120	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286120	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286131	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286131	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286153	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286153	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286176	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286176	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286198	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286198	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286220	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286220	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286231	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286232	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286254	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286254	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286276	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286276	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286299	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286299	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286310	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286310	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286332	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286332	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286354	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286355	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286377	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286377	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286399	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286399	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286410	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286410	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286433	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286433	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286455	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286455	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286477	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286477	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286500	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286500	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286511	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286511	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286533	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286533	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286556	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286556	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286578	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286578	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286601	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286601	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286611	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286611	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286634	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286634	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286656	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286656	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286678	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286678	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286690	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286690	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286712	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286712	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286734	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286734	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286757	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286757	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286779	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286779	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286790	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286790	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286812	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286812	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286835	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286835	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286857	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286857	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286879	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286879	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286891	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286891	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286913	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286913	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286936	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286936	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286958	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286958	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286980	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286980	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754286991	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754286991	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287014	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754287014	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287036	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754287036	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287058	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754287058	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287070	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754287070	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287092	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754287092	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287114	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	6.199938	44.99999	0	
+63718754287114	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287139	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287139	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287158	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287158	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287181	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287181	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287192	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287192	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287214	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287214	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287237	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287237	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287259	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287259	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287270	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287270	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287293	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287293	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287314	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287315	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287337	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287337	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287359	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287359	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287370	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287371	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287393	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287393	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287415	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287415	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287438	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287438	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287460	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287460	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287471	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287471	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287494	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287494	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287516	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287516	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287539	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287539	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287550	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287550	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287572	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287572	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287594	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287594	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287617	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287617	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287639	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287639	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287650	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287650	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287672	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287672	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287695	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287695	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287717	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287717	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287740	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287740	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287751	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287751	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287773	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287773	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287795	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287795	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287818	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287818	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287840	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287840	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287851	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287851	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287873	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287873	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287896	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287896	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287918	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287918	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287941	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287941	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287952	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287952	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287974	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287974	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754287997	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754287997	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288019	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288019	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288030	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288030	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288053	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288053	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288075	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288075	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288097	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288097	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288119	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288120	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288130	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288130	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288153	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288153	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288175	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288175	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288197	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288197	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288220	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288220	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288231	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288231	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288253	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288253	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288276	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288276	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288298	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288298	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288321	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288321	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288331	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	45.09999	0	Camera   (xyz): 	6.199939	45.09999	0	
+63718754288331	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288357	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	4.799939	44.99999	0	
+63718754288357	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288378	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	357.8999	44.99999	0	
+63718754288378	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288400	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	353.2999	44.99999	0	
+63718754288400	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288412	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288412	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288431	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288432	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288454	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288454	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288476	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288476	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288499	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288499	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288510	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288510	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288532	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288532	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288554	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288555	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288577	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288577	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288599	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288599	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288610	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288610	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288633	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288633	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288655	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288655	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288677	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288677	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288699	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288700	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288711	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288711	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288733	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288733	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288756	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288756	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288778	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288778	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288790	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288790	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288812	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.99999	0	Camera   (xyz): 	352.9999	44.99999	0	
+63718754288812	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288837	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.69999	0	Camera   (xyz): 	353.2	44.69999	0	
+63718754288837	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288858	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.49999	0	Camera   (xyz): 	354.7999	44.49999	0	
+63718754288858	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288870	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.49999	0	Camera   (xyz): 	355.3999	44.5	0	
+63718754288870	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288893	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	44.69999	0	Camera   (xyz): 	357.2999	44.69999	1.068403E-07	
+63718754288893	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288914	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	46.29999	0	Camera   (xyz): 	359.7	46.29999	1.33404E-08	
+63718754288914	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288937	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	49.29999	0	Camera   (xyz): 	2.599938	49.29998	0	
+63718754288937	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288959	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	51.89999	0	Camera   (xyz): 	4.699937	51.89999	0	
+63718754288959	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288971	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.39999	0	Camera   (xyz): 	6.399938	54.39999	0	
+63718754288971	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754288993	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	58.19999	0	Camera   (xyz): 	8.999939	58.19999	0	
+63718754288993	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289015	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	61.09999	0	Camera   (xyz): 	10.89994	61.09999	4.347298E-07	
+63718754289015	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289037	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	66.29999	0	Camera   (xyz): 	13.09994	66.29999	4.382928E-07	
+63718754289037	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289060	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	74.2	0	Camera   (xyz): 	15.69994	74.19999	-8.868605E-07	
+63718754289060	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289071	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	76.89999	0	Camera   (xyz): 	16.09993	76.89999	0	
+63718754289071	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289093	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	85.7	0	Camera   (xyz): 	16.49994	85.7	0	
+63718754289093	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289116	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	92.5	0	Camera   (xyz): 	14.29994	92.5	0	
+63718754289116	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289139	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	97.59999	0	Camera   (xyz): 	11.19994	97.6	0	
+63718754289139	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289159	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	101.5	0	Camera   (xyz): 	6.099938	101.5	2.146587E-07	
+63718754289159	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289171	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	102.5	0	Camera   (xyz): 	3.699937	102.5	0	
+63718754289171	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289193	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	104.8	0	Camera   (xyz): 	356.7	104.8	-1.06899E-07	
+63718754289193	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289215	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	105.9	0	Camera   (xyz): 	351.7999	105.9	-4.312963E-07	
+63718754289215	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289238	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	106.9	0	Camera   (xyz): 	345.2999	106.9	-8.826655E-07	
+63718754289238	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289252	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	107.6	0	Camera   (xyz): 	341.9999	107.6	-8.977109E-07	
+63718754289253	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289279	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	108.5	0	Camera   (xyz): 	339.2	108.5	9.132976E-07	
+63718754289279	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289290	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	108.8	0	Camera   (xyz): 	338.7	108.8	9.163701E-07	
+63718754289290	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289312	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	108.9	0	Camera   (xyz): 	338.4999	108.9	9.176244E-07	
+63718754289312	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289333	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	108.9	0	Camera   (xyz): 	338.4999	108.9	9.176244E-07	
+63718754289333	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289357	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	109.2	0	Camera   (xyz): 	338.7	109.2	0	
+63718754289357	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289381	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	109.5	0	Camera   (xyz): 	338.9999	109.5	0	
+63718754289381	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289391	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	109.7	0	Camera   (xyz): 	339.2999	109.7	0	
+63718754289391	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289413	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110	0	Camera   (xyz): 	339.5999	110	0	
+63718754289413	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289435	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110.3	0	Camera   (xyz): 	340.2999	110.3	0	
+63718754289435	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289458	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110.5	0	Camera   (xyz): 	340.7999	110.5	0	
+63718754289458	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289481	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110.7	0	Camera   (xyz): 	341.1999	110.7	9.018903E-07	
+63718754289481	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289502	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110.7	0	Camera   (xyz): 	341.2999	110.7	0	
+63718754289502	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289511	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110.7	0	Camera   (xyz): 	341.2999	110.7	0	
+63718754289511	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289534	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	110.7	0	Camera   (xyz): 	341.2999	110.7	0	
+63718754289534	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289559	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	109	0	Camera   (xyz): 	341.3999	109	0	
+63718754289559	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289570	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	106.2	0	Camera   (xyz): 	339.5999	106.2	9.10904E-07	
+63718754289570	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289592	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	102.5	0	Camera   (xyz): 	335.9999	102.5	0	
+63718754289592	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289615	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	99.49999	0	Camera   (xyz): 	331.7	99.49999	-9.696718E-07	
+63718754289615	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289638	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	92.89999	0	Camera   (xyz): 	324.8999	92.89999	0	
+63718754289638	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289653	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	88.2	0	Camera   (xyz): 	322.0999	88.19999	0	
+63718754289654	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289670	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	83.39999	0	Camera   (xyz): 	319.5999	83.39999	0	
+63718754289670	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289699	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	77.1	0	Camera   (xyz): 	317.7	77.09999	0	
+63718754289699	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289722	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	72.49998	0	Camera   (xyz): 	317.0999	72.49999	2.330989E-06	
+63718754289722	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289738	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	68.8	0	Camera   (xyz): 	316.8999	68.8	0	
+63718754289738	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289750	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	67.7	0	Camera   (xyz): 	316.7999	67.7	0	
+63718754289750	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289772	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.1	0	Camera   (xyz): 	316.7	65.1	-2.346267E-06	
+63718754289772	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289794	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.49999	0	Camera   (xyz): 	316.7	63.49999	0	
+63718754289794	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289816	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	61.49999	0	Camera   (xyz): 	316.7999	61.49999	0	
+63718754289816	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289839	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	59.29999	0	Camera   (xyz): 	317.4999	59.29999	0	
+63718754289839	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289850	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	56.69999	0	Camera   (xyz): 	318.2	56.69999	0	
+63718754289850	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289872	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.59999	0	Camera   (xyz): 	319.0999	54.59999	0	
+63718754289872	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289894	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.19999	0	Camera   (xyz): 	319.4999	54.19999	0	
+63718754289894	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289916	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.19999	0	Camera   (xyz): 	319.5999	54.19999	0	
+63718754289916	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289939	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.19999	0	Camera   (xyz): 	320.0999	54.19999	0	
+63718754289939	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289950	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.19999	0	Camera   (xyz): 	320.3999	54.19999	0	
+63718754289950	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289973	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	54.89999	0	Camera   (xyz): 	321.4999	54.89999	0	
+63718754289973	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754289995	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	56.99999	0	Camera   (xyz): 	322.7999	56.99999	-2.143734E-06	
+63718754289995	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290017	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	57.99999	0	Camera   (xyz): 	323.4999	57.99999	0	
+63718754290017	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290040	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	58.39999	0	Camera   (xyz): 	324.0999	58.39999	-1.053988E-06	
+63718754290040	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290052	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	58.59999	0	Camera   (xyz): 	324.4	58.59999	0	
+63718754290052	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290074	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	59.09999	0	Camera   (xyz): 	324.8999	59.09999	0	
+63718754290074	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290096	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	59.79999	0	Camera   (xyz): 	325.3999	59.79999	-1.037221E-06	
+63718754290096	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290120	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	60.2	0	Camera   (xyz): 	325.7	60.19999	-1.033502E-06	
+63718754290120	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290130	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	60.4	0	Camera   (xyz): 	325.7	60.39999	-1.033502E-06	
+63718754290130	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290153	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	61.59999	0	Camera   (xyz): 	325.9999	61.59999	2.059676E-06	
+63718754290153	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290177	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.39999	0	Camera   (xyz): 	326.3999	63.39999	1.025036E-06	
+63718754290177	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290191	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	64.09999	0	Camera   (xyz): 	326.3999	64.09999	-1.025036E-06	
+63718754290191	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290220	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.19999	0	Camera   (xyz): 	326.4999	65.19999	-2.0477E-06	
+63718754290220	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290240	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.19999	0	Camera   (xyz): 	326.4999	65.19999	-2.0477E-06	
+63718754290240	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290254	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290254	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290274	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290274	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290296	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290296	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290319	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290319	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290341	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290341	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290352	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290352	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290375	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	65.29999	0	Camera   (xyz): 	326.4999	65.29999	0	
+63718754290375	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290399	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	64.49998	0	Camera   (xyz): 	326.2999	64.49999	2.052455E-06	
+63718754290399	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290410	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.89999	0	Camera   (xyz): 	326.2	63.89999	0	
+63718754290410	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290432	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.49998	0	Camera   (xyz): 	326.0999	63.49999	-1.028629E-06	
+63718754290432	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290455	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290455	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290475	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290475	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290497	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290497	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290519	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290520	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290531	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290531	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290553	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290553	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290576	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290576	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290600	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290600	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290621	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290621	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290632	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290632	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290655	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290655	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290677	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290677	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290691	Avatar: 	KeyboardMouseController	Position (xyz): 	-174	-146.87	296.4001	Rotation (xyz): 	0	63.29998	0	Camera   (xyz): 	325.8999	63.29998	-2.062107E-06	
+63718754290691	Avatar: 	SmallScalePlayerController	Position (xyz): 	10.87527	0.1020012	47.9837	Rotation (xyz): 	0	0	0	Camera   (xyz): 	0	0	0	
+63718754290723	EEG_TRIGGER	Name	EXP_end	Value	5
+63718754290723	TASK_END	LM_Timeline	TaskList	35189
