@@ -19,9 +19,11 @@ using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class MoveSpawn : ExperimentTask {
+    
+    [HideInInspector] public GameObject start;
 
-	[HideInInspector] public GameObject start;
-	public GameObject destination;
+    [Header("Task-specific Properties")]
+    public GameObject destination;
     public string destinationListName;
 	public ObjectList destinations;
 

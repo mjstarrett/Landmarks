@@ -21,7 +21,9 @@ using System.Collections;
 
 public class MovePlayerToDestination : ExperimentTask {
 
-	[HideInInspector] public GameObject start;
+    [Header("Task-specific Properties")]
+
+    [HideInInspector] public GameObject start;
 	[HideInInspector] public GameObject destination;
 	public ObjectList destinations;
     public bool ignoreDestinationY;
