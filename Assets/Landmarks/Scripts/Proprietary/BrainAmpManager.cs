@@ -107,4 +107,14 @@ public class BrainAmpManager : MonoBehaviour {
         triggerBox.Close();
         Debug.Log("port closed!");
     }
+
+    public string LogTriggerIndices()
+    {
+        var message = "\n================ Index of EEG Triggers ================\n";
+        foreach (var entry in triggers)
+        {
+            message += entry.Value.ToString() + ": " + entry.Key;
+        }
+        return message;
+    }
 }
