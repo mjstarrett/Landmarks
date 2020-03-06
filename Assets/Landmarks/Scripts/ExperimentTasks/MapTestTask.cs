@@ -6,6 +6,8 @@ using TMPro;
 
 public class MapTestTask : ExperimentTask {
 
+    [Header("Task-specific Properties")]
+
     public ObjectList targetList;
 	public bool flattenMap = true;
 	//public bool highlightAssist = false; // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)

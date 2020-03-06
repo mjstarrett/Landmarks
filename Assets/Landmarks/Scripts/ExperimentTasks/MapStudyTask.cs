@@ -6,8 +6,10 @@ using TMPro;
 
 public class MapStudyTask : ExperimentTask {
 
-	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
-	public bool flattenMap = true;
+    [Header("Task-specific Properties")]
+
+    // allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
+    public bool flattenMap = true;
 	public Vector3 hudTextOffset;
 
 	public override void startTask () 

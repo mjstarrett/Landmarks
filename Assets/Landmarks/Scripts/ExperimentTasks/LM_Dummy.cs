@@ -19,6 +19,8 @@ using UnityEngine;
 
 public class LM_Dummy : ExperimentTask
 {
+    [Header("Task-specific Properties")]
+    public GameObject dummyProperty;
 
     public override void startTask()
     {
