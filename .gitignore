@@ -39,6 +39,11 @@ sysinfo.txt
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
 
+# don't pull data from editor or builds
+data/tmp/*
+!data/tmp/.gitkeep
+
+# huge files
 Assets/Materials/*./.git/objects/31/8b9f222a42cea1236e9a30406d4f88f45d94d3
 ./.git/objects/62/c077419811e4d1e884ae404cc85e9f82544153
 ./.git/objects/82/a1edae7b2ec0413ac33a1d1ae730c14c386d99

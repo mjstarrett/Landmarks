@@ -22,7 +22,9 @@ using System.Collections.Generic;
 
 public class MoveObjects : ExperimentTask {
 
-	public ObjectList sources;
+    [Header("Task-specific Properties")]
+
+    public ObjectList sources;
 	private GameObject source;
 
 	private GameObject destination;

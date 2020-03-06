@@ -22,7 +22,12 @@ using TMPro;
 
 public class InstructionsTask : ExperimentTask {
 
+
+    
+
     public static int instructionsCounter;
+
+    [Header("Task-specific Properties")]
 
     public TextAsset instruction;
     public TextAsset message;

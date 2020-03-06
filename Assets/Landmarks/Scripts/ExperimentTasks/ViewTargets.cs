@@ -27,7 +27,9 @@ public enum RotationAxis
 
 public class ViewTargets : ExperimentTask {
 
-	public ObjectList startObjects;
+    [Header("Task-specific Properties")]
+
+    public ObjectList startObjects;
 	private GameObject current;
 	[HideInInspector] public GameObject destination;
 

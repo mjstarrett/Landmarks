@@ -14,8 +14,8 @@ public enum HideTargetOnStart
 
 public class NavigationTask : ExperimentTask
 {
-
-	public ObjectList destinations;
+    [Header("Task-specific Properties")]
+    public ObjectList destinations;
 	private GameObject current;
 
 	private int score = 0;
@@ -47,6 +47,7 @@ public class NavigationTask : ExperimentTask
 		avatarLog.navLog = true;
         if (isScaled) scaledAvatarLog.navLog = true;
     }
+
 	public override void TASK_START()
 	{
 		if (!manager) Start();
