@@ -23,6 +23,9 @@ public enum Behavior
 
 public class LM_CompareLists : ExperimentTask
 {
+
+    [Header("Task-specific Properties")]
+
     public string list1ParentName = "";
     public GameObject list1Parent;
     public string comparisonListObjectName = "UsedTargets";

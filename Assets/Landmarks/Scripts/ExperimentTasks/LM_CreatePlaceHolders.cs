@@ -5,6 +5,9 @@ using UnityEngine;
 public class LM_CreatePlaceHolders : ExperimentTask
 {
 
+
+    [Header("Task-specific Properties")]
+
     public ObjectList targetObjectList;
     public float placeholderSpacing = 10.0f;
 

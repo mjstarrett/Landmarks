@@ -21,6 +21,8 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class MentalNavigation : ExperimentTask
 {
 
+    [Header("Task-specific Properties")]
+
     public ObjectList objects; 
     public bool restrictMovement = true; // MJS do we want to keep them still during this?
     private float startTime;

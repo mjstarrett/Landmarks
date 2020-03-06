@@ -166,11 +166,17 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
 
         logfile = config.subjectPath + "/" + config.experiment + "_" + config.subject + "_" + config.level + ".log";
-				configfile = config.expPath + "/" + config.filename;
+		configfile = config.expPath + "/" + config.filename;
 
 		//when in editor
 		if (!config.bootstrapped) {
-			logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
+
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
+            }
+
+            logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
 			configfile = Directory.GetCurrentDirectory() + "/data/tmp/" + config.filename;
 		}
 
@@ -510,6 +516,12 @@ public class Experiment : MonoBehaviour {
 
     void OnApplicationQuit()
     {
+        var eeg = FindObjectOfType<BrainAmpManager>();
+        if (eeg != null)
+        {
+            dblog.log(eeg.LogTriggerIndices(), 1);
+        }
+
         if (config.runMode != ConfigRunMode.PLAYBACK)
         {
             tasks.endTask();

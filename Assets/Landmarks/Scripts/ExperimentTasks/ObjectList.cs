@@ -22,6 +22,8 @@ using System.Collections.Generic;
 
 public class ObjectList : ExperimentTask {
 
+    [Header("Task-specific Properties")]
+
     public string parentName = "";
 	public GameObject parentObject;
 	public int current = 0;

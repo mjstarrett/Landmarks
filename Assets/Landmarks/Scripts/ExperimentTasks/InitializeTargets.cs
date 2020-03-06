@@ -5,7 +5,10 @@ using UnityEngine;
 public class InitializeTargets : ExperimentTask
 {
 
-	public GameObject targetLocationsParent; // MJS - added 4/30/2018
+
+    [Header("Task-specific Properties")]
+
+    public GameObject targetLocationsParent; // MJS - added 4/30/2018
 	public GameObject targetOptionsParent; 	// MJS - added 4/30/2018
 
 

@@ -19,6 +19,7 @@ using System.Collections;
 using System.Reflection;
 using UnityEngine.UI;
 using Valve.VR;
+using UnityEditor;
 
 public class ExperimentTask : MonoBehaviour{
 
@@ -60,15 +61,21 @@ public class ExperimentTask : MonoBehaviour{
 
     [HideInInspector] public bool vrEnabled; // use hidden variable to communicate if we're using VR based on input interface
 
-	public static bool killCurrent = false;
-
+    public static bool killCurrent = false;
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
-
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
 
-	public void Awake () 
+
+    [Header("EEG Settings (if available)")]
+    public string triggerLabel; // name prefix for unique triggers
+    public bool triggerOnStart; // mark a unique trigger at TASK_START
+    public bool triggerOnEnd; // mark a unique trigger at TASK_END
+    private BrainAmpManager eegManager;
+
+
+    public void Awake () 
 	{
-		
+        eegManager = FindObjectOfType<BrainAmpManager>();
 	}
 
 	public void Start () 
@@ -76,7 +83,7 @@ public class ExperimentTask : MonoBehaviour{
 
 	}
 	
-	public virtual void startTask() {	
+	public virtual void startTask() {
 		avatar = GameObject.FindWithTag ("Player");
 		avatarLog = avatar.GetComponent("avatarLog") as avatarLog; //jdstokes 2015
 		hud = avatar.GetComponent("HUD") as HUD;
@@ -110,8 +117,21 @@ public class ExperimentTask : MonoBehaviour{
 		hud.ForceShowMessage ();
 		//currentInterrupt = 0;        Not here since after an interuupt we will restart
 		
-		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );		
-	}
+		log.log("TASK_START\t" + name + "\t" + this.GetType().Name,1 );
+
+        if (eegManager != null & triggerOnStart)
+        {
+            var startLabel = triggerLabel;
+            if (startLabel == "")
+            {
+                startLabel = transform.name + "_start";
+            }
+            else startLabel += "_start";
+
+            eegManager.EEGTrigger(startLabel);
+            log.log("EEG_TRIGGER\tName\t" + startLabel + "\tValue\t" + eegManager.triggers[startLabel].ToString(), 1);
+        }
+    }
 	
 	public virtual void TASK_START () {
 	}	
@@ -154,52 +174,103 @@ public class ExperimentTask : MonoBehaviour{
 		
 		return false;
 	}
-	public virtual void endTask() {
-		long duration = Experiment.Now() - task_start;
+
+
+	public virtual void endTask()
+    {
+
+        if (eegManager != null & triggerOnEnd)
+        {
+            var endLabel = triggerLabel;
+            if (endLabel == "")
+            {
+                endLabel = transform.name + "_end";
+            }
+            else endLabel += "_end";
+
+            eegManager.EEGTrigger(endLabel);
+            log.log("EEG_TRIGGER\tName\t" + endLabel + "\tValue\t" + eegManager.triggers[endLabel].ToString(), 1);
+        }
+
+        long duration = Experiment.Now() - task_start;
 		currentInterrupt = 0;    //put here because of interrupts
 		log.log("TASK_END\t" + name + "\t" + this.GetType().Name + "\t" + duration,1 );
         hud.showNothing();
 	}
-	public virtual void TASK_END () {
-	}
-	public virtual void TASK_PAUSE () {
+
+
+	public virtual void TASK_END ()
+    {
+
 	}
 
-	public virtual bool OnControllerColliderHit(GameObject hit)  {
+
+	public virtual void TASK_PAUSE ()
+    {
+
+	}
+
+
+	public virtual bool OnControllerColliderHit(GameObject hit)
+    {
 		return false;
 	}
-	
-	public virtual void TASK_ROTATE (GameObject go, Vector3 hpr) {
-	}	
-	public virtual void TASK_POSITION (GameObject go, Vector3 hpr) {
-	}	
-	public virtual void TASK_SCALE (GameObject go, Vector3 scale) {
-	}		
-	public virtual void TASK_ADD(GameObject go, string txt) {
+
+
+	public virtual void TASK_ROTATE (GameObject go, Vector3 hpr)
+    {
+
 	}
+
+
+	public virtual void TASK_POSITION (GameObject go, Vector3 hpr)
+    {
+
+	}
+
+
+	public virtual void TASK_SCALE (GameObject go, Vector3 scale)
+    {
+
+	}
+
+
+	public virtual void TASK_ADD(GameObject go, string txt)
+    {
+
+	}
+
 	
-	public virtual string currentString() {
+	public virtual string currentString()
+    {
 		return "";
 	}
-	
-	public virtual void incrementCurrent() {
+
+
+	public virtual void incrementCurrent()
+    {
+
 	}
+
 
 	// http://www.haslo.ch/blog/setproperty-and-getproperty-with-c-reflection/
 	private object getProperty(object containingObject, string propertyName)
 	{
 	    return containingObject.GetType().InvokeMember(propertyName, BindingFlags.GetProperty, null, containingObject, null);
 	}
-	 
+
+
 	private void setProperty(object containingObject, string propertyName, object newValue)
 	{
 	    containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
 	}
 
+
 	public void onDebugClick ()
 	{
 		killCurrent = true;
 	}
+
 
     public bool KillCurrent () 
 	{
@@ -208,11 +279,13 @@ public class ExperimentTask : MonoBehaviour{
 		return true;
 	}
 
+
     // Reset hud position to the forward direction (for world space Canvas UI)
     public void ResetHud()
     {
         hud.hudRig.transform.localEulerAngles = avatar.GetComponent<avatarLog>().player.transform.localEulerAngles;
     }
+
 
     // Move the hud, but don't move it again for a time period to avoid jitter
     public IEnumerator HudJitterReduction()
@@ -221,6 +294,7 @@ public class ExperimentTask : MonoBehaviour{
         yield return new WaitForSeconds(0.5f);
         jitterGuardOn = false;
     }
+
 
     //recursive calls
     public void MoveToLayer(Transform root, int layer)
