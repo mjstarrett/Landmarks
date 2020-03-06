@@ -16,6 +16,7 @@ public class BrainAmpManager : MonoBehaviour {
     private Byte[] bit = { 0 }; // container for our trigger configuration info in 8-bit format
     public Dictionary<string, int> triggers = new Dictionary<string, int>(); // Store trigger name/number pairs
     private int nextTriggerValue;
+    public bool disabled;
 
     // Use this for initialization
     void Awake () {
@@ -52,6 +53,10 @@ public class BrainAmpManager : MonoBehaviour {
 
     public void Test(int trigger)
     {
+        if (disabled)
+        {
+            return;
+        }
         Debug.Log(trigger);
         bit[0] = (byte)trigger; // set the trigger number 
         Debug.Log(bit[0]);
@@ -86,20 +91,37 @@ public class BrainAmpManager : MonoBehaviour {
         // Configure the triggerbox info
         var portName = "COM" + port.ToString();
         Debug.Log("Looking for TriggerBox on port " + portName);
-        triggerBox = new SerialPort(portName);
+        try
+        {
+            triggerBox = new SerialPort(portName);
 
-        // Open the virtual serial port
-        triggerBox.Open(); // open the port
-        Debug.Log("Successfully opened " + portName);
+            // Open the virtual serial port
+            triggerBox.Open(); // open the port
+            Debug.Log("Successfully opened " + portName);
 
-        // Set the port to an initial state
-        bit[0] = (byte)initialState;
-        triggerBox.Write(bit, 0, 1);
-        Debug.Log("port data written: " + triggerBox.ReadByte());
+            // Set the port to an initial state
+            bit[0] = (byte)initialState;
+            triggerBox.Write(bit, 0, 1);
+            Debug.Log("port data written: " + triggerBox.ReadByte());
+        }
+        catch (Exception ex)
+        {
+            disabled = true;
+            Debug.LogWarning("Initialization failed - disabling BrainAmpManager and EEG triggers");
+            return;
+        }
+
+
+
+
     }
 
     public void closePort()
     {
+        if (disabled)
+        {
+            return;
+        }
         // Reset the port to its default state
         bit[0] = 0xFF; // HEX: 0xFF, DEC: 255, BIN: 1111 1111
         triggerBox.Write(bit, 0, 1);
@@ -113,7 +135,7 @@ public class BrainAmpManager : MonoBehaviour {
         var message = "\n================ Index of EEG Triggers ================\n";
         foreach (var entry in triggers)
         {
-            message += entry.Value.ToString() + ": " + entry.Key;
+            message += entry.Value.ToString() + ": " + entry.Key + "\n";
         }
         return message;
     }
