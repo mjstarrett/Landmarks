@@ -27,7 +27,7 @@ public class LM_PermuteList : ExperimentTask
     public bool returnCombinations;
 
     [HideInInspector]
-    public List<List<string>> output = new List<List<string>>();
+    public IEnumerable<IEnumerable<string>> output = new List<List<string>>();
 
     private int totalPermuations;
 
@@ -59,8 +59,7 @@ public class LM_PermuteList : ExperimentTask
                                 Factorize(subset) * Factorize(listToPermute.objects.Count - subset);
         }
         // or permutations (permutations = listLength! / (listLength - subset)!)
-        else totalPermuations = Factorize(listToPermute.objects.Count) /
-                            Factorize(listToPermute.objects.Count - subset);
+        else totalPermuations = Factorize(listToPermute.objects.Count) / Factorize(listToPermute.objects.Count - subset);
 
         Debug.Log("Permutations/Combinations: " + totalPermuations.ToString());
 
@@ -70,58 +69,32 @@ public class LM_PermuteList : ExperimentTask
 
 
         // populate each possible combination/permuation
-        
+
         // Did the user ask for combinations?
         if (returnCombinations)
         {
-                
-        }
 
+        }
         // If not, return permuations
         else
         {
-            List<string> entry = new List<string>(); // create a new list for this permutation/combination
-
-            for (int i = 0; i < subset; i++)
-            {
-                var listCopy = listToPermute.objects; // copy the list
-
-
-                foreach (var item in listCopy)
-                {
-                    
-                }
-            }
-            
-
-            
-
-
-            //while (entry.Count < subset)
-            //{
-
-            //}
-
-            // add an item (1)
+            var objectNames = new List<string>();
             foreach (var item in listToPermute.objects)
             {
-                entry.Add(item.name); // add the first item of this entry
+                objectNames.Add(item.name);
+            }
+            output = Permute(objectNames, subset);
 
-                while (entry.Count < subset)
+            var count = 1;
+            foreach (var thing in output)
+            {
+                Debug.Log("Permuation " + count);
+                foreach (var thing2 in thing)
                 {
-                    foreach (var nextItem in listToPermute.objects)
-                    {
-                        if (!entry.Contains(nextItem.name))
-                        {
-                            entry.Add(nextItem.name);
-                        }
-                    }
+                    Debug.Log(thing2);
                 }
-
-
-                output.Add(entry); // add our entry list as an entry to the output list
-                entry.Clear(); // clear the entry so we can start the next one
-                Debug.Log("next permuation/combination");
+                Debug.Log("==============================");
+                count++;
             }
         }
     }
@@ -160,18 +133,95 @@ public class LM_PermuteList : ExperimentTask
     }
 
 
-    // Permutation Recursion
-    public List<List<string>> Permute(List<GameObject> list, int subset)
+    //// Permutation Recursion
+    //public List<List<string>> Permute(List<GameObject> list, int sampleSize)
+    //{
+    //    var result = new List<List<string>>();
+
+    //    var totalPermuations = Factorize(list.Count) / Factorize(list.Count - sampleSize);
+
+
+
+    //    // get all iterations for each entry
+    //    foreach (var item in list)
+    //    {
+    //        // there should be this many iterations per list item for permutations
+    //        for (int i = 0; i < totalPermuations / list.Count; i++)
+    //        {
+    //            var entry = new List<string>(); // create an empty list for this entry
+
+    //            entry.Add(item.name); // add the first item to the entry
+
+    //            // get the remaining number of unique entries needed to complete the subset
+    //            for (int j = 0; j < subset-1; j++)
+    //            {
+    //                foreach (var nextItem in list)
+    //                {
+
+    //                }
+    //            }
+
+    //        }
+    //    }
+
+
+    //    return result;
+    //}
+
+
+
+
+
+
+
+
+
+
+
+    public static IEnumerable<IEnumerable<T>> Permute<T>(IEnumerable<T> list, int count)
     {
-        var listCopy = list;
-        var result = new List<List<string>>();
+        if (count == 0)
+        {
+            yield return new T[0];
+        }
+        else
+        {
+            int startingElementIndex = 0;
+            foreach (T startingElement in list)
+            {
+                IEnumerable<T> remainingItems = AllExcept(list, startingElementIndex);
 
-        var entry = new List<string>();
-
-        
-        
-
-        return result;
+                foreach (IEnumerable<T> permutationOfRemainder in Permute(remainingItems, count - 1))
+                {
+                    yield return Concat<T>(
+                        new T[] { startingElement },
+                        permutationOfRemainder);
+                }
+                startingElementIndex += 1;
+            }
+        }
     }
+
+    // Enumerates over contents of both lists.
+    public static IEnumerable<T> Concat<T>(IEnumerable<T> a, IEnumerable<T> b)
+    {
+        foreach (T item in a) { yield return item; }
+        foreach (T item in b) { yield return item; }
+    }
+
+    // Enumerates over all items in the input, skipping over the item
+    // with the specified offset.
+    public static IEnumerable<T> AllExcept<T>(IEnumerable<T> input, int indexToSkip)
+    {
+        int index = 0;
+        foreach (T item in input)
+        {
+            if (index != indexToSkip) yield return item;
+            index += 1;
+        }
+    }
+
+
+
 }
 
