@@ -44,7 +44,12 @@ public class Experiment : MonoBehaviour {
 
     public GameObject availableControllers;
     public UserInterface userInterface = UserInterface.KeyboardMouse;
+<<<<<<< HEAD
     // public bool debugging = false;
+=======
+    public GameObject targetObjects;
+    public bool debugging = false;
+>>>>>>> 44fc5ce2... jrd setup and question are working; TODO - add in pointing interface, record response and error
 
     [HideInInspector]
     public TaskList tasks;
