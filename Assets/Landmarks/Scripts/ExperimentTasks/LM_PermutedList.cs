@@ -9,7 +9,7 @@
 
     Navigate by StarrLite (Powered by Landmarks)
     Human Spatial Cognition Laboratory
-    Department of Psychology - University of Arizona   
+    Department of Psychology - University of Arizona
 */
 
 using System.Collections;
@@ -58,7 +58,7 @@ public class LM_PermutedList : ExperimentTask
         for (int i = 0; i < subset; i++)
         {
             var ol = new GameObject();
-            
+
             ol.AddComponent<ObjectList>();
             var thing = Instantiate(ol, transform);
             thing.name = this.name + "_subset" + i;
@@ -212,7 +212,7 @@ public class LM_PermutedList : ExperimentTask
         {
             currentIndex = 0; // reset
             return null;
-            
+
         }
         else
         {
@@ -240,5 +240,3 @@ public class LM_PermutedList : ExperimentTask
         }
     }
 }
-
-
