@@ -303,4 +303,11 @@ public class ExperimentTask : MonoBehaviour{
         foreach (Transform child in root)
             MoveToLayer(child, layer);
     }
+
+
+	// Calculate the planar distance between placement and targets (i.e., ignore the y-axis height of the copies)
+	public float GetVector2DDistance(Vector3 v1, Vector3 v2)
+	{
+		return (Mathf.Sqrt(Mathf.Pow(Mathf.Abs(v1.x - v2.x), 2f) + Mathf.Pow(Mathf.Abs(v1.z - v2.z), 2f)));
+	}
 }
