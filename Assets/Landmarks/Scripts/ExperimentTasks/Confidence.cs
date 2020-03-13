@@ -33,7 +33,7 @@ public class Confidence : ExperimentTask {
     public bool actionButtonOn = true;
     public string customButtonText = "";
         
-    private GUIText gui;
+    private Text gui;
 
     public bool restrictMovement = false; // MJS do we want to keep them still during this?
 
@@ -77,11 +77,11 @@ public class Confidence : ExperimentTask {
         hud.SecondsToShow = hud.InstructionDuration;
 
             
-        sgo.AddComponent<GUIText>();
+        sgo.AddComponent<Text>();
         sgo.hideFlags = HideFlags.HideAndDontSave;
         sgo.transform.position = new Vector3(0,0,0);
-        gui = sgo.GetComponent<GUIText>();
-        gui.pixelOffset = new Vector2( 20, Screen.height - 20);
+        gui = sgo.GetComponent<Text>(); 
+        // DEPRICATED IN UNITY 2019 // gui.pixelOffset = new Vector2( 20, Screen.height - 20);
         gui.font = instructionFont;
         gui.fontSize = instructionSize;
         gui.material.color = text_color;
