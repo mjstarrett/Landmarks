@@ -57,14 +57,14 @@ public class HUD : MonoBehaviour
 	private string status = "";
 	private int score = 0;
 
-	private GUIText timeGui;
-	private GUIText FPSgui;
-	private GUIText statusGui;
-	private GUIText statusGuiBack;
-	private GUIText messageGui;
-	private GUIText messageGuiBack;
-	private GUIText scoreGui;
-	private GUIText scoreGuiBack;
+	private Text timeGui;
+	private Text FPSgui;
+	private Text statusGui;
+	private Text statusGuiBack;
+	private Text messageGui;
+	private Text messageGuiBack;
+	private Text scoreGui;
+	private Text scoreGuiBack;
 	public float fadeSpeed = 0.05f;
 	private Text canvan;
 	private float updateInterval = 1.0f;
@@ -217,11 +217,11 @@ public class HUD : MonoBehaviour
 		if (!timeGui)
 	    {
     		GameObject sgo = new GameObject("Timecode Display");
-    		sgo.AddComponent<GUIText>();
+    		sgo.AddComponent<Text>();
 			sgo.hideFlags = HideFlags.HideAndDontSave;
 			sgo.transform.position = new Vector3(0,0,0);
-			timeGui = sgo.GetComponent<GUIText>();
-			timeGui.pixelOffset = new Vector2(10,30);
+			timeGui = sgo.GetComponent<Text>();
+			//timeGui.pixelOffset = new Vector2(10,30);
    			//timeGui.font = hudFont;
    			timeGui.fontSize = 24;
    			//timeGui.material.color = statusColor;
@@ -235,12 +235,12 @@ public class HUD : MonoBehaviour
 		if (!statusGui)
 	    {
     		GameObject sgo = new GameObject("Message Display");
-    		sgo.AddComponent<GUIText>();
+    		sgo.AddComponent<Text>();
 
 			sgo.hideFlags = HideFlags.HideAndDontSave;
 			sgo.transform.position = new Vector3(0,0,0);
-			messageGui = sgo.GetComponent<GUIText>();
-			messageGui.pixelOffset = new Vector2( 20, Screen.height - 2);
+			messageGui = sgo.GetComponent<Text>();
+			//messageGui.pixelOffset = new Vector2( 20, Screen.height - 2);
    			messageGui.font = hudFont;
    			messageGui.material.color = statusColor;
 	    }
@@ -248,11 +248,11 @@ public class HUD : MonoBehaviour
 	    if (!messageGuiBack)
 	    {
     		GameObject sgo2 = new GameObject("Message Display Back");
-    		sgo2.AddComponent<GUIText>();
+    		sgo2.AddComponent<Text>();
 			sgo2.hideFlags = HideFlags.HideAndDontSave;
 			sgo2.transform.position = new Vector3(0,0,0);
-   			messageGuiBack = sgo2.GetComponent<GUIText>();
-			messageGuiBack.pixelOffset = new Vector2( 20, Screen.height - 3);
+   			messageGuiBack = sgo2.GetComponent<Text>();
+			//messageGuiBack.pixelOffset = new Vector2( 20, Screen.height - 3);
    			messageGuiBack.font = hudFont;
    			messageGuiBack.material.color = Color.black;
 	    }
@@ -307,11 +307,11 @@ public class HUD : MonoBehaviour
 		if (!statusGui)
 	    {
     		GameObject sgo = new GameObject("Status Display");
-    		sgo.AddComponent<GUIText>();
+    		sgo.AddComponent<Text>();
 			sgo.hideFlags = HideFlags.HideAndDontSave;
 			sgo.transform.position = new Vector3(0,0,0);
-			statusGui = sgo.GetComponent<GUIText>();
-			statusGui.pixelOffset = new Vector2(5,75);
+			statusGui = sgo.GetComponent<Text>();
+			//statusGui.pixelOffset = new Vector2(5,75);
    			statusGui.font = hudFont;
    			statusGui.fontSize = 24;
    			statusGui.material.color = statusColor;
@@ -320,11 +320,11 @@ public class HUD : MonoBehaviour
 	    if (!statusGuiBack)
 	    {
     		GameObject sgo2 = new GameObject("Status Display Back");
-    		sgo2.AddComponent<GUIText>();
+    		sgo2.AddComponent<Text>();
 			sgo2.hideFlags = HideFlags.HideAndDontSave;
 			sgo2.transform.position = new Vector3(0,0,0);
-   			statusGuiBack = sgo2.GetComponent<GUIText>();
-			statusGuiBack.pixelOffset = new Vector2(5,74);
+   			statusGuiBack = sgo2.GetComponent<Text>();
+			//statusGuiBack.pixelOffset = new Vector2(5,74);
    			statusGuiBack.font = hudFont;
    			statusGuiBack.fontSize = 24;
    			statusGuiBack.material.color = Color.black;
@@ -351,11 +351,11 @@ public class HUD : MonoBehaviour
 		if (!scoreGui)
 	    {
     		GameObject sgo = new GameObject("Score Display");
-    		sgo.AddComponent<GUIText>();
+    		sgo.AddComponent<Text>();
 			sgo.hideFlags = HideFlags.HideAndDontSave;
 			sgo.transform.position = new Vector3(0,0,0);
-			scoreGui = sgo.GetComponent<GUIText>();
-			scoreGui.pixelOffset = new Vector2(Screen.width - 100,Screen.height - 2);
+			scoreGui = sgo.GetComponent<Text>();
+			//scoreGui.pixelOffset = new Vector2(Screen.width - 100,Screen.height - 2);
    			scoreGui.font = hudFont;
    			scoreGui.material.color = statusColor;
 	    }
@@ -363,11 +363,11 @@ public class HUD : MonoBehaviour
 	    if (!scoreGuiBack)
 	    {
     		GameObject sgo2 = new GameObject("Score Display Back");
-    		sgo2.AddComponent<GUIText>();
+    		sgo2.AddComponent<Text>();
 			sgo2.hideFlags = HideFlags.HideAndDontSave;
 			sgo2.transform.position = new Vector3(0,0,0);
-   			scoreGuiBack = sgo2.GetComponent<GUIText>();
-			scoreGuiBack.pixelOffset = new Vector2(Screen.width - 100,Screen.height - 3);
+   			scoreGuiBack = sgo2.GetComponent<Text>();
+			//scoreGuiBack.pixelOffset = new Vector2(Screen.width - 100,Screen.height - 3);
    			scoreGuiBack.font = hudFont;
    			scoreGuiBack.material.color = Color.black;
 	    }
@@ -388,11 +388,11 @@ public class HUD : MonoBehaviour
 			if (!FPSgui)
 			{
 				GameObject go = new GameObject("FPS Display");
-				go.AddComponent<GUIText>();
+				go.AddComponent<Text>();
 				go.hideFlags = HideFlags.HideAndDontSave;
 				go.transform.position = new Vector3(0,0,0);
-				FPSgui = go.GetComponent<GUIText>();
-				FPSgui.pixelOffset = new Vector2(Screen.width - 130,20);
+				FPSgui = go.GetComponent<Text>();
+				//FPSgui.pixelOffset = new Vector2(Screen.width - 130,20);
 				//gui.font = hudFont;
 			}
 	        float fps = frames / (timeNow - lastInterval);

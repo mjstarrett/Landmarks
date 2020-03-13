@@ -16,6 +16,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ShowItemTask : ExperimentTask {
 
@@ -32,7 +33,7 @@ public class ShowItemTask : ExperimentTask {
 	
 	public string itemName;
 		
-	private GUITexture gui;
+	private Image gui;
 	
 	void OnDisable ()
 	{
@@ -57,18 +58,18 @@ public class ShowItemTask : ExperimentTask {
 		if (!gui)
 	    {	       			
     		GameObject sgo = new GameObject("Item Display");
-    		sgo.AddComponent<GUITexture>();
+    		sgo.AddComponent<Image>();
 			sgo.hideFlags = HideFlags.HideAndDontSave;
 			sgo.transform.position = new Vector3(0,0,0);
-			gui = sgo.GetComponent<GUITexture>();
+			gui = sgo.GetComponent<Image>();
 			//gui.pixelInset = new Rect( 20, Screen.height + 100, 500/4, 600/4);
-			gui.pixelInset = new Rect( (Screen.width-500)/2, 0, 500, 600);	  
+			//gui.pixelInset = new Rect( (Screen.width-500)/2, 0, 500, 600);	  
 			gui.transform.position = Vector3.zero;
         	gui.transform.localScale = Vector3.zero;
 	    }
 	    
 	    current = items.currentString().Trim();
-	    gui.texture	 = (Texture2D)Resources.Load("Items/"+current, typeof(Texture2D) );	
+	    gui = (Image)Resources.Load("Items/"+current, typeof(Texture2D));	
 		hud.setMessage("You delivered " + current);
 	
 		
