@@ -42,7 +42,7 @@ public class Experiment : MonoBehaviour {
 
     public GameObject availableControllers;
     public UserInterface userInterface = UserInterface.KeyboardMouse;
-    public bool debugging = false;
+    // public bool debugging = false;
 
     [HideInInspector]
     public TaskList tasks;
@@ -66,10 +66,12 @@ public class Experiment : MonoBehaviour {
     public dbLog dblog;
     [HideInInspector]
     public long playback_time;
+    [HideInInspector]
+    public LM_TrialLog trialLogger;
+    [HideInInspector]
+    public LM_AzureStorage azureStorage;
 
-    [HideInInspector] public LM_TrialLog trialLogger;
-
-	private bool playback = false;
+    private bool playback = false;
 	private bool pause = true;
 	private bool done = false;
 	private long now;
