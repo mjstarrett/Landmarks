@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.IO.Ports;
 using UnityEngine;
 using System.Collections.Generic;
+
+#if UNITY_Editor_OSX
+using System.IO.Ports;
+#endif
 
 
 public class BrainAmpManager : MonoBehaviour {
@@ -11,12 +14,15 @@ public class BrainAmpManager : MonoBehaviour {
     public int port = 3; // COM port number
     public int nTriggers = 255; // how many unique combinations (e.g., 8 bits = 0-255, 256 permutations)
 
-    private SerialPort triggerBox; // container for our communication with triggerbox virtual port
     private float delay = 5f; // how long to wait before turning off squarewave
     private Byte[] bit = { 0 }; // container for our trigger configuration info in 8-bit format
     public Dictionary<string, int> triggers = new Dictionary<string, int>(); // Store trigger name/number pairs
     private int nextTriggerValue;
     public bool disabled;
+
+#if UNITY_Editor_OSX
+    private SerialPort triggerBox; // container for our communication with triggerbox virtual port
+#endif
 
     // Use this for initialization
     void Awake () {
@@ -51,8 +57,10 @@ public class BrainAmpManager : MonoBehaviour {
         Test(triggerNumber);
     }
 
+
     public void Test(int trigger)
     {
+#if UNITY_Editor_OSX
         if (disabled)
         {
             return;
@@ -61,6 +69,7 @@ public class BrainAmpManager : MonoBehaviour {
         bit[0] = (byte)trigger; // set the trigger number 
         Debug.Log(bit[0]);
         triggerBox.Write(bit, 0, 1);
+#endif
     }
 
     //// Coroutine to define square-wave pulse (with pause so we don't turn off too early)
@@ -86,8 +95,10 @@ public class BrainAmpManager : MonoBehaviour {
     //}
 
 
+
     public void initiatePort()
     {
+#if UNITY_Editor_OSX
         // Configure the triggerbox info
         var portName = "COM" + port.ToString();
         Debug.Log("Looking for TriggerBox on port " + portName);
@@ -110,14 +121,12 @@ public class BrainAmpManager : MonoBehaviour {
             Debug.LogWarning("Initialization failed - disabling BrainAmpManager and EEG triggers");
             return;
         }
-
-
-
-
+#endif
     }
 
     public void closePort()
     {
+#if UNITY_Editor_OSX
         if (disabled)
         {
             return;
@@ -128,6 +137,7 @@ public class BrainAmpManager : MonoBehaviour {
         // Close the serial port
         triggerBox.Close();
         Debug.Log("port closed!");
+#endif
     }
 
     public string LogTriggerIndices()
