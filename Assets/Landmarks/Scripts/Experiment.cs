@@ -19,6 +19,7 @@ using System.Collections;
 using System.IO;
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using Valve.VR.InteractionSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
@@ -70,7 +71,7 @@ public class Experiment : MonoBehaviour {
     [HideInInspector]
     public LM_TrialLog trialLogger;
     [HideInInspector]
-    public LM_AzureStorage azureStorage;
+    public string logfile;
 
     private bool playback = false;
 	private bool pause = true;
@@ -81,8 +82,8 @@ public class Experiment : MonoBehaviour {
 	private long playback_offset;
 	private long next_time;
 	private string[] next_action;
-    private string logfile;
     private string configfile = "";
+    private LM_AzureStorage azureStorage;
 
     protected GameObject avatar;
 	protected AvatarController avatarController;
@@ -232,6 +233,8 @@ public class Experiment : MonoBehaviour {
         {
             scaledEnvironment = null;
         }
+
+        azureStorage = FindObjectOfType<LM_AzureStorage>();
     }
 
 
@@ -521,7 +524,7 @@ public class Experiment : MonoBehaviour {
 
 
     // MJS - Function to allow for flexible behavior at end of scene
-    void EndScene()
+    async Task EndScene()
     {
         // Wrap up any remaining tasks in the experiment
         if (config.runMode != ConfigRunMode.PLAYBACK)
@@ -536,30 +539,50 @@ public class Experiment : MonoBehaviour {
             dblog.log(eeg.LogTriggerIndices(), 1);
         }
 
-        // close the log
+        // close the logfile 
         dblog.close();
 
-        Debug.Log("Is there another scene");
-        // Check if there is another scene
-        var nextLevels = PlayerPrefsX.GetStringArray("NextLevels");
-        var nextConditions = PlayerPrefsX.GetStringArray("NextConditions");
-        if (config.levelIndex < nextLevels.Length)
+        // Upload data to remote storage if available and configured
+        if (azureStorage != null)
         {
-            Debug.Log("Yeah");
-            config.level = nextLevels[config.levelIndex];
-            var levelname = config.level; // save from destruction
-            config.condition = nextConditions[config.levelIndex];
-            config.levelIndex++;
-            // avoid frame-drop during load forcing to SteamVr compositor by using SteamVR_LoadLevel for VR apps
+            Debug.Log("trying to use MICROSOFT AZURE");
+            await azureStorage.BasicStorageBlockBlobOperationsAsync();
+        }
+
+        // Handle if we need to load another scene for this experiment (depends on config)
+        if (config.nextLevels.Count > 0 || config.nextConditions.Count > 0)
+        {
+            // Set up next level if there is one (if not use the current level again)
+            if (config.nextLevels.Count > 0)
+            {
+                config.level = config.nextLevels[0]; // update config with next level
+                config.nextLevels.Remove(config.nextLevels[0]); // remove that level from list of nextLevels
+            }
+
+            // Set up next condition if there is one (if not use the current condition again)
+            if (config.nextConditions.Count > 0)
+            {
+                config.condition = config.nextConditions[0]; // update config with the next condition
+                config.nextConditions.Remove(config.nextConditions[0]); // remove that condition from the list of nextConditions
+            }
+
+            // Load the next scene
             if (usingVR)
             {
-                SteamVR_LoadLevel.Begin(levelname);
+                // Use steam functions to avoid issues w/ framerate drop
+                SteamVR_LoadLevel.Begin(config.level);
                 Debug.Log("Loading new VR scene");
             }
-            else SceneManager.LoadScene(levelname); // otherwise, just load the level like usual
+            else
+            {
+                SceneManager.LoadScene(config.level); // otherwise, just load the level like usual
+            }
         }
-        // Otherwise, close the application
-        else Debug.Log("No"); Application.Quit();
+        // If there isn't another level/scene or condition then quit the applicaiton
+        else
+        {
+            Debug.Log("No"); Application.Quit();
+        }
     }
 
 

@@ -201,12 +201,12 @@ public class LM_ExperimentManager : MonoBehaviour
                 if (id > 100 && id < 200)
                 {
                     config.level = "esc_city01";
-                    PlayerPrefsX.SetStringArray("NextLevels", new string[1] { "esc_city02" }); // using arrayprefs2 allows for multiple 'next' levels
+                    config.nextLevels.Add("esc_city02");
                 }
                 else if (id > 200 && id < 300)
                 {
                     config.level = "esc_city02";
-                    PlayerPrefsX.SetStringArray("NextLevels", new string[1] { "esc_city01" }); // using arrayprefs2 allows for multiple 'next' levels
+                    config.nextLevels.Add("esc_city01"); // using arrayprefs2 allows for multiple 'next' levels
                 }
             }
 
@@ -214,20 +214,17 @@ public class LM_ExperimentManager : MonoBehaviour
             if (id % 2 != 0)
             {
                 config.condition = "Standard";
-                PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Scaled" });
+                config.nextConditions.Add("Scaled");
             }
             else
             {
                 config.condition = "Scaled";
-                PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Standard" });
+                config.nextConditions.Add("Standard");
             }
         }
         // ---------------------------------------------------------------------
 
-
-
-
-        else config.level = "simpleSample_gettingStarted";
+        else config.level = "SimpleSample_50x50";
 
     }
 
