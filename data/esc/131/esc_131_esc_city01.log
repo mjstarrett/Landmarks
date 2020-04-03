@@ -1,0 +1,104 @@
+63721514759346	EXPERIMENT:		SUBJECT:	131	START_SCENE	esc_city01	START_CONDITION:	Standard	UI:	KeyboardMouse
+63721514759399	TASK_START	LM_Timeline	TaskList
+63721514759399	EEG_TRIGGER	Name	EXP_start	Value	1
+63721514759400	TASK_START	InitializeExperiment	TaskList
+63721514759400	TASK_START	PlaceTargets	TaskList
+63721514759400	TASK_START	CheckForUsedTargets	LM_CompareLists
+63721514759428	TASK_END	CheckForUsedTargets	LM_CompareLists	28
+63721514759430	TASK_START	ListTargetLocations	ObjectList
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target04	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target05	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target06	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target07	null
+63721514759430	TASK_ADD	ListTargetLocations	ObjectList	Target08	null
+63721514759475	TASK_END	ListTargetLocations	ObjectList	45
+63721514759476	TASK_START	ListTargets	ObjectList
+63721514759476	TASK_ADD	ListTargets	ObjectList	Music Store	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Computer Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Clothing Store	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Bike Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Hair Dresser	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Coffee Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Camera Store	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Pharmacy	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Grocery	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Toy Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Repair Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Bakery	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Post Office	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Barber Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Ice Cream Shop	null
+63721514759476	TASK_ADD	ListTargets	ObjectList	Pet Shop	null
+63721514759487	TASK_END	ListTargets	ObjectList	11
+63721514759488	TASK_START	PopulateTargets	MoveObjects
+63721514759489	TARGET INFORMATION ----------------------------------------
+63721514759489	Target01: 	Music Store	Position: 	5.95	0.085	116.45	Rotation: 	270	270	0
+63721514759489	Target02: 	Computer Shop	Position: 	5.95	0.085	14.45	Rotation: 	270	270	0
+63721514759489	Target03: 	Clothing Store	Position: 	85.935	0.085	14.45	Rotation: 	270	270	0
+63721514759489	Target04: 	Bike Shop	Position: 	85.935	0.085	74.45998	Rotation: 	270	270	0
+63721514759489	Target05: 	Hair Dresser	Position: 	36.55	0.085	74.45998	Rotation: 	270	180	0
+63721514759489	Target06: 	Coffee Shop	Position: 	36.55	0.085	116.45	Rotation: 	270	180	0
+63721514759489	Target07: 	Camera Store	Position: 	76.49999	0.085	106.25	Rotation: 	270	0	0
+63721514759489	Target08: 	Pharmacy	Position: 	76.49999	0.085	37.4	Rotation: 	270	90	0
+63721514759489	-----------------------------------------------------------/
+63721514759500	TASK_END	PopulateTargets	MoveObjects	12
+63721514759500	TASK_START	UpdateUsedTargets	LM_CompareLists
+63721514759508	TASK_END	UpdateUsedTargets	LM_CompareLists	8
+63721514759509	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+PlaceTargets1False
+63721514759509	TASK_END	PlaceTargets	TaskList	109
+63721514759510	TASK_START	ListNavigationStarts	ObjectList
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation06	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation07	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation04	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation05	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation03	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation02	null
+63721514759510	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation08	null
+63721514759515	TASK_END	ListNavigationStarts	ObjectList	5
+63721514759515	TASK_START	ListLargePlayerStarts	ObjectList
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
+63721514759515	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
+63721514759523	TASK_END	ListLargePlayerStarts	ObjectList	8
+63721514759524	TASK_START	ListSmallPlayerStarts	ObjectList
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation01	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation06	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation02	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation04	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation05	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation03	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation08	null
+63721514759524	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation07	null
+63721514759531	TASK_END	ListSmallPlayerStarts	ObjectList	7
+63721514759531	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+InitializeExperiment1False
+63721514759531	TASK_END	InitializeExperiment	TaskList	131
+63721514759532	TASK_START	BeginMessage	InstructionsTask
+63721514762694	INPUT_EVENT    PlayerPressedActionButton    1
+63721514762695	TASK_END	BeginMessage	InstructionsTask	3163
+63721514762695	TASK_START	Tasks	TaskList
+63721514762702	TASK_END	Tasks	TaskList	7
+63721514762703	TASK_START	EndMessage	InstructionsTask
+63721514767714	TASK_END	EndMessage	InstructionsTask	5011
+63721514767714	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+LM_Timeline1False
+63721514767717	EEG_TRIGGER	Name	EXP_end	Value	2
+63721514767717	TASK_END	LM_Timeline	TaskList	8318
+63721514767717	
+================ Index of EEG Triggers ================
+1: EXP_start
+2: EXP_end
+
