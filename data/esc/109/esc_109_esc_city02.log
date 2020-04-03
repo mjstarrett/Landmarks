@@ -1,0 +1,96 @@
+63721509013279	EXPERIMENT:		SUBJECT:	109	START_SCENE	esc_city02	START_CONDITION:	Scaled	UI:	KeyboardMouse
+63721509013329	TASK_START	LM_Timeline	TaskList
+63721509013330	EEG_TRIGGER	Name	EXP_start	Value	1
+63721509013330	TASK_START	InitializeExperiment	TaskList
+63721509013330	TASK_START	PlaceTargets	TaskList
+63721509013330	TASK_START	CheckForUsedTargets	LM_CompareLists
+63721509013334	TASK_END	CheckForUsedTargets	LM_CompareLists	4
+63721509013334	TASK_START	ListTargetLocations	ObjectList
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target01	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target02	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target03	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target04	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target05	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target06	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target07	null
+63721509013334	TASK_ADD	ListTargetLocations	ObjectList	Target08	null
+63721509013367	TASK_END	ListTargetLocations	ObjectList	33
+63721509013367	TASK_START	ListTargets	ObjectList
+63721509013367	TASK_ADD	ListTargets	ObjectList	Bike Shop	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Hair Dresser	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Camera Store	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Repair Shop	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Coffee Shop	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Toy Shop	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Music Store	null
+63721509013368	TASK_ADD	ListTargets	ObjectList	Bakery	null
+63721509013387	TASK_END	ListTargets	ObjectList	20
+63721509013388	TASK_START	PopulateTargets	MoveObjects
+63721509013388	TARGET INFORMATION ----------------------------------------
+63721509013388	Target01: 	Bike Shop	Position: 	86.7	0.08500671	138.55	Rotation: 	270	0	0
+63721509013388	Target02: 	Hair Dresser	Position: 	86.7	0.08500671	55.25	Rotation: 	270	270	0
+63721509013388	Target03: 	Camera Store	Position: 	36.54999	0.08500671	55.25	Rotation: 	270	90	0
+63721509013388	Target04: 	Repair Shop	Position: 	36.54999	0.08500671	86.7	Rotation: 	270	270	0
+63721509013388	Target05: 	Coffee Shop	Position: 	76.49999	0.08500671	86.7	Rotation: 	270	180	0
+63721509013388	Target06: 	Toy Shop	Position: 	76.49999	0.08500671	16.15	Rotation: 	270	90	0
+63721509013388	Target07: 	Music Store	Position: 	14.28003	0.08500671	16.15	Rotation: 	270	90	0
+63721509013388	Target08: 	Bakery	Position: 	14.28003	0.08500671	137.445	Rotation: 	270	0	0
+63721509013388	-----------------------------------------------------------/
+63721509013396	TASK_END	PopulateTargets	MoveObjects	8
+63721509013396	TASK_START	UpdateUsedTargets	LM_CompareLists
+63721509013404	TASK_END	UpdateUsedTargets	LM_CompareLists	8
+63721509013404	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+PlaceTargets1False
+63721509013404	TASK_END	PlaceTargets	TaskList	74
+63721509013405	TASK_START	ListNavigationStarts	ObjectList
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation02	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation06	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation04	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation05	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation08	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation01	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation07	null
+63721509013405	TASK_ADD	ListNavigationStarts	ObjectList	StartLocation03	null
+63721509013411	TASK_END	ListNavigationStarts	ObjectList	6
+63721509013412	TASK_START	ListLargePlayerStarts	ObjectList
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn02	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn05	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn04	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn03	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn07	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn06	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn01	null
+63721509013412	TASK_ADD	ListLargePlayerStarts	ObjectList	ScaledPlayerSpawn08	null
+63721509013419	TASK_END	ListLargePlayerStarts	ObjectList	7
+63721509013420	TASK_START	ListSmallPlayerStarts	ObjectList
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation08	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation05	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation06	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation02	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation04	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation07	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation03	null
+63721509013420	TASK_ADD	ListSmallPlayerStarts	ObjectList	StartLocation01	null
+63721509013427	TASK_END	ListSmallPlayerStarts	ObjectList	7
+63721509013427	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+InitializeExperiment1False
+63721509013427	TASK_END	InitializeExperiment	TaskList	97
+63721509013427	TASK_START	BeginMessage	InstructionsTask
+63721509047335	INPUT_EVENT    PlayerPressedActionButton    1
+63721509047335	TASK_END	BeginMessage	InstructionsTask	33908
+63721509047336	TASK_START	Tasks	TaskList
+63721509047343	TASK_END	Tasks	TaskList	7
+63721509047344	TASK_START	EndMessage	InstructionsTask
+63721509052352	TASK_END	EndMessage	InstructionsTask	5008
+63721509052352	LM_Output	TaskList
+TaskListName	RepetitionNumber	CatchFlag
+LM_Timeline1False
+63721509052352	EEG_TRIGGER	Name	EXP_end	Value	2
+63721509052352	TASK_END	LM_Timeline	TaskList	39023
+63721509052352	
+================ Index of EEG Triggers ================
+1: EXP_start
+2: EXP_end
+

@@ -15,6 +15,7 @@
 */
 
 using UnityEngine;
+using System.Collections.Generic;
 
 
 
@@ -54,7 +55,8 @@ public class Config : MonoBehaviour{
     public string level = "default";
     public string condition = "default";
     public string ui = "default";
-    public int levelIndex = 0;
+    public List<string> nextLevels = new List<string>();
+    public List<string> nextConditions = new List<string>();
 
 	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
 	[HideInInspector] public bool 	bootstrapped = false;
