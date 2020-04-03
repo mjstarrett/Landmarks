@@ -221,8 +221,6 @@ public class LM_ExperimentManager : MonoBehaviour
                 config.condition = "Scaled";
                 PlayerPrefsX.SetStringArray("NextConditions", new string[1] { "Standard" });
             }
-
-            PlayerPrefs.SetInt("NextIndex", 0);
         }
         // ---------------------------------------------------------------------
 
