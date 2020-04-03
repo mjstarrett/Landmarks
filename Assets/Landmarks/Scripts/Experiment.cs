@@ -22,6 +22,7 @@ using System.Reflection;
 using Valve.VR.InteractionSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
+using Valve.VR;
 
 public enum EndListMode
 {
@@ -248,10 +249,13 @@ public class Experiment : MonoBehaviour {
                 }
 
                 done = tasks.updateTask();
+
+                // THIS IS WHERE THE EXPERIMENT GET'S SHUT DOWN
                 if (done)
                 {
                     Cursor.visible = true;
-                    Application.Quit();
+                    Debug.Log("Does this code run?");
+                    EndScene();
                 }
             }
             else
@@ -516,19 +520,52 @@ public class Experiment : MonoBehaviour {
     }
 
 
-    void OnApplicationQuit()
+    // MJS - Function to allow for flexible behavior at end of scene
+    void EndScene()
     {
+        // Wrap up any remaining tasks in the experiment
+        if (config.runMode != ConfigRunMode.PLAYBACK)
+        {
+            tasks.endTask();
+        }
+
+        // Log out any EEG triggers (if available)
         var eeg = FindObjectOfType<BrainAmpManager>();
         if (eeg != null)
         {
             dblog.log(eeg.LogTriggerIndices(), 1);
         }
 
-        if (config.runMode != ConfigRunMode.PLAYBACK)
-        {
-            tasks.endTask();
-        }
+        // close the log
         dblog.close();
+
+        Debug.Log("Is there another scene");
+        // Check if there is another scene
+        var nextLevels = PlayerPrefsX.GetStringArray("NextLevels");
+        var nextConditions = PlayerPrefsX.GetStringArray("NextConditions");
+        if (config.levelIndex < nextLevels.Length)
+        {
+            Debug.Log("Yeah");
+            config.level = nextLevels[config.levelIndex];
+            var levelname = config.level; // save from destruction
+            config.condition = nextConditions[config.levelIndex];
+            config.levelIndex++;
+            // avoid frame-drop during load forcing to SteamVr compositor by using SteamVR_LoadLevel for VR apps
+            if (usingVR)
+            {
+                SteamVR_LoadLevel.Begin(levelname);
+                Debug.Log("Loading new VR scene");
+            }
+            else SceneManager.LoadScene(levelname); // otherwise, just load the level like usual
+        }
+        // Otherwise, close the application
+        else Debug.Log("No"); Application.Quit();
+    }
+
+
+    void OnApplicationQuit()
+    {
+
         Cursor.visible = true;
     }
 
