@@ -15,7 +15,7 @@
 */
 
 using UnityEngine;
-using System.Collections;
+
 
 
 public enum ConfigRunMode
@@ -51,9 +51,10 @@ public class Config : MonoBehaviour{
 	public string subjectPath = "default";
 	public string subject = "default";
 	public string session = "default";
-	public string level = "default";
+    public string level = "default";
     public string condition = "default";
     public string ui = "default";
+    public int levelIndex = 0;
 
 	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
 	[HideInInspector] public bool 	bootstrapped = false;
@@ -78,7 +79,7 @@ public class Config : MonoBehaviour{
                 s_Instance = obj.AddComponent(typeof (Config)) as Config;
                 Debug.Log ("Could not locate an Config object.  Config was Generated Automaticly.");
             }
-            
+
             return s_Instance;
         }
     }
