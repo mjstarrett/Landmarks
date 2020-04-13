@@ -169,8 +169,15 @@ public class Experiment : MonoBehaviour {
         // Handle Config file
         // ------------------------------
 
-        logfile = config.subjectPath + "/" + config.experiment + "_" + config.subject + "_" + config.level + ".log";
+
+        logfile =   Application.persistentDataPath +
+                    "/" + config.experiment + "/" + config.subject + "/" +
+                    config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
+
+
 		configfile = config.expPath + "/" + config.filename;
+
+        Debug.Log(logfile);
 
 		//when in editor
 		if (!config.bootstrapped) {

@@ -23,7 +23,7 @@ public class LM_AzureStorage : MonoBehaviour
     {
         storageAccount = CloudStorageAccount.Parse(connectionString);
 		experiment = FindObjectOfType<Experiment>();
-		filename = experiment.config.experiment + "_" + experiment.config.subject + "_" + experiment.config.level + ".log";
+		filename = experiment.config.experiment + "_" + experiment.config.subject + "_" + experiment.config.level + "_" + experiment.config.condition + ".log";
 	}
 
 
