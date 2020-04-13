@@ -176,6 +176,7 @@ public class Experiment : MonoBehaviour {
         if (Application.isEditor)
         {
             Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
+
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");

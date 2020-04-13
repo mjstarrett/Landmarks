@@ -25,6 +25,7 @@ public class LM_AzureStorage : MonoBehaviour
 		Debug.Log("configuring Azure storage");
         storageAccount = CloudStorageAccount.Parse(connectionString);
 		experiment = FindObjectOfType<Experiment>();
+
 	}
 
 
