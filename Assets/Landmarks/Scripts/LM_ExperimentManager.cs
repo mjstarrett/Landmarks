@@ -28,13 +28,16 @@ public class LM_ExperimentManager : MonoBehaviour
     {
 
         config = Config.instance;
-        appDir = Directory.GetCurrentDirectory();
 
-        // check if there is a /data/ folder in our project; create if necessary
-        if (!Directory.Exists(appDir + "/data/"))
-        {
-            Directory.CreateDirectory(appDir + "/data/");
-        }
+
+        //appDir = Directory.GetCurrentDirectory();
+
+        //// check if there is a /data/ folder in our project; create if necessary
+        //if (!Directory.Exists(appDir + "/data/"))
+        //{
+        //    Directory.CreateDirectory(appDir + "/data/");
+        //}
+        appDir = Application.persistentDataPath;
 
         start.onClick.AddListener(LoadExperiment);
 
@@ -85,7 +88,7 @@ public class LM_ExperimentManager : MonoBehaviour
             {
 
                 // If this id has already been used to save data, flag an error
-                if (Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text) && !practice.isOn)
+                if (Directory.Exists(appDir + "/" + expID.options[expID.value].text + "/" + subID.text) && !practice.isOn)
                 {
                     subidError = true;
                     _errorMessage.text = "That SubjectID is already in use.";
@@ -150,22 +153,22 @@ public class LM_ExperimentManager : MonoBehaviour
             startErrorMessage.gameObject.SetActive(false);
 
             // Create the directories if they don't exist
-            if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text))
+            if (!Directory.Exists(appDir + "/" + expID.options[expID.value].text))
             {
-                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text);
+                Directory.CreateDirectory(appDir + "/" + expID.options[expID.value].text);
                 expDirCreated = true;
             }
 
             if (practice.isOn)
             {
-                if (!Directory.Exists(appDir + "/data/" + expID.options[expID.value].text + "/practice"))
+                if (!Directory.Exists(appDir + "/" + expID.options[expID.value].text + "/practice"))
                 {
-                    Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/practice");
+                    Directory.CreateDirectory(appDir + "/" + expID.options[expID.value].text + "/practice");
                 }
             }
             else
             {
-                Directory.CreateDirectory(appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text);
+                Directory.CreateDirectory(appDir + "/" + expID.options[expID.value].text + "/" + subID.text);
                 subDirCreated = true;
             }
 
@@ -193,20 +196,20 @@ public class LM_ExperimentManager : MonoBehaviour
 
             if (practice.isOn)
             {
-                config.level = "esc_practice";
+                config.level = "escPractice";
             }
             else
             {
                 // if it's in the 100 range, load city 01
                 if (id > 100 && id < 200)
                 {
-                    config.level = "esc_city01";
-                    config.nextLevels.Add("esc_city02");
+                    config.level = "escCity01";
+                    config.nextLevels.Add("escCity02");
                 }
                 else if (id > 200 && id < 300)
                 {
-                    config.level = "esc_city02";
-                    config.nextLevels.Add("esc_city01"); // using arrayprefs2 allows for multiple 'next' levels
+                    config.level = "escCity02";
+                    config.nextLevels.Add("escCity01"); // using arrayprefs2 allows for multiple 'next' levels
                 }
             }
 
@@ -238,15 +241,15 @@ public class LM_ExperimentManager : MonoBehaviour
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
 
-        config.expPath = appDir + "/data/" + expID.options[expID.value].text;
+        config.expPath = appDir + "/" + expID.options[expID.value].text;
 
         if (practice.isOn)
         {
-            config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/practice";
+            config.subjectPath = appDir + "/" + expID.options[expID.value].text + "/practice";
         }
         else
         {
-            config.subjectPath = appDir + "/data/" + expID.options[expID.value].text + "/" + subID.text;
+            config.subjectPath = appDir + "/" + expID.options[expID.value].text + "/" + subID.text;
         }
 
         config.experiment = expID.options[expID.value].text;
