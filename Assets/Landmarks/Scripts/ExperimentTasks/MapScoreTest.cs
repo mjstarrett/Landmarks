@@ -77,7 +77,7 @@ public class MapScoreTest : ExperimentTask {
 			float tempErrorAngleX = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.x, targets [itarget].transform.localRotation.eulerAngles.x); 
 			float tempErrorAngleY = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.y, targets [itarget].transform.localRotation.eulerAngles.y); // note this seems to correspond to z rotation axis in inspector
 			float tempErrorAngleZ = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.z, targets [itarget].transform.localRotation.eulerAngles.z);
-			float tempErrorDistance =  vector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
+			float tempErrorDistance =  GetVector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
 
             log.log("Store: \t" + targets[itarget].name + "\tError Distance: \t" + tempErrorDistance + "\tError Rotation (xyz): \t" + tempErrorAngleX + "\t" + tempErrorAngleY + "\t" + tempErrorAngleZ, 2);
 
@@ -249,9 +249,5 @@ public class MapScoreTest : ExperimentTask {
 
 	}
 
-	// Calculate the planar distance between placement and targets (i.e., ignore the y-axis height of the copies)
-	private float vector2DDistance (Vector3 v1, Vector3 v2)
-	{
-		return (Mathf.Sqrt (Mathf.Pow (Mathf.Abs (v1.x - v2.x), 2f) + Mathf.Pow (Mathf.Abs (v1.z - v2.z), 2f)));
-	}
+	
 }

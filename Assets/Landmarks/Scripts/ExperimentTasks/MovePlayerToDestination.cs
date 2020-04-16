@@ -21,14 +21,14 @@ using System.Collections;
 
 public class MovePlayerToDestination : ExperimentTask {
 
-    [Header("Task-specific Properties")]
-
-    [HideInInspector] public GameObject start;
-	[HideInInspector] public GameObject destination;
+	[Header("Task-specific Properties")]
 	public ObjectList destinations;
-    public bool ignoreDestinationY;
-	
+	public bool ignoreDestinationY;
 	public bool swap;
+
+	[HideInInspector] public GameObject start;
+	[HideInInspector] public GameObject destination;
+	
 	private static Vector3 position;
 	private static Quaternion rotation;
 
