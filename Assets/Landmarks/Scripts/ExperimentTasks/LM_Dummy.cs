@@ -25,6 +25,8 @@ public class LM_Dummy : ExperimentTask
     public override void startTask()
     {
         TASK_START();
+
+        // LEAVE BLANK
     }
 
 
@@ -32,24 +34,32 @@ public class LM_Dummy : ExperimentTask
     {
         if (!manager) Start();
         base.startTask();
+
+        // WRITE TASK STARTUP CODE HERE
     }
 
 
     public override bool updateTask()
     {
         return true;
+
+        // WRITE TASK UPDATE CODE HERE
     }
 
 
     public override void endTask()
     {
         TASK_END();
+
+        // LEAVE BLANK
     }
 
 
     public override void TASK_END()
     {
         base.endTask();
+
+        // WRITE TASK EXIT CODE HERE
     }
 
 }

@@ -44,6 +44,7 @@ public class Experiment : MonoBehaviour {
 
     public GameObject availableControllers;
     public UserInterface userInterface = UserInterface.KeyboardMouse;
+    // public GameObject targetObjects;
     // public bool debugging = false;
 
     [HideInInspector]
@@ -546,7 +547,7 @@ public class Experiment : MonoBehaviour {
             dblog.log(eeg.LogTriggerIndices(), 1);
         }
 
-        // close the logfile 
+        // close the logfile
         dblog.close();
 
         // Upload data to remote storage if available and configured
