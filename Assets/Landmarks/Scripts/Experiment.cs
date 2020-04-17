@@ -44,7 +44,7 @@ public class Experiment : MonoBehaviour {
 
     public GameObject availableControllers;
     public UserInterface userInterface = UserInterface.KeyboardMouse;
-    // public GameObject targetObjects;
+    public GameObject targetObjects;
     // public bool debugging = false;
 
     [HideInInspector]
