@@ -6,6 +6,7 @@ public class LM_Compass : MonoBehaviour
 {
     public GameObject pointer;
     public float rotationSpeedMultiplier;
+    public bool interactable;
 
     // Start is called before the first frame update
     void Start()
@@ -16,15 +17,36 @@ public class LM_Compass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (interactable)
         {
-            pointer.transform.Rotate(transform.up, -1 * rotationSpeedMultiplier * Time.deltaTime);
-            Debug.Log("Trying to rotate left!");
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                pointer.transform.Rotate(transform.up, -1 * rotationSpeedMultiplier * Time.deltaTime);
+                Debug.Log("Trying to rotate left!");
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                pointer.transform.Rotate(transform.up, rotationSpeedMultiplier * Time.deltaTime);
+                Debug.Log("Trying to rotate left!");
+            }
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+    }
+
+
+    // move the pointer back to zero degrees unless random is specified
+    public void ResetPointer(bool random = false)
+    {
+        // store the vector3 rotation of the pointer in a temporary variable
+        var temp = pointer.transform.localEulerAngles;
+
+        // set the Y value of the desired Vector3 rotation (eulers)
+        if (random)
         {
-            pointer.transform.Rotate(transform.up,rotationSpeedMultiplier * Time.deltaTime);
-            Debug.Log("Trying to rotate left!");
+            temp.y = Random.Range(0f, 360f - Mathf.Epsilon); // random from 0 to 359.999999999
         }
+        else temp.y = 0; // or zero
+
+        // set the actual pointer transform's rotation to the temporary variable
+        pointer.transform.localEulerAngles = temp;
     }
 }
