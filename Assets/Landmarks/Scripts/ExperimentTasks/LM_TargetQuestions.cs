@@ -28,6 +28,7 @@ public class LM_TargetQuestions : ExperimentTask
     private GameObject location; // standing at the...
     private GameObject orientation; // facing the...
     private GameObject target; // point to the...
+    private LM_Compass compass; 
     private float answer; // what should they say?
     private float response; // what did they say?
     private float signedError; // how far off were they to the right or left?
@@ -79,7 +80,12 @@ public class LM_TargetQuestions : ExperimentTask
 
 
         // point the player at the orientation -- FIXME for SOP
-        
+
+
+        // engage the compass
+        compass = avatar.GetComponentInChildren<LM_Compass>();
+        compass.ResetPointer(random:true);
+        compass.interactable = true;
     }
 
 
@@ -122,6 +128,8 @@ public class LM_TargetQuestions : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
+
+        compass.interactable = false;
 
         // Free Movement
         manager.player.GetComponent<CharacterController>().enabled = false;
