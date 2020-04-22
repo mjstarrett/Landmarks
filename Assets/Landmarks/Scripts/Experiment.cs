@@ -44,12 +44,7 @@ public class Experiment : MonoBehaviour {
 
     public GameObject availableControllers;
     public UserInterface userInterface = UserInterface.KeyboardMouse;
-<<<<<<< HEAD
     // public bool debugging = false;
-=======
-    public GameObject targetObjects;
-    public bool debugging = false;
->>>>>>> 44fc5ce2... jrd setup and question are working; TODO - add in pointing interface, record response and error
 
     [HideInInspector]
     public TaskList tasks;
@@ -175,30 +170,24 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
         // Handle Config file
         // ------------------------------
+        
+		//when in editor
+		if (!config.bootstrapped) {
 
-        //when in editor
-        if (Application.isEditor)
-        {
-            Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
             }
             dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
             logfile = "test.log";
-            configfile = dataPath + config.filename;
-        }
-        // Otherwise, save data in a true app data path
+			configfile = dataPath + config.filename;
+		}
         else
         {
-            Debug.Log("THIS IS NOT THE EDITOR - SAVING IN PERSISTENTDATAPATH");
             Debug.Log(Application.persistentDataPath);
             dataPath = Application.persistentDataPath +
                         "/" + config.experiment + "/" + config.subject + "/";
-            if (!Directory.Exists(dataPath))
-            {
-                Directory.CreateDirectory(dataPath);
-            }
+
             logfile = config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
 
 
@@ -568,15 +557,8 @@ public class Experiment : MonoBehaviour {
         // Upload data to remote storage if available and configured
         if (azureStorage != null)
         {
-            if (Application.isEditor)
-            {
-                Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
-            }
-            else
-            {
-                Debug.Log("trying to use MICROSOFT AZURE");
-                await azureStorage.BasicStorageBlockBlobOperationsAsync();
-            }
+            Debug.Log("trying to use MICROSOFT AZURE");
+            await azureStorage.BasicStorageBlockBlobOperationsAsync();
         }
 
         // Handle if we need to load another scene for this experiment (depends on config)
