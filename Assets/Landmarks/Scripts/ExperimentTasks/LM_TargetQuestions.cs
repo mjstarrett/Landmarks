@@ -74,8 +74,9 @@ public class LM_TargetQuestions : ExperimentTask
 
         // What is the correct answer?
         answer = Vector3.SignedAngle(orientation.transform.position - location.transform.position,
-                                     target.transform.position - location.transform.position,
-                                     Vector3.up);
+                                     target.transform.position - location.transform.position, Vector3.up);
+        if (answer < 0) answer += 360; 
+        
         Debug.Log("Answer is " + answer);
 
 
@@ -93,6 +94,19 @@ public class LM_TargetQuestions : ExperimentTask
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            // Record the response as an angle between -180 and 180
+            response = compass.pointer.transform.localEulerAngles.y;
+            Debug.Log("RESPONSE: " + response.ToString());
+
+            // Calculate the (signed) error - should be between -180 and 180
+            signedError = response - answer;
+            if (signedError > 180) signedError -= 360;
+            else if (signedError < -180) signedError += 360;
+            Debug.Log("Signed Error: " + signedError);
+            absError = Mathf.Abs(signedError);
+            Debug.Log("Absolute Error: " + absError);
+
+
             return true;
         }
 
@@ -117,10 +131,10 @@ public class LM_TargetQuestions : ExperimentTask
             trialLog.AddData(transform.name + "_location", location.name);
             trialLog.AddData(transform.name + "_orientation", orientation.name);
             trialLog.AddData(transform.name + "_target", target.name);
-            trialLog.AddData(transform.name + "_answer", answer.ToString());
-            //trialLog.AddData(transform.name + "_response", );
-            //trialLog.AddData(transform.name + "_signedError", );
-            //trialLog.AddData(transform.name + "_absError", );
+            trialLog.AddData(transform.name + "_answerCW", answer.ToString());
+            trialLog.AddData(transform.name + "_responseCW", response.ToString());
+            trialLog.AddData(transform.name + "_signedError", signedError.ToString());
+            trialLog.AddData(transform.name + "_absError", absError.ToString());
         }
     }
 
@@ -130,7 +144,7 @@ public class LM_TargetQuestions : ExperimentTask
         base.endTask();
 
         compass.interactable = false;
-
+        
         // Free Movement
         manager.player.GetComponent<CharacterController>().enabled = false;
     }
