@@ -57,7 +57,7 @@ public class LM_AzureStorage : MonoBehaviour
 		Debug.Log("2. Uploading BlockBlob(s)");
 
         // Upload the Landmarks log files
-		CloudBlockBlob blockBlob = container.GetBlockBlobReference(System.DateTime.Now.ToString("yyMMddHHmmss") + "_" + experiment.logfile);
+		CloudBlockBlob blockBlob = container.GetBlockBlobReference(experiment.logfile);
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
@@ -73,7 +73,7 @@ public class LM_AzureStorage : MonoBehaviour
         // Try to upload any other files the user asked to be saved
         for (int i = 0; i < additionalSaveFiles.Length; i++)
 		{
-			fileBlobs[i] = container.GetBlockBlobReference(System.DateTime.Now.ToString("yyMMddHHmmss") + "_" + additionalSaveFiles[i]);
+			fileBlobs[i] = container.GetBlockBlobReference(additionalSaveFiles[i]);
 			
 			try
 			{
