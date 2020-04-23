@@ -47,9 +47,9 @@ public class LM_AzureStorage : MonoBehaviour
 			throw;
 		}
 
-		// To view the uploaded blob in a browser, you have two options. The first option is to use a Shared Access Signature (SAS) token to delegate 
-		// access to the resource. See the documentation links at the top for more information on SAS. The second approach is to set permissions 
-		// to allow public access to blobs in this container. Uncomment the line below to use this approach. Then you can view the image 
+		// To view the uploaded blob in a browser, you have two options. The first option is to use a Shared Access Signature (SAS) token to delegate
+		// access to the resource. See the documentation links at the top for more information on SAS. The second approach is to set permissions
+		// to allow public access to blobs in this container. Uncomment the line below to use this approach. Then you can view the image
 		// using: https://[InsertYourStorageAccountNameHere].blob.core.windows.net/democontainer/HelloWorld.png
 		// await container.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
@@ -57,7 +57,7 @@ public class LM_AzureStorage : MonoBehaviour
 		Debug.Log("2. Uploading BlockBlob(s)");
 
         // Upload the Landmarks log files
-		CloudBlockBlob blockBlob = container.GetBlockBlobReference(experiment.logfile);
+		CloudBlockBlob blockBlob = container.GetBlockBlobReference(System.DateTime.Now.ToString("yyMMddHHmmss") + "_" + experiment.logfile);
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
@@ -73,8 +73,8 @@ public class LM_AzureStorage : MonoBehaviour
         // Try to upload any other files the user asked to be saved
         for (int i = 0; i < additionalSaveFiles.Length; i++)
 		{
-			fileBlobs[i] = container.GetBlockBlobReference(additionalSaveFiles[i]);
-			
+			fileBlobs[i] = container.GetBlockBlobReference(System.DateTime.Now.ToString("yyMMddHHmmss") + "_" + additionalSaveFiles[i]);
+
 			try
 			{
 #if WINDOWS_UWP && ENABLE_DOTNET
@@ -93,7 +93,7 @@ public class LM_AzureStorage : MonoBehaviour
 
 #endif
 
-		//		// List all the blobs in the container 
+		//		// List all the blobs in the container
 		//		Debug.Log("3. List Blobs in Container");
 		//		BlobContinuationToken token = null;
 		//		BlobResultSegment list = await container.ListBlobsSegmentedAsync(token);
@@ -121,13 +121,13 @@ public class LM_AzureStorage : MonoBehaviour
 
 		//		Debug.Log("File " + filename.ToString() + " written to " + path);
 
-		//		// Clean up after the demo 
+		//		// Clean up after the demo
 		//		//WriteLine("5. Delete block Blob");
 		//		//await blockBlob.DeleteAsync();
 
 		//		// When you delete a container it could take several seconds before you can recreate a container with the same
-		//		// name - hence to enable you to run the demo in quick succession the container is not deleted. If you want 
-		//		// to delete the container uncomment the line of code below. 
+		//		// name - hence to enable you to run the demo in quick succession the container is not deleted. If you want
+		//		// to delete the container uncomment the line of code below.
 		//		//WriteLine("6. Delete Container -- Note that it will take a few seconds before you can recreate a container with the same name");
 		//		//await container.DeleteAsync();
 
