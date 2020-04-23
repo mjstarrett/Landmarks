@@ -73,6 +73,8 @@ public class Experiment : MonoBehaviour {
     public LM_TrialLog trialLogger;
     [HideInInspector]
     public string logfile;
+    [HideInInspector]
+    public string dataPath;
 
     private bool playback = false;
 	private bool pause = true;
@@ -169,17 +171,7 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
         // Handle Config file
         // ------------------------------
-
-
-        logfile =   Application.persistentDataPath +
-                    "/" + config.experiment + "/" + config.subject + "/" +
-                    config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
-
-
-		configfile = config.expPath + "/" + config.filename;
-
-        Debug.Log(logfile);
-
+        
 		//when in editor
 		if (!config.bootstrapped) {
 
@@ -187,19 +179,33 @@ public class Experiment : MonoBehaviour {
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
             }
-
-            logfile = Directory.GetCurrentDirectory() + "/data/tmp/" + "test.log";
-			configfile = Directory.GetCurrentDirectory() + "/data/tmp/" + config.filename;
+            dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
+            logfile = "test.log";
+			configfile = dataPath + config.filename;
 		}
+        else
+        {
+            Debug.Log(Application.persistentDataPath);
+            dataPath = Application.persistentDataPath +
+                        "/" + config.experiment + "/" + config.subject + "/";
+
+            logfile = config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
+
+
+            configfile = dataPath + config.filename;
+        }
+        Debug.Log("data will be saved at " + dataPath);
+        Debug.Log("data will be saved as " + logfile);
+
 
         if (config.runMode == ConfigRunMode.NEW) {
-			dblog = new dbLog(logfile);
+			dblog = new dbLog(dataPath + logfile);
 		} else if (config.runMode == ConfigRunMode.RESUME) {
-            dblog = new dbPlaybackLog(logfile);
+            dblog = new dbPlaybackLog(dataPath + logfile);
 		} else if (config.runMode == ConfigRunMode.PLAYBACK) {
 			CharacterController c = avatar.GetComponent<CharacterController>();
             c.detectCollisions = false;
-			dblog = new dbPlaybackLog(logfile);
+			dblog = new dbPlaybackLog(dataPath + logfile);
 		}
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject +
@@ -246,7 +252,7 @@ public class Experiment : MonoBehaviour {
     }
 
 
-    void Update()
+    async void Update()
     {
 
         if (!done)
@@ -265,8 +271,7 @@ public class Experiment : MonoBehaviour {
                 if (done)
                 {
                     Cursor.visible = true;
-                    Debug.Log("Does this code run?");
-                    EndScene();
+                    await EndScene();
                 }
             }
             else

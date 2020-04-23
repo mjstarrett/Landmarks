@@ -241,17 +241,6 @@ public class LM_ExperimentManager : MonoBehaviour
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
 
-        config.expPath = appDir + "/" + expID.options[expID.value].text;
-
-        if (practice.isOn)
-        {
-            config.subjectPath = appDir + "/" + expID.options[expID.value].text + "/practice";
-        }
-        else
-        {
-            config.subjectPath = appDir + "/" + expID.options[expID.value].text + "/" + subID.text;
-        }
-
         config.experiment = expID.options[expID.value].text;
         config.appPath = appDir;
         config.subject = subID.text;
