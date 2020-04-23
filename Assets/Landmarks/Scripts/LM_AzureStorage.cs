@@ -13,17 +13,18 @@ public class LM_AzureStorage : MonoBehaviour
 {
     public string connectionString = string.Empty;
     public string blockContainerName = "Leave Blank";
+	public string[] additionalSaveFiles; // save additional files from the datapath not logged automatically by LM
+
 	private Experiment experiment;
-	private string filename;
 
     protected CloudStorageAccount storageAccount;
 
     // Start is called before the first frame update
     void Start()
     {
+		Debug.Log("configuring Azure storage");
         storageAccount = CloudStorageAccount.Parse(connectionString);
 		experiment = FindObjectOfType<Experiment>();
-		filename = experiment.config.experiment + "_" + experiment.config.subject + "_" + experiment.config.level + "_" + experiment.config.condition + ".log";
 	}
 
 
@@ -52,18 +53,44 @@ public class LM_AzureStorage : MonoBehaviour
 		// using: https://[InsertYourStorageAccountNameHere].blob.core.windows.net/democontainer/HelloWorld.png
 		// await container.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-		// Upload a BlockBlob to the newly created container
-		Debug.Log("2. Uploading BlockBlob");
-		CloudBlockBlob blockBlob = container.GetBlockBlobReference(filename);
+		// Upload BlockBlobs to the newly created container
+		Debug.Log("2. Uploading BlockBlob(s)");
+
+        // Upload the Landmarks log files
+		CloudBlockBlob blockBlob = container.GetBlockBlobReference(experiment.logfile);
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
 		StorageFile sf = await storageFolder.GetFileAsync(ImageToUpload);
 		await blockBlob.UploadFromFileAsync(sf);
 #else
-		Debug.Log(experiment.logfile);
-		await blockBlob.UploadFromFileAsync(experiment.logfile);
-		Debug.Log("Azure Process Complete");
+		Debug.Log(experiment.dataPath + experiment.logfile);
+		await blockBlob.UploadFromFileAsync(experiment.dataPath + experiment.logfile);
+#endif
+
+
+        CloudBlockBlob[] fileBlobs = new CloudBlockBlob[additionalSaveFiles.Length];
+        // Try to upload any other files the user asked to be saved
+        for (int i = 0; i < additionalSaveFiles.Length; i++)
+		{
+			fileBlobs[i] = container.GetBlockBlobReference(additionalSaveFiles[i]);
+			
+			try
+			{
+#if WINDOWS_UWP && ENABLE_DOTNET
+		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
+		StorageFile sf = await storageFolder.GetFileAsync(ImageToUpload);
+		await blockBlob.UploadFromFileAsync(sf);
+#else
+				Debug.Log(experiment.dataPath + additionalSaveFiles[i]);
+				await fileBlobs[i].UploadFromFileAsync(experiment.dataPath + additionalSaveFiles[i]);
+			}
+			catch (System.Exception ex)
+			{
+				Debug.LogError("Error saving file " + experiment.dataPath + additionalSaveFiles[i]+ "; File does not exist or cannot be read.");
+			}
+		}
+
 #endif
 
 		//		// List all the blobs in the container 
