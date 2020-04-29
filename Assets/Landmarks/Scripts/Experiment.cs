@@ -171,29 +171,28 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
         // Handle Config file
         // ------------------------------
-        
-		//when in editor
-		if (!config.bootstrapped) {
 
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
-            }
-            dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
-            logfile = "test.log";
-			configfile = dataPath + config.filename;
-		}
-        else
+        //when in editor
+#if UNITY_EDITOR
+        if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
         {
-            Debug.Log(Application.persistentDataPath);
-            dataPath = Application.persistentDataPath +
-                        "/" + config.experiment + "/" + config.subject + "/";
-
-            logfile = config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
-
-
-            configfile = dataPath + config.filename;
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
         }
+        dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
+        logfile = "test.log";
+		configfile = dataPath + config.filename;
+
+        // Otherwise, save data in a true app data path
+# else
+        Debug.Log(Application.persistentDataPath);
+        dataPath = Application.persistentDataPath +
+                    "/" + config.experiment + "/" + config.subject + "/";
+
+        logfile = config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
+
+
+        configfile = dataPath + config.filename;
+#endif
         Debug.Log("data will be saved at " + dataPath);
         Debug.Log("data will be saved as " + logfile);
 
@@ -558,8 +557,12 @@ public class Experiment : MonoBehaviour {
         // Upload data to remote storage if available and configured
         if (azureStorage != null)
         {
+#if UNITY_EDITOR
+            Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
+#else
             Debug.Log("trying to use MICROSOFT AZURE");
             await azureStorage.BasicStorageBlockBlobOperationsAsync();
+#endif
         }
 
         // Handle if we need to load another scene for this experiment (depends on config)
