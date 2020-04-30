@@ -264,8 +264,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         // Access the private MouseLook variable to reset it when reorineting the player manually
         public void ResetMouselook()
-        { 
-            m_MouseLook.reInit = true;
+        {
+            m_MouseLook.Init(transform, m_Camera.transform);
         }
     }
 }
