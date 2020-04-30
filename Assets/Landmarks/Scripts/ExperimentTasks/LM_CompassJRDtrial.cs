@@ -17,11 +17,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LM_TargetQuestions : ExperimentTask
+public class LM_CompassJRDtrial : ExperimentTask
 {
     [Header("Task-specific Properties")]
     public TextAsset questionText;
     public LM_PermutedList questionList;
+    public bool randomStartRotation;
+    public Vector3 compassPosOffset = new Vector3(0f, 0f, -2f);
+    public Vector3 compassRotOffset = new Vector3(15f, 0f, 0f);
+
     public bool blackout = true;
 
     private List<GameObject> questionItems; 
@@ -81,11 +85,19 @@ public class LM_TargetQuestions : ExperimentTask
 
 
         // point the player at the orientation -- FIXME for SOP
-
+        avatar.GetComponent<LM_PlayerController>().cam.transform.LookAt(target.transform);
+        //avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = new Vector3(0, 0, 0);
+        
 
         // engage the compass
-        compass = avatar.GetComponentInChildren<LM_Compass>();
-        compass.ResetPointer(random:true);
+        compass = FindObjectOfType<LM_Compass>();
+        // position the compass
+        var compassparent = compass.transform.parent;
+        compass.transform.parent = avatar.GetComponentInChildren<LM_SnapPoint>().transform; // make it the child of the snappoint
+        compass.transform.localPosition = compassPosOffset; // adjust position
+        compass.transform.localEulerAngles = compassRotOffset; // adjust rotation
+        compass.transform.parent = compassparent; // send it back to its old parent to avoid funky movement effects
+        compass.ResetPointer(random:randomStartRotation);
         compass.interactable = true;
     }
 
