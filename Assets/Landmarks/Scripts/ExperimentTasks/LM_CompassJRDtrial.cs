@@ -16,6 +16,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class LM_CompassJRDtrial : ExperimentTask
 {
@@ -51,10 +52,6 @@ public class LM_CompassJRDtrial : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
-        // --------------------------
-        // Set up Task parameters
-        // --------------------------
-
         // Restrict Movement
         manager.player.GetComponent<CharacterController>().enabled = false;
 
@@ -67,6 +64,10 @@ public class LM_CompassJRDtrial : ExperimentTask
         // Get the objects for this question (account for the non-zero index of repeatCount
         questionItems = questionList.permutedList[parentTask.repeatCount - 1];
 
+
+        // ---------------------------------------------------------------------
+        // Set up Question, calculate answer -----------------------------------
+        // ---------------------------------------------------------------------
 
         // Grab the triad that defines this trial
         location = questionItems[0];
@@ -82,16 +83,31 @@ public class LM_CompassJRDtrial : ExperimentTask
         if (answer < 0) answer += 360; 
         
         Debug.Log("Answer is " + answer);
+        // ---------------------------------------------------------------------
 
 
-        // point the player at the orientation -- FIXME for SOP
-        avatar.GetComponent<LM_PlayerController>().cam.transform.LookAt(target.transform);
-        //avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = new Vector3(0, 0, 0);
-        
+        // ---------------------------------------------------------------------
+        // Make the player face the orientation target -------------------------
+        // ---------------------------------------------------------------------
 
-        // engage the compass
+        // If using 1st person controller (e.g., keyboard mouse controller
+        if (avatar.GetComponent<FirstPersonController>() != null)
+        {
+            avatar.GetComponent<FirstPersonController>().enabled = false; // disable the controller to work
+            avatar.transform.LookAt(orientation.transform); // orient the controller
+            avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = Vector3.zero; // reset the camera
+            avatar.GetComponent<FirstPersonController>().ResetMouselook(); // reset the zero position to be our current cam orientation
+            avatar.GetComponent<FirstPersonController>().enabled = true; // re-enable the controller
+        }
+        // FIXME add reoreintation for VR controllers
+        // ---------------------------------------------------------------------
+
+
+        // ---------------------------------------------------------------------
+        // Set up the compass object for this trial (physical compass to point)
+        // ---------------------------------------------------------------------
+
         compass = FindObjectOfType<LM_Compass>();
-        // position the compass
         var compassparent = compass.transform.parent;
         compass.transform.parent = avatar.GetComponentInChildren<LM_SnapPoint>().transform; // make it the child of the snappoint
         compass.transform.localPosition = compassPosOffset; // adjust position
@@ -99,6 +115,7 @@ public class LM_CompassJRDtrial : ExperimentTask
         compass.transform.parent = compassparent; // send it back to its old parent to avoid funky movement effects
         compass.ResetPointer(random:randomStartRotation);
         compass.interactable = true;
+
     }
 
 
@@ -118,15 +135,12 @@ public class LM_CompassJRDtrial : ExperimentTask
             absError = Mathf.Abs(signedError);
             Debug.Log("Absolute Error: " + absError);
 
-
-            return true;
+            return true; // end trial
         }
 
-        hud.ForceShowMessage();
-
+        hud.ForceShowMessage(); // keep the question up
         return false;
 
-        // WRITE TASK UPDATE CODE HERE
     }
 
 
@@ -156,7 +170,6 @@ public class LM_CompassJRDtrial : ExperimentTask
         base.endTask();
 
         compass.interactable = false;
-        
         // Free Movement
         manager.player.GetComponent<CharacterController>().enabled = false;
     }
