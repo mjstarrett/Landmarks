@@ -57,6 +57,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 875b8fd2b895f42029bee03759b94a4c, type: 3}
   objects: {fileID: 0}
@@ -126,6 +129,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   parentName: TargetObjects
   parentObject: {fileID: 0}
   current: 0
@@ -190,9 +196,12 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   copyObjects: {fileID: 6891802954355110682}
   distanceErrorTolerance: 7
-  percentCorrectCriterion: 1
+  percentCorrectCriterion: 100
   message: {fileID: 4900000, guid: 3e82b2819585f4a69abbc5b3f4bce65e, type: 3}
   blackout: 1
 --- !u!1 &3024110097275090175
@@ -252,6 +261,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   flattenMap: 1
   hudTextOffset: {x: 10, y: 0, z: 0}
 --- !u!1 &5413559718795144412
@@ -311,6 +323,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   targetObjectList: {fileID: 4472178114858927060}
   placeholderSpacing: 10
 --- !u!1 &6597833657191363210
@@ -370,6 +385,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: e6b6fabc213de4a019c8b2fc1741ea41, type: 3}
   objects: {fileID: 0}
@@ -439,6 +457,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   targetList: {fileID: 4472178114858927060}
   flattenMap: 1
   snapToTargetProximity: 7
@@ -500,6 +521,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   sourcesParent: {fileID: 4472178114858927060}
   destinationsParent: {fileID: 3490893334939156838}
   setOriginalInactive: 1
@@ -516,7 +540,7 @@ GameObject:
   - component: {fileID: 5880537170829252615}
   m_Layer: 0
   m_Name: TASK_Mappit
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,12 +594,16 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   skipCondition: 
   tasks: []
   objectsList: []
   repeat: 1
   overideRepeat: {fileID: 0}
   repeatCount: 1
+  hideTargetsDuringTask: 0
   currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
@@ -583,7 +611,7 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
+  trialLogging: 1
 --- !u!1 &9212383501365777261
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +669,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   parentName: MapTestPlaceholders
   parentObject: {fileID: 5413559718795144412}
   current: 0

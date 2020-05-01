@@ -85,6 +85,7 @@ public class LM_PermutedList : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
+        skip = true; // do not remake the list on a second run (block)
     }
 
 
