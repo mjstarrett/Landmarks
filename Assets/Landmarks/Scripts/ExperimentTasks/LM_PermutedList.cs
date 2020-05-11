@@ -25,6 +25,9 @@ public class LM_PermutedList : ExperimentTask
     public ObjectList listToPermute;
     public int subset = 3;
     public bool shuffle = true;
+    public EndListMode endListBehavior;
+    readonly public List<GameObject> currentItem;
+    private int currentIndex;
 
     //[HideInInspector]
     public List<List<GameObject>> permutedList = new List<List<GameObject>>();
@@ -199,6 +202,33 @@ public class LM_PermutedList : ExperimentTask
         }
     }
 
+
+    // -------------------------------------------------------------------------
+    // Indexing and Incrementing -----------------------------------------------
+    // -------------------------------------------------------------------------
+
+    public List<GameObject> GetCurrentSubset()
+    {
+        if (currentIndex >= permutedList.Count)
+        {
+            currentIndex = 0; // reset
+            return null;
+            
+        }
+        else
+        {
+            return permutedList[currentIndex];
+        }
+    }
+
+    public void IncrementCurrentSubset()
+    {
+        currentIndex++;
+        if (currentIndex >= permutedList.Count && endListBehavior == EndListMode.Loop)
+        {
+            currentIndex = 0;
+        }
+    }
 }
 
 
