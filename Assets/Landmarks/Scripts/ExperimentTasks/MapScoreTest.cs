@@ -101,13 +101,18 @@ public class MapScoreTest : ExperimentTask {
 		Debug.Log ("Map Score = " + percentCorrect + "%");
         log.log("Score: \t" + numberCorrect + "\t/\t" + numberTargets + "\tPercentage: \t" + percentCorrect, 0);
 
+        // New Landmarks Logging
+		trialLog.AddData(transform.name + "_correct", numberCorrect.ToString());
+		trialLog.AddData(transform.name + "_possible", numberTargets.ToString());
+		trialLog.AddData(transform.name + "_percentage", percentCorrect.ToString());
+		trialLog.AddData(transform.name + "_criterion", percentCorrectCriterion.ToString());
 
-        // ----------------------------------------------------
-        // React to Score based on Performance Criterion
-        // ----------------------------------------------------
+		// ----------------------------------------------------
+		// React to Score based on Performance Criterion
+		// ----------------------------------------------------
 
-        // Store the selected, default number of reps so we can reset it after sub-criterion scores
-        if (parentTask.GetComponent<TaskList>().repeatCount == 1) // the repeat count variable starts at 1 (not 0)
+		// Store the selected, default number of reps so we can reset it after sub-criterion scores
+		if (parentTask.GetComponent<TaskList>().repeatCount == 1) // the repeat count variable starts at 1 (not 0)
         {
             PlayerPrefs.SetInt("BaseMapRepeats", parentTask.GetComponent<TaskList>().repeat); // store the users repeat value in player prefs
         }
