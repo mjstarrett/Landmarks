@@ -39,11 +39,8 @@ sysinfo.txt
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
 
-# Don't pull proprietary assets from upstream
-**/proprietary
-
 # don't pull data from editor or builds
-data/**
+data/tmp/*
 !data/tmp/.gitkeep
 
 # huge files
