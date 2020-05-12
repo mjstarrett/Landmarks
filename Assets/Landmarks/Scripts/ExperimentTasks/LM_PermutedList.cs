@@ -224,9 +224,20 @@ public class LM_PermutedList : ExperimentTask
     public void IncrementCurrentSubset()
     {
         currentIndex++;
-        if (currentIndex >= permutedList.Count && endListBehavior == EndListMode.Loop)
+        if (currentIndex >= permutedList.Count)
         {
-            currentIndex = 0;
+            switch (endListBehavior)
+            {
+                case EndListMode.Loop:
+                    currentIndex = 0; // start over from the beginning of the list
+                    break;
+
+                case EndListMode.End:
+                    Debug.LogWarning("Ran out of items, ending current block and skipping subsequent blocks");
+                    log.log("WARNING - Ran out of items, ending current block and skipping subsequent blocks", 1);
+                    parentTask.skip = true;
+                    break;
+            }
         }
     }
 }
