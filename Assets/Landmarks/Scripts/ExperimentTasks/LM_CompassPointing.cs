@@ -29,6 +29,7 @@ public class LM_CompassPointing : ExperimentTask
 {
     [Header("Task-specific Properties")]
     public Format format;
+    public LM_Compass compass;
     public TextAsset sopText;
     public TextAsset jrdText;
     public TextAsset rvdText;
@@ -41,7 +42,6 @@ public class LM_CompassPointing : ExperimentTask
     private GameObject location; // standing at the...
     private GameObject orientation; // facing the...
     private GameObject target; // point to the...
-    private LM_Compass compass;
     private float startAngle; // where is the compass pointer at the start?
     private float answer; // what should they say?
     private float response; // what did they say?
@@ -135,7 +135,6 @@ public class LM_CompassPointing : ExperimentTask
         // Set up the compass object for this trial (physical compass to point)
         // ---------------------------------------------------------------------
 
-        compass = FindObjectOfType<LM_Compass>();
         var compassparent = compass.transform.parent;
         compass.transform.parent = avatar.GetComponentInChildren<LM_SnapPoint>().transform; // make it the child of the snappoint
         compass.transform.localPosition = compassPosOffset; // adjust position
@@ -143,7 +142,7 @@ public class LM_CompassPointing : ExperimentTask
         compass.transform.parent = compassparent; // send it back to its old parent to avoid funky movement effects
         compass.ResetPointer(random:randomStartRotation); // set the compass arrow to zero (or a random rotation)
         startAngle = compass.pointer.transform.localEulerAngles.y;
-        compass.gameObject.SetActive(false);
+        
 
         // Put up the HUD
         if (format == Format.SOP)
@@ -250,9 +249,9 @@ public class LM_CompassPointing : ExperimentTask
         base.endTask();
 
         listOfTriads.IncrementCurrentSubset(); // next set of targets
-
         oriented = false; // reset for next SOP trial (if any)
         compass.interactable = false; // shut off the compass object's function
+        compass.gameObject.SetActive(false); // hide the compass
         // Free Movement
         if (avatar.GetComponent<FirstPersonController>() != null) avatar.GetComponent<FirstPersonController>().enabled = true; // if using 1stPerson controller
         manager.player.GetComponent<CharacterController>().enabled = false;

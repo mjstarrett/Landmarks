@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &775159696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3796196488182810114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b33cb8885f17f4a0a97d38e164fc1a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointer: {fileID: 8503552941810018821}
-  rotationSpeedMultiplier: 40
 --- !u!64 &1644258414
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28,6 +14,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -9146618070568788744, guid: 00e5055ad17e1456ea2fe940692f7676, type: 3}
+--- !u!114 &775159696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796196488182810114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33cb8885f17f4a0a97d38e164fc1a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointer: {fileID: 8503552941810018821}
+  rotationSpeedMultiplier: 40
+  interactable: 0
 --- !u!1001 &5156376939144388363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,7 +99,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 00e5055ad17e1456ea2fe940692f7676,
         type: 3}
       propertyPath: m_Name
-      value: compass_MJS
+      value: compass_MJS Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 00e5055ad17e1456ea2fe940692f7676,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -90359109306478386, guid: 00e5055ad17e1456ea2fe940692f7676,
         type: 3}
