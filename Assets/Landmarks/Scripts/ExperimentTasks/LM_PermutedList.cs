@@ -1,14 +1,13 @@
 ﻿/*
-    LM Dummy
-       
-    Attached object holds task components that need to be effectively ignored 
-    by Tasklist but are required for the script. Thus the object this is 
-    attached to can be detected by Tasklist (won't throw error), but does nothing 
-    except start and end.   
+    LM_PermutedList
 
-    Copyright (C) 2019 Michael J. Starrett
+    Generate all possible permutations (of a specified length) of a list of
+    GameObjects without resampling any object in a permutation (e.g., 336
+    permutations of 3 GameObjects from a list of 8)
 
-    Navigate by StarrLite (Powered by LandMarks)
+    Copyright (C) 2020 Michael J. Starrett
+
+    Navigate by StarrLite (Powered by Landmarks)
     Human Spatial Cognition Laboratory
     Department of Psychology - University of Arizona   
 */
