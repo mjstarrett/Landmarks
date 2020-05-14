@@ -94,16 +94,16 @@ public class ScalePlayerToEnvironment : ExperimentTask
         {
             manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
         }
-        else if (manager.userInterface == UserInterface.ViveVirtualizer)
-        {
-            // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
-            if (isScaled)
-            {
-                manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio*3);
-            }
-            else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio/3);
+        //else if (manager.userInterface == UserInterface.ViveVirtualizer)
+        //{
+        //    // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
+        //    if (isScaled)
+        //    {
+        //        manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio*3);
+        //    }
+        //    else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio/3);
 
-        }
+        //}
         else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironmentEditor.cs");
     }
 
