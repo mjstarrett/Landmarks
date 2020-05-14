@@ -562,7 +562,7 @@ public class Experiment : MonoBehaviour {
             dblog.log(eeg.LogTriggerIndices(), 1);
         }
 
-        // close the logfile 
+        // close the logfile
         dblog.close();
 
         // Upload data to remote storage if available and configured
