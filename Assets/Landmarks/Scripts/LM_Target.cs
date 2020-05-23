@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LM_Target : MonoBehaviour
 {
-    public Material exteriorMaterial;
+    public Color color;
+    
     // Start is called before the first frame update
     void Start()
     {

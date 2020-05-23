@@ -592,6 +592,8 @@ public class Experiment : MonoBehaviour {
                 config.nextConditions.Remove(config.nextConditions[0]); // remove that condition from the list of nextConditions
             }
 
+            config.levelNumber++;
+
             // Load the next scene
             if (usingVR)
             {

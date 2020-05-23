@@ -61,8 +61,13 @@ public class NavigationTask : ExperimentTask
         hud.showEverything();
 		hud.showScore = showScoring;
 		current = destinations.currentObject();
-		// Debug.Log ("Find " + destinations.currentObject().name);
+        // Debug.Log ("Find " + destinations.currentObject().name);
 
+        // if it's a target, open the door to show it's active
+        if (current.GetComponentInChildren<LM_TargetStore>() != null)
+        {
+            current.GetComponentInChildren<LM_TargetStore>().OpenDoor();
+        }
 
 		if (NavigationInstruction)
 		{
@@ -110,7 +115,14 @@ public class NavigationTask : ExperimentTask
         else
         {
             destinations.currentObject().SetActive(true); // make sure the target is visible unless the bool to hide was checked
-            destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+            try
+            {
+                destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+            }
+            catch (System.Exception ex)
+            {
+
+            }
         }
 
         // startTime = Current time in seconds
@@ -234,6 +246,13 @@ public class NavigationTask : ExperimentTask
 		//avatarController.stop();
 		avatarLog.navLog = false;
         if (isScaled) scaledAvatarLog.navLog = false;
+
+        // close the door if the target was a store and it is open
+        // if it's a target, open the door to show it's active
+        if (current.GetComponentInChildren<LM_TargetStore>() != null)
+        {
+            current.GetComponentInChildren<LM_TargetStore>().CloseDoor();
+        }
 
         if (canIncrementLists)
 		{
