@@ -60,7 +60,8 @@ public class Config : MonoBehaviour{
 
 	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
 	[HideInInspector] public bool 	bootstrapped = false;
-	
+    [HideInInspector]
+    public int levelNumber;
 
     // s_Instance is used to cache the instance found in the scene so we don't have to look it up every time.	
 	private static Config s_Instance = null;

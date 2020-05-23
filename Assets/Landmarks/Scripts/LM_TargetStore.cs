@@ -1,15 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LM_TargetStore : LM_Target
 {
-    [Header("Store-specific Target Properties")]
+    [Header("Store Identity")]
+    public Sprite storeIcon;
+    [Header("Store-Specific Properties")]
+    public GameObject[] exteriorElements;
+    public Text[] signTextElements;
+    public Image[] iconImageElements;
+    [Header("Door Properties")]
     public GameObject door;
     public float doorMaxOpenAngle = -115;
     public float doorSpeedMulitplier = 1;
     private bool doorOpen;
     private bool doorInMotion;
+
+
+    private void Awake()
+    {
+        // Assign any text elements
+        foreach (var textitem in signTextElements)
+        {
+            textitem.text = gameObject.name;
+        }
+        // Assign any icon elements
+        foreach (var iconitem in iconImageElements)
+        {
+            iconitem.sprite = storeIcon;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,21 +42,26 @@ public class LM_TargetStore : LM_Target
     // Update is called once per frame
     void Update()
     {
-        if (!doorInMotion)
+
+        // Assign color to external elements and update
+        foreach (var exterioritem in exteriorElements)
         {
-            if (Input.GetKeyDown(KeyCode.O) & !doorOpen)
-            {
-                StartCoroutine(OpenDoor());
-            }
-            else if (Input.GetKeyDown(KeyCode.O) & doorOpen)
-            {
-                StartCoroutine(CloseDoor());
-            }
+            exterioritem.GetComponent<Renderer>().material.color = color;
         }
-        
     }
 
-    IEnumerator OpenDoor()
+
+    public void OpenDoor()
+    {
+        if (!doorInMotion) StartCoroutine(Open());
+    }
+
+    public void CloseDoor()
+    {
+        if (!doorInMotion) StartCoroutine(Close());
+    }
+
+    IEnumerator Open()
     {
         doorInMotion = true;
         for (float ft = 0; ft > doorMaxOpenAngle; ft--)
@@ -46,7 +74,7 @@ public class LM_TargetStore : LM_Target
         doorOpen = true;
     }
 
-    IEnumerator CloseDoor()
+    IEnumerator Close()
     {
         doorInMotion = true;
         for (float ft = doorMaxOpenAngle; ft < 0; ft++)
