@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class LM_TargetStore : LM_Target
 {
-    [Header("Store Identity")]
-    public Sprite storeIcon;
+    //[Header("Store Identity")]
+    //public Sprite storeIcon;
     [Header("Store-Specific Properties")]
     public GameObject[] exteriorElements;
     public Text[] signTextElements;
@@ -18,19 +18,27 @@ public class LM_TargetStore : LM_Target
     private bool doorOpen;
     private bool doorInMotion;
 
+    //private Color storeColor;
+
 
     private void Awake()
     {
-        // Assign any text elements
-        foreach (var textitem in signTextElements)
-        {
-            textitem.text = gameObject.name;
-        }
-        // Assign any icon elements
-        foreach (var iconitem in iconImageElements)
-        {
-            iconitem.sprite = storeIcon;
-        }
+        //if (!useExisting)
+        //{
+        //    // Assign any text elements
+        //    foreach (var textitem in signTextElements)
+        //    {
+        //        textitem.text = gameObject.name;
+        //    }
+        //    // Assign any icon elements
+        //    foreach (var iconitem in iconImageElements)
+        //    {
+        //        iconitem.sprite = storeIcon;
+        //    }
+
+        //    storeColor = color;
+        //}
+        //else storeColor = exteriorElements[0].GetComponent<Renderer>().material.color;
     }
 
     // Start is called before the first frame update
@@ -43,13 +51,17 @@ public class LM_TargetStore : LM_Target
     void Update()
     {
 
-        // Assign color to external elements and update
-        foreach (var exterioritem in exteriorElements)
-        {
-            exterioritem.GetComponent<Renderer>().material.color = color;
-        }
+        
     }
 
+    public void ChangeColor(Color col)
+    {
+        foreach (var elem in exteriorElements)
+        {
+            elem.GetComponent<Renderer>().material.color = col;
+            Debug.Log("Element " + elem.name.ToString() + " changed to color " + col);
+        }
+    }
 
     public void OpenDoor()
     {
