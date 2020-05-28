@@ -109,7 +109,8 @@ public class LM_TargetColorAssignments : ExperimentTask
                 alphabet.ShuffleColors();
                 for (int i = 0; i < targetChildren.Length; i++)
                 {
-                    targetChildren[i].GetComponent<LM_TargetStore>().color = alphabet.materials[i].color;
+                    Debug.Log("using alhpabet " + i + " - " + alphabet.materials[i]);
+                    targetChildren[i].GetComponent<LM_TargetStore>().ChangeColor(alphabet.materials[i].color);
                     
                 }
                 // CHECK //  Debug.Log(alphabet.materials[24].name.ToString() + "\t" + alphabet.materials[25].name.ToString());
@@ -181,7 +182,7 @@ public class LM_TargetColorAssignments : ExperimentTask
                 for (int i = 0; i < targetChildren.Length; i++)
                 {
                     var child = targetChildren[i];
-                    child.GetComponent<LM_TargetStore>().color = colors[i];
+                    child.GetComponent<LM_TargetStore>().ChangeColor(colors[i]);
 
                     // FIXME check conversion
                     //Debug.Log("Target " + (count + 1) + "will be CIELAB " + LABColor.FromColor(colors[count]));
@@ -204,7 +205,7 @@ public class LM_TargetColorAssignments : ExperimentTask
                 foreach (Transform child in targetChildren)
                 {
                     Debug.Log("COLOR (" + currentHue + ", " + S + ", " + V + ")");
-                    child.GetComponent<LM_TargetStore>().color = Color.HSVToRGB(currentHue / 360.0f, S, V, true);
+                    child.GetComponent<LM_TargetStore>().ChangeColor(Color.HSVToRGB(currentHue / 360.0f, S, V, true));
                     currentHue += hueIncrement;
                 }
                 break;
