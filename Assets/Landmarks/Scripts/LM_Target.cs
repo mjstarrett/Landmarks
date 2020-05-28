@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LM_Target : MonoBehaviour
 {
+    //public bool useExisting = true;
+
+    [HideInInspector]
     public Color color;
     
     // Start is called before the first frame update
