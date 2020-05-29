@@ -45,6 +45,7 @@ public class ViewTargets : ExperimentTask {
     public Vector3 objectRotationOffset;
     public RotationAxis rotationAxis;
     public float rotationSpeed = 30.0f;
+	public Vector3 objectPositionOffset;
     public bool restrictMovement = true;
 
 
@@ -82,7 +83,7 @@ public class ViewTargets : ExperimentTask {
             manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
         }
 
-        destination = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
+		destination = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
 
         // handle changes to the hud
         if (vrEnabled)
@@ -153,8 +154,9 @@ public class ViewTargets : ExperimentTask {
 		position = current.transform.position;
         rotation = current.transform.rotation;
 		scale = current.transform.localScale;
-		
+
 		current.transform.position = destination.transform.position;
+		current.transform.localPosition += objectPositionOffset;
 		current.transform.rotation = destination.transform.rotation;
         current.transform.eulerAngles += objectRotationOffset;
 		current.transform.localScale = destination.transform.localScale;
