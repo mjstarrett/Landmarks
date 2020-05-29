@@ -54,6 +54,14 @@ public class LM_TargetStore : LM_Target
         
     }
 
+    public void ChangeMaterial(Material mat)
+    {
+        foreach (var elem in exteriorElements)
+        {
+            elem.GetComponent<Renderer>().material = mat;
+        }
+    }
+
     public void ChangeColor(Color col)
     {
         foreach (var elem in exteriorElements)
