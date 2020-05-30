@@ -20,6 +20,7 @@ public class MapTestTask : ExperimentTask {
 	// allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
 	public Vector3 hudTextOffset; // Text will be centered over an object. This allows users to move that to a desireable distance in order to keep the object visible when the name is shown
 
+	private Vector3 baselineScaling;
 
 	public override void startTask () 
 	{
@@ -51,34 +52,20 @@ public class MapTestTask : ExperimentTask {
 		firstPersonCamera.enabled = false;
 		overheadCamera.enabled = true;
 
+		// Remove environment topography so tall things don't get in the way of dragging objects
+		if (flattenMap)
+		{
+			baselineScaling = GameObject.FindWithTag("Environment").transform.localScale;
+			// Flatten out environment buildings so stores are clearly visible
+			GameObject.FindWithTag("Environment").transform.localScale = new Vector3(baselineScaling.x, 0.01F, baselineScaling.z);
+			//Flatten out the copied target stores
+			GameObject.Find("CopyObjects").transform.localScale = new Vector3(baselineScaling.x, 0.01f, baselineScaling.z);
+		}
+
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<Text> ().text = "Get Score";
 		hud.actionButton.SetActive(true);
         hud.actionButton.GetComponent<Button>().onClick.AddListener(hud.OnActionClick);
-
-        // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
-  //      // Turn on the maptarget highlights (to show where stores should be located
-  //      if (highlightAssist == true) 
-		//{
-		//	mapTestHighlights.SetActive (true);
-		//}
-
-		// Remove environment topography so tall things don't get in the way of dragging objects
-		if (flattenMap) 
-		{
-			// Flatten out environment buildings so stores are clearly visible
-			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
-			//Flatten out the copied target stores
-			GameObject.Find ("CopyObjects").transform.localScale = new Vector3 (1, 0.01f, 1);
-
-            // MJS - Removing Target Highlights for ease of use (requires additional environment configuration)
-   //         // Make sure we can still see the highlights by elveating them
-   //         if (highlightAssist) {
-			//	Vector3 tmp = mapTestHighlights.transform.localPosition;
-			//	tmp.y = mapTestHighlights.transform.localPosition.y + 10;
-			//	mapTestHighlights.transform.localPosition = tmp;
-			//}
-		}
 
 	}	
 
@@ -105,34 +92,65 @@ public class MapTestTask : ExperimentTask {
 		if (Physics.Raycast (ray, out hit)) 
 		{
 			// ... but only if that game object is one of our target stores ...
-			if (hit.transform.CompareTag ("Target")) 
+			if (hit.transform.CompareTag("Target"))
 			{
-				hud.setMessage (hit.transform.name);
-				hud.hudPanel.SetActive (true);
-				hud.ForceShowMessage ();
+				hud.setMessage(hit.transform.name);
+				hud.hudPanel.SetActive(true);
+				hud.ForceShowMessage();
 
-                // move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
-                // jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
-                if (!jitterGuardOn)
-                {
-                    hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position + hudTextOffset);
-                    StartCoroutine(HudJitterReduction());
-                }
+				// move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
+				// jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
+				if (!jitterGuardOn)
+				{
+					hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position + hudTextOffset);
+					StartCoroutine(HudJitterReduction());
+				}
+
+				log.log("Mouseover \t" + hit.transform.name, 1);
+
 
 				// BEHAVIOR Click Store to make it follow mouse
-				if (Input.GetMouseButtonDown (0)) {
+				if (Input.GetMouseButtonDown(0))
+				{
 					// Container for active store
 					targetActive = true;
 					activeTarget = hit.transform.gameObject;
 					// Record previos position so the current move can be cancelled
 					previousTargetPos = activeTarget.transform.position;
 					previousTargetRot = activeTarget.transform.eulerAngles;
-                }
-			} 
+				}
+			}
+            else if (hit.transform.parent.transform.CompareTag("Target"))
+            {
+				hud.setMessage(hit.transform.parent.transform.name);
+				hud.hudPanel.SetActive(true);
+				hud.ForceShowMessage();
+
+				// move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
+				// jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
+				if (!jitterGuardOn)
+				{
+					hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.parent.transform.position + hudTextOffset);
+					StartCoroutine(HudJitterReduction());
+				}
+
+				log.log("Mouseover \t" + hit.transform.parent.transform.name, 1);
+
+				// BEHAVIOR Click Store to make it follow mouse
+				if (Input.GetMouseButtonDown(0))
+				{
+					// Container for active store
+					targetActive = true;
+					activeTarget = hit.transform.parent.transform.gameObject;
+					// Record previos position so the current move can be cancelled
+					previousTargetPos = activeTarget.transform.position;
+					previousTargetRot = activeTarget.transform.eulerAngles;
+				}
+			}
 			// ... Otherwise, clear the message and hide the gui 
-			else 
+			else
 			{
-				HideStoreName ();
+				HideStoreName();
 			}
 		} 
 		else 

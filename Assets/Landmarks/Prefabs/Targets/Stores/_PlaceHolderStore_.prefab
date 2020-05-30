@@ -347,7 +347,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1789800118005760952
 Transform:
@@ -661,7 +661,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -3.1049995, y: 4.25}
-  m_SizeDelta: {x: 600, y: 150}
+  m_SizeDelta: {x: 580, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1785131489445847270
 Canvas:
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 2
+  m_DynamicPixelsPerUnit: 1
 --- !u!114 &1785131489445847256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,9 +1180,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 41
+    m_FontSize: 72
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 4
@@ -1866,6 +1866,7 @@ GameObject:
   - component: {fileID: 2433074547455290568}
   - component: {fileID: 6480821330625869107}
   - component: {fileID: 2356994289413880057}
+  - component: {fileID: 8873878715017690722}
   m_Layer: 11
   m_Name: Building
   m_TagString: Untagged
@@ -1946,6 +1947,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8873878715017690722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893768707598594461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 10, z: 6}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &4562872336639168590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,7 +2746,7 @@ Transform:
   m_GameObject: {fileID: 7775432560339737934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 55.57, y: 0.086698, z: 29.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 9033008957787424124}
   - {fileID: 2433074547455290568}
@@ -2757,6 +2771,7 @@ MonoBehaviour:
   - {fileID: 5994445757647405574}
   - {fileID: 8330780883124455895}
   - {fileID: 6597451527458184629}
+  - {fileID: 5793464135081913653}
   signTextElements:
   - {fileID: 1785131490187082173}
   iconImageElements:
@@ -2779,8 +2794,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 0.93}
-  m_Center: {x: -2.5, y: 1, z: 1.5}
+  m_Size: {x: 2, y: 2, z: 1.5}
+  m_Center: {x: -3, y: 1, z: 1.5}
 --- !u!64 &1785131490668919499
 MeshCollider:
   m_ObjectHideFlags: 0

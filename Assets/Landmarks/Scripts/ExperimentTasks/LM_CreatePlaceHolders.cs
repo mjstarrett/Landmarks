@@ -24,6 +24,17 @@ public class LM_CreatePlaceHolders : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
+        // only generate placeholders on the first run
+        if (parentTask.repeatCount > 1)
+        {
+            skip = true;
+        }
+
+        if (skip)
+        {
+            return;
+        }
+
         for (int i = 0; i < targetObjectList.objects.Count; i++)
         {
             placeholder = new GameObject("PlaceHolder");

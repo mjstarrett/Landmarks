@@ -31,7 +31,7 @@ public enum EndListMode
 	End
 }
 
-[SerializeField]
+//[SerializeField]
 public enum UserInterface
 {
     KeyboardMouse,
@@ -196,7 +196,7 @@ public class Experiment : MonoBehaviour {
             {
                 Directory.CreateDirectory(dataPath);
             }
-            logfile = config.experiment + "_" + config.subject + "_" + config.level + "_" + config.condition + ".log";
+            logfile = config.experiment + "_" + config.subject + "_" + config.levels[config.levelNumber].name + "_" + config.conditions[config.levelNumber] + ".log";
 
 
             configfile = dataPath + config.filename;
@@ -216,7 +216,7 @@ public class Experiment : MonoBehaviour {
 		}
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject +
-                  "\tSTART_SCENE\t" + config.level + "\tSTART_CONDITION:\t" + config.condition + "\tUI:\t" + userInterface.ToString(), 1);
+                  "\tSTART_SCENE\t" + config.levels[config.levelNumber].name + "\tSTART_CONDITION:\t" + config.conditions[config.levelNumber] + "\tUI:\t" + userInterface.ToString(), 1);
     }
 
 
@@ -576,41 +576,32 @@ public class Experiment : MonoBehaviour {
             }
         }
 
-        // Handle if we need to load another scene for this experiment (depends on config)
-        if (config.nextLevels.Count > 0 || config.nextConditions.Count > 0)
+
+        // ---------------------------------------------------------------------
+        // Load the next level/scene/condition or quit
+        // ---------------------------------------------------------------------
+
+        //increment the level number (accounting for the zero-base compared to a count (starts with 1)
+        config.levelNumber++;
+        // If there is another level, load it
+        if (config.levelNumber < config.levels.Count)
         {
-            // Set up next level if there is one (if not use the current level again)
-            if (config.nextLevels.Count > 0)
-            {
-                config.level = config.nextLevels[0]; // update config with next level
-                config.nextLevels.Remove(config.nextLevels[0]); // remove that level from list of nextLevels
-            }
-
-            // Set up next condition if there is one (if not use the current condition again)
-            if (config.nextConditions.Count > 0)
-            {
-                config.condition = config.nextConditions[0]; // update config with the next condition
-                config.nextConditions.Remove(config.nextConditions[0]); // remove that condition from the list of nextConditions
-            }
-
-            config.levelNumber++;
-
-            // Load the next scene
+            // Load the next Scene
             if (usingVR)
             {
                 // Use steam functions to avoid issues w/ framerate drop
-                SteamVR_LoadLevel.Begin(config.level);
+                SteamVR_LoadLevel.Begin(config.levels[config.levelNumber].name);
                 Debug.Log("Loading new VR scene");
             }
             else
             {
-                SceneManager.LoadScene(config.level); // otherwise, just load the level like usual
+                SceneManager.LoadScene(config.levels[config.levelNumber].name); // otherwise, just load the level like usual
             }
         }
-        // If there isn't another level/scene or condition then quit the applicaiton
+        // Otherwise, close down; we're done
         else
         {
-            Debug.Log("No"); Application.Quit();
+            Application.Quit();
         }
     }
 
