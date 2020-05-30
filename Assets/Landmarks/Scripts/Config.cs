@@ -17,8 +17,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
-
 public enum ConfigRunMode
 {
 	NEW,
@@ -38,42 +36,60 @@ public class Config : MonoBehaviour{
 	public float version;
 	public int width = 1024;
 	public int height = 768;
-	
 	public float volume = 1.0F;
 	public bool nofullscreen = false;
 	public bool showFPS = false;
-
 	public string filename = "config.txt";
-
     public string experiment = "default";
-	public string home = "default";
-	public string appPath = "default";
-	public string expPath = "default";
-	public string subjectPath = "default";
-	public string subject = "default";
-	public string session = "default";
-    public string level = "default";
-    public string condition = "default";
     public string ui = "default";
-    public List<string> nextLevels = new List<string>();
-    public List<string> nextConditions = new List<string>();
-
-	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
-	[HideInInspector] public bool 	bootstrapped = false;
-    [HideInInspector]
+    public ConfigRunMode runMode = ConfigRunMode.NEW;
+    public List<string> conditions = new List<string>();
+    [Tooltip("Must be scene objects with the .unity file extension")]
+    public List<Object> levelObjects = new List<Object>();
+    public List<string> levelNames = new List<string>();
+    [Tooltip("Read Only: Use as index for scence/condition")]
     public int levelNumber;
 
+	[HideInInspector]
+    public bool bootstrapped = false;
+    [HideInInspector]
+    public string home = "default";
+    [HideInInspector]
+    public string appPath = "default";
+    [HideInInspector]
+    public string expPath = "default";
+    [HideInInspector]
+    public string subjectPath = "default";
+    public string subject = "default";
+    [HideInInspector]
+    public string session = "default";
+    [HideInInspector]
+    public string level = "default";
+
     // s_Instance is used to cache the instance found in the scene so we don't have to look it up every time.	
-	private static Config s_Instance = null;
+    private static Config s_Instance = null;
 	  
     // This defines a static instance property that attempts to find the config object in the scene and
     // returns it to the caller.
 	public static Config instance {
         get {
-            if (s_Instance == null) {
-                // This is where the magic happens.
-                //  FindObjectOfType(...) returns the first Config object in the scene.
+            //  FindObjectOfType(...) returns the first Config object in the scene.
+            if (s_Instance == null & FindObjectOfType<Config>() != null) {
                 s_Instance =  FindObjectOfType(typeof (Config)) as Config;
+                Debug.Log("Using an existing config object");
+
+                // move any levels, dragged onto levelObjects, into levelNames
+                if (s_Instance.levelObjects.Count != 0)
+                {
+                    foreach (var level in s_Instance.levelObjects)
+                    {
+                        s_Instance.levelNames.Add(level.name);
+                    }
+                }
+                else s_Instance.levelNames.Add("default");
+
+                // make sure at least one default condition is present
+                if (s_Instance.conditions.Count == 0) s_Instance.conditions.Add("default");
             }
             
             // If it is still null, create a new instance
@@ -81,6 +97,8 @@ public class Config : MonoBehaviour{
                 GameObject obj = new GameObject("Config");
                 s_Instance = obj.AddComponent(typeof (Config)) as Config;
                 Debug.Log ("Could not locate an Config object.  Config was Generated Automaticly.");
+                s_Instance.levelNames.Add("default");
+                s_Instance.conditions.Add("default");
             }
 
             return s_Instance;

@@ -42,8 +42,13 @@ public class CopyChildObjects : ExperimentTask {
             {
                 // Randomly rotate the copied object 0, 90, 180, or 270 degrees
                 List<float> rotateOptions = new List<float> { 0.0f, 90.0f, 180.0f, 270.0f };
-                copy.transform.Rotate(0.0f, rotateOptions[Random.Range(0, rotateOptions.Count)], 0.0f, Space.World);
+                copy.transform.localEulerAngles = new Vector3(copy.transform.localEulerAngles.x, rotateOptions[Random.Range(0, rotateOptions.Count)], copy.transform.localEulerAngles.z);
             }
+			else
+            {
+				// set local rotation to zero
+				copy.transform.localEulerAngles = new Vector3(copy.transform.localEulerAngles.x, 0f, copy.transform.localEulerAngles.z);
+			}
            
             copy.name = sourceChild.name;
 		}

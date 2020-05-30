@@ -20,6 +20,7 @@ public class LM_TargetColorAssignments : ExperimentTask
     [Header("Color Alphabet Settings (or other ColorList)")]
     public ColorList alphabet;
 
+
     // IF USING LAB COLOR SPACE ------------------------------------------------
     [Header("CIELAB Settings")]
 
@@ -49,6 +50,7 @@ public class LM_TargetColorAssignments : ExperimentTask
         {
             Debug.LogError(this.name + ": Lmin must be less than Lmax");
         }
+        
         
     }
 
@@ -109,11 +111,10 @@ public class LM_TargetColorAssignments : ExperimentTask
                 alphabet.ShuffleColors();
                 for (int i = 0; i < targetChildren.Length; i++)
                 {
-                    Debug.Log("using alhpabet " + i + " - " + alphabet.materials[i]);
+                    //Debug.Log("using alhpabet " + i + " - " + alphabet.materials[i]);
                     targetChildren[i].GetComponent<LM_TargetStore>().ChangeMaterial(alphabet.materials[i]);
                     
                 }
-                // CHECK //  Debug.Log(alphabet.materials[24].name.ToString() + "\t" + alphabet.materials[25].name.ToString());
                 break;
 
 

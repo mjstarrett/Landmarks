@@ -11,6 +11,7 @@ public class MapStudyTask : ExperimentTask {
     // allow for user input to shift the store labels during the map task (to allow viewing store and text clearly); 
     public bool flattenMap = true;
 	public Vector3 hudTextOffset;
+	public Vector3 baselineScaling;
 
 	public override void startTask () 
 	{
@@ -41,12 +42,12 @@ public class MapStudyTask : ExperimentTask {
 		firstPersonCamera.enabled = false;
 		overheadCamera.enabled = true;
 
-		if (flattenMap) {
+		if (flattenMap)
+		{
+			baselineScaling = GameObject.FindWithTag("Environment").transform.localScale;
 			// Flatten out environment buildings so stores are clearly visible
-			GameObject.FindWithTag ("Environment").transform.localScale = new Vector3 (1, 0.01F, 1);
+			GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (baselineScaling.x, 0.01F, baselineScaling.z);
 		}
-
-
 
 		// Change text and turn on the map action button
 		actionButton.GetComponentInChildren<Text> ().text = "Start Test";
@@ -66,30 +67,51 @@ public class MapStudyTask : ExperimentTask {
 
 
 		if (Physics.Raycast (ray, out hit)) {// & Input.GetMouseButtonDown(0)) 
-			if (hit.transform.CompareTag ("Target")) {
+			if (hit.transform.CompareTag("Target"))
+			{
 				//Debug.Log (objectHit.tag);
-				hud.setMessage (hit.transform.name);
-				hud.hudPanel.SetActive (true);
-				hud.ForceShowMessage ();
+				hud.setMessage(hit.transform.name);
+				hud.hudPanel.SetActive(true);
+				hud.ForceShowMessage();
 
-                // move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
-                // jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
-                if (!jitterGuardOn)
-                {
-                    hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position + hudTextOffset);
-                    StartCoroutine(HudJitterReduction());
-                }
+				// move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
+				// jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
+				if (!jitterGuardOn)
+				{
+					hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.position + hudTextOffset);
+					StartCoroutine(HudJitterReduction());
+				}
 
-                log.log("Mouseover \t" + hit.transform.name, 1);
-			} else {
-				hud.setMessage ("");
-				hud.hudPanel.SetActive (true);
-				hud.ForceShowMessage ();
+				log.log("Mouseover \t" + hit.transform.name, 1);
+			}
+			else if (hit.transform.parent.transform.CompareTag("Target"))
+            {
+				hud.setMessage(hit.transform.parent.transform.name);
+				hud.hudPanel.SetActive(true);
+				hud.ForceShowMessage();
+
+				// move hud text to the store being highlighted (coroutine to prevent Update framerate jitter)
+				// jitterGuardOn is inherited from Experiment task so it can be used in multiple task scripts (e.g., MapStudy and MapTest) - MJS 2019
+				if (!jitterGuardOn)
+				{
+					hud.hudPanel.transform.position = Camera.main.WorldToScreenPoint(hit.transform.parent.transform.position + hudTextOffset);
+					StartCoroutine(HudJitterReduction());
+				}
+
+				log.log("Mouseover \t" + hit.transform.parent.transform.name, 1);
+			}
+			else
+			{
+				hud.setMessage("");
+				hud.hudPanel.SetActive(true);
+				hud.ForceShowMessage();
 
 				// move hud off screen if we aren't hitting a target shop
-				hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
+				hud.hudPanel.transform.position = new Vector3(99999, 99999, 99999);
 			}
-		} else {
+		}
+		else
+		{
 			hud.setMessage ("");
 			hud.hudPanel.SetActive (true);
 			hud.ForceShowMessage ();
@@ -97,7 +119,9 @@ public class MapStudyTask : ExperimentTask {
 			// move hud off screen if we aren't hitting a target shop
 			hud.hudPanel.transform.position = new Vector3(99999,99999,99999);
 		}
-			
+
+
+
 		if (killCurrent == true) 
 		{
 			return KillCurrent ();
@@ -147,7 +171,7 @@ public class MapStudyTask : ExperimentTask {
 
 		if (flattenMap){
 			// un-Flatten out environment buildings so stores are clearly visible
-			GameObject.FindWithTag("Environment").transform.localScale = new Vector3 (1, 1, 1);
+			GameObject.FindWithTag("Environment").transform.localScale = baselineScaling;
 		}
 
         // turn off the map action button
