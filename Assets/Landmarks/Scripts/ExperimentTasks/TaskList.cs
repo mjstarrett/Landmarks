@@ -25,7 +25,7 @@ public class TaskList : ExperimentTask
 {
     [Header("Task-specific Properties")]
 
-    public string skipCondition = "";
+    public string[] skipConditions;
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
 	public GameObject[] objectsList;
 	public int repeat = 1;
@@ -66,7 +66,8 @@ public class TaskList : ExperimentTask
 
         base.startTask();
 
-        if (skipCondition == manager.config.condition)
+        // check if the current condition is one this task is skipped on
+        if (Array.IndexOf(skipConditions, manager.config.condition) != -1)
         {
             skip = true;
         }
@@ -280,7 +281,21 @@ public class TaskList : ExperimentTask
 
     public void NewTrialLog()
     {
-        trialLog.AddData("task", parentTask.name);
+        // recursively climb the hierarchy until we find an object tagged as "Task"
+        var tmp = transform;
+        while (!tmp.CompareTag("Task"))
+        {
+            tmp = tmp.parent;
+
+            if (tmp == null)
+            {
+                tmp = transform;
+                return;
+            }
+        }
+        Transform lmBaseTask = tmp;
+
+        trialLog.AddData("task", lmBaseTask.name);
         trialLog.AddData("block", parentTask.repeatCount.ToString());
         trialLog.AddData("trial", repeatCount.ToString());
         trialLog.AddData("catchTrial", catchFlag.ToString());
