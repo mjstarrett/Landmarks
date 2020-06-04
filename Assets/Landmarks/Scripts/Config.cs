@@ -43,36 +43,32 @@ public class Config : MonoBehaviour{
 	public bool showFPS = false;
 	public string filename = "config.txt";
     public string experiment = "default";
-
-    [HideInInspector]
-	public string home = "default";
-    [HideInInspector]
-	public string appPath = "default";
-    [HideInInspector]
-	public string expPath = "default";
-    [HideInInspector]
-	public string subjectPath = "default";
-	public string subject = "default";
-    [HideInInspector]
-	public string session = "default";
-
-    public string level = "default";
-    public string condition = "default";
     public string ui = "default";
-    public List<string> nextLevels = new List<string>();
-    public List<string> nextConditions = new List<string>();
-
-    public List<Object> scenes = new List<Object>();
+    public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
+    [Tooltip("Must be scene objects with the .unity file extension")]
+    public List<Object> levels = new List<Object>();
+    [Tooltip("Read Only: Use as index for scence/condition")]
+    public int levelNumber;
 
-	public ConfigRunMode runMode = ConfigRunMode.NEW;
 	[HideInInspector]
     public bool bootstrapped = false;
     [HideInInspector]
-    public int levelNumber;
+    public string home = "default";
+    [HideInInspector]
+    public string appPath = "default";
+    [HideInInspector]
+    public string expPath = "default";
+    [HideInInspector]
+    public string subjectPath = "default";
+    public string subject = "default";
+    [HideInInspector]
+    public string session = "default";
+    [HideInInspector]
+    public string level = "default";
 
     // s_Instance is used to cache the instance found in the scene so we don't have to look it up every time.	
-	private static Config s_Instance = null;
+    private static Config s_Instance = null;
 	  
     // This defines a static instance property that attempts to find the config object in the scene and
     // returns it to the caller.

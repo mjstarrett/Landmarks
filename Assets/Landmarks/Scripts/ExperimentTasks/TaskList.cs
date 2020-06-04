@@ -27,9 +27,9 @@ public class TaskList : ExperimentTask
 
     public string[] skipConditions;
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
-	public GameObject[] objectsList;
-	public int repeat = 1;
-	public ObjectList overideRepeat;
+    public GameObject[] objectsList;
+    public int repeat = 1;
+    public ObjectList overideRepeat;
     public int repeatCount = 1;
     public bool hideTargetsDuringTask;
 
@@ -52,22 +52,24 @@ public class TaskList : ExperimentTask
     // LOG DATA TRIAL-BY-TRIAL
     public bool trialLogging;
 
-    public override void startTask() {
+    public override void startTask()
+    {
         // Debug.Log(this.GetType().Name);
 
         TASK_START();
 
 
         if (!skip) startNextTask();
-	}
+    }
 
-	public override void TASK_START () {
-		repeatCount = 1;
+    public override void TASK_START()
+    {
+        repeatCount = 1;
 
         base.startTask();
 
         // check if the current condition is one this task is skipped on
-        if (Array.IndexOf(skipConditions, manager.config.condition) != -1)
+        if (Array.IndexOf(skipConditions, manager.config.conditions[manager.config.levelNumber]) != -1)
         {
             skip = true;
         }
@@ -159,19 +161,21 @@ public class TaskList : ExperimentTask
 
 
 
-    public void startNextTask() {
-		Debug.Log("Starting " + tasks[currentTaskIndex].name);
+    public void startNextTask()
+    {
+        Debug.Log("Starting " + tasks[currentTaskIndex].name);
 
-		currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
+        currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
         currentTask.parentTask = this;
 
         currentTask.startTask();
-	}
+    }
 
 
-	public override bool updateTask () {
-		if (skip) return true;
+    public override bool updateTask()
+    {
+        if (skip) return true;
 
         if (currentTask.updateTask())
         {
@@ -195,12 +199,12 @@ public class TaskList : ExperimentTask
             }
         }
         return false;
-	}
+    }
 
-	public bool endChild()
-	{
+    public bool endChild()
+    {
         currentTask.endTask();
-		currentTaskIndex++;
+        currentTaskIndex++;
 
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
@@ -210,7 +214,7 @@ public class TaskList : ExperimentTask
 
 
             // Clean up at the end in case this object is repeated in a nest
-            currentTaskIndex = 0; 
+            currentTaskIndex = 0;
             startNewRepeat();
             repeatCount = 1;
             catchFlag = false; // MJS - Added to prevent catch trials on first trial of next block
@@ -244,8 +248,8 @@ public class TaskList : ExperimentTask
         }
 
 
-		return false;
-	}
+        return false;
+    }
 
 
     public void startNewRepeat()
@@ -302,49 +306,58 @@ public class TaskList : ExperimentTask
     }
 
 
-	public override void endTask() {
-		base.endTask();
+    public override void endTask()
+    {
+        base.endTask();
 
-		if (overideRepeat) {
-				overideRepeat.incrementCurrent();
-		}
+        if (overideRepeat)
+        {
+            overideRepeat.incrementCurrent();
+        }
 
         trialLog.Reset(); // Run the constructor to ensure the log gets cleared completely
 
-			//	if (pausedTasks) {
-				//currentTask = pausedTasks;
-				//endTask();
-			//	pausedTasks.startTask();
-		//if (!skip) currentTask.endTask();
-	}
+        //	if (pausedTasks) {
+        //currentTask = pausedTasks;
+        //endTask();
+        //	pausedTasks.startTask();
+        //if (!skip) currentTask.endTask();
+    }
 
-	public override bool OnControllerColliderHit(GameObject hit)  {
-		if ( currentTask.OnControllerColliderHit(hit) ) {
+    public override bool OnControllerColliderHit(GameObject hit)
+    {
+        if (currentTask.OnControllerColliderHit(hit))
+        {
 
-			return endChild();
+            return endChild();
 
-			//cut
-			currentTask.endTask();
-			currentTaskIndex = currentTaskIndex + 1;
-			if (currentTaskIndex >= tasks.Length) {
-				return true;
-			} else {
-		 		startNextTask();
-			}
-			//
-		}
-		return false;
-	}
+            //cut
+            currentTask.endTask();
+            currentTaskIndex = currentTaskIndex + 1;
+            if (currentTaskIndex >= tasks.Length)
+            {
+                return true;
+            }
+            else
+            {
+                startNextTask();
+            }
+            //
+        }
+        return false;
+    }
 
-	public string format(string str) {
+    public string format(string str)
+    {
 
-		string[] names = new string[objectsList.Length];
-		int i = 0;
-		foreach( GameObject go in objectsList ) {
-			names[i] = go.name;
-			i++;
-		}
-		return string.Format(str, names);
-	}
+        string[] names = new string[objectsList.Length];
+        int i = 0;
+        foreach (GameObject go in objectsList)
+        {
+            names[i] = go.name;
+            i++;
+        }
+        return string.Format(str, names);
+    }
 
 }

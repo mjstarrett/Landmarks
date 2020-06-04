@@ -203,25 +203,25 @@ public class LM_ExperimentManager : MonoBehaviour
                 if (id > 100 && id < 200)
                 {
                     config.level = "escCity01";
-                    config.nextLevels.Add("escCity02");
+                    //config.nextLevels.Add("escCity02");
                 }
                 else if (id > 200 && id < 300)
                 {
                     config.level = "escCity02";
-                    config.nextLevels.Add("escCity01"); // using arrayprefs2 allows for multiple 'next' levels
+                    //config.nextLevels.Add("escCity01"); // using arrayprefs2 allows for multiple 'next' levels
                 }
             }
 
             // if it's odd, start with standard navigation
             if (id % 2 != 0)
             {
-                config.condition = "Standard";
-                config.nextConditions.Add("Scaled");
+                //config.condition = "Standard";
+                //config.nextConditions.Add("Scaled");
             }
             else
             {
-                config.condition = "Scaled";
-                config.nextConditions.Add("Standard");
+                //config.condition = "Scaled";
+                //config.nextConditions.Add("Standard");
             }
         }
         // ---------------------------------------------------------------------
