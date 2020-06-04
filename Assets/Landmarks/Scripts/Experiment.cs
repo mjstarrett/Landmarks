@@ -31,7 +31,7 @@ public enum EndListMode
 	End
 }
 
-[SerializeField]
+//[SerializeField]
 public enum UserInterface
 {
     KeyboardMouse,

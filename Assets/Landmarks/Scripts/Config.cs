@@ -38,28 +38,36 @@ public class Config : MonoBehaviour{
 	public float version;
 	public int width = 1024;
 	public int height = 768;
-	
 	public float volume = 1.0F;
 	public bool nofullscreen = false;
 	public bool showFPS = false;
-
 	public string filename = "config.txt";
-
     public string experiment = "default";
+
+    [HideInInspector]
 	public string home = "default";
+    [HideInInspector]
 	public string appPath = "default";
+    [HideInInspector]
 	public string expPath = "default";
+    [HideInInspector]
 	public string subjectPath = "default";
 	public string subject = "default";
+    [HideInInspector]
 	public string session = "default";
+
     public string level = "default";
     public string condition = "default";
     public string ui = "default";
     public List<string> nextLevels = new List<string>();
     public List<string> nextConditions = new List<string>();
 
-	public ConfigRunMode 	runMode = ConfigRunMode.NEW;
-	[HideInInspector] public bool 	bootstrapped = false;
+    public List<Object> scenes = new List<Object>();
+    public List<string> conditions = new List<string>();
+
+	public ConfigRunMode runMode = ConfigRunMode.NEW;
+	[HideInInspector]
+    public bool bootstrapped = false;
     [HideInInspector]
     public int levelNumber;
 
@@ -70,10 +78,10 @@ public class Config : MonoBehaviour{
     // returns it to the caller.
 	public static Config instance {
         get {
-            if (s_Instance == null) {
-                // This is where the magic happens.
-                //  FindObjectOfType(...) returns the first Config object in the scene.
+            //  FindObjectOfType(...) returns the first Config object in the scene.
+            if (s_Instance == null & FindObjectOfType<Config>() != null) {
                 s_Instance =  FindObjectOfType(typeof (Config)) as Config;
+                Debug.Log("Using an existing config object");
             }
             
             // If it is still null, create a new instance

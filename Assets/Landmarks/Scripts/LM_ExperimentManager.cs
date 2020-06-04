@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class LM_ExperimentManager : MonoBehaviour
 {
-
     public TMP_Dropdown expID;
     public TMP_InputField subID;
     public TMP_Dropdown ui;
@@ -28,7 +27,7 @@ public class LM_ExperimentManager : MonoBehaviour
     {
 
         config = Config.instance;
-
+        Debug.Log(config.name);
 
         //appDir = Directory.GetCurrentDirectory();
 
