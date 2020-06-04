@@ -158,6 +158,18 @@ MonoBehaviour:
   showFPS: 0
   filename: config.txt
   experiment: sli
+  ui: default
+  runMode: 0
+  conditions:
+  - Route
+  - Map
+  - Hybrid
+  levels:
+  - {fileID: 102900000, guid: 7007496b27cc343ff8199525c93a1667, type: 3}
+  - {fileID: 102900000, guid: 927a0e59346d34a35b6827793a6da2cb, type: 3}
+  - {fileID: 102900000, guid: 298596f8f9fd9493fabe466e0095bff9, type: 3}
+  levelNumber: 0
+  bootstrapped: 0
   home: default
   appPath: default
   expPath: default
@@ -165,21 +177,6 @@ MonoBehaviour:
   subject: default
   session: default
   level: default
-  condition: default
-  ui: default
-  nextLevels: []
-  nextConditions: []
-  scenes:
-  - {fileID: 102900000, guid: 7007496b27cc343ff8199525c93a1667, type: 3}
-  - {fileID: 102900000, guid: 927a0e59346d34a35b6827793a6da2cb, type: 3}
-  - {fileID: 102900000, guid: 298596f8f9fd9493fabe466e0095bff9, type: 3}
-  conditions:
-  - Route
-  - Map
-  - Hybrid
-  runMode: 0
-  bootstrapped: 0
-  levelNumber: 0
 --- !u!4 &1277044750
 Transform:
   m_ObjectHideFlags: 0
@@ -223,9 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fe1373d4c4245ebbcac10e8c38486b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSubjectId: 1001
+  firstSubjectId: 1002
   azureConnectionString: 
   shuffleSceneOrder: 1
+  balanceConditionOrder: 1
 --- !u!4 &1470696625
 Transform:
   m_ObjectHideFlags: 0

@@ -12,8 +12,10 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
     public int firstSubjectId = 1001;
     public string azureConnectionString = string.Empty;
     public bool shuffleSceneOrder = true;
+    public bool balanceConditionOrder = true;
 
     private Config config;
+    private int thisSubjectID;
 
 
     void Start()
@@ -33,16 +35,18 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         // Compute Subject ID (without overwriting data on the Azure storage client
         // ---------------------------------------------------------------------
 
-        //- Get the Azure Storage client and blob information
+
+        // Get the Azure Storage client and blob information
 
 
-        //- Access the folder where the data would be stored
+        // Access the folder where the data would be stored
 
+        // start at the first possible subjec id
+        thisSubjectID = firstSubjectId;
+        // if(while) the folder for the current thisSubjectID exists,
 
-        //- if(while) the folder for the current subjectID exists,
-
-                //- increment the subjectID up one integer
-
+        // increment the subjectID up one integer
+        //thisSubjectID++;
 
         // Once we have a new, unused id...
 
@@ -51,56 +55,51 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
 
         // Put the subject ID into the config.subject field
-        config.subject = firstSubjectId.ToString();
+        config.subject = thisSubjectID.ToString();
 
 
         // ---------------------------------------------------------------------
         // Counterbalance Conditions 
         // ---------------------------------------------------------------------
-
-        // create list of permutaitons (use permuation fucntions from LM_PermutedList.cs)
-        var conditionList = LM_PermutedList.Permute(config.conditions, config.conditions.Count);
-        List<string> theseConditions = new List<string>();
-
-        int subCode;
-        int.TryParse(config.subject, out subCode);
-        subCode -= 1000;
-        Debug.Log("subcode = " + subCode.ToString());
-        // use the subject id multiples to determine condition order
-        Debug.Log(conditionList.Count.ToString());
-        for (int i = conditionList.Count; i > 0; i--)
+        if (balanceConditionOrder)
         {
-            // determine the highest multiple
-            if (subCode % i == 0)
-            {
-                Debug.Log(i.ToString());
-                // take this set of conditions based on the multiple used
-                foreach (var item in conditionList[i-1])
-                {
-                    Debug.Log(item.ToString());
-                    theseConditions.Add(item);
-                }
-                break; // return control from this for loop
-            }
-        }
+            // create list of permutaitons (use permuation fucntions from LM_PermutedList.cs)
+            var conditionList = LM_PermutedList.Permute(config.conditions, config.conditions.Count);
+            List<string> theseConditions = new List<string>();
 
-        config.condition = theseConditions[0];
-        var tmp = theseConditions;
-        tmp.Remove(theseConditions[0]);
-        config.nextConditions = tmp;
+            int subCode;
+            int.TryParse(config.subject, out subCode);
+            subCode -= 1000;
+            Debug.Log("subcode = " + subCode.ToString());
+            // use the subject id multiples to determine condition order
+            Debug.Log(conditionList.Count.ToString());
+            for (int i = conditionList.Count; i > 0; i--)
+            {
+                // determine the highest multiple
+                if (subCode % i == 0)
+                {
+                    Debug.Log(i.ToString());
+                    // take this set of conditions based on the multiple used
+                    foreach (var item in conditionList[i - 1])
+                    {
+                        Debug.Log(item.ToString());
+                        theseConditions.Add(item);
+                    }
+                    break; // return control from this for loop
+                }
+            }
+            config.conditions = theseConditions; // update the condition order
+        }
 
 
         // ---------------------------------------------------------------------
         // Pseudo-Randomize the level/scene order
         // ---------------------------------------------------------------------
-
-        var theseScenes = config.scenes; // temporary variable
-        LM_PermutedList.FisherYatesShuffle(theseScenes); // shuffle using function from LM_PermutedList.cs
-        config.level = theseScenes[0].ToString();
-        theseScenes.Remove(theseScenes[0]);
-        foreach (var item in theseScenes)
+        if (shuffleSceneOrder)
         {
-            config.nextLevels.Add(item.ToString());
+            var theseScenes = config.levels; // temporary variable
+            LM_PermutedList.FisherYatesShuffle(theseScenes); // shuffle using function from LM_PermutedList.cs
+            config.levels = theseScenes; // Update the level order
         }
 
 
@@ -113,12 +112,11 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         config.appPath = Application.persistentDataPath;
         DontDestroyOnLoad(config);
 
-
-
         //----------------------------------------------------------------------
         // Load the first level
         //----------------------------------------------------------------------
-        SceneManager.LoadScene(config.level);
+        Debug.Log(config.levels[config.levelNumber].name);
+        SceneManager.LoadScene(config.levels[config.levelNumber].name);
 
     }
 
