@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
-using System.IO;
 using UnityEngine.SceneManagement;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using System.Threading.Tasks;
+
+#if WINDOWS_UWP && ENABLE_DOTNET
+using Windows.Storage;
+#endif
 
 public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 {
@@ -16,43 +21,49 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
     private Config config;
     private int thisSubjectID;
+    private CloudStorageAccount azureAccount;
+    private List<int> usedIds = new List<int>();
 
-
-    void Start()
+    async void Start()
     {
         // Get the config (dont use Config.Instance() as we need a preconfigured one)
-        config = FindObjectOfType<Config>();
-
+        if (FindObjectOfType<Config>() != null)
+        {
+            config = Config.instance;
+        }
         // Don't continue unless a config is found (even in editor)
-        if (config == null)
+        else
         {
             Debug.LogError("No Config found to autmatically configure");
             return;
         }
+
+
+
+        // Are we using an Azure data repository?
+        if (azureConnectionString != string.Empty)
+        {
+            // Get the Azure Storage client and blob information
+            azureAccount = CloudStorageAccount.Parse(azureConnectionString);
+
+            // Check Azure to see which ids have already been used; add them to our usedIds list
+            await RetrieveAzureData();
+        }
+
+        
 
         // FIXME
         // ---------------------------------------------------------------------
         // Compute Subject ID (without overwriting data on the Azure storage client
         // ---------------------------------------------------------------------
 
-
-        // Get the Azure Storage client and blob information
-
-
-        // Access the folder where the data would be stored
-
-        // start at the first possible subjec id
+        // start at the first possible subject id
         thisSubjectID = firstSubjectId;
-        // if(while) the folder for the current thisSubjectID exists,
-
-        // increment the subjectID up one integer
-        //thisSubjectID++;
-
-        // Once we have a new, unused id...
-
-
-        // create a folder in the storage and continue
-
+        while (usedIds.Contains(thisSubjectID))
+        {
+            // increment the id we will use until it won't overwrite (next lowest possible id)
+            thisSubjectID++;
+        }
 
         // Put the subject ID into the config.subject field
         config.subject = thisSubjectID.ToString();
@@ -97,9 +108,9 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         // ---------------------------------------------------------------------
         if (shuffleSceneOrder)
         {
-            var theseScenes = config.levels; // temporary variable
+            var theseScenes = config.levelNames; // temporary variable
             LM_PermutedList.FisherYatesShuffle(theseScenes); // shuffle using function from LM_PermutedList.cs
-            config.levels = theseScenes; // Update the level order
+            config.levelNames = theseScenes; // Update the level order
         }
 
 
@@ -115,9 +126,47 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         //----------------------------------------------------------------------
         // Load the first level
         //----------------------------------------------------------------------
-        Debug.Log(config.levels[config.levelNumber].name);
-        SceneManager.LoadScene(config.levels[config.levelNumber].name);
+        Debug.Log(config.levelNames[config.levelNumber]);
+        SceneManager.LoadScene(config.levelNames[config.levelNumber]);
 
     }
 
+    public async Task RetrieveAzureData()
+    {
+        
+
+        CloudBlobClient blobClient = azureAccount.CreateCloudBlobClient();
+        // Access the folder where the data would be stored (create if does not exist)
+        CloudBlobContainer container;
+        container = blobClient.GetContainerReference(config.experiment);
+        try
+        {
+            await container.CreateIfNotExistsAsync();
+        }
+        catch (StorageException)
+        {
+
+            Debug.Log("If you are running with the default configuration please make sure you have started the storage emulator. Press the Windows key and type Azure Storage to select and run it from the list of applications - then restart the sample.");
+            throw;
+        }
+
+        // List all the blobs in the container
+        Debug.Log("list all blobs in the container");
+        BlobContinuationToken token = null;
+        BlobResultSegment list = await container.ListBlobsSegmentedAsync(token);
+        if (list.Results == null) Debug.Log("nothing stored yet");
+        foreach (IListBlobItem blob in list.Results)
+        {
+            // Blob type will be CloudBlockBlob, CloudPageBlob or CloudBlobDirectory
+            // Use blob.GetType() and cast to appropriate type to gain access to properties specific to each type
+
+            int usedId;
+            // check for all existing subject directories on the Azure Container
+            int.TryParse(container.Uri.MakeRelativeUri(blob.Uri).ToString().Split('/')[1], out usedId);
+            // Add them to our list to compare against the id to use
+            usedIds.Add(usedId);
+        }
+    }
+
+    
 }

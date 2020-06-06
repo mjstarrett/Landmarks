@@ -17,8 +17,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
-
 public enum ConfigRunMode
 {
 	NEW,
@@ -47,7 +45,8 @@ public class Config : MonoBehaviour{
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
     [Tooltip("Must be scene objects with the .unity file extension")]
-    public List<Object> levels = new List<Object>();
+    public List<Object> levelObjects = new List<Object>();
+    public List<string> levelNames = new List<string>();
     [Tooltip("Read Only: Use as index for scence/condition")]
     public int levelNumber;
 
@@ -78,6 +77,19 @@ public class Config : MonoBehaviour{
             if (s_Instance == null & FindObjectOfType<Config>() != null) {
                 s_Instance =  FindObjectOfType(typeof (Config)) as Config;
                 Debug.Log("Using an existing config object");
+
+                // move any levels, dragged onto levelObjects, into levelNames
+                if (s_Instance.levelObjects.Count != 0)
+                {
+                    foreach (var level in s_Instance.levelObjects)
+                    {
+                        s_Instance.levelNames.Add(level.name);
+                    }
+                }
+                else s_Instance.levelNames.Add("default");
+
+                // make sure at least one default condition is present
+                if (s_Instance.conditions.Count == 0) s_Instance.conditions.Add("default");
             }
             
             // If it is still null, create a new instance
@@ -85,6 +97,8 @@ public class Config : MonoBehaviour{
                 GameObject obj = new GameObject("Config");
                 s_Instance = obj.AddComponent(typeof (Config)) as Config;
                 Debug.Log ("Could not locate an Config object.  Config was Generated Automaticly.");
+                s_Instance.levelNames.Add("default");
+                s_Instance.conditions.Add("default");
             }
 
             return s_Instance;

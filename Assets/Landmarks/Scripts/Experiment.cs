@@ -172,20 +172,20 @@ public class Experiment : MonoBehaviour {
         // Handle Config file
         // ------------------------------
 
-        //when in editor
-        if (Application.isEditor)
-        {
-            Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
-            }
-            dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
-            logfile = "test.log";
-            configfile = dataPath + config.filename;
-        }
-        // Otherwise, save data in a true app data path
-        else
+        ////when in editor
+        //if (Application.isEditor)
+        //{
+        //    Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
+        //    if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
+        //    {
+        //        Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
+        //    }
+        //    dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
+        //    logfile = "test.log";
+        //    configfile = dataPath + config.filename;
+        //}
+        //// Otherwise, save data in a true app data path
+        //else
         {
             Debug.Log("THIS IS NOT THE EDITOR - SAVING IN PERSISTENTDATAPATH");
             Debug.Log(Application.persistentDataPath);
@@ -195,7 +195,7 @@ public class Experiment : MonoBehaviour {
             {
                 Directory.CreateDirectory(dataPath);
             }
-            logfile = config.experiment + "_" + config.subject + "_" + config.levels[config.levelNumber].name + "_" + config.conditions[config.levelNumber] + ".log";
+            logfile = config.experiment + "_" + config.subject + "_" + config.levelNames[config.levelNumber] + "_" + config.conditions[config.levelNumber] + ".log";
 
 
             configfile = dataPath + config.filename;
@@ -215,7 +215,7 @@ public class Experiment : MonoBehaviour {
 		}
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject +
-                  "\tSTART_SCENE\t" + config.levels[config.levelNumber].name + "\tSTART_CONDITION:\t" + config.conditions[config.levelNumber] + "\tUI:\t" + userInterface.ToString(), 1);
+                  "\tSTART_SCENE\t" + config.levelNames[config.levelNumber] + "\tSTART_CONDITION:\t" + config.conditions[config.levelNumber] + "\tUI:\t" + userInterface.ToString(), 1);
     }
 
 
@@ -564,11 +564,11 @@ public class Experiment : MonoBehaviour {
         // Upload data to remote storage if available and configured
         if (azureStorage != null)
         {
-            if (Application.isEditor)
-            {
-                Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
-            }
-            else
+            //if (Application.isEditor)
+            //{
+            //    Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
+            //}
+            //else
             {
                 Debug.Log("trying to use MICROSOFT AZURE");
                 await azureStorage.BasicStorageBlockBlobOperationsAsync();
@@ -583,18 +583,18 @@ public class Experiment : MonoBehaviour {
         //increment the level number (accounting for the zero-base compared to a count (starts with 1)
         config.levelNumber++;
         // If there is another level, load it
-        if (config.levelNumber < config.levels.Count)
+        if (config.levelNumber < config.levelNames.Count)
         {
             // Load the next Scene
             if (usingVR)
             {
                 // Use steam functions to avoid issues w/ framerate drop
-                SteamVR_LoadLevel.Begin(config.levels[config.levelNumber].name);
+                SteamVR_LoadLevel.Begin(config.levelNames[config.levelNumber]);
                 Debug.Log("Loading new VR scene");
             }
             else
             {
-                SceneManager.LoadScene(config.levels[config.levelNumber].name); // otherwise, just load the level like usual
+                SceneManager.LoadScene(config.levelNames[config.levelNumber]); // otherwise, just load the level like usual
             }
         }
         // Otherwise, close down; we're done
