@@ -20,6 +20,7 @@ public class LM_TargetColorAssignments : ExperimentTask
     [Header("Color Alphabet Settings (or other ColorList)")]
     public ColorList alphabet;
 
+
     // IF USING LAB COLOR SPACE ------------------------------------------------
     [Header("CIELAB Settings")]
 
@@ -49,6 +50,7 @@ public class LM_TargetColorAssignments : ExperimentTask
         {
             Debug.LogError(this.name + ": Lmin must be less than Lmax");
         }
+        
         
     }
 
