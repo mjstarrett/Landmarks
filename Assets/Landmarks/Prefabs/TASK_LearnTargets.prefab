@@ -57,6 +57,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   parentName: TargetObjects
   parentObject: {fileID: 0}
   current: 0
@@ -123,19 +126,24 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
-  skipCondition: 
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
+  skipConditions: []
   tasks: []
   objectsList: []
   repeat: 1
   overideRepeat: {fileID: 0}
+  repeatCount: 1
+  hideTargetsDuringTask: 0
+  currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
   onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  repeatCount: 1
-  currentTask: {fileID: 0}
+  trialLogging: 0
 --- !u!1 &170528092056186901
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,15 +201,19 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   startObjects: {fileID: 170528091416808512}
   destination: {fileID: 0}
   blackout: 1
   rotate: 1
   rotation_start: 0
   rotation_start_float: 0
-  objectRotationOffset: {x: -90, y: 0, z: 0}
-  rotationAxis: 2
+  objectRotationOffset: {x: 0, y: 225, z: 0}
+  rotationAxis: 1
   rotationSpeed: 30
+  objectPositionOffset: {x: 0, y: 0, z: 8}
   restrictMovement: 1
 --- !u!1 &1420332491874524135
 GameObject:
@@ -260,6 +272,9 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 289fca87a98764036bd412d05a31e578, type: 3}
   objects: {fileID: 0}
@@ -331,16 +346,21 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
-  skipCondition: 
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
+  skipConditions: []
   tasks: []
   objectsList: []
   repeat: 3
   overideRepeat: {fileID: 0}
+  repeatCount: 1
+  hideTargetsDuringTask: 0
+  currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
   onlyOnCatch: []
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  repeatCount: 1
-  currentTask: {fileID: 0}
+  trialLogging: 0
