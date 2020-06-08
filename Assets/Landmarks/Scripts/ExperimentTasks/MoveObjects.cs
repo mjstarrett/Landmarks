@@ -29,17 +29,19 @@ public class MoveObjects : ExperimentTask {
 
 	private GameObject destination;
 	public ObjectList destinations;
+    public bool hideDestinations = true;
 	
 	public bool swap;
 
     public bool ignoreYPos = false;
     public bool ignoreRotation = false;
 
-    public bool destroyExtraSources = false; // get rid of any gameobjects in sources that aren't used here (anything over the lenght of destinations)
-
 	private static Vector3 position;
 	private static Quaternion rotation;
-
+    private List<GameObject> usedTargets = new List<GameObject>();
+    private List<GameObject> unusedTargets = new List<GameObject>();
+    private GameObject spent; // container for parent object of UsedObjects
+    private GameObject stored; // container for parent object of UnusedObjects
 
 	public override void startTask () {
 		TASK_START();
@@ -59,20 +61,74 @@ public class MoveObjects : ExperimentTask {
 		}
 
 
-        // Destroy any objects that don't get moved (say if we're only randomly using 8 stores out of a possible selection of 16)
-        if (destroyExtraSources)
+        // ---------------------------------------------------------------------
+        // Store a list of Used and Unused Targets to use in subsequent scenes
+        // ---------------------------------------------------------------------
+
+        for (int i = 0; i < sources.objects.Count; i++)
         {
-            // Debug.Log("Trimming ObjectList " + sources.name + " from " + sources.objects.Count + " to " + destinations.objects.Count);
-            for (int i = 0; i < sources.objects.Count; i++)
+            if (i < destinations.objects.Count)
             {
-                if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
-                {
-                    Destroy(sources.objects[i]); // delete them from the list of target objects
-                }
+                // What got used?
+                usedTargets.Add(sources.objects[i]);
+            }
+            else 
+            {
+                // What didn't get used?
+                unusedTargets.Add(sources.objects[i]);
             }
         }
 
-        // If we are moving our target objects, list their info
+        // If this is the first scene, create new containers for used and unused
+        if (manager.config.levelNumber == 0)
+        {
+            spent = new GameObject();
+            spent.name = "UsedTargets";
+            DontDestroyOnLoad(spent);
+
+            stored = new GameObject();
+            stored.name = "UnusedTargets";
+            DontDestroyOnLoad(stored);
+        }
+        else
+        {
+            spent = GameObject.Find("UsedTargets");
+            stored = GameObject.Find("UnusedTargets");
+        }
+
+
+        // Update the objects in each parent container
+        foreach (var target in usedTargets)
+        {
+            GameObject childcopy = Instantiate(target.gameObject);
+            childcopy.transform.SetParent(spent.transform);
+            childcopy.name = target.gameObject.name;
+            childcopy.SetActive(false);
+        }
+        foreach (var target in unusedTargets)
+        {
+            GameObject childcopy = Instantiate(target.gameObject);
+            childcopy.transform.SetParent(stored.transform);
+            childcopy.name = target.gameObject.name;
+            childcopy.SetActive(false);
+        }
+
+
+        // ---------------------------------------------------------------------
+        // Remove excess stores from the Target Objects parent object in this
+        // scene (so they don't get used)
+        // ---------------------------------------------------------------------
+
+        for (int i = 0; i < sources.objects.Count; i++)
+        {
+            if (i > destinations.objects.Count - 1) // needs to be one less or it won't clip the first store on the copping block.
+            {
+                Destroy(sources.objects[i]); // delete them from the list of target objects
+            }
+        }
+
+
+        // If we are moving our target objects, list their info ----------------
         if (sources.objects[0].CompareTag("Target"))
         {
             log.log("TARGET INFORMATION ----------------------------------------", 1);
@@ -143,5 +199,13 @@ public class MoveObjects : ExperimentTask {
 			destinations.incrementCurrent();
 			destination = destinations.currentObject();
 		}
+
+        if (hideDestinations)
+        {
+            foreach (var destination in destinations.objects)
+            {
+                destination.SetActive(false);
+            }
+        }
 	}
 }
