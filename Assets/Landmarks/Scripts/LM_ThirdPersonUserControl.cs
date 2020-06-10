@@ -32,14 +32,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public float playerSpeedMultiplier = 1.0f;
 
-        public SteamVR_Input_ActionSet_vrtk vrInput;
+        public SteamVR_Input_ActionSet_landmarks vrInput;
 
         private Experiment manager;
 
         private void Awake()
         {
             manager = GameObject.FindWithTag("Experiment").GetComponent<Experiment>();
-            vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
+            vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
         }
 
 
