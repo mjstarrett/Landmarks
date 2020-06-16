@@ -35,6 +35,7 @@ public class ViewTargets : ExperimentTask {
 
 	private static Vector3 position;
 	private static Quaternion rotation;
+	private static Transform parent;
 	private static Vector3 scale;
 	private int saveLayer;
 	private int viewLayer = 11;
@@ -151,15 +152,21 @@ public class ViewTargets : ExperimentTask {
 		return false;
 	}
 	public void initCurrent() {
+		// store original properties of the target
 		position = current.transform.position;
         rotation = current.transform.rotation;
+		parent = current.transform.parent;
 		scale = current.transform.localScale;
 
-		current.transform.position = destination.transform.position;
-		current.transform.localPosition += objectPositionOffset;
-		current.transform.rotation = destination.transform.rotation;
-        current.transform.eulerAngles += objectRotationOffset;
+		// move the target to the viewing location temporarily
+		current.transform.parent = destination.transform;
+		current.transform.localPosition = objectPositionOffset;
+        current.transform.localEulerAngles = objectRotationOffset;
 		current.transform.localScale = destination.transform.localScale;
+
+		// return the target to its original parent (we'll revert other values later)
+		// this way it won't track with the "head" of the avatar
+		current.transform.parent = parent;
 
         // but Turn on the current object
         current.SetActive(true);
