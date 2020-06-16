@@ -36,7 +36,7 @@ public class ExperimentTask : MonoBehaviour{
     
 	protected long task_start;
 
-    protected SteamVR_Input_ActionSet_vrtk vrInput;
+    protected SteamVR_Input_ActionSet_landmarks vrInput;
 
     protected ArrayList trialHeader;
     protected ArrayList trialData;
@@ -97,7 +97,7 @@ public class ExperimentTask : MonoBehaviour{
 
 
         // set up vrInput if we're using VR
-        if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_vrtk>(default);
+        if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
 
         // Grab the scaled nav task/player and log it - MJS 2019
         scaledAvatar = manager.scaledPlayer;

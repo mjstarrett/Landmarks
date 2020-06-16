@@ -14,14 +14,14 @@ namespace Valve.VR
     using UnityEngine;
     
     
-    public class SteamVR_Input_ActionSet_vrtk : Valve.VR.SteamVR_ActionSet
+    public class SteamVR_Input_ActionSet_landmarks : Valve.VR.SteamVR_ActionSet
     {
         
         public virtual SteamVR_Action_Boolean TouchpadButton
         {
             get
             {
-                return SteamVR_Actions.vrtk_TouchpadButton;
+                return SteamVR_Actions.landmarks_TouchpadButton;
             }
         }
         
@@ -29,7 +29,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TriggerButton;
+                return SteamVR_Actions.landmarks_TriggerButton;
             }
         }
         
@@ -37,7 +37,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_GripButton;
+                return SteamVR_Actions.landmarks_GripButton;
             }
         }
         
@@ -45,7 +45,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_Pose;
+                return SteamVR_Actions.landmarks_Pose;
             }
         }
         
@@ -53,7 +53,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_SkeletonLeftHand;
+                return SteamVR_Actions.landmarks_SkeletonLeftHand;
             }
         }
         
@@ -61,7 +61,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_SkeletonRightHand;
+                return SteamVR_Actions.landmarks_SkeletonRightHand;
             }
         }
         
@@ -69,7 +69,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TriggerSqueeze;
+                return SteamVR_Actions.landmarks_TriggerSqueeze;
             }
         }
         
@@ -77,7 +77,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TouchpadTouch;
+                return SteamVR_Actions.landmarks_TouchpadTouch;
             }
         }
         
@@ -85,7 +85,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TouchpadPosition;
+                return SteamVR_Actions.landmarks_TouchpadPosition;
             }
         }
         
@@ -93,7 +93,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_ButtonStartMenu;
+                return SteamVR_Actions.landmarks_ButtonStartMenu;
             }
         }
         
@@ -101,7 +101,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TriggerTouch;
+                return SteamVR_Actions.landmarks_TriggerTouch;
             }
         }
         
@@ -109,7 +109,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TouchpadTwoTouch;
+                return SteamVR_Actions.landmarks_TouchpadTwoTouch;
             }
         }
         
@@ -117,7 +117,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TouchpadTwoPosition;
+                return SteamVR_Actions.landmarks_TouchpadTwoPosition;
             }
         }
         
@@ -125,7 +125,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_TouchpadTwoButton;
+                return SteamVR_Actions.landmarks_TouchpadTwoButton;
             }
         }
         
@@ -133,7 +133,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_GripTouch;
+                return SteamVR_Actions.landmarks_GripTouch;
             }
         }
         
@@ -141,7 +141,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_GripSqueeze;
+                return SteamVR_Actions.landmarks_GripSqueeze;
             }
         }
         
@@ -149,7 +149,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_ButtonOneTouch;
+                return SteamVR_Actions.landmarks_ButtonOneTouch;
             }
         }
         
@@ -157,7 +157,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_ButtonOneClick;
+                return SteamVR_Actions.landmarks_ButtonOneClick;
             }
         }
         
@@ -165,7 +165,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_ButtonTwoTouch;
+                return SteamVR_Actions.landmarks_ButtonTwoTouch;
             }
         }
         
@@ -173,7 +173,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_ButtonTwoClick;
+                return SteamVR_Actions.landmarks_ButtonTwoClick;
             }
         }
         
@@ -181,7 +181,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.vrtk_Haptic;
+                return SteamVR_Actions.landmarks_Haptic;
             }
         }
     }
