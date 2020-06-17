@@ -13,6 +13,7 @@ using Windows.Storage;
 
 public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 {
+
     [Min(1001)]
     public int firstSubjectId = 1001;
     public string azureConnectionString = string.Empty;
@@ -38,8 +39,6 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             return;
         }
 
-
-
         // Are we using an Azure data repository?
         if (azureConnectionString != string.Empty)
         {
@@ -50,9 +49,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             await RetrieveAzureData();
         }
 
-        
 
-        // FIXME
         // ---------------------------------------------------------------------
         // Compute Subject ID (without overwriting data on the Azure storage client
         // ---------------------------------------------------------------------
@@ -127,13 +124,35 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         // Load the first level
         //----------------------------------------------------------------------
         Debug.Log(config.levelNames[config.levelNumber]);
-        SceneManager.LoadScene(config.levelNames[config.levelNumber]);
+
+        while (config.levelNames[config.levelNumber] == SceneManager.GetActiveScene().name)
+        {
+            Debug.LogWarning("The active scene is also the next scene in the queue");
+            Debug.Log("Trying to skip and load the next scene");
+            config.levelNumber++;
+
+            if (config.levelNumber == config.levelNames.Count)
+            {
+                Debug.Log("This is the only scene. Application will terminate after this scene.");
+                return;
+            }
+        }
+
+        try
+        {
+            SceneManager.LoadScene(config.levelNames[config.levelNumber]);
+        }
+        catch (System.Exception)
+        {
+            Application.Quit();
+        }
 
     }
 
+
     public async Task RetrieveAzureData()
     {
-        
+
 
         CloudBlobClient blobClient = azureAccount.CreateCloudBlobClient();
         // Access the folder where the data would be stored (create if does not exist)
@@ -168,5 +187,5 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         }
     }
 
-    
+
 }
