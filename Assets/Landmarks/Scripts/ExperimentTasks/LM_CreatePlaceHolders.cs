@@ -24,11 +24,11 @@ public class LM_CreatePlaceHolders : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
-        // only generate placeholders on the first run
-        if (parentTask.repeatCount > 1)
-        {
-            skip = true;
-        }
+        //// only generate placeholders on the first run
+        //if (parentTask.repeatCount > 1)
+        //{
+        //    skip = true;
+        //}
 
         if (skip)
         {
@@ -38,9 +38,8 @@ public class LM_CreatePlaceHolders : ExperimentTask
         for (int i = 0; i < targetObjectList.objects.Count; i++)
         {
             placeholder = new GameObject("PlaceHolder");
-            var instance = Instantiate(placeholder, transform.position, Quaternion.identity);
-            instance.transform.parent = transform;
-            instance.transform.localPosition = new Vector3(0.0f, 0.0f, -1 * i * placeholderSpacing);
+            placeholder.transform.parent = transform;
+            placeholder.transform.localPosition = new Vector3(0.0f, 0.0f, -1 * i * placeholderSpacing);
         }
     }
 
@@ -60,6 +59,8 @@ public class LM_CreatePlaceHolders : ExperimentTask
     public override void TASK_END()
     {
         base.endTask();
+
+        skip = true; // don't run a second time (creates extra placeholders)
     }
 
 }
