@@ -15,6 +15,7 @@
 */
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public enum ConfigRunMode
@@ -45,7 +46,7 @@ public class Config : MonoBehaviour{
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
     [Tooltip("Must be scene objects with the .unity file extension")]
-    public List<Object> levelObjects = new List<Object>();
+    //public List<Object> levelObjects = new List<Object>();
     public List<string> levelNames = new List<string>();
     [Tooltip("Read Only: Use as index for scence/condition")]
     public int levelNumber;
@@ -68,28 +69,17 @@ public class Config : MonoBehaviour{
 
     // s_Instance is used to cache the instance found in the scene so we don't have to look it up every time.	
     private static Config s_Instance = null;
+    public bool initialized;
 	  
     // This defines a static instance property that attempts to find the config object in the scene and
     // returns it to the caller.
 	public static Config instance {
         get {
             //  FindObjectOfType(...) returns the first Config object in the scene.
-            if (s_Instance == null & FindObjectOfType<Config>() != null) {
+            if (s_Instance == null)
+            {
                 s_Instance =  FindObjectOfType(typeof (Config)) as Config;
                 Debug.Log("Using an existing config object");
-
-                // move any levels, dragged onto levelObjects, into levelNames
-                if (s_Instance.levelObjects.Count != 0)
-                {
-                    foreach (var level in s_Instance.levelObjects)
-                    {
-                        s_Instance.levelNames.Add(level.name);
-                    }
-                }
-                else s_Instance.levelNames.Add("default");
-
-                // make sure at least one default condition is present
-                if (s_Instance.conditions.Count == 0) s_Instance.conditions.Add("default");
             }
             
             // If it is still null, create a new instance
@@ -97,8 +87,11 @@ public class Config : MonoBehaviour{
                 GameObject obj = new GameObject("Config");
                 s_Instance = obj.AddComponent(typeof (Config)) as Config;
                 Debug.Log ("Could not locate an Config object.  Config was Generated Automaticly.");
-                s_Instance.levelNames.Add("default");
-                s_Instance.conditions.Add("default");
+            }
+
+            if (!s_Instance.initialized)
+            {
+                s_Instance.Initialize(s_Instance);
             }
 
             return s_Instance;
@@ -116,9 +109,30 @@ public class Config : MonoBehaviour{
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
     }
-    
-    public void test() {
-    	Debug.Log("test!!!");
+
+
+    public void Initialize(Config config) {
+        //Debug.Log("Initializing the Config");
+
+        //// If no levels are specified, just add the current level to the config
+        if (config.levelNames.Count == 0)
+        {
+            Debug.Log("No scenes provided; using current scene only.");
+            config.levelNames.Add(SceneManager.GetActiveScene().name);
+        }
+
+
+        // make sure there are an equal number of conditions and levels (fill with "default" or trim)
+        while (config.conditions.Count < config.levelNames.Count)
+        {
+            config.conditions.Add("default");
+        }
+        while (config.conditions.Count > config.levelNames.Count)
+        {
+            config.conditions.RemoveAt(config.conditions.Count - 1);
+        }
+
+        config.initialized = true;
     }
 }
 
