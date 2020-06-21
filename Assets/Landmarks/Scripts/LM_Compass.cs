@@ -22,12 +22,10 @@ public class LM_Compass : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 pointer.transform.Rotate(transform.up, -1 * rotationSpeedMultiplier * Time.deltaTime);
-                Debug.Log("Trying to rotate left!");
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
                 pointer.transform.Rotate(transform.up, rotationSpeedMultiplier * Time.deltaTime);
-                Debug.Log("Trying to rotate left!");
             }
         }
     }
