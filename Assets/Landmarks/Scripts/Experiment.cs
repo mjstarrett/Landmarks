@@ -196,7 +196,7 @@ public class Experiment : MonoBehaviour {
             {
                 Directory.CreateDirectory(dataPath);
             }
-            logfile = config.experiment + "_" + config.subject + "_" + config.levels[config.levelNumber].name + "_" + config.conditions[config.levelNumber] + ".log";
+            logfile = config.experiment + "_" + config.subject + "_" + config.levelNames[config.levelNumber] + "_" + config.conditions[config.levelNumber] + ".log";
 
 
             configfile = dataPath + config.filename;
@@ -216,7 +216,7 @@ public class Experiment : MonoBehaviour {
 		}
 
         dblog.log("EXPERIMENT:\t" + PlayerPrefs.GetString("expID") + "\tSUBJECT:\t" + config.subject +
-                  "\tSTART_SCENE\t" + config.levels[config.levelNumber].name + "\tSTART_CONDITION:\t" + config.conditions[config.levelNumber] + "\tUI:\t" + userInterface.ToString(), 1);
+                  "\tSTART_SCENE\t" + config.levelNames[config.levelNumber] + "\tSTART_CONDITION:\t" + config.conditions[config.levelNumber] + "\tUI:\t" + userInterface.ToString(), 1);
     }
 
 
@@ -584,18 +584,18 @@ public class Experiment : MonoBehaviour {
         //increment the level number (accounting for the zero-base compared to a count (starts with 1)
         config.levelNumber++;
         // If there is another level, load it
-        if (config.levelNumber < config.levels.Count)
+        if (config.levelNumber < config.levelNames.Count)
         {
             // Load the next Scene
             if (usingVR)
             {
                 // Use steam functions to avoid issues w/ framerate drop
-                SteamVR_LoadLevel.Begin(config.levels[config.levelNumber].name);
+                SteamVR_LoadLevel.Begin(config.levelNames[config.levelNumber]);
                 Debug.Log("Loading new VR scene");
             }
             else
             {
-                SceneManager.LoadScene(config.levels[config.levelNumber].name); // otherwise, just load the level like usual
+                SceneManager.LoadScene(config.levelNames[config.levelNumber]); // otherwise, just load the level like usual
             }
         }
         // Otherwise, close down; we're done
