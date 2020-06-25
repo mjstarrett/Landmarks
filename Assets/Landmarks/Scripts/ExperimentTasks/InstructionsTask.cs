@@ -48,8 +48,8 @@ public class InstructionsTask : ExperimentTask {
 
     private Text gui;
 
-    public bool restrictMovement = false; // MJS do we want to keep them still during this?
-    public bool selfPaced = false; // can they press return to end the task?
+    public bool restrictMovement = true; // MJS do we want to keep them still during this?
+    public bool selfPaced = true; // can they press return to end the task?
 
     void OnDisable ()
     {
