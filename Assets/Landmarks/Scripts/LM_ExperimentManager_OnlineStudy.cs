@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
+using TMPro;
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 using Windows.Storage;
@@ -183,14 +184,26 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             }
         }
 
-        try
+        GameObject.Find("VerificationCode").GetComponent<TextMeshProUGUI>().text = config.conditions[config.levelNumber];
+
+
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene(config.levelNames[config.levelNumber]);
+            try
+            {
+                SceneManager.LoadScene(config.levelNames[config.levelNumber]);
+            }
+            catch (System.Exception)
+            {
+                Application.Quit();
+            }
         }
-        catch (System.Exception)
-        {
-            Application.Quit();
-        }
+        
 
     }
 

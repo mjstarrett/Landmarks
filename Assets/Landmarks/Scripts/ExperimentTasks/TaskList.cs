@@ -68,11 +68,21 @@ public class TaskList : ExperimentTask
 
         base.startTask();
 
-        // check if the current condition is one this task is skipped on
-        if (Array.IndexOf(skipConditions, manager.config.conditions[manager.config.levelNumber]) != -1)
+       
+
+        foreach (var skipCondition in skipConditions)
         {
-            skip = true;
+            if (manager.config.conditions[manager.config.levelNumber].Contains(skipCondition))
+            {
+                skip = true;
+            }
         }
+        
+        //// check if the current condition is one this task is skipped on
+        //if (Array.IndexOf(skipConditions, manager.config.conditions[manager.config.levelNumber]) != -1)
+        //{
+        //    skip = true;
+        //}
 
         if (overideRepeat)
         {
