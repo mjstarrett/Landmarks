@@ -161,7 +161,7 @@ public class ViewTargets : ExperimentTask {
 		// move the target to the viewing location temporarily
 		current.transform.parent = destination.transform;
 		current.transform.localPosition = objectPositionOffset;
-        current.transform.localEulerAngles += objectRotationOffset;
+        current.transform.localEulerAngles = objectRotationOffset;
         current.transform.localScale = Vector3.Scale(current.transform.localScale, destination.transform.localScale);
 
 		// return the target to its original parent (we'll revert other values later)

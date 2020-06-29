@@ -309,10 +309,14 @@ public class TaskList : ExperimentTask
         }
         Transform lmBaseTask = tmp;
 
+        // Record our base task (what is the name of the task we have trials of)
         trialLog.AddData("task", lmBaseTask.name);
-        trialLog.AddData("block", parentTask.repeatCount.ToString());
+
+        // get the parent of the base task (the base task is the trial, this is the block)
+        trialLog.AddData("block", lmBaseTask.parent.GetComponent<TaskList>().repeatCount.ToString());
+        // The trial comes from this object
         trialLog.AddData("trial", repeatCount.ToString());
-        trialLog.AddData("catchTrial", catchFlag.ToString());
+        //trialLog.AddData("catchTrial", catchFlag.ToString());
     }
 
 

@@ -122,15 +122,15 @@ public class Config : MonoBehaviour{
         }
 
 
-        // make sure there are an equal number of conditions and levels (fill with "default" or trim)
-        while (config.conditions.Count < config.levelNames.Count)
-        {
-            config.conditions.Add("default");
-        }
-        while (config.conditions.Count > config.levelNames.Count)
-        {
-            config.conditions.RemoveAt(config.conditions.Count - 1);
-        }
+        //// make sure there are an equal number of conditions and levels (fill with "default" or trim)
+        //while (config.conditions.Count < config.levelNames.Count)
+        //{
+        //    config.conditions.Add("default");
+        //}
+        //while (config.conditions.Count > config.levelNames.Count)
+        //{
+        //    config.conditions.RemoveAt(config.conditions.Count - 1);
+        //}
 
         config.initialized = true;
     }

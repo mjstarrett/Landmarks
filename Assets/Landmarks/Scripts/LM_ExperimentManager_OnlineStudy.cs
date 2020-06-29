@@ -30,6 +30,8 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
     async void Start()
     {
+       
+
         // Get the config (dont use Config.Instance() as we need a preconfigured one)
         if (FindObjectOfType<Config>() != null)
         {
@@ -53,6 +55,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         }
 
 
+
         // ---------------------------------------------------------------------
         // Compute Subject ID (without overwriting data on the Azure storage client
         // ---------------------------------------------------------------------
@@ -72,7 +75,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         // ---------------------------------------------------------------------
         // Create all condition/scene pairwise comparisons 
         // ---------------------------------------------------------------------
-
+        
         if (singleSceneBuild)
         {
             List<string[]> conditionSceneList = new List<string[]>();

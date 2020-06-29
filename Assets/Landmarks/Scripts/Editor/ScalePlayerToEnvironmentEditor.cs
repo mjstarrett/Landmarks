@@ -17,22 +17,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-// Custom Inspector to handle sufficient conditions
-[CustomEditor(typeof(ScalePlayerToEnvironment))]
-[CanEditMultipleObjects]
-public class ScalePlayerToEnvironmentEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        // set our custom inspector up to communicate with the main script and alias that script for brevity
-        ScalePlayerToEnvironment spte = (ScalePlayerToEnvironment)target;
+//// Custom Inspector to handle sufficient conditions
+//[CustomEditor(typeof(ScalePlayerToEnvironment))]
+//[CanEditMultipleObjects]
+//public class ScalePlayerToEnvironmentEditor : Editor
+//{
+//    [Min(0f)]
+//    float speedAdjFact;
+//    public override void OnInspectorGUI()
+//    {
+//        // set our custom inspector up to communicate with the main script and alias that script for brevity
+//        ScalePlayerToEnvironment spte = (ScalePlayerToEnvironment)target;
 
-        // publish our autoscale option
-        spte.autoscale = EditorGUILayout.Toggle("AutoScale", spte.autoscale);
-        // tell inspector to hide the scale ratio option if they are autoscaling
-        using (new EditorGUI.DisabledScope(spte.autoscale))
-        {
-            spte.scaleRatio = EditorGUILayout.FloatField("Scale Ratio", spte.scaleRatio);
-        }
-    }
-}
+//        // publish our autoscale option
+//        spte.autoscale = EditorGUILayout.Toggle("AutoScale", spte.autoscale);
+//        // tell inspector to hide the scale ratio option if they are autoscaling
+//        using (new EditorGUI.DisabledScope(spte.autoscale))
+//        {
+//            spte.scaleRatio = EditorGUILayout.FloatField("Scale Ratio", spte.scaleRatio);
+//        }
+
+
+//        spte.speedAdjustFactor = EditorGUILayout.FloatField("Speed Ajust Factor", spte.speedAdjustFactor, );
+       
+//    }
+//}
