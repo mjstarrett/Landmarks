@@ -58,10 +58,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7723000019920691151}
   - {fileID: 7626862284608624926}
   - {fileID: 7626862284683333461}
   - {fileID: 7626862284598663118}
+  - {fileID: 6051511279815602885}
   - {fileID: 7626862284217287122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   randomStartRotation: 0
   compassPosOffset: {x: 0, y: 0.9, z: -3.9}
   compassRotOffset: {x: 0, y: 180, z: 0}
+  secondsBeforeResponse: 3
 --- !u!1 &7626862284217287123
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7626862283648848318}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7626862284598663117
 MonoBehaviour:
@@ -356,7 +357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7626862283648848318}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7626862284608624927
 MonoBehaviour:
@@ -423,7 +424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7626862283648848318}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7626862284683333462
 MonoBehaviour:
@@ -560,6 +561,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4189270851846576411, guid: f054ed637cbf544508d9d7f3c46cb2d3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5480628745736098656, guid: f054ed637cbf544508d9d7f3c46cb2d3,
         type: 3}
       propertyPath: m_Layer
@@ -572,15 +578,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f054ed637cbf544508d9d7f3c46cb2d3, type: 3}
---- !u!1 &6734783879290547676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3796196488182810114, guid: f054ed637cbf544508d9d7f3c46cb2d3,
+--- !u!4 &6051511279815602885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4189270851846576411, guid: f054ed637cbf544508d9d7f3c46cb2d3,
     type: 3}
   m_PrefabInstance: {fileID: 7626862284385233886}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7723000019920691151 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 213240724579038225, guid: f054ed637cbf544508d9d7f3c46cb2d3,
+--- !u!1 &6734783879290547676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3796196488182810114, guid: f054ed637cbf544508d9d7f3c46cb2d3,
     type: 3}
   m_PrefabInstance: {fileID: 7626862284385233886}
   m_PrefabAsset: {fileID: 0}

@@ -248,6 +248,7 @@ public class LM_CompassPointing : ExperimentTask
             trialLog.AddData(transform.name + "_answerCW", answer.ToString());
             trialLog.AddData(transform.name + "_signedError", signedError.ToString());
             trialLog.AddData(transform.name + "_absError", absError.ToString());
+            trialLog.AddData(transform.name + "_rt", taskDuration.ToString());
         }
     }
 
