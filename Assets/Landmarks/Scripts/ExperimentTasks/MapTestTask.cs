@@ -257,6 +257,10 @@ public class MapTestTask : ExperimentTask {
 	{
 		base.endTask();
 
+		// log data
+		// Log data
+		trialLog.AddData(transform.name + "_testTime", taskDuration.ToString());
+
 		// Set up hud for other tasks
 		hud.hudPanel.SetActive(true); //hide the text background on HUD
 		// Change the anchor points to put the message back in center
