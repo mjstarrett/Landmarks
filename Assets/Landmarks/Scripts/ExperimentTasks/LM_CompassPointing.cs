@@ -37,6 +37,8 @@ public class LM_CompassPointing : ExperimentTask
     public bool randomStartRotation;
     public Vector3 compassPosOffset = new Vector3(0f, 0f, -2f);
     public Vector3 compassRotOffset = new Vector3(15f, 0f, 0f);
+    [Min(0f)]
+    public float secondsBeforeResponse = 5.0f; // how long before they can submit answer
 
     private List<GameObject> questionItems; 
     private GameObject location; // standing at the...
@@ -49,6 +51,7 @@ public class LM_CompassPointing : ExperimentTask
     private float absError; // how far off were they regardless of direction?
     private string formattedQuestion;
     private bool oriented;
+    private float startTime;
 
     public override void startTask()
     {
@@ -62,6 +65,8 @@ public class LM_CompassPointing : ExperimentTask
     {
         if (!manager) Start();
         base.startTask();
+
+        startTime = Time.time;
 
         // Restrict Movement
         manager.player.GetComponent<CharacterController>().enabled = false;
@@ -162,57 +167,60 @@ public class LM_CompassPointing : ExperimentTask
 
     public override bool updateTask()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Time.time - startTime > secondsBeforeResponse) // don't let them submit until the wait time has passed
         {
-            if (!oriented)
+            if (Input.GetKeyDown(KeyCode.Return))
             {
-                if (format == Format.SOP)
+                if (!oriented)
                 {
-                    avatar.GetComponent<FirstPersonController>().enabled = false; // disable the controller to work
-                    avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = Vector3.zero; // reset the camera
-                    avatar.GetComponent<FirstPersonController>().ResetMouselook(); // reset the zero position to be our current cam orientation
+                    if (format == Format.SOP)
+                    {
+                        avatar.GetComponent<FirstPersonController>().enabled = false; // disable the controller to work
+                        avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = Vector3.zero; // reset the camera
+                        avatar.GetComponent<FirstPersonController>().ResetMouselook(); // reset the zero position to be our current cam orientation
 
-                    var compassparent = compass.transform.parent;
-                    compass.transform.parent = avatar.GetComponentInChildren<LM_SnapPoint>().transform; // make it the child of the snappoint
-                    compass.transform.localPosition = compassPosOffset; // adjust position
-                    compass.transform.localEulerAngles = compassRotOffset; // adjust rotation
-                    compass.transform.parent = compassparent; // send it back to its old parent to avoid funky movement effects
+                        var compassparent = compass.transform.parent;
+                        compass.transform.parent = avatar.GetComponentInChildren<LM_SnapPoint>().transform; // make it the child of the snappoint
+                        compass.transform.localPosition = compassPosOffset; // adjust position
+                        compass.transform.localEulerAngles = compassRotOffset; // adjust rotation
+                        compass.transform.parent = compassparent; // send it back to its old parent to avoid funky movement effects
 
-                    // Calculate the correct answer (using the new oriented facing direction)
-                    var newOrientation = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
-                    answer = Vector3.SignedAngle(newOrientation.transform.position - location.transform.position,
-                                                target.transform.position - location.transform.position, Vector3.up);
-                    if (answer < 0) answer += 360;
-                    Debug.Log("Answer is " + answer);
+                        // Calculate the correct answer (using the new oriented facing direction)
+                        var newOrientation = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
+                        answer = Vector3.SignedAngle(newOrientation.transform.position - location.transform.position,
+                                                    target.transform.position - location.transform.position, Vector3.up);
+                        if (answer < 0) answer += 360;
+                        Debug.Log("Answer is " + answer);
+                    }
+
+
+
+                    oriented = true; // mark them oriented
+                    hud.setMessage(formattedQuestion);
+                    compass.gameObject.SetActive(true);
+                    compass.interactable = true;
+
+                    return false; // don't end the trial
+                }
+                else
+                {
+                    // Record the response as an angle between -180 and 180
+                    response = compass.pointer.transform.localEulerAngles.y;
+
+                    Debug.Log("RESPONSE: " + response.ToString());
+
+                    // Calculate the (signed) error - should be between -180 and 180
+                    signedError = response - answer;
+                    if (signedError > 180) signedError -= 360;
+                    else if (signedError < -180) signedError += 360;
+                    Debug.Log("Signed Error: " + signedError);
+                    absError = Mathf.Abs(signedError);
+                    Debug.Log("Absolute Error: " + absError);
+
+                    return true; // end trial
                 }
 
-                
-
-                oriented = true; // mark them oriented
-                hud.setMessage(formattedQuestion); 
-                compass.gameObject.SetActive(true);
-                compass.interactable = true;
-
-                return false; // don't end the trial
             }
-            else
-            {
-                // Record the response as an angle between -180 and 180
-                response = compass.pointer.transform.localEulerAngles.y;
-
-                Debug.Log("RESPONSE: " + response.ToString());
-
-                // Calculate the (signed) error - should be between -180 and 180
-                signedError = response - answer;
-                if (signedError > 180) signedError -= 360;
-                else if (signedError < -180) signedError += 360;
-                Debug.Log("Signed Error: " + signedError);
-                absError = Mathf.Abs(signedError);
-                Debug.Log("Absolute Error: " + absError);
-
-                return true; // end trial
-            }
-            
         }
 
         hud.ForceShowMessage(); // keep the question up
