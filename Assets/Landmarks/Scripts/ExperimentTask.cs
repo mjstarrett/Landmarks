@@ -64,8 +64,6 @@ public class ExperimentTask : MonoBehaviour{
     public static bool killCurrent = false;
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
-	protected float startTime; // save when this expTask started
-	protected float taskDuration; // container for updating the running time of this expTask
 
     [Header("EEG Settings (if available)")]
     public string triggerLabel; // name prefix for unique triggers
@@ -85,7 +83,6 @@ public class ExperimentTask : MonoBehaviour{
 	}
 	
 	public virtual void startTask() {
-		startTime = Time.time;
 		avatar = GameObject.FindWithTag ("Player");
 		avatarLog = avatar.GetComponent("avatarLog") as avatarLog; //jdstokes 2015
 		hud = avatar.GetComponent("HUD") as HUD;
@@ -139,8 +136,6 @@ public class ExperimentTask : MonoBehaviour{
 	}	
 	
 	public virtual bool updateTask () {
-
-		taskDuration = Time.time - startTime;
 
 		bool attemptInterupt = false;
 		

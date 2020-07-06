@@ -13,6 +13,9 @@ public class MapStudyTask : ExperimentTask {
 	public Vector3 hudTextOffset;
 	public Vector3 baselineScaling;
 
+	private float startTime;
+	private float taskDuration;
+
 	public override void startTask () 
 	{
 		TASK_START();	
@@ -23,6 +26,8 @@ public class MapStudyTask : ExperimentTask {
 	{
 		if (!manager) Start();
 		base.startTask();
+
+		startTime = Time.time;
 
 		// Modify the HUD display for the map task
 		hud.setMessage("");
@@ -59,6 +64,8 @@ public class MapStudyTask : ExperimentTask {
 	public override bool updateTask ()
 	{
 		base.updateTask ();
+
+		taskDuration = Time.time - startTime;
 
 		//empty RaycastHit object which raycast puts the hit details into
 		RaycastHit hit;

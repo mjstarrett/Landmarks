@@ -121,6 +121,11 @@ public class Config : MonoBehaviour{
             config.levelNames.Add(SceneManager.GetActiveScene().name);
         }
 
+        // if no conditions are specified, add a single entry called default
+        if (config.conditions.Count == 0)
+        {
+            config.conditions.Add("default");
+        }
 
         //// make sure there are an equal number of conditions and levels (fill with "default" or trim)
         //while (config.conditions.Count < config.levelNames.Count)

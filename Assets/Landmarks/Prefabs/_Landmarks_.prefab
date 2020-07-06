@@ -1202,16 +1202,16 @@ MonoBehaviour:
   trackedObject: {fileID: 0}
   grabPinchAction:
     actionPath: /actions/vrtk/in/TriggerButton
-    needsReinit: 0
+    needsReinit: 1
   grabGripAction:
     actionPath: /actions/vrtk/in/GripButton
-    needsReinit: 0
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/vrtk/out/Haptic
     needsReinit: 1
   uiInteractAction:
     actionPath: /actions/vrtk/in/TouchpadButton
-    needsReinit: 0
+    needsReinit: 1
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 4352383787893165470}
   hoverSphereRadius: 0.075
@@ -1231,6 +1231,9 @@ MonoBehaviour:
   noSteamVRFallbackMaxDistanceWithItem: 0.5
   renderModelPrefab: {fileID: 1000012617731570, guid: 837f93beb9a614743ae3a2c0ada7c388,
     type: 3}
+  renderModels: []
+  mainRenderModel: {fileID: 0}
+  hoverhighlightRenderModel: {fileID: 0}
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
@@ -1649,11 +1652,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2647,15 +2650,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 8400000, guid: 005ed5a6df2f5ff468efd6497d37fefa, type: 2}
-  curved: 1
-  antialias: 1
-  highquality: 1
   scale: 3
   distance: 1.25
   alpha: 1
   uvOffset: {x: 0, y: 0, z: 1, w: 1}
   mouseScale: {x: 1, y: 1}
-  curvedRange: {x: 1, y: 2}
   inputMethod: 0
 --- !u!1 &3054877174963773035
 GameObject:
@@ -3007,6 +3006,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6757302b26c3414ea8761609848a05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skip: 0
+  canIncrementLists: 1
+  interval: 0
+  interruptTasks: {fileID: 0}
+  interruptInterval: 0
+  repeatInterrupts: 9999
+  currentInterrupt: 0
+  pausedTasks: {fileID: 0}
+  parentTask: {fileID: 0}
+  firstPersonCamera: {fileID: 0}
+  overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
+  vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
+  priorTargetAction: 1
 --- !u!1 &3245283638884215508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,7 +3869,7 @@ MonoBehaviour:
     m_Right: 50
     m_Top: 25
     m_Bottom: 25
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
@@ -4208,6 +4225,7 @@ MonoBehaviour:
   hapticFlash:
     actionPath: /actions/default/out/Haptic
     needsReinit: 1
+  autoSetWithControllerRangeOfMotion: 1
   debugHints: 0
 --- !u!1 &4382020053365868900
 GameObject:
@@ -5698,6 +5716,7 @@ MonoBehaviour:
   triggerOnEnd: 0
   sources: {fileID: 5308465570121322753}
   destinations: {fileID: 5308465571114052280}
+  hideDestinations: 1
   swap: 1
   ignoreYPos: 0
   ignoreRotation: 0
@@ -6744,16 +6763,16 @@ MonoBehaviour:
   trackedObject: {fileID: 0}
   grabPinchAction:
     actionPath: /actions/vrtk/in/TriggerButton
-    needsReinit: 0
+    needsReinit: 1
   grabGripAction:
     actionPath: /actions/vrtk/in/GripButton
-    needsReinit: 0
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/vrtk/out/Haptic
     needsReinit: 1
   uiInteractAction:
     actionPath: /actions/vrtk/in/TouchpadButton
-    needsReinit: 0
+    needsReinit: 1
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 6698252637396023255}
   hoverSphereRadius: 0.075
@@ -6773,6 +6792,9 @@ MonoBehaviour:
   noSteamVRFallbackMaxDistanceWithItem: 0.5
   renderModelPrefab: {fileID: 1000011547835092, guid: d5082f7d9f947374197e0a97786f4e40,
     type: 3}
+  renderModels: []
+  mainRenderModel: {fileID: 0}
+  hoverhighlightRenderModel: {fileID: 0}
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
@@ -6995,6 +7017,7 @@ MonoBehaviour:
   hapticFlash:
     actionPath: /actions/default/out/Haptic
     needsReinit: 1
+  autoSetWithControllerRangeOfMotion: 1
   debugHints: 0
 --- !u!1 &6094956288656577838
 GameObject:
@@ -8943,6 +8966,9 @@ MonoBehaviour:
   noSteamVRFallbackMaxDistanceNoItem: 10
   noSteamVRFallbackMaxDistanceWithItem: 0.5
   renderModelPrefab: {fileID: 0}
+  renderModels: []
+  mainRenderModel: {fileID: 0}
+  hoverhighlightRenderModel: {fileID: 0}
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0

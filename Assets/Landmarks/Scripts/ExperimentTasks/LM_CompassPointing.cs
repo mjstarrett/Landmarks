@@ -51,7 +51,10 @@ public class LM_CompassPointing : ExperimentTask
     private float absError; // how far off were they regardless of direction?
     private string formattedQuestion;
     private bool oriented;
-    private float startTime;
+
+    private float startTime; // mark the start of the task timer
+    private float orientTime; // save the time to orient (SOP only)
+    private float responseTime; // save the time to answer
 
     public override void startTask()
     {
@@ -199,11 +202,16 @@ public class LM_CompassPointing : ExperimentTask
                     hud.setMessage(formattedQuestion);
                     compass.gameObject.SetActive(true);
                     compass.interactable = true;
+                    orientTime = Time.time - startTime; // save the orientation time
+                    startTime = Time.time; // reset the start clock for the answer portion
 
                     return false; // don't end the trial
                 }
                 else
                 {
+                    // record response time
+                    responseTime = Time.time - startTime;
+
                     // Record the response as an angle between -180 and 180
                     response = compass.pointer.transform.localEulerAngles.y;
 
@@ -248,7 +256,8 @@ public class LM_CompassPointing : ExperimentTask
             trialLog.AddData(transform.name + "_answerCW", answer.ToString());
             trialLog.AddData(transform.name + "_signedError", signedError.ToString());
             trialLog.AddData(transform.name + "_absError", absError.ToString());
-            trialLog.AddData(transform.name + "_rt", taskDuration.ToString());
+            trialLog.AddData(transform.name + "_SOPorientingTime", orientTime.ToString());
+            trialLog.AddData(transform.name + "_responseTime", responseTime.ToString());
         }
     }
 
