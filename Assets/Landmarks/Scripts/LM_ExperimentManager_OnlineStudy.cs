@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
+using TMPro;
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 using Windows.Storage;
@@ -17,8 +18,10 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
     [Min(1001)]
     public int firstSubjectId = 1001;
     public string azureConnectionString = string.Empty;
-    public bool shuffleSceneOrder = true;
-    public bool balanceConditionOrder = true;
+    //public bool shuffleSceneOrder = true;
+    //public bool balanceConditionOrder = true;
+    [HideInInspector]
+    public bool singleSceneBuild = true;
 
     private Config config;
     private int thisSubjectID;
@@ -27,6 +30,8 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
     async void Start()
     {
+       
+
         // Get the config (dont use Config.Instance() as we need a preconfigured one)
         if (FindObjectOfType<Config>() != null)
         {
@@ -50,6 +55,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         }
 
 
+
         // ---------------------------------------------------------------------
         // Compute Subject ID (without overwriting data on the Azure storage client
         // ---------------------------------------------------------------------
@@ -67,48 +73,91 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
 
         // ---------------------------------------------------------------------
-        // Counterbalance Conditions 
+        // Create all condition/scene pairwise comparisons 
         // ---------------------------------------------------------------------
-        if (balanceConditionOrder)
+        
+        if (singleSceneBuild)
         {
-            // create list of permutaitons (use permuation fucntions from LM_PermutedList.cs)
-            var conditionList = LM_PermutedList.Permute(config.conditions, config.conditions.Count);
-            List<string> theseConditions = new List<string>();
+            List<string[]> conditionSceneList = new List<string[]>();
+            foreach (var condition in config.conditions)
+            {
+                foreach (var scene in config.levelNames)
+                {
+                    conditionSceneList.Add(new string[] { condition, scene });
+                }
+            }
 
+            // clear the condition and scene lists
+            config.conditions.Clear();
+            config.levelNames.Clear();
+
+            
+
+            // Use the subject ID to determine which condition/scene pair
             int subCode;
             int.TryParse(config.subject, out subCode);
             subCode -= 1000;
             Debug.Log("subcode = " + subCode.ToString());
-            // use the subject id multiples to determine condition order
-            Debug.Log(conditionList.Count.ToString());
-            for (int i = conditionList.Count; i > 0; i--)
+
+            // work through the multiples
+            for (int i = conditionSceneList.Count; i > 0; i--)
             {
-                // determine the highest multiple
                 if (subCode % i == 0)
                 {
-                    Debug.Log(i.ToString());
-                    // take this set of conditions based on the multiple used
-                    foreach (var item in conditionList[i - 1])
-                    {
-                        Debug.Log(item.ToString());
-                        theseConditions.Add(item);
-                    }
-                    break; // return control from this for loop
+                    config.conditions.Add(conditionSceneList[i-1][0]);
+                    Debug.Log(conditionSceneList[i-1][0]);
+                    config.levelNames.Add(conditionSceneList[i-1][1]);
+
+                    break;
                 }
             }
-            config.conditions = theseConditions; // update the condition order
         }
+        
 
 
-        // ---------------------------------------------------------------------
-        // Pseudo-Randomize the level/scene order
-        // ---------------------------------------------------------------------
-        if (shuffleSceneOrder)
-        {
-            var theseScenes = config.levelNames; // temporary variable
-            LM_PermutedList.FisherYatesShuffle(theseScenes); // shuffle using function from LM_PermutedList.cs
-            config.levelNames = theseScenes; // Update the level order
-        }
+        //// ---------------------------------------------------------------------
+        //// Counterbalance Conditions 
+        //// ---------------------------------------------------------------------
+        //if (balanceConditionOrder)
+        //{
+        //    // create list of permutaitons (use permuation fucntions from LM_PermutedList.cs)
+        //    var conditionList = LM_PermutedList.Permute(config.conditions, config.conditions.Count);
+        //    List<string> theseConditions = new List<string>();
+
+        //    // int subCode;
+        //    int.TryParse(config.subject, out subCode);
+        //    subCode -= 1000;
+        //    Debug.Log("subcode = " + subCode.ToString());
+        //    // use the subject id multiples to determine condition order
+        //    Debug.Log(conditionList.Count.ToString());
+        //    for (int i = conditionList.Count; i > 0; i--)
+        //    {
+        //        // determine the highest multiple
+        //        if (subCode % i == 0)
+        //        {
+        //            Debug.Log(i.ToString());
+        //            // take this set of conditions based on the multiple used
+        //            foreach (var item in conditionList[i - 1])
+        //            {
+        //                Debug.Log(item.ToString());
+        //                theseConditions.Add(item);
+        //            }
+        //            break; // return control from this for loop
+        //        }
+        //    }
+        //    config.conditions = theseConditions; // update the condition order
+        //}
+
+
+        //// ---------------------------------------------------------------------
+        //// Pseudo-Randomize the level/scene order
+        //// ---------------------------------------------------------------------
+        //if (shuffleSceneOrder)
+        //{
+        //    var theseScenes = config.levelNames; // temporary variable
+        //    LM_PermutedList.FisherYatesShuffle(theseScenes); // shuffle using function from LM_PermutedList.cs
+        //    config.levelNames = theseScenes; // Update the level order
+        //}
 
 
         //----------------------------------------------------------------------
@@ -138,14 +187,26 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             }
         }
 
-        try
+        GameObject.Find("VerificationCode").GetComponent<TextMeshProUGUI>().text = config.conditions[config.levelNumber];
+
+
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene(config.levelNames[config.levelNumber]);
+            try
+            {
+                SceneManager.LoadScene(config.levelNames[config.levelNumber]);
+            }
+            catch (System.Exception)
+            {
+                Application.Quit();
+            }
         }
-        catch (System.Exception)
-        {
-            Application.Quit();
-        }
+        
 
     }
 

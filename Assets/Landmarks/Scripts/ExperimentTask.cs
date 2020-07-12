@@ -65,7 +65,6 @@ public class ExperimentTask : MonoBehaviour{
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
 
-
     [Header("EEG Settings (if available)")]
     public string triggerLabel; // name prefix for unique triggers
     public bool triggerOnStart; // mark a unique trigger at TASK_START
