@@ -172,20 +172,20 @@ public class Experiment : MonoBehaviour {
         // Handle Config file
         // ------------------------------
 
-        ////when in editor
-        //if (Application.isEditor)
-        //{
-        //    Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
-        //    if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
-        //    {
-        //        Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
-        //    }
-        //    dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
-        //    logfile = "test.log";
-        //    configfile = dataPath + config.filename;
-        //}
-        //// Otherwise, save data in a true app data path
-        //else
+        //when in editor
+        if (Application.isEditor)
+        {
+            Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
+            }
+            dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
+            logfile = "test.log";
+            configfile = dataPath + config.filename;
+        }
+        // Otherwise, save data in a true app data path
+        else
         {
             Debug.Log("THIS IS NOT THE EDITOR - SAVING IN PERSISTENTDATAPATH");
             Debug.Log(Application.persistentDataPath);
@@ -564,11 +564,11 @@ public class Experiment : MonoBehaviour {
         // Upload data to remote storage if available and configured
         if (azureStorage != null)
         {
-            //if (Application.isEditor)
-            //{
-            //    Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
-            //}
-            //else
+            if (Application.isEditor)
+            {
+                Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
+            }
+            else
             {
                 Debug.Log("trying to use MICROSOFT AZURE");
                 await azureStorage.BasicStorageBlockBlobOperationsAsync();
