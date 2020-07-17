@@ -17,6 +17,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public enum RotationAxis
 {
@@ -81,7 +82,13 @@ public class ViewTargets : ExperimentTask {
         if (restrictMovement)
         {
             manager.player.GetComponent<CharacterController>().enabled = false;
-            manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
+			if (avatar.GetComponent<FirstPersonController>())
+			{
+				avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = Vector3.zero;
+				avatar.GetComponent<FirstPersonController>().ResetMouselook();
+				avatar.GetComponent<FirstPersonController>().enabled = false;
+			}
+			manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
         }
 
 		destination = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
@@ -229,6 +236,7 @@ public class ViewTargets : ExperimentTask {
 		if (restrictMovement)
 		{
 			manager.player.GetComponent<CharacterController>().enabled = true;
+			if (avatar.GetComponent<FirstPersonController>()) avatar.GetComponent<FirstPersonController>().enabled = true;
 			manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = false;
 		}
 	}
