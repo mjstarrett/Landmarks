@@ -187,7 +187,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             }
         }
 
-        GameObject.Find("VerificationCode").GetComponent<TextMeshProUGUI>().text = config.conditions[config.levelNumber];
+        GameObject.Find("VerificationCode").GetComponent<TextMeshProUGUI>().text = config.conditions[config.levelNumber] + config.subject;
 
 
     }
