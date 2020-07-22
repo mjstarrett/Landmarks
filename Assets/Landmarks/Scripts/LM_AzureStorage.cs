@@ -4,6 +4,7 @@ using UnityEngine;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 using Windows.Storage;
@@ -12,9 +13,11 @@ using Windows.Storage;
 public class LM_AzureStorage : MonoBehaviour
 {
     public string connectionString = string.Empty;
+	public bool useInEditor;
 	public string[] additionalSaveFiles; // save additional files from the datapath not logged automatically by LM
 
 	private Experiment experiment;
+	private Text azureMessage;
 
     protected CloudStorageAccount storageAccount;
 
@@ -24,11 +27,26 @@ public class LM_AzureStorage : MonoBehaviour
 		Debug.Log("configuring Azure storage");
         storageAccount = CloudStorageAccount.Parse(connectionString);
 		experiment = FindObjectOfType<Experiment>();
+
+		azureMessage = gameObject.AddComponent<Text>();
 	}
 
 
 	public async Task BasicStorageBlockBlobOperationsAsync()
 	{
+		// temporarily override the hud to provide save/load messages via hud
+		var hud = experiment.player.GetComponentInChildren<HUD>();
+		var oldHudMessage = hud.GetMessage();
+		var oldHudDuration = hud.SecondsToShow;
+		hud.SecondsToShow = 300; // show for 5 minutes max
+		azureMessage.text = "Transferring data to cloud servers... this may take some time. \n\n" +
+                            "--DO NOT CLOSE THE APPLICATION-- \n\n" +
+                            "If more than 5 minutes have passed, manually (force) \n" +
+                            "quit the application and contact the experimenter";
+		hud.setMessage((string) azureMessage.text);
+		hud.ForceShowMessage();
+
+
 
 		// Create a blob client for interacting with the blob service.
 		CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -57,6 +75,7 @@ public class LM_AzureStorage : MonoBehaviour
 
         // Upload the Landmarks log files
 		CloudBlockBlob blockBlob = container.GetBlockBlobReference(experiment.config.subject + "/" + System.DateTime.Now.ToString("yyMMddHHmmss") + "_" + experiment.logfile);
+
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
@@ -131,5 +150,9 @@ public class LM_AzureStorage : MonoBehaviour
 		//		//await container.DeleteAsync();
 
 		Debug.Log("Azure Process Complete");
+
+		hud.SecondsToShow = oldHudDuration;
+		hud.setMessage(oldHudMessage);
+		hud.ForceShowMessage();
 	}
 }

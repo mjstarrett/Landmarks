@@ -120,6 +120,9 @@ public class Experiment : MonoBehaviour {
         //since config is a singleton it will be the one created in scene 0 or this scene
         config = Config.instance;
 
+        // Are we using Microsoft Azure
+        azureStorage = FindObjectOfType<LM_AzureStorage>();
+
 
         // ------------------------------
         // Set up the Experiment
@@ -173,9 +176,9 @@ public class Experiment : MonoBehaviour {
         // ------------------------------
 
         //when in editor
-        if (Application.isEditor)
+        if (Application.isEditor & (azureStorage == null | !azureStorage.useInEditor))
         {
-            Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
+            Debug.Log("SAVING IN THE PROJECT FOLDER");
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
@@ -187,7 +190,7 @@ public class Experiment : MonoBehaviour {
         // Otherwise, save data in a true app data path
         else
         {
-            Debug.Log("THIS IS NOT THE EDITOR - SAVING IN PERSISTENTDATAPATH");
+            Debug.Log("SAVING IN PERSISTENTDATAPATH");
             Debug.Log(Application.persistentDataPath);
             dataPath = Application.persistentDataPath +
                         "/" + config.experiment + "/" + config.subject + "/";
@@ -254,7 +257,7 @@ public class Experiment : MonoBehaviour {
             scaledEnvironment = null;
         }
 
-        azureStorage = FindObjectOfType<LM_AzureStorage>();
+        
     }
 
 
@@ -564,7 +567,7 @@ public class Experiment : MonoBehaviour {
         // Upload data to remote storage if available and configured
         if (azureStorage != null)
         {
-            if (Application.isEditor)
+            if (Application.isEditor & !azureStorage.useInEditor)
             {
                 Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
             }
