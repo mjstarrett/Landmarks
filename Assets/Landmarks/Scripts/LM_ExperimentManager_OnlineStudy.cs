@@ -7,6 +7,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
 using TMPro;
+using System.IO;
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 using Windows.Storage;
@@ -70,6 +71,13 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
         // Put the subject ID into the config.subject field
         config.subject = thisSubjectID.ToString();
+
+
+        // push a temporary hidden file to reserve that id on Azure
+        if (azureConnectionString != string.Empty)
+        {
+            await PushAzureSubjectData();
+        }
 
 
         // ---------------------------------------------------------------------
@@ -249,4 +257,41 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
     }
 
 
+    public async Task PushAzureSubjectData()
+    {
+
+        CloudBlobClient blobClient = azureAccount.CreateCloudBlobClient();
+        // Access the folder where the data would be stored (create if does not exist)
+        CloudBlobContainer container;
+        container = blobClient.GetContainerReference(config.experiment);
+        Debug.Log(container.Name);
+        try
+        {
+            await container.CreateIfNotExistsAsync();
+        }
+        catch (StorageException)
+        {
+
+            Debug.Log("If you are running with the default configuration please make sure you have started the storage emulator. Press the Windows key and type Azure Storage to select and run it from the list of applications - then restart the sample.");
+            throw;
+        }
+
+        // Upload BlockBlobs to the newly created container
+        Debug.Log("2. Uploading Temporary BlockBlob(s) to reserve this id");
+
+        // Create an empty placholder .txt file to upload (in persistent data path)
+        StreamWriter placeholderFile = new StreamWriter(Application.persistentDataPath + "/.reserved");
+        placeholderFile.Close();
+        
+        CloudBlockBlob blockBlob = container.GetBlockBlobReference(config.subject + "/.reserved");
+#if WINDOWS_UWP && ENABLE_DOTNET
+		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
+		StorageFile sf = await storageFolder.GetFileAsync(ImageToUpload);
+		await blockBlob.UploadFromFileAsync(sf);
+#else
+        Debug.Log("Did our placeholder file write? " + File.Exists(Application.persistentDataPath + "/.reserved"));
+        await blockBlob.UploadFromFileAsync(Application.persistentDataPath + "/.reserved");
+#endif
+
+    }
 }
