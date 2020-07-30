@@ -19,6 +19,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
     [Min(1001)]
     public int firstSubjectId = 1001;
     public string azureConnectionString = string.Empty;
+    public bool useAzureInEditor;
     //public bool shuffleSceneOrder = true;
     //public bool balanceConditionOrder = true;
     [HideInInspector]
@@ -76,7 +77,11 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         // push a temporary hidden file to reserve that id on Azure
         if (azureConnectionString != string.Empty)
         {
-            await PushAzureSubjectData();
+            if (!Application.isEditor | useAzureInEditor)
+            {
+                await PushAzureSubjectData();
+            }
+            
         }
 
 
