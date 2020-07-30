@@ -112,10 +112,14 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             subCode -= 1000;
             Debug.Log("subcode = " + subCode.ToString());
 
+            int conditionCode = subCode;
+            while (conditionCode > conditionSceneList.Count) conditionCode -= conditionSceneList.Count;
+            Debug.Log("Condition code: " + conditionCode + "/" + conditionSceneList.Count);
+
             // work through the multiples
             for (int i = conditionSceneList.Count; i > 0; i--)
             {
-                if (subCode % i == 0)
+                if (conditionCode % i == 0)
                 {
                     config.conditions.Add(conditionSceneList[i-1][0]);
                     Debug.Log(conditionSceneList[i-1][0]);
