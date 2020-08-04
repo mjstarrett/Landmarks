@@ -171,40 +171,71 @@ public class Experiment : MonoBehaviour {
         scaledPlayer.SetActive(false);
 
 
-        // ------------------------------
-        // Handle Config file
-        // ------------------------------
+        // --------------------------------------
+        // Handle Config file & Storage path
+        // --------------------------------------
 
         //when in editor
-        if (Application.isEditor & (azureStorage == null | !azureStorage.useInEditor))
+        if (Application.isEditor)
         {
-            Debug.Log("SAVING IN THE PROJECT FOLDER");
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
+            // If we are using azure in the editor, save to persistentdatapath for file permission
+            if (azureStorage != null)
             {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
+                if (azureStorage.useInEditor)
+                {
+                    Debug.Log("SAVING AZURE-EDITOR DATA IN PERSISTENTDATAPATH");
+                    dataPath =
+                        Application.persistentDataPath + "/" +
+                        "editor/data/";
+                    logfile =
+                        config.levelNames[config.levelNumber] + ".log";
+                }
+                else
+                {
+                    Debug.Log("SAVING AZURE-EDITOR DATA IN THE PROJECT FOLDER");
+                    dataPath =
+                        Directory.GetCurrentDirectory() + "/" +
+                        "data/tmp/";
+                    logfile =
+                        "test.log";
+                }
             }
-            dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
-            logfile = "test.log";
-            configfile = dataPath + config.filename;
+            // otherwise just save to the project folder for easy access
+            else
+            {
+                Debug.Log("SAVING EDITOR DATA IN THE PROJECT FOLDER");
+                dataPath =
+                    Directory.GetCurrentDirectory() + "/" +
+                    "data/tmp/";
+                logfile =
+                    "test.log";
+            }
+            
         }
-        // Otherwise, save data in a true app data path
+        // Otherwise, save data in the persistent data path for file permission (regardless of Azure)
         else
         {
-            Debug.Log("SAVING IN PERSISTENTDATAPATH");
-            Debug.Log(Application.persistentDataPath);
-            dataPath = Application.persistentDataPath +
-                        "/" + config.experiment + "/" + config.subject + "/";
-            if (!Directory.Exists(dataPath))
-            {
-                Directory.CreateDirectory(dataPath);
-            }
-            logfile = config.experiment + "_" + config.subject + "_" + config.levelNames[config.levelNumber] + "_" + config.conditions[config.levelNumber] + ".log";
-
-
-            configfile = dataPath + config.filename;
+            Debug.Log("SAVING BUILD DATA IN PERSISTENTDATAPATH");
+            dataPath =
+                Application.persistentDataPath + "/" +
+                config.experiment + "/" +
+                config.subject + "/";
+            logfile =
+                config.experiment + "_" +
+                config.subject + "_" +
+                config.levelNames[config.levelNumber] + "_" +
+                config.conditions[config.levelNumber] + ".log";
         }
-        Debug.Log("data will be saved at " + dataPath);
-        Debug.Log("data will be saved as " + logfile);
+        Debug.Log("data will be saved as " + dataPath + logfile);
+
+        configfile =
+                dataPath +
+                config.filename;
+
+        if (!Directory.Exists(dataPath))
+        {
+            Directory.CreateDirectory(dataPath);
+        }
 
 
         if (config.runMode == ConfigRunMode.NEW) {
