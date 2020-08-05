@@ -7,6 +7,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Threading.Tasks;
 using TMPro;
+using System.IO;
 
 #if WINDOWS_UWP && ENABLE_DOTNET
 using Windows.Storage;
@@ -18,6 +19,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
     [Min(1001)]
     public int firstSubjectId = 1001;
     public string azureConnectionString = string.Empty;
+    public bool useAzureInEditor;
     //public bool shuffleSceneOrder = true;
     //public bool balanceConditionOrder = true;
     [HideInInspector]
@@ -72,6 +74,17 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         config.subject = thisSubjectID.ToString();
 
 
+        // push a temporary hidden file to reserve that id on Azure
+        if (azureConnectionString != string.Empty)
+        {
+            if (!Application.isEditor | useAzureInEditor)
+            {
+                await PushAzureSubjectData();
+            }
+            
+        }
+
+
         // ---------------------------------------------------------------------
         // Create all condition/scene pairwise comparisons 
         // ---------------------------------------------------------------------
@@ -99,10 +112,14 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             subCode -= 1000;
             Debug.Log("subcode = " + subCode.ToString());
 
+            int conditionCode = subCode;
+            while (conditionCode > conditionSceneList.Count) conditionCode -= conditionSceneList.Count;
+            Debug.Log("Condition code: " + conditionCode + "/" + conditionSceneList.Count);
+
             // work through the multiples
             for (int i = conditionSceneList.Count; i > 0; i--)
             {
-                if (subCode % i == 0)
+                if (conditionCode % i == 0)
                 {
                     config.conditions.Add(conditionSceneList[i-1][0]);
                     Debug.Log(conditionSceneList[i-1][0]);
@@ -187,7 +204,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
             }
         }
 
-        GameObject.Find("VerificationCode").GetComponent<TextMeshProUGUI>().text = config.conditions[config.levelNumber];
+        GameObject.Find("VerificationCode").GetComponent<TextMeshProUGUI>().text = config.conditions[config.levelNumber] + config.subject;
 
 
     }
@@ -249,4 +266,41 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
     }
 
 
+    public async Task PushAzureSubjectData()
+    {
+
+        CloudBlobClient blobClient = azureAccount.CreateCloudBlobClient();
+        // Access the folder where the data would be stored (create if does not exist)
+        CloudBlobContainer container;
+        container = blobClient.GetContainerReference(config.experiment);
+        Debug.Log(container.Name);
+        try
+        {
+            await container.CreateIfNotExistsAsync();
+        }
+        catch (StorageException)
+        {
+
+            Debug.Log("If you are running with the default configuration please make sure you have started the storage emulator. Press the Windows key and type Azure Storage to select and run it from the list of applications - then restart the sample.");
+            throw;
+        }
+
+        // Upload BlockBlobs to the newly created container
+        Debug.Log("2. Uploading Temporary BlockBlob(s) to reserve this id");
+
+        // Create an empty placholder .txt file to upload (in persistent data path)
+        StreamWriter placeholderFile = new StreamWriter(Application.persistentDataPath + "/.reserved");
+        placeholderFile.Close();
+        
+        CloudBlockBlob blockBlob = container.GetBlockBlobReference(config.subject + "/.reserved");
+#if WINDOWS_UWP && ENABLE_DOTNET
+		StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Application.streamingAssetsPath.Replace('/', '\\'));
+		StorageFile sf = await storageFolder.GetFileAsync(ImageToUpload);
+		await blockBlob.UploadFromFileAsync(sf);
+#else
+        Debug.Log("Did our placeholder file write? " + File.Exists(Application.persistentDataPath + "/.reserved"));
+        await blockBlob.UploadFromFileAsync(Application.persistentDataPath + "/.reserved");
+#endif
+
+    }
 }
