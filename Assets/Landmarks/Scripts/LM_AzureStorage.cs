@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Microsoft.WindowsAzure.Storage;
@@ -14,7 +14,7 @@ public class LM_AzureStorage : MonoBehaviour
 {
     public string connectionString = string.Empty;
 	public bool useInEditor;
-	public string[] additionalSaveFiles; // save additional files from the datapath not logged automatically by LM
+	public List<string> additionalSaveFiles; // save additional files from the datapath not logged automatically by LM
 
 	private Experiment experiment;
 	private Text azureMessage;
@@ -87,9 +87,9 @@ public class LM_AzureStorage : MonoBehaviour
 #endif
 
 
-        CloudBlockBlob[] fileBlobs = new CloudBlockBlob[additionalSaveFiles.Length];
+        CloudBlockBlob[] fileBlobs = new CloudBlockBlob[additionalSaveFiles.Count];
         // Try to upload any other files the user asked to be saved
-        for (int i = 0; i < additionalSaveFiles.Length; i++)
+        for (int i = 0; i < additionalSaveFiles.Count; i++)
 		{
 			fileBlobs[i] = container.GetBlockBlobReference(experiment.config.subject + "/" + System.DateTime.Now.ToString("yyMMddHHmmss") + "_" + additionalSaveFiles[i]);
 			

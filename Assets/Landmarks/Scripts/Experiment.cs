@@ -24,6 +24,8 @@ using Valve.VR.InteractionSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using Valve.VR;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 public enum EndListMode
 {
@@ -579,7 +581,10 @@ public class Experiment : MonoBehaviour {
     // MJS - Function to allow for flexible behavior at end of scene
     async Task EndScene()
     {
-        // Wrap up any remaining tasks in the experiment
+        // ---------------------------------------------------------------------
+        // Clean up tasks and logging
+        // ---------------------------------------------------------------------
+
         if (config.runMode != ConfigRunMode.PLAYBACK)
         {
             tasks.endTask();
@@ -595,7 +600,70 @@ public class Experiment : MonoBehaviour {
         // close the logfile
         dblog.close();
 
-        // Upload data to remote storage if available and configured
+
+        // ---------------------------------------------------------------------
+        // Generate a clean .csv file for each task in the experiment
+        // ---------------------------------------------------------------------
+        Debug.Log("Generating secondary log files");
+        try
+        {
+            // Read in the log file and prepare to parse it with RegEx
+            var sr = new StreamReader(dataPath + logfile); 
+            var loggedData = await sr.ReadToEndAsync(); 
+            sr.Close();
+
+            // Find LM logging headers and identify unique tasks in this experiment
+            Regex pattern = new Regex("LandmarksTrialData:\n.*\n(.*)\n"); 
+            MatchCollection matches = pattern.Matches(loggedData); 
+            List<string> tasks = new List<string>(); 
+            foreach (Match match in matches)
+            {
+                GroupCollection groups = match.Groups;
+                var header = groups[1].Value;
+                if (!tasks.Contains(header))
+                {
+                    tasks.Add(header);
+                }
+            }
+
+            // Extract the data for each unique task and append in a .csv
+            var taskCount = 0;
+            foreach (var taskHeader in tasks)
+            {
+                // Create the file and add the header line
+                taskCount++;
+                var filename = "task_" + taskCount + ".csv";
+                StreamWriter sw = new StreamWriter(dataPath + filename);
+                sw.WriteLine(taskHeader);
+
+                // If using Azure, add these files to the list of files to upload
+                if (azureStorage != null)
+                {
+                    azureStorage.additionalSaveFiles.Add(filename);
+                }
+
+                // Extract data and write
+                Regex DataPattern = new Regex(taskHeader + "\n(.*)\n"); // where is the data?
+                MatchCollection dataMatches = DataPattern.Matches(loggedData);
+                foreach (Match dataMatch in dataMatches)
+                {
+                    GroupCollection dataGroups = dataMatch.Groups;
+                    sw.WriteLine(dataGroups[1].Value);
+                }
+
+                // clean up (close this file and get ready for next one)
+                sw.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("something went wrong generating CSV data files for individual tasks");
+        }
+        Debug.Log("Clean log files have been generated for each task");
+
+        // ---------------------------------------------------------------------
+        // Upload any files staged for Microsoft Azure
+        // ---------------------------------------------------------------------
         if (azureStorage != null)
         {
             if (Application.isEditor & !azureStorage.useInEditor)
