@@ -240,7 +240,6 @@ public class LM_ExperimentManager : MonoBehaviour
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
 
-
         config.experiment = expID.options[expID.value].text;
         config.appPath = appDir;
         config.subject = subID.text;

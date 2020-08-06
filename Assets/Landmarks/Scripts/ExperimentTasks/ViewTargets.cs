@@ -17,6 +17,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public enum RotationAxis
 {
@@ -81,7 +82,13 @@ public class ViewTargets : ExperimentTask {
         if (restrictMovement)
         {
             manager.player.GetComponent<CharacterController>().enabled = false;
-            manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
+			if (avatar.GetComponent<FirstPersonController>())
+			{
+				avatar.GetComponentInChildren<Camera>().transform.localEulerAngles = Vector3.zero;
+				avatar.GetComponent<FirstPersonController>().ResetMouselook();
+				avatar.GetComponent<FirstPersonController>().enabled = false;
+			}
+			manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = true;
         }
 
 		destination = avatar.GetComponentInChildren<LM_SnapPoint>().gameObject;
@@ -123,15 +130,15 @@ public class ViewTargets : ExperimentTask {
 			if (rotate) {
                 if (rotationAxis == RotationAxis.X)
                 {
-                    current.transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
+                    current.transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime, Space.World);
                 }
                 else if (rotationAxis == RotationAxis.Y)
                 {
-                    current.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+                    current.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
                 }
                 else if (rotationAxis == RotationAxis.Z)
                 {
-                    current.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+                    current.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime, Space.World);
                 }
                 //log.log("TASK_ROTATE\t" + current.name  + "\t" + this.GetType().Name + "\t" + current.transform.localEulerAngles.ToString("f1"),2);
 			}
@@ -162,7 +169,7 @@ public class ViewTargets : ExperimentTask {
 		current.transform.parent = destination.transform;
 		current.transform.localPosition = objectPositionOffset;
         current.transform.localEulerAngles = objectRotationOffset;
-		current.transform.localScale = destination.transform.localScale;
+        current.transform.localScale = Vector3.Scale(current.transform.localScale, destination.transform.localScale);
 
 		// return the target to its original parent (we'll revert other values later)
 		// this way it won't track with the "head" of the avatar
@@ -225,7 +232,14 @@ public class ViewTargets : ExperimentTask {
         {
             item.SetActive(true);
         }
-    }
+
+		if (restrictMovement)
+		{
+			manager.player.GetComponent<CharacterController>().enabled = true;
+			if (avatar.GetComponent<FirstPersonController>()) avatar.GetComponent<FirstPersonController>().enabled = true;
+			manager.scaledPlayer.GetComponent<ThirdPersonCharacter>().immobilized = false;
+		}
+	}
 
     public void setLayer(Transform t, int l) {
 		t.gameObject.layer = l;

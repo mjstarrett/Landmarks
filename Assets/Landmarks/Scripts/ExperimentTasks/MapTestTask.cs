@@ -22,6 +22,9 @@ public class MapTestTask : ExperimentTask {
 
 	private Vector3 baselineScaling;
 
+	private float startTime;
+	private float taskDuration;
+
 	public override void startTask () 
 	{
 		TASK_START();	
@@ -33,6 +36,8 @@ public class MapTestTask : ExperimentTask {
 	{
 		if (!manager) Start();
 		base.startTask();
+
+		startTime = Time.time;
 
 		// Modify the HUD display for the map task
 		hud.setMessage("");
@@ -73,6 +78,8 @@ public class MapTestTask : ExperimentTask {
 	public override bool updateTask ()
 	{
 		base.updateTask ();
+
+		taskDuration = Time.time - startTime;
 
 		// ------------------------------------------------------------
 		// Handle mouse input for hovering over and selecting objects
@@ -256,6 +263,10 @@ public class MapTestTask : ExperimentTask {
 	public override void TASK_END() 
 	{
 		base.endTask();
+
+		// log data
+		// Log data
+		trialLog.AddData(transform.name + "_testTime", taskDuration.ToString());
 
 		// Set up hud for other tasks
 		hud.hudPanel.SetActive(true); //hide the text background on HUD

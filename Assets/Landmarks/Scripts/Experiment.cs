@@ -24,6 +24,8 @@ using Valve.VR.InteractionSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using Valve.VR;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 public enum EndListMode
 {
@@ -120,6 +122,9 @@ public class Experiment : MonoBehaviour {
         //since config is a singleton it will be the one created in scene 0 or this scene
         config = Config.instance;
 
+        // Are we using Microsoft Azure
+        azureStorage = FindObjectOfType<LM_AzureStorage>();
+
 
         // ------------------------------
         // Set up the Experiment
@@ -168,40 +173,71 @@ public class Experiment : MonoBehaviour {
         scaledPlayer.SetActive(false);
 
 
-        // ------------------------------
-        // Handle Config file
-        // ------------------------------
+        // --------------------------------------
+        // Handle Config file & Storage path
+        // --------------------------------------
 
-        ////when in editor
-        //if (Application.isEditor)
-        //{
-        //    Debug.Log("RUNNING IN THE EDITOR, SAVING IN THE PROJECT");
-        //    if (!Directory.Exists(Directory.GetCurrentDirectory() + "/data/tmp"))
-        //    {
-        //        Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/data/tmp");
-        //    }
-        //    dataPath = Directory.GetCurrentDirectory() + "/data/tmp/";
-        //    logfile = "test.log";
-        //    configfile = dataPath + config.filename;
-        //}
-        //// Otherwise, save data in a true app data path
-        //else
+        //when in editor
+        if (Application.isEditor)
         {
-            Debug.Log("THIS IS NOT THE EDITOR - SAVING IN PERSISTENTDATAPATH");
-            Debug.Log(Application.persistentDataPath);
-            dataPath = Application.persistentDataPath +
-                        "/" + config.experiment + "/" + config.subject + "/";
-            if (!Directory.Exists(dataPath))
+            // If we are using azure in the editor, save to persistentdatapath for file permission
+            if (azureStorage != null)
             {
-                Directory.CreateDirectory(dataPath);
+                if (azureStorage.useInEditor)
+                {
+                    Debug.Log("SAVING AZURE-EDITOR DATA IN PERSISTENTDATAPATH");
+                    dataPath =
+                        Application.persistentDataPath + "/" +
+                        "editor/data/";
+                    logfile =
+                        config.levelNames[config.levelNumber] + ".log";
+                }
+                else
+                {
+                    Debug.Log("SAVING AZURE-EDITOR DATA IN THE PROJECT FOLDER");
+                    dataPath =
+                        Directory.GetCurrentDirectory() + "/" +
+                        "data/tmp/";
+                    logfile =
+                        "test.log";
+                }
             }
-            logfile = config.experiment + "_" + config.subject + "_" + config.levelNames[config.levelNumber] + "_" + config.conditions[config.levelNumber] + ".log";
-
-
-            configfile = dataPath + config.filename;
+            // otherwise just save to the project folder for easy access
+            else
+            {
+                Debug.Log("SAVING EDITOR DATA IN THE PROJECT FOLDER");
+                dataPath =
+                    Directory.GetCurrentDirectory() + "/" +
+                    "data/tmp/";
+                logfile =
+                    "test.log";
+            }
+            
         }
-        Debug.Log("data will be saved at " + dataPath);
-        Debug.Log("data will be saved as " + logfile);
+        // Otherwise, save data in the persistent data path for file permission (regardless of Azure)
+        else
+        {
+            Debug.Log("SAVING BUILD DATA IN PERSISTENTDATAPATH");
+            dataPath =
+                Application.persistentDataPath + "/" +
+                config.experiment + "/" +
+                config.subject + "/";
+            logfile =
+                config.experiment + "_" +
+                config.subject + "_" +
+                config.levelNames[config.levelNumber] + "_" +
+                config.conditions[config.levelNumber] + ".log";
+        }
+        Debug.Log("data will be saved as " + dataPath + logfile);
+
+        configfile =
+                dataPath +
+                config.filename;
+
+        if (!Directory.Exists(dataPath))
+        {
+            Directory.CreateDirectory(dataPath);
+        }
 
 
         if (config.runMode == ConfigRunMode.NEW) {
@@ -254,7 +290,7 @@ public class Experiment : MonoBehaviour {
             scaledEnvironment = null;
         }
 
-        azureStorage = FindObjectOfType<LM_AzureStorage>();
+        
     }
 
 
@@ -545,7 +581,10 @@ public class Experiment : MonoBehaviour {
     // MJS - Function to allow for flexible behavior at end of scene
     async Task EndScene()
     {
-        // Wrap up any remaining tasks in the experiment
+        // ---------------------------------------------------------------------
+        // Clean up tasks and logging
+        // ---------------------------------------------------------------------
+
         if (config.runMode != ConfigRunMode.PLAYBACK)
         {
             tasks.endTask();
@@ -561,14 +600,77 @@ public class Experiment : MonoBehaviour {
         // close the logfile
         dblog.close();
 
-        // Upload data to remote storage if available and configured
+
+        // ---------------------------------------------------------------------
+        // Generate a clean .csv file for each task in the experiment
+        // ---------------------------------------------------------------------
+        Debug.Log("Generating secondary log files");
+        try
+        {
+            // Read in the log file and prepare to parse it with RegEx
+            var sr = new StreamReader(dataPath + logfile); 
+            var loggedData = await sr.ReadToEndAsync(); 
+            sr.Close();
+
+            // Find LM logging headers and identify unique tasks in this experiment
+            Regex pattern = new Regex("LandmarksTrialData:\n.*\n(.*)\n"); 
+            MatchCollection matches = pattern.Matches(loggedData); 
+            List<string> tasks = new List<string>(); 
+            foreach (Match match in matches)
+            {
+                GroupCollection groups = match.Groups;
+                var header = groups[1].Value;
+                if (!tasks.Contains(header))
+                {
+                    tasks.Add(header);
+                }
+            }
+
+            // Extract the data for each unique task and append in a .csv
+            var taskCount = 0;
+            foreach (var taskHeader in tasks)
+            {
+                // Create the file and add the header line
+                taskCount++;
+                var filename = "task_" + taskCount + ".csv";
+                StreamWriter sw = new StreamWriter(dataPath + filename);
+                sw.WriteLine(taskHeader);
+
+                // If using Azure, add these files to the list of files to upload
+                if (azureStorage != null)
+                {
+                    azureStorage.additionalSaveFiles.Add(filename);
+                }
+
+                // Extract data and write
+                Regex DataPattern = new Regex(taskHeader + "\n(.*)\n"); // where is the data?
+                MatchCollection dataMatches = DataPattern.Matches(loggedData);
+                foreach (Match dataMatch in dataMatches)
+                {
+                    GroupCollection dataGroups = dataMatch.Groups;
+                    sw.WriteLine(dataGroups[1].Value);
+                }
+
+                // clean up (close this file and get ready for next one)
+                sw.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.Log("something went wrong generating CSV data files for individual tasks");
+        }
+        Debug.Log("Clean log files have been generated for each task");
+
+        // ---------------------------------------------------------------------
+        // Upload any files staged for Microsoft Azure
+        // ---------------------------------------------------------------------
         if (azureStorage != null)
         {
-            //if (Application.isEditor)
-            //{
-            //    Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
-            //}
-            //else
+            if (Application.isEditor & !azureStorage.useInEditor)
+            {
+                Debug.Log("Not saving to MICROSOFT AZURE because the experiment was run from the editor");
+            }
+            else
             {
                 Debug.Log("trying to use MICROSOFT AZURE");
                 await azureStorage.BasicStorageBlockBlobOperationsAsync();

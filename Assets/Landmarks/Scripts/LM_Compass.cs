@@ -21,11 +21,13 @@ public class LM_Compass : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                pointer.transform.Rotate(transform.up, -1 * rotationSpeedMultiplier * Time.deltaTime);
+                pointer.transform.Rotate(new Vector3(0f, -1 * rotationSpeedMultiplier * Time.deltaTime, 0f), Space.Self);
+                
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                pointer.transform.Rotate(transform.up, rotationSpeedMultiplier * Time.deltaTime);
+                pointer.transform.Rotate(new Vector3(0f, rotationSpeedMultiplier * Time.deltaTime, 0f), Space.Self);
+                
             }
         }
     }

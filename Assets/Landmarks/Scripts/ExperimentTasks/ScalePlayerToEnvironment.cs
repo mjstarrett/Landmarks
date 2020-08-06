@@ -29,6 +29,8 @@ public class ScalePlayerToEnvironment : ExperimentTask
     private GameObject scaledEnvironment;
     public bool autoscale = true;
     public float scaleRatio = 1;
+    [Min(0f)]
+    public float speedAdjustFactor = 3f; // in case scaling with env makes large player too fast/slow
     private CharacterController characterController;
     // public bool isScaled = false;
 
@@ -89,21 +91,24 @@ public class ScalePlayerToEnvironment : ExperimentTask
         // Do this for capsule collider as well
         manager.player.GetComponent<CapsuleCollider>().radius /= scaleRatio;
 
-        // Scale up the movement speed as well
+        // Calculate how to scale the movement speed
+        float speedScaler;
+        if (isScaled)
+        {
+            speedScaler = scaleRatio * speedAdjustFactor;
+        }
+        else speedScaler = scaleRatio / speedAdjustFactor;
+        // Depending on the controller, implement the speed scaling
         if (manager.userInterface == UserInterface.KeyboardMouse)
         {
-            manager.player.GetComponent<FirstPersonController>().m_WalkSpeed = scaleRatio * manager.player.GetComponent<FirstPersonController>().m_WalkSpeed;
+            manager.player.GetComponent<FirstPersonController>().m_WalkSpeed *= speedScaler;
         }
-        //else if (manager.userInterface == UserInterface.ViveVirtualizer)
-        //{
-        //    // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
-        //    if (isScaled)
-        //    {
-        //        manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio*3);
-        //    }
-        //    else manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= (scaleRatio/3);
+        else if (manager.userInterface == UserInterface.ViveVirtualizer)
+        {
+            // reign in the scaling (cVirt uses a multiplier, not an actual speed value... it would move too fast
+            manager.player.GetComponent<CVirtPlayerController>().movementSpeedMultiplier *= speedScaler;
 
-        //}
+        }
         else Debug.Log("WARNING: A speed multiplier is not set up for your player controller. See ScalePlayerToEnvironmentEditor.cs");
     }
 

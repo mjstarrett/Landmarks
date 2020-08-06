@@ -80,6 +80,7 @@ public class HUD : MonoBehaviour
 
 	[HideInInspector] public long playback_time = 0;
 
+
     public void Awake()
 	{
 		SecondsToShow = GeneralDuration;
@@ -88,6 +89,57 @@ public class HUD : MonoBehaviour
         //Debug.Log ("Canvas Name: " + canvasName);
         this.actionButton.GetComponent<Button>().onClick.AddListener(OnActionClick);
 	}
+
+
+	void Start()
+	{
+		lastInterval = Time.realtimeSinceStartup;
+		frames = 0;
+		intensity = 1.0f;
+		score = 0;
+
+		experiment = GameObject.FindWithTag("Experiment");
+		manager = experiment.GetComponent("Experiment") as Experiment;
+		log = manager.dblog;
+	}
+
+
+	void Update()
+	{
+		updateFPS();
+		updateMessage();
+		updateStatus();
+		updateScore();
+
+		if (Input.GetButtonDown("showHUD"))
+			ForceShowMessage();
+
+		if (!timeGui)
+		{
+			GameObject sgo = new GameObject("Timecode Display");
+			sgo.AddComponent<Text>();
+			sgo.hideFlags = HideFlags.HideAndDontSave;
+			sgo.transform.position = new Vector3(0, 0, 0);
+			timeGui = sgo.GetComponent<Text>();
+			//timeGui.pixelOffset = new Vector2(10,30);
+			//timeGui.font = hudFont;
+			timeGui.fontSize = 24;
+			//timeGui.material.color = statusColor;
+		}
+		if (showTimestamp) timeGui.text = playback_time.ToString("f0");
+
+	}
+
+
+	// ---------------------------------------------------
+	// Public Methods to manipulate the HUD message
+	// ---------------------------------------------------
+
+	public string GetMessage()
+    {
+		return message;
+    }
+
 	public void setMessage(string newMessage)
 	{
 		message = newMessage;
@@ -122,6 +174,36 @@ public class HUD : MonoBehaviour
 		intensity = 1.0f;
 	}
 
+
+	// ---------------------------------------------------
+	// Methods to manipulate rendering/culling
+	// ---------------------------------------------------
+
+	public void showEverything()
+	{
+		this.enabled = true;
+		cam[0].cullingMask = 0 << hudLayer;
+		cam[1].cullingMask = 0 << hudLayer;
+		for (var i = 0; i < hudLayer; ++i)
+		{
+			cam[0].cullingMask = cam[0].cullingMask + (1 << i);
+			cam[1].cullingMask = cam[1].cullingMask + (1 << i);
+		}
+		cam[0].clearFlags = CameraClearFlags.Skybox;
+		cam[1].clearFlags = CameraClearFlags.Skybox;
+	}
+
+	public void showNothing()
+	{
+		cam[0].cullingMask = (0 << 30);
+		cam[1].cullingMask = (0 << 30);
+		cam[0].cullingMask = cam[0].cullingMask + (0 << 30);
+		cam[1].cullingMask = cam[1].cullingMask + (0 << 30);
+
+		cam[0].clearFlags = CameraClearFlags.SolidColor;
+		cam[1].clearFlags = CameraClearFlags.SolidColor;
+	}
+
 	public void showOnlyHUD()
 	{
 		cam[0].cullingMask = (1 << hudLayer);
@@ -144,44 +226,41 @@ public class HUD : MonoBehaviour
         cam[1].clearFlags = CameraClearFlags.SolidColor;
     }
 
-    public void showNothing()
-    {
-        cam[0].cullingMask = (0 << 30);
-        cam[1].cullingMask = (0 << 30);
-        cam[0].cullingMask = cam[0].cullingMask + (0 << 30);
-        cam[1].cullingMask = cam[1].cullingMask + (0 << 30);
 
-        cam[0].clearFlags = CameraClearFlags.SolidColor;
-        cam[1].clearFlags = CameraClearFlags.SolidColor;
-    }
+	// ---------------------------------------------------
+	// Other public methods
+	// ---------------------------------------------------
 
-    public void showEverything()
+	public void portHoleVertOn()
 	{
-	this.enabled = true;
-		cam[0].cullingMask = 0 << hudLayer;
-		cam[1].cullingMask = 0 << hudLayer;
-		for (var i = 0; i < hudLayer; ++i) {
-			cam[0].cullingMask = cam[0].cullingMask + (1 << i);
-			cam[1].cullingMask = cam[1].cullingMask + (1 << i);
-		}
-		cam[0].clearFlags = CameraClearFlags.Skybox;
-		cam[1].clearFlags = CameraClearFlags.Skybox;
+		fullScreenFOV = Camera.main.fieldOfView;
+		Camera.main.rect = new Rect(.35f, 0f, .3f, 1f);
+		//		cam.depth = Camera.main.depth + 1;
 	}
 
-	void Start()
+	public void portHoleHorzOn()
 	{
-	    lastInterval = Time.realtimeSinceStartup;
-	    frames = 0;
-	    intensity = 1.0f;
-	    score = 0;
-
-		experiment = GameObject.FindWithTag ("Experiment");
-	    manager = experiment.GetComponent("Experiment") as Experiment;
-	    log = manager.dblog;
-
-
+		fullScreenFOV = Camera.main.fieldOfView;
+		Camera.main.rect = new Rect(0f, .35f, 1f, .3f);
+		Camera.main.fieldOfView = fullScreenFOV * Camera.main.rect.height;
 	}
 
+	public void portHoleOff()
+	{
+		Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
+		Camera.main.fieldOfView = fullScreenFOV;
+	}
+
+	// MJS - Moved from Experiment Task for VR functionality - March 2019
+	public void OnActionClick()
+	{
+		actionButtonClicked = true;
+	}
+
+
+	// ---------------------------------------------------
+	// Private Methods
+	// ---------------------------------------------------
 
 	void OnDisable ()
 	{
@@ -204,31 +283,7 @@ public class HUD : MonoBehaviour
 		setMessage("");
 	}
 
-	void Update()
-	{
-	    updateFPS();
-		updateMessage();
-		updateStatus();
-		updateScore();
-
-		if (Input.GetButtonDown("showHUD"))
-			ForceShowMessage();
-
-		if (!timeGui)
-	    {
-    		GameObject sgo = new GameObject("Timecode Display");
-    		sgo.AddComponent<Text>();
-			sgo.hideFlags = HideFlags.HideAndDontSave;
-			sgo.transform.position = new Vector3(0,0,0);
-			timeGui = sgo.GetComponent<Text>();
-			//timeGui.pixelOffset = new Vector2(10,30);
-   			//timeGui.font = hudFont;
-   			timeGui.fontSize = 24;
-   			//timeGui.material.color = statusColor;
-	    }
-	    if (showTimestamp) timeGui.text = playback_time.ToString("f0");
-
-	}
+	
 
 	void updateMessage()
 	{
@@ -404,38 +459,4 @@ public class HUD : MonoBehaviour
 	    }
 	}
 
-
-
-
-
-	public void portHoleVertOn()
-	{
-		fullScreenFOV=Camera.main.fieldOfView;
-		Camera.main.rect = new Rect(.35f, 0f, .3f, 1f);
-		//		cam.depth = Camera.main.depth + 1;
-	}
-
-
-
-	public void portHoleHorzOn()
-	{
-
-		fullScreenFOV=Camera.main.fieldOfView;
-		Camera.main.rect = new Rect(0f, .35f, 1f, .3f);
-		Camera.main.fieldOfView = fullScreenFOV  * Camera.main.rect.height;
-	}
-
-	public void portHoleOff()
-	{
-		Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
-		Camera.main.fieldOfView = fullScreenFOV;
-
-	}
-
-    // MJS - Moved from Experiment Task for VR functionality - March 2019
-    public void OnActionClick()
-    {
-        actionButtonClicked = true;
-
-    }
 }
