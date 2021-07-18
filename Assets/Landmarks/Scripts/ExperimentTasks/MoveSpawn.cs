@@ -65,10 +65,6 @@ public class MoveSpawn : ExperimentTask {
         } else start = avatar;
         Debug.Log("Player identified: " + start.gameObject.name);
 
-        //start.GetComponent<CharacterController>().enabled = false;
-        //start.transform.position = new Vector3(0f, 0f, 8f);
-        //start.GetComponent<CharacterController>().enabled = true;
-
         // Find destinations with string destinationsName
         if (destinations == null && destinationListName != "") // only if destinations is blank and destinationsName is not
         {
