@@ -8,6 +8,7 @@ public enum HideTargetOnStart
     Off,
     SetInactive,
     SetInvisible,
+    Mask,
     SetProbeTrial
 }
 
@@ -17,24 +18,33 @@ public class NavigationTask : ExperimentTask
     public ObjectList destinations;
 	private GameObject current;
 
-	private int score = 0;
-	public int scoreIncrement = 50;
-	public int penaltyRate = 2000;
+    public TextAsset NavigationInstruction;
 
+    // Manipulate trial/task termination criteria
+    [Tooltip("in meters")]
+    public float distanceAllotted = Mathf.Infinity;
+    [Tooltip("in seconds")]
+    public float timeAllotted = Mathf.Infinity;
 
-    private float penaltyTimer = 0;
+    // Use a scoring/points system (not currently configured)
+    [HideInInspector] private int score = 0;
+    [HideInInspector] public int scoreIncrement = 50;
+    [HideInInspector] public int penaltyRate = 2000;
+    [HideInInspector] private float penaltyTimer = 0;
+    [HideInInspector] public bool showScoring;
 
-	public bool showScoring;
-	public TextAsset NavigationInstruction;
-
+    // Handle the rendering of the target objects (default: always show)
     public HideTargetOnStart hideTargetOnStart;
-    [Min(0)] public float showTargetAfterSeconds;
+    [Tooltip("negative values denote time before targets are hidden; 0 is always on; set very high for no targets")]
+    public float showTargetAfterSeconds;
+
+    // Manipulate the rendering of the non-target environment objects (default: always show)
     public bool hideNonTargets;
 
     // for compass assist
     public LM_Compass assistCompass;
-    [Min(-1)]
-    public int SecondsUntilAssist = -1;
+    [Tooltip("negative values denote time before compass is hidden; 0 is always on; set very high for no compass")]
+    public float SecondsUntilAssist = Mathf.Infinity;
     public Vector3 compassPosOffset; // where is the compass relative to the active player snappoint
     public Vector3 compassRotOffset; // compass rotation relative to the active player snap point
 
@@ -64,9 +74,28 @@ public class NavigationTask : ExperimentTask
             return;
         }
 
+        if (!destinations)
+        {
+            Debug.LogWarning("No target objects specified; task will run as" +
+                " free exploration with specified time Alloted or distance alloted" +
+                " (whichever is less)");
+
+            // Make a dummy placeholder for exploration task to avoid throwing errors
+            var tmp = new List<GameObject>();
+            tmp.Add(gameObject);
+            gameObject.AddComponent<ObjectList>();
+            gameObject.GetComponent<ObjectList>().objects = tmp;
+           
+  
+            destinations = gameObject.GetComponent<ObjectList>();
+
+        }
+
         hud.showEverything();
 		hud.showScore = showScoring;
-		current = destinations.currentObject();
+
+        current = destinations.currentObject();
+
         // Debug.Log ("Find " + destinations.currentObject().name);
 
         // if it's a target, open the door to show it's active
@@ -219,15 +248,17 @@ public class NavigationTask : ExperimentTask
             destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
         }
 
-        // Keep updating the distance traveled
+        // Keep updating the distance traveled and kill task if they reach max
         playerDistance += Vector3.Distance(avatar.transform.position, playerLastPosition);
         playerLastPosition = avatar.transform.position;
+        
         if (isScaled)
         {
             scaledPlayerDistance += Vector3.Distance(scaledAvatar.transform.position, scaledPlayerLastPosition);
             scaledPlayerLastPosition = scaledAvatar.transform.position;
         }
-
+        
+        // handle the compass objects render (visible or not)
         if (assistCompass != null)
         {
             // Keep the assist compass pointing at the target (even if it isn't visible)
@@ -240,9 +271,19 @@ public class NavigationTask : ExperimentTask
                 assistCompass.gameObject.SetActive(true);
             }
         }
-        
 
-		if (killCurrent == true)
+        // End the trial if they reach the max distance allotted
+        if (!isScaled & playerDistance >= distanceAllotted) return true;
+        else if (isScaled & scaledPlayerDistance >= distanceAllotted) return true;
+
+        // End the trial if they reach the max time allotted
+        if (Time.time - startTime >= timeAllotted)
+        {
+            return true;
+        }
+
+
+        if (killCurrent == true)
 		{
 			return KillCurrent ();
 		}
@@ -272,8 +313,11 @@ public class NavigationTask : ExperimentTask
 	public override void TASK_END()
 	{
 		base.endTask();
-		//avatarController.stop();
-		avatarLog.navLog = false;
+
+        var navTime = Time.time - startTime;
+
+        //avatarController.stop();
+        avatarLog.navLog = false;
         if (isScaled) scaledAvatarLog.navLog = false;
 
         // close the door if the target was a store and it is open
@@ -287,8 +331,10 @@ public class NavigationTask : ExperimentTask
 		{
 			destinations.incrementCurrent();
 		}
-		current = destinations.currentObject();
-		hud.setMessage("");
+
+        current = destinations.currentObject();
+
+        hud.setMessage("");
 		hud.showScore = false;
 
         hud.SecondsToShow = hud.GeneralDuration;
@@ -317,7 +363,7 @@ public class NavigationTask : ExperimentTask
         // This will log all final trial info in tab delimited format
         var excessPath = perfDistance - optimalDistance;
 
-        var navTime = Time.time - startTime;
+        
 
         // set impossible values if the nav task was skipped
         if (skip)
@@ -344,6 +390,9 @@ public class NavigationTask : ExperimentTask
             trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
             trialLog.AddData(transform.name + "_duration", navTime.ToString());
         }
+
+        // If we created a dummy Objectlist for exploration, destroy it
+        Destroy(GetComponent<ObjectList>());
     }
 
 	public override bool OnControllerColliderHit(GameObject hit)
