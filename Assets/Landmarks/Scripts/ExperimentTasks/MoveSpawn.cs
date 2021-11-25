@@ -32,7 +32,7 @@ public class MoveSpawn : ExperimentTask {
 	private static Vector3 rotation;
 
     public bool randomRotation;
-		public bool scaledPlayer = false;
+	public bool scaledPlayer = false;
     public bool ignoreY = false;
 
     //variables used for block repetition
@@ -63,6 +63,7 @@ public class MoveSpawn : ExperimentTask {
         {
             start = scaledAvatar;
         } else start = avatar;
+        Debug.Log("Player identified: " + start.gameObject.name);
 
         // Find destinations with string destinationsName
         if (destinations == null && destinationListName != "") // only if destinations is blank and destinationsName is not
@@ -74,13 +75,17 @@ public class MoveSpawn : ExperimentTask {
 
         if (destinations) {
             destination = destinations.currentObject();
+            Debug.Log("Destination selected: " + destination.name +
+                " (" + destination.transform.position.x + ", " +
+                destination.transform.position.z + ")");
         }
 
         position = start.transform.position;
         rotation = start.transform.eulerAngles;
 
 
-        // Set the position, but ignore the y-axis (just 2d position on map)
+        // Change the position (2D or 3D)
+        start.GetComponentInChildren<CharacterController>().enabled = false;
         Vector3 tempPos = start.transform.position;
         tempPos.x = destination.transform.position.x;
         if (!ignoreY)
@@ -90,6 +95,10 @@ public class MoveSpawn : ExperimentTask {
         tempPos.z = destination.transform.position.z;
         start.transform.position = tempPos;
         log.log("TASK_POSITION\t" + start.name + "\t" + this.GetType().Name + "\t" + start.transform.transform.position.ToString("f1"), 1);
+        Debug.Log("Player now at: " + destination.name +
+                " (" + start.transform.position.x + ", " +
+                start.transform.position.z + ")");
+        start.GetComponentInChildren<CharacterController>().enabled = true;
 
         // Set the rotation to random if selected
         if (randomRotation)

@@ -158,7 +158,7 @@ public class InstructionsTask : ExperimentTask {
 
             // we'll need the mouse, as well
             // make the cursor functional and visible
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
     }

@@ -169,7 +169,8 @@ public class Experiment : MonoBehaviour {
             overheadCamera.stereoTargetEye = StereoTargetEyeMask.None;
         }
         overheadCamera.enabled = false;
-        Cursor.visible = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         scaledPlayer.SetActive(false);
 
 
