@@ -8,6 +8,7 @@ public enum HideTargetOnStart
     Off,
     SetInactive,
     SetInvisible,
+    DisableCompletely,
     Mask,
     SetProbeTrial
 }
@@ -96,7 +97,7 @@ public class NavigationTask : ExperimentTask
 
         current = destinations.currentObject();
 
-        // Debug.Log ("Find " + destinations.currentObject().name);
+        // Debug.Log ("Find " + current.name);
 
         // if it's a target, open the door to show it's active
         if (current.GetComponentInChildren<LM_TargetStore>() != null)
@@ -121,7 +122,7 @@ public class NavigationTask : ExperimentTask
         {
             foreach (GameObject item in destinations.objects)
             {
-                if (item.name != destinations.currentObject().name)
+                if (item.name != current.name)
                 {
                     item.SetActive(false);
                 }
@@ -135,24 +136,30 @@ public class NavigationTask : ExperimentTask
         {
             if (hideTargetOnStart == HideTargetOnStart.SetInactive)
             {
-                destinations.currentObject().SetActive(false);
+                current.GetComponent<Collider>().enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetInvisible)
             {
-                destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
+                current.GetComponent<MeshRenderer>().enabled = false;
+            }
+            else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
+            {
+                current.GetComponent<Collider>().enabled = false;
+                current.GetComponent<MeshRenderer>().enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
-                destinations.currentObject().SetActive(false);
-                destinations.currentObject().GetComponent<MeshRenderer>().enabled = false;
+                current.GetComponent<Collider>().enabled = false;
+                current.GetComponent<MeshRenderer>().enabled = false;
             }
+            
         }
         else
         {
-            destinations.currentObject().SetActive(true); // make sure the target is visible unless the bool to hide was checked
+            current.SetActive(true); // make sure the target is visible unless the bool to hide was checked
             try
             {
-                destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+                current.GetComponent<MeshRenderer>().enabled = true;
             }
             catch (System.Exception ex)
             {
@@ -222,30 +229,30 @@ public class NavigationTask : ExperimentTask
         {
             if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))))
             {
-                destinations.currentObject().SetActive(true);
+                current.SetActive(true);
             }
 
             if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))
             {
                 //get current location and then log it
 
-                destinations.currentObject().SetActive(true);
-                destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+                current.SetActive(true);
+                current.GetComponent<MeshRenderer>().enabled = true;
             }
         }
 
         //show target on button click or after set time
         if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || Input.GetButtonDown("Return"))))
         {
-            destinations.currentObject().SetActive(true);
+            current.SetActive(true);
         }
 
         if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && Input.GetButtonDown("Return"))
         {
             //get current location and then log it
 
-            destinations.currentObject().SetActive(true);
-            destinations.currentObject().GetComponent<MeshRenderer>().enabled = true;
+            current.SetActive(true);
+            current.GetComponent<MeshRenderer>().enabled = true;
         }
 
         // Keep updating the distance traveled and kill task if they reach max
@@ -262,7 +269,7 @@ public class NavigationTask : ExperimentTask
         if (assistCompass != null)
         {
             // Keep the assist compass pointing at the target (even if it isn't visible)
-            var targetDirection = 2 * assistCompass.transform.position - destinations.currentObject().transform.position;
+            var targetDirection = 2 * assistCompass.transform.position - current.transform.position;
             targetDirection = new Vector3(targetDirection.x, assistCompass.pointer.transform.position.y, targetDirection.z);
             assistCompass.pointer.transform.LookAt(targetDirection, Vector3.up);
             // Show assist compass if and when it is needed
@@ -313,7 +320,7 @@ public class NavigationTask : ExperimentTask
 	public override void TASK_END()
 	{
 		base.endTask();
-
+        
         var navTime = Time.time - startTime;
 
         //avatarController.stop();
@@ -327,11 +334,14 @@ public class NavigationTask : ExperimentTask
             current.GetComponentInChildren<LM_TargetStore>().CloseDoor();
         }
 
+        // re-enable everything on the gameobject we just finished finding
+        current.GetComponent<MeshRenderer>().enabled = true;
+        current.GetComponent<Collider>().enabled = true;
+
         if (canIncrementLists)
 		{
 			destinations.incrementCurrent();
 		}
-
         current = destinations.currentObject();
 
         hud.setMessage("");
@@ -377,14 +387,14 @@ public class NavigationTask : ExperimentTask
 
         log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
         	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
-        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + destinations.currentObject().name + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + excessPath + "\t" + navTime
+        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + current.name + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + excessPath + "\t" + navTime
             , 1);
 
 
         // More concise LM_TrialLog logging
         if (trialLog.active)
         {
-            trialLog.AddData(transform.name + "_target", destinations.currentObject().name);
+            trialLog.AddData(transform.name + "_target", current.name);
             trialLog.AddData(transform.name + "_actualPath", perfDistance.ToString());
             trialLog.AddData(transform.name + "_optimalPath", optimalDistance.ToString());
             trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
@@ -397,7 +407,7 @@ public class NavigationTask : ExperimentTask
 
 	public override bool OnControllerColliderHit(GameObject hit)
 	{
-		if (hit == current)
+		if (hit == current | hit.transform.parent.gameObject == current)
 		{
 			if (showScoring)
 			{
@@ -407,16 +417,6 @@ public class NavigationTask : ExperimentTask
 			return true;
 		}
 
-		//		Debug.Log (hit.transform.parent.name + " = " + current.name);
-		if (hit.transform.parent == current.transform)
-		{
-			if (showScoring)
-			{
-				score = score + scoreIncrement;
-				hud.setScore(score);
-			}
-			return true;
-		}
 		return false;
 	}
 }

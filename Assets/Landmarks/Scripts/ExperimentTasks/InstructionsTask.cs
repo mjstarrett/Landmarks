@@ -31,6 +31,7 @@ public class InstructionsTask : ExperimentTask {
 
     public TextAsset instruction;
     public TextAsset message;
+    [TextArea] public string masterText;
 
     public ObjectList objects;
     public ObjectList[] multiObjects; // if you want the same subset from several lists
@@ -102,37 +103,54 @@ public class InstructionsTask : ExperimentTask {
         }
         if (instruction) canvas.text = instruction.text;
 
-        // Determine where we're getting the text from (default is message)
-        if (message == null & texts != null)
+      /*  // Determine where we're getting the text from (default is masterText) <-- MJS FIXME refactor this code
+        if (masterText == "")
         {
-            Debug.Log("No message asset detected; texts asset found; using texts");
-            gui.text = currentText;
+            if (message == null & texts != null)
+            {
+                Debug.Log("No message asset detected; texts asset found; using texts");
+                gui.text = currentText;
+            }
+            else
+            {
+                Debug.Log("Attempting to use the default, message, asset.");
+                gui.text = message.text;
+            }
         }
         else
         {
-            Debug.Log("Attempting to use the default, message, asset.");
-            gui.text = message.text;
+            gui.text = masterText;
         }
 
-        Debug.Log(gui.text);
+        Debug.Log(gui.text);*/
         
 
         if (blackout) hud.showOnlyHUD();
         else hud.showEverything();
 
-        if (message) {
-            string msg = message.text;
-            if (currentText != null) msg = string.Format(msg, currentText);
-            if (currentObject != null) msg = string.Format(msg, currentObject.name);
-            if (multiObjects.Length > 0) msg = string.Format(msg, currentMultiObjects);
-            hud.setMessage(msg);
-        }
-        else if (!message & texts)
+        if (masterText == "")
         {
-            string msg = currentText;
-            if (currentObject != null) msg = string.Format(msg, currentObject.name);
+            if (message)
+            {
+                string msg = message.text;
+                if (currentText != null) msg = string.Format(msg, currentText);
+                if (currentObject != null) msg = string.Format(msg, currentObject.name);
+                if (multiObjects.Length > 0) msg = string.Format(msg, currentMultiObjects);
+                hud.setMessage(msg);
+            }
+            else if (!message & texts)
+            {
+                string msg = currentText;
+                if (currentObject != null) msg = string.Format(msg, currentObject.name);
+                hud.setMessage(msg);
+            }
+        }
+        else
+        {
+            string msg = masterText;
             hud.setMessage(msg);
         }
+       
 
         hud.flashStatus("");
 
