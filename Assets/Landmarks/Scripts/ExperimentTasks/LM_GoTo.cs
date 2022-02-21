@@ -53,16 +53,23 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
-            if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
+            if (vrEnabled)
             {
-                Debug.Log("VR trying to start the task");
-                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
-                return true;
+                if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    Debug.Log("VR trying to start the task");
+                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    return true;
+                }
+
             }
-            else if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
+            else
             {
-                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
-                return true;
+                if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
+                {
+                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    return true;
+                }
             }
         }
 
@@ -90,10 +97,9 @@ public class LM_GoTo : ExperimentTask
 
     private void OnTriggerEnter(Collider collision)
     {
-
-        Debug.Log(collision.name);
-        if (collision.name == avatar.GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
+        if (collision.name == GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
+            //Debug.Log(collision.name + "is here");
             if (effect != null) effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             atDestination = true;
         }
@@ -101,7 +107,7 @@ public class LM_GoTo : ExperimentTask
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision == avatar.GetComponentInChildren<LM_PlayerController>().collisionObject)
+        if (collision.name == GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
             if (effect != null) effect.Play(true);
             atDestination = false;
