@@ -1,5 +1,5 @@
 ﻿/*
-    
+
     Copyright (C) 2022 Michael J. Starrett Ambrose
     University of California, Irvine
 */
@@ -66,11 +66,14 @@ public class LM_GoTo : ExperimentTask
                     return true;
                 }
             }
-            
+
             if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
             {
-                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
-                return true;
+                if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
+                {
+                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    return true;
+                }
             }
         }
 
@@ -98,9 +101,10 @@ public class LM_GoTo : ExperimentTask
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == 
+        if (collision.gameObject.name ==
             GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
+            //Debug.Log(collision.name + "is here");
             if (effect != null) effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             atDestination = true;
         }
