@@ -170,7 +170,7 @@ public class Experiment : MonoBehaviour {
         }
         overheadCamera.enabled = false;
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         scaledPlayer.SetActive(false);
 
 

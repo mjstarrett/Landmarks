@@ -18,6 +18,7 @@ public class LM_GoTo : ExperimentTask
 
     private ParticleSystem effect;
     private bool atDestination;
+    private Collider them;
 
     public override void startTask()
     {
@@ -40,11 +41,14 @@ public class LM_GoTo : ExperimentTask
 
         hud.SecondsToShow = 0; // we don't need a hud
 
+        them = avatar.GetComponent<LM_PlayerController>().collisionObject;
+        Debug.Log(them.name);
+
         if (destination.GetComponentInChildren<ParticleSystem>() != null) effect = destination.GetComponentInChildren<ParticleSystem>();
         destination.SetActive(true); // show the destination if it's hidden
         if (effect != null) effect.Play(true); // start particles if we have them
         hud.showOnlyHUD(); // FIXME for now. Eventually you will need to add a hud.ShowTerrain, or something like that.
-        manager.environment.SetActive(false);
+        manager.environment.transform.Find("filler_props").gameObject.SetActive(false);
     }
 
 
@@ -53,13 +57,17 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
-            if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
+            if (vrEnabled)
             {
-                Debug.Log("VR trying to start the task");
-                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
-                return true;
+                if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    Debug.Log("VR trying to start the task");
+                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    return true;
+                }
             }
-            else if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
+            
+            if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
             {
                 log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
                 return true;
@@ -84,15 +92,14 @@ public class LM_GoTo : ExperimentTask
 
         // WRITE TASK EXIT CODE HERE
         destination.SetActive(false);
-        manager.environment.SetActive(true);
+        manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
         hud.SecondsToShow = hud.GeneralDuration;
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-
-        Debug.Log(collision.name);
-        if (collision.name == avatar.GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
+        if (collision.gameObject.name == 
+            GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
             if (effect != null) effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             atDestination = true;
@@ -101,7 +108,8 @@ public class LM_GoTo : ExperimentTask
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision == avatar.GetComponentInChildren<LM_PlayerController>().collisionObject)
+        if (collision.gameObject.name ==
+            GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
             if (effect != null) effect.Play(true);
             atDestination = false;

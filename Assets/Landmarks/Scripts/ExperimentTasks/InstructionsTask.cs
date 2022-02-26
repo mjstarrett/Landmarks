@@ -176,7 +176,7 @@ public class InstructionsTask : ExperimentTask {
 
             // we'll need the mouse, as well
             // make the cursor functional and visible
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
     }
@@ -260,9 +260,6 @@ public class InstructionsTask : ExperimentTask {
             hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
             hud.actionButton.SetActive(false);
 
-            // make the cursor invisible
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
         }
 
         // If we turned movement off; turn it back on
