@@ -122,6 +122,9 @@ public class Experiment : MonoBehaviour {
         //since config is a singleton it will be the one created in scene 0 or this scene
         config = Config.instance;
 
+        // Check the config for issues 
+        config.CheckConfig();
+
         // Are we using Microsoft Azure
         azureStorage = FindObjectOfType<LM_AzureStorage>();
 

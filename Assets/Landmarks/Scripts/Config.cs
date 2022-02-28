@@ -130,17 +130,20 @@ public class Config : MonoBehaviour{
             config.conditions.Add("default");
         }
 
-        //// make sure there are an equal number of conditions and levels (fill with "default" or trim)
-        //while (config.conditions.Count < config.levelNames.Count)
-        //{
-        //    config.conditions.Add("default");
-        //}
-        //while (config.conditions.Count > config.levelNames.Count)
-        //{
-        //    config.conditions.RemoveAt(config.conditions.Count - 1);
-        //}
-
         config.initialized = true;
+    }
+
+    public void CheckConfig()
+    {
+        // make sure there are an equal number of conditions and levels (fill with "default" or trim)
+        while (conditions.Count < levelNames.Count)
+        {
+            conditions.Add("default");
+        }
+        while (conditions.Count > levelNames.Count)
+        {
+            conditions.RemoveAt(conditions.Count - 1);
+        }
     }
 }
 

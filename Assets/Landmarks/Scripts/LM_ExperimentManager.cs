@@ -18,11 +18,8 @@ public class LM_ExperimentManager : MonoBehaviour
 
     private string expID;
     private string appDir = "";
-    private bool expDirCreated = false;
-    private bool subDirCreated = false;
     private Config config;
 
-    private bool expidError = true;
     private bool subidError = true;
     private bool uiError = true;
 
@@ -53,7 +50,7 @@ public class LM_ExperimentManager : MonoBehaviour
 
     private void Update()
     {
-        practice.onValueChanged.AddListener(delegate { TogglePracticeState(practice); });
+        if (practice != null) practice.onValueChanged.AddListener(delegate { TogglePracticeState(practice); });
 
     }
 
@@ -123,7 +120,7 @@ public class LM_ExperimentManager : MonoBehaviour
         else
         {
             uiError = true;
-            _errorMessage.text = "Please select a UI from the dropdown.";
+            _errorMessage.text = "Please select a valid UI.";
             _errorMessage.gameObject.SetActive(true);
         }
     }
@@ -137,7 +134,7 @@ public class LM_ExperimentManager : MonoBehaviour
         ValidateSubjectID();
         ValidateUI();
 
-        if (!expidError && !subidError && !uiError)
+        if (!subidError && !uiError)
         {
             startErrorMessage.gameObject.SetActive(false);
 
@@ -145,44 +142,32 @@ public class LM_ExperimentManager : MonoBehaviour
             if (!Directory.Exists(appDir + "/" + expID))
             {
                 Directory.CreateDirectory(appDir + "/" + expID);
-                expDirCreated = true;
             }
 
-            if (practice.isOn)
+            if (practice != null)
             {
-                if (!Directory.Exists(appDir + "/" + expID + "/practice"))
+                if (practice.isOn)
                 {
-                    Directory.CreateDirectory(appDir + "/" + expID + "/practice");
+                    if (!Directory.Exists(appDir + "/" + expID + "/practice"))
+                    {
+                        Directory.CreateDirectory(appDir + "/" + expID + "/practice");
+                    }
                 }
-            }
-            else
-            {
-                Directory.CreateDirectory(appDir + "/" + expID + "/" + subID.text);
-                subDirCreated = true;
+                else
+                {
+                    Directory.CreateDirectory(appDir + "/" + expID + "/" + subID.text);
+                }
             }
 
             readyConfig();
-            ReadyExp();
             SceneManager.LoadScene(config.level);
         }
         else
         {
+            Debug.Log("found an error still...");
             startErrorMessage.gameObject.SetActive(true);
         }
     }
-
-    // Feed parameters to Config for loading experiments
-
-    void ReadyExp()
-    {
-        config.levelNames = new List<string>();
-        config.levelNames.Add(environment.options[environment.value].text);
-        config.level = environment.options[environment.value].text;
-
-        config.conditions = new List<string>();
-        config.conditions.Add(condition.options[condition.value].text);
-    }
-
 
 
     //--------------------------------------------------------------------------
@@ -196,7 +181,8 @@ public class LM_ExperimentManager : MonoBehaviour
         config.appPath = appDir;
         config.subject = subID.text;
         config.ui = ui.options[ui.value].text;
-
+        config.level = config.levelNames[0];
+        config.CheckConfig();
         DontDestroyOnLoad(config);
 
     }
