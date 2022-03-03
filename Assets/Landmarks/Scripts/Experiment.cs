@@ -198,7 +198,7 @@ public class Experiment : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("SAVING AZURE-EDITOR DATA IN THE PROJECT FOLDER");
+                    Debug.Log("OVERWRITING EXISTING AZURE-EDITOR DATA");
                     dataPath =
                         Directory.GetCurrentDirectory() + "/" +
                         "data/tmp/";
@@ -209,7 +209,7 @@ public class Experiment : MonoBehaviour {
             // otherwise just save to the project folder for easy access
             else
             {
-                Debug.Log("SAVING EDITOR DATA IN THE PROJECT FOLDER");
+                Debug.Log("OVERWRITING EXISTING EDITOR DATA");
                 dataPath =
                     Directory.GetCurrentDirectory() + "/" +
                     "data/tmp/";

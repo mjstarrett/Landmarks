@@ -8,13 +8,16 @@ using UnityEngine.SceneManagement;
 
 public class LM_ExperimentManager : MonoBehaviour
 {
-    
+    [Header("GUI Elements")]
     public Toggle practice;
     public TMP_Dropdown ui;
     public TMP_InputField subID;
     public TMP_Dropdown condition;
     public TMP_Dropdown environment;
     public Button start;
+
+    [Header("Config Options")]
+    public bool shuffleScenes;
 
     private string expID;
     private string appDir = "";

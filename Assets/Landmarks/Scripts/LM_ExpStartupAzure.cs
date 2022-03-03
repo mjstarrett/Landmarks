@@ -13,27 +13,16 @@ using System.IO;
 using Windows.Storage;
 #endif
 
-///////////////////////////////////////////////////////////////////////////
-///                                                                     ///
-///                                                                     ///
-/// DEPRECATED: Use LM_ExpStartup or LM_ExpStartupAzure.cs              ///
-///                                                                     ///
-///                                                                     ///
-///////////////////////////////////////////////////////////////////////////
-
-public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
+public class LM_ExpStartupAzure : LM_ExpStartup
 {
 
-    [Min(1001)]
-    public int firstSubjectId = 1001;
     public string azureConnectionString = string.Empty;
     public bool useAzureInEditor;
-    //public bool shuffleSceneOrder = true;
-    //public bool balanceConditionOrder = true;
-    //[HideInInspector]
-    public bool singleSceneBuild = true;
     public GameObject overrideWarning;
     public bool allowRetry;
+    public int firstSubjectId;
+    //public bool shuffleSceneOrder = true;
+    //public bool balanceConditionOrder = true;
 
     private Config config;
     private int thisSubjectID;
@@ -289,11 +278,8 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 
     }
 
-
     public async Task RetrieveAzureData()
     {
-
-
         CloudBlobClient blobClient = azureAccount.CreateCloudBlobClient();
         // Access the folder where the data would be stored (create if does not exist)
         CloudBlobContainer container;
