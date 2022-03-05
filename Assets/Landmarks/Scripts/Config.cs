@@ -46,9 +46,8 @@ public class Config : MonoBehaviour{
     public string ui = "default";
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
-    [Tooltip("Must be scene objects with the .unity file extension")]
-    //public List<Object> levelObjects = new List<Object>();
     public List<string> levelNames = new List<string>();
+    public bool randomSceneOrder;
     [Tooltip("Read Only: Use as index for scence/condition")]
     public int levelNumber;
 
@@ -83,6 +82,18 @@ public class Config : MonoBehaviour{
             {
                 s_Instance =  FindObjectOfType(typeof (Config)) as Config;
                 Debug.Log("Using an existing config object");
+
+                //// If we are running the scenes in a randomized order
+                //if (s_Instance.randomSceneOrder)
+                //{
+                //    for (int i = 0; i < s_Instance.levelNames.Count; i++)
+                //    {
+                //        var temp = s_Instance.levelNames[i]; // grab the ith object
+                //        int randomIndex = UnityEngine.Random.Range(i, s_Instance.levelNames.Count); // random index between i and end of list
+                //        s_Instance.levelNames[i] = s_Instance.levelNames[randomIndex]; // replace ith element with the random element...
+                //        s_Instance.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
+                //    }
+                //}
             }
             
             // If it is still null, create a new instance
@@ -145,5 +156,6 @@ public class Config : MonoBehaviour{
             conditions.RemoveAt(conditions.Count - 1);
         }
     }
+
 }
 

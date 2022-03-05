@@ -242,7 +242,7 @@ RectTransform:
   - {fileID: 192480209}
   - {fileID: 799386631}
   m_Father: {fileID: 8059743512211056954}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -842,10 +842,32 @@ MonoBehaviour:
   experiment: GraphPrefs
   ui: default
   runMode: 0
-  conditions: []
+  conditions:
+  - default
   levelNames:
-  - amir_01
-  - amir_02
+  - amir01
+  - amir02
+  - amir03
+  - amir04
+  - amir05
+  - amir06
+  - amir07
+  - amir08
+  - luke01
+  - luke02
+  - mike01
+  - mike02
+  - mike03
+  - vicky01
+  - vicky02
+  - vicky04
+  - vicky05
+  - vicky06
+  - vicky07
+  - vicky08
+  - vicky09
+  - vicky11
+  randomSceneOrder: 0
   levelNumber: 0
   bootstrapped: 0
   home: default
@@ -1128,36 +1150,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893519704}
   m_CullTransparentMesh: 0
---- !u!1 &1140465090
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1140465091}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1140465091
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140465090}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 603.50806, y: 171.54277, z: 790.7667}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1183652723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,25 +1506,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1636779929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8059743512963153034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2e7710f5fdc946b89807023091b2086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  practice: {fileID: 0}
-  ui: {fileID: 54952740}
-  subID: {fileID: 8059743511734186741}
-  condition: {fileID: 0}
-  environment: {fileID: 0}
-  start: {fileID: 8059743513254216224}
-  shuffleScenes: 0
 --- !u!1 &1694847445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,7 +1988,7 @@ RectTransform:
   - {fileID: 1952395070}
   - {fileID: 8059743512679418563}
   m_Father: {fileID: 8059743512211056954}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2427,8 +2400,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8059743511734186506}
   - {fileID: 54952737}
+  - {fileID: 8059743511734186506}
   - {fileID: 8059743513212822246}
   m_Father: {fileID: 8059743512963153270}
   m_RootOrder: 0
@@ -2795,10 +2768,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8059743512963153270}
+  - component: {fileID: 8059743512963153035}
   - component: {fileID: 8059743512963153271}
   - component: {fileID: 8059743512963153268}
   - component: {fileID: 8059743512963153269}
-  - component: {fileID: 1636779929}
   m_Layer: 5
   m_Name: ExpSetupGUI
   m_TagString: Untagged
@@ -2806,6 +2779,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8059743512963153035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8059743512963153034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422f5f25c5eaee34e8a6f051a53e2217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  singleSceneBuild: 0
+  guiElements:
+    practice: {fileID: 0}
+    ui: {fileID: 54952740}
+    subID: {fileID: 8059743511734186741}
+    condition: {fileID: 0}
+    environment: {fileID: 0}
+    start: {fileID: 8059743513254216224}
 --- !u!114 &8059743512963153268
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -59,6 +59,7 @@ public class LM_GoTo : ExperimentTask
         {
             if (vrEnabled)
             {
+                Debug.Log("WEEEERRRREEEEEE HEEEEEERRRRREEEEE!");
                 if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
                 {
                     Debug.Log("VR trying to start the task");

@@ -19,7 +19,6 @@ public class LM_ExpStartup : MonoBehaviour
 
     [Min(0)] [Tooltip(">0: Automatically select ascending from id provided\n" + "0: Manually select with GUI")]
         public int id = 0;
-    public bool shuffleSceneOrder = true;
     //public bool balanceConditionOrder = true;
     public bool singleSceneBuild = true;
     [Tooltip("Can use some, all, or none")]
