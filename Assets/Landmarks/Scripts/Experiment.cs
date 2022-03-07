@@ -616,6 +616,8 @@ public class Experiment : MonoBehaviour {
             var loggedData = await sr.ReadToEndAsync(); 
             sr.Close();
 
+            
+
             // Find LM logging headers and identify unique tasks in this experiment
             Regex pattern = new Regex("LandmarksTrialData:\n.*\n(.*\t)\n"); 
             MatchCollection matches = pattern.Matches(loggedData); 
@@ -662,22 +664,23 @@ public class Experiment : MonoBehaviour {
                 }
                 filename += ".csv";
 
-                StreamWriter sw = new StreamWriter(dataPath + filename);
-                sw.WriteLine(taskHeader);
+                StreamWriter sw = new StreamWriter(dataPath + filename, false, System.Text.Encoding.UTF8);
+                sw.WriteLine(taskHeader.Replace("\t", ",")); // commas for excel
 
                 // If using Azure, add these files to the list of files to upload
                 if (azureStorage != null)
                 {
                     azureStorage.additionalSaveFiles.Add(filename);
                 }
-
+                
                 // Extract data and write
                 Regex DataPattern = new Regex(taskHeader + "\n(.*)\n"); // where is the data?
                 MatchCollection dataMatches = DataPattern.Matches(loggedData);
                 foreach (Match dataMatch in dataMatches)
                 {
                     GroupCollection dataGroups = dataMatch.Groups;
-                    sw.WriteLine(dataGroups[1].Value);
+                    
+                    sw.WriteLine(dataGroups[1].Value.ToString().Replace("\t", ",")); // when writing, use commas for excel
                 }
 
                 // clean up (close this file and get ready for next one)

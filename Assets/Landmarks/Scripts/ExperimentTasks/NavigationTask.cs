@@ -49,6 +49,7 @@ public class NavigationTask : ExperimentTask
     public Vector3 compassPosOffset; // where is the compass relative to the active player snappoint
     public Vector3 compassRotOffset; // compass rotation relative to the active player snap point
 
+
     // For logging output
     private float startTime;
     private Vector3 playerLastPosition;
@@ -56,6 +57,7 @@ public class NavigationTask : ExperimentTask
     private Vector3 scaledPlayerLastPosition;
     private float scaledPlayerDistance = 0;
     private float optimalDistance;
+    private LM_DecisionPoint[] decisionPoints;
 
     public override void startTask ()
 	{
@@ -199,6 +201,10 @@ public class NavigationTask : ExperimentTask
         //// MJS 2019 - Move HUD to top left corner
         //hud.hudPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 1);
         //hud.hudPanel.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.9f);
+
+
+        // Look for any LM_Decsion Points we will want to track
+        if (FindObjectsOfType<LM_DecisionPoint>().Length > 0) decisionPoints = FindObjectsOfType<LM_DecisionPoint>();
     }
 
     public override bool updateTask ()
@@ -399,6 +405,17 @@ public class NavigationTask : ExperimentTask
             trialLog.AddData(transform.name + "_optimalPath", optimalDistance.ToString());
             trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
             trialLog.AddData(transform.name + "_duration", navTime.ToString());
+
+            // Record any decisions made along the way
+            if (decisionPoints != null)
+            {
+                foreach (LM_DecisionPoint nexus in decisionPoints)
+                {
+                    trialLog.AddData(nexus.name + "_initialChoice", nexus.initialChoice);
+                    trialLog.AddData(nexus.name + "_finalChoice", nexus.currentChoice);
+                    trialLog.AddData(nexus.name + "_totalChoices", nexus.totalChoices.ToString());
+                }
+            }
         }
 
         // If we created a dummy Objectlist for exploration, destroy it
@@ -420,3 +437,4 @@ public class NavigationTask : ExperimentTask
 		return false;
 	}
 }
+

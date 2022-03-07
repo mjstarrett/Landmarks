@@ -82,18 +82,6 @@ public class Config : MonoBehaviour{
             {
                 s_Instance =  FindObjectOfType(typeof (Config)) as Config;
                 Debug.Log("Using an existing config object");
-
-                //// If we are running the scenes in a randomized order
-                //if (s_Instance.randomSceneOrder)
-                //{
-                //    for (int i = 0; i < s_Instance.levelNames.Count; i++)
-                //    {
-                //        var temp = s_Instance.levelNames[i]; // grab the ith object
-                //        int randomIndex = UnityEngine.Random.Range(i, s_Instance.levelNames.Count); // random index between i and end of list
-                //        s_Instance.levelNames[i] = s_Instance.levelNames[randomIndex]; // replace ith element with the random element...
-                //        s_Instance.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
-                //    }
-                //}
             }
             
             // If it is still null, create a new instance
@@ -139,6 +127,18 @@ public class Config : MonoBehaviour{
         if (config.conditions.Count == 0)
         {
             config.conditions.Add("default");
+        }
+
+        // If we are running the scenes in a randomized order
+        if (s_Instance.randomSceneOrder)
+        {
+            for (int i = 0; i < s_Instance.levelNames.Count; i++)
+            {
+                var temp = s_Instance.levelNames[i]; // grab the ith object
+                int randomIndex = UnityEngine.Random.Range(i, s_Instance.levelNames.Count); // random index between i and end of list
+                s_Instance.levelNames[i] = s_Instance.levelNames[randomIndex]; // replace ith element with the random element...
+                s_Instance.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
+            }
         }
 
         config.initialized = true;
