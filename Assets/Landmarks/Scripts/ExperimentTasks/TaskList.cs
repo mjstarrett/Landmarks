@@ -342,21 +342,7 @@ public class TaskList : ExperimentTask
     {
         if (currentTask.OnControllerColliderHit(hit))
         {
-
             return endChild();
-
-            //cut
-            currentTask.endTask();
-            currentTaskIndex = currentTaskIndex + 1;
-            if (currentTaskIndex >= tasks.Length)
-            {
-                return true;
-            }
-            else
-            {
-                startNextTask();
-            }
-            //
         }
         return false;
     }

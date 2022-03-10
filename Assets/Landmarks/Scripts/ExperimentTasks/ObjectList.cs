@@ -114,13 +114,12 @@ public class ObjectList : ExperimentTask {
 	public GameObject currentObject() {
 		if (current >= objects.Count) {
 			return null;
-			current = 0;
 		} else {
 			return objects[current];
 		}
 	}
 	
-	public  void incrementCurrent() {
+	public new void incrementCurrent() {
 		current++;
 		if (current >= objects.Count && EndListBehavior == EndListMode.Loop) {
 			current = 0;

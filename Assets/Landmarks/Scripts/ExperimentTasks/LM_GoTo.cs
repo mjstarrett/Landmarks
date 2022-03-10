@@ -58,14 +58,19 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
-            hud.setMessage(readyMessage);
-            hud.ForceShowMessage();
+            if (hud.GetMessage() != "")
+            {
+                hud.setMessage(readyMessage);
+                hud.ForceShowMessage();
+            }
+            
             if (vrEnabled)
             {
                 if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
                 {
                     Debug.Log("VR trying to start the task");
                     log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    hud.setMessage("");
                     return true;
                 }
             }
@@ -75,11 +80,11 @@ public class LM_GoTo : ExperimentTask
                 if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
                 {
                     log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    hud.setMessage("");
                     return true;
                 }
             }
-        }
-        else hud.setMessage("");
+        }      
 
         return false;
     }

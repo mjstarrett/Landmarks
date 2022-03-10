@@ -165,7 +165,7 @@ public class NavigationTask : ExperimentTask
             }
             catch (System.Exception ex)
             {
-
+                Debug.LogException(ex);
             }
         }
 
