@@ -15,6 +15,7 @@ public class LM_GoTo : ExperimentTask
     [Header("Task-specific Properties")]
     public GameObject destination;
     public float orientThreshold = 15.0f;
+    [TextArea] public string readyMessage;
 
     private ParticleSystem effect;
     private bool atDestination;
@@ -57,9 +58,10 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
+            hud.setMessage(readyMessage);
+            hud.ForceShowMessage();
             if (vrEnabled)
             {
-                Debug.Log("WEEEERRRREEEEEE HEEEEEERRRRREEEEE!");
                 if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
                 {
                     Debug.Log("VR trying to start the task");
@@ -77,6 +79,7 @@ public class LM_GoTo : ExperimentTask
                 }
             }
         }
+        else hud.setMessage("");
 
         return false;
     }
