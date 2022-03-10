@@ -40,8 +40,6 @@ public class LM_GoTo : ExperimentTask
             return;
         }
 
-        hud.SecondsToShow = 0; // we don't need a hud
-
         them = avatar.GetComponent<LM_PlayerController>().collisionObject;
         Debug.Log(them.name);
 
@@ -58,10 +56,12 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
-            if (hud.GetMessage() != "")
+            if (hud.GetMessage() == "")
             {
+                Debug.Log(readyMessage);
                 hud.setMessage(readyMessage);
-                hud.ForceShowMessage();
+                hud.hudPanel.SetActive(true);
+				hud.ForceShowMessage();
             }
             
             if (vrEnabled)
@@ -70,6 +70,7 @@ public class LM_GoTo : ExperimentTask
                 {
                     Debug.Log("VR trying to start the task");
                     log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    hud.hudPanel.SetActive(false);
                     hud.setMessage("");
                     return true;
                 }
@@ -80,11 +81,13 @@ public class LM_GoTo : ExperimentTask
                 if (Input.GetButtonDown("Return") | Input.GetKeyDown(KeyCode.Return))
                 {
                     log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    hud.hudPanel.SetActive(false);
                     hud.setMessage("");
                     return true;
                 }
             }
-        }      
+        }
+        else { hud.setMessage(""); hud.hudPanel.SetActive(false); }
 
         return false;
     }
@@ -106,6 +109,8 @@ public class LM_GoTo : ExperimentTask
         destination.SetActive(false);
         manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
         hud.SecondsToShow = hud.GeneralDuration;
+        hud.hudPanel.SetActive(true);
+        hud.setMessage("");
     }
 
     private void OnTriggerEnter(Collider collision)
