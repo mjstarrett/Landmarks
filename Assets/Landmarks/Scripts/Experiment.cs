@@ -683,6 +683,8 @@ public class Experiment : MonoBehaviour
                 }
                 filename += ".csv";
 
+                // FIXME - MJS pick up here to set up multi-scene config handling
+                // if (config.sce)
                 StreamWriter sw = new StreamWriter(dataPath + filename, false, System.Text.Encoding.UTF8);
                 sw.WriteLine(taskHeader.Replace("\t", ",")); // commas for excel
 
