@@ -146,13 +146,17 @@ public class NavigationTask : ExperimentTask
             }
             else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
             {
+                //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
                 current.GetComponent<Collider>().enabled = false;
                 current.GetComponent<MeshRenderer>().enabled = false;
+                var halo = (Behaviour) current.GetComponent("Halo");
+                halo.enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
                 current.GetComponent<Collider>().enabled = false;
                 current.GetComponent<MeshRenderer>().enabled = false;
+                
             }
             
         }
@@ -343,6 +347,8 @@ public class NavigationTask : ExperimentTask
         // re-enable everything on the gameobject we just finished finding
         current.GetComponent<MeshRenderer>().enabled = true;
         current.GetComponent<Collider>().enabled = true;
+        var halo = (Behaviour) current.GetComponent("Halo");
+        halo.enabled = true;
 
         if (canIncrementLists)
 		{

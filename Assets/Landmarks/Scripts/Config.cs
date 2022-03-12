@@ -118,7 +118,7 @@ public class Config : MonoBehaviour{
         Debug.Log("Initializing the Config");
 
         // If no scene objects were provided (e.g., not using a startup scene and generating config at runtime)
-        if (scenes.Count == 0)
+        if (scenes == null)
         {
             s_Instance.levelNames.Add(SceneManager.GetActiveScene().name);
         }
