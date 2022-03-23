@@ -21,6 +21,12 @@ public class LM_GoTo : ExperimentTask
     private bool atDestination;
     private Collider them;
 
+    private new void Awake()
+    {
+        base.Awake();
+        GetComponent<Collider>().enabled = false;
+    }
+
     public override void startTask()
     {
         TASK_START();
@@ -43,11 +49,21 @@ public class LM_GoTo : ExperimentTask
         them = avatar.GetComponent<LM_PlayerController>().collisionObject;
         Debug.Log(them.name);
 
+        GetComponent<Collider>().enabled = true;
+
         if (destination.GetComponentInChildren<ParticleSystem>() != null) effect = destination.GetComponentInChildren<ParticleSystem>();
         destination.SetActive(true); // show the destination if it's hidden
         if (effect != null) effect.Play(true); // start particles if we have them
-        hud.showOnlyHUD(); // FIXME for now. Eventually you will need to add a hud.ShowTerrain, or something like that.
+        hud.ReCenter(destination.transform); // move the HUD to the start location
+        hud.SecondsToShow = 0; // don't how it unless they are at the start location
+        hud.hudPanel.SetActive(false);
+        hud.showOnlyHUD(); 
+
         manager.environment.transform.Find("filler_props").gameObject.SetActive(false);
+
+        // Toggle the collider on then off in case they were already inside this collider on load (e.g., standing at start when experiment begins)
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = true;
     }
 
 
@@ -61,9 +77,9 @@ public class LM_GoTo : ExperimentTask
                 Debug.Log(readyMessage);
                 hud.setMessage(readyMessage);
                 hud.hudPanel.SetActive(true);
-				hud.ForceShowMessage();
+                hud.ForceShowMessage();
             }
-            
+
             if (vrEnabled)
             {
                 if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
@@ -87,7 +103,11 @@ public class LM_GoTo : ExperimentTask
                 }
             }
         }
-        else { hud.setMessage(""); hud.hudPanel.SetActive(false); }
+        else
+        {
+            hud.setMessage("");
+            hud.hudPanel.SetActive(false);
+        }
 
         return false;
     }
@@ -106,11 +126,12 @@ public class LM_GoTo : ExperimentTask
         base.endTask();
 
         // WRITE TASK EXIT CODE HERE
+        GetComponent<Collider>().enabled = false;
         destination.SetActive(false);
         manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
-        hud.SecondsToShow = hud.GeneralDuration;
         hud.hudPanel.SetActive(true);
         hud.setMessage("");
+        hud.SecondsToShow = hud.GeneralDuration;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -121,6 +142,8 @@ public class LM_GoTo : ExperimentTask
             //Debug.Log(collision.name + "is here");
             if (effect != null) effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             atDestination = true;
+
+            if(hud != null) hud.SecondsToShow = 9999999; // keep the hud on
         }
     }
 
@@ -131,6 +154,8 @@ public class LM_GoTo : ExperimentTask
         {
             if (effect != null) effect.Play(true);
             atDestination = false;
+
+            if (hud != null) hud.SecondsToShow = 0; // keep the HUD off
         }
     }
 

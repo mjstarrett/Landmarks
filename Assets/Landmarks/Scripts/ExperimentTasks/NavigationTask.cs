@@ -116,7 +116,7 @@ public class NavigationTask : ExperimentTask
 		else
 		{
             hud.SecondsToShow = 0;
-            hud.setMessage("Please find the " + current.name);
+            //hud.setMessage("Please find the " + current.name);
 		}
 
         // Handle if we're hiding all the non-targets

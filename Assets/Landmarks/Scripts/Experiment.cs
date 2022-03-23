@@ -49,7 +49,7 @@ public class Experiment : MonoBehaviour
     public UserInterface userInterface = UserInterface.KeyboardMouse;
     public GameObject targetObjects;
     // public bool debugging = false;
-
+    
     [HideInInspector]
     public TaskList tasks;
     [HideInInspector]
@@ -228,11 +228,20 @@ public class Experiment : MonoBehaviour
                 Application.persistentDataPath + "/" +
                 config.experiment + "/" +
                 config.subject + "/";
-            logfile =
-                config.experiment + "_" +
-                config.subject + "_" +
-                config.levelNames[config.levelNumber] + "_" +
-                config.conditions[config.levelNumber] + ".log";
+            if (config.appendLogFiles)
+            {
+                logfile =
+                   config.experiment + "_" +
+                   config.subject + ".log";
+            }
+            else
+            {
+                logfile =
+                    config.experiment + "_" +
+                    config.subject + "_" +
+                    config.levelNames[config.levelNumber] + "_" +
+                    config.conditions[config.levelNumber] + ".log";
+            }
         }
         Debug.Log("data will be saved as " + dataPath + logfile);
 
@@ -248,7 +257,7 @@ public class Experiment : MonoBehaviour
 
         if (config.runMode == ConfigRunMode.NEW)
         {
-            dblog = new dbLog(dataPath + logfile);
+            dblog = new dbLog(dataPath + logfile, config.appendLogFiles && config.levelNumber > 0); 
         }
         else if (config.runMode == ConfigRunMode.RESUME)
         {
@@ -303,7 +312,6 @@ public class Experiment : MonoBehaviour
 
 
     }
-
 
     async void Update()
     {
@@ -623,7 +631,6 @@ public class Experiment : MonoBehaviour
         // close the logfile
         dblog.close();
 
-
         // ---------------------------------------------------------------------
         // Generate a clean .csv file for each task in the experiment
         // ---------------------------------------------------------------------
@@ -634,8 +641,6 @@ public class Experiment : MonoBehaviour
             var sr = new StreamReader(dataPath + logfile);
             var loggedData = await sr.ReadToEndAsync();
             sr.Close();
-
-
 
             // Find LM logging headers and identify unique tasks in this experiment
             Regex pattern = new Regex("LandmarksTrialData:\n.*\n(.*\t)\n");
@@ -659,7 +664,6 @@ public class Experiment : MonoBehaviour
                 string filename = "task";
                 taskCount++;
 
-
                 Regex namePattern = new Regex(taskHeader + "\n([A-z0-9._]*)");
                 MatchCollection nameMatches = namePattern.Matches(loggedData);
                 foreach (Match nameMatch in nameMatches)
@@ -670,8 +674,7 @@ public class Experiment : MonoBehaviour
                 }
                 //filename = "task_" + taskCount;
 
-
-                // Don't overwrite data unless in Editor
+                // Don't overwrite data unless in Editor or if we are appending multiple log files (set on the config)
                 if (File.Exists(dataPath + filename + ".csv") & !Application.isEditor)
                 {
                     int duplicate = 1;
@@ -683,9 +686,9 @@ public class Experiment : MonoBehaviour
                 }
                 filename += ".csv";
 
-                // FIXME - MJS pick up here to set up multi-scene config handling
-                // if (config.sce)
+                // Create the formatted csv file, if there's more than 1 level, append to existing
                 StreamWriter sw = new StreamWriter(dataPath + filename, false, System.Text.Encoding.UTF8);
+
                 sw.WriteLine(taskHeader.Replace("\t", ",")); // commas for excel
 
                 // If using Azure, add these files to the list of files to upload
@@ -714,6 +717,7 @@ public class Experiment : MonoBehaviour
             Debug.Log("something went wrong generating CSV data files for individual tasks");
         }
         Debug.Log("Clean log files have been generated for each task");
+
 
         // ---------------------------------------------------------------------
         // Upload any files staged for Microsoft Azure
@@ -758,6 +762,7 @@ public class Experiment : MonoBehaviour
         // Otherwise, close down; we're done
         else
         {
+            // shut it down
             Application.Quit();
         }
     }
@@ -765,7 +770,6 @@ public class Experiment : MonoBehaviour
 
     void OnApplicationQuit()
     {
-
         Cursor.visible = true;
     }
 

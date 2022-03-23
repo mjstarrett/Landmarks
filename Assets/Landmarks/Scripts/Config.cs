@@ -21,6 +21,7 @@ using System.Collections.Generic;
 public enum ConfigRunMode
 {
 	NEW,
+    CONTINUE,
 	RESUME,
 	PLAYBACK,
 	DEBUG
@@ -51,6 +52,7 @@ public class Config : MonoBehaviour{
     public bool randomSceneOrder;
     [Tooltip("Read Only: Use as index for scence/condition")]
     public int levelNumber;
+    public bool appendLogFiles = false;
 
 	[HideInInspector]
     public bool bootstrapped = false;
