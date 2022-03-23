@@ -26,7 +26,7 @@ public class LM_ExpStartup : MonoBehaviour
 
     // Private Variables
     private Config config;
-    private int thisSubjectID;
+    private int autoID;
     private List<int> usedIds = new List<int>();
     private bool subidError = true;
     private bool uiError = true;
@@ -43,19 +43,23 @@ public class LM_ExpStartup : MonoBehaviour
             if (guiElements.subID == null)
             {
                 Debug.LogError("No field for providing a subject id manually; automatically generating id starting at 1001");
-                id = 1001;
+                autoID = 1001;
             }
 
             // find an id with no data saved (don't overwrite)
             if (!Application.isEditor)
             {
-                while (Directory.Exists(appDir + "/" + config.experiment + "/" + id))
+                while (Directory.Exists(appDir + "/" + config.experiment + "/" + autoID))
                 {
-                    id++;
+                    autoID++;
                 }
             }
-            Debug.Log("Participant ID: " + id);
+            Debug.Log("Participant ID: " + autoID);
             if (guiElements.subID != null) guiElements.subID.gameObject.SetActive(false);
+
+            // set our public ID value that gets fed to Config.instance
+            id = autoID;
+
             gameObject.SetActive(true);
         }
         else
@@ -102,7 +106,12 @@ public class LM_ExpStartup : MonoBehaviour
 
         Debug.Log("trying to load experiment");
 
-        ValidateSubjectID();
+        // check manual id if provided
+
+        ValidateSubjectID(); 
+            
+
+
         ValidateUI();
         if (!subidError & !uiError)
         {
@@ -152,6 +161,8 @@ public class LM_ExpStartup : MonoBehaviour
 
     public void ValidateSubjectID()
     {
+        Debug.Log("checking the subject id");
+
         TextMeshProUGUI _errorMessage = guiElements.subID.transform.Find("Error").GetComponent<TextMeshProUGUI>();
 
         // check if a subID was even provided
@@ -171,6 +182,7 @@ public class LM_ExpStartup : MonoBehaviour
                 }
                 else
                 {
+                    id = int.Parse(guiElements.subID.text);
                     subidError = false;
                     _errorMessage.gameObject.SetActive(false); // then and only then, will we release the flag
                 }

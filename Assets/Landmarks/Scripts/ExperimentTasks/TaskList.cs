@@ -309,6 +309,12 @@ public class TaskList : ExperimentTask
         }
         Transform lmBaseTask = tmp;
 
+        // Really basic, redundant logging
+        trialLog.AddData("id", manager.config.subject);
+        trialLog.AddData("condition", manager.config.condition);
+        trialLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
+        trialLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
+
         // Record our base task (what is the name of the task we have trials of)
         trialLog.AddData("task", lmBaseTask.name);
 
