@@ -150,7 +150,7 @@ public class NavigationTask : ExperimentTask
                 current.GetComponent<Collider>().enabled = false;
                 current.GetComponent<MeshRenderer>().enabled = false;
                 var halo = (Behaviour) current.GetComponent("Halo");
-                halo.enabled = false;
+                if(halo != null) halo.enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
@@ -178,7 +178,7 @@ public class NavigationTask : ExperimentTask
 
         // Get the avatar start location (distance = 0)
         playerDistance = 0.0f;
-        playerLastPosition = avatar.transform.position;
+        playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         if (isScaled)
         {
             scaledPlayerDistance = 0.0f;
@@ -190,7 +190,7 @@ public class NavigationTask : ExperimentTask
         {
             optimalDistance = Vector3.Distance(scaledAvatar.transform.position, current.transform.position);
         }
-        else optimalDistance = Vector3.Distance(avatar.transform.position, current.transform.position);
+        else optimalDistance = Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, current.transform.position);
 
 
         // Grab our LM_Compass object and move it to the player snapPoint
@@ -266,8 +266,8 @@ public class NavigationTask : ExperimentTask
         }
 
         // Keep updating the distance traveled and kill task if they reach max
-        playerDistance += Vector3.Distance(avatar.transform.position, playerLastPosition);
-        playerLastPosition = avatar.transform.position;
+        playerDistance += Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, playerLastPosition);
+        playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         
         if (isScaled)
         {
@@ -348,7 +348,7 @@ public class NavigationTask : ExperimentTask
         current.GetComponent<MeshRenderer>().enabled = true;
         current.GetComponent<Collider>().enabled = true;
         var halo = (Behaviour) current.GetComponent("Halo");
-        halo.enabled = true;
+        if(halo != null) halo.enabled = true;
 
         if (canIncrementLists)
 		{
