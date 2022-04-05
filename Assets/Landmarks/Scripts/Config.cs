@@ -102,7 +102,7 @@ public class Config : MonoBehaviour
                 Debug.Log("Could not locate an Config object.  Config was Generated Automaticly.");
             }
 
-            s_Instance.Initialize(s_Instance);
+            if (!s_Instance.initialized) s_Instance.Initialize(s_Instance);
 
             return s_Instance;
         }
