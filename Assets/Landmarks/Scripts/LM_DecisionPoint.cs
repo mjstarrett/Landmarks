@@ -20,5 +20,12 @@ public class LM_DecisionPoint : MonoBehaviour
         }
         
     }
+
+    public void ResetDecisionPoint()
+    {
+        initialChoice = "";
+        currentChoice = "";
+        totalChoices = 0;
+    }
 }
 

@@ -424,6 +424,11 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+        foreach (var pt in decisionPoints)
+        {
+            pt.ResetDecisionPoint();
+        }
+
         // If we created a dummy Objectlist for exploration, destroy it
         Destroy(GetComponent<ObjectList>());
     }
