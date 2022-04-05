@@ -21,28 +21,29 @@ using System.IO;
 
 public enum ConfigRunMode
 {
-	NEW,
+    NEW,
     CONTINUE,
-	RESUME,
-	PLAYBACK,
-	DEBUG
+    RESUME,
+    PLAYBACK,
+    DEBUG
 }
 
 
- /// Config is a singleton.
- /// To avoid having to manually link an instance to every class that needs it, it has a static property called
- /// instance, so other objects that need to access it can just call:
- ///        Config.instance.DoSomeThing();
- ///
-public class Config : MonoBehaviour{
+/// Config is a singleton.
+/// To avoid having to manually link an instance to every class that needs it, it has a static property called
+/// instance, so other objects that need to access it can just call:
+///        Config.instance.DoSomeThing();
+///
+public class Config : MonoBehaviour
+{
 
-	public float version;
-	public int width = 1024;
-	public int height = 768;
-	public float volume = 1.0F;
-	public bool nofullscreen = false;
-	public bool showFPS = false;
-	public string filename = "config.txt";
+    public float version;
+    public int width = 1024;
+    public int height = 768;
+    public float volume = 1.0F;
+    public bool nofullscreen = false;
+    public bool showFPS = false;
+    public string filename = "config.txt";
     [Tooltip("Experiment names can contain only lowercase letters, numbers, and hyphens, and must begin and end with a letter or a number. The name can't contain two consecutive hyphens.")]
     public string experiment = "default";
     public string ui = "default";
@@ -54,7 +55,7 @@ public class Config : MonoBehaviour{
     public int levelNumber;
     public bool appendLogFiles = false;
 
-	[HideInInspector]
+    [HideInInspector]
     public bool bootstrapped = false;
     [HideInInspector]
     public string home = "default";
@@ -75,48 +76,49 @@ public class Config : MonoBehaviour{
     // s_Instance is used to cache the instance found in the scene so we don't have to look it up every time.	
     private static Config s_Instance = null;
     public bool initialized;
-	  
+
     private void Awake()
     {
-        // Look for a preconfigured Config
-        if (FindObjectOfType<Config>() != null)
-        {
-            s_Instance = FindObjectOfType<Config>();
-            Debug.Log("Using an existing config object");
-        }
+
     }
 
     // This defines a static instance property that attempts to find the config object in the scene and
     // returns it to the caller.
-	public static Config Instance {
-        get {
-
-            // If it is still null, create a new instance
-            if (s_Instance == null) {
-                GameObject obj = new GameObject("Config");
-                s_Instance = obj.AddComponent(typeof (Config)) as Config;
-                Debug.Log ("Could not locate an Config object.  Config was Generated Automaticly.");
-            }
-
-            if (!s_Instance.initialized)
+    public static Config Instance
+    {
+        get
+        {
+            // Look for a preconfigured Config
+            if (FindObjectOfType<Config>() != null)
             {
-                Debug.LogWarning("Config Not Yet Initialized");
-                //s_Instance.Initialize(s_Instance);
+                s_Instance = FindObjectOfType<Config>();
+                Debug.Log("Using an existing config object, " + s_Instance.gameObject.name);
             }
+            // If there isn't one, create an instance
+            else
+            {
+                GameObject obj = new GameObject("Config");
+                s_Instance = obj.AddComponent(typeof(Config)) as Config;
+                Debug.Log("Could not locate an Config object.  Config was Generated Automaticly.");
+            }
+
+            s_Instance.Initialize(s_Instance);
 
             return s_Instance;
         }
     }
-    
+
     // Ensure that the instance is destroyed when the game is stopped in the editor.
-    void OnApplicationQuit() {
+    void OnApplicationQuit()
+    {
         s_Instance = null;
         PlayerPrefs.SetInt("Screenmanager Is Fullscreen mode", 0);
         PlayerPrefs.SetInt("Screenmanager Resolution Width", 968);
         PlayerPrefs.SetInt("Screenmanager Resolution Height", 768);
     }
 
-    public void Initialize(Config config) {
+    public void Initialize(Config config)
+    {
         Debug.Log("Initializing the Config");
 
         // add every scene (except the startup scene this is in
@@ -128,15 +130,15 @@ public class Config : MonoBehaviour{
 
         // If we are running the scenes in a randomized order
         if (randomSceneOrder)
+        {
+            for (int i = 0; i < config.levelNames.Count; i++)
             {
-                for (int i = 0; i < config.levelNames.Count; i++)
-                {
-                    var temp = config.levelNames[i]; // grab the ith object
-                    int randomIndex = UnityEngine.Random.Range(i, config.levelNames.Count); // random index between i and end of list
-                    config.levelNames[i] = config.levelNames[randomIndex]; // replace ith element with the random element...
-                    config.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
-                }
-            }            
+                var temp = config.levelNames[i]; // grab the ith object
+                int randomIndex = UnityEngine.Random.Range(i, config.levelNames.Count); // random index between i and end of list
+                config.levelNames[i] = config.levelNames[randomIndex]; // replace ith element with the random element...
+                config.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
+            }
+        }
 
         // if no conditions are specified, add a single entry called default
         if (conditions.Count == 0)

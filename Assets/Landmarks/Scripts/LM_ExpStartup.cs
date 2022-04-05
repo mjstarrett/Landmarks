@@ -76,7 +76,7 @@ public class LM_ExpStartup : MonoBehaviour
         if (FindObjectOfType<Config>() != null)
         {
             config = Config.Instance;
-            config.Initialize(config);
+            // config.Initialize(config);
         }
         // Don't continue unless a config is found (even in editor)
         else
