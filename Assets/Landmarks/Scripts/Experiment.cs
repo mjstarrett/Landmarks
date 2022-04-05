@@ -26,6 +26,7 @@ using UnityEngine.XR;
 using Valve.VR;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using TMPro;
 
 public enum EndListMode
 {
@@ -94,6 +95,9 @@ public class Experiment : MonoBehaviour
     protected GameObject avatar;
     protected AvatarController avatarController;
     protected HUD hud;
+
+    // For counting trials
+    public TextMeshProUGUI trialCounter; 
 
 
     // -------------------------------------------------------------------------
@@ -310,7 +314,7 @@ public class Experiment : MonoBehaviour
             scaledEnvironment = null;
         }
 
-
+        if (trialCounter != null) trialCounter.text = string.Format("{0} / {1}", config.levelNumber+1, config.levelNames.Count);
     }
 
     async void Update()
