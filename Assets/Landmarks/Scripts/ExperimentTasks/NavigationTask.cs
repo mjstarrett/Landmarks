@@ -26,6 +26,9 @@ public class NavigationTask : ExperimentTask
     public float distanceAllotted = Mathf.Infinity;
     [Tooltip("in seconds")]
     public float timeAllotted = Mathf.Infinity;
+    [Tooltip("Do we want time or distance remaining to be broadcast somewhere?")]
+    public TextMeshProUGUI printRemainingTo;
+    private string baseText;
 
     // Use a scoring/points system (not currently configured)
     [HideInInspector] private int score = 0;
@@ -173,6 +176,9 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+        // save the original string so we can reformat each frame
+        if (printRemainingTo != null) baseText = printRemainingTo.text;
+
         // startTime = Current time in seconds
         startTime = Time.time;
 
@@ -289,15 +295,20 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+
+        float distanceRemaining = distanceAllotted - playerDistance;
+        float timeRemaining = timeAllotted - (Time.time - startTime);
+        // If we have a place to output ongoing trial info (time/dist remaining), use it
+        if (printRemainingTo != null) 
+        {
+            printRemainingTo.text = string.Format(baseText, Mathf.Round(distanceRemaining), Mathf.Round(timeRemaining));
+        }
+
         // End the trial if they reach the max distance allotted
         if (!isScaled & playerDistance >= distanceAllotted) return true;
         else if (isScaled & scaledPlayerDistance >= distanceAllotted) return true;
-
         // End the trial if they reach the max time allotted
-        if (Time.time - startTime >= timeAllotted)
-        {
-            return true;
-        }
+        if (Time.time - startTime >= timeAllotted) return true;
 
 
         if (killCurrent == true)
@@ -330,7 +341,7 @@ public class NavigationTask : ExperimentTask
 	public override void TASK_END()
 	{
 		base.endTask();
-        
+        if (printRemainingTo != null) printRemainingTo.text = baseText;
         var navTime = Time.time - startTime;
 
         //avatarController.stop();
