@@ -37,7 +37,7 @@ public class LM_ExpStartupAzure : LM_ExpStartup
         // Get the config (dont use Config.Instance() as we need a preconfigured one)
         if (FindObjectOfType<Config>() != null)
         {
-            config = Config.instance;
+            config = Config.Instance;
         }
         // Don't continue unless a config is found (even in editor)
         else

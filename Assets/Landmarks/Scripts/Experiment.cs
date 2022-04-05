@@ -122,7 +122,7 @@ public class Experiment : MonoBehaviour
         }
 
         //since config is a singleton it will be the one created in scene 0 or this scene
-        config = Config.instance;
+        config = Config.Instance;
 
         // Check the config for issues 
         config.CheckConfig();

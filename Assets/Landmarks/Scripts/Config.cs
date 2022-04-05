@@ -17,6 +17,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.IO;
 
 public enum ConfigRunMode
 {
@@ -47,8 +48,7 @@ public class Config : MonoBehaviour{
     public string ui = "default";
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
-    public List<Object> scenes;
-    [HideInInspector] public List<string> levelNames = new List<string>();
+    public List<string> levelNames = new List<string>();
     public bool randomSceneOrder;
     [Tooltip("Read Only: Use as index for scence/condition")]
     public int levelNumber;
@@ -76,17 +76,21 @@ public class Config : MonoBehaviour{
     private static Config s_Instance = null;
     public bool initialized;
 	  
+    private void Awake()
+    {
+        // Look for a preconfigured Config
+        if (FindObjectOfType<Config>() != null)
+        {
+            s_Instance = FindObjectOfType<Config>();
+            Debug.Log("Using an existing config object");
+        }
+    }
+
     // This defines a static instance property that attempts to find the config object in the scene and
     // returns it to the caller.
-	public static Config instance {
+	public static Config Instance {
         get {
-            //  FindObjectOfType(...) returns the first Config object in the scene.
-            if (s_Instance == null)
-            {
-                s_Instance =  FindObjectOfType(typeof (Config)) as Config;
-                Debug.Log("Using an existing config object");
-            }
-            
+
             // If it is still null, create a new instance
             if (s_Instance == null) {
                 GameObject obj = new GameObject("Config");
@@ -96,7 +100,8 @@ public class Config : MonoBehaviour{
 
             if (!s_Instance.initialized)
             {
-                s_Instance.Initialize(s_Instance);
+                Debug.LogWarning("Config Not Yet Initialized");
+                //s_Instance.Initialize(s_Instance);
             }
 
             return s_Instance;
@@ -110,48 +115,38 @@ public class Config : MonoBehaviour{
         PlayerPrefs.SetInt("Screenmanager Resolution Width", 968);
         PlayerPrefs.SetInt("Screenmanager Resolution Height", 768);
     }
-	
-    void Awake() {
-        DontDestroyOnLoad(transform.gameObject);
-    }
-
 
     public void Initialize(Config config) {
         Debug.Log("Initializing the Config");
 
-        // If no scene objects were provided (e.g., not using a startup scene and generating config at runtime)
-        if (scenes == null)
+        // add every scene (except the startup scene this is in
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            s_Instance.levelNames.Add(SceneManager.GetActiveScene().name);
+            //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
+            config.levelNames.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
         }
-        else
-        {
-            // If we are running the scenes in a randomized order
-            if (s_Instance.randomSceneOrder)
-            {
-                for (int i = 0; i < s_Instance.scenes.Count; i++)
-                {
-                    var temp = s_Instance.scenes[i]; // grab the ith object
-                    int randomIndex = UnityEngine.Random.Range(i, s_Instance.scenes.Count); // random index between i and end of list
-                    s_Instance.scenes[i] = s_Instance.scenes[randomIndex]; // replace ith element with the random element...
-                    s_Instance.scenes[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
-                }
-            }
 
-            levelNames.Clear(); // if there were any strings on this list, delete them.
-            foreach (Object scene in scenes)
+        // If we are running the scenes in a randomized order
+        if (randomSceneOrder)
             {
-                levelNames.Add(scene.name);
-            }
-        }
+                for (int i = 0; i < config.levelNames.Count; i++)
+                {
+                    var temp = config.levelNames[i]; // grab the ith object
+                    int randomIndex = UnityEngine.Random.Range(i, config.levelNames.Count); // random index between i and end of list
+                    config.levelNames[i] = config.levelNames[randomIndex]; // replace ith element with the random element...
+                    config.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
+                }
+            }            
 
         // if no conditions are specified, add a single entry called default
-        if (s_Instance.conditions.Count == 0)
+        if (conditions.Count == 0)
         {
-            s_Instance.conditions.Add("default");
+            conditions.Add("default");
         }
 
         config.initialized = true;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void CheckConfig()
