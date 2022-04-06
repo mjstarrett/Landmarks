@@ -29,7 +29,7 @@ public class LM_ExperimentManager : MonoBehaviour
     void Start()
     {
 
-        config = Config.instance;
+        config = Config.Instance;
         Debug.Log(config.name);
 
         //appDir = Directory.GetCurrentDirectory();

@@ -26,6 +26,7 @@ using UnityEngine.XR;
 using Valve.VR;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using TMPro;
 
 public enum EndListMode
 {
@@ -95,6 +96,9 @@ public class Experiment : MonoBehaviour
     protected AvatarController avatarController;
     protected HUD hud;
 
+    // For counting trials
+    public TextMeshProUGUI trialCounter; 
+
 
     // -------------------------------------------------------------------------
     // -------------------------- Builtin Methods ------------------------------
@@ -122,8 +126,8 @@ public class Experiment : MonoBehaviour
         }
 
         //since config is a singleton it will be the one created in scene 0 or this scene
-        config = Config.instance;
-
+        config = Config.Instance;
+        // config.Initialize(config);
         // Check the config for issues 
         config.CheckConfig();
 
@@ -310,7 +314,7 @@ public class Experiment : MonoBehaviour
             scaledEnvironment = null;
         }
 
-
+        if (trialCounter != null) trialCounter.text = string.Format("{0} / {1}", config.levelNumber+1, config.levelNames.Count);
     }
 
     async void Update()

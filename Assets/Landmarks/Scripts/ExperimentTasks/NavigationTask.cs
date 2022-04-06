@@ -26,6 +26,9 @@ public class NavigationTask : ExperimentTask
     public float distanceAllotted = Mathf.Infinity;
     [Tooltip("in seconds")]
     public float timeAllotted = Mathf.Infinity;
+    [Tooltip("Do we want time or distance remaining to be broadcast somewhere?")]
+    public TextMeshProUGUI printRemainingTo;
+    private string baseText;
 
     // Use a scoring/points system (not currently configured)
     [HideInInspector] private int score = 0;
@@ -150,7 +153,7 @@ public class NavigationTask : ExperimentTask
                 current.GetComponent<Collider>().enabled = false;
                 current.GetComponent<MeshRenderer>().enabled = false;
                 var halo = (Behaviour) current.GetComponent("Halo");
-                halo.enabled = false;
+                if(halo != null) halo.enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
@@ -173,12 +176,15 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+        // save the original string so we can reformat each frame
+        if (printRemainingTo != null) baseText = printRemainingTo.text;
+
         // startTime = Current time in seconds
         startTime = Time.time;
 
         // Get the avatar start location (distance = 0)
         playerDistance = 0.0f;
-        playerLastPosition = avatar.transform.position;
+        playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         if (isScaled)
         {
             scaledPlayerDistance = 0.0f;
@@ -190,7 +196,7 @@ public class NavigationTask : ExperimentTask
         {
             optimalDistance = Vector3.Distance(scaledAvatar.transform.position, current.transform.position);
         }
-        else optimalDistance = Vector3.Distance(avatar.transform.position, current.transform.position);
+        else optimalDistance = Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, current.transform.position);
 
 
         // Grab our LM_Compass object and move it to the player snapPoint
@@ -266,8 +272,8 @@ public class NavigationTask : ExperimentTask
         }
 
         // Keep updating the distance traveled and kill task if they reach max
-        playerDistance += Vector3.Distance(avatar.transform.position, playerLastPosition);
-        playerLastPosition = avatar.transform.position;
+        playerDistance += Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, playerLastPosition);
+        playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         
         if (isScaled)
         {
@@ -289,15 +295,20 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+
+        float distanceRemaining = distanceAllotted - playerDistance;
+        float timeRemaining = timeAllotted - (Time.time - startTime);
+        // If we have a place to output ongoing trial info (time/dist remaining), use it
+        if (printRemainingTo != null) 
+        {
+            printRemainingTo.text = string.Format(baseText, Mathf.Round(distanceRemaining), Mathf.Round(timeRemaining));
+        }
+
         // End the trial if they reach the max distance allotted
         if (!isScaled & playerDistance >= distanceAllotted) return true;
         else if (isScaled & scaledPlayerDistance >= distanceAllotted) return true;
-
         // End the trial if they reach the max time allotted
-        if (Time.time - startTime >= timeAllotted)
-        {
-            return true;
-        }
+        if (Time.time - startTime >= timeAllotted) return true;
 
 
         if (killCurrent == true)
@@ -330,7 +341,7 @@ public class NavigationTask : ExperimentTask
 	public override void TASK_END()
 	{
 		base.endTask();
-        
+        if (printRemainingTo != null) printRemainingTo.text = baseText;
         var navTime = Time.time - startTime;
 
         //avatarController.stop();
@@ -348,7 +359,7 @@ public class NavigationTask : ExperimentTask
         current.GetComponent<MeshRenderer>().enabled = true;
         current.GetComponent<Collider>().enabled = true;
         var halo = (Behaviour) current.GetComponent("Halo");
-        halo.enabled = true;
+        if(halo != null) halo.enabled = true;
 
         if (canIncrementLists)
 		{
@@ -422,6 +433,11 @@ public class NavigationTask : ExperimentTask
                     trialLog.AddData(nexus.name + "_totalChoices", nexus.totalChoices.ToString());
                 }
             }
+        }
+
+        foreach (var pt in decisionPoints)
+        {
+            pt.ResetDecisionPoint();
         }
 
         // If we created a dummy Objectlist for exploration, destroy it
