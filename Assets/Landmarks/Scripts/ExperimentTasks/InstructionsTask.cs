@@ -76,6 +76,9 @@ public class InstructionsTask : ExperimentTask {
             return;
         }
 
+        // Set the interval (duration) to infinity if self paced
+        if (selfPaced) interval = 0;
+
         GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
