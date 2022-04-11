@@ -49,6 +49,8 @@ public class Config : MonoBehaviour
     public string ui = "default";
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
+    [Tooltip("Treat the first n scenes in the build list as practice and run them first")] 
+    public int practiceTrialCount;
     public List<string> levelNames = new List<string>();
     public bool randomSceneOrder;
     [Tooltip("Read Only: Use as index for scence/condition")]
@@ -133,10 +135,15 @@ public class Config : MonoBehaviour
         {
             for (int i = 0; i < config.levelNames.Count; i++)
             {
-                var temp = config.levelNames[i]; // grab the ith object
-                int randomIndex = UnityEngine.Random.Range(i, config.levelNames.Count); // random index between i and end of list
-                config.levelNames[i] = config.levelNames[randomIndex]; // replace ith element with the random element...
-                config.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
+                if (i >= practiceTrialCount)
+                {
+                    Debug.Log("Shuffling");
+                    var temp = config.levelNames[i]; // grab the ith object
+                    int randomIndex = UnityEngine.Random.Range(i, config.levelNames.Count); // random index between i and end of list
+                    config.levelNames[i] = config.levelNames[randomIndex]; // replace ith element with the random element...
+                    config.levelNames[randomIndex] = temp; // and swap the ith element into the random element's spot, continue on up
+                }
+                else Debug.Log("Not Shuffling");
             }
         }
 
