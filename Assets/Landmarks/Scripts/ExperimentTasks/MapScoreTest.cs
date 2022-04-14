@@ -77,7 +77,7 @@ public class MapScoreTest : ExperimentTask {
 			float tempErrorAngleX = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.x, targets [itarget].transform.localRotation.eulerAngles.x); 
 			float tempErrorAngleY = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.y, targets [itarget].transform.localRotation.eulerAngles.y); // note this seems to correspond to z rotation axis in inspector
 			float tempErrorAngleZ = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.z, targets [itarget].transform.localRotation.eulerAngles.z);
-			float tempErrorDistance =  GetVector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
+			float tempErrorDistance =   Vector3Distance2D(copies [itarget].transform.position, targets [itarget].transform.position);
 
             log.log("Store: \t" + targets[itarget].name + "\tError Distance: \t" + tempErrorDistance + "\tError Rotation (xyz): \t" + tempErrorAngleX + "\t" + tempErrorAngleY + "\t" + tempErrorAngleZ, 2);
 

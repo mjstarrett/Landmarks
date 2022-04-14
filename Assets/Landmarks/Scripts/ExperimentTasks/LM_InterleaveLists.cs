@@ -21,7 +21,7 @@ public class LM_InterleaveLists : ExperimentTask
 {
     [Header("Task-specific Properties")]
     public ObjectList[] lists;
-    public ObjectList standInObjectList;
+    public ObjectList outputList;
     public bool randomListOrder = true;
 
     public override void startTask()
@@ -44,7 +44,7 @@ public class LM_InterleaveLists : ExperimentTask
         }
 
         // Clear out the existing stand-in list if there is one
-        standInObjectList.objects.Clear();
+        outputList.objects.Clear();
 
         // Shuffle the order in which we draw from each list if desired
         if (randomListOrder) Experiment.Shuffle<ObjectList>(lists);
@@ -55,7 +55,7 @@ public class LM_InterleaveLists : ExperimentTask
         {
             if (list.objects.Count > longestListLength) longestListLength = list.objects.Count;
         }
-
+        
         // interleave
         for (int i = 0; i < longestListLength; i++)
         {
@@ -63,14 +63,16 @@ public class LM_InterleaveLists : ExperimentTask
             {
                 if (list.objects[i] != null)
                 {
-                    standInObjectList.objects.Add(list.objects[i]);
-                   
+                    outputList.objects.Add(list.objects[i]);
                 }
                 else Debug.LogWarning("The list being interleaved are not of equal length. " +
                                       "The remainder of the new list will comprise the only the longer list(s)");
-
             }
         }
+
+        // make sure that outputList's parentObject and parentName are empty or it will ignore what we just did
+        outputList.parentObject = null;
+        outputList.parentName = "";
 
     }
 

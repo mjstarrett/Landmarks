@@ -10,12 +10,21 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
+public enum HapticFeedbackOptions {
+    none,
+    sameHand,
+    oppositeHand,
+    bothHands
+}
+
 public class LM_GoTo : ExperimentTask
 {
     [Header("Task-specific Properties")]
     public GameObject destination;
+    public bool hideEnvironment;
     public float orientThreshold = 15.0f;
     [TextArea] public string readyMessage;
+    public HapticFeedbackOptions hapticFeedback = HapticFeedbackOptions.none;
 
     private ParticleSystem effect;
     private bool atDestination;
@@ -24,6 +33,7 @@ public class LM_GoTo : ExperimentTask
     private new void Awake()
     {
         base.Awake();
+        
         GetComponent<Collider>().enabled = false;
     }
 
@@ -46,6 +56,8 @@ public class LM_GoTo : ExperimentTask
             return;
         }
 
+        if (!manager.usingVR) hapticFeedback = HapticFeedbackOptions.none;
+
         them = avatar.GetComponent<LM_PlayerController>().collisionObject;
         Debug.Log(them.name);
 
@@ -57,9 +69,16 @@ public class LM_GoTo : ExperimentTask
         hud.ReCenter(destination.transform); // move the HUD to the start location
         hud.SecondsToShow = 0; // don't how it unless they are at the start location
         hud.hudPanel.SetActive(false);
-        hud.showOnlyHUD(); 
+        
 
-        manager.environment.transform.Find("filler_props").gameObject.SetActive(false);
+        if (hideEnvironment) {
+            hud.showOnlyHUD(); 
+            manager.environment.transform.Find("filler_props").gameObject.SetActive(false);
+        }
+        else {
+            hud.showEverything();
+            manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
+        }
 
         // Toggle the collider on then off in case they were already inside this collider on load (e.g., standing at start when experiment begins)
         GetComponent<Collider>().enabled = false;
@@ -72,6 +91,7 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
+            Debug.Log("A HUD should now be active and visible.");
             if (hud.GetMessage() == "")
             {
                 Debug.Log(readyMessage);
@@ -128,7 +148,7 @@ public class LM_GoTo : ExperimentTask
         // WRITE TASK EXIT CODE HERE
         GetComponent<Collider>().enabled = false;
         destination.SetActive(false);
-        manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
+        if (hideEnvironment) manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
         hud.hudPanel.SetActive(true);
         hud.setMessage("");
         hud.SecondsToShow = hud.GeneralDuration;
@@ -139,6 +159,7 @@ public class LM_GoTo : ExperimentTask
         if (collision.gameObject.name ==
             GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
+            Debug.Log("HEEEEEEEEERRRREEEEEEE");
             //Debug.Log(collision.name + "is here");
             if (effect != null) effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             atDestination = true;
