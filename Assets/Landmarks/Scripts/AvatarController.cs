@@ -252,7 +252,7 @@ public class AvatarController : MonoBehaviour {
 			GetComponent<Rigidbody>().freezeRotation = true;
 		originalRotation = avatar.localRotation;
 		
-		bootstrapped = Config.instance.bootstrapped;
+		bootstrapped = Config.Instance.bootstrapped;
 		
 		experiment = GameObject.FindWithTag ("Experiment");
 		manager = experiment.GetComponent("Experiment") as Experiment;
