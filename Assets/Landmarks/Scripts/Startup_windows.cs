@@ -190,7 +190,7 @@ public class Startup_windows : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-		config = Config.instance;
+		config = Config.Instance;
 
 		
 		//setup directories
