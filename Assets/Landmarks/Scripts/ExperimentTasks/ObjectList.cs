@@ -37,40 +37,43 @@ public class ObjectList : ExperimentTask {
         //ViewObject.startObjects.current = 0;
         //current = 0;
 
-		// Temporary container to hold the items we decide to use
-		var objs = new List<GameObject>();
-
-        // If either parentObject or parentName are not empty
-        if (parentObject != null || parentName != "") 
+        // If parentObject is left blank and parentName is not, use parentName to get parentObject
+        if (parentObject == null && parentName != "") 
         {
-			// predefined parentObject takes precedent; if empty parent name is used
-            if (parentObject == null ) parentObject = GameObject.Find(parentName);		
-
-			foreach (Transform child in parentObject.transform) objs.Add(child.gameObject);
+            parentObject = GameObject.Find(parentName);
         }
-		// If both parentObject and parentName are empty, check if the user provided objects manually in inspector
-		// Note parentobject and parentName take precedent and will otherwise erase anything manually added
-		else if (objects.Count > 0) objs = objects;
-        // At this point, if we have nothing, we need to throw an error
-		else Debug.LogError("A value for either parentObject, parentName, or any number of objects are required on this component.");
+        // otherwise, parentObject will need to be provided
 
-		// Handle how the user want's the list (re)ordered
-		if (order & !shuffle) {
+
+        GameObject[] objs;
+
+		objs = new GameObject[parentObject.transform.childCount];
+		Array.Sort(objs);
+		int i = 0;
+		foreach (Transform child in parentObject.transform) {
+			objs[i] = child.gameObject;
+			i++;
+		}
+
+	
+
+		if (order ) {
 			// Deal with specific ordering
 			ObjectOrder ordered = order.GetComponent("ObjectOrder") as ObjectOrder;
 		
 			if (ordered) {
 				Debug.Log("ordered");
 				Debug.Log(ordered.order.Count);
-				// MJS - Note to self - Object order should be deprecated;
-				// Users should be able to just reorder the targetObjects and not check 'Shuffled'
+				
 				if (ordered.order.Count > 0) {
-					objs = ordered.order;
+					objs = ordered.order.ToArray();
 				}
 			}
 		}
-		else if (shuffle & !order) {
-			Experiment.Shuffle(objs.ToArray());			
+			
+		if ( shuffle ) {
+			Experiment.Shuffle(objs);			
+			
 		}
 		
 		TASK_START();
