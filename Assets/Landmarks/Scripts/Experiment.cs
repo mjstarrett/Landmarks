@@ -314,7 +314,7 @@ public class Experiment : MonoBehaviour
             scaledEnvironment = null;
         }
 
-        if (trialCounter != null) trialCounter.text = string.Format("{0} / {1}", config.levelNumber+1, config.levelNames.Count);
+        if (trialCounter != null) trialCounter.text = string.Format("{0} / {1}", config.levelNumber + 1 - config.practiceTrialCount, config.levelNames.Count - config.practiceTrialCount);
     }
 
     async void Update()
