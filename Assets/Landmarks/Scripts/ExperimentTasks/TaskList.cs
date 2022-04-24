@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class TaskList : ExperimentTask
@@ -52,6 +53,9 @@ public class TaskList : ExperimentTask
     // LOG DATA TRIAL-BY-TRIAL
     public bool trialLogging;
 
+    // Display progress in eperimenter gui
+    public TextMeshProUGUI overlayRepeatCount; // ignored if empty
+
     public override void startTask()
     {
         // Debug.Log(this.GetType().Name);
@@ -67,8 +71,6 @@ public class TaskList : ExperimentTask
         repeatCount = 1;
 
         base.startTask();
-
-       
 
         foreach (var skipCondition in skipConditions)
         {
@@ -148,7 +150,6 @@ public class TaskList : ExperimentTask
             }
         }
 
-
         //----------------------------------------------------------------------
         // Set up the trial log (if enabled)
         //----------------------------------------------------------------------
@@ -170,10 +171,12 @@ public class TaskList : ExperimentTask
     }
 
 
-
     public void startNextTask()
     {
         Debug.Log("Starting " + tasks[currentTaskIndex].name);
+
+        // update the trial count on the overlay
+        if (overlayRepeatCount != null) overlayRepeatCount.text = string.Format("{0}: {1} / {2}", name, repeatCount, repeat);
 
         currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
@@ -189,10 +192,7 @@ public class TaskList : ExperimentTask
 
         if (currentTask.updateTask())
         {
-
-
             //cut
-
             if (pausedTasks)
             {
                 //currentTask.endTask();
@@ -210,6 +210,7 @@ public class TaskList : ExperimentTask
         }
         return false;
     }
+
 
     public bool endChild()
     {
