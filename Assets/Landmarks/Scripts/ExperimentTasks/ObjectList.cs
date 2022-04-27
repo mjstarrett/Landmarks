@@ -126,7 +126,13 @@ public class ObjectList : ExperimentTask {
 	}
 	
 	public new void incrementCurrent() {
+		if (current < objects.Count)
+		{
+			Debug.Log(objects[current].name);
+		}
+
 		current++;
+		
 		if (current >= objects.Count && EndListBehavior == EndListMode.Loop) {
 			current = 0;
 		}

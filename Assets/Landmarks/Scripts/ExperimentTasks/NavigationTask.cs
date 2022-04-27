@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
+
+public enum HideTargetOnStart
+{
+    Off,
+    SetInactive,
+    SetInvisible,
+    DisableCompletely,
+    Mask,
+    SetProbeTrial
+}
 
 public class NavigationTask : ExperimentTask
 {
@@ -51,6 +63,11 @@ public class NavigationTask : ExperimentTask
     private float scaledPlayerDistance = 0;
     private float optimalDistance;
     private LM_DecisionPoint[] decisionPoints;
+
+
+    // 4/27/2022 Added for Loop Closure Task
+    public float allowContinueAfter = Mathf.Infinity; // flag to let participants press a button to continue without necessarily arriving
+    private float ccwTravel = 0; // relative to the origin (0,0,0) in world space
 
     public override void startTask ()
 	{
@@ -174,6 +191,7 @@ public class NavigationTask : ExperimentTask
 
         // Get the avatar start location (distance = 0)
         playerDistance = 0.0f;
+        ccwTravel = 0.0f;
         playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         if (isScaled)
         {
@@ -226,6 +244,31 @@ public class NavigationTask : ExperimentTask
             return true;
         }
 
+        // if we're letting them say when they think they've arrived, check that first
+        if (Time.time - startTime > allowContinueAfter)
+        {
+            if (vrEnabled)
+            {
+                if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    Debug.Log("Participant ended the trial");
+                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    hud.hudPanel.SetActive(false);
+                    hud.setMessage("");
+                    return true;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Debug.Log("Participant ended the trial");
+                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                hud.hudPanel.SetActive(false);
+                hud.setMessage("");
+                return true;
+            }
+        }
+
         if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
 
 
@@ -239,39 +282,43 @@ public class NavigationTask : ExperimentTask
 			}
 		}
 
-        //VR capability with showing target
-        if (vrEnabled)
+        Debug.Log("Current trial: " + current.name);
+
+        //show target after set time
+        if (hideTargetOnStart != HideTargetOnStart.Off && Time.time - startTime > showTargetAfterSeconds)
         {
-            if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))))
+
+            switch (hideTargetOnStart)
             {
-                current.SetActive(true);
+                case HideTargetOnStart.SetInactive:
+                    current.GetComponent<Collider>().enabled = true;
+                    break;
+                case HideTargetOnStart.SetInvisible:
+                    current.GetComponent<MeshRenderer>().enabled = true;
+                    break;
+                case HideTargetOnStart.DisableCompletely:
+                    //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
+                    current.GetComponent<Collider>().enabled = true;
+                    current.GetComponent<MeshRenderer>().enabled = true;
+                    var halo = (Behaviour)current.GetComponent("Halo");
+                    if (halo != null) halo.enabled = true;
+                    break;
+                case HideTargetOnStart.SetProbeTrial:
+                    current.GetComponent<Collider>().enabled = true;
+                    current.GetComponent<MeshRenderer>().enabled = true;
+                    break;
+                default:
+                    Debug.Log("No hidden targets identified");
+                    current.SetActive(true);
+                    current.GetComponent<MeshRenderer>().enabled = true;
+                    current.GetComponent<Collider>().enabled = true;
+                    break;
             }
-
-            if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && vrInput.TouchpadButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any))
-            {
-                //get current location and then log it
-
-                current.SetActive(true);
-                current.GetComponent<MeshRenderer>().enabled = true;
-            }
-        }
-
-        //show target on button click or after set time
-        if (hideTargetOnStart != HideTargetOnStart.Off && hideTargetOnStart != HideTargetOnStart.SetProbeTrial && ((Time.time - startTime > (showTargetAfterSeconds) || Input.GetButtonDown("Return"))))
-        {
-            current.SetActive(true);
-        }
-
-        if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial && Input.GetButtonDown("Return"))
-        {
-            //get current location and then log it
-
-            current.SetActive(true);
-            current.GetComponent<MeshRenderer>().enabled = true;
         }
 
         // Keep updating the distance traveled and kill task if they reach max
         playerDistance += Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, playerLastPosition);
+        ccwTravel += Vector3Angle2D(playerLastPosition, avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position);
         playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         
         if (isScaled)
@@ -420,6 +467,7 @@ public class NavigationTask : ExperimentTask
             trialLog.AddData(transform.name + "_actualPath", perfDistance.ToString());
             trialLog.AddData(transform.name + "_optimalPath", optimalDistance.ToString());
             trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
+            trialLog.AddData(transform.name + "_ccwTravel", ccwTravel.ToString());
             trialLog.AddData(transform.name + "_duration", navTime.ToString());
 
             // Record any decisions made along the way
