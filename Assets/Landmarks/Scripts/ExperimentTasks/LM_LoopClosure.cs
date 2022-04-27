@@ -16,6 +16,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class LM_LoopClosure : NavigationTask
 {
@@ -51,9 +53,14 @@ public class LM_LoopClosure : NavigationTask
     public override bool updateTask()
     {
         base.updateTask();
-        return true;
 
-        // WRITE TASK UPDATE CODE HERE
+        // Record/Update Loop angle
+        
+        // Handle user input (or lack thereof)
+        if (Input.GetKeyDown(KeyCode.Return)) return true; 
+        else if (vrEnabled) if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any)) return true;
+        
+        return false;
     }
 
 
