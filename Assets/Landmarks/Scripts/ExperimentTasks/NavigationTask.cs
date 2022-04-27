@@ -204,12 +204,15 @@ public class NavigationTask : ExperimentTask
 
 
         // Look for any LM_Decsion Points we will want to track
-        if (FindObjectsOfType<LM_DecisionPoint>().Length > 0) decisionPoints = FindObjectsOfType<LM_DecisionPoint>();
-
-        // Clear any decisions on LM_DecisionPoints
-        foreach (var pt in decisionPoints)
+        if (FindObjectsOfType<LM_DecisionPoint>().Length > 0)
         {
-            pt.ResetDecisionPoint();
+            decisionPoints = FindObjectsOfType<LM_DecisionPoint>();
+
+            // Clear any decisions on LM_DecisionPoints
+            foreach (var pt in decisionPoints)
+            {
+                pt.ResetDecisionPoint();
+            }
         }
     }
 
