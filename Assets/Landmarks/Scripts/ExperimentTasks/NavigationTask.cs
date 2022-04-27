@@ -3,16 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum HideTargetOnStart
-{
-    Off,
-    SetInactive,
-    SetInvisible,
-    DisableCompletely,
-    Mask,
-    SetProbeTrial
-}
-
 public class NavigationTask : ExperimentTask
 {
     [Header("Task-specific Properties")]
