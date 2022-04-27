@@ -50,12 +50,6 @@ public class LM_GoTo : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
-        if (skip)
-        {
-            log.log("INFO    skip task    " + name, 1);
-            return;
-        }
-
         if (!manager.usingVR) hapticFeedback = HapticFeedbackOptions.none;
 
         them = avatar.GetComponent<LM_PlayerController>().collisionObject;
@@ -88,6 +82,12 @@ public class LM_GoTo : ExperimentTask
 
     public override bool updateTask()
     {
+        if (skip)
+        {
+            log.log("INFO    skip task    " + name, 1);
+            return true;
+        }
+
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
         {
