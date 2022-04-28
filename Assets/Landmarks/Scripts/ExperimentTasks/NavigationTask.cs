@@ -244,33 +244,7 @@ public class NavigationTask : ExperimentTask
             return true;
         }
 
-        // if we're letting them say when they think they've arrived, check that first
-        if (Time.time - startTime > allowContinueAfter)
-        {
-            if (vrEnabled)
-            {
-                if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
-                {
-                    Debug.Log("Participant ended the trial");
-                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
-                    hud.hudPanel.SetActive(false);
-                    hud.setMessage("");
-                    return true;
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Debug.Log("Participant ended the trial");
-                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
-                hud.hudPanel.SetActive(false);
-                hud.setMessage("");
-                return true;
-            }
-        }
-
         if (score > 0) penaltyTimer = penaltyTimer + (Time.deltaTime * 1000);
-
 
 		if (penaltyTimer >= penaltyRate)
 		{
@@ -281,8 +255,6 @@ public class NavigationTask : ExperimentTask
 				hud.setScore(score);
 			}
 		}
-
-        Debug.Log("Current trial: " + current.name);
 
         //show target after set time
         if (hideTargetOnStart != HideTargetOnStart.Off && Time.time - startTime > showTargetAfterSeconds)
@@ -361,6 +333,30 @@ public class NavigationTask : ExperimentTask
 		{
 			return KillCurrent ();
 		}
+
+        // if we're letting them say when they think they've arrived
+        if (Time.time - startTime > allowContinueAfter)
+        {
+            if (vrEnabled)
+            {
+                if (vrInput.TriggerButton.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    Debug.Log("Participant ended the trial");
+                    log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                    hud.hudPanel.SetActive(false);
+                    hud.setMessage("");
+                    return true;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Debug.Log("Participant ended the trial");
+                log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
+                hud.hudPanel.SetActive(false);
+                hud.setMessage("");
+                return true;
+            }
+        }
 
 		return false;
 	}
@@ -478,13 +474,10 @@ public class NavigationTask : ExperimentTask
                     trialLog.AddData(nexus.name + "_initialChoice", nexus.initialChoice);
                     trialLog.AddData(nexus.name + "_finalChoice", nexus.currentChoice);
                     trialLog.AddData(nexus.name + "_totalChoices", nexus.totalChoices.ToString());
+
+                    nexus.ResetDecisionPoint();
                 }
             }
-        }
-
-        foreach (var pt in decisionPoints)
-        {
-            pt.ResetDecisionPoint();
         }
 
         // If we created a dummy Objectlist for exploration, destroy it
