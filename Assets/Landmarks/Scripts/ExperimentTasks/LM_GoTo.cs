@@ -98,6 +98,11 @@ public class LM_GoTo : ExperimentTask
                 hud.setMessage(readyMessage);
                 hud.hudPanel.SetActive(true);
                 hud.ForceShowMessage();
+
+                if (manager.userInterface == UserInterface.ViveRoomspace)
+                {
+                    SteamVR_Actions.default_Haptic.Execute(0.5f, 1f, 65f, 1f, SteamVR_Input_Sources.Any);
+                }
             }
 
             if (vrEnabled)
