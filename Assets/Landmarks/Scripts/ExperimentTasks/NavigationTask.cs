@@ -43,6 +43,7 @@ public class NavigationTask : ExperimentTask
     public HideTargetOnStart hideTargetOnStart;
     [Tooltip("negative values denote time before targets are hidden; 0 is always on; set very high for no targets")]
     public float showTargetAfterSeconds;
+    public TextMeshProUGUI overlayTargetObject;
 
     // Manipulate the rendering of the non-target environment objects (default: always show)
     public bool hideNonTargets;
@@ -108,6 +109,9 @@ public class NavigationTask : ExperimentTask
 		hud.showScore = showScoring;
 
         current = destinations.currentObject();
+
+        // update the trial count on the overlay
+        if (overlayTargetObject != null) overlayTargetObject.text = string.Format(">>> {0}", current.name);
 
         // Debug.Log ("Find " + current.name);
 
@@ -345,6 +349,9 @@ public class NavigationTask : ExperimentTask
                     log.log("INPUT_EVENT    Player Arrived at Destination    1", 1);
                     hud.hudPanel.SetActive(false);
                     hud.setMessage("");
+
+                    SteamVR_Actions.default_Haptic.Execute(0.5f, 1f, 65f, 1f, SteamVR_Input_Sources.Any);
+
                     return true;
                 }
             }

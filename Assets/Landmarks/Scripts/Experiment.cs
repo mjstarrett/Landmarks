@@ -96,10 +96,6 @@ public class Experiment : MonoBehaviour
     protected AvatarController avatarController;
     protected HUD hud;
 
-    // For counting scenes and showing experimenter
-    public TextMeshProUGUI overlaySceneCount; 
-
-
     // -------------------------------------------------------------------------
     // -------------------------- Builtin Methods ------------------------------
     // -------------------------------------------------------------------------
@@ -313,8 +309,6 @@ public class Experiment : MonoBehaviour
         {
             scaledEnvironment = null;
         }
-
-        if (overlaySceneCount != null) overlaySceneCount.text = string.Format("{0} / {1}", config.levelNumber + 1 - config.practiceTrialCount, config.levelNames.Count - config.practiceTrialCount);
     }
 
     async void Update()
