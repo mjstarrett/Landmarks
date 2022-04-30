@@ -20,7 +20,7 @@ public enum HapticFeedbackOptions {
 public class LM_GoTo : ExperimentTask
 {
     [Header("Task-specific Properties")]
-    public GameObject destination;
+    public GameObject arriveAt;
     public bool hideEnvironment;
     public float orientThreshold = 15.0f;
     [TextArea] public string readyMessage;
@@ -31,9 +31,7 @@ public class LM_GoTo : ExperimentTask
     private Collider them;
 
     private new void Awake()
-    {
-        base.Awake();
-        
+    {   
         GetComponent<Collider>().enabled = false;
     }
 
@@ -57,10 +55,10 @@ public class LM_GoTo : ExperimentTask
 
         GetComponent<Collider>().enabled = true;
 
-        if (destination.GetComponentInChildren<ParticleSystem>() != null) effect = destination.GetComponentInChildren<ParticleSystem>();
-        destination.SetActive(true); // show the destination if it's hidden
+        if (arriveAt.GetComponentInChildren<ParticleSystem>() != null) effect = arriveAt.GetComponentInChildren<ParticleSystem>();
+        arriveAt.SetActive(true); // show the destination if it's hidden
         if (effect != null) effect.Play(true); // start particles if we have them
-        hud.ReCenter(destination.transform); // move the HUD to the start location
+        hud.ReCenter(arriveAt.transform); // move the HUD to the start location
         hud.SecondsToShow = 0; // don't how it unless they are at the start location
         hud.hudPanel.SetActive(false);
         
@@ -82,6 +80,7 @@ public class LM_GoTo : ExperimentTask
 
     public override bool updateTask()
     {
+        base.updateTask();
         if (skip)
         {
             log.log("INFO    skip task    " + name, 1);
@@ -89,12 +88,10 @@ public class LM_GoTo : ExperimentTask
         }
 
         // Is the player at and aligned with the destination?
-        if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, destination.transform.eulerAngles.y)) < orientThreshold)
+        if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, arriveAt.transform.eulerAngles.y)) < orientThreshold)
         {
-            Debug.Log("A HUD should now be active and visible.");
             if (hud.GetMessage() == "")
             {
-                Debug.Log(readyMessage);
                 hud.setMessage(readyMessage);
                 hud.hudPanel.SetActive(true);
                 hud.ForceShowMessage();
@@ -152,7 +149,7 @@ public class LM_GoTo : ExperimentTask
 
         // WRITE TASK EXIT CODE HERE
         GetComponent<Collider>().enabled = false;
-        destination.SetActive(false);
+        arriveAt.SetActive(false);
         if (hideEnvironment) manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
         hud.hudPanel.SetActive(true);
         hud.setMessage("");
@@ -164,7 +161,6 @@ public class LM_GoTo : ExperimentTask
         if (collision.gameObject.name ==
             GameObject.FindWithTag("Player").GetComponentInChildren<LM_PlayerController>().collisionObject.gameObject.name)
         {
-            Debug.Log("HEEEEEEEEERRRREEEEEEE");
             //Debug.Log(collision.name + "is here");
             if (effect != null) effect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             atDestination = true;

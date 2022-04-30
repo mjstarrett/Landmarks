@@ -19,7 +19,7 @@ public class NavigationTask : ExperimentTask
 {
     [Header("Task-specific Properties")]
     public ObjectList destinations;
-	private GameObject current;
+	public GameObject currentTarget;
 
     public TextAsset NavigationInstruction;
 
@@ -68,7 +68,7 @@ public class NavigationTask : ExperimentTask
 
     // 4/27/2022 Added for Loop Closure Task
     public float allowContinueAfter = Mathf.Infinity; // flag to let participants press a button to continue without necessarily arriving
-    private float ccwTravel = 0; // relative to the origin (0,0,0) in world space
+    private float clockwiseTravel = 0; // relative to the origin (0,0,0) in world space
 
     public override void startTask ()
 	{
@@ -108,23 +108,23 @@ public class NavigationTask : ExperimentTask
         hud.showEverything();
 		hud.showScore = showScoring;
 
-        current = destinations.currentObject();
+        currentTarget = destinations.currentObject();
 
         // update the trial count on the overlay
-        if (overlayTargetObject != null) overlayTargetObject.text = string.Format(">>> {0}", current.name);
+        if (overlayTargetObject != null & currentTarget != null) overlayTargetObject.text = string.Format("{0}", currentTarget.name);
 
         // Debug.Log ("Find " + current.name);
 
         // if it's a target, open the door to show it's active
-        if (current.GetComponentInChildren<LM_TargetStore>() != null)
+        if (currentTarget.GetComponentInChildren<LM_TargetStore>() != null)
         {
-            current.GetComponentInChildren<LM_TargetStore>().OpenDoor();
+            currentTarget.GetComponentInChildren<LM_TargetStore>().OpenDoor();
         }
 
 		if (NavigationInstruction)
 		{
 			string msg = NavigationInstruction.text;
-			if (destinations != null) msg = string.Format(msg, current.name);
+			if (destinations != null) msg = string.Format(msg, currentTarget.name);
 			hud.setMessage(msg);
    		}
 		else
@@ -138,7 +138,7 @@ public class NavigationTask : ExperimentTask
         {
             foreach (GameObject item in destinations.objects)
             {
-                if (item.name != current.name)
+                if (item.name != currentTarget.name)
                 {
                     item.SetActive(false);
                 }
@@ -152,34 +152,34 @@ public class NavigationTask : ExperimentTask
         {
             if (hideTargetOnStart == HideTargetOnStart.SetInactive)
             {
-                current.GetComponent<Collider>().enabled = false;
+                currentTarget.GetComponent<Collider>().enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetInvisible)
             {
-                current.GetComponent<MeshRenderer>().enabled = false;
+                currentTarget.GetComponent<MeshRenderer>().enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
             {
                 //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
-                current.GetComponent<Collider>().enabled = false;
-                current.GetComponent<MeshRenderer>().enabled = false;
-                var halo = (Behaviour) current.GetComponent("Halo");
+                currentTarget.GetComponent<Collider>().enabled = false;
+                currentTarget.GetComponent<MeshRenderer>().enabled = false;
+                var halo = (Behaviour) currentTarget.GetComponent("Halo");
                 if(halo != null) halo.enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
-                current.GetComponent<Collider>().enabled = false;
-                current.GetComponent<MeshRenderer>().enabled = false;
+                currentTarget.GetComponent<Collider>().enabled = false;
+                currentTarget.GetComponent<MeshRenderer>().enabled = false;
                 
             }
             
         }
         else
         {
-            current.SetActive(true); // make sure the target is visible unless the bool to hide was checked
+            currentTarget.SetActive(true); // make sure the target is visible unless the bool to hide was checked
             try
             {
-                current.GetComponent<MeshRenderer>().enabled = true;
+                currentTarget.GetComponent<MeshRenderer>().enabled = true;
             }
             catch (System.Exception ex)
             {
@@ -195,7 +195,7 @@ public class NavigationTask : ExperimentTask
 
         // Get the avatar start location (distance = 0)
         playerDistance = 0.0f;
-        ccwTravel = 0.0f;
+        clockwiseTravel = 0.0f;
         playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         if (isScaled)
         {
@@ -206,9 +206,9 @@ public class NavigationTask : ExperimentTask
         // Calculate optimal distance to travel (straight line)
         if (isScaled)
         {
-            optimalDistance = Vector3.Distance(scaledAvatar.transform.position, current.transform.position);
+            optimalDistance = Vector3.Distance(scaledAvatar.transform.position, currentTarget.transform.position);
         }
-        else optimalDistance = Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, current.transform.position);
+        else optimalDistance = Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, currentTarget.transform.position);
 
 
         // Grab our LM_Compass object and move it to the player snapPoint
@@ -267,34 +267,34 @@ public class NavigationTask : ExperimentTask
             switch (hideTargetOnStart)
             {
                 case HideTargetOnStart.SetInactive:
-                    current.GetComponent<Collider>().enabled = true;
+                    currentTarget.GetComponent<Collider>().enabled = true;
                     break;
                 case HideTargetOnStart.SetInvisible:
-                    current.GetComponent<MeshRenderer>().enabled = true;
+                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
                     break;
                 case HideTargetOnStart.DisableCompletely:
                     //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
-                    current.GetComponent<Collider>().enabled = true;
-                    current.GetComponent<MeshRenderer>().enabled = true;
-                    var halo = (Behaviour)current.GetComponent("Halo");
+                    currentTarget.GetComponent<Collider>().enabled = true;
+                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
+                    var halo = (Behaviour)currentTarget.GetComponent("Halo");
                     if (halo != null) halo.enabled = true;
                     break;
                 case HideTargetOnStart.SetProbeTrial:
-                    current.GetComponent<Collider>().enabled = true;
-                    current.GetComponent<MeshRenderer>().enabled = true;
+                    currentTarget.GetComponent<Collider>().enabled = true;
+                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
                     break;
                 default:
                     Debug.Log("No hidden targets identified");
-                    current.SetActive(true);
-                    current.GetComponent<MeshRenderer>().enabled = true;
-                    current.GetComponent<Collider>().enabled = true;
+                    currentTarget.SetActive(true);
+                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
+                    currentTarget.GetComponent<Collider>().enabled = true;
                     break;
             }
         }
 
         // Keep updating the distance traveled and kill task if they reach max
         playerDistance += Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, playerLastPosition);
-        ccwTravel += Vector3Angle2D(playerLastPosition, avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position);
+        clockwiseTravel += Vector3Angle2D(playerLastPosition, avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position);
         playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         
         if (isScaled)
@@ -307,7 +307,7 @@ public class NavigationTask : ExperimentTask
         if (assistCompass != null)
         {
             // Keep the assist compass pointing at the target (even if it isn't visible)
-            var targetDirection = 2 * assistCompass.transform.position - current.transform.position;
+            var targetDirection = 2 * assistCompass.transform.position - currentTarget.transform.position;
             targetDirection = new Vector3(targetDirection.x, assistCompass.pointer.transform.position.y, targetDirection.z);
             assistCompass.pointer.transform.LookAt(targetDirection, Vector3.up);
             // Show assist compass if and when it is needed
@@ -399,22 +399,18 @@ public class NavigationTask : ExperimentTask
 
         // close the door if the target was a store and it is open
         // if it's a target, open the door to show it's active
-        if (current.GetComponentInChildren<LM_TargetStore>() != null)
+        if (currentTarget.GetComponentInChildren<LM_TargetStore>() != null)
         {
-            current.GetComponentInChildren<LM_TargetStore>().CloseDoor();
+            currentTarget.GetComponentInChildren<LM_TargetStore>().CloseDoor();
         }
 
         // re-enable everything on the gameobject we just finished finding
-        current.GetComponent<MeshRenderer>().enabled = true;
-        current.GetComponent<Collider>().enabled = true;
-        var halo = (Behaviour) current.GetComponent("Halo");
+        currentTarget.GetComponent<MeshRenderer>().enabled = true;
+        currentTarget.GetComponent<Collider>().enabled = true;
+        var halo = (Behaviour) currentTarget.GetComponent("Halo");
         if(halo != null) halo.enabled = true;
 
-        if (canIncrementLists)
-		{
-			destinations.incrementCurrent();
-		}
-        current = destinations.currentObject();
+        
 
         hud.setMessage("");
 		hud.showScore = false;
@@ -457,20 +453,20 @@ public class NavigationTask : ExperimentTask
         }
         
 
-        log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask + "\t" + this.name + "\n" +
+        log.log("LM_OUTPUT\tNavigationTask.cs\t" + masterTask.name + "\t" + this.name + "\n" +
         	"Task\tBlock\tTrial\tTargetName\tOptimalPath\tActualPath\tExcessPath\tRouteDuration\n" +
-        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + current.name + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + excessPath + "\t" + navTime
+        	masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + currentTarget.name + "\t" + optimalDistance + "\t"+ perfDistance + "\t" + excessPath + "\t" + navTime
             , 1);
 
 
         // More concise LM_TrialLog logging
         if (trialLog.active)
         {
-            trialLog.AddData(transform.name + "_target", current.name);
+            trialLog.AddData(transform.name + "_target", currentTarget.name);
             trialLog.AddData(transform.name + "_actualPath", perfDistance.ToString());
             trialLog.AddData(transform.name + "_optimalPath", optimalDistance.ToString());
             trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
-            trialLog.AddData(transform.name + "_ccwTravel", ccwTravel.ToString());
+            trialLog.AddData(transform.name + "_clockwiseTravel", clockwiseTravel.ToString());
             trialLog.AddData(transform.name + "_duration", navTime.ToString());
 
             // Record any decisions made along the way
@@ -487,13 +483,22 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+        // Hide the overlay by setting back to empty string
+        if (overlayTargetObject != null) overlayTargetObject.text = "";
+
         // If we created a dummy Objectlist for exploration, destroy it
         Destroy(GetComponent<ObjectList>());
+
+        if (canIncrementLists)
+		{
+			destinations.incrementCurrent();
+		}
+        currentTarget = destinations.currentObject();
     }
 
 	public override bool OnControllerColliderHit(GameObject hit)
 	{
-		if (hit == current | hit.transform.parent.gameObject == current)
+		if (hit == currentTarget | hit.transform.parent.gameObject == currentTarget)
 		{
 			if (showScoring)
 			{

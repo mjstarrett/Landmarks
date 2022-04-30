@@ -30,8 +30,9 @@ public class ObjectList : ExperimentTask {
 	public List<GameObject> objects;
 	public EndListMode EndListBehavior; 
 	public bool shuffle;
-	// public GameObject order; // DEPRICATED
-    	
+    // public GameObject order; // DEPRICATED
+
+    
 	public override void startTask () {
         //ViewObject.startObjects.current = 0;
         //current = 0;
@@ -125,12 +126,8 @@ public class ObjectList : ExperimentTask {
 		}
 	}
 	
-	public new void incrementCurrent() {
-		if (current < objects.Count)
-		{
-			Debug.Log(objects[current].name);
-		}
-
+	public new void incrementCurrent() 
+	{
 		current++;
 		
 		if (current >= objects.Count && EndListBehavior == EndListMode.Loop) {
