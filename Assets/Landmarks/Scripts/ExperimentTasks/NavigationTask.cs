@@ -68,6 +68,7 @@ public class NavigationTask : ExperimentTask
 
     // 4/27/2022 Added for Loop Closure Task
     public float allowContinueAfter = Mathf.Infinity; // flag to let participants press a button to continue without necessarily arriving
+    public bool haptics;
     private float clockwiseTravel = 0; // relative to the origin (0,0,0) in world space
 
     public override void startTask ()
@@ -236,6 +237,8 @@ public class NavigationTask : ExperimentTask
                 pt.ResetDecisionPoint();
             }
         }
+
+        if (vrEnabled & haptics) SteamVR_Actions.default_Haptic.Execute(0f, 2.0f, 65f, 1f, SteamVR_Input_Sources.Any);
     }
 
     public override bool updateTask ()
@@ -350,7 +353,7 @@ public class NavigationTask : ExperimentTask
                     hud.hudPanel.SetActive(false);
                     hud.setMessage("");
 
-                    SteamVR_Actions.default_Haptic.Execute(0.5f, 1f, 65f, 1f, SteamVR_Input_Sources.Any);
+                    if (haptics) SteamVR_Actions.default_Haptic.Execute(0f, 2.0f, 65f, 1f, SteamVR_Input_Sources.Any);
 
                     return true;
                 }
