@@ -10,13 +10,6 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public enum HapticFeedbackOptions {
-    none,
-    sameHand,
-    oppositeHand,
-    bothHands
-}
-
 public class LM_GoTo : ExperimentTask
 {
     [Header("Task-specific Properties")]
@@ -24,7 +17,6 @@ public class LM_GoTo : ExperimentTask
     public bool hideEnvironment;
     public float orientThreshold = 15.0f;
     [TextArea] public string readyMessage;
-    public HapticFeedbackOptions hapticFeedback = HapticFeedbackOptions.none;
 
     private ParticleSystem effect;
     private bool atDestination;
@@ -47,8 +39,6 @@ public class LM_GoTo : ExperimentTask
     {
         if (!manager) Start();
         base.startTask();
-
-        if (!manager.usingVR) hapticFeedback = HapticFeedbackOptions.none;
 
         them = avatar.GetComponent<LM_PlayerController>().collisionObject;
         Debug.Log(them.name);
@@ -95,11 +85,6 @@ public class LM_GoTo : ExperimentTask
                 hud.setMessage(readyMessage);
                 hud.hudPanel.SetActive(true);
                 hud.ForceShowMessage();
-
-                if (manager.userInterface == UserInterface.ViveRoomspace)
-                {
-                    SteamVR_Actions.default_Haptic.Execute(0.5f, 1f, 65f, 1f, SteamVR_Input_Sources.Any);
-                }
             }
 
             if (vrEnabled)
