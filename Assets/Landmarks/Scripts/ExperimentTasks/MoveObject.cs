@@ -80,8 +80,11 @@ public class MoveObject : ExperimentTask {
 		base.endTask();
 		
 		if ( destinations ) {
-			if (canIncrementLists) destinations.incrementCurrent();
-			destination = destinations.currentObject();
+			if (canIncrementLists)
+			{
+				destinations.incrementCurrent();
+				destination = destinations.currentObject();
+			}
 		}
 	}
 }
