@@ -70,6 +70,9 @@ public class NavigationTask : ExperimentTask
     public float allowContinueAfter = Mathf.Infinity; // flag to let participants press a button to continue without necessarily arriving
     public bool haptics;
     private float clockwiseTravel = 0; // relative to the origin (0,0,0) in world space
+    public bool logStartEnd;
+    private Vector3 startXYZ;
+    private Vector3 endXYZ;
 
     public override void startTask ()
 	{
@@ -238,6 +241,8 @@ public class NavigationTask : ExperimentTask
             }
         }
 
+        if (logStartEnd) startXYZ = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
+            
         if (vrEnabled & haptics) SteamVR_Actions.default_Haptic.Execute(0f, 2.0f, 65f, 1f, SteamVR_Input_Sources.Any);
     }
 
@@ -396,6 +401,8 @@ public class NavigationTask : ExperimentTask
         if (printRemainingTo != null) printRemainingTo.text = baseText;
         var navTime = Time.time - startTime;
 
+        if (logStartEnd) endXYZ = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
+
         //avatarController.stop();
         avatarLog.navLog = false;
         if (isScaled) scaledAvatarLog.navLog = false;
@@ -471,6 +478,13 @@ public class NavigationTask : ExperimentTask
             trialLog.AddData(transform.name + "_excessPath", excessPath.ToString());
             trialLog.AddData(transform.name + "_clockwiseTravel", clockwiseTravel.ToString());
             trialLog.AddData(transform.name + "_duration", navTime.ToString());
+
+            if (logStartEnd)
+            {
+
+                trialLog.AddData(transform.name + "_startXYZ", startXYZ.ToString());
+                trialLog.AddData(transform.name + "_endXYZ", endXYZ.ToString());
+            }
 
             // Record any decisions made along the way
             if (decisionPoints != null)

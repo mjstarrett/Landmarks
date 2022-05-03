@@ -125,10 +125,10 @@ MonoBehaviour:
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
-  destination: {fileID: 683206041049086730}
+  arriveAt: {fileID: 0}
+  hideEnvironment: 0
   orientThreshold: 15
   readyMessage: Press the trigger button to begin.
-  hapticFeedback: 0
 --- !u!136 &241831233
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3787,6 +3787,7 @@ MonoBehaviour:
   catchTrials: 
   catchFlag: 0
   trialLogging: 0
+  overlayRepeatCount: {fileID: 0}
 --- !u!1 &6282820248141003754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,6 +3866,7 @@ MonoBehaviour:
   catchTrials: 
   catchFlag: 0
   trialLogging: 0
+  overlayRepeatCount: {fileID: 0}
 --- !u!1 &6282823826604966487
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,6 +4095,7 @@ MonoBehaviour:
   catchTrials: 
   catchFlag: 0
   trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
 --- !u!1 &6283521769417427785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,6 +4176,7 @@ MonoBehaviour:
   catchTrials: 
   catchFlag: 0
   trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
 --- !u!1 &6283590481001072370
 GameObject:
   m_ObjectHideFlags: 0
@@ -4239,7 +4243,6 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 0
   shuffle: 1
-  order: {fileID: 0}
 --- !u!1 &6283590482339810659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,7 +4309,6 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 0
   shuffle: 1
-  order: {fileID: 0}
 --- !u!1 &6284186821789686182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,6 +5147,7 @@ MonoBehaviour:
   triggerOnStart: 0
   triggerOnEnd: 0
   destinations: {fileID: 8475965485144649785}
+  currentTarget: {fileID: 0}
   NavigationInstruction: {fileID: 0}
   distanceAllotted: Infinity
   timeAllotted: 50
@@ -5154,11 +5157,14 @@ MonoBehaviour:
   showScoring: 0
   hideTargetOnStart: 3
   showTargetAfterSeconds: 0
+  overlayTargetObject: {fileID: 0}
   hideNonTargets: 0
   assistCompass: {fileID: 5083415991351217654}
   SecondsUntilAssist: -1
   compassPosOffset: {x: 0, y: 0, z: -2.8}
   compassRotOffset: {x: 0, y: 0, z: 0}
+  allowContinueAfter: Infinity
+  haptics: 0
 --- !u!1 &8475901025517673097
 GameObject:
   m_ObjectHideFlags: 0
@@ -5221,6 +5227,7 @@ MonoBehaviour:
   triggerOnStart: 0
   triggerOnEnd: 0
   destinations: {fileID: 8475965483785337768}
+  currentTarget: {fileID: 0}
   NavigationInstruction: {fileID: 0}
   distanceAllotted: Infinity
   timeAllotted: Infinity
@@ -5230,11 +5237,14 @@ MonoBehaviour:
   showScoring: 0
   hideTargetOnStart: 0
   showTargetAfterSeconds: 0
+  overlayTargetObject: {fileID: 0}
   hideNonTargets: 0
   assistCompass: {fileID: 5083415992155768423}
   SecondsUntilAssist: -1
   compassPosOffset: {x: 0, y: 0, z: -2.8}
   compassRotOffset: {x: 0, y: 0, z: 0}
+  allowContinueAfter: Infinity
+  haptics: 0
 --- !u!1001 &580346161057036225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5309,6 +5319,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a559cc6f320e14f4caead252283d51ef, type: 3}
+--- !u!4 &5819831887814882845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 580346161057036225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5083415992155768423 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5658251949329150374, guid: a559cc6f320e14f4caead252283d51ef,
@@ -5321,12 +5337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33cb8885f17f4a0a97d38e164fc1a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5819831887814882845 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 580346161057036225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &580346161910217808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5865,6 +5875,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3654473766300108755, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3668406659836193063, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6192,21 +6207,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eaa84beeb5544ef08a8fa759a1176ce, type: 3}
---- !u!136 &755399729063703573 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 9179946605368722058, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 8439183584766129823}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531865946917242 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465572180033509, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 8439183584766129823}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531866168262112 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465571738618751, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+--- !u!135 &3283382497184907702 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 6381295273405839145, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
@@ -6216,9 +6219,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &3283382497184907702 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 6381295273405839145, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+--- !u!4 &4374531866168262112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5308465571738618751, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 8439183584766129823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4374531865946917242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5308465572180033509, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 8439183584766129823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4374531866179453410 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5308465571741448061, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 8439183584766129823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &755399729063703573 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 9179946605368722058, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
@@ -6231,12 +6252,6 @@ GameObject:
 --- !u!4 &4374531867335583784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5308465570891636407, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 8439183584766129823}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531866179453410 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465571741448061, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
