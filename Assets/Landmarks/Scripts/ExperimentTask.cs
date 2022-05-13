@@ -287,16 +287,10 @@ public class ExperimentTask : MonoBehaviour{
 		/*ViveRoomspaceController and any other controller where the player "body" is not
 		the parent object of the player controller (tagged "Player at runtime") must have
 		the HUD position AND rotation updated.*/
-		if (manager.player.name == "ViveRoomspaceController")
-		{
-			var tmp = FindObjectOfType<CharacterController>().transform;
-			hud.hudRig.transform.localPosition = new Vector3(tmp.localPosition.x, 0f, tmp.localPosition.z);
-			hud.hudRig.transform.localEulerAngles = new Vector3(0f, FindObjectOfType<LM_PlayerController>().cam.transform.localEulerAngles.y, 0f);
-		}
-		else
-		{
-			hud.hudRig.transform.localEulerAngles = avatar.GetComponent<avatarLog>().player.transform.localEulerAngles;
-		}
+			var bod = avatar.GetComponent<LM_PlayerController>().collisionObject.transform;
+			var cam = avatar.GetComponent<LM_PlayerController>().cam.transform;
+			hud.hudRig.transform.localPosition = new Vector3(bod.localPosition.x, 0f, bod.localPosition.z);
+			hud.hudRig.transform.localEulerAngles = new Vector3(0f, cam.localEulerAngles.y, 0f);
 	}
 
 
