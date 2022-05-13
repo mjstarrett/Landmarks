@@ -482,8 +482,11 @@ public class NavigationTask : ExperimentTask
             if (logStartEnd)
             {
 
-                trialLog.AddData(transform.name + "_startXYZ", startXYZ.ToString());
-                trialLog.AddData(transform.name + "_endXYZ", endXYZ.ToString());
+                trialLog.AddData(transform.name + "_startX", startXYZ.x.ToString());
+                trialLog.AddData(transform.name + "_startZ", startXYZ.z.ToString());
+                trialLog.AddData(transform.name + "_endX", endXYZ.x.ToString());
+                trialLog.AddData(transform.name + "_endZ", endXYZ.z.ToString());
+
             }
 
             // Record any decisions made along the way
