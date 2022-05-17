@@ -55,6 +55,7 @@ public class TaskList : ExperimentTask
 
     // Display progress in eperimenter gui
     public TextMeshProUGUI overlayRepeatCount; // ignored if empty
+    public TextMeshProUGUI overlayListItem; // ignored if empty
 
     public override void startTask()
     {
@@ -177,6 +178,7 @@ public class TaskList : ExperimentTask
 
         // update the trial count on the overlay
         if (overlayRepeatCount != null) overlayRepeatCount.text = string.Format("{0}: {1} / {2}", name, repeatCount, repeat);
+        if (overlayListItem != null & overideRepeat != null) overlayListItem.text = string.Format("{0}", overideRepeat.currentObject().name);
 
         currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
