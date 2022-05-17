@@ -29,7 +29,7 @@ public class NavigationTask : ExperimentTask
     [Tooltip("in seconds")]
     public float timeAllotted = Mathf.Infinity;
     [Tooltip("Do we want time or distance remaining to be broadcast somewhere?")]
-    public TextMeshProUGUI printRemainingTo;
+    public TextMeshProUGUI printRemainingTimeTo;
     private string baseText;
 
     // Use a scoring/points system (not currently configured)
@@ -43,7 +43,7 @@ public class NavigationTask : ExperimentTask
     public HideTargetOnStart hideTargetOnStart;
     [Tooltip("negative values denote time before targets are hidden; 0 is always on; set very high for no targets")]
     public float showTargetAfterSeconds;
-    public TextMeshProUGUI overlayTargetObject;
+    //public TextMeshProUGUI overlayTargetObject;
 
     // Manipulate the rendering of the non-target environment objects (default: always show)
     public bool hideNonTargets;
@@ -115,7 +115,7 @@ public class NavigationTask : ExperimentTask
         currentTarget = destinations.currentObject();
 
         // update the trial count on the overlay
-        if (overlayTargetObject != null & currentTarget != null) overlayTargetObject.text = string.Format("{0}", currentTarget.name);
+        //if (overlayTargetObject != null & currentTarget != null) overlayTargetObject.text = string.Format("{0}", currentTarget.name);
 
         // Debug.Log ("Find " + current.name);
 
@@ -192,7 +192,7 @@ public class NavigationTask : ExperimentTask
         }
 
         // save the original string so we can reformat each frame
-        if (printRemainingTo != null) baseText = printRemainingTo.text;
+        if (printRemainingTimeTo != null) baseText = printRemainingTimeTo.text;
 
         // startTime = Current time in seconds
         startTime = Time.time;
@@ -329,9 +329,9 @@ public class NavigationTask : ExperimentTask
         float distanceRemaining = distanceAllotted - playerDistance;
         float timeRemaining = timeAllotted - (Time.time - startTime);
         // If we have a place to output ongoing trial info (time/dist remaining), use it
-        if (printRemainingTo != null) 
+        if (printRemainingTimeTo != null) 
         {
-            printRemainingTo.text = string.Format(baseText, Mathf.Round(distanceRemaining), Mathf.Round(timeRemaining));
+            printRemainingTimeTo.text = string.Format(baseText, Mathf.Round(distanceRemaining), Mathf.Round(timeRemaining));
         }
 
         // End the trial if they reach the max distance allotted
@@ -398,7 +398,7 @@ public class NavigationTask : ExperimentTask
 	public override void TASK_END()
 	{
 		base.endTask();
-        if (printRemainingTo != null) printRemainingTo.text = baseText;
+        if (printRemainingTimeTo != null) printRemainingTimeTo.text = baseText;
         var navTime = Time.time - startTime;
 
         if (logStartEnd) endXYZ = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
@@ -504,7 +504,7 @@ public class NavigationTask : ExperimentTask
         }
 
         // Hide the overlay by setting back to empty string
-        if (overlayTargetObject != null) overlayTargetObject.text = "";
+        //if (overlayTargetObject != null) overlayTargetObject.text = "";
 
         // If we created a dummy Objectlist for exploration, destroy it
         Destroy(GetComponent<ObjectList>());
