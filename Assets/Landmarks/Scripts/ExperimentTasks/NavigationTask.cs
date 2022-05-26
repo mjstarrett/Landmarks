@@ -518,7 +518,8 @@ public class NavigationTask : ExperimentTask
 
 	public override bool OnControllerColliderHit(GameObject hit)
 	{
-		if (hit == currentTarget | hit.transform.parent.gameObject == currentTarget)
+		if ((hit == currentTarget | hit.transform.parent.gameObject == currentTarget) & 
+            hideTargetOnStart != HideTargetOnStart.DisableCompletely & hideTargetOnStart != HideTargetOnStart.SetInactive)
 		{
 			if (showScoring)
 			{

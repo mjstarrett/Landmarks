@@ -743,19 +743,21 @@ public class Experiment : MonoBehaviour
         // If there is another level, load it
         if (config.levelNumber < config.levelNames.Count)
         {
-            // // Load the next Scene
-            // if (usingVR)
-            // {
-            //     // Use steam functions to avoid issues w/ framerate drop
-            //     SteamVR_LoadLevel.Begin(config.levelNames[config.levelNumber]);
-            //     Debug.Log("Loading new VR scene");
-            // }
-            // else
-            // {
+            // Load the next Scene
+            if (usingVR)
+            {
+                // Use steam functions to avoid issues w/ framerate drop
+
+                SteamVR_LoadLevel.Begin(config.levelNames[config.levelNumber]);
+                Destroy(transform.parent.gameObject);
+                Debug.Log("Loading new VR scene");
+            }
+            else
+            {
                 SceneManager.LoadSceneAsync(config.levelNames[config.levelNumber]); 
                 Destroy(transform.parent.gameObject);
                 // otherwise, just load the level like usual
-            // }
+            }
         }
         // Otherwise, close down; we're done
         else
