@@ -25,7 +25,7 @@ using TMPro;
 public class TaskList : ExperimentTask
 {
     [Header("Task-specific Properties")]
-
+    
     public string[] skipConditions;
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
     public GameObject[] objectsList;
@@ -80,12 +80,6 @@ public class TaskList : ExperimentTask
                 skip = true;
             }
         }
-        
-        //// check if the current condition is one this task is skipped on
-        //if (Array.IndexOf(skipConditions, manager.config.conditions[manager.config.levelNumber]) != -1)
-        //{
-        //    skip = true;
-        //}
 
         if (overideRepeat)
         {
@@ -154,6 +148,23 @@ public class TaskList : ExperimentTask
         //----------------------------------------------------------------------
         // Set up the trial log (if enabled)
         //----------------------------------------------------------------------
+        
+        if (CompareTag("Task"))
+        {
+            // Turn on trial logging for the trial loop within this task
+            TaskList trialLoop = null;
+            foreach (Transform child in transform)
+            {
+                if (child.CompareTag("_trials_"))
+                {
+                    trialLoop = child.GetComponent<TaskList>();
+                }
+            }
+            // If there isn't a trial loop, use this
+            if (trialLoop == null) trialLoop = GetComponent<TaskList>();
+
+            trialLoop.trialLogging = true;
+        }
 
         if (trialLogging)
         {
@@ -192,9 +203,12 @@ public class TaskList : ExperimentTask
     {
         if (skip) return true;
 
+        // Skip initialization tasks on repeated blocks
+        if (CompareTag("_init_") && repeatCount > 1) return true;
+
         if (currentTask.updateTask())
         {
-            //cut
+            // cut
             if (pausedTasks)
             {
                 //currentTask.endTask();
