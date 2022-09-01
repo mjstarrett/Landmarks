@@ -50,12 +50,10 @@ public class TaskList : ExperimentTask
     [HideInInspector]
     public bool catchFlag = false;
 
-    // LOG DATA TRIAL-BY-TRIAL
-    public bool trialLogging;
-
     // Display progress in eperimenter gui
     public TextMeshProUGUI overlayRepeatCount; // ignored if empty
     public TextMeshProUGUI overlayListItem; // ignored if empty
+
 
     public override void startTask()
     {
@@ -145,38 +143,6 @@ public class TaskList : ExperimentTask
             }
         }
 
-        //----------------------------------------------------------------------
-        // Set up the trial log (if enabled)
-        //----------------------------------------------------------------------
-        
-        if (CompareTag("Task"))
-        {
-            // Turn on trial logging for the trial loop within this task
-            TaskList trialLoop = null;
-            foreach (Transform child in transform)
-            {
-                if (child.CompareTag("_trials_"))
-                {
-                    trialLoop = child.GetComponent<TaskList>();
-                }
-            }
-            // If there isn't a trial loop, use this
-            if (trialLoop == null) trialLoop = GetComponent<TaskList>();
-
-            trialLoop.trialLogging = true;
-
-            new LM_TrialLog(manager.dataPath + name);
-        }
-
-        //if (trialLogging)
-        //{
-        //    trialLog.Reset();
-        //    trialLog.active = true;
-        //    NewTrialLog();
-
-        //}
-        //else trialLog.active = false;
-
         // Hide the targets for the duration of this tasklist
         if (hideTargetsDuringTask)
         {
@@ -238,9 +204,12 @@ public class TaskList : ExperimentTask
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
-            if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
-            if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
 
+            if (taskLog != null)
+            {
+                taskLog.LogTrial();
+                log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+            }
 
             // Clean up at the end in case this object is repeated in a nest
             currentTaskIndex = 0;
@@ -262,14 +231,17 @@ public class TaskList : ExperimentTask
             if (currentTaskIndex >= tasks.Length)
             {
 
-                if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
-                if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
+                if (taskLog)
+                {
+                    //LM_TrialLog.instance.LogTrial();
+                    log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+                }
 
                 repeatCount++; // increment the repeat count (i.e., update block/trial/repeat number)
                 currentTaskIndex = 0; // reset the task index so the next task that starts is the first in the list
                 startNewRepeat();
 
-                if (trialLogging) NewTrialLog();
+                if (taskLog) NewTrialLog();
             }
 
             // Start the next task in the list
@@ -314,33 +286,21 @@ public class TaskList : ExperimentTask
 
     public void NewTrialLog()
     {
-        // recursively climb the hierarchy until we find an object tagged as "Task"
-        var tmp = transform;
-        while (!tmp.CompareTag("Task"))
-        {
-            tmp = tmp.parent;
-
-            if (tmp == null)
-            {
-                tmp = transform;
-                return;
-            }
-        }
-        Transform lmBaseTask = tmp;
+        
 
         // Really basic, redundant logging
-        trialLog.AddData("id", manager.config.subject);
-        trialLog.AddData("condition", manager.config.condition);
-        trialLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
-        trialLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
+        taskLog.AddData("id", manager.config.subject);
+        taskLog.AddData("condition", manager.config.condition);
+        taskLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
+        taskLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
 
         // Record our base task (what is the name of the task we have trials of)
-        trialLog.AddData("task", lmBaseTask.name);
+        //trialLog.AddData("task", lmBaseTask.name);
 
         // get the parent of the base task (the base task is the trial, this is the block)
-        trialLog.AddData("block", lmBaseTask.parent.GetComponent<TaskList>().repeatCount.ToString());
+        //trialLog.AddData("block", lmBaseTask.parent.GetComponent<TaskList>().repeatCount.ToString());
         // The trial comes from this object
-        trialLog.AddData("trial", repeatCount.ToString());
+        taskLog.AddData("trial", repeatCount.ToString());
         //trialLog.AddData("catchTrial", catchFlag.ToString());
     }
 
@@ -354,7 +314,7 @@ public class TaskList : ExperimentTask
             overideRepeat.incrementCurrent();
         }
 
-        trialLog.Reset(); // Run the constructor to ensure the log gets cleared completely
+        if (taskLog != null) taskLog.trialData.Clear(); // Run the constructor to ensure the log gets cleared completely
 
         //	if (pausedTasks) {
         //currentTask = pausedTasks;

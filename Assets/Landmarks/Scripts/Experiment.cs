@@ -629,6 +629,8 @@ public class Experiment : MonoBehaviour
         // close the logfile
         dblog.close();
 
+        
+
         // ---------------------------------------------------------------------
         // Generate a clean .csv file for each task in the experiment
         // ---------------------------------------------------------------------
@@ -715,6 +717,12 @@ public class Experiment : MonoBehaviour
             Debug.Log("something went wrong generating CSV data files for individual tasks");
         }
         Debug.Log("Clean log files have been generated for each task");
+
+        // Shut down any LM_TaskLogs
+        foreach (var log in FindObjectsOfType<LM_TaskLog>())
+        {
+            log.Close();
+        }
 
 
         // ---------------------------------------------------------------------
