@@ -164,16 +164,18 @@ public class TaskList : ExperimentTask
             if (trialLoop == null) trialLoop = GetComponent<TaskList>();
 
             trialLoop.trialLogging = true;
+
+            new LM_TrialLog(manager.dataPath + name);
         }
 
-        if (trialLogging)
-        {
-            trialLog.Reset();
-            trialLog.active = true;
-            NewTrialLog();
+        //if (trialLogging)
+        //{
+        //    trialLog.Reset();
+        //    trialLog.active = true;
+        //    NewTrialLog();
 
-        }
-        else trialLog.active = false;
+        //}
+        //else trialLog.active = false;
 
         // Hide the targets for the duration of this tasklist
         if (hideTargetsDuringTask)
