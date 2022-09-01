@@ -73,8 +73,8 @@ public class Experiment : MonoBehaviour
     public dbLog dblog;
     [HideInInspector]
     public long playback_time;
-    [HideInInspector]
-    public LM_TrialLog trialLogger;
+    //[HideInInspector]
+    //public LM_TrialLog trialLogger;
     [HideInInspector]
     public string logfile;
     [HideInInspector]
@@ -108,7 +108,7 @@ public class Experiment : MonoBehaviour
         // Clean up & Initialize Scene
         // ------------------------------
 
-        trialLogger = new LM_TrialLog();
+        // trialLogger = new LM_TrialLog();
 
         // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");

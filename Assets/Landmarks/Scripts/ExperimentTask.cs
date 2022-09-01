@@ -29,7 +29,7 @@ public class ExperimentTask : MonoBehaviour{
 	protected dbLog log;
 	protected Experiment manager;
 	protected avatarLog avatarLog;
-    protected LM_TrialLog trialLog;
+    // protected LM_TrialLog trialLog;
 
     protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
@@ -92,7 +92,7 @@ public class ExperimentTask : MonoBehaviour{
 		overheadCamera = manager.overheadCamera;
         log = manager.dblog;
         vrEnabled = manager.usingVR;
-        trialLog = manager.trialLogger;
+        // trialLog = manager.trialLogger;
 
 		
 

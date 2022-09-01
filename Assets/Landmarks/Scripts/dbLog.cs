@@ -31,10 +31,6 @@ public class dbLog {
         logfile = new StreamWriter(workingFile, append);
 	}
 	
-	public dbLog() {
-		//openNew(filename);
-	}
-	
 	public virtual void close()
 	{
 		logfile.Close();	

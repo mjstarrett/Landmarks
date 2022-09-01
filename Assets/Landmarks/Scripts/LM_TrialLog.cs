@@ -9,12 +9,22 @@
  */
 
 using System.Collections.Generic;
+using System.IO;
+
 
 public class LM_TrialLog
 {
     public bool active;
     public Dictionary<string, string> trialData = new Dictionary<string, string>(); // the lists of header/data pairs
     public string current;
+    public StreamWriter outputFile;
+
+    public LM_TrialLog(string filePath)
+    {
+
+        outputFile = new StreamWriter(filePath + ".csv", append: true);
+        
+    }
 
     // ------------------------
     // Manage trialData values
