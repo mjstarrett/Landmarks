@@ -173,7 +173,7 @@ public class MapStudyTask : ExperimentTask {
 		base.endTask();
 
         // Log data
-        trialLog.AddData(transform.name + "_studyTime", taskDuration.ToString());
+        taskLog.AddData(transform.name + "_studyTime", taskDuration.ToString());
 
 		// Set up hud for other tasks
 		hud.hudPanel.SetActive(true); //hide the text background on HUD

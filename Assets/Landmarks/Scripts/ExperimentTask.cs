@@ -29,7 +29,7 @@ public class ExperimentTask : MonoBehaviour{
 	protected dbLog log;
 	protected Experiment manager;
 	protected avatarLog avatarLog;
-    // protected LM_TrialLog trialLog;
+	
 
     protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
@@ -64,6 +64,7 @@ public class ExperimentTask : MonoBehaviour{
     public static bool killCurrent = false;
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
+    public LM_TaskLog taskLog; // The logging destination assigned to this object
 
     [Header("EEG Settings (if available)")]
     public string triggerLabel; // name prefix for unique triggers
@@ -74,6 +75,18 @@ public class ExperimentTask : MonoBehaviour{
 
     public void Awake () 
 	{
+		// Determine where a give task should log it's data
+		if (CompareTag("Task"))
+        {
+            gameObject.AddComponent<LM_TaskLog>();
+            foreach (var childExpTask in GetComponentsInChildren<ExperimentTask>())
+            {
+				if (childExpTask == this) continue;
+                childExpTask.taskLog = GetComponent<LM_TaskLog>();
+            } 
+        }
+
+		// Look for a BrainAmp EEG manager in the eperiment
         eegManager = FindObjectOfType<BrainAmpManager>();
 	}
 
@@ -92,9 +105,6 @@ public class ExperimentTask : MonoBehaviour{
 		overheadCamera = manager.overheadCamera;
         log = manager.dblog;
         vrEnabled = manager.usingVR;
-        // trialLog = manager.trialLogger;
-
-		
 
         // set up vrInput if we're using VR
         if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
