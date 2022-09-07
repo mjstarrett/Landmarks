@@ -25,7 +25,7 @@ using TMPro;
 public class TaskList : ExperimentTask
 {
     [Header("Task-specific Properties")]
-
+    
     public string[] skipConditions;
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
     public GameObject[] objectsList;
@@ -50,12 +50,10 @@ public class TaskList : ExperimentTask
     [HideInInspector]
     public bool catchFlag = false;
 
-    // LOG DATA TRIAL-BY-TRIAL
-    public bool trialLogging;
-
     // Display progress in eperimenter gui
     public TextMeshProUGUI overlayRepeatCount; // ignored if empty
     public TextMeshProUGUI overlayListItem; // ignored if empty
+
 
     public override void startTask()
     {
@@ -73,6 +71,8 @@ public class TaskList : ExperimentTask
 
         base.startTask();
 
+        if (taskLog != null) InitTaskLog();
+
         foreach (var skipCondition in skipConditions)
         {
             if (manager.config.conditions[manager.config.levelNumber].Contains(skipCondition))
@@ -80,12 +80,6 @@ public class TaskList : ExperimentTask
                 skip = true;
             }
         }
-        
-        //// check if the current condition is one this task is skipped on
-        //if (Array.IndexOf(skipConditions, manager.config.conditions[manager.config.levelNumber]) != -1)
-        //{
-        //    skip = true;
-        //}
 
         if (overideRepeat)
         {
@@ -151,19 +145,6 @@ public class TaskList : ExperimentTask
             }
         }
 
-        //----------------------------------------------------------------------
-        // Set up the trial log (if enabled)
-        //----------------------------------------------------------------------
-
-        if (trialLogging)
-        {
-            trialLog.Reset();
-            trialLog.active = true;
-            NewTrialLog();
-
-        }
-        else trialLog.active = false;
-
         // Hide the targets for the duration of this tasklist
         if (hideTargetsDuringTask)
         {
@@ -194,7 +175,7 @@ public class TaskList : ExperimentTask
 
         if (currentTask.updateTask())
         {
-            //cut
+            // cut
             if (pausedTasks)
             {
                 //currentTask.endTask();
@@ -222,10 +203,6 @@ public class TaskList : ExperimentTask
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
-            if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
-            if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
-
-
             // Clean up at the end in case this object is repeated in a nest
             currentTaskIndex = 0;
             startNewRepeat();
@@ -246,14 +223,18 @@ public class TaskList : ExperimentTask
             if (currentTaskIndex >= tasks.Length)
             {
 
-                if (trialLogging) log.Write(trialLog.FormatCurrent()); // output the formatted data to the log file
-                if (trialLogging) trialLog.Reset(); // clear out any values that aren't protected as defaults
+                if (taskLog != null & taskLog.trialData.Values.Count > 0)
+                {
+                    log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+                    Debug.Log("HERE!!!!!!!!!!!");
+                    taskLog.LogTrial();
+                }
 
                 repeatCount++; // increment the repeat count (i.e., update block/trial/repeat number)
                 currentTaskIndex = 0; // reset the task index so the next task that starts is the first in the list
                 startNewRepeat();
 
-                if (trialLogging) NewTrialLog();
+                if (taskLog != null) InitTaskLog();
             }
 
             // Start the next task in the list
@@ -296,36 +277,23 @@ public class TaskList : ExperimentTask
     }
 
 
-    public void NewTrialLog()
+    public void InitTaskLog()
     {
-        // recursively climb the hierarchy until we find an object tagged as "Task"
-        var tmp = transform;
-        while (!tmp.CompareTag("Task"))
+        if (taskLog != null)
         {
-            tmp = tmp.parent;
-
-            if (tmp == null)
-            {
-                tmp = transform;
-                return;
-            }
+            Debug.Log(taskLog.gameObject.name);
+            Debug.Log(manager.gameObject.name);
+            Debug.Log(manager.config.name);
+            // Really basic, redundant logging
+            taskLog.AddData("id", manager.config.subject);
+            taskLog.AddData("condition", manager.config.condition);
+            taskLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
+            taskLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
+            taskLog.AddData("task", taskLog.gameObject.name);
+            taskLog.AddData("block", taskLog.gameObject.GetComponent<TaskList>().repeatCount.ToString());
+            taskLog.AddData("trial", repeatCount.ToString());
+            //trialLog.AddData("catchTrial", catchFlag.ToString());
         }
-        Transform lmBaseTask = tmp;
-
-        // Really basic, redundant logging
-        trialLog.AddData("id", manager.config.subject);
-        trialLog.AddData("condition", manager.config.condition);
-        trialLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
-        trialLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
-
-        // Record our base task (what is the name of the task we have trials of)
-        trialLog.AddData("task", lmBaseTask.name);
-
-        // get the parent of the base task (the base task is the trial, this is the block)
-        trialLog.AddData("block", lmBaseTask.parent.GetComponent<TaskList>().repeatCount.ToString());
-        // The trial comes from this object
-        trialLog.AddData("trial", repeatCount.ToString());
-        //trialLog.AddData("catchTrial", catchFlag.ToString());
     }
 
 
@@ -338,7 +306,7 @@ public class TaskList : ExperimentTask
             overideRepeat.incrementCurrent();
         }
 
-        trialLog.Reset(); // Run the constructor to ensure the log gets cleared completely
+        if (taskLog != null) taskLog.trialData.Clear(); // Run the constructor to ensure the log gets cleared completely
 
         //	if (pausedTasks) {
         //currentTask = pausedTasks;

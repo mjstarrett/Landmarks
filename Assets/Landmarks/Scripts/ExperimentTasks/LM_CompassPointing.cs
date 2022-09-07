@@ -244,21 +244,18 @@ public class LM_CompassPointing : ExperimentTask
         // --------------------------
         // Log data
         // --------------------------
-
-        if (trialLog.active)
-        {
-            trialLog.AddData(transform.name + "_task", format.ToString());
-            trialLog.AddData(transform.name + "_location", location.name);
-            trialLog.AddData(transform.name + "_orientation", orientation.name);
-            trialLog.AddData(transform.name + "_target", target.name);
-            trialLog.AddData(transform.name + "_compassStartAngle", startAngle.ToString()); // record where we started the compass at
-            trialLog.AddData(transform.name + "_responseCW", response.ToString());
-            trialLog.AddData(transform.name + "_answerCW", answer.ToString());
-            trialLog.AddData(transform.name + "_signedError", signedError.ToString());
-            trialLog.AddData(transform.name + "_absError", absError.ToString());
-            trialLog.AddData(transform.name + "_SOPorientingTime", orientTime.ToString());
-            trialLog.AddData(transform.name + "_responseTime", responseTime.ToString());
-        }
+        taskLog.AddData(transform.name + "_task", format.ToString());
+        taskLog.AddData(transform.name + "_location", location.name);
+        taskLog.AddData(transform.name + "_orientation", orientation.name);
+        taskLog.AddData(transform.name + "_target", target.name);
+        taskLog.AddData(transform.name + "_compassStartAngle", startAngle.ToString()); // record where we started the compass at
+        taskLog.AddData(transform.name + "_responseCW", response.ToString());
+        taskLog.AddData(transform.name + "_answerCW", answer.ToString());
+        taskLog.AddData(transform.name + "_signedError", signedError.ToString());
+        taskLog.AddData(transform.name + "_absError", absError.ToString());
+        taskLog.AddData(transform.name + "_SOPorientingTime", orientTime.ToString());
+        taskLog.AddData(transform.name + "_responseTime", responseTime.ToString());
+        
     }
 
 

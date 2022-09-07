@@ -281,25 +281,20 @@ public class LM_SliderQuestion : ExperimentTask {
         //        , 1);
 
         
+  
+        taskLog.AddData(transform.name + "_minLabel", sliderLabels[0].ToString());
+        taskLog.AddData(transform.name + "_maxLabel", sliderLabels[sliderLabels.Length-1].ToString());
+        taskLog.AddData(transform.name + "_nLabels", sliderLabels.Length.ToString());
 
-        if (trialLog.active)
-        {
-            
-            trialLog.AddData(transform.name + "_minLabel", sliderLabels[0].ToString());
-            trialLog.AddData(transform.name + "_maxLabel", sliderLabels[sliderLabels.Length-1].ToString());
-            trialLog.AddData(transform.name + "_nLabels", sliderLabels.Length.ToString());
-
-            trialLog.AddData(transform.name + "_minValue", slider.minValue.ToString());
-            trialLog.AddData(transform.name + "_maxValue", slider.maxValue.ToString());
+        taskLog.AddData(transform.name + "_minValue", slider.minValue.ToString());
+        taskLog.AddData(transform.name + "_maxValue", slider.maxValue.ToString());
 
             
-            trialLog.AddData(transform.name + "_question", texts.currentText);
+        taskLog.AddData(transform.name + "_question", texts.currentText);
 
-            trialLog.AddData(transform.name + "_rating", slider.value.ToString());
+        taskLog.AddData(transform.name + "_rating", slider.value.ToString());
 
-            trialLog.AddData(transform.name + "_rt", rt.ToString());
-
-        }
+        taskLog.AddData(transform.name + "_rt", rt.ToString());
 
 
         if (canIncrementLists) {
