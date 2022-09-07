@@ -207,8 +207,8 @@ public class TaskList : ExperimentTask
 
             if (taskLog != null)
             {
-                taskLog.LogTrial();
                 log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+                taskLog.LogTrial();
             }
 
             // Clean up at the end in case this object is repeated in a nest
@@ -233,8 +233,8 @@ public class TaskList : ExperimentTask
 
                 if (taskLog)
                 {
-                    //LM_TrialLog.instance.LogTrial();
                     log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+                    taskLog.LogTrial();
                 }
 
                 repeatCount++; // increment the repeat count (i.e., update block/trial/repeat number)
