@@ -14,25 +14,12 @@ using UnityEngine;
 
 public class LM_TaskLog : MonoBehaviour 
 {
-    public Dictionary<string, string> trialData; // the lists of header/data pairs
+    public Dictionary<string, string> trialData = new Dictionary<string, string>(); // the lists of header/data pairs
     public Dictionary<string, string> defaults; // what should get added every time
     public StreamWriter output;
 
     private Experiment exp;
 
-    public LM_TaskLog(Dictionary<string, string> init_entries) 
-    {
-        foreach (var item in init_entries)
-        {
-            defaults.Add(item.Key, item.Value); // save the defaults
-            trialData.Add(item.Key, item.Value); // write the defaults
-        }
-    }
-
-    //private void Start()
-    //{
-        
-    //}
 
     // Manage trialData values
     public virtual void AddData(string key, string value)

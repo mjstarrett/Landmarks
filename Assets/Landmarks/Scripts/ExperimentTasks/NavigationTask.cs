@@ -498,7 +498,6 @@ public class NavigationTask : ExperimentTask
                 nexus.ResetDecisionPoint();
             }
         }
-        taskLog.LogTrial();
         
         // Hide the overlay by setting back to empty string
         //if (overlayTargetObject != null) overlayTargetObject.text = "";

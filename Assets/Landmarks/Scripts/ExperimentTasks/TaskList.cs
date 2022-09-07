@@ -71,6 +71,8 @@ public class TaskList : ExperimentTask
 
         base.startTask();
 
+        if (taskLog != null) InitTaskLog();
+
         foreach (var skipCondition in skipConditions)
         {
             if (manager.config.conditions[manager.config.levelNumber].Contains(skipCondition))
@@ -171,9 +173,6 @@ public class TaskList : ExperimentTask
     {
         if (skip) return true;
 
-        // Skip initialization tasks on repeated blocks
-        if (CompareTag("_init_") && repeatCount > 1) return true;
-
         if (currentTask.updateTask())
         {
             // cut
@@ -204,13 +203,6 @@ public class TaskList : ExperimentTask
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
-
-            if (taskLog != null)
-            {
-                log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
-                taskLog.LogTrial();
-            }
-
             // Clean up at the end in case this object is repeated in a nest
             currentTaskIndex = 0;
             startNewRepeat();
@@ -231,9 +223,10 @@ public class TaskList : ExperimentTask
             if (currentTaskIndex >= tasks.Length)
             {
 
-                if (taskLog)
+                if (taskLog != null & taskLog.trialData.Values.Count > 0)
                 {
                     log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+                    Debug.Log("HERE!!!!!!!!!!!");
                     taskLog.LogTrial();
                 }
 
@@ -241,7 +234,7 @@ public class TaskList : ExperimentTask
                 currentTaskIndex = 0; // reset the task index so the next task that starts is the first in the list
                 startNewRepeat();
 
-                if (taskLog) NewTrialLog();
+                if (taskLog != null) InitTaskLog();
             }
 
             // Start the next task in the list
@@ -284,24 +277,23 @@ public class TaskList : ExperimentTask
     }
 
 
-    public void NewTrialLog()
+    public void InitTaskLog()
     {
-        
-
-        // Really basic, redundant logging
-        taskLog.AddData("id", manager.config.subject);
-        taskLog.AddData("condition", manager.config.condition);
-        taskLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
-        taskLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
-
-        // Record our base task (what is the name of the task we have trials of)
-        //trialLog.AddData("task", lmBaseTask.name);
-
-        // get the parent of the base task (the base task is the trial, this is the block)
-        //trialLog.AddData("block", lmBaseTask.parent.GetComponent<TaskList>().repeatCount.ToString());
-        // The trial comes from this object
-        taskLog.AddData("trial", repeatCount.ToString());
-        //trialLog.AddData("catchTrial", catchFlag.ToString());
+        if (taskLog != null)
+        {
+            Debug.Log(taskLog.gameObject.name);
+            Debug.Log(manager.gameObject.name);
+            Debug.Log(manager.config.name);
+            // Really basic, redundant logging
+            taskLog.AddData("id", manager.config.subject);
+            taskLog.AddData("condition", manager.config.condition);
+            taskLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
+            taskLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
+            taskLog.AddData("task", taskLog.gameObject.name);
+            taskLog.AddData("block", taskLog.gameObject.GetComponent<TaskList>().repeatCount.ToString());
+            taskLog.AddData("trial", repeatCount.ToString());
+            //trialLog.AddData("catchTrial", catchFlag.ToString());
+        }
     }
 
 
