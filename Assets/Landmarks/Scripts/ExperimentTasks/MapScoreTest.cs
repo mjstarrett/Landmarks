@@ -102,10 +102,10 @@ public class MapScoreTest : ExperimentTask {
         log.log("Score: \t" + numberCorrect + "\t/\t" + numberTargets + "\tPercentage: \t" + percentCorrect, 0);
 
         // New Landmarks Logging
-		trialLog.AddData(transform.name + "_correct", numberCorrect.ToString());
-		trialLog.AddData(transform.name + "_possible", numberTargets.ToString());
-		trialLog.AddData(transform.name + "_percentage", percentCorrect.ToString());
-		trialLog.AddData(transform.name + "_criterion", percentCorrectCriterion.ToString());
+		taskLog.AddData(transform.name + "_correct", numberCorrect.ToString());
+		taskLog.AddData(transform.name + "_possible", numberTargets.ToString());
+		taskLog.AddData(transform.name + "_percentage", percentCorrect.ToString());
+		taskLog.AddData(transform.name + "_criterion", percentCorrectCriterion.ToString());
 
 		// ----------------------------------------------------
 		// React to Score based on Performance Criterion

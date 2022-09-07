@@ -73,8 +73,8 @@ public class Experiment : MonoBehaviour
     public dbLog dblog;
     [HideInInspector]
     public long playback_time;
-    [HideInInspector]
-    public LM_TrialLog trialLogger;
+    //[HideInInspector]
+    //public LM_TrialLog trialLogger;
     [HideInInspector]
     public string logfile;
     [HideInInspector]
@@ -108,7 +108,7 @@ public class Experiment : MonoBehaviour
         // Clean up & Initialize Scene
         // ------------------------------
 
-        trialLogger = new LM_TrialLog();
+        // trialLogger = new LM_TrialLog();
 
         // check if we have any old Landmarks instances from LoadScene.cs and handle them
         GameObject oldInstance = GameObject.Find("OldInstance");
@@ -203,7 +203,7 @@ public class Experiment : MonoBehaviour
                     Debug.Log("OVERWRITING EXISTING AZURE-EDITOR DATA");
                     dataPath =
                         Directory.GetCurrentDirectory() + "/" +
-                        "data/tmp/";
+                        "editor-data/";
                     logfile =
                         "test.log";
                 }
@@ -211,10 +211,9 @@ public class Experiment : MonoBehaviour
             // otherwise just save to the project folder for easy access
             else
             {
-                Debug.Log("OVERWRITING EXISTING EDITOR DATA");
                 dataPath =
                     Directory.GetCurrentDirectory() + "/" +
-                    "data/tmp/";
+                    "editor-data/";
                 logfile =
                     "test.log";
             }
@@ -253,7 +252,12 @@ public class Experiment : MonoBehaviour
         {
             Directory.CreateDirectory(dataPath);
         }
-
+        else if (Directory.Exists(dataPath) && Application.isEditor)
+        {
+            Debug.Log("OVERWRITING EXISTING EDITOR DATA");
+            Directory.Delete(dataPath, recursive:true);
+            Directory.CreateDirectory(dataPath);
+        }
 
         if (config.runMode == ConfigRunMode.NEW)
         {
@@ -629,6 +633,8 @@ public class Experiment : MonoBehaviour
         // close the logfile
         dblog.close();
 
+        
+
         // ---------------------------------------------------------------------
         // Generate a clean .csv file for each task in the experiment
         // ---------------------------------------------------------------------
@@ -715,6 +721,12 @@ public class Experiment : MonoBehaviour
             Debug.Log("something went wrong generating CSV data files for individual tasks");
         }
         Debug.Log("Clean log files have been generated for each task");
+
+        // Shut down any LM_TaskLogs
+        foreach (var log in FindObjectsOfType<LM_TaskLog>())
+        {
+            log.output.Close();
+        }
 
 
         // ---------------------------------------------------------------------

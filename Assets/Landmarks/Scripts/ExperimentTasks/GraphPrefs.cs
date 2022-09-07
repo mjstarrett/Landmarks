@@ -46,18 +46,15 @@ public class GraphPrefs : ExperimentTask
         }
 
         // More concise LM_TrialLog logging
-        if (trialLog.active)
-        {
-            trialLog.AddData("totalTurnsLeft", totalTurns_left.ToString());
-            trialLog.AddData("totalTurnsRight", totalTurns_right.ToString());
-            trialLog.AddData("leg1distanceLeft", leg1distance_left.ToString());
-            trialLog.AddData("leg1distanceRight", leg1distance_right.ToString());
-            trialLog.AddData("turn1angleLeft", turn1angle_left.ToString());
-            trialLog.AddData("turn1angleRight", turn1angle_right.ToString());
-            trialLog.AddData("diffTurns", diffTurns.ToString());
-            trialLog.AddData("diffDistances", diffDistances.ToString());
-            trialLog.AddData("diffAngles", diffAngles.ToString());
-        }
+        taskLog.AddData("totalTurnsLeft", totalTurns_left.ToString());
+        taskLog.AddData("totalTurnsRight", totalTurns_right.ToString());
+        taskLog.AddData("leg1distanceLeft", leg1distance_left.ToString());
+        taskLog.AddData("leg1distanceRight", leg1distance_right.ToString());
+        taskLog.AddData("turn1angleLeft", turn1angle_left.ToString());
+        taskLog.AddData("turn1angleRight", turn1angle_right.ToString());
+        taskLog.AddData("diffTurns", diffTurns.ToString());
+        taskLog.AddData("diffDistances", diffDistances.ToString());
+        taskLog.AddData("diffAngles", diffAngles.ToString());
 
     }
 

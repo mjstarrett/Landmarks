@@ -179,17 +179,13 @@ public class LM_ChangeDetection : ExperimentTask
         // --------------------------------
         // Log Data
         // --------------------------------
-
-        if (trialLog.active)
-        {
-            trialLog.AddData(transform.name + "changePresent", changePresent.ToString());
-            trialLog.AddData(transform.name + "changedObject", changedObject.name);
-            trialLog.AddData(transform.name + "originalColor", originalColor.ToString());
-            trialLog.AddData(transform.name + "changedColor", changeColor.ToString());
-            trialLog.AddData(transform.name + "participantResponse", response.ToString());
-            trialLog.AddData(transform.name + "correctAnswer", correctAnswer.ToString());
-            trialLog.AddData(transform.name + "correct", (response == correctAnswer).ToString());
-        }
+        taskLog.AddData(transform.name + "changePresent", changePresent.ToString());
+        taskLog.AddData(transform.name + "changedObject", changedObject.name);
+        taskLog.AddData(transform.name + "originalColor", originalColor.ToString());
+        taskLog.AddData(transform.name + "changedColor", changeColor.ToString());
+        taskLog.AddData(transform.name + "participantResponse", response.ToString());
+        taskLog.AddData(transform.name + "correctAnswer", correctAnswer.ToString());
+        taskLog.AddData(transform.name + "correct", (response == correctAnswer).ToString());
 
 
         // --------------------------------
