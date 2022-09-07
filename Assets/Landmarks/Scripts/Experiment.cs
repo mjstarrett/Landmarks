@@ -203,7 +203,7 @@ public class Experiment : MonoBehaviour
                     Debug.Log("OVERWRITING EXISTING AZURE-EDITOR DATA");
                     dataPath =
                         Directory.GetCurrentDirectory() + "/" +
-                        "data/tmp/";
+                        "editor-data/";
                     logfile =
                         "test.log";
                 }
@@ -211,10 +211,9 @@ public class Experiment : MonoBehaviour
             // otherwise just save to the project folder for easy access
             else
             {
-                Debug.Log("OVERWRITING EXISTING EDITOR DATA");
                 dataPath =
                     Directory.GetCurrentDirectory() + "/" +
-                    "data/tmp/";
+                    "editor-data/";
                 logfile =
                     "test.log";
             }
@@ -253,7 +252,12 @@ public class Experiment : MonoBehaviour
         {
             Directory.CreateDirectory(dataPath);
         }
-
+        else if (Directory.Exists(dataPath) && Application.isEditor)
+        {
+            Debug.Log("OVERWRITING EXISTING EDITOR DATA");
+            Directory.Delete(dataPath, recursive:true);
+            Directory.CreateDirectory(dataPath);
+        }
 
         if (config.runMode == ConfigRunMode.NEW)
         {
@@ -721,7 +725,7 @@ public class Experiment : MonoBehaviour
         // Shut down any LM_TaskLogs
         foreach (var log in FindObjectsOfType<LM_TaskLog>())
         {
-            log.Close();
+            log.output.Close();
         }
 
 
