@@ -57,6 +57,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -94,7 +95,7 @@ Transform:
   m_Children:
   - {fileID: 683206041049086724}
   m_Father: {fileID: 4374531866729262816}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &241831234
 MonoBehaviour:
@@ -122,6 +123,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -484,7 +486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4374531866729262816}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1400681070
 MonoBehaviour:
@@ -512,6 +514,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -575,6 +578,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -1046,6 +1050,36 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f2ab134b576894beb91b9ec2b552a98d, type: 2}
   - {fileID: 2100000, guid: 2153c2b60676a4846aa23162792815b6, type: 2}
   - {fileID: 2100000, guid: 42054398189ad4e7d99e1cd1c849bffa, type: 2}
+--- !u!1 &1749701255602529238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7430006372687872707}
+  m_Layer: 0
+  m_Name: GoToStart (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7430006372687872707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749701255602529238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4374531866729262816}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2292339612956372241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3636,6 +3670,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -3701,6 +3736,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -3721,7 +3757,7 @@ GameObject:
   - component: {fileID: 6242013941002142447}
   m_Layer: 0
   m_Name: Explore
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3741,7 +3777,7 @@ Transform:
   - {fileID: 6279316239817017643}
   - {fileID: 6285781054241095823}
   m_Father: {fileID: 4374531866729262816}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6242013941002142447
 MonoBehaviour:
@@ -3769,9 +3805,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -3786,8 +3824,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
   overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &6282820248141003754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,7 +3838,7 @@ GameObject:
   - component: {fileID: 6242013941858535806}
   m_Layer: 0
   m_Name: Decision
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3820,7 +3858,7 @@ Transform:
   - {fileID: 6279316238453244602}
   - {fileID: 6285781055048796958}
   m_Father: {fileID: 4374531866729262816}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6242013941858535806
 MonoBehaviour:
@@ -3848,9 +3886,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -3865,8 +3905,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
   overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &6282823826604966487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,6 +3964,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -3998,6 +4039,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4077,9 +4119,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 2
   skipConditions: []
   tasks: []
   objectsList: []
@@ -4094,8 +4138,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
   overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &6283521769417427785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,9 +4202,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 2
   skipConditions: []
   tasks: []
   objectsList: []
@@ -4175,8 +4221,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
   overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &6283590481001072370
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,6 +4280,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4300,6 +4347,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4366,6 +4414,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4440,6 +4489,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4514,6 +4564,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4588,6 +4639,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4662,6 +4714,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4977,6 +5030,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -5143,6 +5197,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -5151,13 +5206,12 @@ MonoBehaviour:
   NavigationInstruction: {fileID: 0}
   distanceAllotted: Infinity
   timeAllotted: 50
-  printRemainingTo: {fileID: 1999181003840415527}
+  printRemainingTimeTo: {fileID: 0}
   scoreIncrement: 50
   penaltyRate: 2000
   showScoring: 0
   hideTargetOnStart: 3
   showTargetAfterSeconds: 0
-  overlayTargetObject: {fileID: 0}
   hideNonTargets: 0
   assistCompass: {fileID: 5083415991351217654}
   SecondsUntilAssist: -1
@@ -5165,6 +5219,7 @@ MonoBehaviour:
   compassRotOffset: {x: 0, y: 0, z: 0}
   allowContinueAfter: Infinity
   haptics: 0
+  logStartEnd: 0
 --- !u!1 &8475901025517673097
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,6 +5278,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -5231,13 +5287,12 @@ MonoBehaviour:
   NavigationInstruction: {fileID: 0}
   distanceAllotted: Infinity
   timeAllotted: Infinity
-  printRemainingTo: {fileID: 0}
+  printRemainingTimeTo: {fileID: 0}
   scoreIncrement: 50
   penaltyRate: 2000
   showScoring: 0
   hideTargetOnStart: 0
   showTargetAfterSeconds: 0
-  overlayTargetObject: {fileID: 0}
   hideNonTargets: 0
   assistCompass: {fileID: 5083415992155768423}
   SecondsUntilAssist: -1
@@ -5245,6 +5300,7 @@ MonoBehaviour:
   compassRotOffset: {x: 0, y: 0, z: 0}
   allowContinueAfter: Infinity
   haptics: 0
+  logStartEnd: 0
 --- !u!1001 &580346161057036225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5513,75 +5569,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ae717588b4474349804b4dc1f004511, type: 3}
---- !u!1001 &4396226998748100509
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4374531866729262816}
-    m_Modifications:
-    - target: {fileID: 4396226998460692564, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_Name
-      value: GoToStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396226998460692567, guid: 3d4b2aac0f70f4474b0b78f3025f277a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3d4b2aac0f70f4474b0b78f3025f277a, type: 3}
 --- !u!1001 &8439183582936992307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6207,27 +6194,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eaa84beeb5544ef08a8fa759a1176ce, type: 3}
---- !u!135 &3283382497184907702 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 6381295273405839145, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 8439183584766129823}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531866729262816 stripped
+--- !u!4 &4374531867335583784 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465571225720959, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 8439183584766129823}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531866168262112 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465571738618751, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 8439183584766129823}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531865946917242 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465572180033509, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+  m_CorrespondingSourceObject: {fileID: 5308465570891636407, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
@@ -6237,9 +6206,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &755399729063703573 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 9179946605368722058, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+--- !u!4 &4374531865946917242 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5308465572180033509, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 8439183584766129823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4374531866729262816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5308465571225720959, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 8439183584766129823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &3283382497184907702 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 6381295273405839145, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
@@ -6249,9 +6230,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4374531867335583784 stripped
+--- !u!136 &755399729063703573 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 9179946605368722058, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 8439183584766129823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4374531866168262112 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5308465570891636407, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
+  m_CorrespondingSourceObject: {fileID: 5308465571738618751, guid: 0eaa84beeb5544ef08a8fa759a1176ce,
     type: 3}
   m_PrefabInstance: {fileID: 8439183584766129823}
   m_PrefabAsset: {fileID: 0}

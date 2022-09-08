@@ -264,16 +264,8 @@ public class LM_SliderQuestion : ExperimentTask {
         // Log Trial info
         // -----------------------
 
-        // Get the parent and grandparent task to provide context in log file
-        var parent = this.parentTask;
-        var masterTask = parent;
-        while (!masterTask.gameObject.CompareTag("Task"))
-        {
-            
-            masterTask = masterTask.parentTask;
-            Debug.Log(masterTask.name);
-        }
         var rt = Time.time - startTime;
+        
         // Output log for this task in tab delimited format
         //log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
         //        "Task\tBlock\tTrial\tTargetName\tRating\tMaxRating\tRT\n" +
