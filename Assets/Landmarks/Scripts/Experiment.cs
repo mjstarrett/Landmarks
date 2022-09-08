@@ -248,11 +248,17 @@ public class Experiment : MonoBehaviour
                 dataPath +
                 config.filename;
 
+
+        Debug.Log("!!!!!!!!!!!!\t" + SceneManager.GetActiveScene().name + "\t" + config.levelNames[0]);
         if (!Directory.Exists(dataPath))
         {
             Directory.CreateDirectory(dataPath);
         }
-        else if (Directory.Exists(dataPath) && Application.isEditor)
+        // Prevent editor log files from appending to a previous session's LM_TaskLog
+        // by deleting the directory and recreating, unless we're loading multiple scenes
+        // in which case we would want to append to these editor files
+        else if (Directory.Exists(dataPath) & Application.isEditor & 
+                SceneManager.GetActiveScene().name == config.levelNames[0])
         {
             Debug.Log("OVERWRITING EXISTING EDITOR DATA");
             Directory.Delete(dataPath, recursive:true);

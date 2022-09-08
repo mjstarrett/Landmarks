@@ -25,7 +25,7 @@ using TMPro;
 public class TaskList : ExperimentTask
 {
     [Header("Task-specific Properties")]
-    
+
     public string[] skipConditions;
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
     public GameObject[] objectsList;
@@ -203,6 +203,12 @@ public class TaskList : ExperimentTask
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
+            if (!CompareTag("Task") && taskLog != null)
+            {
+                log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
+                taskLog.LogTrial();
+            }
+
             // Clean up at the end in case this object is repeated in a nest
             currentTaskIndex = 0;
             startNewRepeat();
@@ -222,11 +228,9 @@ public class TaskList : ExperimentTask
             // If we've reached the last task but have cycles (repeats) left -- reset task index, increment repeatcount and run startNextTask()
             if (currentTaskIndex >= tasks.Length)
             {
-
                 if (taskLog != null & taskLog.trialData.Values.Count > 0)
                 {
                     log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
-                    Debug.Log("HERE!!!!!!!!!!!");
                     taskLog.LogTrial();
                 }
 
@@ -240,7 +244,6 @@ public class TaskList : ExperimentTask
             // Start the next task in the list
             startNextTask();
         }
-
 
         return false;
     }
@@ -306,8 +309,7 @@ public class TaskList : ExperimentTask
             overideRepeat.incrementCurrent();
         }
 
-        if (taskLog != null) taskLog.trialData.Clear(); // Run the constructor to ensure the log gets cleared completely
-
+        
         //	if (pausedTasks) {
         //currentTask = pausedTasks;
         //endTask();
