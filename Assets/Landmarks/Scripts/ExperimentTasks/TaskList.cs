@@ -244,7 +244,7 @@ public class TaskList : ExperimentTask
         // If we've finished all the tasks in all the cycles (repeats), end this tasklist
         if (currentTaskIndex >= tasks.Length && repeatCount >= repeat)
         {
-            if (!CompareTag("Task") && taskLog != null)
+            if (taskListType == Role.trial && taskLog != null)
             {
                 log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
                 taskLog.LogTrial();
