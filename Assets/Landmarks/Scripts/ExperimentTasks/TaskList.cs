@@ -21,11 +21,18 @@ using System;
 using UnityEngine.UI;
 using TMPro;
 
+public enum Role
+{
+    standard, // just run the ExperimentTasks nested here
+    task, // implement additional configuration for a parent-task loop (e.g., Assets/Landmarks/Prefabs/TASK_NavigationTask.prefab)
+    trial // impleent additional features needed for a single trial that repeats (e.g., the 'NavigationTrials' gameobject in the TASK_NavigationTask prefab)
+}
 
 public class TaskList : ExperimentTask
 {
     [Header("Task-specific Properties")]
 
+    public Role taskListType = Role.standard;
     public string[] skipConditions;
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
     public GameObject[] objectsList;
@@ -54,6 +61,40 @@ public class TaskList : ExperimentTask
     public TextMeshProUGUI overlayRepeatCount; // ignored if empty
     public TextMeshProUGUI overlayListItem; // ignored if empty
 
+    private new void Awake() {
+        base.Awake();
+
+        // Handle if this is a special kind of taskList and set it up as such
+        switch (taskListType)
+        {
+            case Role.standard:
+                
+                break;
+
+            case Role.task:
+                gameObject.AddComponent<LM_TaskLog>();
+                foreach (var list in GetComponentsInChildren<TaskList>())
+                {
+                    if (list == this) continue;
+
+                    if (list.taskListType == Role.trial)
+                    {
+                        Debug.Log(list.name);
+                        foreach (var expTask in list.GetComponentsInChildren<ExperimentTask>())
+                        {
+                            expTask.taskLog = GetComponent<LM_TaskLog>();
+                        }
+                    }
+                }
+
+                break;
+
+            case Role.trial:
+                
+                break;
+
+        }
+    }
 
     public override void startTask()
     {

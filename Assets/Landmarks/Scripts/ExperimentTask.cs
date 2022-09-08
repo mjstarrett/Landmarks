@@ -30,7 +30,6 @@ public class ExperimentTask : MonoBehaviour{
 	protected Experiment manager;
 	protected avatarLog avatarLog;
 	
-
     protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
     
@@ -75,17 +74,6 @@ public class ExperimentTask : MonoBehaviour{
 
     public void Awake () 
 	{
-		// Determine where a give task should log it's data
-		if (CompareTag("Task"))
-        {
-            gameObject.AddComponent<LM_TaskLog>();
-            foreach (var childExpTask in GetComponentsInChildren<ExperimentTask>())
-            {
-				if (childExpTask == this) continue;
-                childExpTask.taskLog = GetComponent<LM_TaskLog>();
-            } 
-        }
-
 		// Look for a BrainAmp EEG manager in the eperiment
         eegManager = FindObjectOfType<BrainAmpManager>();
 	}
@@ -145,6 +133,7 @@ public class ExperimentTask : MonoBehaviour{
     }
 	
 	public virtual void TASK_START () {
+
 	}	
 	
 	public virtual bool updateTask () {

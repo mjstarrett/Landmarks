@@ -30,6 +30,7 @@ public class LM_TaskLog : MonoBehaviour
 
     public virtual void LogTrial()
     {
+        Debug.LogWarning("LM_TaskLog is logging trial data!!!!!");
         exp = FindObjectOfType<Experiment>();
         output = new StreamWriter(exp.dataPath +
                                     "/sub-" + exp.config.subject +
@@ -50,7 +51,6 @@ public class LM_TaskLog : MonoBehaviour
         // Log the header (if empty file) and data
         if (output.BaseStream.Length == 0) output.WriteLine(header);
         output.WriteLine(data);
-        Debug.Log("DATA WAS WRITTEN (OR SHOULD HAVE BEEN!)");
 
         // Clean up from this trial
         trialData.Clear();
