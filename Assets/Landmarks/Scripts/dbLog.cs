@@ -30,12 +30,13 @@ public class dbLog {
         workingFile = filename;
         logfile = new StreamWriter(workingFile, append);
 	}
-	
-	public dbLog() {
-		//openNew(filename);
-	}
-	
-	public virtual void close()
+
+    public dbLog()
+    {
+        //openNew(filename);
+    }
+
+    public virtual void close()
 	{
 		logfile.Close();	
 	}

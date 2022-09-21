@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8151017468346886733}
   m_Layer: 0
   m_Name: TASK_SliderQuestions
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,9 +59,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -76,7 +78,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &1629494197377442989
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,9 +138,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 2
   skipConditions: []
   tasks: []
   objectsList: []
@@ -152,7 +157,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &5079659875147218781
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +216,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -274,6 +281,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -298,4 +306,5 @@ MonoBehaviour:
   - High
   sliderMin: 0
   sliderMax: 4
+  wholeNumbersOnly: 0
   randomStartValue: 1

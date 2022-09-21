@@ -123,12 +123,22 @@ public class Config : MonoBehaviour
     {
         Debug.Log("Initializing the Config");
 
+        
         // add every scene (except the startup scene this is in
         for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
             config.levelNames.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
         }
+
+        // Check if the current scene is not in the build (as may be the case in the editor)
+#if UNITY_EDITOR
+        if (config.levelNames.Contains(SceneManager.GetActiveScene().name))
+        {
+            config.levelNames.Clear();
+            config.levelNames.Add(SceneManager.GetActiveScene().name);
+        }
+#endif
 
         // If we are running the scenes in a randomized order
         if (randomSceneOrder)

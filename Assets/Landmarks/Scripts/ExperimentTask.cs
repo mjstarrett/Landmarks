@@ -29,8 +29,7 @@ public class ExperimentTask : MonoBehaviour{
 	protected dbLog log;
 	protected Experiment manager;
 	protected avatarLog avatarLog;
-    protected LM_TrialLog trialLog;
-
+	
     protected GameObject scaledAvatar; // MJS 2019 - track scaled avatar in scaled nav task
     protected avatarLog scaledAvatarLog; // MJS 2019 - track scaled avatar in scaled nav task
     
@@ -64,6 +63,7 @@ public class ExperimentTask : MonoBehaviour{
     public static bool killCurrent = false;
     protected static bool isScaled = false; // allows scaled nav task components to inherit this bool - MJS 2019
     protected static bool jitterGuardOn = false; // prevent raycast jitter when using a moving HUD such as in the map task
+    public LM_TaskLog taskLog; // The logging destination assigned to this object
 
     [Header("EEG Settings (if available)")]
     public string triggerLabel; // name prefix for unique triggers
@@ -74,6 +74,7 @@ public class ExperimentTask : MonoBehaviour{
 
     public void Awake () 
 	{
+		// Look for a BrainAmp EEG manager in the eperiment
         eegManager = FindObjectOfType<BrainAmpManager>();
 	}
 
@@ -92,9 +93,6 @@ public class ExperimentTask : MonoBehaviour{
 		overheadCamera = manager.overheadCamera;
         log = manager.dblog;
         vrEnabled = manager.usingVR;
-        trialLog = manager.trialLogger;
-
-		
 
         // set up vrInput if we're using VR
         if (vrEnabled) vrInput = SteamVR_Input.GetActionSet<SteamVR_Input_ActionSet_landmarks>(default);
@@ -135,6 +133,7 @@ public class ExperimentTask : MonoBehaviour{
     }
 	
 	public virtual void TASK_START () {
+
 	}	
 	
 	public virtual bool updateTask () {
@@ -287,16 +286,11 @@ public class ExperimentTask : MonoBehaviour{
 		/*ViveRoomspaceController and any other controller where the player "body" is not
 		the parent object of the player controller (tagged "Player at runtime") must have
 		the HUD position AND rotation updated.*/
-		if (manager.player.name == "ViveRoomspaceController")
-		{
-			var tmp = FindObjectOfType<CharacterController>().transform;
-			hud.hudRig.transform.localPosition = new Vector3(tmp.localPosition.x, 0f, tmp.localPosition.z);
-			hud.hudRig.transform.localEulerAngles = new Vector3(0f, FindObjectOfType<LM_PlayerController>().cam.transform.localEulerAngles.y, 0f);
-		}
-		else
-		{
-			hud.hudRig.transform.localEulerAngles = avatar.GetComponent<avatarLog>().player.transform.localEulerAngles;
-		}
+		var cam = avatar.GetComponent<LM_PlayerController>().cam.transform;
+		hud.hudRig.transform.localPosition = new Vector3(cam.localPosition.x, 
+														 hud.hudRig.transform.localPosition.y, 
+														 cam.localPosition.z);
+		hud.hudRig.transform.localEulerAngles = new Vector3(0f, cam.localEulerAngles.y, 0f);
 	}
 
 
@@ -313,14 +307,18 @@ public class ExperimentTask : MonoBehaviour{
     public void MoveToLayer(Transform root, int layer)
     {
         root.gameObject.layer = layer;
-        foreach (Transform child in root)
-            MoveToLayer(child, layer);
+        foreach (Transform child in root) MoveToLayer(child, layer);
     }
 
 
 	// Calculate the planar distance between placement and targets (i.e., ignore the y-axis height of the copies)
-	public float GetVector2DDistance(Vector3 v1, Vector3 v2)
+	public float Vector3Distance2D(Vector3 v1, Vector3 v2)
 	{
 		return (Mathf.Sqrt(Mathf.Pow(Mathf.Abs(v1.x - v2.x), 2f) + Mathf.Pow(Mathf.Abs(v1.z - v2.z), 2f)));
+	}
+
+	public float Vector3Angle2D(Vector3 v1, Vector3 v2) 
+	{
+		return Vector2.SignedAngle(new Vector2(v1.x, v1.z), new Vector2(v2.x, v2.z));
 	}
 }

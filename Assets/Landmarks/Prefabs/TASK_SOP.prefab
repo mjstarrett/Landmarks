@@ -58,9 +58,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 2
   skipConditions: []
   tasks: []
   objectsList: []
@@ -75,7 +77,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &8777765008037820864
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +136,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -158,7 +162,7 @@ GameObject:
   - component: {fileID: 8777765008361736727}
   m_Layer: 0
   m_Name: TASK_SOP
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,9 +212,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -225,7 +231,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &8777765009382720178
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +290,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -292,7 +300,6 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 1
   shuffle: 0
-  order: {fileID: 0}
 --- !u!1 &8777765009391635557
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,12 +357,15 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 93056c72a86a72c438b2a7a51410cb5e, type: 3}
+  masterText: 
   objects: {fileID: 0}
+  multiObjects: []
   texts: {fileID: 0}
   blackout: 1
   text_color: {r: 1, g: 1, b: 1, a: 1}
@@ -422,6 +432,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -429,6 +440,7 @@ MonoBehaviour:
   subset: 3
   shuffle: 1
   endListBehavior: 1
+  outputSubsetObjectLists: []
 --- !u!1001 &3712918828935423515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -436,6 +448,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8777765008361736724}
     m_Modifications:
+    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000000754979
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 1.7112914e-15
       objectReference: {fileID: 0}
@@ -465,16 +487,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000000754979
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
         type: 3}
