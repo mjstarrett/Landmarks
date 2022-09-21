@@ -165,10 +165,11 @@ public class NavigationTask : ExperimentTask
             else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
             {
                 //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
-                currentTarget.GetComponent<Collider>().enabled = false;
-                currentTarget.GetComponent<MeshRenderer>().enabled = false;
-                var halo = (Behaviour) currentTarget.GetComponent("Halo");
-                if(halo != null) halo.enabled = false;
+                // currentTarget.GetComponent<Collider>().enabled = false;
+                // currentTarget.GetComponent<MeshRenderer>().enabled = false;
+                // var halo = (Behaviour) currentTarget.GetComponent("Halo");
+                // if(halo != null) halo.enabled = false;
+                currentTarget.SetActive(false);
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
