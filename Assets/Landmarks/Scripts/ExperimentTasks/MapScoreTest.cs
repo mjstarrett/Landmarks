@@ -77,7 +77,7 @@ public class MapScoreTest : ExperimentTask {
 			float tempErrorAngleX = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.x, targets [itarget].transform.localRotation.eulerAngles.x); 
 			float tempErrorAngleY = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.y, targets [itarget].transform.localRotation.eulerAngles.y); // note this seems to correspond to z rotation axis in inspector
 			float tempErrorAngleZ = Mathf.DeltaAngle( copies [itarget].transform.localRotation.eulerAngles.z, targets [itarget].transform.localRotation.eulerAngles.z);
-			float tempErrorDistance =  GetVector2DDistance (copies [itarget].transform.position, targets [itarget].transform.position);
+			float tempErrorDistance =   Vector3Distance2D(copies [itarget].transform.position, targets [itarget].transform.position);
 
             log.log("Store: \t" + targets[itarget].name + "\tError Distance: \t" + tempErrorDistance + "\tError Rotation (xyz): \t" + tempErrorAngleX + "\t" + tempErrorAngleY + "\t" + tempErrorAngleZ, 2);
 
@@ -102,10 +102,10 @@ public class MapScoreTest : ExperimentTask {
         log.log("Score: \t" + numberCorrect + "\t/\t" + numberTargets + "\tPercentage: \t" + percentCorrect, 0);
 
         // New Landmarks Logging
-		trialLog.AddData(transform.name + "_correct", numberCorrect.ToString());
-		trialLog.AddData(transform.name + "_possible", numberTargets.ToString());
-		trialLog.AddData(transform.name + "_percentage", percentCorrect.ToString());
-		trialLog.AddData(transform.name + "_criterion", percentCorrectCriterion.ToString());
+		taskLog.AddData(transform.name + "_correct", numberCorrect.ToString());
+		taskLog.AddData(transform.name + "_possible", numberTargets.ToString());
+		taskLog.AddData(transform.name + "_percentage", percentCorrect.ToString());
+		taskLog.AddData(transform.name + "_criterion", percentCorrectCriterion.ToString());
 
 		// ----------------------------------------------------
 		// React to Score based on Performance Criterion

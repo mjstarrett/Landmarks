@@ -81,24 +81,14 @@ public class MentalNavigation : ExperimentTask
 
         if (Input.GetButtonDown("Return") || (vrEnabled && vrInput.TriggerButton.GetStateDown(Valve.VR.SteamVR_Input_Sources.Any)))
         {
+            // // Output log for this task in tab delimited format
+            // log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
+            // "Task\tBlock\tTrial\tTargetName\tDuration\n" +
+            // masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + navTime
+            // , 1);
 
-            // Get the parent and grandparent task to provide context in log file
-            var parent = this.parentTask;
-            var masterTask = parent;
-            while (!masterTask.gameObject.CompareTag("Task")) masterTask = masterTask.parentTask;
-
-            // Output log for this task in tab delimited format
-            log.log("LM_OUTPUT\tMentalNavigation.cs\t" + masterTask.name + "\t" + this.name + "\n" +
-            "Task\tBlock\tTrial\tTargetName\tDuration\n" +
-            masterTask.name + "\t" + masterTask.repeatCount + "\t" + parent.repeatCount + "\t" + objects.currentObject().name + "\t" + navTime
-            , 1);
-
-            if (trialLog.active)
-            {
-                trialLog.AddData(transform.name + "_target", objects.currentObject().name);
-                trialLog.AddData(transform.name + "_duration", navTime.ToString());
-            }
-
+            taskLog.AddData(transform.name + "_target", objects.currentObject().name);
+            taskLog.AddData(transform.name + "_duration", navTime.ToString());
 
             // end the current task
             return true; 

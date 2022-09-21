@@ -76,6 +76,9 @@ public class InstructionsTask : ExperimentTask {
             return;
         }
 
+        // Set the interval (duration) to infinity if self paced
+        if (selfPaced) interval = 0;
+
         GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
@@ -179,6 +182,7 @@ public class InstructionsTask : ExperimentTask {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        else hud.actionButton.SetActive(false);
     }
     // Update is called once per frame
     public override bool updateTask () {
@@ -259,7 +263,6 @@ public class InstructionsTask : ExperimentTask {
             hud.actionButton.GetComponentInChildren<Text>().text = hud.actionButton.GetComponent<DefaultText>().defaultText;
             hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
             hud.actionButton.SetActive(false);
-
         }
 
         // If we turned movement off; turn it back on
