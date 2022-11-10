@@ -56,6 +56,7 @@ public class LM_GoTo : ExperimentTask
         if (hideEnvironment) {
             hud.showOnlyHUD(); 
             manager.environment.transform.Find("filler_props").gameObject.SetActive(false);
+            manager.targetObjects.SetActive(false);
         }
         else {
             hud.showEverything();
@@ -135,7 +136,11 @@ public class LM_GoTo : ExperimentTask
         // WRITE TASK EXIT CODE HERE
         GetComponent<Collider>().enabled = false;
         arriveAt.SetActive(false);
-        if (hideEnvironment) manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
+        if (hideEnvironment) 
+        {
+            manager.environment.transform.Find("filler_props").gameObject.SetActive(true);
+            manager.targetObjects.SetActive(true);
+        }
         hud.hudPanel.SetActive(true);
         hud.setMessage("");
         hud.SecondsToShow = hud.GeneralDuration;
