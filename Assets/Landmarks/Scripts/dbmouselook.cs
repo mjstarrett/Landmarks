@@ -111,7 +111,7 @@ public class dbmouselook : MonoBehaviour {
 			GetComponent<Rigidbody>().freezeRotation = true;
 		originalRotation = transform.localRotation;
 		
-		bootstrapped = Config.instance.bootstrapped;
+		bootstrapped = Config.Instance.bootstrapped;
 	}
 	
 	public static float ClampAngle (float angle, float min, float max)

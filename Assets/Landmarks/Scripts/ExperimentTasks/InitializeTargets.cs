@@ -12,8 +12,9 @@ public class InitializeTargets : ExperimentTask
 	public GameObject targetOptionsParent; 	// MJS - added 4/30/2018
 
 
-	void Start()
+	new void Start()
 	{
+		base.Start();
 		GameObject optionsParent = GameObject.Find ("TargetOptions");
 		GameObject locationsParent = GameObject.Find ("TargetLocations");
 		List<NavigationTarget> targetOptions = new List<NavigationTarget> ();

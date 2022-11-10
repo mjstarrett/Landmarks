@@ -459,4 +459,16 @@ public class HUD : MonoBehaviour
 	    }
 	}
 
+	public void ReCenter(Transform t = default(Transform))
+    {
+		// Unless provided, recenter on whatever is colliding with things (the LM_Player collisionObject)
+		// Useful for player controllers such as ViveRoomspace, where parent object tagged as player does not control movement
+		if (t == default(Transform)) t = manager.player.GetComponent<LM_PlayerController>().collisionObject.transform;
+
+		// Moves and orient the HUD
+		hudRig.transform.position = new Vector3(t.position.x, hudRig.transform.position.y, t.position.z); // position
+		hudRig.transform.eulerAngles = new Vector3(hudRig.transform.eulerAngles.x, t.eulerAngles.y, hudRig.transform.eulerAngles.z); // rotation
+
+    }
+
 }

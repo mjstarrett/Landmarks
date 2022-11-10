@@ -25,16 +25,18 @@ public class dbLog {
     protected string workingFile = "";
     private StreamWriter logfile;
 
-	public dbLog(string filename) {
-		workingFile = filename;
-		logfile = new StreamWriter ( workingFile );
+	public dbLog(string filename, bool append = false) 
+    {
+        workingFile = filename;
+        logfile = new StreamWriter(workingFile, append);
 	}
-	
-	public dbLog() {
-		//openNew(filename);
-	}
-	
-	public virtual void close()
+
+    public dbLog()
+    {
+        //openNew(filename);
+    }
+
+    public virtual void close()
 	{
 		logfile.Close();	
 	}

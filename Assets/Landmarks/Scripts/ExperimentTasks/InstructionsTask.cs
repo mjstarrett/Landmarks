@@ -31,6 +31,7 @@ public class InstructionsTask : ExperimentTask {
 
     public TextAsset instruction;
     public TextAsset message;
+    [TextArea] public string masterText;
 
     public ObjectList objects;
     public ObjectList[] multiObjects; // if you want the same subset from several lists
@@ -75,6 +76,9 @@ public class InstructionsTask : ExperimentTask {
             return;
         }
 
+        // Set the interval (duration) to infinity if self paced
+        if (selfPaced) interval = 0;
+
         GameObject sgo = new GameObject("Instruction Display");
 
         GameObject avatar = manager.player.GetComponent<HUD>().Canvas as GameObject;
@@ -102,37 +106,54 @@ public class InstructionsTask : ExperimentTask {
         }
         if (instruction) canvas.text = instruction.text;
 
-        // Determine where we're getting the text from (default is message)
-        if (message == null & texts != null)
+      /*  // Determine where we're getting the text from (default is masterText) <-- MJS FIXME refactor this code
+        if (masterText == "")
         {
-            Debug.Log("No message asset detected; texts asset found; using texts");
-            gui.text = currentText;
+            if (message == null & texts != null)
+            {
+                Debug.Log("No message asset detected; texts asset found; using texts");
+                gui.text = currentText;
+            }
+            else
+            {
+                Debug.Log("Attempting to use the default, message, asset.");
+                gui.text = message.text;
+            }
         }
         else
         {
-            Debug.Log("Attempting to use the default, message, asset.");
-            gui.text = message.text;
+            gui.text = masterText;
         }
 
-        Debug.Log(gui.text);
+        Debug.Log(gui.text);*/
         
 
         if (blackout) hud.showOnlyHUD();
         else hud.showEverything();
 
-        if (message) {
-            string msg = message.text;
-            if (currentText != null) msg = string.Format(msg, currentText);
-            if (currentObject != null) msg = string.Format(msg, currentObject.name);
-            if (multiObjects.Length > 0) msg = string.Format(msg, currentMultiObjects);
-            hud.setMessage(msg);
-        }
-        else if (!message & texts)
+        if (masterText == "")
         {
-            string msg = currentText;
-            if (currentObject != null) msg = string.Format(msg, currentObject.name);
+            if (message)
+            {
+                string msg = message.text;
+                if (currentText != null) msg = string.Format(msg, currentText);
+                if (currentObject != null) msg = string.Format(msg, currentObject.name);
+                if (multiObjects.Length > 0) msg = string.Format(msg, currentMultiObjects);
+                hud.setMessage(msg);
+            }
+            else if (!message & texts)
+            {
+                string msg = currentText;
+                if (currentObject != null) msg = string.Format(msg, currentObject.name);
+                hud.setMessage(msg);
+            }
+        }
+        else
+        {
+            string msg = masterText;
             hud.setMessage(msg);
         }
+       
 
         hud.flashStatus("");
 
@@ -158,9 +179,10 @@ public class InstructionsTask : ExperimentTask {
 
             // we'll need the mouse, as well
             // make the cursor functional and visible
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        else hud.actionButton.SetActive(false);
     }
     // Update is called once per frame
     public override bool updateTask () {
@@ -241,10 +263,6 @@ public class InstructionsTask : ExperimentTask {
             hud.actionButton.GetComponentInChildren<Text>().text = hud.actionButton.GetComponent<DefaultText>().defaultText;
             hud.actionButton.GetComponent<Button>().onClick.RemoveListener(hud.OnActionClick);
             hud.actionButton.SetActive(false);
-
-            // make the cursor invisible
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
         }
 
         // If we turned movement off; turn it back on
