@@ -23,18 +23,20 @@ public class dbLog {
 
     protected long microseconds = 1;
     protected string workingFile = "";
+    public string logFileName;
+    public bool appendToLog = true;
     private StreamWriter logfile;
 
-	public dbLog(string filename, bool append = false) 
-    {
-        workingFile = filename;
-        logfile = new StreamWriter(workingFile, append);
-	}
+	// public dbLog(string filename, bool append = false) 
+    // {
+    //     workingFile = filename;
+    //     logfile = new StreamWriter(workingFile, append);
+	// }
 
-    public dbLog()
-    {
-        //openNew(filename);
-    }
+    // public dbLog()
+    // {
+    //     //openNew(filename);
+    // }
 
     public virtual void close()
 	{
@@ -49,7 +51,7 @@ public class dbLog {
 	}
 	
 	public virtual void log(string msg, int level) {
-		
+		logfile = new StreamWriter(logFileName, appendToLog);
 	    long tick = DateTime.Now.Ticks;
         //long seconds = tick / TimeSpan.TicksPerSecond;
         long milliseconds = tick / TimeSpan.TicksPerMillisecond;
@@ -58,11 +60,14 @@ public class dbLog {
         //Debug.Log(Time.frameCount + ": " + Event.current);
         
 		logfile.WriteLine( milliseconds + "\t" + msg );
+        logfile.Close();
 	}
 
     // MJS function to cleanly log info with no prefixes
     public virtual void Write(string msg)
     {
+        logfile = new StreamWriter(logFileName, appendToLog);
         logfile.WriteLine(msg);
+        logfile.Close();
     }
 }
