@@ -96,6 +96,8 @@ public class Experiment : MonoBehaviour
     protected AvatarController avatarController;
     protected HUD hud;
 
+    public TextMeshProUGUI trialCounter;
+
     // -------------------------------------------------------------------------
     // -------------------------- Builtin Methods ------------------------------
     // -------------------------------------------------------------------------
@@ -322,6 +324,8 @@ public class Experiment : MonoBehaviour
         {
             scaledEnvironment = null;
         }
+        
+        if (trialCounter != null) trialCounter.text = string.Format("{0} / {1}", config.levelNumber+1, config.levelNames.Count);
     }
 
     async void Update()
