@@ -17,6 +17,7 @@ public class LM_TaskLog : MonoBehaviour
     public Dictionary<string, string> trialData = new Dictionary<string, string>(); // the lists of header/data pairs
     public Dictionary<string, string> defaults; // what should get added every time
     public StreamWriter output;
+    [Tooltip("Intended for debugging only")] public List<string> hopper = new List<string>();
 
     private Experiment exp;
 
@@ -25,6 +26,7 @@ public class LM_TaskLog : MonoBehaviour
     public virtual void AddData(string key, string value)
     {
         trialData.Add(key, value);
+        hopper.Add(key);
     }
 
 
@@ -54,6 +56,7 @@ public class LM_TaskLog : MonoBehaviour
 
         // Clean up from this trial
         trialData.Clear();
+        hopper.Clear();
         output.Close();
     }
 
