@@ -63,14 +63,25 @@ public class TaskList : ExperimentTask
 
     private new void Awake() {
         base.Awake();
+    }
 
+    public override void startTask()
+    {
+        // Debug.Log(this.GetType().Name);
+
+        TASK_START();
+
+
+        if (!skip) startNextTask();
+    }
+
+    public override void TASK_START()
+    {
         // Handle if this is a special kind of taskList and set it up as such
         switch (taskListType)
         {
             case Role.standard:
-                
                 break;
-
             case Role.task:
                 gameObject.AddComponent<LM_TaskLog>();
                 foreach (var list in GetComponentsInChildren<TaskList>())
@@ -86,28 +97,11 @@ public class TaskList : ExperimentTask
                         }
                     }
                 }
-
                 break;
-
             case Role.trial:
-                
                 break;
-
         }
-    }
 
-    public override void startTask()
-    {
-        // Debug.Log(this.GetType().Name);
-
-        TASK_START();
-
-
-        if (!skip) startNextTask();
-    }
-
-    public override void TASK_START()
-    {
         repeatCount = 1;
 
         base.startTask();

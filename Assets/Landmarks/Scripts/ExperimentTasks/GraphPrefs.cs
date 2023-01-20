@@ -17,15 +17,6 @@ public class GraphPrefs : ExperimentTask
     public bool diffAngles;
 
 
-    private void Awake()
-    {
-        base.Awake();
-
-        if (totalTurns_left != totalTurns_right) diffTurns = true;
-        if (leg1distance_left != leg1distance_right) diffDistances = true;
-        if (turn1angle_left != turn1angle_right) diffAngles = true;
-    }
-
     public override void startTask()
     {
         TASK_START();
@@ -44,6 +35,12 @@ public class GraphPrefs : ExperimentTask
             log.log("INFO    skip task    " + name, 1);
             return;
         }
+
+        Debug.Log("Recording GraphPrefs trial info");
+
+        if (totalTurns_left != totalTurns_right) diffTurns = true;
+        if (leg1distance_left != leg1distance_right) diffDistances = true;
+        if (turn1angle_left != turn1angle_right) diffAngles = true;
 
         // More concise LM_TrialLog logging
         taskLog.AddData("totalTurnsLeft", totalTurns_left.ToString());
