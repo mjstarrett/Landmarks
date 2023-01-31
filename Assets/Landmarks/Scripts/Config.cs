@@ -135,21 +135,10 @@ public class Config : MonoBehaviour
             
         }
 
-        //if (config.levelNames.Count == 0)
-        //{
-        //    if (!Application.isEditor)
-        //    {
-        //        // add every scene (except the startup scene this is in
-        //        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
-        //        {
-        //            //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
-        //            config.levelNames.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
-        //        }
-        //    }
-        //    else
-        //        config.levelNames.Clear();
-        //    config.levelNames.Add(SceneManager.GetActiveScene().name);
-        //}
+        if (config.levelNames.Count == 0 && Application.isEditor)
+        {
+            config.levelNames.Add(SceneManager.GetActiveScene().name);
+        }
 
         // If we are running the scenes in a randomized order
         if (randomSceneOrder)
