@@ -303,7 +303,8 @@ public class NavigationTask : ExperimentTask
 
         // Keep updating the distance traveled and kill task if they reach max
         playerDistance += Vector3.Distance(avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position, playerLastPosition);
-        clockwiseTravel += Vector3Angle2D(playerLastPosition, avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position);
+        // Subtract the counter-clockwise angle since the last frame to get clockwise movement
+        clockwiseTravel -= Vector3Angle2D(playerLastPosition, avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position);
         playerLastPosition = avatar.GetComponent<LM_PlayerController>().collisionObject.transform.position;
         
         if (isScaled)
