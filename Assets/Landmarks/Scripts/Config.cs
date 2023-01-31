@@ -49,7 +49,7 @@ public class Config : MonoBehaviour
     public string ui = "default";
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
-    [Tooltip("Treat the first n scenes in the build list as practice and run them first")] 
+    [Tooltip("Treat the first n scenes in the build list as practice and run them first")]
     public int practiceTrialCount;
     public List<string> levelNames = new List<string>();
     public bool randomSceneOrder;
@@ -123,25 +123,33 @@ public class Config : MonoBehaviour
     {
         Debug.Log("Initializing the Config");
 
-
         // add every scene (except the startup scene this is in
-        if (config.levelNames.Count == 0)
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
         {
-            for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
+            var lvl = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+            //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
+            if (lvl.Contains("GraphPrefs"))
             {
-                //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
-                config.levelNames.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
+                config.levelNames.Add(lvl);
             }
+            
         }
-        
-        // Check if the current scene is not in the build (as may be the case in the editor)
-#if UNITY_EDITOR
-        if (config.levelNames.Contains(SceneManager.GetActiveScene().name))
-        {
-            config.levelNames.Clear();
-            config.levelNames.Add(SceneManager.GetActiveScene().name);
-        }
-#endif
+
+        //if (config.levelNames.Count == 0)
+        //{
+        //    if (!Application.isEditor)
+        //    {
+        //        // add every scene (except the startup scene this is in
+        //        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
+        //        {
+        //            //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
+        //            config.levelNames.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
+        //        }
+        //    }
+        //    else
+        //        config.levelNames.Clear();
+        //    config.levelNames.Add(SceneManager.GetActiveScene().name);
+        //}
 
         // If we are running the scenes in a randomized order
         if (randomSceneOrder)
