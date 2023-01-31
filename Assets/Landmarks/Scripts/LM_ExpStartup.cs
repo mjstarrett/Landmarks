@@ -17,6 +17,8 @@ public class LM_ExpStartup : MonoBehaviour
 {
     [Header("Config Options")]
 
+    public Config lmConfig;
+
     [Min(0)] [Tooltip(">0: Automatically select ascending from id provided\n" + "0: Manually select with GUI")]
         public int id = 0;
     //public bool balanceConditionOrder = true;
@@ -72,18 +74,19 @@ public class LM_ExpStartup : MonoBehaviour
 
     void Start()
     {
-        // Get the config (dont use Config.Instance() as we need a preconfigured one)
-        if (FindObjectOfType<Config>() != null)
-        {
-            config = Config.Instance;
-            // config.Initialize(config);
-        }
-        // Don't continue unless a config is found (even in editor)
-        else
-        {
-            Debug.LogError("No Config found to autmatically configure");
-            return;
-        }
+        config = Config.Instance;
+        //// Get the config (dont use Config.Instance() as we need a preconfigured one)
+        //if (FindObjectOfType<Config>() != null)
+        //{
+        //    config = Config.Instance;
+        //    // config.Initialize(config);
+        //}
+        //// Don't continue unless a config is found (even in editor)
+        //else
+        //{
+        //    Debug.LogError("No Config found to autmatically configure");
+        //    return;
+        //}
     }
 
     private void Update()
@@ -208,10 +211,11 @@ public class LM_ExpStartup : MonoBehaviour
 [System.Serializable]
 public class GuiElements
 {
-    public Toggle practice;
-    public TMP_Dropdown ui;
+    public TMP_InputField studyCode;
     public TMP_InputField subID;
+    public TMP_Dropdown ui;
     public TMP_Dropdown condition;
     public TMP_Dropdown environment;
     public Button start;
+    public Toggle practice;
 }
