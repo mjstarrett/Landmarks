@@ -80,6 +80,7 @@ public class LM_GoTo : ExperimentTask
         // Is the player at and aligned with the destination?
         if (atDestination & Mathf.Abs(Mathf.DeltaAngle(manager.playerCamera.transform.eulerAngles.y, arriveAt.transform.eulerAngles.y)) < orientThreshold)
         {
+            Debug.Log("Bloop!");
             if (hud.GetMessage() == "")
             {
                 hud.setMessage(readyMessage);
@@ -139,6 +140,7 @@ public class LM_GoTo : ExperimentTask
         hud.hudPanel.SetActive(true);
         hud.setMessage("");
         hud.SecondsToShow = hud.GeneralDuration;
+        atDestination = false;
     }
 
     private void OnTriggerEnter(Collider collision)

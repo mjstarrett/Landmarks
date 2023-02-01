@@ -11,16 +11,30 @@ public class SteamVR_ToggleHand_mjsa : MonoBehaviour
     private Hand thisHand;
     public SteamVR_Action_Boolean button = SteamVR_Actions.landmarks.GripButton;
     private float timerStart;
+    bool defaultHandVisibility;
+    bool defaultControllerVisibility;
+    bool test;
 
     // Start is called before the first frame update
     void Start()
     {
         thisHand = transform.GetComponent<Hand>();
+        Debug.Log(thisHand.name);
+        //Debug.Log(thisHand.mainRenderModel.name);
+        //defaultHandVisibility = thisHand.mainRenderModel.IsHandVisibile();
+        Debug.Log("=============================" + defaultHandVisibility);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (thisHand.mainRenderModel != null && !test)
+        {
+            Debug.Log("=============================" + thisHand.mainRenderModel.name);
+            test = true;
+        }
+        else Debug.Log("(Still) Waiting for a main render model to be assigned");
+
         if (button.GetState(thisHand.handType))
         {
             Debug.Log("holding...");
