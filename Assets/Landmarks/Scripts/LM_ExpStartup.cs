@@ -17,8 +17,6 @@ public class LM_ExpStartup : MonoBehaviour
 {
     [Header("Config Options")]
 
-    public Config lmConfig;
-
     [Min(0)] [Tooltip(">0: Automatically select ascending from id provided\n" + "0: Manually select with GUI")]
         public int id = 0;
     //public bool balanceConditionOrder = true;
@@ -27,6 +25,7 @@ public class LM_ExpStartup : MonoBehaviour
         public GuiElements guiElements;
 
     // Private Variables
+    private List<Config> configs = new List<Config>();
     private Config config;
     private int autoID;
     private List<int> usedIds = new List<int>();
@@ -74,19 +73,16 @@ public class LM_ExpStartup : MonoBehaviour
 
     void Start()
     {
-        config = Config.Instance;
-        //// Get the config (dont use Config.Instance() as we need a preconfigured one)
-        //if (FindObjectOfType<Config>() != null)
-        //{
-        //    config = Config.Instance;
-        //    // config.Initialize(config);
-        //}
-        //// Don't continue unless a config is found (even in editor)
-        //else
-        //{
-        //    Debug.LogError("No Config found to autmatically configure");
-        //    return;
-        //}
+        // Make any saved config prefabs (must be in Assets/**/Resources/Configs)
+        // available in the dropdown (universal startup)
+        var opts = Resources.LoadAll<Config>("Configs/");
+        foreach (Config opt in opts)
+        {
+            configs.Add(opt);
+            var option = new TMP_Dropdown.OptionData();
+            option.text = opt.name;
+            guiElements.studyCodes.options.Add(option);
+        }
     }
 
     private void Update()
@@ -206,11 +202,25 @@ public class LM_ExpStartup : MonoBehaviour
             _errorMessage.gameObject.SetActive(true);
         }
     }
+
+    public void ChangeConfig()
+    {
+        if (config != null)
+        {
+            Destroy(config);
+        }
+        else
+        {
+            Instantiate(configs[guiElements.studyCodes.value-1]);
+            config = Config.Instance;
+        }
+    }
 }
 
 [System.Serializable]
 public class GuiElements
 {
+    public TMP_Dropdown studyCodes;
     public TMP_InputField studyCode;
     public TMP_InputField subID;
     public TMP_Dropdown ui;
