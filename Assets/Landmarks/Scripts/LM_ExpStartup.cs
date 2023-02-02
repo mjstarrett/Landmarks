@@ -133,6 +133,8 @@ public class LM_ExpStartup : MonoBehaviour
 
     void readyConfig()
     {
+        config = Config.Instance;
+
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
         config.appPath = appDir;
@@ -205,15 +207,10 @@ public class LM_ExpStartup : MonoBehaviour
 
     public void ChangeConfig()
     {
-        if (config != null)
-        {
-            Destroy(config);
-        }
-        else
-        {
-            Instantiate(configs[guiElements.studyCodes.value-1]);
-            config = Config.Instance;
-        }
+        
+        if (config != null) Destroy(config.gameObject);
+        try {config = Instantiate(configs[guiElements.studyCodes.value - 1]);}
+        catch (System.Exception ex) { } 
     }
 }
 
@@ -221,7 +218,6 @@ public class LM_ExpStartup : MonoBehaviour
 public class GuiElements
 {
     public TMP_Dropdown studyCodes;
-    public TMP_InputField studyCode;
     public TMP_InputField subID;
     public TMP_Dropdown ui;
     public TMP_Dropdown condition;
