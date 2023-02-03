@@ -69,6 +69,10 @@ public class LM_ExpStartup : MonoBehaviour
             gameObject.SetActive(true);
         }
         GetComponentInChildren<Button>().onClick.AddListener(OnStartButtonClicked);
+
+        var tmp = new GameObject("defaultConfig");
+        tmp.AddComponent<Config>();
+        config = tmp.GetComponent<Config>();
     }
 
     void Start()
