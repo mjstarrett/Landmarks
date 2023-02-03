@@ -49,7 +49,7 @@ public class Config : MonoBehaviour
     public string ui = "default";
     public ConfigRunMode runMode = ConfigRunMode.NEW;
     public List<string> conditions = new List<string>();
-    [Tooltip("Treat the first n scenes in the build list as practice and run them first")] 
+    [Tooltip("Treat the first n scenes in the build list as practice and run them first")]
     public int practiceTrialCount;
     public List<string> levelNames = new List<string>();
     public bool randomSceneOrder;
@@ -123,25 +123,61 @@ public class Config : MonoBehaviour
     {
         Debug.Log("Initializing the Config");
 
-
-        // add every scene (except the startup scene this is in
-        if (config.levelNames.Count == 0)
+        var lvls = new List<string>();
+        // If no levels are added/specified and we're in the editor, just add the open one
+        if (config.levelNames.Count == 0 && Application.isEditor)
         {
-            for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
+            lvls.Add(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            // Loop through scenes added to the build and cross-reference with config.levelnames
+            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
             {
-                //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
-                config.levelNames.Add(Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i)));
+                var lvl = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+                if (config.levelNames.Contains(lvl))
+                {
+                    lvls.Add(lvl);
+                    config.levelNames.Remove(lvl);
+                }
+            }
+
+            /* At this point, any extant levelnames should be in our lvls buffer and any names left in
+             * config.levelnames is not in a scene in the build.
+             * So, we'll reverse the process and for each item in config.levelNames check for an asterisk indicating
+             * a wildcard search for levelnames. We'll remove it if it's just a bad level name with no asterisk
+             * but search it using wildcard otherwise
+             */
+            if (config.levelNames.Count > 0)
+            {
+                
+                foreach (var name in config.levelNames)
+                {
+                    if (name.Contains("*"))
+                    {
+                        var search = name.Replace("*", string.Empty);
+                        Debug.Log("Searching for '" + search + "'");
+                        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+                        {
+                            var lvl = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+                            Debug.Log("\t ... in " + lvl);
+                            if (lvl.Contains(search))
+                            {
+                                lvls.Add(lvl);
+                            }
+                        }
+
+                    }
+                    //config.levelNames.Remove(name);
+                }
             }
         }
-        
-        // Check if the current scene is not in the build (as may be the case in the editor)
-#if UNITY_EDITOR
-        if (config.levelNames.Contains(SceneManager.GetActiveScene().name))
+
+        config.levelNames.Clear();
+        foreach (var lvl in lvls)
         {
-            config.levelNames.Clear();
-            config.levelNames.Add(SceneManager.GetActiveScene().name);
+            config.levelNames.Add(lvl);
         }
-#endif
 
         // If we are running the scenes in a randomized order
         if (randomSceneOrder)
