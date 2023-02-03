@@ -123,21 +123,60 @@ public class Config : MonoBehaviour
     {
         Debug.Log("Initializing the Config");
 
-        // add every scene (except the startup scene this is in
-        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
-        {
-            var lvl = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
-            //config.levelNames.Add(SceneManager.sceneCountInBuildSettings);
-            if (lvl.Contains("GraphPrefs"))
-            {
-                config.levelNames.Add(lvl);
-            }
-            
-        }
-
+        var lvls = new List<string>();
+        // If no levels are added/specified and we're in the editor, just add the open one
         if (config.levelNames.Count == 0 && Application.isEditor)
         {
-            config.levelNames.Add(SceneManager.GetActiveScene().name);
+            lvls.Add(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            // Loop through scenes added to the build and cross-reference with config.levelnames
+            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+            {
+                var lvl = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+                if (config.levelNames.Contains(lvl))
+                {
+                    lvls.Add(lvl);
+                    config.levelNames.Remove(lvl);
+                }
+            }
+
+            /* At this point, any extant levelnames should be in our lvls buffer and any names left in
+             * config.levelnames is not in a scene in the build.
+             * So, we'll reverse the process and for each item in config.levelNames check for an asterisk indicating
+             * a wildcard search for levelnames. We'll remove it if it's just a bad level name with no asterisk
+             * but search it using wildcard otherwise
+             */
+            if (config.levelNames.Count > 0)
+            {
+                
+                foreach (var name in config.levelNames)
+                {
+                    if (name.Contains("*"))
+                    {
+                        var search = name.Replace("*", string.Empty);
+                        Debug.Log("Searching for '" + search + "'");
+                        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+                        {
+                            var lvl = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+                            Debug.Log("\t ... in " + lvl);
+                            if (lvl.Contains(search))
+                            {
+                                lvls.Add(lvl);
+                            }
+                        }
+
+                    }
+                    //config.levelNames.Remove(name);
+                }
+            }
+        }
+
+        config.levelNames.Clear();
+        foreach (var lvl in lvls)
+        {
+            config.levelNames.Add(lvl);
         }
 
         // If we are running the scenes in a randomized order
