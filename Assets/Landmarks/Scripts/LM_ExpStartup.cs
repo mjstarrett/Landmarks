@@ -25,6 +25,7 @@ public class LM_ExpStartup : MonoBehaviour
         public GuiElements guiElements;
 
     // Private Variables
+    private List<Config> configs = new List<Config>();
     private Config config;
     private int autoID;
     private List<int> usedIds = new List<int>();
@@ -68,21 +69,23 @@ public class LM_ExpStartup : MonoBehaviour
             gameObject.SetActive(true);
         }
         GetComponentInChildren<Button>().onClick.AddListener(OnStartButtonClicked);
+
+        var tmp = new GameObject("defaultConfig");
+        tmp.AddComponent<Config>();
+        config = tmp.GetComponent<Config>();
     }
 
     void Start()
     {
-        // Get the config (dont use Config.Instance() as we need a preconfigured one)
-        if (FindObjectOfType<Config>() != null)
+        // Make any saved config prefabs (must be in Assets/**/Resources/Configs)
+        // available in the dropdown (universal startup)
+        var opts = Resources.LoadAll<Config>("Configs/");
+        foreach (Config opt in opts)
         {
-            config = Config.Instance;
-            // config.Initialize(config);
-        }
-        // Don't continue unless a config is found (even in editor)
-        else
-        {
-            Debug.LogError("No Config found to autmatically configure");
-            return;
+            configs.Add(opt);
+            var option = new TMP_Dropdown.OptionData();
+            option.text = opt.name;
+            guiElements.studyCodes.options.Add(option);
         }
     }
 
@@ -134,6 +137,8 @@ public class LM_ExpStartup : MonoBehaviour
 
     void readyConfig()
     {
+        config = Config.Instance;
+
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
         config.appPath = appDir;
@@ -203,15 +208,24 @@ public class LM_ExpStartup : MonoBehaviour
             _errorMessage.gameObject.SetActive(true);
         }
     }
+
+    public void ChangeConfig()
+    {
+        
+        if (config != null) Destroy(config.gameObject);
+        try {config = Instantiate(configs[guiElements.studyCodes.value - 1]);}
+        catch (System.Exception ex) { } 
+    }
 }
 
 [System.Serializable]
 public class GuiElements
 {
-    public Toggle practice;
-    public TMP_Dropdown ui;
+    public TMP_Dropdown studyCodes;
     public TMP_InputField subID;
+    public TMP_Dropdown ui;
     public TMP_Dropdown condition;
     public TMP_Dropdown environment;
     public Button start;
+    public Toggle practice;
 }
