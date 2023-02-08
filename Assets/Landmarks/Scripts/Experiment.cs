@@ -773,7 +773,12 @@ public class Experiment : MonoBehaviour
             {
                 // Use steam functions to avoid issues w/ framerate drop
 
+                foreach (var vrplayer in FindObjectsOfType<SteamVR_Behaviour>())
+                {
+                    Destroy(vrplayer);
+                }
                 SteamVR_LoadLevel.Begin(config.levelNames[config.levelNumber]);
+                
                 Destroy(transform.parent.gameObject);
                 Debug.Log("Loading new VR scene");
             }
