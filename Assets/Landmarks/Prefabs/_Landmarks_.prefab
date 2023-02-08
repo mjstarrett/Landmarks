@@ -852,6 +852,7 @@ GameObject:
   - component: {fileID: 8539771620998341922}
   - component: {fileID: 1371857015838658356}
   - component: {fileID: 3230109724841808681}
+  - component: {fileID: 5196110532132098107}
   m_Layer: 13
   m_Name: RightHand
   m_TagString: Untagged
@@ -992,6 +993,24 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
+--- !u!114 &5196110532132098107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591257053974255127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e959ed202e129a047a27a8c77a051fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitForSecs: 1000
+  button:
+    actionPath: /actions/landmarks/in/GripButton
+    needsReinit: 0
+  defaultHandVis: 1
+  defaultControllerVis: 1
 --- !u!1 &1629325152237921193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,6 +2760,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4562,6 +4582,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4631,9 +4652,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 0
   skipConditions: []
   tasks: []
   objectsList: []
@@ -4648,7 +4671,6 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
   overlayRepeatCount: {fileID: 0}
   overlayListItem: {fileID: 0}
 --- !u!1 &5308465570229703753
@@ -4743,6 +4765,7 @@ MonoBehaviour:
   playback_time: 0
   logfile: 
   dataPath: 
+  trialCounter: {fileID: 0}
 --- !u!1 &5308465570808339388
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,6 +4823,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4927,6 +4951,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -4993,6 +5018,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -5059,9 +5085,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 0
   skipConditions: []
   tasks: []
   objectsList: []
@@ -5076,7 +5104,6 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
   overlayRepeatCount: {fileID: 0}
   overlayListItem: {fileID: 0}
 --- !u!1 &5308465571347722053
@@ -5221,9 +5248,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 0
   skipConditions: []
   tasks: []
   objectsList: []
@@ -5238,7 +5267,6 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
   overlayRepeatCount: {fileID: 0}
   overlayListItem: {fileID: 0}
 --- !u!1 &5308465572019283265
@@ -5390,6 +5418,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -5468,9 +5497,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 0
   skipConditions: []
   tasks: []
   objectsList: []
@@ -5485,7 +5516,6 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
   overlayRepeatCount: {fileID: 0}
   overlayListItem: {fileID: 0}
 --- !u!1 &5308465572124860005
@@ -5545,6 +5575,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -6047,6 +6078,7 @@ GameObject:
   - component: {fileID: 8970173220513250223}
   - component: {fileID: 1856074442044930628}
   - component: {fileID: 7118598375224574667}
+  - component: {fileID: 4694319354537109244}
   m_Layer: 13
   m_Name: LeftHand
   m_TagString: Untagged
@@ -6187,6 +6219,24 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
+--- !u!114 &4694319354537109244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5815827983608702546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e959ed202e129a047a27a8c77a051fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitForSecs: 1000
+  button:
+    actionPath: /actions/landmarks/in/GripButton
+    needsReinit: 0
+  defaultHandVis: 1
+  defaultControllerVis: 1
 --- !u!1 &5967866047339847719
 GameObject:
   m_ObjectHideFlags: 0
@@ -6692,6 +6742,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -9704,30 +9755,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a71ba01c9e92408d959a1fbbaf55999, type: 3}
---- !u!1 &9176974027382953088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8486741214317458315, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-    type: 3}
-  m_PrefabInstance: {fileID: 765013161893603083}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1960875662798115357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1273306398467355926, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-    type: 3}
-  m_PrefabInstance: {fileID: 765013161893603083}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &891547599915242987 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 487152625769673440, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-    type: 3}
-  m_PrefabInstance: {fileID: 765013161893603083}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6036326383296407680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6438047089679781771, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-    type: 3}
-  m_PrefabInstance: {fileID: 765013161893603083}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7718157850947585988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7026100056922333391, guid: 6a71ba01c9e92408d959a1fbbaf55999,
@@ -9746,21 +9773,45 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 765013161893603083}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5894788897412649137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6580779607783913402, guid: 6a71ba01c9e92408d959a1fbbaf55999,
-    type: 3}
-  m_PrefabInstance: {fileID: 765013161893603083}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8544173916363270970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8939328062178659377, guid: 6a71ba01c9e92408d959a1fbbaf55999,
     type: 3}
   m_PrefabInstance: {fileID: 765013161893603083}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5894788897412649137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6580779607783913402, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+    type: 3}
+  m_PrefabInstance: {fileID: 765013161893603083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8810046444385884190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8133023716024712981, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+    type: 3}
+  m_PrefabInstance: {fileID: 765013161893603083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6036326383296407680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6438047089679781771, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+    type: 3}
+  m_PrefabInstance: {fileID: 765013161893603083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &891547599915242987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 487152625769673440, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+    type: 3}
+  m_PrefabInstance: {fileID: 765013161893603083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9176974027382953088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8486741214317458315, guid: 6a71ba01c9e92408d959a1fbbaf55999,
+    type: 3}
+  m_PrefabInstance: {fileID: 765013161893603083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1960875662798115357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1273306398467355926, guid: 6a71ba01c9e92408d959a1fbbaf55999,
     type: 3}
   m_PrefabInstance: {fileID: 765013161893603083}
   m_PrefabAsset: {fileID: 0}

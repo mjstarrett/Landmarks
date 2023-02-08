@@ -16,6 +16,7 @@ using Windows.Storage;
 public class LM_ExpStartup : MonoBehaviour
 {
     [Header("Config Options")]
+    public Config configProvided;
 
     [Min(0)] [Tooltip(">0: Automatically select ascending from id provided\n" + "0: Manually select with GUI")]
         public int id = 0;
@@ -70,9 +71,16 @@ public class LM_ExpStartup : MonoBehaviour
         }
         GetComponentInChildren<Button>().onClick.AddListener(OnStartButtonClicked);
 
+        // Create a dummy config to be replaced by the one provided or the selection dropdown
         var tmp = new GameObject("defaultConfig");
         tmp.AddComponent<Config>();
         config = tmp.GetComponent<Config>();
+        if (configProvided != null)
+        {
+            ChangeConfig();
+            guiElements.studyCodes.gameObject.SetActive(false);
+        }
+        else guiElements.studyCodes.gameObject.SetActive(true);
     }
 
     void Start()
@@ -213,6 +221,11 @@ public class LM_ExpStartup : MonoBehaviour
     {
         
         if (config != null) Destroy(config.gameObject);
+
+        if (configProvided != null)
+        {
+            config = Instantiate(configProvided);
+        }
         try {config = Instantiate(configs[guiElements.studyCodes.value - 1]);}
         catch (System.Exception ex) { } 
     }
