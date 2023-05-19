@@ -44,8 +44,9 @@ public class LM_TargetColorAssignments : ExperimentTask
     public Color startingColor = Color.HSVToRGB(0f, 1f, 0.6f);
 
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         if (Lmin >= Lmax)
         {
             Debug.LogError(this.name + ": Lmin must be less than Lmax");
