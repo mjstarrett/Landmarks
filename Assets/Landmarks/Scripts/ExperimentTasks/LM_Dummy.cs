@@ -35,6 +35,12 @@ public class LM_Dummy : ExperimentTask
         if (!manager) Start();
         base.startTask();
 
+        if (skip)
+        {
+            log.log("INFO    skip task    " + name, 1);
+            return;
+        }
+
         // WRITE TASK STARTUP CODE HERE
     }
 

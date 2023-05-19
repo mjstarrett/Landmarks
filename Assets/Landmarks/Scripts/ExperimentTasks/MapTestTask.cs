@@ -281,7 +281,7 @@ public class MapTestTask : ExperimentTask {
 
 		// log data
 		// Log data
-		trialLog.AddData(transform.name + "_testTime", taskDuration.ToString());
+		taskLog.AddData(transform.name + "_testTime", taskDuration.ToString());
 
 		// Set up hud for other tasks
 		hud.hudPanel.SetActive(true); //hide the text background on HUD
