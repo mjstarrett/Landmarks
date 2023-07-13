@@ -19,7 +19,6 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-
 public class ObjectList : ExperimentTask {
 
     [Header("Task-specific Properties")]
@@ -31,60 +30,68 @@ public class ObjectList : ExperimentTask {
 	public List<GameObject> objects;
 	public EndListMode EndListBehavior; 
 	public bool shuffle;
-	public GameObject order;
-    	
+    // public GameObject order; // DEPRICATED
+
+    
 	public override void startTask () {
         //ViewObject.startObjects.current = 0;
         //current = 0;
 
-        // If parentObject is left blank and parentName is not, use parentName to get parentObject
-        if (parentObject == null && parentName != "") 
+		GameObject[] objs;
+
+        if (objects.Count == 0)
         {
-            parentObject = GameObject.Find(parentName);
+            if (parentObject == null & parentName == "") Debug.LogError("No objects found for objectlist.");
+
+            // If parentObject is left blank and parentName is not, use parentName to get parentObject
+            if (parentObject == null && parentName != "")
+            {
+                parentObject = GameObject.Find(parentName);
+            }
+
+            objs = new GameObject[parentObject.transform.childCount];
+
+            Array.Sort(objs);
+
+			for (int i = 0; i < parentObject.transform.childCount; i++)
+			{
+				objs[i] = parentObject.transform.GetChild(i).gameObject;
+			}
         }
-        // otherwise, parentObject will need to be provided
-
-
-        GameObject[] objs;
-
-		objs = new GameObject[parentObject.transform.childCount];
-		Array.Sort(objs);
-		int i = 0;
-		foreach (Transform child in parentObject.transform) {
-			objs[i] = child.gameObject;
-			i++;
-		}
-
-	
-
-		if (order ) {
-			// Deal with specific ordering
-			ObjectOrder ordered = order.GetComponent("ObjectOrder") as ObjectOrder;
-		
-			if (ordered) {
-				Debug.Log("ordered");
-				Debug.Log(ordered.order.Count);
-				
-				if (ordered.order.Count > 0) {
-					objs = ordered.order.ToArray();
-				}
+		else 
+		{
+			objs = new GameObject[objects.Count];
+			for (int i = 0; i < objects.Count; i++)
+			{
+				objs[i] = objects[i];
 			}
 		}
+        
+		// DEPRICATED
+		// if (order ) {
+		// 	// Deal with specific ordering
+		// 	ObjectOrder ordered = order.GetComponent("ObjectOrder") as ObjectOrder;
+		
+		// 	if (ordered) {
+		// 		Debug.Log("ordered");
+		// 		Debug.Log(ordered.order.Count);
+				
+		// 		if (ordered.order.Count > 0) {
+		// 			objs = ordered.order.ToArray();
+		// 		}
+		// 	}
+		// }
 			
 		if ( shuffle ) {
-			Experiment.Shuffle(objs);			
-			
+			Experiment.Shuffle(objs);				
 		}
 		
 		TASK_START();
-		
-		
-			 
+	 
 		foreach (GameObject obj in objs) {	             
         	objects.Add(obj);
 			log.log("TASK_ADD	" + name  + "\t" + this.GetType().Name + "\t" + obj.name  + "\t" + "null",1 );
 		}
-		
 	}	
 	
 	public override void TASK_ADD(GameObject go, string txt) {
@@ -114,14 +121,15 @@ public class ObjectList : ExperimentTask {
 	public GameObject currentObject() {
 		if (current >= objects.Count) {
 			return null;
-			current = 0;
 		} else {
 			return objects[current];
 		}
 	}
 	
-	public  void incrementCurrent() {
+	public new void incrementCurrent() 
+	{
 		current++;
+		
 		if (current >= objects.Count && EndListBehavior == EndListMode.Loop) {
 			current = 0;
 		}

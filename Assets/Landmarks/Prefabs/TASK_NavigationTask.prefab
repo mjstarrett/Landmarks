@@ -57,6 +57,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -77,7 +78,7 @@ GameObject:
   - component: {fileID: 6242013941690299331}
   m_Layer: 0
   m_Name: TASK_NavigationTask
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,9 +127,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -143,7 +146,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &6282823827259011963
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,11 +205,13 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 205a6b26dec3f41f5aae12ed747e893e, type: 3}
+  masterText: 
   objects: {fileID: 8475965484490080533}
   multiObjects: []
   texts: {fileID: 0}
@@ -278,9 +284,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 2
   skipConditions: []
   tasks: []
   objectsList: []
@@ -295,7 +303,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &6283590481920638031
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +362,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -362,7 +372,6 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 0
   shuffle: 1
-  order: {fileID: 0}
 --- !u!1 &6284186823485350683
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,11 +429,13 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 9640913f0e4984ce190c4c98b1787149, type: 3}
+  masterText: 
   objects: {fileID: 8475965484490080533}
   multiObjects: []
   texts: {fileID: 0}
@@ -493,11 +504,13 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: be09658d905b44554a5d01366bd52d7e, type: 3}
+  masterText: 
   objects: {fileID: 0}
   multiObjects: []
   texts: {fileID: 0}
@@ -567,14 +580,19 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   destinations: {fileID: 8475965484490080533}
+  currentTarget: {fileID: 0}
+  NavigationInstruction: {fileID: 0}
+  distanceAllotted: Infinity
+  timeAllotted: Infinity
+  printRemainingTimeTo: {fileID: 0}
   scoreIncrement: 50
   penaltyRate: 2000
   showScoring: 0
-  NavigationInstruction: {fileID: 0}
   hideTargetOnStart: 0
   showTargetAfterSeconds: 0
   hideNonTargets: 0
@@ -582,6 +600,9 @@ MonoBehaviour:
   SecondsUntilAssist: -1
   compassPosOffset: {x: 0, y: 0, z: -2.8}
   compassRotOffset: {x: 0, y: 0, z: 0}
+  allowContinueAfter: Infinity
+  haptics: 0
+  logStartEnd: 0
 --- !u!1 &8477616651272562215
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +660,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -660,6 +682,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -675,6 +702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000000754979
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 1.7112914e-15
       objectReference: {fileID: 0}
@@ -687,16 +719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000000754979
-      objectReference: {fileID: 0}
-    - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6397925698209743324, guid: a559cc6f320e14f4caead252283d51ef,
         type: 3}

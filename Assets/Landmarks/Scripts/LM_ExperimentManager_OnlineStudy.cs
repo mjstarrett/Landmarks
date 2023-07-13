@@ -13,6 +13,14 @@ using System.IO;
 using Windows.Storage;
 #endif
 
+///////////////////////////////////////////////////////////////////////////
+///                                                                     ///
+///                                                                     ///
+/// DEPRECATED: Use LM_ExpStartup or LM_ExpStartupAzure.cs              ///
+///                                                                     ///
+///                                                                     ///
+///////////////////////////////////////////////////////////////////////////
+
 public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
 {
 
@@ -40,7 +48,7 @@ public class LM_ExperimentManager_OnlineStudy : MonoBehaviour
         // Get the config (dont use Config.Instance() as we need a preconfigured one)
         if (FindObjectOfType<Config>() != null)
         {
-            config = Config.instance;
+            config = Config.Instance;
         }
         // Don't continue unless a config is found (even in editor)
         else
