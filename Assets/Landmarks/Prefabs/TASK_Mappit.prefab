@@ -24,12 +24,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289499566479866048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 526716851931109429}
-  m_RootOrder: 3
+  m_Father: {fileID: 931623458286893190}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6553262523879244141
 MonoBehaviour:
@@ -57,12 +57,15 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 875b8fd2b895f42029bee03759b94a4c, type: 3}
+  masterText: 
   objects: {fileID: 0}
+  multiObjects: []
   texts: {fileID: 0}
   blackout: 1
   text_color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,6 +132,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -138,7 +142,6 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 1
   shuffle: 0
-  order: {fileID: 0}
 --- !u!1 &2124298954873378043
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,8 +170,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 526716851931109429}
-  m_RootOrder: 8
+  m_Father: {fileID: 931623458286893190}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &252864594485888581
 MonoBehaviour:
@@ -196,6 +199,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -228,12 +232,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3024110097275090175}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 526716851931109429}
-  m_RootOrder: 4
+  m_Father: {fileID: 931623458286893190}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5141094921579898255
 MonoBehaviour:
@@ -261,12 +265,99 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  timeLimit: 0
   flattenMap: 1
   hudTextOffset: {x: 10, y: 0, z: 0}
   baselineScaling: {x: 0, y: 0, z: 0}
+  buttonText: Start Test
+--- !u!1 &3138786387705578176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 931623458286893190}
+  - component: {fileID: 1250558998467231233}
+  m_Layer: 0
+  m_Name: Study-Test Cycle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &931623458286893190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138786387705578176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7590511088853571219}
+  - {fileID: 4109923102460766124}
+  - {fileID: 5602311265105401228}
+  - {fileID: 5648194916778212953}
+  - {fileID: 7380799277899790472}
+  - {fileID: 6106571125952162625}
+  m_Father: {fileID: 526716851931109429}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250558998467231233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138786387705578176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b72e5b9b995348e0a53c738244f788b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skip: 0
+  canIncrementLists: 1
+  interval: 0
+  interruptTasks: {fileID: 0}
+  interruptInterval: 0
+  repeatInterrupts: 9999
+  currentInterrupt: 0
+  pausedTasks: {fileID: 0}
+  parentTask: {fileID: 0}
+  firstPersonCamera: {fileID: 0}
+  overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
+  vrEnabled: 0
+  taskLog: {fileID: 0}
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
+  taskListType: 2
+  skipConditions: []
+  tasks: []
+  objectsList: []
+  repeat: 1
+  overideRepeat: {fileID: 0}
+  repeatCount: 1
+  hideTargetsDuringTask: 0
+  currentTask: {fileID: 0}
+  catchTrialCount: 0
+  skipOnCatch: []
+  onlyOnCatch: []
+  noCatchOnFirstTrial: 1
+  catchTrials: 
+  catchFlag: 0
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &5413559718795144412
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +415,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -357,8 +449,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 526716851931109429}
-  m_RootOrder: 6
+  m_Father: {fileID: 931623458286893190}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3370795000131312321
 MonoBehaviour:
@@ -386,12 +478,15 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: e6b6fabc213de4a019c8b2fc1741ea41, type: 3}
+  masterText: 
   objects: {fileID: 0}
+  multiObjects: []
   texts: {fileID: 0}
   blackout: 1
   text_color: {r: 1, g: 1, b: 1, a: 1}
@@ -425,12 +520,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6672312733724976488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 526716851931109429}
-  m_RootOrder: 7
+  m_Father: {fileID: 931623458286893190}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1668381732265589425
 MonoBehaviour:
@@ -458,12 +553,15 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   targetList: {fileID: 4472178114858927060}
+  timeLimit: 0
   flattenMap: 1
   snapToTargetProximity: 7
+  buttonText: Get Score
   hudTextOffset: {x: 0, y: 0, z: 25}
 --- !u!1 &6891802954355110682
 GameObject:
@@ -489,12 +587,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6891802954355110682}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.01, z: 1}
   m_Children: []
-  m_Father: {fileID: 526716851931109429}
-  m_RootOrder: 5
+  m_Father: {fileID: 931623458286893190}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3948259135914178339
 MonoBehaviour:
@@ -522,6 +620,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -541,7 +640,7 @@ GameObject:
   - component: {fileID: 5880537170829252615}
   m_Layer: 0
   m_Name: TASK_Mappit
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,12 +659,7 @@ Transform:
   - {fileID: 6755769622479869308}
   - {fileID: 8502080611144773940}
   - {fileID: 3297168188365428496}
-  - {fileID: 7590511088853571219}
-  - {fileID: 4109923102460766124}
-  - {fileID: 5602311265105401228}
-  - {fileID: 5648194916778212953}
-  - {fileID: 7380799277899790472}
-  - {fileID: 6106571125952162625}
+  - {fileID: 931623458286893190}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -595,9 +689,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -612,7 +708,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &9212383501365777261
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +767,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -679,4 +777,3 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 1
   shuffle: 1
-  order: {fileID: 0}

@@ -105,6 +105,7 @@ public class LM_AzureStorage : MonoBehaviour
 			}
 			catch (System.Exception ex)
 			{
+				Debug.LogException(ex);
 				Debug.LogError("Error saving file " + experiment.dataPath + additionalSaveFiles[i]+ "; File does not exist or cannot be read.");
 			}
 		}

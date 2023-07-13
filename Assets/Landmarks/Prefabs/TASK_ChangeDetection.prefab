@@ -57,6 +57,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -66,7 +67,6 @@ MonoBehaviour:
   objects: []
   EndListBehavior: 0
   shuffle: 1
-  order: {fileID: 0}
 --- !u!1 &1318509328391709198
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -196,9 +197,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 2
   skipConditions: []
   tasks: []
   objectsList: []
@@ -213,7 +216,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 1
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1 &1318509328919564003
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,12 +275,15 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
   instruction: {fileID: 0}
   message: {fileID: 4900000, guid: 8eb5a66686ebc43899d31e8fb43c4d42, type: 3}
+  masterText: 
   objects: {fileID: 0}
+  multiObjects: []
   texts: {fileID: 0}
   blackout: 1
   text_color: {r: 1, g: 1, b: 1, a: 1}
@@ -343,6 +350,7 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
@@ -363,7 +371,7 @@ GameObject:
   - component: {fileID: 1318509329520750844}
   m_Layer: 0
   m_Name: TASK_ChangeDetection
-  m_TagString: Task
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,9 +419,11 @@ MonoBehaviour:
   debugButton: {fileID: 0}
   actionButton: {fileID: 0}
   vrEnabled: 0
+  taskLog: {fileID: 0}
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
+  taskListType: 1
   skipConditions: []
   tasks: []
   objectsList: []
@@ -428,7 +438,8 @@ MonoBehaviour:
   noCatchOnFirstTrial: 1
   catchTrials: 
   catchFlag: 0
-  trialLogging: 0
+  overlayRepeatCount: {fileID: 0}
+  overlayListItem: {fileID: 0}
 --- !u!1001 &1318509328799645587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -436,6 +447,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318509329520750835}
     m_Modifications:
+    - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -465,16 +486,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 170528091735560576, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
@@ -498,8 +509,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 170528092056186903, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
-      propertyPath: objectRotationOffset.y
-      value: 0
+      propertyPath: rotationAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 170528092056186903, guid: 41e6964e688bb468db8869f849e9dfe9,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 170528092056186903, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
@@ -508,13 +524,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 170528092056186903, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
-      propertyPath: rotationAxis
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 170528092056186903, guid: 41e6964e688bb468db8869f849e9dfe9,
-        type: 3}
-      propertyPath: rotationSpeed
-      value: 60
+      propertyPath: objectRotationOffset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1276067923744680341, guid: 41e6964e688bb468db8869f849e9dfe9,
         type: 3}
