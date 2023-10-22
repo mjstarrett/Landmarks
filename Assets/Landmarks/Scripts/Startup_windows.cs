@@ -99,7 +99,7 @@ public class Startup_windows : MonoBehaviour {
 		config.subjectPath = appDir + "/data/" + levelList[currentLevelSelection].text + "/" + subject;
 
 		config.appPath = appDir;
-		config.level = levelList[currentLevelSelection].text;
+		//config.level = levelList[currentLevelSelection].text;
 		config.subject = subject;
 	 	config.filename = configfile;
     }

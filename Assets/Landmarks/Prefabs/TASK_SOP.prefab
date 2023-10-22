@@ -69,7 +69,6 @@ MonoBehaviour:
   repeat: 24
   overideRepeat: {fileID: 0}
   repeatCount: 1
-  hideTargetsDuringTask: 1
   currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
@@ -223,7 +222,6 @@ MonoBehaviour:
   repeat: 1
   overideRepeat: {fileID: 0}
   repeatCount: 1
-  hideTargetsDuringTask: 0
   currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
@@ -436,11 +434,12 @@ MonoBehaviour:
   triggerLabel: 
   triggerOnStart: 0
   triggerOnEnd: 0
-  listToPermute: {fileID: 8777765009382720181}
+  inputLists:
+  - {fileID: 8777765009382720181}
   subset: 3
   shuffle: 1
+  link: 0
   endListBehavior: 1
-  outputSubsetObjectLists: []
 --- !u!1001 &3712918828935423515
 PrefabInstance:
   m_ObjectHideFlags: 0
