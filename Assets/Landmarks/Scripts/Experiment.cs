@@ -763,6 +763,9 @@ public class Experiment : MonoBehaviour
         // Load the next level/scene/condition or quit
         // ---------------------------------------------------------------------
 
+        // Save scene order/data in the config
+        config.Save();
+
         //increment the level number (accounting for the zero-base compared to a count (starts with 1)
         config.levelNumber++;
         // If there is another level, load it
@@ -787,6 +790,7 @@ public class Experiment : MonoBehaviour
         // Otherwise, close down; we're done
         else
         {
+            config.DeleteTemporaryProgressData();
             // shut it down
             Application.Quit();
         }
