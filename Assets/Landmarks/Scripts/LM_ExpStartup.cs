@@ -34,6 +34,7 @@ public class LM_ExpStartup : MonoBehaviour
     private bool uiError = true;
     private bool abortExperiment;
     private string appDir;
+    private bool existingData;
 
     private void Awake()
     {
@@ -125,6 +126,7 @@ public class LM_ExpStartup : MonoBehaviour
 
 
         ValidateUI();
+
         if (!subidError & !uiError)
         {
             // Create the directories if they don't exist
@@ -134,7 +136,8 @@ public class LM_ExpStartup : MonoBehaviour
             }
 
             readyConfig();
-            SceneManager.LoadScene(config.level);
+            
+            SceneManager.LoadScene(config.levelNames[config.levelNumber]);
         }
         else
         {
@@ -146,13 +149,15 @@ public class LM_ExpStartup : MonoBehaviour
     void readyConfig()
     {
         config = Config.Instance;
-
+       
         config.runMode = ConfigRunMode.NEW;
         config.bootstrapped = true;
         config.appPath = appDir;
         config.subject = id.ToString();
         config.ui = guiElements.ui.options[guiElements.ui.value].text;
-        config.level = config.levelNames[0];
+        if (existingData) config.Load();
+        //config.level = config.levelNames[0];
+
         config.CheckConfig();
         DontDestroyOnLoad(config);
     }
@@ -185,14 +190,24 @@ public class LM_ExpStartup : MonoBehaviour
             // if so, make sure it's an int
             if (int.TryParse(guiElements.subID.text, out int _subID))
             {
-
                 // If this id has already been used to save data, flag an error
-                if (!Application.isEditor & 
+                if (!Application.isEditor &
                     Directory.Exists(appDir + "/" + config.experiment + "/" + guiElements.subID.text))
                 {
-                    subidError = true;
-                    _errorMessage.text = "That SubjectID is already in use.";
-                    _errorMessage.gameObject.SetActive(true);
+                    if (File.Exists(appDir + "/" + config.experiment + "/" + guiElements.subID.text + "/progress.dat"))
+                    {
+                        subidError = false;
+                        existingData = true;
+                        id = int.Parse(guiElements.subID.text);
+                        _errorMessage.text = "Loading SubjectID data from a previous session.";
+                        _errorMessage.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        subidError = true;
+                        _errorMessage.text = "That SubjectID is already in use.";
+                        _errorMessage.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {

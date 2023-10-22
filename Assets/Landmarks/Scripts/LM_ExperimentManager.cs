@@ -163,7 +163,7 @@ public class LM_ExperimentManager : MonoBehaviour
             }
 
             readyConfig();
-            SceneManager.LoadScene(config.level);
+            SceneManager.LoadScene(config.levelNames[config.levelNumber]);
         }
         else
         {
@@ -184,7 +184,7 @@ public class LM_ExperimentManager : MonoBehaviour
         config.appPath = appDir;
         config.subject = subID.text;
         config.ui = ui.options[ui.value].text;
-        config.level = config.levelNames[0];
+        //config.level = config.levelNames[0];
         config.CheckConfig();
         DontDestroyOnLoad(config);
 

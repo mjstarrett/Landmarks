@@ -18,6 +18,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public enum ConfigRunMode
 {
@@ -70,14 +71,17 @@ public class Config : MonoBehaviour
     public string subject = "default";
     [HideInInspector]
     public string session = "default";
-    [HideInInspector]
-    public string level = "default";
+    //[HideInInspector]
+    //public string level = "default";
     [HideInInspector]
     public string condition = "default";
 
     // s_Instance is used to cache the instance found in the scene so we don't have to look it up every time.	
     private static Config s_Instance = null;
     public bool initialized;
+    
+    
+    string datapath;
 
     private void Awake()
     {
@@ -186,7 +190,7 @@ public class Config : MonoBehaviour
             {
                 if (i >= practiceTrialCount)
                 {
-                    Debug.Log("Shuffling");
+                    //Debug.Log("Shuffling");
                     var temp = config.levelNames[i]; // grab the ith object
                     int randomIndex = UnityEngine.Random.Range(i, config.levelNames.Count); // random index between i and end of list
                     config.levelNames[i] = config.levelNames[randomIndex]; // replace ith element with the random element...
@@ -220,5 +224,96 @@ public class Config : MonoBehaviour
         }
     }
 
+
+    public void Save()
+    {
+        string path = "";
+        if (Application.isEditor)
+        {
+            path = Directory.GetCurrentDirectory() + "/" +
+                   "editor-data/";
+        }
+        else
+        {
+            path = Application.persistentDataPath + "/" +
+                experiment + "/" +
+                subject + "/";
+        }
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(path + "progress.dat", FileMode.Create);
+
+        ExpData data = new ExpData();
+        data.id = subject;
+        data.lastLevelFinished = levelNumber;
+        data.levelNames = new List<string>();
+        foreach (var lev in levelNames)
+        {
+            data.levelNames.Add(lev);
+        }
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public void Load()
+    {
+        string path = "";
+        if (Application.isEditor)
+        {
+            path = Directory.GetCurrentDirectory() + "/editor-data/";
+        }
+        else
+        {
+            path = Application.persistentDataPath + "/" +
+                experiment + "/" +
+                subject + "/";
+        }
+        Debug.Log("Loading from " + path + "progress.dat");
+        if (File.Exists(path + "progress.dat"))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = File.Open(path + "progress.dat", FileMode.Open);
+
+            ExpData data = (ExpData)formatter.Deserialize(stream);
+            stream.Close();
+
+            // Replace current values with loaded values
+            subject = data.id;
+            levelNumber = data.lastLevelFinished+1;
+
+            levelNames.Clear();
+            foreach (var lev in data.levelNames)
+            {
+                levelNames.Add(lev);
+            }
+        }
+    }
+
+    public void DeleteTemporaryProgressData()
+    {
+        string path = "";
+        if (Application.isEditor)
+        {
+            path = Directory.GetCurrentDirectory() + "/editor-data/";
+        }
+        else
+        {
+            path = Application.persistentDataPath + "/" +
+                experiment + "/" +
+                subject + "/";
+        }
+        File.Delete(path + "progress.dat");
+    }
 }
+
+[System.Serializable]
+class ExpData
+{
+    public string id;
+    public int lastLevelFinished;
+    public List<string> levelNames;
+
+}
+
 

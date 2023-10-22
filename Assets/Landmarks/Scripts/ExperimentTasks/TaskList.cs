@@ -39,7 +39,6 @@ public class TaskList : ExperimentTask
     public int repeat = 1;
     public ObjectList overideRepeat;
     public int repeatCount = 1;
-    public bool hideTargetsDuringTask;
 
     [HideInInspector]
     public ExperimentTask currentTask;
@@ -179,12 +178,6 @@ public class TaskList : ExperimentTask
                 Debug.Log(item);
             }
         }
-
-        // Hide the targets for the duration of this tasklist
-        if (hideTargetsDuringTask)
-        {
-            manager.targetObjects.SetActive(false);
-        }
     }
 
 
@@ -249,12 +242,6 @@ public class TaskList : ExperimentTask
             startNewRepeat();
             repeatCount = 1;
             catchFlag = false; // MJS - Added to prevent catch trials on first trial of next block
-
-            // If targets were hidden, make them visible again
-            if (hideTargetsDuringTask)
-            {
-                manager.targetObjects.SetActive(true);
-            }
 
             return true;
         }
