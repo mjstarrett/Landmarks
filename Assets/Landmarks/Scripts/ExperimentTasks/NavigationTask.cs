@@ -158,16 +158,19 @@ public class NavigationTask : ExperimentTask
         {
             if (hideTargetOnStart == HideTargetOnStart.SetInactive)
             {
-                foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
+                //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
+                manager.DisableRecursive(currentTarget);
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetInvisible)
             {
                 manager.HideRecursive(currentTarget);
+                manager.DisableRecursive(currentTarget, ignoreSelf: true); // turn off walls but not target collision
             }
             else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
             {
                 manager.HideRecursive(currentTarget);
-                foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
+                //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
+                manager.DisableRecursive(currentTarget);
                 foreach (var child in currentTarget.GetComponentsInChildren<Transform>())
                 {
                     var halo = (Behaviour)child.GetComponent("Halo");
@@ -177,7 +180,8 @@ public class NavigationTask : ExperimentTask
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
                 manager.HideRecursive(currentTarget);
-                foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
+                manager.DisableRecursive(currentTarget);
+                //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
 
             }
             
@@ -279,14 +283,17 @@ public class NavigationTask : ExperimentTask
             switch (hideTargetOnStart)
             {
                 case HideTargetOnStart.SetInactive:
-                    foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
+                    manager.DisableRecursive(currentTarget, true);
+                    //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
                     break;
                 case HideTargetOnStart.SetInvisible:
                     manager.HideRecursive(currentTarget, true);
+                    manager.DisableRecursive(currentTarget, restore:true, ignoreSelf: true); // turn off walls but not target collision
                     break;
                 case HideTargetOnStart.DisableCompletely:
                     manager.HideRecursive(currentTarget, true);
-                    foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
+                    manager.DisableRecursive(currentTarget, true);
+                    //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
                     foreach (var child in currentTarget.GetComponentsInChildren<Transform>())
                     {
                         var halo = (Behaviour)child.GetComponent("Halo");
@@ -295,7 +302,8 @@ public class NavigationTask : ExperimentTask
                     break;
                 case HideTargetOnStart.SetProbeTrial:
                     manager.HideRecursive(currentTarget, true);
-                    foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
+                    manager.DisableRecursive(currentTarget, true);
+                    //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
                     break;
                 default:
                     Debug.Log("No hidden targets identified");
@@ -423,7 +431,8 @@ public class NavigationTask : ExperimentTask
 
         // re-enable everything on the gameobject we just finished finding
         manager.HideRecursive(currentTarget, true);
-        foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
+        manager.DisableRecursive(currentTarget, true);
+        //foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
         foreach (var child in currentTarget.GetComponentsInChildren<Transform>())
         {
             var halo = (Behaviour)child.GetComponent("Halo");
@@ -512,8 +521,7 @@ public class NavigationTask : ExperimentTask
 
 	public override bool OnControllerColliderHit(GameObject hit)
 	{
-		if ((hit == currentTarget | hit.transform.parent.gameObject == currentTarget) & 
-            hideTargetOnStart != HideTargetOnStart.DisableCompletely & hideTargetOnStart != HideTargetOnStart.SetInactive)
+		if (hit == currentTarget | hit.transform.parent.gameObject == currentTarget)
 		{
 			if (showScoring)
 			{

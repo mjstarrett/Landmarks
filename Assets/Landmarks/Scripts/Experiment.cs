@@ -641,12 +641,16 @@ public class Experiment : MonoBehaviour
     }
 
     // Turn off all Colliders on a gameobject and all of its children
-    public void DisableRecursive(GameObject obj, bool restore = false)
+    public void DisableRecursive(GameObject obj, bool restore = false, bool ignoreSelf = false)
     {
         if (obj.GetComponentsInChildren<Collider>().Length > 0)
         {
             var cs = obj.GetComponentsInChildren<Collider>();
-            foreach (Collider c in cs) c.enabled = restore;
+            foreach (Collider c in cs)
+            {
+                if (ignoreSelf && c.transform == obj.transform) continue;
+                c.enabled = restore;
+            }
         }
         else Debug.LogError("You are trying to disable or re-enable a GameObject with no Colliders");
     }
