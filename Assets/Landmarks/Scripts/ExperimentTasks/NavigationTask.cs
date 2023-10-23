@@ -158,20 +158,26 @@ public class NavigationTask : ExperimentTask
         {
             if (hideTargetOnStart == HideTargetOnStart.SetInactive)
             {
-                manager.DisableRecursively<MeshRenderer>(currentTarget);
+                foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetInvisible)
             {
-                manager.DisableRecursively<Collider>(currentTarget);
+                manager.HideRecursive(currentTarget);
             }
             else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
             {
-                manager.DisableRecursively<Behaviour>(currentTarget);
+                manager.HideRecursive(currentTarget);
+                foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
+                foreach (var child in currentTarget.GetComponentsInChildren<Transform>())
+                {
+                    var halo = (Behaviour)child.GetComponent("Halo");
+                    if (halo != null) halo.enabled = false;
+                }
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
-                manager.DisableRecursively<MeshRenderer>(currentTarget);
-                manager.DisableRecursively<Collider>(currentTarget);
+                manager.HideRecursive(currentTarget);
+                foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = false;
 
             }
             
@@ -181,7 +187,7 @@ public class NavigationTask : ExperimentTask
             currentTarget.SetActive(true); // make sure the target is visible unless the bool to hide was checked
             try
             {
-                manager.DisableRecursively<MeshRenderer>(currentTarget, true);
+                manager.HideRecursive(currentTarget, true);
             }
             catch (System.Exception ex)
             {
@@ -273,17 +279,23 @@ public class NavigationTask : ExperimentTask
             switch (hideTargetOnStart)
             {
                 case HideTargetOnStart.SetInactive:
-                    manager.DisableRecursively<Collider>(currentTarget, true);
+                    foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
                     break;
                 case HideTargetOnStart.SetInvisible:
-                    manager.DisableRecursively<MeshRenderer>(currentTarget, true);
+                    manager.HideRecursive(currentTarget, true);
                     break;
                 case HideTargetOnStart.DisableCompletely:
-                    manager.DisableRecursively<Behaviour>(currentTarget, true);
+                    manager.HideRecursive(currentTarget, true);
+                    foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
+                    foreach (var child in currentTarget.GetComponentsInChildren<Transform>())
+                    {
+                        var halo = (Behaviour)child.GetComponent("Halo");
+                        if (halo != null) halo.enabled = true;
+                    }
                     break;
                 case HideTargetOnStart.SetProbeTrial:
-                    manager.DisableRecursively<MeshRenderer>(currentTarget, true);
-                    manager.DisableRecursively<Collider>(currentTarget, true);
+                    manager.HideRecursive(currentTarget, true);
+                    foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
                     break;
                 default:
                     Debug.Log("No hidden targets identified");
@@ -410,8 +422,14 @@ public class NavigationTask : ExperimentTask
         }
 
         // re-enable everything on the gameobject we just finished finding
-        if (!exploration) manager.DisableRecursively<Behaviour>(currentTarget, true);
-       
+        manager.HideRecursive(currentTarget, true);
+        foreach (var c in currentTarget.GetComponents<Collider>()) c.enabled = true;
+        foreach (var child in currentTarget.GetComponentsInChildren<Transform>())
+        {
+            var halo = (Behaviour)child.GetComponent("Halo");
+            if (halo != null) halo.enabled = true;
+        }
+
         hud.setMessage("");
 		hud.showScore = false;
 

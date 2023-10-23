@@ -623,22 +623,32 @@ public class Experiment : MonoBehaviour
     }
 
 
-    // Turn off all Components of type 'T' on a gameobject and all of its children
-    public void DisableRecursively<T>(GameObject obj, bool restore = false)
+    // Turn off all Renderers and Canvases on a gameobject and all of its children
+    public void HideRecursive(GameObject obj, bool restore = false)
     {
-        if (obj.GetComponentsInChildren<T>().Length > 0)
+        if (obj.GetComponentsInChildren<Renderer>().Length > 0)
         {
-            /* It's crucial to cast the Component to 'object' then 'Behaviour' 
-            (with a 'u') as it inherits from componetn and endows it with the
-            enabled property*/
-            var mrs = obj.GetComponentsInChildren<T>();
-            foreach (var mr in mrs)
-            {
-                Behaviour mrT = (Behaviour)(object)mr;
-                mrT.enabled = restore;
-            }
+            var mrs = obj.GetComponentsInChildren<Renderer>();
+            foreach (Renderer mr in mrs) mr.enabled = restore;
         }
-        else Debug.LogError("You are trying to hide or reveal a " + typeof(T) + " with no MeshRenderers");
+        else Debug.LogError("You are trying to hide or reveal a GameObject with no MeshRenderers");
+
+        if (obj.GetComponentsInChildren<Canvas>().Length > 0)
+        {
+            var mrs = obj.GetComponentsInChildren<Canvas>();
+            foreach (Canvas mr in mrs) mr.enabled = restore;
+        }
+    }
+
+    // Turn off all Colliders on a gameobject and all of its children
+    public void DisableRecursive(GameObject obj, bool restore = false)
+    {
+        if (obj.GetComponentsInChildren<Collider>().Length > 0)
+        {
+            var cs = obj.GetComponentsInChildren<Collider>();
+            foreach (Collider c in cs) c.enabled = restore;
+        }
+        else Debug.LogError("You are trying to disable or re-enable a GameObject with no Colliders");
     }
 
 
