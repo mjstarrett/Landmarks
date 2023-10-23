@@ -158,26 +158,21 @@ public class NavigationTask : ExperimentTask
         {
             if (hideTargetOnStart == HideTargetOnStart.SetInactive)
             {
-                currentTarget.GetComponent<Collider>().enabled = false;
+                manager.DisableRecursively<MeshRenderer>(currentTarget);
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetInvisible)
             {
-                currentTarget.GetComponent<MeshRenderer>().enabled = false;
+                manager.DisableRecursively<Collider>(currentTarget);
             }
             else if (hideTargetOnStart == HideTargetOnStart.DisableCompletely)
             {
-                //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
-                // currentTarget.GetComponent<Collider>().enabled = false;
-                // currentTarget.GetComponent<MeshRenderer>().enabled = false;
-                // var halo = (Behaviour) currentTarget.GetComponent("Halo");
-                // if(halo != null) halo.enabled = false;
-                currentTarget.SetActive(false);
+                manager.DisableRecursively<Behaviour>(currentTarget);
             }
             else if (hideTargetOnStart == HideTargetOnStart.SetProbeTrial)
             {
-                currentTarget.GetComponent<Collider>().enabled = false;
-                currentTarget.GetComponent<MeshRenderer>().enabled = false;
-                
+                manager.DisableRecursively<MeshRenderer>(currentTarget);
+                manager.DisableRecursively<Collider>(currentTarget);
+
             }
             
         }
@@ -186,7 +181,7 @@ public class NavigationTask : ExperimentTask
             currentTarget.SetActive(true); // make sure the target is visible unless the bool to hide was checked
             try
             {
-                currentTarget.GetComponent<MeshRenderer>().enabled = true;
+                manager.DisableRecursively<MeshRenderer>(currentTarget, true);
             }
             catch (System.Exception ex)
             {
@@ -278,27 +273,20 @@ public class NavigationTask : ExperimentTask
             switch (hideTargetOnStart)
             {
                 case HideTargetOnStart.SetInactive:
-                    currentTarget.GetComponent<Collider>().enabled = true;
+                    manager.DisableRecursively<Collider>(currentTarget, true);
                     break;
                 case HideTargetOnStart.SetInvisible:
-                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
+                    manager.DisableRecursively<MeshRenderer>(currentTarget, true);
                     break;
                 case HideTargetOnStart.DisableCompletely:
-                    //fixme - at some point should write LM methods to turn off objects, their renderers, their colliders, and/or their lights (including children)
-                    currentTarget.GetComponent<Collider>().enabled = true;
-                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
-                    var halo = (Behaviour)currentTarget.GetComponent("Halo");
-                    if (halo != null) halo.enabled = true;
+                    manager.DisableRecursively<Behaviour>(currentTarget, true);
                     break;
                 case HideTargetOnStart.SetProbeTrial:
-                    currentTarget.GetComponent<Collider>().enabled = true;
-                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
+                    manager.DisableRecursively<MeshRenderer>(currentTarget, true);
+                    manager.DisableRecursively<Collider>(currentTarget, true);
                     break;
                 default:
                     Debug.Log("No hidden targets identified");
-                    currentTarget.SetActive(true);
-                    currentTarget.GetComponent<MeshRenderer>().enabled = true;
-                    currentTarget.GetComponent<Collider>().enabled = true;
                     break;
             }
         }
@@ -422,13 +410,7 @@ public class NavigationTask : ExperimentTask
         }
 
         // re-enable everything on the gameobject we just finished finding
-        if (!exploration)
-        {
-            currentTarget.GetComponent<MeshRenderer>().enabled = true;
-            currentTarget.GetComponent<Collider>().enabled = true;
-            var halo = (Behaviour)currentTarget.GetComponent("Halo");
-            if (halo != null) halo.enabled = true;
-        }
+        if (!exploration) manager.DisableRecursively<Behaviour>(currentTarget, true);
        
         hud.setMessage("");
 		hud.showScore = false;

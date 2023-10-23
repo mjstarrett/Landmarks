@@ -619,8 +619,26 @@ public class Experiment : MonoBehaviour
                                     // Swap.
             T tmp = array[j];
             array[j] = array[i - 1];
-            array[i - 1] = tmp;
+            array[i - 1] = tmp;        }
+    }
+
+
+    // Turn off all Components of type 'T' on a gameobject and all of its children
+    public void DisableRecursively<T>(GameObject obj, bool restore = false)
+    {
+        if (obj.GetComponentsInChildren<T>().Length > 0)
+        {
+            /* It's crucial to cast the Component to 'object' then 'Behaviour' 
+            (with a 'u') as it inherits from componetn and endows it with the
+            enabled property*/
+            var mrs = obj.GetComponentsInChildren<T>();
+            foreach (var mr in mrs)
+            {
+                Behaviour mrT = (Behaviour)(object)mr;
+                mrT.enabled = restore;
+            }
         }
+        else Debug.LogError("You are trying to hide or reveal a " + typeof(T) + " with no MeshRenderers");
     }
 
 
