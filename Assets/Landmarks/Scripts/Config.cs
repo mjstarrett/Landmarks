@@ -129,7 +129,7 @@ public class Config : MonoBehaviour
 
         var lvls = new List<string>();
         // If no levels are added/specified and we're in the editor, just add the open one
-        if (config.levelNames.Count == 0 && Application.isEditor)
+        if (config.levelNames.Count == 0)
         {
             lvls.Add(SceneManager.GetActiveScene().name);
         }
