@@ -37,7 +37,9 @@ public class TaskList : ExperimentTask
     public GameObject[] tasks; // no longer need to preset, shown for debugging and visualization - MJS
     public GameObject[] objectsList;
     public int repeat = 1;
-    public ObjectList overideRepeat;
+    [Tooltip("Use experiment run to index where this task begins")]
+    public bool configControlRepeat;
+    public ObjectList overrideRepeat;
     public int repeatCount = 1;
 
     [HideInInspector]
@@ -76,6 +78,8 @@ public class TaskList : ExperimentTask
 
     public override void TASK_START()
     {
+        if (configControlRepeat) repeat = manager.config.run;
+
         // Handle if this is a special kind of taskList and set it up as such
         switch (taskListType)
         {
@@ -115,9 +119,9 @@ public class TaskList : ExperimentTask
             }
         }
 
-        if (overideRepeat)
+        if (overrideRepeat)
         {
-            repeat = overideRepeat.objects.Count;
+            repeat = overrideRepeat.objects.Count;
         }
 
         //----------------------------------------------------------------------
@@ -187,7 +191,7 @@ public class TaskList : ExperimentTask
 
         // update the trial count on the overlay
         if (overlayRepeatCount != null) overlayRepeatCount.text = string.Format("{0}: {1} / {2}", name, repeatCount, repeat);
-        if (overlayListItem != null & overideRepeat != null) overlayListItem.text = string.Format("{0}", overideRepeat.currentObject().name);
+        if (overlayListItem != null & overrideRepeat != null) overlayListItem.text = string.Format("{0}", overrideRepeat.currentObject().name);
 
         currentTask = tasks[currentTaskIndex].GetComponent<ExperimentTask>();
 
@@ -250,7 +254,7 @@ public class TaskList : ExperimentTask
             // If we've reached the last task but have cycles (repeats) left -- reset task index, increment repeatcount and run startNextTask()
             if (currentTaskIndex >= tasks.Length)
             {
-                if (taskLog != null & taskLog.trialData.Values.Count > 0)
+                if (taskLog != null && taskLog.trialData.Values.Count > 0)
                 {
                     log.Write(taskLog.FormatCurrent()); // output the formatted data to the log file
                     taskLog.LogTrial();
@@ -306,15 +310,17 @@ public class TaskList : ExperimentTask
     {
         if (taskLog != null)
         {
-            Debug.Log(taskLog.gameObject.name);
-            Debug.Log(manager.gameObject.name);
-            Debug.Log(manager.config.name);
+            //Debug.Log(taskLog.gameObject.name);
+            //Debug.Log(manager.gameObject.name);
+            //Debug.Log(manager.config.name);
             // Really basic, redundant logging
-            taskLog.AddData("id", manager.config.subject);
+            taskLog.AddData("id", manager.config.id.ToString());
             taskLog.AddData("condition", manager.config.condition);
             taskLog.AddData("sceneName", manager.config.levelNames[manager.config.levelNumber]);
             taskLog.AddData("sceneNumber", (manager.config.levelNumber + 1).ToString());
             taskLog.AddData("task", taskLog.gameObject.name);
+            if (taskLog.gameObject.GetComponent<TaskList>().taskListType == Role.task) taskLog.AddData("run", 
+                    taskLog.gameObject.GetComponent<TaskList>().parentTask.repeatCount.ToString()); 
             taskLog.AddData("block", taskLog.gameObject.GetComponent<TaskList>().repeatCount.ToString());
             taskLog.AddData("trial", repeatCount.ToString());
             //trialLog.AddData("catchTrial", catchFlag.ToString());
@@ -326,9 +332,9 @@ public class TaskList : ExperimentTask
     {
         base.endTask();
 
-        if (overideRepeat)
+        if (overrideRepeat && canIncrementLists)
         {
-            overideRepeat.incrementCurrent();
+            overrideRepeat.incrementCurrent();
         }
 
         

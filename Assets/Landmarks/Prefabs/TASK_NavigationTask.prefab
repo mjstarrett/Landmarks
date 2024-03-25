@@ -138,7 +138,6 @@ MonoBehaviour:
   repeat: 1
   overideRepeat: {fileID: 0}
   repeatCount: 1
-  hideTargetsDuringTask: 0
   currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
@@ -295,7 +294,6 @@ MonoBehaviour:
   repeat: 8
   overideRepeat: {fileID: 8475965484490080533}
   repeatCount: 1
-  hideTargetsDuringTask: 0
   currentTask: {fileID: 0}
   catchTrialCount: 0
   skipOnCatch: []
@@ -612,7 +610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8477616651272562214}
-  - component: {fileID: 8477616651272562217}
+  - component: {fileID: 5335049405014025327}
   m_Layer: 0
   m_Name: MovePlayerToSpawn
   m_TagString: Untagged
@@ -634,7 +632,7 @@ Transform:
   m_Father: {fileID: 6279364624764035789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8477616651272562217
+--- !u!114 &5335049405014025327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -643,7 +641,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8477616651272562215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 201e9890d1a764c8ea736797b2ca29a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f70e910a910495d8406095c39e603a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skip: 0
@@ -672,6 +670,8 @@ MonoBehaviour:
   randomRotation: 0
   scaledPlayer: 0
   ignoreY: 0
+  useSnapPoint: 0
+  localOffsetFacing: {x: 0, y: 0, z: 0}
   blockRepeat: 0
 --- !u!1001 &9012772696151050461
 PrefabInstance:
